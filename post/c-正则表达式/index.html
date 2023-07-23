@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='此文章来源于👉正则表达式库 - cppreference.com,并整理
+正则表达式库提供表示正则表达式的类，正则表达式是一种用于在字符串中匹配模式的微型语言。
+定义于头文件 #include &amp;lt;iostream&amp;gt; #include &amp;lt;iterator&amp;gt; #include &amp;lt;string&amp;gt; #include &amp;lt;regex&amp;gt; int main() { std::string s = &amp;#34;Some people, when confronted with a problem, think &amp;#34; &amp;#34;\&amp;#34;I know, I&amp;#39;ll use regular expressions.\&amp;#34; &amp;#34; &amp;#34;Now they have two problems.&amp;#34;; std::regex self_regex(&amp;#34;REGULAR EXPRESSIONS&amp;#34;, std::regex_constants::ECMAScript | std::regex_constants::icase); if (std::regex_search(s, self_regex)) { std::cout &amp;lt;&amp;lt; &amp;#34;Text contains the phrase &amp;#39;regular expressions&amp;#39;\n&amp;#34;; } std::regex word_regex(&amp;#34;(\\w&#43;)&amp;#34;); auto words_begin = std::sregex_iterator(s.begin(), s.end(), word_regex); auto words_end = std::sregex_iterator(); std::cout &amp;lt;&amp;lt; &amp;#34;Found &amp;#34; &amp;lt;&amp;lt; std::distance(words_begin, words_end) &amp;lt;&amp;lt; &amp;#34; words\n&amp;#34;; const int N = 6; std::cout &amp;lt;&amp;lt; &amp;#34;Words longer than &amp;#34; &amp;lt;&amp;lt; N &amp;lt;&amp;lt; &amp;#34; characters:\n&amp;#34;; for (std::sregex_iterator i = words_begin; i !'><title>C&#43;&#43;正则表达式</title>
+
+<link rel='canonical' href='https://okokfun.github.io/post/c-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='C&#43;&#43;正则表达式'>
+<meta property='og:description' content='此文章来源于👉正则表达式库 - cppreference.com,并整理
+正则表达式库提供表示正则表达式的类，正则表达式是一种用于在字符串中匹配模式的微型语言。
+定义于头文件 #include &amp;lt;iostream&amp;gt; #include &amp;lt;iterator&amp;gt; #include &amp;lt;string&amp;gt; #include &amp;lt;regex&amp;gt; int main() { std::string s = &amp;#34;Some people, when confronted with a problem, think &amp;#34; &amp;#34;\&amp;#34;I know, I&amp;#39;ll use regular expressions.\&amp;#34; &amp;#34; &amp;#34;Now they have two problems.&amp;#34;; std::regex self_regex(&amp;#34;REGULAR EXPRESSIONS&amp;#34;, std::regex_constants::ECMAScript | std::regex_constants::icase); if (std::regex_search(s, self_regex)) { std::cout &amp;lt;&amp;lt; &amp;#34;Text contains the phrase &amp;#39;regular expressions&amp;#39;\n&amp;#34;; } std::regex word_regex(&amp;#34;(\\w&#43;)&amp;#34;); auto words_begin = std::sregex_iterator(s.begin(), s.end(), word_regex); auto words_end = std::sregex_iterator(); std::cout &amp;lt;&amp;lt; &amp;#34;Found &amp;#34; &amp;lt;&amp;lt; std::distance(words_begin, words_end) &amp;lt;&amp;lt; &amp;#34; words\n&amp;#34;; const int N = 6; std::cout &amp;lt;&amp;lt; &amp;#34;Words longer than &amp;#34; &amp;lt;&amp;lt; N &amp;lt;&amp;lt; &amp;#34; characters:\n&amp;#34;; for (std::sregex_iterator i = words_begin; i !'>
+<meta property='og:url' content='https://okokfun.github.io/post/c-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/'>
+<meta property='og:site_name' content='My Blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='C&#43;&#43;' /><meta property='article:tag' content='Regex' /><meta property='article:published_time' content='2022-01-16T14:45:25&#43;00:00'/><meta property='article:modified_time' content='2022-01-16T14:45:25&#43;00:00'/>
+<meta name="twitter:title" content="C&#43;&#43;正则表达式">
+<meta name="twitter:description" content="此文章来源于👉正则表达式库 - cppreference.com,并整理
+正则表达式库提供表示正则表达式的类，正则表达式是一种用于在字符串中匹配模式的微型语言。
+定义于头文件 #include &amp;lt;iostream&amp;gt; #include &amp;lt;iterator&amp;gt; #include &amp;lt;string&amp;gt; #include &amp;lt;regex&amp;gt; int main() { std::string s = &amp;#34;Some people, when confronted with a problem, think &amp;#34; &amp;#34;\&amp;#34;I know, I&amp;#39;ll use regular expressions.\&amp;#34; &amp;#34; &amp;#34;Now they have two problems.&amp;#34;; std::regex self_regex(&amp;#34;REGULAR EXPRESSIONS&amp;#34;, std::regex_constants::ECMAScript | std::regex_constants::icase); if (std::regex_search(s, self_regex)) { std::cout &amp;lt;&amp;lt; &amp;#34;Text contains the phrase &amp;#39;regular expressions&amp;#39;\n&amp;#34;; } std::regex word_regex(&amp;#34;(\\w&#43;)&amp;#34;); auto words_begin = std::sregex_iterator(s.begin(), s.end(), word_regex); auto words_end = std::sregex_iterator(); std::cout &amp;lt;&amp;lt; &amp;#34;Found &amp;#34; &amp;lt;&amp;lt; std::distance(words_begin, words_end) &amp;lt;&amp;lt; &amp;#34; words\n&amp;#34;; const int N = 6; std::cout &amp;lt;&amp;lt; &amp;#34;Words longer than &amp;#34; &amp;lt;&amp;lt; N &amp;lt;&amp;lt; &amp;#34; characters:\n&amp;#34;; for (std::sregex_iterator i = words_begin; i !"><script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+    </head>
+    <body class="
+    article-page has-toc
+">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex 
+    
+        extended
+    
+">
+    
+        <div id="article-toolbar">
+            <a href="/" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+                <span>Back</span>
+            </a>
+        </div>
+    
+<main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+
+    <h2 class="article-title">
+        <a href="/post/c-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">C&#43;&#43;正则表达式</a>
+    </h2>
+
+    
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jan 16, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    4 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+</div>
+</header>
+
+    <section class="article-content">
+    <!-- raw HTML omitted -->
+<p>此文章来源于👉<a class="link" href="https://zh.cppreference.com/w/cpp/regex"  target="_blank" rel="noopener"
+    >正则表达式库 - cppreference.com</a>,并整理</p>
+<blockquote>
+<p>正则表达式库提供表示正则表达式的类，正则表达式是一种用于在字符串中匹配模式的微型语言。</p>
+</blockquote>
+<p>定义于头文件 <!-- raw HTML omitted --></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iterator&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;string&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;regex&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span> 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>string s <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Some people, when confronted with a problem, think &#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">I know, I&#39;ll use regular expressions.</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74"> &#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;Now they have two problems.&#34;</span>;
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>regex self_regex(<span style="color:#e6db74">&#34;REGULAR EXPRESSIONS&#34;</span>,
+</span></span><span style="display:flex;"><span>            std<span style="color:#f92672">::</span>regex_constants<span style="color:#f92672">::</span>ECMAScript <span style="color:#f92672">|</span> std<span style="color:#f92672">::</span>regex_constants<span style="color:#f92672">::</span>icase);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (std<span style="color:#f92672">::</span>regex_search(s, self_regex)) {
+</span></span><span style="display:flex;"><span>        std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Text contains the phrase &#39;regular expressions&#39;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>regex word_regex(<span style="color:#e6db74">&#34;(</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">w+)&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">auto</span> words_begin <span style="color:#f92672">=</span> 
+</span></span><span style="display:flex;"><span>        std<span style="color:#f92672">::</span>sregex_iterator(s.begin(), s.end(), word_regex);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">auto</span> words_end <span style="color:#f92672">=</span> std<span style="color:#f92672">::</span>sregex_iterator();
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Found &#34;</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>distance(words_begin, words_end)
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; words</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>;
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> N <span style="color:#f92672">=</span> <span style="color:#ae81ff">6</span>;
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Words longer than &#34;</span> <span style="color:#f92672">&lt;&lt;</span> N <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; characters:</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (std<span style="color:#f92672">::</span>sregex_iterator i <span style="color:#f92672">=</span> words_begin; i <span style="color:#f92672">!=</span> words_end; <span style="color:#f92672">++</span>i) {
+</span></span><span style="display:flex;"><span>        std<span style="color:#f92672">::</span>smatch match <span style="color:#f92672">=</span> <span style="color:#f92672">*</span>i;
+</span></span><span style="display:flex;"><span>        std<span style="color:#f92672">::</span>string match_str <span style="color:#f92672">=</span> match.str();
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (match_str.size() <span style="color:#f92672">&gt;</span> N) {
+</span></span><span style="display:flex;"><span>            std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;  &#34;</span> <span style="color:#f92672">&lt;&lt;</span> match_str <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#39;\n&#39;</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>regex long_word_regex(<span style="color:#e6db74">&#34;(</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">w{7,})&#34;</span>);
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>string new_s <span style="color:#f92672">=</span> std<span style="color:#f92672">::</span>regex_replace(s, long_word_regex, <span style="color:#e6db74">&#34;[$&amp;]&#34;</span>);
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> new_s <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#39;\n&#39;</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h1 id="算法">算法</h1>
+<h2 id="regex_matchhttpszhcppreferencecomwcppregexregex_matchc11"><a class="link" href="https://zh.cppreference.com/w/cpp/regex/regex_match"  target="_blank" rel="noopener"
+    >regex_match</a>(C++11)</h2>
+<blockquote>
+<p>尝试匹配一个正则表达式到整个字符序列 (函数模板)</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;string&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;regex&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span> 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 简单正则表达式匹配
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    std<span style="color:#f92672">::</span>string fnames[] <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#34;foo.txt&#34;</span>, <span style="color:#e6db74">&#34;bar.txt&#34;</span>, <span style="color:#e6db74">&#34;baz.dat&#34;</span>, <span style="color:#e6db74">&#34;zoidberg&#34;</span>};
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>regex txt_regex(<span style="color:#e6db74">&#34;[a-z]+</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">.txt&#34;</span>);
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">auto</span> <span style="color:#f92672">&amp;</span>fname : fnames) {
+</span></span><span style="display:flex;"><span>        std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> fname <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;: &#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>regex_match(fname, txt_regex) <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#39;\n&#39;</span>;
+</span></span><span style="display:flex;"><span>    }   
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 提取子匹配
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    std<span style="color:#f92672">::</span>regex base_regex(<span style="color:#e6db74">&#34;([a-z]+)</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">.txt&#34;</span>);
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>smatch base_match;
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">auto</span> <span style="color:#f92672">&amp;</span>fname : fnames) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (std<span style="color:#f92672">::</span>regex_match(fname, base_match, base_regex)) {
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// 首个 sub_match 是整个字符串；下个
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#75715e">// sub_match 是首个有括号表达式。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#66d9ef">if</span> (base_match.size() <span style="color:#f92672">==</span> <span style="color:#ae81ff">2</span>) {
+</span></span><span style="display:flex;"><span>                std<span style="color:#f92672">::</span>ssub_match base_sub_match <span style="color:#f92672">=</span> base_match[<span style="color:#ae81ff">1</span>];
+</span></span><span style="display:flex;"><span>                std<span style="color:#f92672">::</span>string base <span style="color:#f92672">=</span> base_sub_match.str();
+</span></span><span style="display:flex;"><span>                std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> fname <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; has a base of &#34;</span> <span style="color:#f92672">&lt;&lt;</span> base <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#39;\n&#39;</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 提取几个子匹配
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    std<span style="color:#f92672">::</span>regex pieces_regex(<span style="color:#e6db74">&#34;([a-z]+)</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">.([a-z]+)&#34;</span>);
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>smatch pieces_match;
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">auto</span> <span style="color:#f92672">&amp;</span>fname : fnames) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (std<span style="color:#f92672">::</span>regex_match(fname, pieces_match, pieces_regex)) {
+</span></span><span style="display:flex;"><span>            std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> fname <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#39;\n&#39;</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> (size_t i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> pieces_match.size(); <span style="color:#f92672">++</span>i) {
+</span></span><span style="display:flex;"><span>                std<span style="color:#f92672">::</span>ssub_match sub_match <span style="color:#f92672">=</span> pieces_match[i];
+</span></span><span style="display:flex;"><span>                std<span style="color:#f92672">::</span>string piece <span style="color:#f92672">=</span> sub_match.str();
+</span></span><span style="display:flex;"><span>                std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;  submatch &#34;</span> <span style="color:#f92672">&lt;&lt;</span> i <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;: &#34;</span> <span style="color:#f92672">&lt;&lt;</span> piece <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#39;\n&#39;</span>;
+</span></span><span style="display:flex;"><span>            }   
+</span></span><span style="display:flex;"><span>        }   
+</span></span><span style="display:flex;"><span>    }   
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="regex_searchhttpszhcppreferencecomwcppregexregex_searchc11"><a class="link" href="https://zh.cppreference.com/w/cpp/regex/regex_search"  target="_blank" rel="noopener"
+    >regex_search</a>(C++11)</h2>
+<blockquote>
+<p>尝试匹配一个正则表达式到字符序列的任何部分 (函数模板)</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;string&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;regex&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span> 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>string lines[] <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#34;Roses are #ff0000&#34;</span>,
+</span></span><span style="display:flex;"><span>                           <span style="color:#e6db74">&#34;violets are #0000ff&#34;</span>,
+</span></span><span style="display:flex;"><span>                           <span style="color:#e6db74">&#34;all of my base are belong to you&#34;</span>};
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>regex color_regex(<span style="color:#e6db74">&#34;#([a-f0-9]{2})&#34;</span>
+</span></span><span style="display:flex;"><span>                            <span style="color:#e6db74">&#34;([a-f0-9]{2})&#34;</span>
+</span></span><span style="display:flex;"><span>                            <span style="color:#e6db74">&#34;([a-f0-9]{2})&#34;</span>);
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 简单匹配
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">auto</span> <span style="color:#f92672">&amp;</span>line : lines) {
+</span></span><span style="display:flex;"><span>        std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> line <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;: &#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>boolalpha
+</span></span><span style="display:flex;"><span>                  <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>regex_search(line, color_regex) <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#39;\n&#39;</span>;
+</span></span><span style="display:flex;"><span>    }   
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#39;\n&#39;</span>;
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 展示每个匹配中有标记子表达式的内容
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    std<span style="color:#f92672">::</span>smatch color_match;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">auto</span><span style="color:#f92672">&amp;</span> line : lines) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span>(std<span style="color:#f92672">::</span>regex_search(line, color_match, color_regex)) {
+</span></span><span style="display:flex;"><span>            std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;matches for &#39;&#34;</span> <span style="color:#f92672">&lt;&lt;</span> line <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;&#39;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>;
+</span></span><span style="display:flex;"><span>            std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Prefix: &#39;&#34;</span> <span style="color:#f92672">&lt;&lt;</span> color_match.prefix() <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;&#39;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> (size_t i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> color_match.size(); <span style="color:#f92672">++</span>i) 
+</span></span><span style="display:flex;"><span>                std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> i <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;: &#34;</span> <span style="color:#f92672">&lt;&lt;</span> color_match[i] <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#39;\n&#39;</span>;
+</span></span><span style="display:flex;"><span>            std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Suffix: &#39;&#34;</span> <span style="color:#f92672">&lt;&lt;</span> color_match.suffix() <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\&#39;\n\n</span><span style="color:#e6db74">&#34;</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 重复搜索（参阅 std::regex_iterator ）
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    std<span style="color:#f92672">::</span>string log(R<span style="color:#e6db74">&#34;(</span>
+</span></span><span style="display:flex;"><span>        Speed:	<span style="color:#ae81ff">366</span>
+</span></span><span style="display:flex;"><span>        Mass:	<span style="color:#ae81ff">35</span>
+</span></span><span style="display:flex;"><span>        Speed:	<span style="color:#ae81ff">378</span>
+</span></span><span style="display:flex;"><span>        Mass:	<span style="color:#ae81ff">32</span>
+</span></span><span style="display:flex;"><span>        Speed:	<span style="color:#ae81ff">400</span>
+</span></span><span style="display:flex;"><span>	Mass:	<span style="color:#ae81ff">30</span>)<span style="color:#e6db74">&#34;);</span>
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>regex r(R<span style="color:#e6db74">&#34;(Speed:</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">\d*)&#34;</span>);
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>smatch sm;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span>(regex_search(log, sm, r))
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> sm.str() <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#39;\n&#39;</span>;
+</span></span><span style="display:flex;"><span>        log <span style="color:#f92672">=</span> sm.suffix();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// C 风格字符串演示
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    std<span style="color:#f92672">::</span>cmatch cm;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span>(std<span style="color:#f92672">::</span>regex_search(<span style="color:#e6db74">&#34;this is a test&#34;</span>, cm, std<span style="color:#f92672">::</span>regex(<span style="color:#e6db74">&#34;test&#34;</span>))) 
+</span></span><span style="display:flex;"><span>        std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Found &#34;</span> <span style="color:#f92672">&lt;&lt;</span> cm[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; at position &#34;</span> <span style="color:#f92672">&lt;&lt;</span> cm.prefix().length();
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="regex_replacehttpszhcppreferencecomwcppregexregex_replacec11"><a class="link" href="https://zh.cppreference.com/w/cpp/regex/regex_replace"  target="_blank" rel="noopener"
+    >regex_replace</a>(C++11)</h2>
+<blockquote>
+<p>以格式化的替换文本来替换正则表达式匹配的出现位置 (函数模板)</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iterator&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;regex&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;string&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span> 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>   std<span style="color:#f92672">::</span>string text <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Quick brown fox&#34;</span>;
+</span></span><span style="display:flex;"><span>   std<span style="color:#f92672">::</span>regex vowel_re(<span style="color:#e6db74">&#34;a|e|i|o|u&#34;</span>);
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span>   <span style="color:#75715e">// 写结果到输出迭代器
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>   std<span style="color:#f92672">::</span>regex_replace(std<span style="color:#f92672">::</span>ostreambuf_iterator<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">char</span><span style="color:#f92672">&gt;</span>(std<span style="color:#f92672">::</span>cout),
+</span></span><span style="display:flex;"><span>                      text.begin(), text.end(), vowel_re, <span style="color:#e6db74">&#34;*&#34;</span>);
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span>   <span style="color:#75715e">// 构造保有结果的字符串
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>   std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#39;\n&#39;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>regex_replace(text, vowel_re, <span style="color:#e6db74">&#34;[$&amp;]&#34;</span>) <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#39;\n&#39;</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h1 id="迭代器">迭代器</h1>
+<blockquote>
+<p>regex_iterator 用于遍历在序列中找到的匹配正则表达式的整个集合。</p>
+</blockquote>
+<h2 id="regex_iteratorhttpszhcppreferencecomwcppregexregex_iteratorc11"><a class="link" href="https://zh.cppreference.com/w/cpp/regex/regex_iterator"  target="_blank" rel="noopener"
+    >regex_iterator</a>(C++11)</h2>
+<blockquote>
+<p>迭代一个字符序列中的所有正则表达式匹配 (类模板)</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;regex&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iterator&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;string&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span> 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> std<span style="color:#f92672">::</span>string s <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Quick brown fox.&#34;</span>;
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>regex words_regex(<span style="color:#e6db74">&#34;[^</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">s]+&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">auto</span> words_begin <span style="color:#f92672">=</span> 
+</span></span><span style="display:flex;"><span>        std<span style="color:#f92672">::</span>sregex_iterator(s.begin(), s.end(), words_regex);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">auto</span> words_end <span style="color:#f92672">=</span> std<span style="color:#f92672">::</span>sregex_iterator();
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Found &#34;</span> 
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>distance(words_begin, words_end) 
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; words:</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>;
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (std<span style="color:#f92672">::</span>sregex_iterator i <span style="color:#f92672">=</span> words_begin; i <span style="color:#f92672">!=</span> words_end; <span style="color:#f92672">++</span>i) {
+</span></span><span style="display:flex;"><span>        std<span style="color:#f92672">::</span>smatch match <span style="color:#f92672">=</span> <span style="color:#f92672">*</span>i;                                                 
+</span></span><span style="display:flex;"><span>        std<span style="color:#f92672">::</span>string match_str <span style="color:#f92672">=</span> match.str(); 
+</span></span><span style="display:flex;"><span>        std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> match_str <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#39;\n&#39;</span>;
+</span></span><span style="display:flex;"><span>    }   
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="regex_token_iteratorhttpszhcppreferencecomwcppregexregex_token_iteratorc11"><a class="link" href="https://zh.cppreference.com/w/cpp/regex/regex_token_iterator"  target="_blank" rel="noopener"
+    >regex_token_iterator</a>(C++11)</h2>
+<blockquote>
+<p>迭代给定字符串中的所有正则表达式匹配中的指定子表达式，或迭代未匹配的子字符串 (类模板)</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;fstream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;algorithm&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iterator&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;regex&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span> 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>   std<span style="color:#f92672">::</span>string text <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Quick brown fox.&#34;</span>;
+</span></span><span style="display:flex;"><span>   <span style="color:#75715e">// 记号化（非匹配碎片）
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>   <span style="color:#75715e">// 注意仅匹配二次 regex ：在获得第三值时迭代器为后缀迭代器。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>   std<span style="color:#f92672">::</span>regex ws_re(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">s+&#34;</span>); <span style="color:#75715e">// 空白符
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>   std<span style="color:#f92672">::</span>copy( std<span style="color:#f92672">::</span>sregex_token_iterator(text.begin(), text.end(), ws_re, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>),
+</span></span><span style="display:flex;"><span>              std<span style="color:#f92672">::</span>sregex_token_iterator(),
+</span></span><span style="display:flex;"><span>              std<span style="color:#f92672">::</span>ostream_iterator<span style="color:#f92672">&lt;</span>std<span style="color:#f92672">::</span>string<span style="color:#f92672">&gt;</span>(std<span style="color:#f92672">::</span>cout, <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>));
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span>   <span style="color:#75715e">// 迭代首个子匹配
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>   std<span style="color:#f92672">::</span>string html <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&lt;p&gt;&lt;a href=</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">http://google.com</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">&gt;google&lt;/a&gt; &#34;</span>
+</span></span><span style="display:flex;"><span>                      <span style="color:#e6db74">&#34;&lt; a HREF =</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">http://cppreference.com</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">&gt;cppreference&lt;/a&gt;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&lt;/p&gt;&#34;</span>;
+</span></span><span style="display:flex;"><span>   std<span style="color:#f92672">::</span>regex url_re(<span style="color:#e6db74">&#34;&lt;</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">s*A</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">s+[^&gt;]*href</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">s*=</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">s*</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">([^</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">]*)</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">&#34;</span>, std<span style="color:#f92672">::</span>regex<span style="color:#f92672">::</span>icase);
+</span></span><span style="display:flex;"><span>   std<span style="color:#f92672">::</span>copy( std<span style="color:#f92672">::</span>sregex_token_iterator(html.begin(), html.end(), url_re, <span style="color:#ae81ff">1</span>),
+</span></span><span style="display:flex;"><span>              std<span style="color:#f92672">::</span>sregex_token_iterator(),
+</span></span><span style="display:flex;"><span>              std<span style="color:#f92672">::</span>ostream_iterator<span style="color:#f92672">&lt;</span>std<span style="color:#f92672">::</span>string<span style="color:#f92672">&gt;</span>(std<span style="color:#f92672">::</span>cout, <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>));
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/c&#43;&#43;/">C&#43;&#43;</a>
+        
+            <a href="/tags/regex/">Regex</a>
+        
+    </section>
+
+
+    </footer>
+
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">Related contents</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="">
+    <a href="/post/%E7%BA%BF%E7%A8%8B%E6%94%AF%E6%8C%81%E5%BA%93/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">线程支持库</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/cpr-http%E8%AF%B7%E6%B1%82%E5%BA%93/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">cpr请求库</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/socket_cpp%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Socket_Cpp库的使用</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/json%E7%9A%84%E4%BD%BF%E7%94%A8/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Json的使用</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/visual-studio-2022%E6%B7%BB%E5%8A%A0%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Visual_Studio_2022添加第三方库</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2023 My Blog
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.5.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+
+            </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">Table of contents</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#regex_matchhttpszhcppreferencecomwcppregexregex_matchc11"><a href="https://zh.cppreference.com/w/cpp/regex/regex_match">regex_match</a>(C++11)</a></li>
+    <li><a href="#regex_searchhttpszhcppreferencecomwcppregexregex_searchc11"><a href="https://zh.cppreference.com/w/cpp/regex/regex_search">regex_search</a>(C++11)</a></li>
+    <li><a href="#regex_replacehttpszhcppreferencecomwcppregexregex_replacec11"><a href="https://zh.cppreference.com/w/cpp/regex/regex_replace">regex_replace</a>(C++11)</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#regex_iteratorhttpszhcppreferencecomwcppregexregex_iteratorc11"><a href="https://zh.cppreference.com/w/cpp/regex/regex_iterator">regex_iterator</a>(C++11)</a></li>
+    <li><a href="#regex_token_iteratorhttpszhcppreferencecomwcppregexregex_token_iteratorc11"><a href="https://zh.cppreference.com/w/cpp/regex/regex_token_iterator">regex_token_iterator</a>(C++11)</a></li>
+  </ul>
+</nav>
+                </div>
+            </section>
+        </aside>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

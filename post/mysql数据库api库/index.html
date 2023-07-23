@@ -1,0 +1,1483 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='MySQL数据库API库 访问MySQL服务器，这需要使用mysqlclient库，MySQL的大多数客户端API（除Java和.NET）都是通过这个库来和MySQL服务器通讯的，而这个库正是使用C语言编写的。
+可使用mysql -V 命令查看当前系统内所使用的mysql数据库版本信息。数据库版本为5.6.20版。因此，我们可从帮助手册refman-5.6-en.a4.pdf入手，了解学习MySQL C API使用的一般信息。
+从API手册23.8中可获取信息，MySQL客户端使用 libmysqlclient 库内部的函数访问MySQL服务器。因此我们在编程过程中，如若使用到库内的函数，必须链接函数库，对应的要找到头文件所在目录位置、函数库路径。以便我们在使用gcc编译工具时可以填充参数-I、-L、-l。
+从手册中可获知，函数库名为mysqlclient。
+因此我们使用命令:
+find / -name libmysqlclient* 查找该库的路径。得到 /usr/lib64/mysql/libmysqlclient.a。 nm /usr/lib64/mysql/libmysqlclient.a命令可查看库内包含的函数。
+编写hello应用链接函数库 编写一个hello.c应用程序，链接使用该库。
+用到头文件 &amp;lt;mysql.h&amp;gt; 可使用locate mysql.h查看其目录位置/usr/include/mysql/mysql.h。
+编译引用了库的应用程序。
+gcc hello.c -o hello -I/usr/include/mysql/ -L/usr/lib64/mysql/ -lmysqlclient 参见帮助手册refman-5.6-en.a4.pdf：23.8.4.3小节。
+MySQL API常用函数 总体印象 使用MySQL库API函数的一般步骤：
+a. 初始化. MYSQL *mysql_init(MYSQL *mysql);
+b. 错误处理	unsigned int mysql_errno(MYSQL *mysql);char *mysql_error(MYSQL *mysql);
+c. 建立连接.	MYSQL *mysql_real_connect(MYSQL *mysql, const char *host, const char *user, const char *passwd,const char *db, unsigned int port, const char *unix_socket, unsigned long client_flag);'><title>MySQL数据库API库</title>
+
+<link rel='canonical' href='https://okokfun.github.io/post/mysql%E6%95%B0%E6%8D%AE%E5%BA%93api%E5%BA%93/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='MySQL数据库API库'>
+<meta property='og:description' content='MySQL数据库API库 访问MySQL服务器，这需要使用mysqlclient库，MySQL的大多数客户端API（除Java和.NET）都是通过这个库来和MySQL服务器通讯的，而这个库正是使用C语言编写的。
+可使用mysql -V 命令查看当前系统内所使用的mysql数据库版本信息。数据库版本为5.6.20版。因此，我们可从帮助手册refman-5.6-en.a4.pdf入手，了解学习MySQL C API使用的一般信息。
+从API手册23.8中可获取信息，MySQL客户端使用 libmysqlclient 库内部的函数访问MySQL服务器。因此我们在编程过程中，如若使用到库内的函数，必须链接函数库，对应的要找到头文件所在目录位置、函数库路径。以便我们在使用gcc编译工具时可以填充参数-I、-L、-l。
+从手册中可获知，函数库名为mysqlclient。
+因此我们使用命令:
+find / -name libmysqlclient* 查找该库的路径。得到 /usr/lib64/mysql/libmysqlclient.a。 nm /usr/lib64/mysql/libmysqlclient.a命令可查看库内包含的函数。
+编写hello应用链接函数库 编写一个hello.c应用程序，链接使用该库。
+用到头文件 &amp;lt;mysql.h&amp;gt; 可使用locate mysql.h查看其目录位置/usr/include/mysql/mysql.h。
+编译引用了库的应用程序。
+gcc hello.c -o hello -I/usr/include/mysql/ -L/usr/lib64/mysql/ -lmysqlclient 参见帮助手册refman-5.6-en.a4.pdf：23.8.4.3小节。
+MySQL API常用函数 总体印象 使用MySQL库API函数的一般步骤：
+a. 初始化. MYSQL *mysql_init(MYSQL *mysql);
+b. 错误处理	unsigned int mysql_errno(MYSQL *mysql);char *mysql_error(MYSQL *mysql);
+c. 建立连接.	MYSQL *mysql_real_connect(MYSQL *mysql, const char *host, const char *user, const char *passwd,const char *db, unsigned int port, const char *unix_socket, unsigned long client_flag);'>
+<meta property='og:url' content='https://okokfun.github.io/post/mysql%E6%95%B0%E6%8D%AE%E5%BA%93api%E5%BA%93/'>
+<meta property='og:site_name' content='My Blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='DataBase' /><meta property='article:tag' content='Mysql' /><meta property='article:published_time' content='2022-01-05T20:21:29&#43;00:00'/><meta property='article:modified_time' content='2022-01-05T20:21:29&#43;00:00'/>
+<meta name="twitter:title" content="MySQL数据库API库">
+<meta name="twitter:description" content="MySQL数据库API库 访问MySQL服务器，这需要使用mysqlclient库，MySQL的大多数客户端API（除Java和.NET）都是通过这个库来和MySQL服务器通讯的，而这个库正是使用C语言编写的。
+可使用mysql -V 命令查看当前系统内所使用的mysql数据库版本信息。数据库版本为5.6.20版。因此，我们可从帮助手册refman-5.6-en.a4.pdf入手，了解学习MySQL C API使用的一般信息。
+从API手册23.8中可获取信息，MySQL客户端使用 libmysqlclient 库内部的函数访问MySQL服务器。因此我们在编程过程中，如若使用到库内的函数，必须链接函数库，对应的要找到头文件所在目录位置、函数库路径。以便我们在使用gcc编译工具时可以填充参数-I、-L、-l。
+从手册中可获知，函数库名为mysqlclient。
+因此我们使用命令:
+find / -name libmysqlclient* 查找该库的路径。得到 /usr/lib64/mysql/libmysqlclient.a。 nm /usr/lib64/mysql/libmysqlclient.a命令可查看库内包含的函数。
+编写hello应用链接函数库 编写一个hello.c应用程序，链接使用该库。
+用到头文件 &amp;lt;mysql.h&amp;gt; 可使用locate mysql.h查看其目录位置/usr/include/mysql/mysql.h。
+编译引用了库的应用程序。
+gcc hello.c -o hello -I/usr/include/mysql/ -L/usr/lib64/mysql/ -lmysqlclient 参见帮助手册refman-5.6-en.a4.pdf：23.8.4.3小节。
+MySQL API常用函数 总体印象 使用MySQL库API函数的一般步骤：
+a. 初始化. MYSQL *mysql_init(MYSQL *mysql);
+b. 错误处理	unsigned int mysql_errno(MYSQL *mysql);char *mysql_error(MYSQL *mysql);
+c. 建立连接.	MYSQL *mysql_real_connect(MYSQL *mysql, const char *host, const char *user, const char *passwd,const char *db, unsigned int port, const char *unix_socket, unsigned long client_flag);"><script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+    </head>
+    <body class="
+    article-page has-toc
+">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex 
+    
+        extended
+    
+">
+    
+        <div id="article-toolbar">
+            <a href="/" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+                <span>Back</span>
+            </a>
+        </div>
+    
+<main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+
+    <h2 class="article-title">
+        <a href="/post/mysql%E6%95%B0%E6%8D%AE%E5%BA%93api%E5%BA%93/">MySQL数据库API库</a>
+    </h2>
+
+    
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jan 05, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    12 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+</div>
+</header>
+
+    <section class="article-content">
+    <!-- raw HTML omitted -->
+<h2 id="mysql数据库api库">MySQL数据库API库</h2>
+<p>访问MySQL服务器，这需要使用mysqlclient库，MySQL的大多数客户端API（除Java和.NET）都是通过这个库来和MySQL服务器通讯的，而这个库正是使用C语言编写的。</p>
+<p>可使用mysql -V 命令查看当前系统内所使用的mysql数据库版本信息。数据库版本为5.6.20版。因此，我们可从帮助手册refman-5.6-en.a4.pdf入手，了解学习MySQL C API使用的一般信息。</p>
+<p>从API手册23.8中可获取信息，MySQL客户端使用 libmysqlclient 库内部的函数访问MySQL服务器。因此我们在编程过程中，如若使用到库内的函数，必须链接函数库，对应的要找到头文件所在目录位置、函数库路径。以便我们在使用gcc编译工具时可以填充参数-I、-L、-l。</p>
+<p>从手册中可获知，函数库名为mysqlclient。</p>
+<p>因此我们使用命令:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>find / -name libmysqlclient* 查找该库的路径。得到 /usr/lib64/mysql/libmysqlclient.a。
+</span></span></code></pre></div><p><code>nm /usr/lib64/mysql/libmysqlclient.a</code>命令可查看库内包含的函数。</p>
+<h3 id="编写hello应用链接函数库">编写hello应用链接函数库</h3>
+<p>编写一个hello.c应用程序，链接使用该库。</p>
+<p>用到头文件 <code>&lt;mysql.h&gt;</code> 可使用<code>locate mysql.h</code>查看其目录位置<code>/usr/include/mysql/mysql.h</code>。</p>
+<p>编译引用了库的应用程序。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>gcc hello.c -o hello -I/usr/include/mysql/ -L/usr/lib64/mysql/ -lmysqlclient 
+</span></span></code></pre></div><p>参见帮助手册refman-5.6-en.a4.pdf：23.8.4.3小节。</p>
+<h2 id="mysql--api常用函数"><strong>MySQL</strong>  API常用函数</h2>
+<h3 id="总体印象">总体印象</h3>
+<p>使用MySQL库API函数的一般步骤：</p>
+<p>a. 初始化. 	<code>MYSQL *mysql_init(MYSQL *mysql);</code></p>
+<p>b. 错误处理	<code>unsigned int mysql_errno(MYSQL *mysql); char *mysql_error(MYSQL *mysql);</code></p>
+<p>c. 建立连接.	<code>MYSQL *mysql_real_connect(MYSQL *mysql, const char *host, const char *user, const char *passwd,const char *db, 							unsigned int port, const char *unix_socket, unsigned long client_flag);</code></p>
+<p>d. 执行SQL语句	<code>int mysql_query(MYSQL *mysql, const char *stmt_str);</code></p>
+<p>e. 获取结果	<code>MYSQL_RES *mysql_store_result(MYSQL *mysql)</code>
+<code>MYSQL_ROW mysql_fetch_row(MYSQL_RES *result);</code></p>
+<p>f. 释放内存	<code>void mysql_free_result(MYSQL_RES *result);</code></p>
+<p>g. 关闭连接	<code>void mysql_close(MYSQL *mysql);</code></p>
+<h3 id="初始化">初始化</h3>
+<p>编写程序测试 初始化函数<code>MYSQL *mysql_init(MYSQL *mysql)</code>。</p>
+<p>其中有一种新数据类型MYSQL。可在头文件mysql.h → 263. typedef struct st_mysql {&hellip;} MYSQL;找到其定义。是一个结构体。</p>
+<pre><code>处理错误码的函数：unsigned int mysql_errno(MYSQL *mysql) 
+</code></pre>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;mysql.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">void</span>)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">int</span> i, ret <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, num <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	MYSQL <span style="color:#f92672">*</span>mysql <span style="color:#f92672">=</span> <span style="color:#a6e22e">mysql_init</span>(NULL);
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> (mysql <span style="color:#f92672">==</span> NULL) {
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	ret <span style="color:#f92672">=</span> <span style="color:#a6e22e">mysql_errno</span>(mysql);
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;mysql_init err:%d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, ret);
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> ret;
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;init ok...</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><blockquote>
+<p>编译出错，原因是64位Linux环境下，动态库配置不完整。
+需手动指定编译所用的动态库。根据错误提示分析需要加入如下函数库：</p>
+</blockquote>
+<ol>
+<li>
+<p>__gxx_personality_v0  	  &ndash;&gt; 	-lstdc++		使用g++相关的环境</p>
+</li>
+<li>
+<p>dlclose/dlopen/dlsym		  &ndash;&gt;	-ldl			完成用一个程序加载其他动态库的作用。</p>
+</li>
+<li>
+<p>pthread_*						    &ndash;&gt;  -lpthread		线程库</p>
+</li>
+<li>
+<p><code>my_getsystime'/</code>clock_gettime&rsquo;	&ndash;&gt;  -lrt			librt.so是glibc中对real-time的支持库</p>
+</li>
+</ol>
+<p>使用<code>ldd</code>命令可以查看该可执行文件运行所依赖的库文件。</p>
+<h3 id="makefile-管理">Makefile 管理</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-makefile" data-lang="makefile"><span style="display:flex;"><span>src <span style="color:#f92672">=</span> <span style="color:#66d9ef">$(</span>wildcard *.c<span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>target <span style="color:#f92672">=</span> <span style="color:#66d9ef">$(</span>patsubst %.c, %, <span style="color:#66d9ef">$(</span>src<span style="color:#66d9ef">))</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>inc_path <span style="color:#f92672">=</span> /usr/include/mysql/
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>lib_path <span style="color:#f92672">=</span> /usr/lib64/mysql/
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">all</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">$(</span>target<span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">%</span><span style="color:#f92672">:</span>%.c
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	gcc $&lt; -o $@ -I<span style="color:#66d9ef">$(</span>inc_path<span style="color:#66d9ef">)</span> -L<span style="color:#66d9ef">$(</span>lib_path<span style="color:#66d9ef">)</span> -lmysqlclient -lstdc++ -lpthread -ldl -lrt
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">clean</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	-rm -rf <span style="color:#66d9ef">$(</span>target<span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">.PHONY</span><span style="color:#f92672">:</span> all clean
+</span></span></code></pre></div><p>注意：在测试makefile时，应先使用-n参数，检查无误再执行。</p>
+<h3 id="连接数据库关闭连接">连接数据库关闭连接</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">// 依据proc猜想应该是一个类似于connect的函数，查看API文档发现：mysql_connect();但该函数已经过时，应该使用手册中推荐的mysql_real_connect函数取而代之。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>MYSQL <span style="color:#f92672">*</span><span style="color:#a6e22e">mysql_real_connect</span>(MYSQL <span style="color:#f92672">*</span>mysql, <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>host, 
+</span></span><span style="display:flex;"><span>                          <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>user, <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>passwd, 
+</span></span><span style="display:flex;"><span>                          <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>db, <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> port, 
+</span></span><span style="display:flex;"><span>                          <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>unix_socket, <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span> client_flag
+</span></span><span style="display:flex;"><span>                         );
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 根据手册中的描述，我们可以使用基础的链接方式与MySQL数据库建立连接。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>mysql <span style="color:#f92672">=</span> <span style="color:#a6e22e">mysql_real_connect</span>(mysql, <span style="color:#e6db74">&#34;localhost&#34;</span>, <span style="color:#e6db74">&#34;root&#34;</span>, 
+</span></span><span style="display:flex;"><span>                           <span style="color:#e6db74">&#34;123456&#34;</span>, <span style="color:#e6db74">&#34;mydb61&#34;</span>, <span style="color:#ae81ff">0</span>, NULL, <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>                          );
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//  连接数据库成功。对表中数据进行访问，
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//		访问结束需调用void mysql_close(MYSQL *mysql) 函数关闭连接。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//  	该函数在断开连接的同时，还可以解除分配由mysql指向的连接句柄。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">mysql_close</span>(mysql);
+</span></span></code></pre></div><h3 id="读取数据">读取数据</h3>
+<h4 id="查询表数据">查询表数据</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">// mysql_query函数不单单能完成查询sql的功能，还能完成非select语句在c程序中的执行。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 		是一个十分万能的c程序中执行SQL语句的函数。并且该函数本身直接支持静态SQL。查询以\0结尾的字符串。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 		如果语句中包含二进制数据，则需要调用mysql_real_query来执行查询语句。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 函数原型：int mysql_query(MYSQL *mysql, const char *query);	
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//		成功返回0，失败返回非0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>psql <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;select * from emp&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ret <span style="color:#f92672">=</span> <span style="color:#a6e22e">mysql_query</span>(mysql, psql);
+</span></span></code></pre></div><p>若执行的是<code>UPDATE</code>, <code>DELETE</code>或<code>INSERT</code>语句，则可通过<code>mysql_affected_rows()</code>获知受影响的记录数。</p>
+<p>若执行的是<code>SELECT</code>语句，查询结束后，查询结果被保存在<code>mysql句柄</code>中。需要使用获取结果集的API函数将结果集获取出来。有两种方式可以获取结果集。</p>
+<p>注意: <code>mysql_query</code>执行的SQL语句不应为语句添加终结分号（‘;’）或“\g”。</p>
+<h4 id="获取结果集">获取结果集</h4>
+<p>一种方式是通过<code>mysql_store_result()</code>将整个结果集全部取回来。另一种方式则是调用<code>mysql_use_result()</code>初始化获取操作，但暂时不取回任何记录。视结果集的条目数选择获取结果集的函数。两种方法均通过<code>mysql_fetch_row()</code>来访问每一条记录。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>MYSQL_RES <span style="color:#f92672">*</span><span style="color:#a6e22e">mysql_store_result</span>(MYSQL <span style="color:#f92672">*</span>mysql) <span style="color:#75715e">// 成功返回MYSQL_RES结果集指针，失败返回NULL。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// MYSQL_RES是一个结构体类型，可以从mysql.h头文件中找到该结构体的定义：
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>mysql.h <span style="color:#960050;background-color:#1e0010">→</span> <span style="color:#ae81ff">308.</span> <span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span> st_mysql_res {...} MYSQL_RES;
+</span></span></code></pre></div><p>整体获取的结果集，保存在 <code>MYSQL_RES</code> 结构体指针中，通过检查<code>mysql_store_result()</code>是否返回<code>NULL</code>，可检测函数执行是否成功：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>MYSQL_RES <span style="color:#f92672">*</span>result <span style="color:#f92672">=</span> <span style="color:#a6e22e">mysql_store_result</span>(mysql);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (result <span style="color:#f92672">==</span> NULL) {
+</span></span><span style="display:flex;"><span>    ret <span style="color:#f92672">=</span> <span style="color:#a6e22e">mysql_errno</span>(mysql);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;mysql_store_result error: %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#a6e22e">mysql_error</span>(mysql));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> ret;	
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>该函数调用成功，则SQL查询的结果被保存在result中，但我们不清楚有多少条数据。所以应使用游标的方式将结果集中的数据逐条取出。</p>
+<h4 id="解析结果集">解析结果集</h4>
+<p>通过游标一行一行fetch结果集中的数据。根据游标使用的一般特性，应使用循环结构，到达结尾或者出错，返回NULL。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">// 函数原型：MYSQL_ROW mysql_fetch_row(MYSQL_RES *result) 成功返回下一行的MYSQL_ROW结构。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 		如果没有更多要检索的行或出现了错误，返回NULL。-----MYSQL_ROW定义在118行
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>select <span style="color:#f92672">*</span> from emp  <span style="color:#75715e">// 可以看到emp表一共有8列数据。可以循环将每行上每一列的数据显示到屏幕。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>MYSQL_ROW row <span style="color:#f92672">=</span> NULL;				<span style="color:#75715e">//typedef char **MYSQL_ROW;	
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span> ((row <span style="color:#f92672">=</span> <span style="color:#a6e22e">mysql_fetch_row</span>(result))) {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;%s</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">%s</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">%s</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">%s</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">%s</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">%s</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">%s</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">%s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, row[<span style="color:#ae81ff">0</span>],row[<span style="color:#ae81ff">1</span>],row[<span style="color:#ae81ff">2</span>],row[<span style="color:#ae81ff">3</span>],row[<span style="color:#ae81ff">4</span>],row[<span style="color:#ae81ff">5</span>],row[<span style="color:#ae81ff">6</span>],row[<span style="color:#ae81ff">7</span>]);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>MYSQL_ROW的本质是 typedef char ** MYSQL_ROW; 数据信息存储的形式如下图所示：</p>
+<p><figure 
+	>
+	<a href="https://gitee.com/txt1994/images/raw/master/img/mysql/wps1.jpg" >
+		<img src="https://gitee.com/txt1994/images/raw/master/img/mysql/wps1.jpg"
+			
+			
+			
+			loading="lazy"
+			alt="img">
+	</a>
+	
+	<figcaption>img</figcaption>
+	
+</figure></p>
+<p>从<code>mysql.h</code>头文件可查看MYSQL_ROW定义: 118. typedef char **MYSQL_ROW; /<em>return data as array of string</em>/</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">// 从上图分析MYSQL_ROW为什么被定义为char**类型呢？推测mysq_fetch_row()的函数实现大致思想如下：
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">char</span> <span style="color:#f92672">**</span><span style="color:#a6e22e">mysql_fetch_row</span>(){
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">char</span> <span style="color:#f92672">**</span>tmp <span style="color:#f92672">=</span> (<span style="color:#66d9ef">char</span> <span style="color:#f92672">**</span>) <span style="color:#a6e22e">malloc</span>(<span style="color:#66d9ef">sizeof</span>(<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>) <span style="color:#f92672">*</span> <span style="color:#ae81ff">8</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">8</span>; i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>        tmp[i] <span style="color:#f92672">=</span> (<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>)<span style="color:#a6e22e">malloc</span>(<span style="color:#ae81ff">50</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">strcpy</span>(tmp[<span style="color:#ae81ff">0</span>], <span style="color:#e6db74">&#34;7369&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">strcpy</span>(tmp[<span style="color:#ae81ff">1</span>], <span style="color:#e6db74">&#34;SMITH&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">strcpy</span>(tmp[<span style="color:#ae81ff">2</span>], <span style="color:#e6db74">&#34;CLERK&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    ...
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> tmp;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h4 id="释放结果集">释放结果集</h4>
+<blockquote>
+<p>结果集处理完成，应调用对应的函数释放所占用的内存。</p>
+</blockquote>
+<p><code>void mysql_free_result(MYSQL_RES *result)</code>; 成功释放参数传递的结果集。没有失败情况。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#a6e22e">mysql_free_result</span>(result);
+</span></span></code></pre></div><p>思考：上述实现是直接在MySQL工具中数出列数。找寻能获取列数的API函数、获取表头的API函数。</p>
+<h4 id="获取列数">获取列数</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">// 查看帮助手册可以看到，有两个函数具备获取列数的功能：
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">mysql_field_count</span>(MYSQL <span style="color:#f92672">*</span>mysql) 			<span style="color:#75715e">// 从mysql句柄中获取有多少列。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">mysql_num_fields</span>(MYSQL_RES <span style="color:#f92672">*</span>result) 		<span style="color:#75715e">// 从返回的结果集中获取有多少列。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 选择任意一种方式均可以完成该功能。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> num <span style="color:#f92672">=</span> <span style="color:#a6e22e">mysql_field_count</span>(connect); 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span> (row <span style="color:#f92672">=</span> <span style="color:#a6e22e">mysql_fetch_row</span>(result)) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> num; i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;%s</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">&#34;</span>, row[i]);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//printf(&#34;%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n&#34;, row[0],row[1],row[2],row[3],row[4],row[5],row[6],row[7]);
+</span></span></span></code></pre></div><h4 id="获取表头">获取表头</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">// 获取表头的API函数同样有两个：
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>MYSQL_FIELD <span style="color:#f92672">*</span><span style="color:#a6e22e">mysql_fetch_fields</span>(MYSQL_RES <span style="color:#f92672">*</span>result) 	<span style="color:#75715e">// 全部获取
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>MYSQL_FIELD <span style="color:#f92672">*</span><span style="color:#a6e22e">mysql_fetch_field</span>(MYSQL_RES <span style="color:#f92672">*</span>result) 	<span style="color:#75715e">// 获取单个
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// MYSQL_FIELD也是一个结构体类型，其内部保存了选择列表项的信息，
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 		其中的name成员变量就保存着列名。可从头文件mysql.h中94-116行找到其定义。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>MYSQL_FIELD <span style="color:#f92672">*</span>fields <span style="color:#f92672">=</span> NULL;
+</span></span><span style="display:flex;"><span>fields <span style="color:#f92672">=</span> <span style="color:#a6e22e">mysql_fetch_fields</span>(result);	<span style="color:#75715e">//得到表头的结构体数组
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">for</span> (i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> num; i<span style="color:#f92672">++</span>) {				<span style="color:#75715e">//已通过 mysql_field_count	获取了总列数	
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;%s</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">&#34;</span>, fields[i].name);		<span style="color:#75715e">//每一列的列名保存在name成员中 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span></code></pre></div><h3 id="示例程序">示例程序</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;mysql.h&#34; </span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">void</span>)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> i, ret <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, num <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>psql <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;select * from emp&#34;</span>;			 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    MYSQL_RES <span style="color:#f92672">*</span>result <span style="color:#f92672">=</span> NULL;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    MYSQL_FIELD <span style="color:#f92672">*</span>fields <span style="color:#f92672">=</span> NULL;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    MYSQL_ROW row <span style="color:#f92672">=</span> NULL;						
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    MYSQL <span style="color:#f92672">*</span>mysql <span style="color:#f92672">=</span> <span style="color:#a6e22e">mysql_init</span>(NULL);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (mysql <span style="color:#f92672">==</span> NULL) {
+</span></span><span style="display:flex;"><span>        ret <span style="color:#f92672">=</span> <span style="color:#a6e22e">mysql_errno</span>(mysql);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;mysql_init err:%d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, ret);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> ret;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;init ok...</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    mysql <span style="color:#f92672">=</span> <span style="color:#a6e22e">mysql_real_connect</span>(mysql, <span style="color:#e6db74">&#34;localhost&#34;</span>, <span style="color:#e6db74">&#34;root&#34;</span>, <span style="color:#e6db74">&#34;123456&#34;</span>, <span style="color:#e6db74">&#34;mydb61&#34;</span>, <span style="color:#ae81ff">0</span>, NULL, <span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (mysql <span style="color:#f92672">==</span> NULL) {
+</span></span><span style="display:flex;"><span>        ret <span style="color:#f92672">=</span> <span style="color:#a6e22e">mysql_errno</span>(mysql);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;mysql_init err:%d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, ret);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> ret;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;connect ok...</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    ret <span style="color:#f92672">=</span> <span style="color:#a6e22e">mysql_query</span>(mysql, psql);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (ret <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;mysql_query error: %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#a6e22e">mysql_error</span>(mysql));
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> ret;	
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    num <span style="color:#f92672">=</span> <span style="color:#a6e22e">mysql_field_count</span>(mysql);
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    result <span style="color:#f92672">=</span> <span style="color:#a6e22e">mysql_store_result</span>(mysql);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (result <span style="color:#f92672">==</span> NULL) {
+</span></span><span style="display:flex;"><span>        ret <span style="color:#f92672">=</span> <span style="color:#a6e22e">mysql_errno</span>(mysql);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;mysql_store_result error: %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#a6e22e">mysql_error</span>(mysql));
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> ret;	
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    fields <span style="color:#f92672">=</span> <span style="color:#a6e22e">mysql_fetch_fields</span>(result);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> num; i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;%10s</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">&#34;</span>, fields[i].name);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> ((row <span style="color:#f92672">=</span> <span style="color:#a6e22e">mysql_fetch_row</span>(result))) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> num; i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;%10s</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">&#34;</span>, row[i]);	
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">mysql_free_result</span>(result);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">mysql_close</span>(mysql);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;	
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="mysql-tools实现">MySQL tools实现</h2>
+<p>依托我们所学习的MySQL基础类API函数，可以编写程序实现简单的<code>sqlplus/mysql</code> 工具的功能。</p>
+<h3 id="思路分析">思路分析</h3>
+<p>\1. 仿照mysql工具，应在连接数据库成功之后，在一个while循环中不断的接受用户输入的SQL语句。定义char sqlbuf[1024] 存储用户输入的SQL语句。初始化该buf，并提示用户输入SQL语句。使用gets函数在循环中动态接收用户输入。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">while</span> (<span style="color:#ae81ff">1</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">memset</span>(sqlbuf, <span style="color:#ae81ff">0</span>, <span style="color:#66d9ef">sizeof</span>(sqlbuf));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">YourSQL&gt; &#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">fgets</span>(sqlbuf, <span style="color:#66d9ef">sizeof</span>(sqlbuf), stdin);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ol start="2">
+<li>
+<p>在mysql_query(connect, sqlbuf)之前，如果用户输入了“exit”那么程序直接结束。</p>
+</li>
+<li>
+<p>在执行完 mysql_query(connect, sqlbuf)之后，应该判别用户输入的是否为select语句。如不是select语句不需要查询结果集、处理结果集等繁复操作。</p>
+</li>
+<li>
+<p>如用户输入的是有结果集的SQL语句，将获取列数、获取结果集、获取表头、解析结果集、释放结果集等相关代码一起并入<code>if (strncmp(sqlbuf, &quot;select&quot;, 6))</code>中。</p>
+</li>
+</ol>
+<blockquote>
+<p>测试注意：执行SQL语句时不要在结尾加“;”</p>
+</blockquote>
+<h3 id="程序实现">程序实现</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdlib.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;string.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;mysql.h&#34; </span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">void</span>)
+</span></span><span style="display:flex;"><span>{ 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> i, ret <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, num <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//char *psql = &#34;select * from emp&#34;;			 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">char</span> sqlbuf[<span style="color:#ae81ff">1024</span>]; 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    MYSQL <span style="color:#f92672">*</span>mysql <span style="color:#f92672">=</span> <span style="color:#a6e22e">mysql_init</span>(NULL);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (mysql <span style="color:#f92672">==</span> NULL) {
+</span></span><span style="display:flex;"><span>        ret <span style="color:#f92672">=</span> <span style="color:#a6e22e">mysql_errno</span>(mysql);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;mysql_init err:%d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, ret);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> ret;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;init ok...</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>); 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    mysql <span style="color:#f92672">=</span> <span style="color:#a6e22e">mysql_real_connect</span>(mysql, <span style="color:#e6db74">&#34;localhost&#34;</span>, <span style="color:#e6db74">&#34;root&#34;</span>, <span style="color:#e6db74">&#34;123456&#34;</span>, <span style="color:#e6db74">&#34;mydb61&#34;</span>, <span style="color:#ae81ff">0</span>, NULL, <span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (mysql <span style="color:#f92672">==</span> NULL) {
+</span></span><span style="display:flex;"><span>        ret <span style="color:#f92672">=</span> <span style="color:#a6e22e">mysql_errno</span>(mysql);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;mysql_init err:%d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, ret);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> ret;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;connect ok...</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    ret <span style="color:#f92672">=</span> <span style="color:#a6e22e">mysql_query</span>(mysql, <span style="color:#e6db74">&#34;set names utf8&#34;</span>); 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (ret <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;mysql_query error: %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#a6e22e">mysql_error</span>(mysql));
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> ret;	
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> (<span style="color:#ae81ff">1</span>) {		
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">memset</span>(sqlbuf, <span style="color:#ae81ff">0</span>, <span style="color:#66d9ef">sizeof</span>(sqlbuf));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;YourSQL&gt; &#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">fgets</span>(sqlbuf, <span style="color:#66d9ef">sizeof</span>(sqlbuf), stdin);	
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">strncmp</span>(sqlbuf, <span style="color:#e6db74">&#34;exit&#34;</span>, <span style="color:#ae81ff">4</span>) <span style="color:#f92672">||</span> <span style="color:#a6e22e">strncmp</span>(sqlbuf, <span style="color:#e6db74">&#34;quit&#34;</span>, <span style="color:#ae81ff">4</span>) ) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        ret <span style="color:#f92672">=</span> <span style="color:#a6e22e">mysql_query</span>(mysql, sqlbuf);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (ret <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;mysql_query error: %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#a6e22e">mysql_error</span>(mysql));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> ret;	
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">strncmp</span>(sqlbuf, <span style="color:#e6db74">&#34;select&#34;</span>, <span style="color:#ae81ff">6</span>) <span style="color:#f92672">||</span> <span style="color:#a6e22e">strncmp</span>(sqlbuf, <span style="color:#e6db74">&#34;SELECT&#34;</span>, <span style="color:#ae81ff">6</span>)) {
+</span></span><span style="display:flex;"><span>            num <span style="color:#f92672">=</span> <span style="color:#a6e22e">mysql_field_count</span>(mysql);	
+</span></span><span style="display:flex;"><span>            MYSQL_RES <span style="color:#f92672">*</span>result <span style="color:#f92672">=</span> NULL;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            result <span style="color:#f92672">=</span> <span style="color:#a6e22e">mysql_store_result</span>(mysql);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (result <span style="color:#f92672">==</span> NULL) {
+</span></span><span style="display:flex;"><span>                ret <span style="color:#f92672">=</span> <span style="color:#a6e22e">mysql_errno</span>(mysql);
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;mysql_store_result error: %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#a6e22e">mysql_error</span>(mysql));
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> ret;	
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">//打印表头 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            MYSQL_FIELD <span style="color:#f92672">*</span>fields <span style="color:#f92672">=</span> NULL;
+</span></span><span style="display:flex;"><span>            fields <span style="color:#f92672">=</span> <span style="color:#a6e22e">mysql_fetch_fields</span>(result);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> (i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> num; i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;%10s</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">&#34;</span>, fields[i].name);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);	
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">//解析结果集
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>            MYSQL_ROW row <span style="color:#f92672">=</span> NULL;		<span style="color:#75715e">//typedef char **MYSQL_ROW;	
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#66d9ef">while</span> ((row <span style="color:#f92672">=</span> <span style="color:#a6e22e">mysql_fetch_row</span>(result))) {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">for</span> (i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> num; i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>                    <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;%10s</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">&#34;</span>, row[i]);	
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>            }			
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">mysql_free_result</span>(result);			
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">--- not select sql---</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;affected: %ld</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, (<span style="color:#66d9ef">long</span>)<span style="color:#a6e22e">mysql_affected_rows</span>(mysql));
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">mysql_close</span>(mysql);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;	
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="中文问题">中文问题：</h3>
+<p>修改<code>mysql_real_connect()</code>参数，连接到表中有中文数据的数据库，如mydb2，执行程序，测试显示中文出现乱码。我们可以使用<code>mysql_query</code>函数来解决该问题。</p>
+<p>在 while (1) 之前使用 <code>ret = mysql_query(mysql, &quot;set names utf8&quot;)</code>; 来设置查询属性(也可以加到while中)。表示在查询的时候使用utf8的形式进行查询。</p>
+<p>或者<code>mysql_set_character_set(mysql, &quot;utf8&quot;)</code>;</p>
+<p>获取当前使用的字符集:  <code>const char *mysql_character_set_name(MYSQL *mysql)</code></p>
+<h2 id="预处理类api函数">预处理类API函数：</h2>
+<p>该类函数解决问题：处理带有占位符的SQL语句。<code>insert into table111(col1, col2, col3) values(?, ?, ?)</code>;</p>
+<p>这种SQL语句由两部分组成，一部分是SQL语句体模型部分，另一部分是？所匹配的值。</p>
+<p>性能、调优是数据库编程永恒不变的主题！如果能把SQL语句框架预先处理好，当真正要执行SQL语句时只需要发送对应的参数到对应的SQL框架中，就能提高客户端访问服务器的速度，且数据量小，可以减少网络通信量，提高数据传输效率高。</p>
+<p>元数据（Metadata）：又称中介数据、中继数据，为描述数据的数据，主要是描述数据属性的信息，用来支持如指示存储位置、历史数据、资源查找、文件记录等功能。</p>
+<p>根据API提供的案例学习该部分内容。主要有 4 个函数：</p>
+<p><code>mysql_stmt_init()</code>				初始化预处理环境句柄。	返回一个结构体指针 MYSQL_STMT *stmt</p>
+<p><code>mysql_stmt_prepare()</code>			向上面句柄中添加SQL语句，带有 (?,?,?) 占位符</p>
+<p><code>mysql_stmt_param_count()</code> 	求绑定变量的个数(辅助函数)， 有多少个&rsquo;?&lsquo;就返回多少</p>
+<p><code>mysql_stmt_bind_param()</code>		将?对应的实参，设置到预处理环境句柄中</p>
+<p><code>mysql_stmt_execute()</code>			执行预处理的SQL语句</p>
+<p><figure 
+	>
+	<a href="https://gitee.com/txt1994/images/raw/master/img/mysql/wps2.jpg" >
+		<img src="https://gitee.com/txt1994/images/raw/master/img/mysql/wps2.jpg"
+			
+			
+			
+			loading="lazy"
+			alt="img">
+	</a>
+	
+	<figcaption>img</figcaption>
+	
+</figure></p>
+<blockquote>
+<p>在不熟悉这套API函数的情况下，如何能快速的找到一个完整的案例，使用这套函数呢？分析：在以上4个过程中，哪个最重要呢？找到它，去查看API文档！发现有对应的demo程序。将该demo导入到我们的程序中，运行，观察它的作用。</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdlib.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;string.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;mysql.h&#34; </span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#define STRING_SIZE 50 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define DROP_SAMPLE_TABLE &#34;DROP TABLE IF EXISTS test_table&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define CREATE_SAMPLE_TABLE &#34;CREATE TABLE test_table(col1 INT,\
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">                         col2 VARCHAR(40),\
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">                         col3 SMALLINT,\
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">                         col4 TIMESTAMP)&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define INSERT_SAMPLE &#34;INSERT INTO test_table(col1,col2,col3) VALUES(?,?,?)&#34; 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">void</span>)
+</span></span><span style="display:flex;"><span>{ 
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">int</span> ret <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	MYSQL <span style="color:#f92672">*</span>mysql <span style="color:#f92672">=</span> <span style="color:#a6e22e">mysql_init</span>(NULL);
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> (mysql <span style="color:#f92672">==</span> NULL) {
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">//unsigned int mysql_errno(MYSQL *mysql) 	
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		ret <span style="color:#f92672">=</span> <span style="color:#a6e22e">mysql_errno</span>(mysql);
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;mysql_init err:%d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, ret);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> ret;
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;init ok...</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>); 
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	mysql <span style="color:#f92672">=</span> <span style="color:#a6e22e">mysql_real_connect</span>(mysql, <span style="color:#e6db74">&#34;localhost&#34;</span>, <span style="color:#e6db74">&#34;root&#34;</span>, <span style="color:#e6db74">&#34;123456&#34;</span>, <span style="color:#e6db74">&#34;mydb61&#34;</span>, <span style="color:#ae81ff">0</span>, NULL, <span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> (mysql <span style="color:#f92672">==</span> NULL) {
+</span></span><span style="display:flex;"><span>		ret <span style="color:#f92672">=</span> <span style="color:#a6e22e">mysql_errno</span>(mysql);
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;mysql_init err:%d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, ret);
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> ret;
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;connect ok...</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">////////////////////////以下为demo源码//////////////////////////////// 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	MYSQL_STMT   <span style="color:#f92672">*</span>stmt;
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	MYSQL_BIND   bind[<span style="color:#ae81ff">3</span>];
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	my_ulonglong  affected_rows;
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">int</span>      param_count;
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">short</span>     small_data;
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">int</span>      int_data;
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">char</span>      str_data[STRING_SIZE];
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span> str_length;
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	my_bool    is_null; 
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">mysql_query</span>(mysql, DROP_SAMPLE_TABLE))
+</span></span><span style="display:flex;"><span>	{
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">fprintf</span>(stderr, <span style="color:#e6db74">&#34; DROP TABLE failed</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">fprintf</span>(stderr, <span style="color:#e6db74">&#34; %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#a6e22e">mysql_error</span>(mysql));
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">exit</span>(<span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>	} 
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">mysql_query</span>(mysql, CREATE_SAMPLE_TABLE))
+</span></span><span style="display:flex;"><span>	{
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">fprintf</span>(stderr, <span style="color:#e6db74">&#34; CREATE TABLE failed</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">fprintf</span>(stderr, <span style="color:#e6db74">&#34; %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#a6e22e">mysql_error</span>(mysql));
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">exit</span>(<span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">/* Prepare an INSERT query with 3 parameters */</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">/* (the TIMESTAMP column is not named; the server */</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">/*  sets it to the current date and time) */</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	stmt <span style="color:#f92672">=</span> <span style="color:#a6e22e">mysql_stmt_init</span>(mysql);
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>stmt)
+</span></span><span style="display:flex;"><span>	{
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">fprintf</span>(stderr, <span style="color:#e6db74">&#34; mysql_stmt_init(), out of memory</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">exit</span>(<span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">mysql_stmt_prepare</span>(stmt, INSERT_SAMPLE, <span style="color:#a6e22e">strlen</span>(INSERT_SAMPLE)))
+</span></span><span style="display:flex;"><span>	{
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">fprintf</span>(stderr, <span style="color:#e6db74">&#34; mysql_stmt_prepare(), INSERT failed</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">fprintf</span>(stderr, <span style="color:#e6db74">&#34; %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#a6e22e">mysql_stmt_error</span>(stmt));
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">exit</span>(<span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fprintf</span>(stdout, <span style="color:#e6db74">&#34; prepare, INSERT successful</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>); 
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">/* Get the parameter count from the statement */</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	param_count<span style="color:#f92672">=</span> <span style="color:#a6e22e">mysql_stmt_param_count</span>(stmt);
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fprintf</span>(stdout, <span style="color:#e6db74">&#34; total parameters in INSERT: %d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, param_count);
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> (param_count <span style="color:#f92672">!=</span> <span style="color:#ae81ff">3</span>) <span style="color:#75715e">/* validate parameter count */</span>
+</span></span><span style="display:flex;"><span>	{
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">fprintf</span>(stderr, <span style="color:#e6db74">&#34; invalid parameter count returned by MySQL</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">exit</span>(<span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/* Bind the data for all 3 parameters */</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">memset</span>(bind, <span style="color:#ae81ff">0</span>, <span style="color:#66d9ef">sizeof</span>(bind));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">/* INTEGER PARAM */</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">/* This is a number type, so there is no need to specify buffer_length */</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	bind[<span style="color:#ae81ff">0</span>].buffer_type <span style="color:#f92672">=</span> MYSQL_TYPE_LONG;
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	bind[<span style="color:#ae81ff">0</span>].buffer <span style="color:#f92672">=</span> (<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>)<span style="color:#f92672">&amp;</span>int_data;
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	bind[<span style="color:#ae81ff">0</span>].is_null <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	bind[<span style="color:#ae81ff">0</span>].length <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">/* STRING PARAM */</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	bind[<span style="color:#ae81ff">1</span>].buffer_type <span style="color:#f92672">=</span> MYSQL_TYPE_STRING;
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	bind[<span style="color:#ae81ff">1</span>].buffer <span style="color:#f92672">=</span> (<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>)str_data;
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	bind[<span style="color:#ae81ff">1</span>].buffer_length <span style="color:#f92672">=</span> STRING_SIZE;
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	bind[<span style="color:#ae81ff">1</span>].is_null <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	bind[<span style="color:#ae81ff">1</span>].length <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>str_length;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">/* SMALLINT PARAM */</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	bind[<span style="color:#ae81ff">2</span>].buffer_type <span style="color:#f92672">=</span> MYSQL_TYPE_SHORT;
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	bind[<span style="color:#ae81ff">2</span>].buffer <span style="color:#f92672">=</span> (<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>)<span style="color:#f92672">&amp;</span>small_data;
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	bind[<span style="color:#ae81ff">2</span>].is_null <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>is_null;
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	bind[<span style="color:#ae81ff">2</span>].length <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">/* Bind the buffers */</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">mysql_stmt_bind_param</span>(stmt, bind))
+</span></span><span style="display:flex;"><span>	{
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">fprintf</span>(stderr, <span style="color:#e6db74">&#34; mysql_stmt_bind_param() failed</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">fprintf</span>(stderr, <span style="color:#e6db74">&#34; %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#a6e22e">mysql_stmt_error</span>(stmt));
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">exit</span>(<span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>	}	
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">/* Specify the data values for the first row */</span>
+</span></span><span style="display:flex;"><span>	int_data<span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>;       <span style="color:#75715e">/* integer */</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">strncpy</span>(str_data, <span style="color:#e6db74">&#34;MySQL&#34;</span>, STRING_SIZE); <span style="color:#75715e">/* string  */</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	str_length<span style="color:#f92672">=</span> <span style="color:#a6e22e">strlen</span>(str_data);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">/* INSERT SMALLINT data as NULL */</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	is_null<span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">/* Execute the INSERT statement - 1*/</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">mysql_stmt_execute</span>(stmt))
+</span></span><span style="display:flex;"><span>	{
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">fprintf</span>(stderr, <span style="color:#e6db74">&#34; mysql_stmt_execute(), 1 failed</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">fprintf</span>(stderr, <span style="color:#e6db74">&#34; %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#a6e22e">mysql_stmt_error</span>(stmt));
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">exit</span>(<span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">/* Get the total number of affected rows */</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	affected_rows<span style="color:#f92672">=</span> <span style="color:#a6e22e">mysql_stmt_affected_rows</span>(stmt);
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fprintf</span>(stdout, <span style="color:#e6db74">&#34; total affected rows(insert 1): %lu</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>,
+</span></span><span style="display:flex;"><span>	      (<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span>) affected_rows);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> (affected_rows <span style="color:#f92672">!=</span> <span style="color:#ae81ff">1</span>) <span style="color:#75715e">/* validate affected rows */</span>
+</span></span><span style="display:flex;"><span>	{
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">fprintf</span>(stderr, <span style="color:#e6db74">&#34; invalid affected rows by MySQL</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">exit</span>(<span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">/* Specify data values for second row, then re-execute the statement */</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	int_data<span style="color:#f92672">=</span> <span style="color:#ae81ff">1000</span>;
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">strncpy</span>(str_data, <span style="color:#e6db74">&#34;The most popular Open Source database&#34;</span>, STRING_SIZE);
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	str_length<span style="color:#f92672">=</span> <span style="color:#a6e22e">strlen</span>(str_data);
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	small_data<span style="color:#f92672">=</span> <span style="color:#ae81ff">1000</span>;     <span style="color:#75715e">/* smallint */</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	is_null<span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;        <span style="color:#75715e">/* reset */</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">/* Execute the INSERT statement - 2*/</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">mysql_stmt_execute</span>(stmt))
+</span></span><span style="display:flex;"><span>	{
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">fprintf</span>(stderr, <span style="color:#e6db74">&#34; mysql_stmt_execute, 2 failed</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">fprintf</span>(stderr, <span style="color:#e6db74">&#34; %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#a6e22e">mysql_stmt_error</span>(stmt));	
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">exit</span>(<span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">/* Get the total rows affected */</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	affected_rows<span style="color:#f92672">=</span> <span style="color:#a6e22e">mysql_stmt_affected_rows</span>(stmt);
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fprintf</span>(stdout, <span style="color:#e6db74">&#34; total affected rows(insert 2): %lu</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>,
+</span></span><span style="display:flex;"><span>	      (<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span>) affected_rows);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (affected_rows <span style="color:#f92672">!=</span> <span style="color:#ae81ff">1</span>) <span style="color:#75715e">/* validate affected rows */</span>
+</span></span><span style="display:flex;"><span>	{
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">fprintf</span>(stderr, <span style="color:#e6db74">&#34; invalid affected rows by MySQL</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">exit</span>(<span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">/* Close the statement */</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">mysql_stmt_close</span>(stmt))
+</span></span><span style="display:flex;"><span>	{
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">fprintf</span>(stderr, <span style="color:#e6db74">&#34; failed while closing the statement</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">fprintf</span>(stderr, <span style="color:#e6db74">&#34; %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#a6e22e">mysql_stmt_error</span>(stmt));
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">exit</span>(<span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">mysql_close</span>(mysql);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;hello mysql...</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;	
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>注意：bind &ndash;&gt; mysql.h下 MYSQL_BIND结构体  bind[3]; 是一个结构体数组。有3个‘?’占位符，所以用三个结构体(数组)来对应保存信息。0-&gt;第一列；1-&gt;第二列；2-&gt;第三列。</p>
+<p><code>mysql.h</code>中查找 <code>MYSQL_BIND</code> 结构体原型。对比：<code>select * from teat_table</code>;  和 <code>desc test_table</code>; 的查询结果。</p>
+<p>帮助理解bind的小程序框架：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span> xxx{
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>p1;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>p2;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>p3;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>} MYSQL_BIND;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">saveXXXInfo</span>(MYSQL_BIND <span style="color:#f92672">*</span>bind, <span style="color:#66d9ef">int</span> num)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    insert into test_table <span style="color:#a6e22e">valudes</span>(bind[<span style="color:#ae81ff">0</span>].p2, bind[<span style="color:#ae81ff">1</span>].p3, bind[<span style="color:#ae81ff">2</span>].p1);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">void</span>)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    MYSQL_BIND bind[<span style="color:#ae81ff">3</span>];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    bind[<span style="color:#ae81ff">0</span>].p1 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;类型1&#34;</span>;		<span style="color:#75715e">//第一列
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>    bind[<span style="color:#ae81ff">0</span>].p2 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;10&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    bind[<span style="color:#ae81ff">0</span>].p3 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;其他数据&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    bind[<span style="color:#ae81ff">1</span>].p1 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;类型&#34;</span>;		<span style="color:#75715e">//第二列
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>    bind[<span style="color:#ae81ff">1</span>].p2 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;数据&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    bind[<span style="color:#ae81ff">1</span>].p3 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;描述&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    bind[<span style="color:#ae81ff">2</span>].p1 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;p1p1p1&#34;</span>;		<span style="color:#75715e">//第三列   
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//第四列是时间戳，不需要用户使用?来指定，直接使用了系统时间。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>    bind[<span style="color:#ae81ff">2</span>].p2 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;数据&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    bind[<span style="color:#ae81ff">2</span>].p3 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;其他限定条件&#34;</span>;		
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">saveXXXInfo</span>(bind, <span style="color:#ae81ff">3</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="日期时间类api函数">日期时间类API函数</h2>
+<p>练习：熟悉上述预处理类工作模式，模拟精简一个将时间插入数据库的程序。将时间存入数据库有两种方式：</p>
+<ol>
+<li>
+<p>使用SQL语句方式</p>
+</li>
+<li>
+<p>预处理环境句柄变量方式存入</p>
+</li>
+</ol>
+<p>提示：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>MYSQL_TIME  ts;		<span style="color:#75715e">// 浏览头文件 mysql_time.h 熟悉MYSQL_TIME结构体。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>MYSQL_BIND  bind[<span style="color:#ae81ff">3</span>];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>MYSQL_STMT  <span style="color:#f92672">*</span>stmt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 可直接使用SQL语句提前创建表test_table2，也可以使用mysql_query函数来创建。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>create table <span style="color:#a6e22e">test_table2</span> (date_field date, time_field time, timestamp_field timestamp);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">char</span> query[<span style="color:#ae81ff">1024</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;INSERT INTO test_table2(date_field, time_field, timestamp_field) VALUES(?,?,?)&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>stmt <span style="color:#f92672">=</span> <span style="color:#a6e22e">mysql_stmt_init</span>(mysql);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// MYSQL_TIME 是一个结构体，使用typedef定义。位于mysql_time.h文件中。		
+</span></span></span></code></pre></div><p>API参考：refman-5.6-en.a4.pdf手册25.2.10. 日期和时间值的C API处理</p>
+<h2 id="多查询执行的c-api函数">多查询执行的C API函数</h2>
+<p>一次性执行多条SQL语句，包括select、drop、update、create等。
+如：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#a6e22e">mysql_query</span>(mysql,<span style="color:#e6db74">&#34;DROP TABLE IF EXISTS test_table;\
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"></span>
+</span></span><span style="display:flex;"><span>	CREATE TABLE <span style="color:#a6e22e">test_table</span>(id INT);\
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	INSERT INTO test_table <span style="color:#a6e22e">VALUES</span>(<span style="color:#ae81ff">10</span>);\
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	UPDATE test_table SET id<span style="color:#f92672">=</span><span style="color:#ae81ff">20</span> WHERE id<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span>;\
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	SELECT <span style="color:#f92672">*</span> FROM test_table;\
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	DROP TABLE test_table<span style="color:#e6db74">&#34;);</span>
+</span></span></code></pre></div><pre><code>文档：25.2.9. 多查询执行的C API处理。中文文档只有demo框架。查阅对应英文文档refman-5.6-en.a4.pdf。关键字Multiple 23.8.17
+
+注意：打桩函数——函数接口
+
+if (mysql_real_connect (mysql, host_name, user_name, password,
+
+db_name, port_num, socket_name, CLIENT_MULTI_STATEMENTS) == NULL)
+
+CLIENT_MULTI_STATEMENTS：客户端通知Server，将要发送多个SQL语句。
+
+mysql_field_count(mysql)：影响的行数。 如：
+
+当select * from dept;	执行结束，提示：“5 rows in set”		表示影响了4行。
+
+当Create一张表，	执行结束，提示：“Query OK, 0 rows affected (0.01 sec)”
+
+当delete一行，		执行结束，提示：“Query OK, 1 row affected (0.00 sec)”
+
+mysql_field_count函数调用后会将影响的行数保存到句柄 mysql 中。
+</code></pre>
+<p>下方是帮助文档中demo程序，它将帮助我们分析与之前掌握的API函数间的区别与联系：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdlib.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;string.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;mysql.h&#34; </span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">process_result_set</span>(MYSQL <span style="color:#f92672">*</span>mysql, MYSQL_RES <span style="color:#f92672">*</span>result)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">int</span> i, num;
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	num <span style="color:#f92672">=</span> <span style="color:#a6e22e">mysql_field_count</span>(mysql);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	MYSQL_FIELD <span style="color:#f92672">*</span>fields <span style="color:#f92672">=</span> NULL;
+</span></span><span style="display:flex;"><span>	fields <span style="color:#f92672">=</span> <span style="color:#a6e22e">mysql_fetch_fields</span>(result);
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> (i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> num; i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;%10s</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">&#34;</span>, fields[i].name);
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	MYSQL_ROW row <span style="color:#f92672">=</span> NULL;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">while</span> ((row <span style="color:#f92672">=</span> <span style="color:#a6e22e">mysql_fetch_row</span>(result))) {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">for</span> (i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> num; i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;%10s</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">&#34;</span>, row[i]);	
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">void</span>)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">int</span> ret <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, status <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	MYSQL_RES <span style="color:#f92672">*</span>result <span style="color:#f92672">=</span> NULL;
+</span></span><span style="display:flex;"><span>	MYSQL <span style="color:#f92672">*</span>mysql <span style="color:#f92672">=</span> <span style="color:#a6e22e">mysql_init</span>(NULL);
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> (mysql <span style="color:#f92672">==</span> NULL) {
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">//unsigned int mysql_errno(MYSQL *mysql) 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		ret <span style="color:#f92672">=</span> <span style="color:#a6e22e">mysql_errno</span>(mysql);
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;mysql_init err:%d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, ret);
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> ret;
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	mysql <span style="color:#f92672">=</span> <span style="color:#a6e22e">mysql_real_connect</span>(mysql, <span style="color:#e6db74">&#34;localhost&#34;</span>, <span style="color:#e6db74">&#34;root&#34;</span>, <span style="color:#e6db74">&#34;123456&#34;</span>, <span style="color:#e6db74">&#34;mydb61&#34;</span>, <span style="color:#ae81ff">0</span>, NULL, CLIENT_MULTI_STATEMENTS);
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> (mysql <span style="color:#f92672">==</span> NULL) {
+</span></span><span style="display:flex;"><span>		ret <span style="color:#f92672">=</span> <span style="color:#a6e22e">mysql_errno</span>(mysql);
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;mysql_init err:%d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, ret);
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> ret;
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">/////////////////////////////以下为demo源码//////////////////////////////
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">/* execute multiple statements */</span>
+</span></span><span style="display:flex;"><span>	status <span style="color:#f92672">=</span> <span style="color:#a6e22e">mysql_query</span>(mysql,<span style="color:#e6db74">&#34;DROP TABLE IF EXISTS test_table;\
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">	</span>
+</span></span><span style="display:flex;"><span>			CREATE TABLE <span style="color:#a6e22e">test_table</span>(id INT);\
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>			INSERT INTO test_table <span style="color:#a6e22e">VALUES</span>(<span style="color:#ae81ff">10</span>);\
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>			UPDATE test_table SET id<span style="color:#f92672">=</span><span style="color:#ae81ff">20</span> WHERE id<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span>;\
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>			SELECT <span style="color:#f92672">*</span> FROM test_table;<span style="color:#e6db74">&#34;);</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>			DROP TABLE test_table
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">if</span> (status)
+</span></span><span style="display:flex;"><span>	{
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;Could not execute statement(s)&#34;</span>);
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">mysql_close</span>(mysql);
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">exit</span>(<span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">/* process each statement result */</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">do</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">/* did current statement return data? */</span>
+</span></span><span style="display:flex;"><span>		result <span style="color:#f92672">=</span> <span style="color:#a6e22e">mysql_store_result</span>(mysql);
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> (result)
+</span></span><span style="display:flex;"><span>		{
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">/* yes; process rows and free the result set */</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">process_result_set</span>(mysql, result);
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">mysql_free_result</span>(result);
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">else</span> <span style="color:#75715e">/* no result set or error */</span>
+</span></span><span style="display:flex;"><span>		{
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">mysql_field_count</span>(mysql) <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>			{
+</span></span><span style="display:flex;"><span>				<span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;%lld rows affected</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>,
+</span></span><span style="display:flex;"><span>				<span style="color:#a6e22e">mysql_affected_rows</span>(mysql));
+</span></span><span style="display:flex;"><span>			}
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">else</span> <span style="color:#75715e">/* some error occurred */</span>
+</span></span><span style="display:flex;"><span>			{
+</span></span><span style="display:flex;"><span>				<span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;Could not retrieve result set</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>				<span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>			}		
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">/* more results? -1 = no, &gt;0 = error, 0 = yes (keep looping) */</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> ((status <span style="color:#f92672">=</span> <span style="color:#a6e22e">mysql_next_result</span>(mysql)) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;Could not execute statement</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;------------status: %d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, status);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	} <span style="color:#66d9ef">while</span> (status <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">mysql_close</span>(mysql);	
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><code>process_result_set</code>函数是文档中给我们预留的打桩函数，需要我们在使用的过程中，自己实现它。</p>
+<p>函数实现就是借助mysql和result两个参数打印一条sql语句查询到的结果集到屏幕。</p>
+<p>可以直接使用<code>mysq_tool.c</code>中<code>if (strncmp(sqlbuf, &quot;select&quot;, 6) == 0 || strncmp(sqlbuf, &quot;SELECT&quot;, 6) == 0)</code>内的代码。“获取结果集”片段可以删除。“释放结果集”片段可以删除。API示例中含有该部分内容。</p>
+<p>常见错误：在<code>process_result_set</code>函数实现中，不要使用<code>mysql_store_result(mysql)</code>再次获取结果集， 该result已经在API函数接口传入，直接使用参数result即可。否则会出现【段错误】。</p>
+<h2 id="mysql中的事务">MySQL中的事务</h2>
+<p>测试MySQL中事务的特性。</p>
+<pre><code>MySQL的事务的默认自动提交的，每执行一个sql语句都自动commit
+
+Oracle的事务是自动打开的(以你执行的一条DML语句为标志)，但每次执行需要手动commit
+</code></pre>
+<p>在程序中设置autocommit修改MySQL事务的属性。</p>
+<pre><code>set autocommit = 0 禁止自动提交
+
+set autocommit = 1 开启自动提交MySQL中InnoDB引擎才支持事务默认自动提交机制。MYISAM引擎不支持。
+</code></pre>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdlib.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;string.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;mysql.h&#34; </span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define SET_TRAN	&#34;SET AUTOCOMMIT=0&#34;  	</span><span style="color:#75715e">//手动commit	
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">#define UNSET_TRAN	&#34;SET AUTOCOMMIT=1&#34;		</span><span style="color:#75715e">//自动commit 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//设置事务为手动提交
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">mysql_OperationTran</span>(MYSQL <span style="color:#f92672">*</span>mysql)  		
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//--开启事务
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> ret <span style="color:#f92672">=</span> <span style="color:#a6e22e">mysql_query</span>(mysql, <span style="color:#e6db74">&#34;start transaction&#34;</span>);  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (ret <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;mysql_OperationTran query start err: %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#a6e22e">mysql_error</span>(mysql));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> ret;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//--设置事务为手动提交
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    ret <span style="color:#f92672">=</span> <span style="color:#a6e22e">mysql_query</span>(mysql, SET_TRAN);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (ret <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;mysql_OperationTran query set err: %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#a6e22e">mysql_error</span>(mysql));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> ret;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> ret;
+</span></span><span style="display:flex;"><span>}	
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//设置事务为自动提交
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">mysql_AutoTran</span>(MYSQL <span style="color:#f92672">*</span>mysql)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//--开启事务
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">int</span> ret <span style="color:#f92672">=</span> <span style="color:#a6e22e">mysql_query</span>(mysql, <span style="color:#e6db74">&#34;start transaction&#34;</span>);  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (ret <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;mysql_AutoTran query start err: %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#a6e22e">mysql_error</span>(mysql));
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> ret;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//--设置事务为自动提交
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    ret <span style="color:#f92672">=</span> <span style="color:#a6e22e">mysql_query</span>(mysql, UNSET_TRAN);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (ret <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;mysql_AutoTran query set err: %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#a6e22e">mysql_error</span>(mysql));
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> ret;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> ret;		
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//执行commit，手动提交事务
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">mysql_Commit</span>(MYSQL <span style="color:#f92672">*</span>mysql)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> ret <span style="color:#f92672">=</span> <span style="color:#a6e22e">mysql_query</span>(mysql, <span style="color:#e6db74">&#34;COMMIT&#34;</span>); 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (ret <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;commit err: %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#a6e22e">mysql_error</span>(mysql));  
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> ret;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> ret;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//执行rollback，回滚事务		
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">mysql_Rollback</span>(MYSQL <span style="color:#f92672">*</span>mysql)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> ret <span style="color:#f92672">=</span> <span style="color:#a6e22e">mysql_query</span>(mysql, <span style="color:#e6db74">&#34;ROLLBACK&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (ret <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;rollback err: %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#a6e22e">mysql_error</span>(mysql));
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> ret;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> ret;
+</span></span><span style="display:flex;"><span>} 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#define DROP_SAMPLE_TABLE &#34;DROP TABLE IF EXISTS test_table&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define CREATE_SAMPLE_TABLE &#34;CREATE TABLE test_table(col1 INT,\
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">                             col2 VARCHAR(10),\
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">                             col3 VARCHAR(10))&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#define sql01 &#34;INSERT INTO test_table(col1,col2,col3) VALUES(10, &#39;AAA&#39;, &#39;A1&#39;)&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define sql02 &#34;INSERT INTO test_table(col1,col2,col3) VALUES(20, &#39;BBB&#39;, &#39;B2&#39;)&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define sql03 &#34;INSERT INTO test_table(col1,col2,col3) VALUES(30, &#39;CCC&#39;, &#39;C3&#39;)&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define sql04 &#34;INSERT INTO test_table(col1,col2,col3) VALUES(40, &#39;DDD&#39;, &#39;D4&#39;)&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">void</span>)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> ret <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    MYSQL <span style="color:#f92672">*</span>mysql <span style="color:#f92672">=</span> <span style="color:#a6e22e">mysql_init</span>(NULL);
+</span></span><span style="display:flex;"><span>    mysql <span style="color:#f92672">=</span> <span style="color:#a6e22e">mysql_real_connect</span>(mysql, <span style="color:#e6db74">&#34;localhost&#34;</span>, <span style="color:#e6db74">&#34;root&#34;</span>, <span style="color:#e6db74">&#34;123456&#34;</span>, <span style="color:#e6db74">&#34;mydb2&#34;</span>, <span style="color:#ae81ff">0</span>, NULL, <span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (mysql <span style="color:#f92672">==</span> NULL) {
+</span></span><span style="display:flex;"><span>        ret <span style="color:#f92672">=</span> <span style="color:#a6e22e">mysql_errno</span>(mysql);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;func mysql_real_connect() err：%d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, ret);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> ret;
+</span></span><span style="display:flex;"><span>    } 	
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34; --- connect ok......</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);	
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">mysql_query</span>(mysql, DROP_SAMPLE_TABLE)) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">fprintf</span>(stderr, <span style="color:#e6db74">&#34; DROP TABLE failed</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">fprintf</span>(stderr, <span style="color:#e6db74">&#34; %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#a6e22e">mysql_error</span>(mysql));
+</span></span><span style="display:flex;"><span>       
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">exit</span>(<span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">mysql_query</span>(mysql, CREATE_SAMPLE_TABLE)) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">fprintf</span>(stderr, <span style="color:#e6db74">&#34; CREATE TABLE failed</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">fprintf</span>(stderr, <span style="color:#e6db74">&#34; %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#a6e22e">mysql_error</span>(mysql));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">exit</span>(<span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>    }	
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    ret <span style="color:#f92672">=</span> <span style="color:#a6e22e">mysql_OperationTran</span>(mysql); 	<span style="color:#75715e">//开启事务，并修改事务属性为手动commit 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (ret <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;mysql_OperationTran() err:%d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, ret);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> ret;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    ret <span style="color:#f92672">=</span> <span style="color:#a6e22e">mysql_query</span>(mysql, sql01);	<span style="color:#75715e">//向表中插入第一行数据 ‘AAA’
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (ret <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;mysql_query() err:%d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, ret);		
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> ret;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    ret <span style="color:#f92672">=</span> <span style="color:#a6e22e">mysql_query</span>(mysql, sql02);	<span style="color:#75715e">//向表中插入第二行数据 ‘BBB’
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (ret <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;mysql_query() err:%d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, ret);
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> ret;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    ret <span style="color:#f92672">=</span> <span style="color:#a6e22e">mysql_Commit</span>(mysql); 		<span style="color:#75715e">//手动提交事务
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (ret <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;mysql_Commit() err:%d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, ret);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> ret;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    ret <span style="color:#f92672">=</span> <span style="color:#a6e22e">mysql_AutoTran</span>(mysql); 		<span style="color:#75715e">// =再次= 修改事务属性为【自动】commit
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (ret <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;mysql_OperationTran() err:%d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, ret);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> ret;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    ret <span style="color:#f92672">=</span> <span style="color:#a6e22e">mysql_OperationTran</span>(mysql); 	<span style="color:#75715e">// =再次= 修改事务属性为【手动】commit
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (ret <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;mysql_OperationTran() err:%d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, ret);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> ret;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    ret <span style="color:#f92672">=</span> <span style="color:#a6e22e">mysql_query</span>(mysql, sql03);	<span style="color:#75715e">//向表中插入第三行数据 ‘CCC’
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (ret <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;mysql_query() err:%d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, ret);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> ret;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    ret <span style="color:#f92672">=</span> <span style="color:#a6e22e">mysql_query</span>(mysql, sql04);	<span style="color:#75715e">//向表中插入第四行数据 ‘DDD’
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (ret <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;mysql_query() err:%d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, ret);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> ret;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    ret <span style="color:#f92672">=</span> <span style="color:#a6e22e">mysql_Rollback</span>(mysql);		<span style="color:#75715e">//直接rollback操作
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (ret <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;mysql_Rollback() err:%d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, ret);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> ret;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//rollback操作是否能回退掉CCC、DDD的值，取决于事务属性。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">mysql_close</span>(mysql);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;	
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>对应参考API手册。中文：25.2.3.2.		英文：23.8.7.2</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/database/">DataBase</a>
+        
+            <a href="/tags/mysql/">Mysql</a>
+        
+    </section>
+
+
+    </footer>
+
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">Related contents</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="">
+    <a href="/post/mysql%E6%95%B0%E6%8D%AE%E5%BA%93/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Mysql数据库</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2023 My Blog
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.5.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+
+            </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">Table of contents</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#mysql数据库api库">MySQL数据库API库</a>
+      <ul>
+        <li><a href="#编写hello应用链接函数库">编写hello应用链接函数库</a></li>
+      </ul>
+    </li>
+    <li><a href="#mysql--api常用函数"><strong>MySQL</strong>  API常用函数</a>
+      <ul>
+        <li><a href="#总体印象">总体印象</a></li>
+        <li><a href="#初始化">初始化</a></li>
+        <li><a href="#makefile-管理">Makefile 管理</a></li>
+        <li><a href="#连接数据库关闭连接">连接数据库关闭连接</a></li>
+        <li><a href="#读取数据">读取数据</a></li>
+        <li><a href="#示例程序">示例程序</a></li>
+      </ul>
+    </li>
+    <li><a href="#mysql-tools实现">MySQL tools实现</a>
+      <ul>
+        <li><a href="#思路分析">思路分析</a></li>
+        <li><a href="#程序实现">程序实现</a></li>
+        <li><a href="#中文问题">中文问题：</a></li>
+      </ul>
+    </li>
+    <li><a href="#预处理类api函数">预处理类API函数：</a></li>
+    <li><a href="#日期时间类api函数">日期时间类API函数</a></li>
+    <li><a href="#多查询执行的c-api函数">多查询执行的C API函数</a></li>
+    <li><a href="#mysql中的事务">MySQL中的事务</a></li>
+  </ul>
+</nav>
+                </div>
+            </section>
+        </aside>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

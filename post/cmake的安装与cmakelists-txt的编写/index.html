@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='安装 cmake是自动化项目编译工具，可以编译源代码、制作程序库、产生适配器（wrapper）、还可以用任意的顺序建构执行档。CMake 支持 in-place 建构（二进档和源代码在同一个目录树中）和 out-of-place 建构（二进档在别的目录里），因此可以很容易从同一个源代码目录树中建构出多个二进档。CMake 也支持静态与动态程式库的建构。
+下载地址👉Download | CMake， 建议二进制安装。
+win:
+https://github.com/Kitware/CMake/releases/download/v3.22.1/cmake-3.22.1-windows-x86_64.zip ubuntu:
+sudo apt install cmake wget https://github.com/Kitware/CMake/releases/download/v3.22.1/cmake-3.22.1-linux-x86_64.tar.gz centos:
+sudo yum install cmake arch:
+sudo pacman -S cmake 编写CMakeLists.txt 单文件单目录CMakeLists.txt编写 # 指定cmake版本 cmake_minimum_required(VERSION 3.22) # 工程名 project(demo1) # 指定编译后文件名 set(OUTPUTNAME demo1) set(CMAKE_CXX_FLAGS &amp;#34;${CMAKE_CXX_FLAGS} -Wall -g -O2 -std=c&#43;&#43;20&amp;#34;) # 指定编译参数 # 指定源文件夹 aux_source_directory(. DIR_SRCS) # 编译文件 add_executable(${OUTPUTNAME} ${DIR_SRCS}) 此文件加编写完毕后，创建一个build文件夹，cd进去，执行cmake ..，会生成Makefile文件，再然后执行make编译，最终生成项目文件。
+多文件单目录CMakeLists.txt编写 和demo1相同
+# 指定cmake版本 cmake_minimum_required(VERSION 3.22) # 工程名 project(demo2) # 指定编译后文件名 set(OUTPUTNAME demo2) set(CMAKE_CXX_FLAGS &amp;#34;${CMAKE_CXX_FLAGS} -Wall -g -O2 -std=c&#43;&#43;20&amp;#34;) # 指定编译参数 # 指定源文件夹 aux_source_directory(.'><title>Cmake的安装与CMakeLists.txt的编写</title>
+
+<link rel='canonical' href='https://okokfun.github.io/post/cmake%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8Ecmakelists-txt%E7%9A%84%E7%BC%96%E5%86%99/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='Cmake的安装与CMakeLists.txt的编写'>
+<meta property='og:description' content='安装 cmake是自动化项目编译工具，可以编译源代码、制作程序库、产生适配器（wrapper）、还可以用任意的顺序建构执行档。CMake 支持 in-place 建构（二进档和源代码在同一个目录树中）和 out-of-place 建构（二进档在别的目录里），因此可以很容易从同一个源代码目录树中建构出多个二进档。CMake 也支持静态与动态程式库的建构。
+下载地址👉Download | CMake， 建议二进制安装。
+win:
+https://github.com/Kitware/CMake/releases/download/v3.22.1/cmake-3.22.1-windows-x86_64.zip ubuntu:
+sudo apt install cmake wget https://github.com/Kitware/CMake/releases/download/v3.22.1/cmake-3.22.1-linux-x86_64.tar.gz centos:
+sudo yum install cmake arch:
+sudo pacman -S cmake 编写CMakeLists.txt 单文件单目录CMakeLists.txt编写 # 指定cmake版本 cmake_minimum_required(VERSION 3.22) # 工程名 project(demo1) # 指定编译后文件名 set(OUTPUTNAME demo1) set(CMAKE_CXX_FLAGS &amp;#34;${CMAKE_CXX_FLAGS} -Wall -g -O2 -std=c&#43;&#43;20&amp;#34;) # 指定编译参数 # 指定源文件夹 aux_source_directory(. DIR_SRCS) # 编译文件 add_executable(${OUTPUTNAME} ${DIR_SRCS}) 此文件加编写完毕后，创建一个build文件夹，cd进去，执行cmake ..，会生成Makefile文件，再然后执行make编译，最终生成项目文件。
+多文件单目录CMakeLists.txt编写 和demo1相同
+# 指定cmake版本 cmake_minimum_required(VERSION 3.22) # 工程名 project(demo2) # 指定编译后文件名 set(OUTPUTNAME demo2) set(CMAKE_CXX_FLAGS &amp;#34;${CMAKE_CXX_FLAGS} -Wall -g -O2 -std=c&#43;&#43;20&amp;#34;) # 指定编译参数 # 指定源文件夹 aux_source_directory(.'>
+<meta property='og:url' content='https://okokfun.github.io/post/cmake%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8Ecmakelists-txt%E7%9A%84%E7%BC%96%E5%86%99/'>
+<meta property='og:site_name' content='My Blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='CMake' /><meta property='article:tag' content='CMakeLists.txt' /><meta property='article:published_time' content='2022-01-03T16:24:52&#43;00:00'/><meta property='article:modified_time' content='2022-01-03T16:24:52&#43;00:00'/>
+<meta name="twitter:title" content="Cmake的安装与CMakeLists.txt的编写">
+<meta name="twitter:description" content="安装 cmake是自动化项目编译工具，可以编译源代码、制作程序库、产生适配器（wrapper）、还可以用任意的顺序建构执行档。CMake 支持 in-place 建构（二进档和源代码在同一个目录树中）和 out-of-place 建构（二进档在别的目录里），因此可以很容易从同一个源代码目录树中建构出多个二进档。CMake 也支持静态与动态程式库的建构。
+下载地址👉Download | CMake， 建议二进制安装。
+win:
+https://github.com/Kitware/CMake/releases/download/v3.22.1/cmake-3.22.1-windows-x86_64.zip ubuntu:
+sudo apt install cmake wget https://github.com/Kitware/CMake/releases/download/v3.22.1/cmake-3.22.1-linux-x86_64.tar.gz centos:
+sudo yum install cmake arch:
+sudo pacman -S cmake 编写CMakeLists.txt 单文件单目录CMakeLists.txt编写 # 指定cmake版本 cmake_minimum_required(VERSION 3.22) # 工程名 project(demo1) # 指定编译后文件名 set(OUTPUTNAME demo1) set(CMAKE_CXX_FLAGS &amp;#34;${CMAKE_CXX_FLAGS} -Wall -g -O2 -std=c&#43;&#43;20&amp;#34;) # 指定编译参数 # 指定源文件夹 aux_source_directory(. DIR_SRCS) # 编译文件 add_executable(${OUTPUTNAME} ${DIR_SRCS}) 此文件加编写完毕后，创建一个build文件夹，cd进去，执行cmake ..，会生成Makefile文件，再然后执行make编译，最终生成项目文件。
+多文件单目录CMakeLists.txt编写 和demo1相同
+# 指定cmake版本 cmake_minimum_required(VERSION 3.22) # 工程名 project(demo2) # 指定编译后文件名 set(OUTPUTNAME demo2) set(CMAKE_CXX_FLAGS &amp;#34;${CMAKE_CXX_FLAGS} -Wall -g -O2 -std=c&#43;&#43;20&amp;#34;) # 指定编译参数 # 指定源文件夹 aux_source_directory(."><script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+    </head>
+    <body class="
+    article-page has-toc
+">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex 
+    
+        extended
+    
+">
+    
+        <div id="article-toolbar">
+            <a href="/" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+                <span>Back</span>
+            </a>
+        </div>
+    
+<main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+
+    <h2 class="article-title">
+        <a href="/post/cmake%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8Ecmakelists-txt%E7%9A%84%E7%BC%96%E5%86%99/">Cmake的安装与CMakeLists.txt的编写</a>
+    </h2>
+
+    
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jan 03, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    2 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+</div>
+</header>
+
+    <section class="article-content">
+    <!-- raw HTML omitted -->
+<h1 id="安装">安装</h1>
+<p>cmake是自动化项目编译工具，可以编译<a class="link" href="https://baike.baidu.com/item/%e6%ba%90%e4%bb%a3%e7%a0%81"  target="_blank" rel="noopener"
+    >源代码</a>、制作程序库、产生<a class="link" href="https://baike.baidu.com/item/%e9%80%82%e9%85%8d%e5%99%a8/908851"  target="_blank" rel="noopener"
+    >适配器</a>（wrapper）、还可以用任意的顺序建构<a class="link" href="https://baike.baidu.com/item/%e6%89%a7%e8%a1%8c%e6%a1%a3"  target="_blank" rel="noopener"
+    >执行档</a>。CMake 支持 in-place 建构（二进档和源代码在同一个目录树中）和 out-of-place 建构（二进档在别的目录里），因此可以很容易从同一个源代码目录树中建构出多个二进档。CMake 也支持静态与动态<a class="link" href="https://baike.baidu.com/item/%e7%a8%8b%e5%bc%8f%e5%ba%93/9957874"  target="_blank" rel="noopener"
+    >程式库</a>的建构。</p>
+<p>下载地址👉<a class="link" href="https://cmake.org/download/"  target="_blank" rel="noopener"
+    >Download | CMake</a>， 建议二进制安装。</p>
+<p>win:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>https://github.com/Kitware/CMake/releases/download/v3.22.1/cmake-3.22.1-windows-x86_64.zip
+</span></span></code></pre></div><p>ubuntu:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo apt install cmake
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>wget https://github.com/Kitware/CMake/releases/download/v3.22.1/cmake-3.22.1-linux-x86_64.tar.gz
+</span></span></code></pre></div><p>centos:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo yum install cmake
+</span></span></code></pre></div><p>arch:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo pacman -S cmake
+</span></span></code></pre></div><h1 id="编写cmakeliststxt">编写CMakeLists.txt</h1>
+<h2 id="单文件单目录cmakeliststxt编写"><code>单文件单目录CMakeLists.txt编写</code></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span><span style="color:#75715e"># 指定cmake版本
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>cmake_minimum_required(<span style="color:#e6db74">VERSION</span> <span style="color:#e6db74">3.22</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># 工程名
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>project(<span style="color:#e6db74">demo1</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># 指定编译后文件名
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>set(<span style="color:#e6db74">OUTPUTNAME</span> <span style="color:#e6db74">demo1</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>set(<span style="color:#e6db74">CMAKE_CXX_FLAGS</span> <span style="color:#e6db74">&#34;${CMAKE_CXX_FLAGS} -Wall -g -O2 -std=c++20&#34;</span>) <span style="color:#75715e"># 指定编译参数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># 指定源文件夹
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>aux_source_directory(<span style="color:#e6db74">.</span> <span style="color:#e6db74">DIR_SRCS</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># 编译文件
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>add_executable(<span style="color:#f92672">${</span>OUTPUTNAME<span style="color:#f92672">}</span> <span style="color:#f92672">${</span>DIR_SRCS<span style="color:#f92672">}</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span></code></pre></div><p>此文件加编写完毕后，创建一个build文件夹，cd进去，执行<code>cmake ..</code>，会生成Makefile文件，再然后执行<code>make</code>编译，最终生成项目文件。</p>
+<h2 id="多文件单目录cmakeliststxt编写"><code>多文件单目录CMakeLists.txt编写</code></h2>
+<p>和demo1相同</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span><span style="color:#75715e"># 指定cmake版本
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>cmake_minimum_required(<span style="color:#e6db74">VERSION</span> <span style="color:#e6db74">3.22</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># 工程名
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>project(<span style="color:#e6db74">demo2</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># 指定编译后文件名
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>set(<span style="color:#e6db74">OUTPUTNAME</span> <span style="color:#e6db74">demo2</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>set(<span style="color:#e6db74">CMAKE_CXX_FLAGS</span> <span style="color:#e6db74">&#34;${CMAKE_CXX_FLAGS} -Wall -g -O2 -std=c++20&#34;</span>) <span style="color:#75715e"># 指定编译参数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># 指定源文件夹
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>aux_source_directory(<span style="color:#e6db74">.</span> <span style="color:#e6db74">DIR_SRCS</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># 编译文件
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>add_executable(<span style="color:#f92672">${</span>OUTPUTNAME<span style="color:#f92672">}</span> <span style="color:#f92672">${</span>DIR_SRCS<span style="color:#f92672">}</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span></code></pre></div><h2 id="多文件多文件夹cmakeliststxt编写"><code>多文件多文件夹CMakeLists.txt编写</code></h2>
+<p>每一个项目都要建一个CMakeLists.txt，并且每一个文件夹都要有一个CMakeLists.txt文件</p>
+<p><strong>项目根目录的CMakeLists.txt</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span><span style="color:#75715e"># 指定cmake版本
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>cmake_minimum_required (<span style="color:#e6db74">VERSION</span> <span style="color:#e6db74">3.22</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># 项目信息
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>project (<span style="color:#e6db74">Demo3</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># 指定编译后文件名
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>set(<span style="color:#e6db74">OUTPUTNAME</span> <span style="color:#e6db74">demo3</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>set(<span style="color:#e6db74">CMAKE_CXX_FLAGS</span> <span style="color:#e6db74">&#34;${CMAKE_CXX_FLAGS} -Wall -g -O2 -std=c++20&#34;</span>) <span style="color:#75715e"># 指定编译参数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># 查找当前目录下的所有源文件
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"># 并将名称保存到 DIR_SRCS 变量
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>aux_source_directory(<span style="color:#e6db74">.</span> <span style="color:#e6db74">DIR_SRCS</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># 添加 math 子目录
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>add_subdirectory(<span style="color:#e6db74">math</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># 指定生成目标 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>add_executable(<span style="color:#f92672">${</span>OUTPUTNAME<span style="color:#f92672">}</span> <span style="color:#f92672">${</span>DIR_SRCS<span style="color:#f92672">}</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># 添加链接库
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>target_link_libraries(<span style="color:#f92672">${</span>OUTPUTNAME<span style="color:#f92672">}</span> <span style="color:#e6db74">MathFunctions</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span></code></pre></div><p><strong>项目其他目录的CMakeLists.txt</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span><span style="color:#75715e"># 查找当前目录下的所有源文件
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"># 并将名称保存到 DIR_LIB_SRCS 变量
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>aux_source_directory(<span style="color:#e6db74">.</span> <span style="color:#e6db74">DIR_LIB_SRCS</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># 生成链接库,动态库
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"># 静态库add_library (MathFunctions STATIC ${DIR_LIB_SRCS})
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>add_library (<span style="color:#e6db74">MathFunctions</span> <span style="color:#e6db74">SHARED</span> <span style="color:#f92672">${</span>DIR_LIB_SRCS<span style="color:#f92672">}</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span></code></pre></div><h2 id="库文件cmakeliststxt编写"><code>库文件CMakeLists.txt编写</code></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span><span style="color:#75715e"># 查找当前目录下的所有源文件
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"># 并将名称保存到 DIR_LIB_SRCS 变量
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>aux_source_directory(<span style="color:#e6db74">.</span> <span style="color:#e6db74">DIR_LIB_SRCS</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># 生成链接库,动态库
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"># 静态库add_library (MathFunctions STATIC ${DIR_LIB_SRCS})
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>add_library (<span style="color:#e6db74">MathFunctions</span> <span style="color:#e6db74">SHARED</span> <span style="color:#f92672">${</span>DIR_LIB_SRCS<span style="color:#f92672">}</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span></code></pre></div><h2 id="库文件安装cmakeliststxt编写"><code>库文件安装CMakeLists.txt编写</code></h2>
+<p>在指定的库源文件目录添加：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span><span style="color:#75715e"># 指定 MathFunctions 库的安装路径
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>install (<span style="color:#e6db74">TARGETS</span> <span style="color:#e6db74">MathFunctions</span> <span style="color:#e6db74">DESTINATION</span> <span style="color:#e6db74">bin</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>install (<span style="color:#e6db74">FILES</span> <span style="color:#e6db74">MathFunctions.h</span> <span style="color:#e6db74">DESTINATION</span> <span style="color:#e6db74">include</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span></code></pre></div><p>demo会被放到bin，<code>*.h</code>会被放到<code>/usr/local/include</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span><span style="color:#75715e"># 指定安装路径
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>install (<span style="color:#e6db74">TARGETS</span> <span style="color:#e6db74">Demo</span> <span style="color:#e6db74">DESTINATION</span> <span style="color:#e6db74">bin</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>install (<span style="color:#e6db74">FILES</span> <span style="color:#e6db74">&#34;${PROJECT_BINARY_DIR}/config.h&#34;</span>
+</span></span><span style="display:flex;"><span>         <span style="color:#e6db74">DESTINATION</span> <span style="color:#e6db74">include</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span></code></pre></div><h2 id="库文件指定输出路径与编译后的工程目录"><code>库文件指定输出路径与编译后的工程目录</code></h2>
+<p>库文件输出目录设置</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span><span style="color:#75715e"># 查找当前目录下的所有源文件
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"># 并将名称保存到 DIR_LIB_SRCS 变量
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>aux_source_directory(<span style="color:#e6db74">.</span> <span style="color:#e6db74">DIR_LIB_SRCS</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># 把库文件的输出路径设置为lib
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>set(<span style="color:#e6db74">LIBRARY_OUTPUT_PATH</span> <span style="color:#f92672">${</span>PROJECT_BINARY_DIR<span style="color:#f92672">}</span><span style="color:#e6db74">/lib</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># 生成链接库,动态库
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"># 静态库add_library (MathFunctions STATIC ${DIR_LIB_SRCS})
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>add_library (<span style="color:#e6db74">MathFunctions</span> <span style="color:#e6db74">SHARED</span> <span style="color:#f92672">${</span>DIR_LIB_SRCS<span style="color:#f92672">}</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span></code></pre></div><p>项目工程目录设置</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmake" data-lang="cmake"><span style="display:flex;"><span>cmake_minimum_required(<span style="color:#e6db74">VERSION</span> <span style="color:#e6db74">3.22</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>project(<span style="color:#e6db74">abstract_factory_pattern</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>set(<span style="color:#e6db74">OUTPUTNAME</span> <span style="color:#e6db74">test</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>set(<span style="color:#e6db74">CMAKE_CXX_FLAGS</span> <span style="color:#e6db74">&#34;${CMAKE_CXX_FLAGS} -Wall -g -O2 -std=c++20&#34;</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># 声明库文件目录
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>include_directories(<span style="color:#f92672">${</span>PROJECT_SOURCE_DIR<span style="color:#f92672">}</span><span style="color:#e6db74">/mylib</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>set(<span style="color:#e6db74">EXECUTABLE_OUTPUT_PATH</span> <span style="color:#f92672">${</span>PROJECT_BINARY_DIR<span style="color:#f92672">}</span><span style="color:#e6db74">/bin</span>) <span style="color:#75715e"># 设置可执行文件输出目录为bin
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>aux_source_directory(<span style="color:#e6db74">.</span> <span style="color:#e6db74">DIR_SRCS</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>add_executable(<span style="color:#f92672">${</span>OUTPUTNAME<span style="color:#f92672">}</span> <span style="color:#f92672">${</span>DIR_SRCS<span style="color:#f92672">}</span>)<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>target_link_libraries(<span style="color:#f92672">${</span>OUTPUTNAME<span style="color:#f92672">}</span> <span style="color:#e6db74">Mylib</span>) <span style="color:#75715e"># 链接mylib目录下的Mylib库
+</span></span></span></code></pre></div>
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/cmake/">CMake</a>
+        
+            <a href="/tags/cmakelists.txt/">CMakeLists.txt</a>
+        
+    </section>
+
+
+    </footer>
+
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2023 My Blog
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.5.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+
+            </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">Table of contents</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#单文件单目录cmakeliststxt编写"><code>单文件单目录CMakeLists.txt编写</code></a></li>
+    <li><a href="#多文件单目录cmakeliststxt编写"><code>多文件单目录CMakeLists.txt编写</code></a></li>
+    <li><a href="#多文件多文件夹cmakeliststxt编写"><code>多文件多文件夹CMakeLists.txt编写</code></a></li>
+    <li><a href="#库文件cmakeliststxt编写"><code>库文件CMakeLists.txt编写</code></a></li>
+    <li><a href="#库文件安装cmakeliststxt编写"><code>库文件安装CMakeLists.txt编写</code></a></li>
+    <li><a href="#库文件指定输出路径与编译后的工程目录"><code>库文件指定输出路径与编译后的工程目录</code></a></li>
+  </ul>
+</nav>
+                </div>
+            </section>
+        </aside>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

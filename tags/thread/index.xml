@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Thread on My Blog</title>
+    <link>https://okokfun.github.io/tags/thread/</link>
+    <description>Recent content in Thread on My Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sun, 06 Feb 2022 21:27:50 +0000</lastBuildDate><atom:link href="https://okokfun.github.io/tags/thread/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>让C&#43;&#43;程序更快的运行</title>
+      <link>https://okokfun.github.io/post/%E8%AE%A9c-%E7%A8%8B%E5%BA%8F%E6%9B%B4%E5%BF%AB%E7%9A%84%E8%BF%90%E8%A1%8C/</link>
+      <pubDate>Sun, 06 Feb 2022 21:27:50 +0000</pubDate>
+      
+      <guid>https://okokfun.github.io/post/%E8%AE%A9c-%E7%A8%8B%E5%BA%8F%E6%9B%B4%E5%BF%AB%E7%9A%84%E8%BF%90%E8%A1%8C/</guid>
+      <description>视频由up神经元猫 神经元猫的个人空间_哔哩哔哩_bilibili 翻译自 youtube.com/cherno 并发布到👉 【79】【Cherno C++】【中字】如何让C++运行得更快_哔哩哔哩_bilibili 并由我整理。
+通过编码方式利用多核或多处理器 ,利用这些线程，不只是让你的程序顺序执行一条条指令，而是把一些东西，推迟到不同的线程，甚至不是推迟，二十把东西分派到不同的线程，让计算机更快地处理这些东西。
+每一个资源，每一个纹理模型，他们通常独立于彼此，意味着这是良好的多线程候选场景。
+static std::mutex s_MeshesMutex; static void LoadMesh(std::vector&amp;lt;Ref&amp;lt;Mesh&amp;gt;&amp;gt;* meshes, std::string filepath) { auto mesh = Mesh::Load(filepath); std::lock_guard&amp;lt;std::mutex&amp;gt; lock(s_MeshesMutex); meshes.push_back(mesh); } void EditLayer::LoadMeshes() { std::ifstream stream(&amp;#34;src/Models.txt&amp;#34;); std::string line; std::vector&amp;lt;std::string&amp;gt; meshFilepaths; while (std::getline(stream, line)) meshFilepaths.push_back(line); #define ASYNC 1 #id ASYNC for (const auto&amp;amp; file : meshFilepaths) // std::launch::async告知std库创建一个线程处理。 // 我们需要保留std::async的返回值，如果不保留的话，因为它会被C++标准库摧毁，在摧毁时，标准库需要确保过程实际已被完成，这基本不是并行了，所以需要创建一个std::future的向量。 m_Futures.push_back(std::async(std::launch::async, LoadMesh, &amp;amp;m_Meshes, file)); #else for (const auto&amp;amp; file : meshFilepaths) m_Meshes.push_back(Mesh::Load(file)); } std::vector&amp;lt;std::future&amp;lt;void&amp;gt; m_Meshes; 通过把任务分派的不同的线程，资源加载速度由6.</description>
+    </item>
+    
+    <item>
+      <title>线程支持库</title>
+      <link>https://okokfun.github.io/post/%E7%BA%BF%E7%A8%8B%E6%94%AF%E6%8C%81%E5%BA%93/</link>
+      <pubDate>Sat, 15 Jan 2022 17:13:05 +0000</pubDate>
+      
+      <guid>https://okokfun.github.io/post/%E7%BA%BF%E7%A8%8B%E6%94%AF%E6%8C%81%E5%BA%93/</guid>
+      <description>此文来自于👉线程支持库 - cppreference.com
+线程支持库 thread(C++11) std::thread 类与支持函数 stop_token(C++20) std::jthread 的停止记号 mutex(C++11) 互斥元件 shared_mutex(C++14) 共享互斥元件 future(C++11) 异步计算元件 condition_variable(C++11) 线程等待条件 semaphore(C++20) 信号量 latch(C++20) 闩 barrier(C++20) 屏障 #include &amp;lt;thread&amp;gt; std::thread thread类 表示单个执行线程。
+#include &amp;lt;iostream&amp;gt; #include &amp;lt;thread&amp;gt; int main() { std::thread th1; } std:🧵:id thread::id类 是轻量的可频繁复制类，它作为 std::thread 对象的唯一标识符工作。
+#include &amp;lt;iostream&amp;gt; #include &amp;lt;thread&amp;gt; typedef unsigned long long ULL; std::string getThreadIdOfString(const std:🧵:id &amp;amp; id) { std::stringstream sin; sin &amp;lt;&amp;lt; id; return sin.str(); } ULL getThreadIdOfULL(const std:🧵:id &amp;amp; id) { return std::stoull(getThreadIdOfString(id)); } int main() { std:🧵:id id = std::this_thread::get_id(); std::cout &amp;lt;&amp;lt; &amp;#34;cout ----- id : &amp;#34; &amp;lt;&amp;lt; id &amp;lt;&amp;lt; std::endl; std::cout &amp;lt;&amp;lt; &amp;#34;getThreadIdOfString ----- id : &amp;#34; &amp;lt;&amp;lt; getThreadIdOfString(id) &amp;lt;&amp;lt; std::endl; std::cout &amp;lt;&amp;lt; &amp;#34;getThreadIdOfULL ----- id : &amp;#34; &amp;lt;&amp;lt; getThreadIdOfULL(id) &amp;lt;&amp;lt; std::endl; return 0; } std:🧵:hardware_concurrency() 返回处理器支持的并发线程数。</description>
+    </item>
+    
+  </channel>
+</rss>

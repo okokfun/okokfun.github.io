@@ -1,0 +1,1393 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='1. 一些基本概念 ###1.1 Nginx初步认识
+Nginx介绍
+engine x
+俄罗斯
+开源的框架
+c语言
+Tengine - 淘宝基于nginx修改的
+Nginx能干什么?
+作为web服务器 解析http协议 反向代理服务器 了解反向代理的概念 邮件服务器 解析邮件相关的协议: pop3/smtp/imap Nginx的优势?
+更快
+高峰期(数以万计的并发时)nginx可以比其它web服务器更快的响应请求 高扩展
+低耦合设计的模块组成,丰富的第三方模块支持 高可靠
+经过大批网站检验 www.sina.com.cn www.xunlei.com www.163.com 每个worker进程相对独立, 出错之后可以快速开启新的worker worker进程的个数是可以控制的 在后台干活的进程 低内存消耗
+一般情况下,10000个非活跃的HTTP Keep-Alive连接在nginx中仅消耗 2.5M内存 单机支持10万以上的并发连接
+取决于内存,10万远未封顶 热部署
+master和worker的分离设计,可实现7x24小时不间断服务的前提下升级nginx可执行文件 最自由的BSD许可协议
+BSD许可协议允许用户免费使用nginx, 修改nginx源码,然后再发布 淘宝: tengine 1.2 正向/反向代理 正向代理
+正向代理是位于客户端和原始服务器之间的服务器，为了能够从原始服务器获取请求的内容，客户端需要将请求发送给代理服务器，然后再由代理服务器将请求转发给原始服务器，原始服务器接受到代理服务器的请求并处理，然后将处理好的数据转发给代理服务器，之后再由代理服务器转发发给客户端，完成整个请求过程。
+正向代理的典型用途就是为在防火墙内的局域网客户端提供访问Internet的途径, 比如:
+学校的局域网
+单位局域网访问外部资源
+正向代理服务器是为用户服务的
+反向代理
+反向代理方式是指代理原始服务器来接受来自Internet的链接请求，然后将请求转发给内部网络上的原始服务器，并将从原始服务器上得到的结果转发给Internet上请求数据的客户端。那么顾名思义，反向代理就是位于Internet和原始服务器之间的服务器，对于客户端来说就表现为一台服务器，客户端所发送的请求都是直接发送给反向代理服务器，然后由反向代理服务器统一调配。
+客户端给服务器发送请求, 连接服务器, 用户不知道服务器地址, 只有反向代理服务器的地址是公开的
+请求直接发给反向代理服务器
+反向代理服务器将请求转发给后边的web服务器
+web服务器 N 台 反向代理服务器转发请求会轮询进行 web服务器收到请求进行处理, 得到结果'><title>nginx安装</title>
+
+<link rel='canonical' href='https://okokfun.github.io/post/nginx%E5%AE%89%E8%A3%85/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='nginx安装'>
+<meta property='og:description' content='1. 一些基本概念 ###1.1 Nginx初步认识
+Nginx介绍
+engine x
+俄罗斯
+开源的框架
+c语言
+Tengine - 淘宝基于nginx修改的
+Nginx能干什么?
+作为web服务器 解析http协议 反向代理服务器 了解反向代理的概念 邮件服务器 解析邮件相关的协议: pop3/smtp/imap Nginx的优势?
+更快
+高峰期(数以万计的并发时)nginx可以比其它web服务器更快的响应请求 高扩展
+低耦合设计的模块组成,丰富的第三方模块支持 高可靠
+经过大批网站检验 www.sina.com.cn www.xunlei.com www.163.com 每个worker进程相对独立, 出错之后可以快速开启新的worker worker进程的个数是可以控制的 在后台干活的进程 低内存消耗
+一般情况下,10000个非活跃的HTTP Keep-Alive连接在nginx中仅消耗 2.5M内存 单机支持10万以上的并发连接
+取决于内存,10万远未封顶 热部署
+master和worker的分离设计,可实现7x24小时不间断服务的前提下升级nginx可执行文件 最自由的BSD许可协议
+BSD许可协议允许用户免费使用nginx, 修改nginx源码,然后再发布 淘宝: tengine 1.2 正向/反向代理 正向代理
+正向代理是位于客户端和原始服务器之间的服务器，为了能够从原始服务器获取请求的内容，客户端需要将请求发送给代理服务器，然后再由代理服务器将请求转发给原始服务器，原始服务器接受到代理服务器的请求并处理，然后将处理好的数据转发给代理服务器，之后再由代理服务器转发发给客户端，完成整个请求过程。
+正向代理的典型用途就是为在防火墙内的局域网客户端提供访问Internet的途径, 比如:
+学校的局域网
+单位局域网访问外部资源
+正向代理服务器是为用户服务的
+反向代理
+反向代理方式是指代理原始服务器来接受来自Internet的链接请求，然后将请求转发给内部网络上的原始服务器，并将从原始服务器上得到的结果转发给Internet上请求数据的客户端。那么顾名思义，反向代理就是位于Internet和原始服务器之间的服务器，对于客户端来说就表现为一台服务器，客户端所发送的请求都是直接发送给反向代理服务器，然后由反向代理服务器统一调配。
+客户端给服务器发送请求, 连接服务器, 用户不知道服务器地址, 只有反向代理服务器的地址是公开的
+请求直接发给反向代理服务器
+反向代理服务器将请求转发给后边的web服务器
+web服务器 N 台 反向代理服务器转发请求会轮询进行 web服务器收到请求进行处理, 得到结果'>
+<meta property='og:url' content='https://okokfun.github.io/post/nginx%E5%AE%89%E8%A3%85/'>
+<meta property='og:site_name' content='My Blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='nginx' /><meta property='article:published_time' content='2022-01-08T16:07:29&#43;00:00'/><meta property='article:modified_time' content='2022-01-08T16:07:29&#43;00:00'/>
+<meta name="twitter:title" content="nginx安装">
+<meta name="twitter:description" content="1. 一些基本概念 ###1.1 Nginx初步认识
+Nginx介绍
+engine x
+俄罗斯
+开源的框架
+c语言
+Tengine - 淘宝基于nginx修改的
+Nginx能干什么?
+作为web服务器 解析http协议 反向代理服务器 了解反向代理的概念 邮件服务器 解析邮件相关的协议: pop3/smtp/imap Nginx的优势?
+更快
+高峰期(数以万计的并发时)nginx可以比其它web服务器更快的响应请求 高扩展
+低耦合设计的模块组成,丰富的第三方模块支持 高可靠
+经过大批网站检验 www.sina.com.cn www.xunlei.com www.163.com 每个worker进程相对独立, 出错之后可以快速开启新的worker worker进程的个数是可以控制的 在后台干活的进程 低内存消耗
+一般情况下,10000个非活跃的HTTP Keep-Alive连接在nginx中仅消耗 2.5M内存 单机支持10万以上的并发连接
+取决于内存,10万远未封顶 热部署
+master和worker的分离设计,可实现7x24小时不间断服务的前提下升级nginx可执行文件 最自由的BSD许可协议
+BSD许可协议允许用户免费使用nginx, 修改nginx源码,然后再发布 淘宝: tengine 1.2 正向/反向代理 正向代理
+正向代理是位于客户端和原始服务器之间的服务器，为了能够从原始服务器获取请求的内容，客户端需要将请求发送给代理服务器，然后再由代理服务器将请求转发给原始服务器，原始服务器接受到代理服务器的请求并处理，然后将处理好的数据转发给代理服务器，之后再由代理服务器转发发给客户端，完成整个请求过程。
+正向代理的典型用途就是为在防火墙内的局域网客户端提供访问Internet的途径, 比如:
+学校的局域网
+单位局域网访问外部资源
+正向代理服务器是为用户服务的
+反向代理
+反向代理方式是指代理原始服务器来接受来自Internet的链接请求，然后将请求转发给内部网络上的原始服务器，并将从原始服务器上得到的结果转发给Internet上请求数据的客户端。那么顾名思义，反向代理就是位于Internet和原始服务器之间的服务器，对于客户端来说就表现为一台服务器，客户端所发送的请求都是直接发送给反向代理服务器，然后由反向代理服务器统一调配。
+客户端给服务器发送请求, 连接服务器, 用户不知道服务器地址, 只有反向代理服务器的地址是公开的
+请求直接发给反向代理服务器
+反向代理服务器将请求转发给后边的web服务器
+web服务器 N 台 反向代理服务器转发请求会轮询进行 web服务器收到请求进行处理, 得到结果"><script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+    </head>
+    <body class="
+    article-page has-toc
+">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex 
+    
+        extended
+    
+">
+    
+        <div id="article-toolbar">
+            <a href="/" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+                <span>Back</span>
+            </a>
+        </div>
+    
+<main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+
+    <h2 class="article-title">
+        <a href="/post/nginx%E5%AE%89%E8%A3%85/">nginx安装</a>
+    </h2>
+
+    
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jan 08, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    4 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+</div>
+</header>
+
+    <section class="article-content">
+    <!-- raw HTML omitted -->
+<h2 id="1-一些基本概念">1. 一些基本概念</h2>
+<p>###1.1 Nginx初步认识</p>
+<ol>
+<li>
+<p>Nginx介绍</p>
+<ul>
+<li>
+<p>engine x</p>
+</li>
+<li>
+<p>俄罗斯</p>
+</li>
+<li>
+<p>开源的框架</p>
+</li>
+<li>
+<p>c语言</p>
+</li>
+<li>
+<p>Tengine - 淘宝基于nginx修改的</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Nginx能干什么?</p>
+<ul>
+<li>作为web服务器
+<ul>
+<li>解析http协议</li>
+</ul>
+</li>
+<li>反向代理服务器
+<ul>
+<li>了解反向代理的概念</li>
+</ul>
+</li>
+<li>邮件服务器
+<ul>
+<li>解析邮件相关的协议: pop3/smtp/imap</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Nginx的优势?</p>
+<blockquote>
+<ul>
+<li>
+<p>更快</p>
+<ul>
+<li>高峰期(数以万计的并发时)nginx可以比其它web服务器更快的响应请求</li>
+</ul>
+</li>
+<li>
+<p>高扩展</p>
+<ul>
+<li><strong>低耦合</strong>设计的模块组成,丰富的第三方模块支持</li>
+</ul>
+</li>
+<li>
+<p>高可靠</p>
+<ul>
+<li>经过大批网站检验
+<ul>
+<li><a class="link" href="https://www.sina.com.cn"  target="_blank" rel="noopener"
+    >www.sina.com.cn</a></li>
+<li><a class="link" href="https://www.xunlei.com"  target="_blank" rel="noopener"
+    >www.xunlei.com</a></li>
+<li><a class="link" href="https://www.163.com"  target="_blank" rel="noopener"
+    >www.163.com</a></li>
+</ul>
+</li>
+<li>每个worker进程相对独立, 出错之后可以快速开启新的worker
+<ul>
+<li>worker进程的个数是可以控制的</li>
+<li>在后台干活的进程</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>低内存消耗</p>
+<ul>
+<li>一般情况下,10000个非活跃的HTTP  Keep-Alive连接在nginx中仅消耗 2.5M内存</li>
+</ul>
+</li>
+<li>
+<p>单机支持10万以上的并发连接</p>
+<ul>
+<li>取决于内存,10万远未封顶</li>
+</ul>
+</li>
+<li>
+<p>热部署</p>
+<ul>
+<li>master和worker的分离设计,可实现7x24小时不间断服务的前提下升级nginx可执行文件</li>
+</ul>
+</li>
+<li>
+<p>最自由的BSD许可协议</p>
+<ul>
+<li>BSD许可协议允许用户免费使用nginx, 修改nginx源码,然后再发布
+<ul>
+<li>淘宝: tengine</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+</li>
+</ol>
+<h3 id="12-正向反向代理">1.2 正向/反向代理</h3>
+<ol>
+<li>
+<p>正向代理</p>
+<blockquote>
+<p>正向代理是位于客户端和原始服务器之间的服务器，为了能够从原始服务器获取请求的内容，客户端需要将请求发送给代理服务器，然后再由代理服务器将请求转发给原始服务器，原始服务器接受到代理服务器的请求并处理，然后将处理好的数据转发给代理服务器，之后再由代理服务器转发发给客户端，完成整个请求过程。</p>
+<p><strong>正向代理的典型用途就是为在防火墙内的局域网客户端提供访问Internet的途径</strong>, 比如:</p>
+<ul>
+<li>
+<p>学校的局域网</p>
+</li>
+<li>
+<p>单位局域网访问外部资源</p>
+</li>
+</ul>
+</blockquote>
+</li>
+</ol>
+<p><figure 
+	>
+	<a href="https://gitee.com/txt1994/images/raw/master/img/nginx/051157002507977.jpg" >
+		<img src="https://gitee.com/txt1994/images/raw/master/img/nginx/051157002507977.jpg"
+			
+			
+			
+			loading="lazy"
+			>
+	</a>
+	
+</figure></p>
+<p>正向代理服务器是为用户服务的</p>
+<ol start="2">
+<li>
+<p>反向代理</p>
+<blockquote>
+<p>反向代理方式是指代理原始服务器来接受来自Internet的链接请求，然后将请求转发给内部网络上的原始服务器，并将从原始服务器上得到的结果转发给Internet上请求数据的客户端。那么顾名思义，反向代理就是位于Internet和原始服务器之间的服务器，对于客户端来说就表现为一台服务器，客户端所发送的请求都是直接发送给反向代理服务器，然后由反向代理服务器统一调配。</p>
+</blockquote>
+<p><figure 
+	>
+	<a href="https://gitee.com/txt1994/images/raw/master/img/nginx/1.png" >
+		<img src="https://gitee.com/txt1994/images/raw/master/img/nginx/1.png"
+			
+			
+			
+			loading="lazy"
+			>
+	</a>
+	
+</figure></p>
+<p><figure 
+	>
+	<a href="https://gitee.com/txt1994/images/raw/master/img/nginx/2.png" >
+		<img src="https://gitee.com/txt1994/images/raw/master/img/nginx/2.png"
+			
+			
+			
+			loading="lazy"
+			>
+	</a>
+	
+</figure></p>
+<p><figure 
+	>
+	<a href="https://gitee.com/txt1994/images/raw/master/img/nginx/3.png" >
+		<img src="https://gitee.com/txt1994/images/raw/master/img/nginx/3.png"
+			
+			
+			
+			loading="lazy"
+			>
+	</a>
+	
+</figure></p>
+<p><figure 
+	>
+	<a href="https://gitee.com/txt1994/images/raw/master/img/nginx/4.png" >
+		<img src="https://gitee.com/txt1994/images/raw/master/img/nginx/4.png"
+			
+			
+			
+			loading="lazy"
+			>
+	</a>
+	
+</figure></p>
+</li>
+<li>
+<p>客户端给服务器发送请求, 连接服务器, 用户不知道服务器地址, 只有反向代理服务器的地址是公开的</p>
+</li>
+<li>
+<p>请求直接发给反向代理服务器</p>
+</li>
+<li>
+<p>反向代理服务器将请求转发给后边的web服务器</p>
+<ul>
+<li>web服务器 N 台</li>
+<li>反向代理服务器转发请求会轮询进行</li>
+</ul>
+</li>
+<li>
+<p>web服务器收到请求进行处理, 得到结果</p>
+</li>
+<li>
+<p>web服务器将处理结果发送给反向代理服务器</p>
+</li>
+<li>
+<p>反向代理服务器将拿到的结果转发给客户端</p>
+</li>
+</ol>
+<h3 id="13-域名和ip">1.3 域名和IP</h3>
+<ol>
+<li>什么是域名？
+<ul>
+<li><a class="link" href="https://www.baidu.com"  target="_blank" rel="noopener"
+    >https://www.baidu.com</a></li>
+<li><a class="link" href="https://www.jd.com"  target="_blank" rel="noopener"
+    >https://www.jd.com</a></li>
+<li><a class="link" href="https://taobao.com"  target="_blank" rel="noopener"
+    >https://taobao.com</a></li>
+</ul>
+</li>
+<li>什么是IP地址？
+<ul>
+<li>点分十进制的字符串
+<ul>
+<li>11.22.34.45</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>域名和IP地址的关系？
+<ul>
+<li>域名绑定IP
+<ul>
+<li>一个域名只能绑定一个IP</li>
+<li>一个IP地址被多个域名绑定</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="2-nginx-安装和配置">2. Nginx 安装和配置</h2>
+<h3 id="21-安装">2.1 安装</h3>
+<p>切换到<code>/usr/local/src</code>目录</p>
+<ol>
+<li>
+<p>下载</p>
+<blockquote>
+<ol>
+<li>官方地址: <a class="link" href="http://nginx.org/en/download.html"  target="_blank" rel="noopener"
+    >nginx: download</a>
+<ul>
+<li>下载
+<ul>
+<li><code>wget http://nginx.org/download/nginx-1.19.9.tar.gz</code></li>
+</ul>
+</li>
+<li>解压
+<ul>
+<li><code>tar -zxvf nginx-1.19.9.tar.gz</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Nginx相关依赖:
+<ul>
+<li><code>OpenSSL</code>: <a class="link" href="http://www.openssl.org/"  target="_blank" rel="noopener"
+    >http://www.openssl.org/</a>
+<ul>
+<li>密码库</li>
+<li>使用https进行通信的时候使用</li>
+<li>下载
+<ul>
+<li><code>git clone https://github.com.cnpmjs.org/openssl/openssl.git</code></li>
+</ul>
+</li>
+<li>安装
+<ul>
+<li><code>cd openssl</code></li>
+<li>./Configure</li>
+<li>make</li>
+<li>make install</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>ZLib</code>下载: <a class="link" href="http://www.zlib.net/"  target="_blank" rel="noopener"
+    >http://www.zlib.net/</a>
+<ul>
+<li>数据压缩</li>
+<li>下载
+<ul>
+<li><code>wget http://zlib.net/zlib-1.2.11.tar.gz</code></li>
+</ul>
+</li>
+<li>安装:
+<ul>
+<li><code>tar -zxvf zlib-1.2.11.tar.gz</code></li>
+<li><code>cd zlib-1.2.11 </code></li>
+<li>./configure</li>
+<li>make</li>
+<li>sudo make install</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>PCRE</code>下载:  <a class="link" href="http://www.pcre.org/"  target="_blank" rel="noopener"
+    >http://www.pcre.org/</a>
+<ul>
+<li>解析正则表达式</li>
+<li>下载
+<ul>
+<li><code>wget https://ftp.pcre.org/pub/pcre/pcre-8.45.tar.gz</code></li>
+</ul>
+</li>
+<li>安装
+<ul>
+<li><code>tar -zxvf pcre-8.45.tar.gz</code></li>
+<li><code>cd pcre-8.45</code></li>
+<li>./configure</li>
+<li>make</li>
+<li>sudo make install</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</blockquote>
+</li>
+<li>
+<p>安装</p>
+<ul>
+<li>
+<p>nginx的安装</p>
+<p>进入nginx目录<code>cd nginx-1.19.9</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># nginx工作时候需要依赖三个库</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 三个参数=这三个库对应的源码安装目录</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 根据自己的电脑的库安装包的位置进行指定</span>
+</span></span><span style="display:flex;"><span>./configure --with-openssl<span style="color:#f92672">=</span>/usr/local/src/openssl <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--sbin-path<span style="color:#f92672">=</span>/usr/local/nginx/sbin/nginx <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--with-pcre<span style="color:#f92672">=</span>/usr/local/src/pcre-8.45 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--with-zlib<span style="color:#f92672">=</span>/usr/local/src/zlib-1.2.11 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--conf-path<span style="color:#f92672">=</span>/usr/local/nginx/conf/nginx.conf <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--pid-path<span style="color:#f92672">=</span>/usr/local/nginx/conf/nginx.pid <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--lock-path<span style="color:#f92672">=</span>/usr/local/nginx/conf/nginx.lock <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--with-http_gzip_static_module <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--with-http_stub_status_module <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--with-file-aio <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--with-http_realip_module <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--with-http_ssl_module <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--with-ipv6
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>make -j2
+</span></span><span style="display:flex;"><span>sudo make install
+</span></span></code></pre></div></li>
+</ul>
+</li>
+</ol>
+<p><figure 
+	>
+	<a href="https://gitee.com/txt1994/images/raw/master/img/nginx/assets/1539658551107.png" >
+		<img src="https://gitee.com/txt1994/images/raw/master/img/nginx/assets/1539658551107.png"
+			
+			
+			
+			loading="lazy"
+			>
+	</a>
+	
+</figure></p>
+<ol start="3">
+<li>
+<p>Nginx 相关的指令</p>
+<ul>
+<li>
+<p>Nginx的默认安装目录</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>/usr/local/nginx
+</span></span><span style="display:flex;"><span> conf -&gt; 存储配置文件的目录
+</span></span><span style="display:flex;"><span> html -&gt; 默认的存储网站<span style="color:#f92672">(</span>服务器<span style="color:#f92672">)</span>静态资源的目录 <span style="color:#f92672">[</span>图片, html, js, css<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span> logs -&gt; 存储log日志
+</span></span><span style="display:flex;"><span> sbin -&gt; 启动nginx的可执行程序
+</span></span></code></pre></div></li>
+<li>
+<p>Nginx可执行程序的路径</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>/usr/local/nginx/sbin/nginx
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 快速启动的方式</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 1. 将/usr/local/nginx/sbin/添加到环境变量PATH中</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 2. /usr/local/nginx/sbin/nginx创建软连接, 放到PATH对应的路径中, 比如: /usr/bin</span>
+</span></span><span style="display:flex;"><span>ln -s /usr/local/nginx/sbin/nginx /usr/bin/nginx
+</span></span></code></pre></div></li>
+<li>
+<p>启动Nginx - 需要管理器权限</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># 假设软连接已经创建完毕</span>
+</span></span><span style="display:flex;"><span>sudo nginx <span style="color:#75715e"># 启动</span>
+</span></span></code></pre></div></li>
+<li>
+<p>关闭Nginx</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># 第一种, 马上关闭</span>
+</span></span><span style="display:flex;"><span>sudo nginx -s stop
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 第二种, 等nginx作为当前操作之后关闭</span>
+</span></span><span style="display:flex;"><span>sudo nginx -s quit
+</span></span></code></pre></div></li>
+<li>
+<p>重新加载Nginx</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo nginx -s reload  <span style="color:#75715e"># 修改了nginx的配置文件之后, 需要执行该命令</span>
+</span></span></code></pre></div></li>
+<li>
+<p>测试是否安装成功</p>
+<ul>
+<li>知道nginx对应的主机的IP地址 - &gt; 192.168.1.100</li>
+<li>在浏览器中访问该IP地址
+<ul>
+<li>看到一个welcom nginx的欢迎界面</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="22-配置">2.2 配置</h3>
+<ol>
+<li>
+<p>Nginx配置文件的位置</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>/usr/local/nginx/conf/nginx.conf
+</span></span></code></pre></div></li>
+<li>
+<p>Nginx配置文件的组织格式</p>
+<p><figure 
+	>
+	<a href="https://gitee.com/txt1994/images/raw/master/img/nginx/5.png" >
+		<img src="https://gitee.com/txt1994/images/raw/master/img/nginx/5.png"
+			
+			
+			
+			loading="lazy"
+			>
+	</a>
+	
+</figure></p>
+<ul>
+<li>http -&gt; 模块, http相关的通信设置
+<ul>
+<li>server模块 -&gt; 每个server对应的是一台web服务器
+<ul>
+<li>location 模块
+<ul>
+<li>处理的是客户端的请求</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>mail -&gt; 模块, 处理邮件相关的动作</li>
+</ul>
+</li>
+<li>
+<p>常用配置项介绍</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-nginx" data-lang="nginx"><span style="display:flex;"><span><span style="color:#66d9ef">user</span>  <span style="color:#e6db74">nobody</span>; <span style="color:#75715e"># 启动之后的worker进程属于谁
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">-</span> <span style="color:#e6db74">错误提示:</span> <span style="color:#e6db74">nginx操作xxx文件时候失败,</span> <span style="color:#e6db74">原因:</span> <span style="color:#e6db74">Permission</span> <span style="color:#e6db74">denied</span>  
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">-</span> <span style="color:#e6db74">将nobody</span> <span style="color:#e6db74">-&gt;</span> <span style="color:#e6db74">root</span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">worker_processes</span>  <span style="color:#ae81ff">1</span>; <span style="color:#75715e"># 设置worker进程的个数, 最大 == cpu的核数 (推荐)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">error_log</span>  <span style="color:#e6db74">logs/error.log</span>; <span style="color:#75715e"># 错误日志, /usr/local/nginx
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">pid</span>        <span style="color:#e6db74">logs/nginx.pid</span>; <span style="color:#75715e"># pid文件, 里边是nginx的进程ID
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"># nginx的事件处理
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">events</span> {
+</span></span><span style="display:flex;"><span> 	<span style="color:#f92672">use</span> <span style="color:#e6db74">epoll</span>;	<span style="color:#75715e"># 多路IO转接模型使用epoll
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span> 	<span style="color:#f92672">worker_connections</span>  <span style="color:#ae81ff">1024</span>;	<span style="color:#f92672">//</span> <span style="color:#e6db74">每个工作的进程的最大连接数</span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">http-&gt;server</span> <span style="color:#e6db74">-&gt;</span> <span style="color:#e6db74">每个server模块可以看做一台web服务器</span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">server</span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">listen</span>       <span style="color:#ae81ff">80</span>;  <span style="color:#75715e"># web服务器监听的端口, http协议的默认端口
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">server_name</span>  <span style="color:#e6db74">localhost</span>; <span style="color:#75715e"># 对应一个域名, 客户端通过该域名访问服务器
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">charset</span> <span style="color:#e6db74">utf8</span>; 	<span style="color:#75715e"># 字符串编码
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">location</span> {	<span style="color:#f92672">//</span> <span style="color:#e6db74">模块,</span> <span style="color:#e6db74">处理客户端的请求</span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 客户端 (浏览器), 请求:
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#e6db74">http://192.168.10.100:80/login.html</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 服务器处理客户端的请求
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#e6db74">服务器要处理的指令如何从url中提取?</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">-</span> <span style="color:#e6db74">去掉协议:</span> <span style="color:#e6db74">http</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">-</span> <span style="color:#e6db74">去掉IP/域名+端口:</span> 192.168.10.100:<span style="color:#ae81ff">80</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">-</span> <span style="color:#e6db74">最后如果是文件名,</span> <span style="color:#e6db74">去掉该名字:</span> <span style="color:#e6db74">login.html</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">-</span> <span style="color:#e6db74">剩下的:</span> <span style="color:#e6db74">/</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">服务器要处理的location指令:</span> 
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">location</span> <span style="color:#e6db74">/</span>
+</span></span><span style="display:flex;"><span>  {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">处理动作</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">}</span>
+</span></span></code></pre></div></li>
+</ol>
+<h2 id="3-nginx的使用">3. Nginx的使用</h2>
+<h3 id="31-部署静态网页">3.1 部署静态网页</h3>
+<ol>
+<li>
+<p>静态网页存储目录</p>
+<ul>
+<li>
+<p>默认的存储目录:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>/usr/local/nginx/html
+</span></span></code></pre></div></li>
+<li>
+<p>自己创建新的目录:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>应该在 /usr/local/nginx/
+</span></span><span style="display:flex;"><span>mkdir /usr/local/nginx/mydir
+</span></span></code></pre></div></li>
+</ul>
+</li>
+<li>
+<p>练习</p>
+<blockquote>
+<p>在Nginx服务器上进行网页部署, 实现如下访问:</p>
+<p>在/usr/local/nginx/创建新的目录, yundisk用来存储静态网页</p>
+</blockquote>
+<ul>
+<li>
+<p>访问地址: <a class="link" href="http://192.168.80.254/login.html"  target="_blank" rel="noopener"
+    >http://192.168.80.254/login.html</a></p>
+<ul>
+<li>
+<p>login.html放到什么位置?</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>/ -&gt; 服务器的资源根目录, /usr/local/nginx/yundisk
+</span></span><span style="display:flex;"><span>login.htm-&gt; 放到yundisk中
+</span></span></code></pre></div></li>
+<li>
+<p>服务器要处理的动作</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-nginx" data-lang="nginx"><span style="display:flex;"><span><span style="color:#75715e"># 对应这个请求服务器要添加一个location
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">location</span> <span style="color:#e6db74">指令(/)</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 找一个静态网页
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">root</span> <span style="color:#e6db74">yundisk</span>;  <span style="color:#75715e"># 相对于/usr/local/nginx/来找
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e"># 客户端的请求是一个目录, nginx需要找一默认显示的网页
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">index</span> <span style="color:#e6db74">index.html</span> <span style="color:#e6db74">index.htm</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 配置之后重启nginx
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">sudo</span> <span style="color:#e6db74">nginx</span> <span style="color:#e6db74">-s</span> <span style="color:#e6db74">reload</span>
+</span></span></code></pre></div></li>
+</ul>
+</li>
+<li>
+<p>访问地址: <a class="link" href="http://192.168.80.254/hello/reg.html"  target="_blank" rel="noopener"
+    >http://192.168.80.254/hello/reg.html</a></p>
+<ul>
+<li>
+<p>hello是什么?</p>
+<ul>
+<li>目录</li>
+</ul>
+</li>
+<li>
+<p>reg.html放到哪儿?</p>
+<ul>
+<li>hello目录中</li>
+</ul>
+</li>
+<li>
+<p>如何添加location</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-nginx" data-lang="nginx"><span style="display:flex;"><span><span style="color:#66d9ef">location</span> <span style="color:#e6db74">/hello/</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">root</span> <span style="color:#e6db74">yundisk</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">index</span> <span style="color:#e6db74">xx.html</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></li>
+</ul>
+</li>
+<li>
+<p>访问地址: <a class="link" href="http://192.168.80.254/upload/"  target="_blank" rel="noopener"
+    >http://192.168.80.254/upload/</a> 浏览器显示upload.html</p>
+<ul>
+<li>
+<p>直接访问一个目录, 得到一默认网页</p>
+<ul>
+<li>
+<p>upload是一个目录, uplaod.html应该再upload目录中</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-nginx" data-lang="nginx"><span style="display:flex;"><span><span style="color:#66d9ef">location</span> <span style="color:#e6db74">/upload/</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">root</span> <span style="color:#e6db74">yundisk</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">index</span> <span style="color:#e6db74">upload.html</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="32-反向代理和负载均衡">3.2 反向代理和负载均衡</h3>
+<blockquote>
+<p>反向代理和负载均衡是两码事儿</p>
+</blockquote>
+<p><figure 
+	>
+	<a href="https://gitee.com/txt1994/images/raw/master/img/nginx/8.png" >
+		<img src="https://gitee.com/txt1994/images/raw/master/img/nginx/8.png"
+			
+			
+			
+			loading="lazy"
+			alt="1527415078314">
+	</a>
+	
+	<figcaption>1527415078314</figcaption>
+	
+</figure></p>
+<p>准备工作:</p>
+<blockquote>
+<ol>
+<li>需要客户端 - 1个
+<ul>
+<li>Window中的浏览器作为客户端</li>
+</ul>
+</li>
+<li>反向代理服务器 -&gt; 1个
+<ul>
+<li>window作为反向代理服务器</li>
+</ul>
+</li>
+<li>web服务器 -&gt; 2个
+<ul>
+<li>ubuntu - robin: 192.168.247.135</li>
+<li>ubuntu - luffy : 192.168.26.250</li>
+</ul>
+</li>
+</ol>
+</blockquote>
+<ol>
+<li>
+<p>反向代理设置</p>
+<p><figure 
+	>
+	<a href="https://gitee.com/txt1994/images/raw/master/img/nginx/assets/1539680213601.png" >
+		<img src="https://gitee.com/txt1994/images/raw/master/img/nginx/assets/1539680213601.png"
+			
+			
+			
+			loading="lazy"
+			alt="1539680213601">
+	</a>
+	
+	<figcaption>1539680213601</figcaption>
+	
+</figure></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-nginx" data-lang="nginx"><span style="display:flex;"><span><span style="color:#66d9ef">找window上对应的nginx的配置文件</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">-</span> <span style="color:#e6db74">conf/nginx.conf</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 代理几台服务器就需要几个server模块
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e"># 客户端访问的url: http://192.168.1.100/login.html
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#e6db74">server</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">listen</span>       <span style="color:#ae81ff">80</span>;        <span style="color:#75715e"># 客户端访问反向代理服务器, 代理服务器监听的端口
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#f92672">server_name</span>  <span style="color:#e6db74">ubuntu.com</span>; <span style="color:#75715e"># 客户端访问反向代理服务器, 需要一个域名
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#f92672">location</span> <span style="color:#e6db74">/</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e"># 反向代理服务器转发指令, http:// 固定
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#f92672">proxy_pass</span> <span style="color:#e6db74">http://robin.test.com</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 添加一个代理模块
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">upstream</span> <span style="color:#e6db74">robin.test.com</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">server</span> 192.168.247.135:<span style="color:#ae81ff">80</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># luffy
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">server</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">listen</span>       <span style="color:#ae81ff">80</span>;        <span style="color:#75715e"># 客户端访问反向代理服务器, 代理服务器监听的端口
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#f92672">server_name</span>  <span style="color:#e6db74">hello.com</span>; <span style="color:#75715e"># 客户端访问反向代理服务器, 需要一个域名
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#f92672">location</span> <span style="color:#e6db74">/</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e"># 反向代理服务器转发指令, http:// 固定
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#f92672">proxy_pass</span> <span style="color:#e6db74">http://luffy.test.com</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 添加一个代理模块
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">upstream</span> <span style="color:#e6db74">luffy.test.com</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">server</span> 192.168.26.250:<span style="color:#ae81ff">80</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">}</span>
+</span></span></code></pre></div></li>
+<li>
+<p>负载均衡设置</p>
+<p><figure 
+	>
+	<a href="https://gitee.com/txt1994/images/raw/master/img/nginx/assets/1539681085862.png" >
+		<img src="https://gitee.com/txt1994/images/raw/master/img/nginx/assets/1539681085862.png"
+			
+			
+			
+			loading="lazy"
+			alt="1539681085862">
+	</a>
+	
+	<figcaption>1539681085862</figcaption>
+	
+</figure></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-nginx" data-lang="nginx"><span style="display:flex;"><span>    <span style="color:#66d9ef">server</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">listen</span>       <span style="color:#ae81ff">80</span>;         <span style="color:#75715e"># 客户端访问反向代理服务器, 代理服务器监听的端口
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#f92672">server_name</span>  <span style="color:#e6db74">localhost</span>; <span style="color:#75715e"># 客户端访问反向代理服务器, 需要一个域名
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#f92672">location</span> <span style="color:#e6db74">/</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e"># 反向代理服务器转发指令, http:// 固定的头
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#f92672">proxy_pass</span> <span style="color:#e6db74">http://linux.com</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">location</span> <span style="color:#e6db74">/hello/</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e"># 反向代理服务器转发指令, http:// 固定的头
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#f92672">proxy_pass</span> <span style="color:#e6db74">http://linux.com</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    	<span style="color:#f92672">location</span> <span style="color:#e6db74">/upload/</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e"># 反向代理服务器转发指令, http:// 固定的头
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#f92672">proxy_pass</span> <span style="color:#e6db74">http://linux.com</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 添加一个代理模块
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">upstream</span> <span style="color:#e6db74">linux.com</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">server</span> 192.168.247.135:<span style="color:#ae81ff">80</span> <span style="color:#e6db74">weight=1</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">server</span> 192.168.26.250:<span style="color:#ae81ff">80</span> <span style="color:#e6db74">weight=3</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## =====================================
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">web服务器需要做什么?</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 192.168.247.135
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#e6db74">location</span> <span style="color:#e6db74">/</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">root</span> <span style="color:#e6db74">xxx</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">index</span> <span style="color:#e6db74">xxx</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">location</span> <span style="color:#e6db74">/hello/</span> 
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">root</span> <span style="color:#e6db74">xx</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">index</span> <span style="color:#e6db74">xxx</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">location</span> <span style="color:#e6db74">/upload/</span> 
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">root</span> <span style="color:#e6db74">xxx</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">index</span> <span style="color:#e6db74">xx</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 192.168.26.250
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">location</span> <span style="color:#e6db74">/</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">root</span> <span style="color:#e6db74">xxx</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">index</span> <span style="color:#e6db74">xxx</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">location</span> <span style="color:#e6db74">/hello/</span> 
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">root</span> <span style="color:#e6db74">xx</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">index</span> <span style="color:#e6db74">xxx</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">location</span> <span style="color:#e6db74">/upload/</span> 
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">root</span> <span style="color:#e6db74">xxx</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">index</span> <span style="color:#e6db74">xx</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></li>
+</ol>
+<h2 id="课外知识导读">课外知识导读</h2>
+<h3 id="1-url和uri">1. URL和URI</h3>
+<!-- raw HTML omitted -->
+<ol>
+<li>
+<p>概念:</p>
+<blockquote>
+<ul>
+<li>
+<p>URL（Uniform Resource  Locator）: 统一资源定位符</p>
+</li>
+<li>
+<p>表示资源位置的字符串</p>
+<ul>
+<li>基本格式: &ldquo;协议://IP地址/路径和文件名&rdquo;
+<ul>
+<li><a class="link" href="ftp://ftp.is.co.za/rfc/rfc1808.txt" >ftp://ftp.is.co.za/rfc/rfc1808.txt</a></li>
+<li><a class="link" href="http://www.ietf.org/rfc/rfc2396.txt"  target="_blank" rel="noopener"
+    >http://www.ietf.org/rfc/rfc2396.txt</a></li>
+<li><a class="link" href="telnet://192.0.2.16:80/" >telnet://192.0.2.16:80/</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>URN（Uniform Resource  Name）: 统一资源名称</p>
+<ul>
+<li>P2P下载中使用的磁力链接</li>
+</ul>
+</li>
+<li>
+<p>URI（Uniform Resource  Identifier）: 统一资源标识符</p>
+<ul>
+<li>是一个紧凑的字符串用来标示抽象或物理资源, <strong>URL是URI的一种</strong></li>
+<li>让URI能成为URL的当然就是那个“访问机制”，“网络位置”。e.g. <code>http://</code> or <code>ftp://</code>。
+<ul>
+<li>files.hp.com</li>
+<li><a class="link" href="tel:&#43;1-816-555-1212" >tel:+1-816-555-1212</a></li>
+<li><a class="link" href="ftp://ftp.is.co.za/rfc/rfc1808.txt" >ftp://ftp.is.co.za/rfc/rfc1808.txt</a>               （also a URL）</li>
+<li><a class="link" href="http://www.ietf.org/rfc/rfc2396.txt"  target="_blank" rel="noopener"
+    >http://www.ietf.org/rfc/rfc2396.txt</a>         （also a URL）</li>
+<li><a class="link" href="telnet://192.0.2.16:80/" >telnet://192.0.2.16:80/</a>                              （also a URL）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+</li>
+<li>
+<p>经验式理解:</p>
+<p><figure 
+	>
+	<a href="https://gitee.com/txt1994/images/raw/master/img/nginx/7.png" >
+		<img src="https://gitee.com/txt1994/images/raw/master/img/nginx/7.png"
+			
+			
+			
+			loading="lazy"
+			>
+	</a>
+	
+</figure></p>
+<p>从包含关系上说: URI包含URL</p>
+<p>字符串长度上说: URL包含URI</p>
+<p>UIRI可以没有协议, 没有地址(IP/域名)</p>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>URL</th>
+<th>红色字体部分+绿色字体部分</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URI</td>
+<td>绿色字体部分</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2-dns解析过程">2. DNS解析过程</h3>
+<p><figure 
+	>
+	<a href="https://gitee.com/txt1994/images/raw/master/img/nginx/2033581_1370929843HFAO.png" >
+		<img src="https://gitee.com/txt1994/images/raw/master/img/nginx/2033581_1370929843HFAO.png"
+			
+			
+			
+			loading="lazy"
+			alt="wps_clip_image-14256">
+	</a>
+	
+	<figcaption>wps_clip_image-14256</figcaption>
+	
+</figure></p>
+<ol>
+<li>
+<p>DNS解析的过程</p>
+<blockquote>
+<ol>
+<li>在浏览器中输入www.magedu.com域名，操作系统会先检查自己本地的hosts文件是否有这个网址映射关系，如果有，就先调用这个IP地址映射，完成域名解析。</li>
+<li>如果hosts里没有这个域名的映射，则查找本地DNS解析器缓存，是否有这个网址映射关系，如果有，直接返回，完成域名解析。
+<ul>
+<li>Windows和Linux系统都会在本地缓存dns解析的记录，提高速度。</li>
+</ul>
+</li>
+<li>如果hosts与本地DNS解析器缓存都没有相应的网址映射关系，首先会找<code>TCP/IP</code>参数中设置的首选DNS服务器，在此我们叫它本地DNS服务器，此服务器收到查询时，如果要查询的域名，包含在本地配置区域资源中，则返回解析结果给客户机，完成域名解析，此解析具有权威性。</li>
+<li>如果要查询的域名，不由本地DNS服务器区域解析，但该DNS服务器已缓存了此网址映射关系，则调用这个IP地址映射，完成域名解析，此解析不具有权威性。</li>
+<li>如果本地DNS服务器本地区域文件与缓存解析都失效，则根据本地DNS服务器的设置（没有设置转发器）进行查询，如果未用转发模式，本地DNS就把请求发至13台根DNS，根DNS服务器收到请求后会判断这个域名(.com)是谁来授权管理，并会返回一个负责该顶级域名服务器的一个IP。本地DNS服务器收到IP信息后，将会联系负责 .com域的这台服务器。这台负责 .com域的服务器收到请求后，如果自己无法解析，它就会找一个管理 .com域的下一级DNS服务器地址(magedu.com)给本地DNS服务器。当本地DNS服务器收到这个地址后，就会找magedu.com域服务器，重复上面的动作进行查询，直至找到www.magedu.com主机。</li>
+<li>如果用的是转发模式（设置转发器），此DNS服务器就会把请求转发至上一级ISP DNS服务器，由上一级服务器进行解析，上一级服务器如果不能解析，或找根DNS或把转请求转至上上级，以此循环。不管是本地DNS服务器用是是转发，还是根提示，最后都是把结果返回给本地DNS服务器，由此DNS服务器再返回给客户机。</li>
+</ol>
+</blockquote>
+</li>
+<li>
+<p>域名解析服务器</p>
+<blockquote>
+<ul>
+<li>
+<p>Pod DNS+:</p>
+<ul>
+<li>首选：119.29.29.29</li>
+<li>备选：182.254.116.116</li>
+</ul>
+</li>
+<li>
+<p>114DNS:</p>
+<ul>
+<li>首选：114.114.114.114</li>
+<li>备选：114.114.114.115</li>
+</ul>
+</li>
+<li>
+<p>阿里 AliDNS:</p>
+<ul>
+<li>
+<p>首选：223.5.5.5</p>
+</li>
+<li>
+<p>备选：223.6.6.6</p>
+</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+</li>
+<li>
+<p>hosts文件</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># 存储的是域名和IP的对应关系</span>
+</span></span><span style="display:flex;"><span>-windows目录: <span style="color:#e6db74">&#34;C:\Windows\System32\drivers\etc\hosts&#34;</span>
+</span></span></code></pre></div><h2 id="复习">复习</h2>
+<p>redis</p>
+<ol>
+<li>
+<p>是什么?</p>
+<ul>
+<li>非关系型数据库 - nosql
+<ul>
+<li>数据存储在内存里边</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>能干什么?</p>
+<ul>
+<li>提高程序效率</li>
+<li>程序中频繁访问的数据, 可以存储到redis中</li>
+</ul>
+</li>
+<li>
+<p>我们需要干什么?</p>
+<ul>
+<li>
+<p>会安装</p>
+</li>
+<li>
+<p>掌握启动redis服务器和客户端的启动命令</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># 服务器</span>
+</span></span><span style="display:flex;"><span>redis-server <span style="color:#f92672">(</span>配置文件名<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 客户端</span>
+</span></span><span style="display:flex;"><span>redis-cli <span style="color:#f92672">(</span>-h redis服务器IP -p 端口<span style="color:#f92672">)</span>
+</span></span></code></pre></div></li>
+<li>
+<p>redis中支持的数据类型 - value</p>
+<ul>
+<li>
+<p>键值对方式存储数据</p>
+<ul>
+<li>key - 字符串</li>
+<li>value
+<ul>
+<li>字符串 - string</li>
+<li>列表 - list</li>
+<li>集合 - set</li>
+<li>排序集合 - sortedSet</li>
+<li>哈希 - hash</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>关于服务器使用的配置文件的修改</p>
+</li>
+<li>
+<p>redis中持久化</p>
+<ul>
+<li>rdb</li>
+<li>aof</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>能够在程序中操作redis服务器</p>
+<ul>
+<li>需要使用以下函数接口</li>
+<li>官方地址 - &gt; 客户端 -&gt; 选择语言</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/nginx/">nginx</a>
+        
+    </section>
+
+
+    </footer>
+
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2023 My Blog
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.5.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+
+            </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">Table of contents</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-一些基本概念">1. 一些基本概念</a>
+      <ul>
+        <li><a href="#12-正向反向代理">1.2 正向/反向代理</a></li>
+        <li><a href="#13-域名和ip">1.3 域名和IP</a></li>
+      </ul>
+    </li>
+    <li><a href="#2-nginx-安装和配置">2. Nginx 安装和配置</a>
+      <ul>
+        <li><a href="#21-安装">2.1 安装</a></li>
+        <li><a href="#22-配置">2.2 配置</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-nginx的使用">3. Nginx的使用</a>
+      <ul>
+        <li><a href="#31-部署静态网页">3.1 部署静态网页</a></li>
+        <li><a href="#32-反向代理和负载均衡">3.2 反向代理和负载均衡</a></li>
+      </ul>
+    </li>
+    <li><a href="#课外知识导读">课外知识导读</a>
+      <ul>
+        <li><a href="#1-url和uri">1. URL和URI</a></li>
+        <li><a href="#2-dns解析过程">2. DNS解析过程</a></li>
+      </ul>
+    </li>
+    <li><a href="#复习">复习</a></li>
+  </ul>
+</nav>
+                </div>
+            </section>
+        </aside>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

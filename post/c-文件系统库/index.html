@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content=' 此文来源于👉文件系统库 - cppreference.com，并整理。
+库范畴定义 文件：持有数据的文件系统对象，能被写入或读取，或二者皆可。文件拥有名称及属性，属性之一是文件类型： 目录：表现为目录条目的容器的文件，目录条目标识其他文件（其中一些可以是另外的嵌套的目录）。讨论到具体文件时，包含该文件目录条目的目录是其父目录。父目录能以相对路径名 &amp;ldquo;..&amp;rdquo; 表示。 硬链接：关联一个名字到一个既存文件的目录条目。若支持多重硬链接，则文件在最后一个到它的硬链接被移除后才被移除。 符号链接：关联一个名词到一个路径的目录条目，路径可以存在亦可不存在。 常规文件：不是其他文件类型的文件。 文件名：命名一个文件的字符串。容许字符、大小写区别、最大长度以及被禁止名称是实现定义的。名称 &amp;ldquo;.&amp;rdquo; （点）与 &amp;ldquo;..&amp;rdquo; （双点）在库层次拥有特殊含义。 路径：标识一个文件的元素序列。它以可选的 根名 （例如 Windows 上的 &amp;ldquo;C:&amp;rdquo; 或 &amp;ldquo;//server&amp;rdquo; ）开始，后随可选的 根目录 （例如 Unix 上的 &amp;ldquo;/&amp;rdquo; ），后随零或更多个文件名（除了最后一个都必须是目录或到目录的链接）的序列。表示路径的字符串（路径名）的原生格式（如哪些字符被用作分隔符）与字符编码是实现定义的，库提供路径的可移植表示。 绝对路径：无歧义地标识一个文件位置的路径。 规范路径：不包含符号链接、 &amp;ldquo;.&amp;rdquo; 或 &amp;ldquo;..&amp;rdquo; 元素的绝对路径。 相对路径：标识相对于文件系统中某位置的文件位置的路径。特殊路径名 &amp;ldquo;.&amp;rdquo; （点，“当前目录”）和 &amp;ldquo;..&amp;rdquo; （双点、“父目录”）是相对路径。 类 定义于头文件 &amp;lt;filesystem&amp;gt; 定义于命名空间 std::filesystem path(C&#43;&#43;17) 表示路径 (类) filesystem_error(C&#43;&#43;17) 文件系统错误时抛出的异常 (类) directory_entry(C&#43;&#43;17) 目录条目 (类) directory_iterator(C&#43;&#43;17) 指向目录内容的迭代器 (类) recursive_directory_iterator(C&#43;&#43;17) 指向一个目录及其子目录的内容的迭代器 (类) file_status(C&#43;&#43;17) 表示文件类型及权限 (类) space_info(C&#43;&#43;17) 关于文件系统上空闲及可用空间的信息 (类) file_type(C&#43;&#43;17) 文件的类型 (枚举) perms(C&#43;&#43;17) 标识文件系统权限 (枚举) perm_options(C&#43;&#43;17) 指定权限操作的语义 (枚举) copy_options(C&#43;&#43;17) 指定复制操作的语义 (枚举) directory_options(C&#43;&#43;17) 用于迭代目录内容的选项 (枚举) file_time_type(C&#43;&#43;17) 表示文件时间值 (typedef) 非成员函数 定义于头文件 &amp;lt;filesystem&amp;gt; 定义于命名空间 std::filesystem absolute(C&#43;&#43;17) 组成一个绝对路径 (函数) canonicalweakly_canonical(C&#43;&#43;17) 组成一个规范路径 (函数) relativeproximate(C&#43;&#43;17) 组成一个相对路径 (函数) copy(C&#43;&#43;17) 复制文件或目录 (函数) copy_file(C&#43;&#43;17) 复制文件内容 (函数) copy_symlink(C&#43;&#43;17) 复制一个符号链接 (函数) create_directory create_directories(C&#43;&#43;17)(C&#43;&#43;17) 创建新目录 (函数) create_hard_link(C&#43;&#43;17) 创建一个硬链接 (函数) create_symlink create_directory_symlink(C&#43;&#43;17)(C&#43;&#43;17) 创建一个符号链接 (函数) current_path(C&#43;&#43;17) 返回或设置当前工作目录 (函数) exists(C&#43;&#43;17) 检查路径是否指代既存的文件系统对象 (函数) equivalent(C&#43;&#43;17) 检查两个路径是否指代同一文件系统对象 (函数) file_size(C&#43;&#43;17) 返回文件的大小 (函数) hard_link_count(C&#43;&#43;17) 返回指代特定文件的硬链接数 (函数) last_write_time(C&#43;&#43;17) 获取或设置最近一次数据修改的时间 (函数) permissions(C&#43;&#43;17) 修改文件访问权限 (函数) read_symlink(C&#43;&#43;17) 获得符号链接的目标 (函数) remove remove_all(C&#43;&#43;17)(C&#43;&#43;17) 移除一个文件或空目录 移除一个文件或递归地移除一个目录及其所有内容 (函数) rename(C&#43;&#43;17) 移动或重命名一个文件或目录 (函数) resize_file(C&#43;&#43;17) 以截断或填充零更改一个常规文件的大小 (函数) space(C&#43;&#43;17) 确定文件系统上的可用空闲空间 (函数) status symlink_status(C&#43;&#43;17)(C&#43;&#43;17) 确定文件属性 确定文件属性，检查符号链接目标 (函数) temp_directory_path(C&#43;&#43;17) 返回一个适用于临时文件的目录 (函数) 文件类型 is_block_file(C&#43;&#43;17) 检查给定的路径是否表示块设备 (函数) is_character_file(C&#43;&#43;17) 检查给定的路径是否表示字符设备 (函数) is_directory(C&#43;&#43;17) 检查给定的路径是否表示一个目录 (函数) is_empty(C&#43;&#43;17) 检查给定的路径是否表示一个空文件或空目录 (函数) is_fifo(C&#43;&#43;17) 检查给定的路径是否表示一个命名管道 (函数) is_other(C&#43;&#43;17) 检查参数是否表示一个其他文件 (函数) is_regular_file(C&#43;&#43;17) 检查参数是否表示一个常规文件 (函数) is_socket(C&#43;&#43;17) 检查参数是否表示一个具名 IPC 套接字 (函数) is_symlink(C&#43;&#43;17) 检查参数是否表示一个符号链接 (函数) status_known(C&#43;&#43;17) 检查参数是否表示一个符号链接 (函数) '><title>C&#43;&#43;文件系统库</title>
+
+<link rel='canonical' href='https://okokfun.github.io/post/c-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%BA%93/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='C&#43;&#43;文件系统库'>
+<meta property='og:description' content=' 此文来源于👉文件系统库 - cppreference.com，并整理。
+库范畴定义 文件：持有数据的文件系统对象，能被写入或读取，或二者皆可。文件拥有名称及属性，属性之一是文件类型： 目录：表现为目录条目的容器的文件，目录条目标识其他文件（其中一些可以是另外的嵌套的目录）。讨论到具体文件时，包含该文件目录条目的目录是其父目录。父目录能以相对路径名 &amp;ldquo;..&amp;rdquo; 表示。 硬链接：关联一个名字到一个既存文件的目录条目。若支持多重硬链接，则文件在最后一个到它的硬链接被移除后才被移除。 符号链接：关联一个名词到一个路径的目录条目，路径可以存在亦可不存在。 常规文件：不是其他文件类型的文件。 文件名：命名一个文件的字符串。容许字符、大小写区别、最大长度以及被禁止名称是实现定义的。名称 &amp;ldquo;.&amp;rdquo; （点）与 &amp;ldquo;..&amp;rdquo; （双点）在库层次拥有特殊含义。 路径：标识一个文件的元素序列。它以可选的 根名 （例如 Windows 上的 &amp;ldquo;C:&amp;rdquo; 或 &amp;ldquo;//server&amp;rdquo; ）开始，后随可选的 根目录 （例如 Unix 上的 &amp;ldquo;/&amp;rdquo; ），后随零或更多个文件名（除了最后一个都必须是目录或到目录的链接）的序列。表示路径的字符串（路径名）的原生格式（如哪些字符被用作分隔符）与字符编码是实现定义的，库提供路径的可移植表示。 绝对路径：无歧义地标识一个文件位置的路径。 规范路径：不包含符号链接、 &amp;ldquo;.&amp;rdquo; 或 &amp;ldquo;..&amp;rdquo; 元素的绝对路径。 相对路径：标识相对于文件系统中某位置的文件位置的路径。特殊路径名 &amp;ldquo;.&amp;rdquo; （点，“当前目录”）和 &amp;ldquo;..&amp;rdquo; （双点、“父目录”）是相对路径。 类 定义于头文件 &amp;lt;filesystem&amp;gt; 定义于命名空间 std::filesystem path(C&#43;&#43;17) 表示路径 (类) filesystem_error(C&#43;&#43;17) 文件系统错误时抛出的异常 (类) directory_entry(C&#43;&#43;17) 目录条目 (类) directory_iterator(C&#43;&#43;17) 指向目录内容的迭代器 (类) recursive_directory_iterator(C&#43;&#43;17) 指向一个目录及其子目录的内容的迭代器 (类) file_status(C&#43;&#43;17) 表示文件类型及权限 (类) space_info(C&#43;&#43;17) 关于文件系统上空闲及可用空间的信息 (类) file_type(C&#43;&#43;17) 文件的类型 (枚举) perms(C&#43;&#43;17) 标识文件系统权限 (枚举) perm_options(C&#43;&#43;17) 指定权限操作的语义 (枚举) copy_options(C&#43;&#43;17) 指定复制操作的语义 (枚举) directory_options(C&#43;&#43;17) 用于迭代目录内容的选项 (枚举) file_time_type(C&#43;&#43;17) 表示文件时间值 (typedef) 非成员函数 定义于头文件 &amp;lt;filesystem&amp;gt; 定义于命名空间 std::filesystem absolute(C&#43;&#43;17) 组成一个绝对路径 (函数) canonicalweakly_canonical(C&#43;&#43;17) 组成一个规范路径 (函数) relativeproximate(C&#43;&#43;17) 组成一个相对路径 (函数) copy(C&#43;&#43;17) 复制文件或目录 (函数) copy_file(C&#43;&#43;17) 复制文件内容 (函数) copy_symlink(C&#43;&#43;17) 复制一个符号链接 (函数) create_directory create_directories(C&#43;&#43;17)(C&#43;&#43;17) 创建新目录 (函数) create_hard_link(C&#43;&#43;17) 创建一个硬链接 (函数) create_symlink create_directory_symlink(C&#43;&#43;17)(C&#43;&#43;17) 创建一个符号链接 (函数) current_path(C&#43;&#43;17) 返回或设置当前工作目录 (函数) exists(C&#43;&#43;17) 检查路径是否指代既存的文件系统对象 (函数) equivalent(C&#43;&#43;17) 检查两个路径是否指代同一文件系统对象 (函数) file_size(C&#43;&#43;17) 返回文件的大小 (函数) hard_link_count(C&#43;&#43;17) 返回指代特定文件的硬链接数 (函数) last_write_time(C&#43;&#43;17) 获取或设置最近一次数据修改的时间 (函数) permissions(C&#43;&#43;17) 修改文件访问权限 (函数) read_symlink(C&#43;&#43;17) 获得符号链接的目标 (函数) remove remove_all(C&#43;&#43;17)(C&#43;&#43;17) 移除一个文件或空目录 移除一个文件或递归地移除一个目录及其所有内容 (函数) rename(C&#43;&#43;17) 移动或重命名一个文件或目录 (函数) resize_file(C&#43;&#43;17) 以截断或填充零更改一个常规文件的大小 (函数) space(C&#43;&#43;17) 确定文件系统上的可用空闲空间 (函数) status symlink_status(C&#43;&#43;17)(C&#43;&#43;17) 确定文件属性 确定文件属性，检查符号链接目标 (函数) temp_directory_path(C&#43;&#43;17) 返回一个适用于临时文件的目录 (函数) 文件类型 is_block_file(C&#43;&#43;17) 检查给定的路径是否表示块设备 (函数) is_character_file(C&#43;&#43;17) 检查给定的路径是否表示字符设备 (函数) is_directory(C&#43;&#43;17) 检查给定的路径是否表示一个目录 (函数) is_empty(C&#43;&#43;17) 检查给定的路径是否表示一个空文件或空目录 (函数) is_fifo(C&#43;&#43;17) 检查给定的路径是否表示一个命名管道 (函数) is_other(C&#43;&#43;17) 检查参数是否表示一个其他文件 (函数) is_regular_file(C&#43;&#43;17) 检查参数是否表示一个常规文件 (函数) is_socket(C&#43;&#43;17) 检查参数是否表示一个具名 IPC 套接字 (函数) is_symlink(C&#43;&#43;17) 检查参数是否表示一个符号链接 (函数) status_known(C&#43;&#43;17) 检查参数是否表示一个符号链接 (函数) '>
+<meta property='og:url' content='https://okokfun.github.io/post/c-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%BA%93/'>
+<meta property='og:site_name' content='My Blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='C&#43;&#43;' /><meta property='article:tag' content='FileSystem' /><meta property='article:published_time' content='2022-01-16T15:16:11&#43;00:00'/><meta property='article:modified_time' content='2022-01-16T15:16:11&#43;00:00'/>
+<meta name="twitter:title" content="C&#43;&#43;文件系统库">
+<meta name="twitter:description" content=" 此文来源于👉文件系统库 - cppreference.com，并整理。
+库范畴定义 文件：持有数据的文件系统对象，能被写入或读取，或二者皆可。文件拥有名称及属性，属性之一是文件类型： 目录：表现为目录条目的容器的文件，目录条目标识其他文件（其中一些可以是另外的嵌套的目录）。讨论到具体文件时，包含该文件目录条目的目录是其父目录。父目录能以相对路径名 &amp;ldquo;..&amp;rdquo; 表示。 硬链接：关联一个名字到一个既存文件的目录条目。若支持多重硬链接，则文件在最后一个到它的硬链接被移除后才被移除。 符号链接：关联一个名词到一个路径的目录条目，路径可以存在亦可不存在。 常规文件：不是其他文件类型的文件。 文件名：命名一个文件的字符串。容许字符、大小写区别、最大长度以及被禁止名称是实现定义的。名称 &amp;ldquo;.&amp;rdquo; （点）与 &amp;ldquo;..&amp;rdquo; （双点）在库层次拥有特殊含义。 路径：标识一个文件的元素序列。它以可选的 根名 （例如 Windows 上的 &amp;ldquo;C:&amp;rdquo; 或 &amp;ldquo;//server&amp;rdquo; ）开始，后随可选的 根目录 （例如 Unix 上的 &amp;ldquo;/&amp;rdquo; ），后随零或更多个文件名（除了最后一个都必须是目录或到目录的链接）的序列。表示路径的字符串（路径名）的原生格式（如哪些字符被用作分隔符）与字符编码是实现定义的，库提供路径的可移植表示。 绝对路径：无歧义地标识一个文件位置的路径。 规范路径：不包含符号链接、 &amp;ldquo;.&amp;rdquo; 或 &amp;ldquo;..&amp;rdquo; 元素的绝对路径。 相对路径：标识相对于文件系统中某位置的文件位置的路径。特殊路径名 &amp;ldquo;.&amp;rdquo; （点，“当前目录”）和 &amp;ldquo;..&amp;rdquo; （双点、“父目录”）是相对路径。 类 定义于头文件 &amp;lt;filesystem&amp;gt; 定义于命名空间 std::filesystem path(C&#43;&#43;17) 表示路径 (类) filesystem_error(C&#43;&#43;17) 文件系统错误时抛出的异常 (类) directory_entry(C&#43;&#43;17) 目录条目 (类) directory_iterator(C&#43;&#43;17) 指向目录内容的迭代器 (类) recursive_directory_iterator(C&#43;&#43;17) 指向一个目录及其子目录的内容的迭代器 (类) file_status(C&#43;&#43;17) 表示文件类型及权限 (类) space_info(C&#43;&#43;17) 关于文件系统上空闲及可用空间的信息 (类) file_type(C&#43;&#43;17) 文件的类型 (枚举) perms(C&#43;&#43;17) 标识文件系统权限 (枚举) perm_options(C&#43;&#43;17) 指定权限操作的语义 (枚举) copy_options(C&#43;&#43;17) 指定复制操作的语义 (枚举) directory_options(C&#43;&#43;17) 用于迭代目录内容的选项 (枚举) file_time_type(C&#43;&#43;17) 表示文件时间值 (typedef) 非成员函数 定义于头文件 &amp;lt;filesystem&amp;gt; 定义于命名空间 std::filesystem absolute(C&#43;&#43;17) 组成一个绝对路径 (函数) canonicalweakly_canonical(C&#43;&#43;17) 组成一个规范路径 (函数) relativeproximate(C&#43;&#43;17) 组成一个相对路径 (函数) copy(C&#43;&#43;17) 复制文件或目录 (函数) copy_file(C&#43;&#43;17) 复制文件内容 (函数) copy_symlink(C&#43;&#43;17) 复制一个符号链接 (函数) create_directory create_directories(C&#43;&#43;17)(C&#43;&#43;17) 创建新目录 (函数) create_hard_link(C&#43;&#43;17) 创建一个硬链接 (函数) create_symlink create_directory_symlink(C&#43;&#43;17)(C&#43;&#43;17) 创建一个符号链接 (函数) current_path(C&#43;&#43;17) 返回或设置当前工作目录 (函数) exists(C&#43;&#43;17) 检查路径是否指代既存的文件系统对象 (函数) equivalent(C&#43;&#43;17) 检查两个路径是否指代同一文件系统对象 (函数) file_size(C&#43;&#43;17) 返回文件的大小 (函数) hard_link_count(C&#43;&#43;17) 返回指代特定文件的硬链接数 (函数) last_write_time(C&#43;&#43;17) 获取或设置最近一次数据修改的时间 (函数) permissions(C&#43;&#43;17) 修改文件访问权限 (函数) read_symlink(C&#43;&#43;17) 获得符号链接的目标 (函数) remove remove_all(C&#43;&#43;17)(C&#43;&#43;17) 移除一个文件或空目录 移除一个文件或递归地移除一个目录及其所有内容 (函数) rename(C&#43;&#43;17) 移动或重命名一个文件或目录 (函数) resize_file(C&#43;&#43;17) 以截断或填充零更改一个常规文件的大小 (函数) space(C&#43;&#43;17) 确定文件系统上的可用空闲空间 (函数) status symlink_status(C&#43;&#43;17)(C&#43;&#43;17) 确定文件属性 确定文件属性，检查符号链接目标 (函数) temp_directory_path(C&#43;&#43;17) 返回一个适用于临时文件的目录 (函数) 文件类型 is_block_file(C&#43;&#43;17) 检查给定的路径是否表示块设备 (函数) is_character_file(C&#43;&#43;17) 检查给定的路径是否表示字符设备 (函数) is_directory(C&#43;&#43;17) 检查给定的路径是否表示一个目录 (函数) is_empty(C&#43;&#43;17) 检查给定的路径是否表示一个空文件或空目录 (函数) is_fifo(C&#43;&#43;17) 检查给定的路径是否表示一个命名管道 (函数) is_other(C&#43;&#43;17) 检查参数是否表示一个其他文件 (函数) is_regular_file(C&#43;&#43;17) 检查参数是否表示一个常规文件 (函数) is_socket(C&#43;&#43;17) 检查参数是否表示一个具名 IPC 套接字 (函数) is_symlink(C&#43;&#43;17) 检查参数是否表示一个符号链接 (函数) status_known(C&#43;&#43;17) 检查参数是否表示一个符号链接 (函数) "><script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+    </head>
+    <body class="
+    article-page has-toc
+">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex 
+    
+        extended
+    
+">
+    
+        <div id="article-toolbar">
+            <a href="/" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+                <span>Back</span>
+            </a>
+        </div>
+    
+<main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+
+    <h2 class="article-title">
+        <a href="/post/c-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%BA%93/">C&#43;&#43;文件系统库</a>
+    </h2>
+
+    
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jan 16, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+</div>
+</header>
+
+    <section class="article-content">
+    <!-- raw HTML omitted -->
+<p>此文来源于👉<a class="link" href="https://zh.cppreference.com/w/cpp/filesystem"  target="_blank" rel="noopener"
+    >文件系统库 - cppreference.com</a>，并整理。</p>
+<ul>
+<li>库范畴定义
+<ul>
+<li>文件：持有数据的文件系统对象，能被写入或读取，或二者皆可。文件拥有名称及属性，属性之一是文件类型：
+<ul>
+<li>目录：表现为目录条目的容器的文件，目录条目标识其他文件（其中一些可以是另外的嵌套的目录）。讨论到具体文件时，包含该文件目录条目的目录是其父目录。父目录能以相对路径名 &ldquo;..&rdquo; 表示。</li>
+<li>硬链接：关联一个名字到一个既存文件的目录条目。若支持多重硬链接，则文件在最后一个到它的硬链接被移除后才被移除。</li>
+<li>符号链接：关联一个名词到一个路径的目录条目，路径可以存在亦可不存在。</li>
+<li><em>常规文件</em>：不是其他文件类型的文件。</li>
+</ul>
+</li>
+<li>文件名：命名一个文件的字符串。容许字符、大小写区别、最大长度以及被禁止名称是实现定义的。名称 &ldquo;.&rdquo; （点）与 &ldquo;..&rdquo; （双点）在库层次拥有特殊含义。</li>
+<li>路径：标识一个文件的元素序列。它以可选的 根名 （例如 Windows 上的 &ldquo;C:&rdquo; 或 &ldquo;//server&rdquo; ）开始，后随可选的 根目录 （例如 Unix 上的 &ldquo;/&rdquo; ），后随零或更多个文件名（除了最后一个都必须是目录或到目录的链接）的序列。表示路径的字符串（路径名）的原生格式（如哪些字符被用作分隔符）与字符编码是实现定义的，库提供路径的可移植表示。
+<ul>
+<li>绝对路径：无歧义地标识一个文件位置的路径。</li>
+<li>规范路径：不包含符号链接、 &ldquo;.&rdquo; 或 &ldquo;..&rdquo; 元素的绝对路径。</li>
+<li>相对路径：标识相对于文件系统中某位置的文件位置的路径。特殊路径名 &ldquo;.&rdquo; （点，“当前目录”）和 &ldquo;..&rdquo; （双点、“父目录”）是相对路径。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="类">类</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">定义于头文件 <code>&lt;filesystem&gt;</code></th>
+<th style="text-align:left"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">定义于命名空间 <code>std::filesystem</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><a class="link" href="https://zh.cppreference.com/w/cpp/filesystem/path"  target="_blank" rel="noopener"
+    >path</a>(C++17)</td>
+<td style="text-align:left">表示路径 (类)</td>
+</tr>
+<tr>
+<td style="text-align:left"><a class="link" href="https://zh.cppreference.com/w/cpp/filesystem/filesystem_error"  target="_blank" rel="noopener"
+    >filesystem_error</a>(C++17)</td>
+<td style="text-align:left">文件系统错误时抛出的异常 (类)</td>
+</tr>
+<tr>
+<td style="text-align:left"><a class="link" href="https://zh.cppreference.com/w/cpp/filesystem/directory_entry"  target="_blank" rel="noopener"
+    >directory_entry</a>(C++17)</td>
+<td style="text-align:left">目录条目 (类)</td>
+</tr>
+<tr>
+<td style="text-align:left"><a class="link" href="https://zh.cppreference.com/w/cpp/filesystem/directory_iterator"  target="_blank" rel="noopener"
+    >directory_iterator</a>(C++17)</td>
+<td style="text-align:left">指向目录内容的迭代器 (类)</td>
+</tr>
+<tr>
+<td style="text-align:left"><a class="link" href="https://zh.cppreference.com/w/cpp/filesystem/recursive_directory_iterator"  target="_blank" rel="noopener"
+    >recursive_directory_iterator</a>(C++17)</td>
+<td style="text-align:left">指向一个目录及其子目录的内容的迭代器 (类)</td>
+</tr>
+<tr>
+<td style="text-align:left"><a class="link" href="https://zh.cppreference.com/w/cpp/filesystem/file_status"  target="_blank" rel="noopener"
+    >file_status</a>(C++17)</td>
+<td style="text-align:left">表示文件类型及权限 (类)</td>
+</tr>
+<tr>
+<td style="text-align:left"><a class="link" href="https://zh.cppreference.com/w/cpp/filesystem/space_info"  target="_blank" rel="noopener"
+    >space_info</a>(C++17)</td>
+<td style="text-align:left">关于文件系统上空闲及可用空间的信息 (类)</td>
+</tr>
+<tr>
+<td style="text-align:left"><a class="link" href="https://zh.cppreference.com/w/cpp/filesystem/file_type"  target="_blank" rel="noopener"
+    >file_type</a>(C++17)</td>
+<td style="text-align:left">文件的类型 (枚举)</td>
+</tr>
+<tr>
+<td style="text-align:left"><a class="link" href="https://zh.cppreference.com/w/cpp/filesystem/perms"  target="_blank" rel="noopener"
+    >perms</a>(C++17)</td>
+<td style="text-align:left">标识文件系统权限 (枚举)</td>
+</tr>
+<tr>
+<td style="text-align:left"><a class="link" href="https://zh.cppreference.com/w/cpp/filesystem/perm_options"  target="_blank" rel="noopener"
+    >perm_options</a>(C++17)</td>
+<td style="text-align:left">指定权限操作的语义 (枚举)</td>
+</tr>
+<tr>
+<td style="text-align:left"><a class="link" href="https://zh.cppreference.com/w/cpp/filesystem/copy_options"  target="_blank" rel="noopener"
+    >copy_options</a>(C++17)</td>
+<td style="text-align:left">指定复制操作的语义 (枚举)</td>
+</tr>
+<tr>
+<td style="text-align:left"><a class="link" href="https://zh.cppreference.com/w/cpp/filesystem/directory_options"  target="_blank" rel="noopener"
+    >directory_options</a>(C++17)</td>
+<td style="text-align:left">用于迭代目录内容的选项 (枚举)</td>
+</tr>
+<tr>
+<td style="text-align:left"><a class="link" href="https://zh.cppreference.com/w/cpp/filesystem/file_time_type"  target="_blank" rel="noopener"
+    >file_time_type</a>(C++17)</td>
+<td style="text-align:left">表示文件时间值 (typedef)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="非成员函数">非成员函数</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">定义于头文件 <code>&lt;filesystem&gt;</code></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">定义于命名空间 <code>std::filesystem</code></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><a class="link" href="https://zh.cppreference.com/w/cpp/filesystem/absolute"  target="_blank" rel="noopener"
+    >absolute</a>(C++17)</td>
+<td style="text-align:left">组成一个绝对路径 (函数)</td>
+</tr>
+<tr>
+<td style="text-align:left"><a class="link" href="https://zh.cppreference.com/w/cpp/filesystem/canonical"  target="_blank" rel="noopener"
+    >canonicalweakly_canonical</a>(C++17)</td>
+<td style="text-align:left">组成一个规范路径 (函数)</td>
+</tr>
+<tr>
+<td style="text-align:left"><a class="link" href="https://zh.cppreference.com/w/cpp/filesystem/relative"  target="_blank" rel="noopener"
+    >relativeproximate</a>(C++17)</td>
+<td style="text-align:left">组成一个相对路径 (函数)</td>
+</tr>
+<tr>
+<td style="text-align:left"><a class="link" href="https://zh.cppreference.com/w/cpp/filesystem/copy"  target="_blank" rel="noopener"
+    >copy</a>(C++17)</td>
+<td style="text-align:left">复制文件或目录 (函数)</td>
+</tr>
+<tr>
+<td style="text-align:left"><a class="link" href="https://zh.cppreference.com/w/cpp/filesystem/copy_file"  target="_blank" rel="noopener"
+    >copy_file</a>(C++17)</td>
+<td style="text-align:left">复制文件内容 (函数)</td>
+</tr>
+<tr>
+<td style="text-align:left"><a class="link" href="https://zh.cppreference.com/w/cpp/filesystem/copy_symlink"  target="_blank" rel="noopener"
+    >copy_symlink</a>(C++17)</td>
+<td style="text-align:left">复制一个符号链接 (函数)</td>
+</tr>
+<tr>
+<td style="text-align:left"><a class="link" href="https://zh.cppreference.com/w/cpp/filesystem/create_directory"  target="_blank" rel="noopener"
+    >create_directory create_directories</a>(C++17)(C++17)</td>
+<td style="text-align:left">创建新目录 (函数)</td>
+</tr>
+<tr>
+<td style="text-align:left"><a class="link" href="https://zh.cppreference.com/w/cpp/filesystem/create_hard_link"  target="_blank" rel="noopener"
+    >create_hard_link</a>(C++17)</td>
+<td style="text-align:left">创建一个硬链接 (函数)</td>
+</tr>
+<tr>
+<td style="text-align:left"><a class="link" href="https://zh.cppreference.com/w/cpp/filesystem/create_symlink"  target="_blank" rel="noopener"
+    >create_symlink create_directory_symlink</a>(C++17)(C++17)</td>
+<td style="text-align:left">创建一个符号链接 (函数)</td>
+</tr>
+<tr>
+<td style="text-align:left"><a class="link" href="https://zh.cppreference.com/w/cpp/filesystem/current_path"  target="_blank" rel="noopener"
+    >current_path</a>(C++17)</td>
+<td style="text-align:left">返回或设置当前工作目录 (函数)</td>
+</tr>
+<tr>
+<td style="text-align:left"><a class="link" href="https://zh.cppreference.com/w/cpp/filesystem/exists"  target="_blank" rel="noopener"
+    >exists</a>(C++17)</td>
+<td style="text-align:left">检查路径是否指代既存的文件系统对象 (函数)</td>
+</tr>
+<tr>
+<td style="text-align:left"><a class="link" href="https://zh.cppreference.com/w/cpp/filesystem/equivalent"  target="_blank" rel="noopener"
+    >equivalent</a>(C++17)</td>
+<td style="text-align:left">检查两个路径是否指代同一文件系统对象 (函数)</td>
+</tr>
+<tr>
+<td style="text-align:left"><a class="link" href="https://zh.cppreference.com/w/cpp/filesystem/file_size"  target="_blank" rel="noopener"
+    >file_size</a>(C++17)</td>
+<td style="text-align:left">返回文件的大小 (函数)</td>
+</tr>
+<tr>
+<td style="text-align:left"><a class="link" href="https://zh.cppreference.com/w/cpp/filesystem/hard_link_count"  target="_blank" rel="noopener"
+    >hard_link_count</a>(C++17)</td>
+<td style="text-align:left">返回指代特定文件的硬链接数 (函数)</td>
+</tr>
+<tr>
+<td style="text-align:left"><a class="link" href="https://zh.cppreference.com/w/cpp/filesystem/last_write_time"  target="_blank" rel="noopener"
+    >last_write_time</a>(C++17)</td>
+<td style="text-align:left">获取或设置最近一次数据修改的时间 (函数)</td>
+</tr>
+<tr>
+<td style="text-align:left"><a class="link" href="https://zh.cppreference.com/w/cpp/filesystem/permissions"  target="_blank" rel="noopener"
+    >permissions</a>(C++17)</td>
+<td style="text-align:left">修改文件访问权限 (函数)</td>
+</tr>
+<tr>
+<td style="text-align:left"><a class="link" href="https://zh.cppreference.com/w/cpp/filesystem/read_symlink"  target="_blank" rel="noopener"
+    >read_symlink</a>(C++17)</td>
+<td style="text-align:left">获得符号链接的目标 (函数)</td>
+</tr>
+<tr>
+<td style="text-align:left"><a class="link" href="https://zh.cppreference.com/w/cpp/filesystem/remove"  target="_blank" rel="noopener"
+    >remove remove_all</a>(C++17)(C++17)</td>
+<td style="text-align:left">移除一个文件或空目录 移除一个文件或递归地移除一个目录及其所有内容 (函数)</td>
+</tr>
+<tr>
+<td style="text-align:left"><a class="link" href="https://zh.cppreference.com/w/cpp/filesystem/rename"  target="_blank" rel="noopener"
+    >rename</a>(C++17)</td>
+<td style="text-align:left">移动或重命名一个文件或目录 (函数)</td>
+</tr>
+<tr>
+<td style="text-align:left"><a class="link" href="https://zh.cppreference.com/w/cpp/filesystem/resize_file"  target="_blank" rel="noopener"
+    >resize_file</a>(C++17)</td>
+<td style="text-align:left">以截断或填充零更改一个常规文件的大小 (函数)</td>
+</tr>
+<tr>
+<td style="text-align:left"><a class="link" href="https://zh.cppreference.com/w/cpp/filesystem/space"  target="_blank" rel="noopener"
+    >space</a>(C++17)</td>
+<td style="text-align:left">确定文件系统上的可用空闲空间 (函数)</td>
+</tr>
+<tr>
+<td style="text-align:left"><a class="link" href="https://zh.cppreference.com/w/cpp/filesystem/status"  target="_blank" rel="noopener"
+    >status symlink_status</a>(C++17)(C++17)</td>
+<td style="text-align:left">确定文件属性 确定文件属性，检查符号链接目标 (函数)</td>
+</tr>
+<tr>
+<td style="text-align:left"><a class="link" href="https://zh.cppreference.com/w/cpp/filesystem/temp_directory_path"  target="_blank" rel="noopener"
+    >temp_directory_path</a>(C++17)</td>
+<td style="text-align:left">返回一个适用于临时文件的目录 (函数)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="文件类型"><strong>文件类型</strong></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><a class="link" href="https://zh.cppreference.com/w/cpp/filesystem/is_block_file"  target="_blank" rel="noopener"
+    >is_block_file</a>(C++17)</th>
+<th style="text-align:left">检查给定的路径是否表示块设备 (函数)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><a class="link" href="https://zh.cppreference.com/w/cpp/filesystem/is_character_file"  target="_blank" rel="noopener"
+    >is_character_file</a>(C++17)</td>
+<td style="text-align:left">检查给定的路径是否表示字符设备 (函数)</td>
+</tr>
+<tr>
+<td style="text-align:left"><a class="link" href="https://zh.cppreference.com/w/cpp/filesystem/is_directory"  target="_blank" rel="noopener"
+    >is_directory</a>(C++17)</td>
+<td style="text-align:left">检查给定的路径是否表示一个目录 (函数)</td>
+</tr>
+<tr>
+<td style="text-align:left"><a class="link" href="https://zh.cppreference.com/w/cpp/filesystem/is_empty"  target="_blank" rel="noopener"
+    >is_empty</a>(C++17)</td>
+<td style="text-align:left">检查给定的路径是否表示一个空文件或空目录 (函数)</td>
+</tr>
+<tr>
+<td style="text-align:left"><a class="link" href="https://zh.cppreference.com/w/cpp/filesystem/is_fifo"  target="_blank" rel="noopener"
+    >is_fifo</a>(C++17)</td>
+<td style="text-align:left">检查给定的路径是否表示一个命名管道 (函数)</td>
+</tr>
+<tr>
+<td style="text-align:left"><a class="link" href="https://zh.cppreference.com/w/cpp/filesystem/is_other"  target="_blank" rel="noopener"
+    >is_other</a>(C++17)</td>
+<td style="text-align:left">检查参数是否表示一个<em>其他</em>文件 (函数)</td>
+</tr>
+<tr>
+<td style="text-align:left"><a class="link" href="https://zh.cppreference.com/w/cpp/filesystem/is_regular_file"  target="_blank" rel="noopener"
+    >is_regular_file</a>(C++17)</td>
+<td style="text-align:left">检查参数是否表示一个常规文件 (函数)</td>
+</tr>
+<tr>
+<td style="text-align:left"><a class="link" href="https://zh.cppreference.com/w/cpp/filesystem/is_socket"  target="_blank" rel="noopener"
+    >is_socket</a>(C++17)</td>
+<td style="text-align:left">检查参数是否表示一个具名 IPC 套接字 (函数)</td>
+</tr>
+<tr>
+<td style="text-align:left"><a class="link" href="https://zh.cppreference.com/w/cpp/filesystem/is_symlink"  target="_blank" rel="noopener"
+    >is_symlink</a>(C++17)</td>
+<td style="text-align:left">检查参数是否表示一个符号链接 (函数)</td>
+</tr>
+<tr>
+<td style="text-align:left"><a class="link" href="https://zh.cppreference.com/w/cpp/filesystem/status_known"  target="_blank" rel="noopener"
+    >status_known</a>(C++17)</td>
+<td style="text-align:left">检查参数是否表示一个符号链接 (函数)</td>
+</tr>
+</tbody>
+</table>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/c&#43;&#43;/">C&#43;&#43;</a>
+        
+            <a href="/tags/filesystem/">FileSystem</a>
+        
+    </section>
+
+
+    </footer>
+
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">Related contents</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="">
+    <a href="/post/c-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">C&#43;&#43;正则表达式</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/%E7%BA%BF%E7%A8%8B%E6%94%AF%E6%8C%81%E5%BA%93/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">线程支持库</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/cpr-http%E8%AF%B7%E6%B1%82%E5%BA%93/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">cpr请求库</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/socket_cpp%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Socket_Cpp库的使用</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/json%E7%9A%84%E4%BD%BF%E7%94%A8/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Json的使用</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2023 My Blog
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.5.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+
+            </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">Table of contents</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#类">类</a></li>
+    <li><a href="#非成员函数">非成员函数</a></li>
+    <li><a href="#文件类型"><strong>文件类型</strong></a></li>
+  </ul>
+</nav>
+                </div>
+            </section>
+        </aside>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

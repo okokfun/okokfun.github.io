@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>TOOL on My Blog</title>
+    <link>https://okokfun.github.io/tags/tool/</link>
+    <description>Recent content in TOOL on My Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sat, 19 Mar 2022 00:01:15 +0000</lastBuildDate><atom:link href="https://okokfun.github.io/tags/tool/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>第五部分-专业工具</title>
+      <link>https://okokfun.github.io/post/%E7%AC%AC%E4%BA%94%E9%83%A8%E5%88%86-%E4%B8%93%E4%B8%9A%E5%B7%A5%E5%85%B7-/</link>
+      <pubDate>Sat, 19 Mar 2022 00:01:15 +0000</pubDate>
+      
+      <guid>https://okokfun.github.io/post/%E7%AC%AC%E4%BA%94%E9%83%A8%E5%88%86-%E4%B8%93%E4%B8%9A%E5%B7%A5%E5%85%B7-/</guid>
+      <description>第五部分 专业工具 这部分介绍了普通应用程序程序员通常不必知道的新语言和库特性。 它可能涵盖基础库、特定模式或特殊环境中的程序员的工具。
+27 多态的内存资源 (PMR) 自C++98以来，标准库就支持配置类分配其内部（堆）内存的方式的能力。由于这个原因，标准库中几乎所有分配内存的类型都有一个分配器参数。因此，你可以配置容器、字符串和其他类型分配其内部内存的方式，如果它们需要比堆栈上分配的空间更多的话。 分配这种内存的默认方式是从堆中分配。但是有不同的理由来修改这个默认行为：
+你可以使用你自己的方式分配内存，以减少系统调用的数量。 你可以确保分配的内存位于彼此的旁边，以从CPU缓存中获益。 你可以把容器和它们的元素放在可供多进程使用的共享内存中。 你甚至可以重定向这些堆内存调用，以使用早期在堆栈上分配的内存。因此，可以有性能和功能方面的原因。 然而，在C++17之前，使用分配器（右）在很多方面都是既棘手又笨拙的（由于一些缺陷，太过复杂，以及与后向兼容的修改）。 现在，C++17为预定义和用户定义的内存分配方式提供了一个相当容易使用的方法，它可以用于标准类型和用户定义的类型。 基于这个原因，本章将讨论：
+使用标准库提供的标准内存资源 定义自定义内存资源 为自定义类型提供内存资源支持 如果没有Pablo Halpern、Arthur O&amp;rsquo;Dwyer、David Sankel和Jonathan Wakely的大力帮助，本章就不可能完成。一些视频解释了这里提供的功能：
+分配器：Pablo Halpern 的好零件 C++17 的 std::pmr 有代价 David Sankel 分配器是 Arthur O&amp;rsquo;Dwyer 的堆句柄 27.1 使用标准内存资源 本节介绍了标准内存资源以及如何使用它们。
+27.1.1 激励性的例子 让我们首先比较一下没有和有标准内存资源的内存消耗。
+为容器和字符串分配内存 假设在你的程序中，你有一个由一些字符串组成的向量，你用相当长的方式初始化这些字符串字符串：
+pmr/pmr0.cpp #include &amp;lt;iostream&amp;gt; #include &amp;lt;string&amp;gt; #include &amp;lt;vector&amp;gt; #include &amp;#34;../lang/tracknew.hpp&amp;#34; int main() { TrackNew::reset(); std::vector&amp;lt;std::string&amp;gt; coll; for (int i=0; i &amp;lt; 1000; ++i) { coll.emplace_back(&amp;#34;just a non-SSO string&amp;#34;); } TrackNew::status(); } 注意，我们使用一个类来跟踪内存分配的数量，该类跟踪所有用以下循环执行的::new调用：</description>
+    </item>
+    
+  </channel>
+</rss>

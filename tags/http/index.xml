@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>HTTP on My Blog</title>
+    <link>https://okokfun.github.io/tags/http/</link>
+    <description>Recent content in HTTP on My Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Thu, 13 Jan 2022 20:43:31 +0000</lastBuildDate><atom:link href="https://okokfun.github.io/tags/http/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>cpr请求库</title>
+      <link>https://okokfun.github.io/post/cpr-http%E8%AF%B7%E6%B1%82%E5%BA%93/</link>
+      <pubDate>Thu, 13 Jan 2022 20:43:31 +0000</pubDate>
+      
+      <guid>https://okokfun.github.io/post/cpr-http%E8%AF%B7%E6%B1%82%E5%BA%93/</guid>
+      <description>本文介绍的HTTP库👉libcpr/cpr: C++ Requests: Curl for People, a spiritual port of Python Requests. (github.com)
+HttpServer Url Url url{server-&amp;gt;GetBaseUrl() + &amp;#34;/hello.html&amp;#34;}; Url url{server-&amp;gt;GetBaseUrl() + &amp;#34;/basic.json&amp;#34;}; Url url{server-&amp;gt;GetBaseUrl() + &amp;#34;/error.html&amp;#34;}; Url url{&amp;#34;http://bad_host/&amp;#34;}; Url url{server-&amp;gt;GetBaseUrl() + &amp;#34;/basic_cookies.html&amp;#34;}; Url url{server-&amp;gt;GetBaseUrl() + &amp;#34;/empty_cookies.html&amp;#34;}; Url url{server-&amp;gt;GetBaseUrl() + &amp;#34;/check_cookies.html&amp;#34;}; Url url{server-&amp;gt;GetBaseUrl() + &amp;#34;/v1_cookies.html&amp;#34;}; Url url{server-&amp;gt;GetBaseUrl() + &amp;#34;/check_v1_cookies.html&amp;#34;}; Url url{server-&amp;gt;GetBaseUrl() + &amp;#34;/basic_auth.html&amp;#34;}; Url url{server-&amp;gt;GetBaseUrl() + &amp;#34;/bearer_token.html&amp;#34;}; Url url{server-&amp;gt;GetBaseUrl() + &amp;#34;/digest_auth.html&amp;#34;}; Url url{server-&amp;gt;GetBaseUrl() + &amp;#34;/header_reflect.html&amp;#34;}; Url url{server-&amp;gt;GetBaseUrl() + &amp;#34;/temporary_redirect.html&amp;#34;}; Url url{server-&amp;gt;GetBaseUrl() + &amp;#34;/permanent_redirect.</description>
+    </item>
+    
+  </channel>
+</rss>

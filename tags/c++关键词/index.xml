@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>C&#43;&#43;关键词 on My Blog</title>
+    <link>https://okokfun.github.io/tags/c&#43;&#43;%E5%85%B3%E9%94%AE%E8%AF%8D/</link>
+    <description>Recent content in C&#43;&#43;关键词 on My Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sat, 15 Jan 2022 15:31:05 +0000</lastBuildDate><atom:link href="https://okokfun.github.io/tags/c++%E5%85%B3%E9%94%AE%E8%AF%8D/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>C&#43;&#43;关键词</title>
+      <link>https://okokfun.github.io/post/c&#43;&#43;%E5%85%B3%E9%94%AE%E8%AF%8D/</link>
+      <pubDate>Sat, 15 Jan 2022 15:31:05 +0000</pubDate>
+      
+      <guid>https://okokfun.github.io/post/c&#43;&#43;%E5%85%B3%E9%94%AE%E8%AF%8D/</guid>
+      <description> 此文章来自👉C++ 参考手册
+C++关键词： alignas (C++11 起) default(1) register(C++17弃用)(2) alignof (C++11 起) delete(1) reinterpret_cast and do requires (C++20 起) and_eq double return asm dynamic_cast short atomic_cancel (TM TS) else signed atomic_commit (TM TS) enum sizeof(1) atomic_noexcept (TM TS) explicit static auto(1) export(1)(3) static_assert (C++11 起) bitand extern(1) static_cast bitor false struct(1) bool float switch break for synchronized (TM TS) case friend template catch goto this char if thread_local (C++11 起) char8_t (C++20 起) inline(1) throw(C++17中移除) char16_t (C++11 起) int true char32_t (C++11 起) long try class(1) mutable(1) typedef compl namespace typeid concept (C++20 起) new typename const noexcept (C++11 起) union consteval (C++20 起) not unsigned constexpr (C++11 起) not_eq using(1) constinit (C++20 起) nullptr (C++11 起) virtual const_cast operator void continue or volatile co_await (C++20 起) or_eq wchar_t co_return (C++20 起) private while co_yield (C++20 起) protected xor decltype (C++11 起) public xor_eq reflexpr (反射 TS) override (C++11) final (C++11) import (C++20) module (C++20) transaction_safe (TM TS) transaction_safe_dynamic (TM TS) </description>
+    </item>
+    
+  </channel>
+</rss>

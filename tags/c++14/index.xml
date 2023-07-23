@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>C&#43;&#43;14 on My Blog</title>
+    <link>https://okokfun.github.io/tags/c&#43;&#43;14/</link>
+    <description>Recent content in C&#43;&#43;14 on My Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Mon, 24 Jan 2022 17:02:47 +0000</lastBuildDate><atom:link href="https://okokfun.github.io/tags/c++14/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>C&#43;&#43;新特性</title>
+      <link>https://okokfun.github.io/post/c-%E6%96%B0%E7%89%B9%E6%80%A7/</link>
+      <pubDate>Mon, 24 Jan 2022 17:02:47 +0000</pubDate>
+      
+      <guid>https://okokfun.github.io/post/c-%E6%96%B0%E7%89%B9%E6%80%A7/</guid>
+      <description>1. Variadic Templates 数量不定的模板参数
+...代表任意个数据
+void print(){} template &amp;lt;typename T, typename... Types&amp;gt; void print(const T&amp;amp; firstArg, const Types&amp;amp;...args) { std::cout &amp;lt;&amp;lt; firstArg &amp;lt;&amp;lt; &amp;#39;\n&amp;#39;; print(args...); } void print(const T&amp;amp; firstArg, const Types&amp;amp;...args){}中...代表任意个数据，Types任意类型的数据,
+表示接受任意个任意类型的数据
+例子：
+#include &amp;lt;iostream&amp;gt; #include &amp;lt;bitset&amp;gt; void print() {} template &amp;lt;typename T, typename... Types&amp;gt; void print(const T &amp;amp;firstArg, const Types &amp;amp;...args) { std::cout &amp;lt;&amp;lt; firstArg &amp;lt;&amp;lt; &amp;#39;\n&amp;#39;; print(args...); } int main(int argc, char *argv[]) { print(7.5, &amp;#34;hello&amp;#34;, std::bitset&amp;lt;16&amp;gt;(377), 42); return 0; } 结果：</description>
+    </item>
+    
+  </channel>
+</rss>

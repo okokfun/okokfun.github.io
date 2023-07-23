@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Plugins on My Blog</title>
+    <link>https://okokfun.github.io/tags/plugins/</link>
+    <description>Recent content in Plugins on My Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 28 Jan 2022 14:14:03 +0000</lastBuildDate><atom:link href="https://okokfun.github.io/tags/plugins/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>本人使用的hexo插件列表</title>
+      <link>https://okokfun.github.io/post/%E6%9C%AC%E4%BA%BA%E4%BD%BF%E7%94%A8%E7%9A%84hexo%E6%8F%92%E4%BB%B6%E5%88%97%E8%A1%A8/</link>
+      <pubDate>Fri, 28 Jan 2022 14:14:03 +0000</pubDate>
+      
+      <guid>https://okokfun.github.io/post/%E6%9C%AC%E4%BA%BA%E4%BD%BF%E7%94%A8%E7%9A%84hexo%E6%8F%92%E4%BB%B6%E5%88%97%E8%A1%A8/</guid>
+      <description>文章emoji支持
+npm install hexo-filter-github-emojis --save 文章加密访问插件
+npm install hexo-blog-encrypt --save 使用方法
+将 &amp;ldquo;password&amp;rdquo; 字段添加到您文章信息头就像这样. --- title: Hello World tags: - 作为日记加密 date: 2016-03-30 21:12:21 password: mikemessi abstract: 有东西被加密了, 请输入密码查看. message: 您好, 这里需要密码. wrong_pass_message: 抱歉, 这个密码看着不太对, 请再试试. wrong_hash_message: 抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容. --- password下边几行可加可不加。
+编辑_config.yml 加入下列几行
+# Security encrypt: # hexo-blog-encrypt abstract: 有东西被加密了, 请输入密码查看. message: 您好, 这里需要密码, 请点击本文字. tags: - {name: tagName, password: 密码A} - {name: tagName, password: 密码B} wrong_pass_message: 抱歉, 这个密码看着不太对, 请再试试.</description>
+    </item>
+    
+  </channel>
+</rss>

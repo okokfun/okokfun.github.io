@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Oracle on My Blog</title>
+    <link>https://okokfun.github.io/tags/oracle/</link>
+    <description>Recent content in Oracle on My Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sun, 09 Jan 2022 16:51:29 +0000</lastBuildDate><atom:link href="https://okokfun.github.io/tags/oracle/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Oracle数据库介绍</title>
+      <link>https://okokfun.github.io/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BB%8B%E7%BB%8D/</link>
+      <pubDate>Sun, 09 Jan 2022 16:51:29 +0000</pubDate>
+      
+      <guid>https://okokfun.github.io/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BB%8B%E7%BB%8D/</guid>
+      <description>数据库介绍 什么是数据库?
+​	数据库是为了实现一定的目的按某种规则组织起来的数据的集合, 简单的说,数据库就是存储数据的库.
+​	举个例子来说明这个问题：每个人都有很多亲戚和朋友，为了保持与他们的联系，
+​	我们常常用一个笔记本将他们的姓名、地址、电话等信息都记录下来，
+​	这样要査谁的电话或地址就很方便了。
+​	这个“通讯录”就是一个最简单的“数据库”，每个人的姓名、地址、电话等信息就是这个数据库中的“数据”。
+​	我们可以在笔记本这个“数据库”中添加新朋友的个人信息，也可以由于某个朋友的电话变动而修改他的电话号码这个“数据”。
+​	不过说到底，我们使用笔记本这个“数据库”还是为了能随时査到某位亲戚或朋友的地址、邮编或电话号码这些“数据”。
+数据库是干什么用的?
+存储和管理数据,便于程序开发.
+oracle简介:
+Oracle是殷墟（yīn Xu）出土的甲骨文（oracle bone inscriptions）的英文翻译的第一个单词。
+Oracle公司成立与1977年，总部位于美国加州；
+Oracle数据库是Oracle（中文名称叫甲骨文）公司的核心产品，Oracle数据库是一个适合于大中型企业的数据库管理系统。在所有的数据库管理系统中（比如：微软的SQL Server，IBM的DB2等），Oracle的主要用户涉及面非常广, 包括: 银行、电信、移动通信、航空、保险、金融、电子商务和跨国公司等。
+Oracle数据库的一些版本有：Oracle7、Oracle8i、Oracle9i，Oracle10g到Oracle11g，Oracle12c， 各个版本之间的操作存在一定的差别，但是操作oracle数据库都使用的是标准的SQL语句，因此对于各个版本的差别不大。
+2008年1月16日 收购bea，目的是为了得到weblogic（web服务器的框架，免费的对应的tomcat）。
+2008年1月16日 sun公司收购了mysql 。
+2009年4月20日 oracle收购了sun 。
+常见的数据库有哪些？
+oracle公司的oracle数据库
+IBM公司的DB2数据库
+Informix公司的Informix数据库
+sysbase公司的sysbase数据库
+Microsoft公司的SQL Server
+oracle的MySQL数据库（开始属于mysql公司，后来mysql被sun收购，sun又被oracle收购）
+MongoDB数据库
+Mariadb数据库 (由MySQL的创始人Michael Widenius（英语：Michael Widenius）主导开发,MariaDB名称来自Michael Widenius的女儿Maria的名字)
+SQLite (设计目标是嵌入式)
+1 Oracle的体系结构 Oracle服务器：是一个数据管理系统(RDBMS)，它提供开放的, 全面的, 近乎完整的信息管理。由1个数据库和一个（或多个）实例组成。数据库位于硬盘上，实例位于内存中。
+img 1.1 表空间和数据文件 逻辑概念：表空间是由数据文件组成，位于实例上，在内存中。
+物理概念：数据文件，在磁盘上（/home/oracle_11/app/oradata/orcl目录中的.DBF文件）；
+​ 一个表空间包含一个或者多个数据文件。
+1.2 段、区、块 img 段存在于表空间中，段是区的集合，区是数据块的集合，数据块会被映射到磁盘块。</description>
+    </item>
+    
+  </channel>
+</rss>

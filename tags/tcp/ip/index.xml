@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>TCP/IP on My Blog</title>
+    <link>https://okokfun.github.io/tags/tcp/ip/</link>
+    <description>Recent content in TCP/IP on My Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language><atom:link href="https://okokfun.github.io/tags/tcp/ip/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>cpr请求库</title>
+      <link>https://okokfun.github.io/post/cpr-http%E8%AF%B7%E6%B1%82%E5%BA%93/</link>
+      <pubDate>Thu, 13 Jan 2022 20:43:31 +0000</pubDate>
+      
+      <guid>https://okokfun.github.io/post/cpr-http%E8%AF%B7%E6%B1%82%E5%BA%93/</guid>
+      <description>本文介绍的HTTP库👉libcpr/cpr: C++ Requests: Curl for People, a spiritual port of Python Requests. (github.com)
+HttpServer Url Url url{server-&amp;gt;GetBaseUrl() + &amp;#34;/hello.html&amp;#34;}; Url url{server-&amp;gt;GetBaseUrl() + &amp;#34;/basic.json&amp;#34;}; Url url{server-&amp;gt;GetBaseUrl() + &amp;#34;/error.html&amp;#34;}; Url url{&amp;#34;http://bad_host/&amp;#34;}; Url url{server-&amp;gt;GetBaseUrl() + &amp;#34;/basic_cookies.html&amp;#34;}; Url url{server-&amp;gt;GetBaseUrl() + &amp;#34;/empty_cookies.html&amp;#34;}; Url url{server-&amp;gt;GetBaseUrl() + &amp;#34;/check_cookies.html&amp;#34;}; Url url{server-&amp;gt;GetBaseUrl() + &amp;#34;/v1_cookies.html&amp;#34;}; Url url{server-&amp;gt;GetBaseUrl() + &amp;#34;/check_v1_cookies.html&amp;#34;}; Url url{server-&amp;gt;GetBaseUrl() + &amp;#34;/basic_auth.html&amp;#34;}; Url url{server-&amp;gt;GetBaseUrl() + &amp;#34;/bearer_token.html&amp;#34;}; Url url{server-&amp;gt;GetBaseUrl() + &amp;#34;/digest_auth.html&amp;#34;}; Url url{server-&amp;gt;GetBaseUrl() + &amp;#34;/header_reflect.html&amp;#34;}; Url url{server-&amp;gt;GetBaseUrl() + &amp;#34;/temporary_redirect.html&amp;#34;}; Url url{server-&amp;gt;GetBaseUrl() + &amp;#34;/permanent_redirect.</description>
+    </item>
+    
+    <item>
+      <title>Socket_Cpp库的使用</title>
+      <link>https://okokfun.github.io/post/socket_cpp%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Thu, 13 Jan 2022 20:28:16 +0000</pubDate>
+      
+      <guid>https://okokfun.github.io/post/socket_cpp%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
+      <description>传输控制协议（TCP，Transmission Control Protocol）是一种面向连接的、可靠的、基于字节流的传输层通信协议。
+20190623_tcp_termination.png (925×613) (linuxblogs.cn) 此库是一个简单的TCP库👉sockpp
+TCP TCP Clien IPV4:tcp_clien sockpp::socket_initializer sockpp环境初始化 sockpp::tcp_connector conn({host, port}) // 初始化一个连接器，并尝试连接到{host, port} !conn.read_timeout(seconds(5)) // 读超时 conn.address() // 连接成功打印地址 conn.connect(sockpp::inet_address(&amp;#34;localhost&amp;#34;, port)) // 链接{localhost, port} sockpp::inet_address(host, port) // 返回一个默认的端口号和地址 conn.clone() // clone一个sockpp::tcp_socket conn.last_error_str() // 返回根据平台各自的错误字符串 conn.last_error() conn.write(s) // 通过coon把字符串s写过去 conn.write_n(buf, n) // 从buf中取n个字节的数据并通过tcp写过去 conn.read(buf, sizeof(buf))) // 读sizeof(buf)个字节到buf中，并返回读到的字节数 conn.read_n() // conn.address() // 服务器的地址 conn.peer_address() conn.shutdown(SHUT_WR) 例子- 单线程
+#include &amp;lt;iostream&amp;gt; #include &amp;lt;string&amp;gt; #include &amp;#34;sockpp/tcp_connector.h&amp;#34; #include &amp;#34;sockpp/version.h&amp;#34; using namespace std; using namespace std::chrono; int main(int argc, char* argv[]) { cout &amp;lt;&amp;lt; &amp;#34;Sample TCP echo client for &amp;#39;sockpp&amp;#39; &amp;#34; &amp;lt;&amp;lt; sockpp::SOCKPP_VERSION &amp;lt;&amp;lt; &amp;#39;\n&amp;#39; &amp;lt;&amp;lt; endl; string host = (argc &amp;gt; 1) ?</description>
+    </item>
+    
+  </channel>
+</rss>

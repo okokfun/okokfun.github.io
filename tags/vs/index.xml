@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>VS on My Blog</title>
+    <link>https://okokfun.github.io/tags/vs/</link>
+    <description>Recent content in VS on My Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sat, 19 Feb 2022 23:13:27 +0000</lastBuildDate><atom:link href="https://okokfun.github.io/tags/vs/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Visual_Studio_2022_PRE添加OpenCV库</title>
+      <link>https://okokfun.github.io/post/visual-studio-2022-pre%E6%B7%BB%E5%8A%A0opencv%E5%BA%93/</link>
+      <pubDate>Sat, 19 Feb 2022 23:13:27 +0000</pubDate>
+      
+      <guid>https://okokfun.github.io/post/visual-studio-2022-pre%E6%B7%BB%E5%8A%A0opencv%E5%BA%93/</guid>
+      <description>此篇是VS添加OpenCV库教程
+1. 创建一个新工程 img img 2. 创建完工程后切到属性管理器 img 3. 添加新项目属性列表 然后切到Debug | x64添加新项目属性列表(P) img 然后双击新建的文件。
+4. 添加库头文件路径和库文件路径 添加库头文件路径 img img 添加库文件路径
+img 5. 填写要使用的库文件名 img 这里使用debug版
+End.</description>
+    </item>
+    
+    <item>
+      <title>Visual-Studio-2022基本设置</title>
+      <link>https://okokfun.github.io/post/visual-studio-2022%E5%9F%BA%E6%9C%AC%E8%AE%BE%E7%BD%AE/</link>
+      <pubDate>Sun, 30 Jan 2022 19:14:50 +0000</pubDate>
+      
+      <guid>https://okokfun.github.io/post/visual-studio-2022%E5%9F%BA%E6%9C%AC%E8%AE%BE%E7%BD%AE/</guid>
+      <description>用微软家的Visual Studio 2022创建项目，为了避免文件混乱，可以采用下边的设置方法,当然也可以使用默认的设置。
+点击解决方案下的项目名，例如sendbox👇
+在弹出的对话窗中点击属性👇
+然后在弹出的对话框中👇，选择所有配置,平台选择所有平台
+上图有一个错误去掉bin前面的\.
+配置属性-&amp;gt;常规，
+在常规属性-&amp;gt;输出目录填写$(SolutionDir)bin\$(Platform)\$(Configuration)\
+在常规属性-&amp;gt;中间目录填写$(SolutionDir)bin\intermediates\$(Platform)\$(Configuration)\
+其中Platform根据平台选择不同而不同，比如选择x64,那么Platform就是Win64，还有Win32
+设置完点击项目，选择清理，然后重新生成
+编译器语言标准
+配置属性-&amp;gt;常规-&amp;gt;C++语言标准
+C++标准 配置属性-&amp;gt;常规-&amp;gt;C语言标准
+C标准 End.</description>
+    </item>
+    
+  </channel>
+</rss>

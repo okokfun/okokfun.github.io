@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='C&#43;&#43;线程池 任务类 #pragma once #include &amp;lt;mutex&amp;gt; #include &amp;lt;queue&amp;gt; // 定义任务结构体 using callback = void (*)(void *); struct Task { Task() { this-&amp;gt;function = nullptr; this-&amp;gt;arg = nullptr; } Task(callback f, void *arg) { this-&amp;gt;function = f; this-&amp;gt;arg = arg; } callback function; void *arg; }; class TaskQueue { public: TaskQueue(); ~TaskQueue(); // 添加任务 void addTask(Task task); void addTask(callback f, void *arg); // 取出一个任务 Task getTask(); // 判断队列任务是否为空 inline bool empty() { return m_taskQ.'><title>C&#43;&#43;线程池</title>
+
+<link rel='canonical' href='https://okokfun.github.io/post/c-%E7%BA%BF%E7%A8%8B%E6%B1%A0/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='C&#43;&#43;线程池'>
+<meta property='og:description' content='C&#43;&#43;线程池 任务类 #pragma once #include &amp;lt;mutex&amp;gt; #include &amp;lt;queue&amp;gt; // 定义任务结构体 using callback = void (*)(void *); struct Task { Task() { this-&amp;gt;function = nullptr; this-&amp;gt;arg = nullptr; } Task(callback f, void *arg) { this-&amp;gt;function = f; this-&amp;gt;arg = arg; } callback function; void *arg; }; class TaskQueue { public: TaskQueue(); ~TaskQueue(); // 添加任务 void addTask(Task task); void addTask(callback f, void *arg); // 取出一个任务 Task getTask(); // 判断队列任务是否为空 inline bool empty() { return m_taskQ.'>
+<meta property='og:url' content='https://okokfun.github.io/post/c-%E7%BA%BF%E7%A8%8B%E6%B1%A0/'>
+<meta property='og:site_name' content='My Blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='C&#43;&#43;11' /><meta property='article:published_time' content='2021-12-24T17:01:29&#43;00:00'/><meta property='article:modified_time' content='2021-12-24T17:01:29&#43;00:00'/>
+<meta name="twitter:title" content="C&#43;&#43;线程池">
+<meta name="twitter:description" content="C&#43;&#43;线程池 任务类 #pragma once #include &amp;lt;mutex&amp;gt; #include &amp;lt;queue&amp;gt; // 定义任务结构体 using callback = void (*)(void *); struct Task { Task() { this-&amp;gt;function = nullptr; this-&amp;gt;arg = nullptr; } Task(callback f, void *arg) { this-&amp;gt;function = f; this-&amp;gt;arg = arg; } callback function; void *arg; }; class TaskQueue { public: TaskQueue(); ~TaskQueue(); // 添加任务 void addTask(Task task); void addTask(callback f, void *arg); // 取出一个任务 Task getTask(); // 判断队列任务是否为空 inline bool empty() { return m_taskQ."><script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+    </head>
+    <body class="
+    article-page has-toc
+">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex 
+    
+        extended
+    
+">
+    
+        <div id="article-toolbar">
+            <a href="/" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+                <span>Back</span>
+            </a>
+        </div>
+    
+<main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+
+    <h2 class="article-title">
+        <a href="/post/c-%E7%BA%BF%E7%A8%8B%E6%B1%A0/">C&#43;&#43;线程池</a>
+    </h2>
+
+    
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Dec 24, 2021</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    4 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+</div>
+</header>
+
+    <section class="article-content">
+    <!-- raw HTML omitted -->
+<h1 id="c线程池">C++线程池</h1>
+<h2 id="任务类"><strong>任务类</strong></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#pragma once
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;mutex&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;queue&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 定义任务结构体
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> callback <span style="color:#f92672">=</span> <span style="color:#66d9ef">void</span> (<span style="color:#f92672">*</span>)(<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Task</span> {
+</span></span><span style="display:flex;"><span>    Task() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span><span style="color:#f92672">-&gt;</span>function <span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span><span style="color:#f92672">-&gt;</span>arg <span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    Task(callback f, <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>arg) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span><span style="color:#f92672">-&gt;</span>function <span style="color:#f92672">=</span> f;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span><span style="color:#f92672">-&gt;</span>arg <span style="color:#f92672">=</span> arg;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    callback function;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>arg;
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TaskQueue</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    TaskQueue();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">~</span>TaskQueue();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 添加任务
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">addTask</span>(Task task);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">addTask</span>(callback f, <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>arg);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 取出一个任务
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    Task <span style="color:#a6e22e">getTask</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 判断队列任务是否为空
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">inline</span> <span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">empty</span>() { <span style="color:#66d9ef">return</span> m_taskQ.empty(); }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 当前任务个数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">inline</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">gettaskNumber</span>() { <span style="color:#66d9ef">return</span> m_taskQ.size(); }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>queue<span style="color:#f92672">&lt;</span>Task<span style="color:#f92672">&gt;</span> m_taskQ;
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>mutex m_mutex;
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;TaskQueue.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;mutex&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> TaskQueue<span style="color:#f92672">::</span>addTask(Task task) {
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>unique_lock<span style="color:#f92672">&lt;</span>std<span style="color:#f92672">::</span>mutex<span style="color:#f92672">&gt;</span> lk(m_mutex);
+</span></span><span style="display:flex;"><span>    m_taskQ.push(task);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> TaskQueue<span style="color:#f92672">::</span>addTask(callback f, <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>arg) {
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>unique_lock<span style="color:#f92672">&lt;</span>std<span style="color:#f92672">::</span>mutex<span style="color:#f92672">&gt;</span> lk(m_mutex);
+</span></span><span style="display:flex;"><span>    m_taskQ.push(Task(f, arg));
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Task TaskQueue<span style="color:#f92672">::</span>getTask() {
+</span></span><span style="display:flex;"><span>    Task task;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>m_taskQ.empty()) {
+</span></span><span style="display:flex;"><span>        std<span style="color:#f92672">::</span>unique_lock<span style="color:#f92672">&lt;</span>std<span style="color:#f92672">::</span>mutex<span style="color:#f92672">&gt;</span> lk(m_mutex);
+</span></span><span style="display:flex;"><span>        task <span style="color:#f92672">=</span> m_taskQ.front();
+</span></span><span style="display:flex;"><span>        m_taskQ.pop();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> task;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>TaskQueue<span style="color:#f92672">::</span>TaskQueue() {}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>TaskQueue<span style="color:#f92672">::~</span>TaskQueue() {}
+</span></span></code></pre></div><h2 id="线程池类"><strong>线程池类</strong></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#pragma once
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;TaskQueue.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;atomic&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;condition_variable&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;mutex&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;thread&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ThreadPool</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 创建线程池并初始化
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    ThreadPool(<span style="color:#66d9ef">int</span> min, <span style="color:#66d9ef">int</span> max);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 给线程池添加任务
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">addTask</span>(Task task);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 获取线程池中工作的线程的个数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">getBusyNumber</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 获取线程池中活着的线程的个数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">getAliveNumber</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// static ThreadPool *instance();
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// static ThreadPool &amp;Instance();
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 销毁线程池
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">~</span>ThreadPool();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    ThreadPool();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//////////////////////
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// 工作的线程(消费者线程)任务函数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>worker(<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>arg);
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 管理者线程任务函数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">manager</span>(<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>arg);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 任务队列
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    TaskQueue <span style="color:#f92672">*</span>taskQ;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> minNum;              <span style="color:#75715e">// 最小线程数量
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">int</span> maxNum;              <span style="color:#75715e">// 最大线程数量
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">int</span> busyNum;             <span style="color:#75715e">// 忙的线程的个数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">int</span> liveNum;             <span style="color:#75715e">// 存活的线程的个数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    std<span style="color:#f92672">::</span>atomic_int exitNum; <span style="color:#75715e">// 要销毁的线程个数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    std<span style="color:#f92672">::</span>condition_variable m_notEmpty;
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>mutex m_mutex;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> NUMBER <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> shutdown; <span style="color:#75715e">// 是不是要销毁线程池, 销毁为1, 不销毁为0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>};
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;ThreadPool.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;algorithm&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;chrono&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;mutex&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;string&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;thread&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 创建线程池并初始化
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>ThreadPool<span style="color:#f92672">::</span>ThreadPool(<span style="color:#66d9ef">int</span> min, <span style="color:#66d9ef">int</span> max) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">do</span> {
+</span></span><span style="display:flex;"><span>        taskQ <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> TaskQueue;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">==</span> taskQ) {
+</span></span><span style="display:flex;"><span>            std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;malloc taskQ fail...&#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        minNum <span style="color:#f92672">=</span> min;
+</span></span><span style="display:flex;"><span>        maxNum <span style="color:#f92672">=</span> max;
+</span></span><span style="display:flex;"><span>        busyNum <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>        liveNum <span style="color:#f92672">=</span> min; <span style="color:#75715e">// 和最小个数相等
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        exitNum <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>        shutdown <span style="color:#f92672">=</span> false;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 管理者线程
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        std<span style="color:#f92672">::</span><span style="color:#66d9ef">thread</span> manager_thread(manager, <span style="color:#66d9ef">this</span>);
+</span></span><span style="display:flex;"><span>        std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;manager_thread created id: &#34;</span> <span style="color:#f92672">&lt;&lt;</span> manager_thread.get_id()
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#39;\n&#39;</span>;
+</span></span><span style="display:flex;"><span>        manager_thread.detach();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 工作者线程
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> min; <span style="color:#f92672">++</span>i) {
+</span></span><span style="display:flex;"><span>            std<span style="color:#f92672">::</span><span style="color:#66d9ef">thread</span> worker_thread(worker, <span style="color:#66d9ef">this</span>);
+</span></span><span style="display:flex;"><span>            std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;worker_thread created &#34;</span> <span style="color:#f92672">&lt;&lt;</span> worker_thread.get_id() <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#39;\n&#39;</span>;
+</span></span><span style="display:flex;"><span>            worker_thread.detach();
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span>;
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">while</span> (<span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 释放资源
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (taskQ) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">delete</span> taskQ;
+</span></span><span style="display:flex;"><span>        taskQ <span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ThreadPool<span style="color:#f92672">::~</span>ThreadPool() {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 关闭线程池
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    shutdown <span style="color:#f92672">=</span> true;
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 唤醒阻塞的线程
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> liveNum; <span style="color:#f92672">++</span>i) {
+</span></span><span style="display:flex;"><span>        m_notEmpty.notify_all();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 释放堆内存
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (taskQ) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">delete</span> taskQ;
+</span></span><span style="display:flex;"><span>        taskQ <span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> ThreadPool<span style="color:#f92672">::</span>addTask(Task task) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (shutdown) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 添加任务
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    taskQ<span style="color:#f92672">-&gt;</span>addTask(task);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 唤醒一个工作者线程
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    m_notEmpty.notify_one();
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> ThreadPool<span style="color:#f92672">::</span>getBusyNumber() {
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>unique_lock<span style="color:#f92672">&lt;</span>std<span style="color:#f92672">::</span>mutex<span style="color:#f92672">&gt;</span> lk(m_mutex);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> busyNum_1 <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span><span style="color:#f92672">-&gt;</span>busyNum;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> busyNum_1;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> ThreadPool<span style="color:#f92672">::</span>getAliveNumber() {
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>unique_lock<span style="color:#f92672">&lt;</span>std<span style="color:#f92672">::</span>mutex<span style="color:#f92672">&gt;</span> lk(m_mutex);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> aliveNum <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span><span style="color:#f92672">-&gt;</span>liveNum;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> aliveNum;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>ThreadPool<span style="color:#f92672">::</span>worker(<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>arg) {
+</span></span><span style="display:flex;"><span>    ThreadPool <span style="color:#f92672">*</span>pool <span style="color:#f92672">=</span> <span style="color:#66d9ef">static_cast</span><span style="color:#f92672">&lt;</span>ThreadPool <span style="color:#f92672">*&gt;</span>(arg);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> (true) {
+</span></span><span style="display:flex;"><span>        std<span style="color:#f92672">::</span>unique_lock<span style="color:#f92672">&lt;</span>std<span style="color:#f92672">::</span>mutex<span style="color:#f92672">&gt;</span> lk(pool<span style="color:#f92672">-&gt;</span>m_mutex);
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 当前任务队列是否为空
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span> (pool<span style="color:#f92672">-&gt;</span>taskQ<span style="color:#f92672">-&gt;</span>gettaskNumber() <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">!</span>pool<span style="color:#f92672">-&gt;</span>shutdown) {
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// 阻塞工作线程
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            pool<span style="color:#f92672">-&gt;</span>m_notEmpty.wait(lk, [<span style="color:#f92672">&amp;</span>] {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> pool<span style="color:#f92672">-&gt;</span>exitNum <span style="color:#f92672">||</span> pool<span style="color:#f92672">-&gt;</span>shutdown <span style="color:#f92672">||</span> <span style="color:#f92672">!</span>pool<span style="color:#f92672">-&gt;</span>taskQ<span style="color:#f92672">-&gt;</span>empty();
+</span></span><span style="display:flex;"><span>            });
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        lk.unlock();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 判断线程池是否被关闭了
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span> (pool<span style="color:#f92672">-&gt;</span>shutdown <span style="color:#f92672">||</span> pool<span style="color:#f92672">-&gt;</span>exitNum <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>            pool<span style="color:#f92672">-&gt;</span>exitNum<span style="color:#f92672">--</span>;
+</span></span><span style="display:flex;"><span>            std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;thread &#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>this_thread<span style="color:#f92672">::</span>get_id() <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; exiting...&#34;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#39;\n&#39;</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 从任务队列中取出一个任务
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">auto</span> task <span style="color:#f92672">=</span> std<span style="color:#f92672">::</span>move(pool<span style="color:#f92672">-&gt;</span>taskQ<span style="color:#f92672">-&gt;</span>getTask());
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 解锁
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        lk.lock();
+</span></span><span style="display:flex;"><span>        pool<span style="color:#f92672">-&gt;</span>busyNum<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>        lk.unlock();
+</span></span><span style="display:flex;"><span>        std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;thread &#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>this_thread<span style="color:#f92672">::</span>get_id() <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; start working...&#34;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#39;\n&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 消费任务
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        task.function(task.arg);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">delete</span> task.arg;
+</span></span><span style="display:flex;"><span>        task.arg <span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        lk.lock();
+</span></span><span style="display:flex;"><span>        pool<span style="color:#f92672">-&gt;</span>busyNum<span style="color:#f92672">--</span>;
+</span></span><span style="display:flex;"><span>        lk.unlock();
+</span></span><span style="display:flex;"><span>        std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;thread &#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>this_thread<span style="color:#f92672">::</span>get_id() <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; end working...&#34;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#39;\n&#39;</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">nullptr</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>ThreadPool<span style="color:#f92672">::</span>manager(<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>arg) {
+</span></span><span style="display:flex;"><span>    ThreadPool <span style="color:#f92672">*</span>pool <span style="color:#f92672">=</span> <span style="color:#66d9ef">static_cast</span><span style="color:#f92672">&lt;</span>ThreadPool <span style="color:#f92672">*&gt;</span>(arg);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> (<span style="color:#f92672">!</span>pool<span style="color:#f92672">-&gt;</span>shutdown) {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 每隔3s检测一次
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        std<span style="color:#f92672">::</span>this_thread<span style="color:#f92672">::</span>sleep_for(std<span style="color:#f92672">::</span>chrono<span style="color:#f92672">::</span>seconds(<span style="color:#ae81ff">1</span>));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        std<span style="color:#f92672">::</span>unique_lock<span style="color:#f92672">&lt;</span>std<span style="color:#f92672">::</span>mutex<span style="color:#f92672">&gt;</span> lk(pool<span style="color:#f92672">-&gt;</span>m_mutex);
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 取出线程池中任务的数量和当前线程的数量
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> queueSize <span style="color:#f92672">=</span> pool<span style="color:#f92672">-&gt;</span>taskQ<span style="color:#f92672">-&gt;</span>gettaskNumber();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 取出忙的线程的数量
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> busyNum <span style="color:#f92672">=</span> pool<span style="color:#f92672">-&gt;</span>busyNum;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> liveNum <span style="color:#f92672">=</span> pool<span style="color:#f92672">-&gt;</span>liveNum;
+</span></span><span style="display:flex;"><span>        lk.unlock();
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 添加线程
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#75715e">// 任务的个数&gt;存活的线程个数 &amp;&amp; 存活的线程数&lt;最大线程数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span> (queueSize <span style="color:#f92672">&gt;</span> liveNum <span style="color:#f92672">&amp;&amp;</span> liveNum <span style="color:#f92672">&lt;</span> pool<span style="color:#f92672">-&gt;</span>maxNum) {
+</span></span><span style="display:flex;"><span>            lk.lock();
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">int</span> counter <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>                 i <span style="color:#f92672">&lt;</span> pool<span style="color:#f92672">-&gt;</span>maxNum <span style="color:#f92672">&amp;&amp;</span> counter <span style="color:#f92672">&lt;</span> NUMBER <span style="color:#f92672">&amp;&amp;</span> pool<span style="color:#f92672">-&gt;</span>liveNum <span style="color:#f92672">&lt;</span> pool<span style="color:#f92672">-&gt;</span>maxNum;
+</span></span><span style="display:flex;"><span>                 <span style="color:#f92672">++</span>i) {
+</span></span><span style="display:flex;"><span>                std<span style="color:#f92672">::</span><span style="color:#66d9ef">thread</span> worker_thread(worker, pool);
+</span></span><span style="display:flex;"><span>                std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;worker_thread created &#34;</span> <span style="color:#f92672">&lt;&lt;</span> worker_thread.get_id() <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#39;\n&#39;</span>;
+</span></span><span style="display:flex;"><span>                worker_thread.detach();
+</span></span><span style="display:flex;"><span>                pool<span style="color:#f92672">-&gt;</span>liveNum<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>                counter<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            lk.unlock();
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 销毁线程
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#75715e">// 忙的线程*2 &lt; 存活的线程数 &amp;&amp; 存活的线程&gt;最小线程数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span> (busyNum <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">&lt;</span> liveNum <span style="color:#f92672">&amp;&amp;</span> liveNum <span style="color:#f92672">&gt;</span> pool<span style="color:#f92672">-&gt;</span>minNum) {
+</span></span><span style="display:flex;"><span>            pool<span style="color:#f92672">-&gt;</span>exitNum <span style="color:#f92672">=</span> NUMBER;
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// 让工作的线程自杀
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> NUMBER; <span style="color:#f92672">++</span>i) {
+</span></span><span style="display:flex;"><span>                pool<span style="color:#f92672">-&gt;</span>m_notEmpty.notify_one();
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;manager_thread exiting...&#34;</span> <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#39;\n&#39;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">nullptr</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="测试"><strong>测试</strong></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">/*************************************************************************
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  &gt; File Name: main.cpp
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  &gt; Author: txt1994
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  &gt; Mail: txt1994s@163.com
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  &gt; Created Time: Mon 08 Nov 2021 05:58:32 PM CST
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> ************************************************************************/</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;ThreadPool.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;chrono&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;memory&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;pthread.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;thread&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;unistd.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;utility&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">taskFunc</span>(<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>arg) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> num <span style="color:#f92672">=</span> <span style="color:#f92672">*</span>(<span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span>)arg;
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;thread id = &#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>this_thread<span style="color:#f92672">::</span>get_id()
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; number = &#34;</span> <span style="color:#f92672">&lt;&lt;</span> num <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#39;\n&#39;</span>;
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>this_thread<span style="color:#f92672">::</span>sleep_for(std<span style="color:#f92672">::</span>chrono<span style="color:#f92672">::</span>seconds(<span style="color:#ae81ff">1</span>));
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">void</span>) {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 初始化线程池
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    ThreadPool <span style="color:#f92672">*</span>pool <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ThreadPool(<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">10</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">100</span>; <span style="color:#f92672">++</span>i) {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span>num <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">*</span>num <span style="color:#f92672">=</span> i <span style="color:#f92672">+</span> <span style="color:#ae81ff">100</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        Task task;
+</span></span><span style="display:flex;"><span>        task.arg <span style="color:#f92672">=</span> num;
+</span></span><span style="display:flex;"><span>        task.function <span style="color:#f92672">=</span> taskFunc;
+</span></span><span style="display:flex;"><span>        pool<span style="color:#f92672">-&gt;</span>addTask(task);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>this_thread<span style="color:#f92672">::</span>sleep_for(std<span style="color:#f92672">::</span>chrono<span style="color:#f92672">::</span>seconds(<span style="color:#ae81ff">30</span>));
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">delete</span> pool;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/c&#43;&#43;11/">C&#43;&#43;11</a>
+        
+    </section>
+
+
+    </footer>
+
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2023 My Blog
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.5.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+
+            </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">Table of contents</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#任务类"><strong>任务类</strong></a></li>
+    <li><a href="#线程池类"><strong>线程池类</strong></a></li>
+    <li><a href="#测试"><strong>测试</strong></a></li>
+  </ul>
+</nav>
+                </div>
+            </section>
+        </aside>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

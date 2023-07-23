@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Associative on My Blog</title>
+    <link>https://okokfun.github.io/tags/associative/</link>
+    <description>Recent content in Associative on My Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Wed, 19 Jan 2022 16:53:07 +0000</lastBuildDate><atom:link href="https://okokfun.github.io/tags/associative/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>关联容器</title>
+      <link>https://okokfun.github.io/post/%E5%85%B3%E8%81%94%E5%AE%B9%E5%99%A8/</link>
+      <pubDate>Wed, 19 Jan 2022 16:53:07 +0000</pubDate>
+      
+      <guid>https://okokfun.github.io/post/%E5%85%B3%E8%81%94%E5%AE%B9%E5%99%A8/</guid>
+      <description>此文整理与👉容器库 - cppreference.com
+关联容器实现能快速查找（ O(log n) 复杂度）的数据结构。
+std::set 定义于头文件 &amp;lt;set&amp;gt;
+std::set 是关联容器，含有 Key 类型对象的已排序集并去重。用比较函数 比较 (Compare) 进行排序。搜索、移除和插入拥有对数复杂度。 set 通常以红黑树实现。
+返回指向 set 首元素的迭代器。
+若 set 为空，则返回的迭代器将等于 end() 。
+返回值
+指向首元素的迭代器。
+复杂度 常数。
+std::set&amp;lt;&amp;gt;::begin,std::set&amp;lt;&amp;gt;::cbegin #include &amp;lt;algorithm&amp;gt; #include &amp;lt;iostream&amp;gt; #include &amp;lt;set&amp;gt; int main() { std::set&amp;lt;int&amp;gt; set = { 3, 1, 4, 1, 5, 9, 2, 6, 5 }; std::for_each(set.cbegin(), set.cend(), [](int x) { std::cout &amp;lt;&amp;lt; x &amp;lt;&amp;lt; &amp;#39; &amp;#39;; }); std::cout &amp;lt;&amp;lt; &amp;#39;\n&amp;#39;; } std::set&amp;lt;Key,Compare,Allocator&amp;gt;::empty 检查容器是否无元素</description>
+    </item>
+    
+  </channel>
+</rss>

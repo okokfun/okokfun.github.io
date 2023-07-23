@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>C&#43;&#43;11 on My Blog</title>
+    <link>https://okokfun.github.io/tags/c&#43;&#43;11/</link>
+    <description>Recent content in C&#43;&#43;11 on My Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sun, 06 Feb 2022 21:27:50 +0000</lastBuildDate><atom:link href="https://okokfun.github.io/tags/c++11/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>让C&#43;&#43;程序更快的运行</title>
+      <link>https://okokfun.github.io/post/%E8%AE%A9c-%E7%A8%8B%E5%BA%8F%E6%9B%B4%E5%BF%AB%E7%9A%84%E8%BF%90%E8%A1%8C/</link>
+      <pubDate>Sun, 06 Feb 2022 21:27:50 +0000</pubDate>
+      
+      <guid>https://okokfun.github.io/post/%E8%AE%A9c-%E7%A8%8B%E5%BA%8F%E6%9B%B4%E5%BF%AB%E7%9A%84%E8%BF%90%E8%A1%8C/</guid>
+      <description>视频由up神经元猫 神经元猫的个人空间_哔哩哔哩_bilibili 翻译自 youtube.com/cherno 并发布到👉 【79】【Cherno C++】【中字】如何让C++运行得更快_哔哩哔哩_bilibili 并由我整理。
+通过编码方式利用多核或多处理器 ,利用这些线程，不只是让你的程序顺序执行一条条指令，而是把一些东西，推迟到不同的线程，甚至不是推迟，二十把东西分派到不同的线程，让计算机更快地处理这些东西。
+每一个资源，每一个纹理模型，他们通常独立于彼此，意味着这是良好的多线程候选场景。
+static std::mutex s_MeshesMutex; static void LoadMesh(std::vector&amp;lt;Ref&amp;lt;Mesh&amp;gt;&amp;gt;* meshes, std::string filepath) { auto mesh = Mesh::Load(filepath); std::lock_guard&amp;lt;std::mutex&amp;gt; lock(s_MeshesMutex); meshes.push_back(mesh); } void EditLayer::LoadMeshes() { std::ifstream stream(&amp;#34;src/Models.txt&amp;#34;); std::string line; std::vector&amp;lt;std::string&amp;gt; meshFilepaths; while (std::getline(stream, line)) meshFilepaths.push_back(line); #define ASYNC 1 #id ASYNC for (const auto&amp;amp; file : meshFilepaths) // std::launch::async告知std库创建一个线程处理。 // 我们需要保留std::async的返回值，如果不保留的话，因为它会被C++标准库摧毁，在摧毁时，标准库需要确保过程实际已被完成，这基本不是并行了，所以需要创建一个std::future的向量。 m_Futures.push_back(std::async(std::launch::async, LoadMesh, &amp;amp;m_Meshes, file)); #else for (const auto&amp;amp; file : meshFilepaths) m_Meshes.push_back(Mesh::Load(file)); } std::vector&amp;lt;std::future&amp;lt;void&amp;gt; m_Meshes; 通过把任务分派的不同的线程，资源加载速度由6.</description>
+    </item>
+    
+    <item>
+      <title>C&#43;&#43;元组与对组</title>
+      <link>https://okokfun.github.io/post/c-%E5%85%83%E7%BB%84%E4%B8%8E%E5%AF%B9%E7%BB%84/</link>
+      <pubDate>Sat, 29 Jan 2022 17:41:10 +0000</pubDate>
+      
+      <guid>https://okokfun.github.io/post/c-%E5%85%83%E7%BB%84%E4%B8%8E%E5%AF%B9%E7%BB%84/</guid>
+      <description>来自于👉 tuple - C++ Reference (cplusplus.com) 并整理
+一个元组std::tuple是一个能够容纳 元素集合 的对象。每个元素都可以是 不同的类型。
+std::make_pair()可以构建一个配对对象，其第一个元素设置为x，第二个元素设置为y，并返回。
+std::tie可以绑定std::tuple&amp;lt;T,T,T,...&amp;gt;的实例，并分别给这些元素起别名
+std::tuple 所在头文件 &amp;lt;tuple&amp;gt;
+例子：
+// tuple example #include &amp;lt;iostream&amp;gt; // std::cout #include &amp;lt;tuple&amp;gt; // std::tuple, std::get, std::tie, std::ignore int main () { std::tuple&amp;lt;int,char&amp;gt; foo (10,&amp;#39;x&amp;#39;); auto bar = std::make_tuple (&amp;#34;test&amp;#34;, 3.1, 14, &amp;#39;y&amp;#39;); std::cout &amp;lt;&amp;lt; &amp;#34;bar has &amp;#34;&amp;lt;&amp;lt;std::tuple_size&amp;lt;decltype(bar)&amp;gt;::value &amp;lt;&amp;lt; elements&amp;lt;&amp;lt; &amp;#39;\n&amp;#39;; std::tuple_element&amp;lt;0,decltype(bar)&amp;gt;::type first = std::get&amp;lt;0&amp;gt;(bar); std::cout &amp;lt;&amp;lt; &amp;#34;bar contains: &amp;#34; &amp;lt;&amp;lt; first &amp;lt;&amp;lt; &amp;#39;\n&amp;#39;; std::get&amp;lt;2&amp;gt;(bar) = 100; // access element int myint; char mychar; std::tie (myint, mychar) = foo; // unpack elements std::tie (std::ignore, std::ignore, myint, mychar) = bar; // unpack (with ignore) mychar = std::get&amp;lt;3&amp;gt;(bar); std::get&amp;lt;0&amp;gt;(foo) = std::get&amp;lt;2&amp;gt;(bar); std::get&amp;lt;1&amp;gt;(foo) = mychar; std::cout &amp;lt;&amp;lt; &amp;#34;foo contains: &amp;#34;; std::cout &amp;lt;&amp;lt; std::get&amp;lt;0&amp;gt;(foo) &amp;lt;&amp;lt; &amp;#39; &amp;#39;; std::cout &amp;lt;&amp;lt; std::get&amp;lt;1&amp;gt;(foo) &amp;lt;&amp;lt; &amp;#39;\n&amp;#39;; return 0; } 答案：</description>
+    </item>
+    
+    <item>
+      <title>C&#43;&#43;新特性</title>
+      <link>https://okokfun.github.io/post/c-%E6%96%B0%E7%89%B9%E6%80%A7/</link>
+      <pubDate>Mon, 24 Jan 2022 17:02:47 +0000</pubDate>
+      
+      <guid>https://okokfun.github.io/post/c-%E6%96%B0%E7%89%B9%E6%80%A7/</guid>
+      <description>1. Variadic Templates 数量不定的模板参数
+...代表任意个数据
+void print(){} template &amp;lt;typename T, typename... Types&amp;gt; void print(const T&amp;amp; firstArg, const Types&amp;amp;...args) { std::cout &amp;lt;&amp;lt; firstArg &amp;lt;&amp;lt; &amp;#39;\n&amp;#39;; print(args...); } void print(const T&amp;amp; firstArg, const Types&amp;amp;...args){}中...代表任意个数据，Types任意类型的数据,
+表示接受任意个任意类型的数据
+例子：
+#include &amp;lt;iostream&amp;gt; #include &amp;lt;bitset&amp;gt; void print() {} template &amp;lt;typename T, typename... Types&amp;gt; void print(const T &amp;amp;firstArg, const Types &amp;amp;...args) { std::cout &amp;lt;&amp;lt; firstArg &amp;lt;&amp;lt; &amp;#39;\n&amp;#39;; print(args...); } int main(int argc, char *argv[]) { print(7.5, &amp;#34;hello&amp;#34;, std::bitset&amp;lt;16&amp;gt;(377), 42); return 0; } 结果：</description>
+    </item>
+    
+    <item>
+      <title>C&#43;&#43;线程池</title>
+      <link>https://okokfun.github.io/post/c-%E7%BA%BF%E7%A8%8B%E6%B1%A0/</link>
+      <pubDate>Fri, 24 Dec 2021 17:01:29 +0000</pubDate>
+      
+      <guid>https://okokfun.github.io/post/c-%E7%BA%BF%E7%A8%8B%E6%B1%A0/</guid>
+      <description>C++线程池 任务类 #pragma once #include &amp;lt;mutex&amp;gt; #include &amp;lt;queue&amp;gt; // 定义任务结构体 using callback = void (*)(void *); struct Task { Task() { this-&amp;gt;function = nullptr; this-&amp;gt;arg = nullptr; } Task(callback f, void *arg) { this-&amp;gt;function = f; this-&amp;gt;arg = arg; } callback function; void *arg; }; class TaskQueue { public: TaskQueue(); ~TaskQueue(); // 添加任务 void addTask(Task task); void addTask(callback f, void *arg); // 取出一个任务 Task getTask(); // 判断队列任务是否为空 inline bool empty() { return m_taskQ.</description>
+    </item>
+    
+  </channel>
+</rss>

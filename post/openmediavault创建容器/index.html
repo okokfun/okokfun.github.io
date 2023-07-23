@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='要创建的容器有：
+Mariadb: 关系型数据库，mysql的开源版本Adminer：开源的数据库管理软件Gitea：开源的私人代码版本管理器Flarum：开源的论坛WordPress：开源的博客软件NextCloud：开源的私人网盘软件1.在一个分区上创建我们需要的文件夹存放配置文件 2.在终端拉取上面的各个镜像文件 1.flarum docker pull mondedie/flarum:latest2.wordpress docker pull wordpress3.adminer docker pull adminer4.mariadb docker pull mariadb5.gitea docker pull gitea/gitea6.nextcloud docker pull nextcloud3.创建各个容器 按顺序应该创建数据库软件与数据库管理软件 1.mariadb容器创建参考 container_name: mariadbenvironment:- PUID=1000- PGID=1000- MYSQL_ROOT_PASSWORD=1- TZ=Asia/Shanghaivolumes:- /srv/dev-disk-by-id-ata-VBOX_HARDDISK_VBdf1e9e6f-f90961e1-part1/mariadb/config:/configports:- 3306:3306networks:- mynetrestart: alwaysnetworks:mynet:external:name: mynet2.adminer创建参考 container_name: adminerenvironment:- ADMINER_DEFAULT_SERVER=mariadbports:- 8080:8080networks:- mynetrestart: alwaysnetworks:mynet:external:name: mynet3.'><title>OpenMediaVault创建容器</title>
+
+<link rel='canonical' href='https://okokfun.github.io/post/openmediavault%E5%88%9B%E5%BB%BA%E5%AE%B9%E5%99%A8/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='OpenMediaVault创建容器'>
+<meta property='og:description' content='要创建的容器有：
+Mariadb: 关系型数据库，mysql的开源版本Adminer：开源的数据库管理软件Gitea：开源的私人代码版本管理器Flarum：开源的论坛WordPress：开源的博客软件NextCloud：开源的私人网盘软件1.在一个分区上创建我们需要的文件夹存放配置文件 2.在终端拉取上面的各个镜像文件 1.flarum docker pull mondedie/flarum:latest2.wordpress docker pull wordpress3.adminer docker pull adminer4.mariadb docker pull mariadb5.gitea docker pull gitea/gitea6.nextcloud docker pull nextcloud3.创建各个容器 按顺序应该创建数据库软件与数据库管理软件 1.mariadb容器创建参考 container_name: mariadbenvironment:- PUID=1000- PGID=1000- MYSQL_ROOT_PASSWORD=1- TZ=Asia/Shanghaivolumes:- /srv/dev-disk-by-id-ata-VBOX_HARDDISK_VBdf1e9e6f-f90961e1-part1/mariadb/config:/configports:- 3306:3306networks:- mynetrestart: alwaysnetworks:mynet:external:name: mynet2.adminer创建参考 container_name: adminerenvironment:- ADMINER_DEFAULT_SERVER=mariadbports:- 8080:8080networks:- mynetrestart: alwaysnetworks:mynet:external:name: mynet3.'>
+<meta property='og:url' content='https://okokfun.github.io/post/openmediavault%E5%88%9B%E5%BB%BA%E5%AE%B9%E5%99%A8/'>
+<meta property='og:site_name' content='My Blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='nas' /><meta property='article:published_time' content='2021-12-26T13:41:29&#43;00:00'/><meta property='article:modified_time' content='2021-12-26T13:41:29&#43;00:00'/>
+<meta name="twitter:title" content="OpenMediaVault创建容器">
+<meta name="twitter:description" content="要创建的容器有：
+Mariadb: 关系型数据库，mysql的开源版本Adminer：开源的数据库管理软件Gitea：开源的私人代码版本管理器Flarum：开源的论坛WordPress：开源的博客软件NextCloud：开源的私人网盘软件1.在一个分区上创建我们需要的文件夹存放配置文件 2.在终端拉取上面的各个镜像文件 1.flarum docker pull mondedie/flarum:latest2.wordpress docker pull wordpress3.adminer docker pull adminer4.mariadb docker pull mariadb5.gitea docker pull gitea/gitea6.nextcloud docker pull nextcloud3.创建各个容器 按顺序应该创建数据库软件与数据库管理软件 1.mariadb容器创建参考 container_name: mariadbenvironment:- PUID=1000- PGID=1000- MYSQL_ROOT_PASSWORD=1- TZ=Asia/Shanghaivolumes:- /srv/dev-disk-by-id-ata-VBOX_HARDDISK_VBdf1e9e6f-f90961e1-part1/mariadb/config:/configports:- 3306:3306networks:- mynetrestart: alwaysnetworks:mynet:external:name: mynet2.adminer创建参考 container_name: adminerenvironment:- ADMINER_DEFAULT_SERVER=mariadbports:- 8080:8080networks:- mynetrestart: alwaysnetworks:mynet:external:name: mynet3."><script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+    </head>
+    <body class="
+    article-page has-toc
+">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex 
+    
+        extended
+    
+">
+    
+        <div id="article-toolbar">
+            <a href="/" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+                <span>Back</span>
+            </a>
+        </div>
+    
+<main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+
+    <h2 class="article-title">
+        <a href="/post/openmediavault%E5%88%9B%E5%BB%BA%E5%AE%B9%E5%99%A8/">OpenMediaVault创建容器</a>
+    </h2>
+
+    
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Dec 26, 2021</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    2 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+</div>
+</header>
+
+    <section class="article-content">
+    <!-- raw HTML omitted -->
+<p>要创建的容器有：</p>
+<pre><code>Mariadb: 关系型数据库，mysql的开源版本
+
+Adminer：开源的数据库管理软件
+
+Gitea：开源的私人代码版本管理器
+
+Flarum：开源的论坛
+
+WordPress：开源的博客软件
+
+NextCloud：开源的私人网盘软件
+</code></pre>
+<h3 id="1在一个分区上创建我们需要的文件夹存放配置文件"><strong>1.在一个分区上创建我们需要的文件夹存放配置文件</strong></h3>
+<p><figure 
+	>
+	<a href="https://gitee.com/txt1994/images/raw/master/img/2021/05/image-3.png" >
+		<img src="https://gitee.com/txt1994/images/raw/master/img/2021/05/image-3.png"
+			
+			
+			
+			loading="lazy"
+			>
+	</a>
+	
+</figure></p>
+<h3 id="2在终端拉取上面的各个镜像文件">2.在终端拉取上面的各个镜像文件</h3>
+<h4 id="1flarum">1.flarum</h4>
+<pre><code>docker pull mondedie/flarum:latest
+</code></pre>
+<h4 id="2wordpress">2.wordpress</h4>
+<pre><code>docker pull wordpress
+</code></pre>
+<h4 id="3adminer">3.adminer</h4>
+<pre><code>docker pull adminer
+</code></pre>
+<h4 id="4mariadb">4.mariadb</h4>
+<pre><code>docker pull mariadb
+</code></pre>
+<h4 id="5gitea">5.gitea</h4>
+<pre><code>docker pull gitea/gitea
+</code></pre>
+<h4 id="6nextcloud">6.nextcloud</h4>
+<pre><code>docker pull nextcloud
+</code></pre>
+<h3 id="3创建各个容器"><strong>3.创建各个容器</strong></h3>
+<p>按顺序应该创建数据库软件与数据库管理软件
+<figure 
+	>
+	<a href="https://gitee.com/txt1994/images/raw/master/img/2021/05/image-4.png" >
+		<img src="https://gitee.com/txt1994/images/raw/master/img/2021/05/image-4.png"
+			
+			
+			
+			loading="lazy"
+			>
+	</a>
+	
+</figure></p>
+<h4 id="1mariadb容器创建参考">1.mariadb容器创建参考</h4>
+<pre><code>container_name: mariadb
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - MYSQL_ROOT_PASSWORD=1
+      - TZ=Asia/Shanghai
+    volumes:
+      - /srv/dev-disk-by-id-ata-VBOX_HARDDISK_VBdf1e9e6f-f90961e1-part1/mariadb/config:/config
+    ports:
+      - 3306:3306
+    networks:
+      - mynet
+    restart: always
+
+networks:
+  mynet:
+    external:
+      name: mynet
+</code></pre>
+<h4 id="2adminer创建参考">2.adminer创建参考</h4>
+<pre><code>container_name: adminer
+    environment:
+      - ADMINER_DEFAULT_SERVER=mariadb
+    ports:
+      - 8080:8080
+    networks:
+      - mynet
+    restart: always
+
+networks:
+  mynet:
+    external:
+      name: mynet
+</code></pre>
+<h4 id="3flarum创建参考">3.flarum创建参考</h4>
+<h5 id="31在映射的flarum根目录创建docker-composeyaml">3.1在映射的flarum根目录创建docker-compose.yaml</h5>
+<pre><code>version: &quot;3&quot;
+
+services:
+  flarum:
+    image: mondedie/flarum:stable
+    container_name: flarum
+    env_file:
+      - /srv/dev-disk-by-id-ata-VBOX_HARDDISK_VBdf1e9e6f-f90961e1-part1/flarum/flarum.env
+    volumes:
+      - /srv/dev-disk-by-id-ata-VBOX_HARDDISK_VBdf1e9e6f-f90961e1-part1/flarum/assets:/flarum/app/public/assets
+      - /srv/dev-disk-by-id-ata-VBOX_HARDDISK_VBdf1e9e6f-f90961e1-part1/flarum/extensions:/flarum/app/extensions
+      - /srv/dev-disk-by-id-ata-VBOX_HARDDISK_VBdf1e9e6f-f90961e1-part1/flarum/nginx:/etc/nginx/flarum
+      - /mnt/docker/flarum/storage/logs:/flarum/app/storage/logs
+    ports:
+      - 8081:8888
+    networks:
+      - mynet
+    restart: always
+
+networks:
+  mynet:
+    external:
+      name: mynet
+</code></pre>
+<h5 id="32再创建flarumenv">3.2再创建flarum.env</h5>
+<pre><code>DEBUG=false
+FORUM_URL=http://192.168.1.105:8081
+
+# Database configuration
+DB_HOST=mariadb
+DB_NAME=flarum
+DB_USER=flarum
+DB_PASS=123456789
+DB_PREF=flarum_
+DB_PORT=3306
+
+# User admin flarum (environment variable for first installation)
+# /!\ admin password must contain at least 8 characters /!\
+FLARUM_ADMIN_USER=admin
+FLARUM_ADMIN_PASS=123456789
+FLARUM_ADMIN_MAIL=txt1994s@163.com
+FLARUM_TITLE=txt1994的论坛
+</code></pre>
+<p>登录adminer,然后创建数据库</p>
+<pre><code>DB_HOST=mariadb (地址)
+DB_NAME=flarum  (数据库)
+DB_USER=flarum  （用户）
+DB_PASS=123456789（密码）
+</code></pre>
+<p>然后运行命令：</p>
+<pre><code>docker-compose up -d flarum
+</code></pre>
+<p>安装中文插件</p>
+<blockquote>
+<p>=Beta 14</p>
+</blockquote>
+<p><code>docker exec -ti flarum extension require ffans/lang-simplified-chinese</code></p>
+<p>安装emoji表情插件
+<code>docker exec -ti flarum extension require clarkwinkelmann/flarum-ext-emojionearea</code></p>
+<p>安装显示帖子阅读次数
+<code>docker exec -ti flarum extension require michaelbelgium/flarum-discussion-views</code></p>
+<p>安装flarum媒体增强插件
+<code>docker exec -ti flarum extension require fof/formatting</code></p>
+<p>表格支持插件</p>
+<p><code>docker exec -ti flarum extension require askvortsov/flarum-markdown-tables</code></p>
+<p>代码高亮</p>
+<p><code>docker exec -ti flarum extension require therealsujitk/flarum-ext-hljs</code></p>
+<h4 id="4gitea创建参考">4.gitea创建参考</h4>
+<pre><code>container_name: gitea
+    volumes:
+      - /srv/dev-disk-by-id-ata-VBOX_HARDDISK_VBdf1e9e6f-f90961e1-part1/gitea/data:/data
+    ports:
+      - &quot;3000:3000&quot;
+      - &quot;2222:22&quot;
+    networks:
+      - mynet
+    restart: always
+
+networks:
+  mynet:
+    external:
+      name: mynet
+
+创建数据库：
+      - MYSQL_ROOT_PASSWORD=1
+      - MYSQL_DATABASE=gitea
+      - MYSQL_USER=gitea
+      - MYSQL_PASSWORD=123456789
+</code></pre>
+<h4 id="5wordpress创建参考">5.wordpress创建参考</h4>
+<pre><code>container_name: wordpress
+    volumes:
+      - /srv/dev-disk-by-id-ata-VBOX_HARDDISK_VBdf1e9e6f-f90961e1-part1/wordpress/html:/var/www/html
+    ports:
+      - 8082:80
+    environment:
+      WORDPRESS_DB_HOST: mariadb
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: 123456789
+      WORDPRESS_DB_NAME: wordpress
+    networks:
+      - mynet
+    restart: always
+
+networks:
+  mynet:
+    external:
+      name: mynet
+   创建好数据库：
+      WORDPRESS_DB_HOST: mariadb
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: 123456789
+      WORDPRESS_DB_NAME: wordpress
+</code></pre>
+<h4 id="6nextcloud创建参考">6.nextcloud创建参考</h4>
+<pre><code>container_name: nextcloud
+    volumes:
+      - /srv/dev-disk-by-id-ata-VBOX_HARDDISK_VBdf1e9e6f-f90961e1-part1/nextcloud/html:/var/www/html
+    ports:
+      - 8083:80   
+    networks:
+      - mynet    
+    restart: always
+    
+创建好数据库：
+environment:
+      - MYSQL_PASSWORD=123456789
+      - MYSQL_DATABASE=nextcloud
+      - MYSQL_USER=nextcloud
+      - MYSQL_HOST=mariadb</code></pre>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/nas/">nas</a>
+        
+    </section>
+
+
+    </footer>
+
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">Related contents</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="">
+    <a href="/post/openmediavault%E5%AE%89%E8%A3%85%E4%B8%8E%E5%88%9D%E6%AD%A5%E8%AE%BE%E7%BD%AE/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">OpenMediaVault安装与初步设置</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2023 My Blog
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.5.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+
+            </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">Table of contents</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#1在一个分区上创建我们需要的文件夹存放配置文件"><strong>1.在一个分区上创建我们需要的文件夹存放配置文件</strong></a></li>
+        <li><a href="#2在终端拉取上面的各个镜像文件">2.在终端拉取上面的各个镜像文件</a></li>
+        <li><a href="#3创建各个容器"><strong>3.创建各个容器</strong></a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                </div>
+            </section>
+        </aside>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
