@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>QT_UI组件库 - My Blog</title><meta name="Description" content="Hugo theme - LoveIt"><meta property="og:title" content="QT_UI组件库" />
+<meta property="og:description" content="QT组件库第1-31 QT组件库第32-56 Layouts 布局组件库 1号 Vertical Layout 垂直布局
+2号 Horizontal Layout 水平布局
+3号 Grid Layout 网格布局
+4号 Form Layout 表单布局
+Spacers 空间间隔组(弹簧) 5号 Horizontal Spacer 水平间隔
+6号 Vertical Spacer 垂直间隔
+Buttons 按钮 7号 Push Button 8号 Tool Button 9号 Radio Button 10号 Check Box 11号 Command Link Button 12号 Dialog Button Box Item Views (Model-Based) 清单视图组 13号 List View 清单视图
+14号 Tree View 树视图
+15号 Table View 表视图
+16号 Column View 列视图" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://okokfun.github.io/posts/qt-ui%E7%BB%84%E4%BB%B6%E5%BA%93/" /><meta property="og:image" content="https://okokfun.github.io"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-01-24T14:33:42+00:00" />
+<meta property="article:modified_time" content="2022-01-24T14:33:42+00:00" /><meta property="og:site_name" content="My Blog" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://okokfun.github.io"/>
+
+<meta name="twitter:title" content="QT_UI组件库"/>
+<meta name="twitter:description" content="QT组件库第1-31 QT组件库第32-56 Layouts 布局组件库 1号 Vertical Layout 垂直布局
+2号 Horizontal Layout 水平布局
+3号 Grid Layout 网格布局
+4号 Form Layout 表单布局
+Spacers 空间间隔组(弹簧) 5号 Horizontal Spacer 水平间隔
+6号 Vertical Spacer 垂直间隔
+Buttons 按钮 7号 Push Button 8号 Tool Button 9号 Radio Button 10号 Check Box 11号 Command Link Button 12号 Dialog Button Box Item Views (Model-Based) 清单视图组 13号 List View 清单视图
+14号 Tree View 树视图
+15号 Table View 表视图
+16号 Column View 列视图"/>
+<meta name="application-name" content="LoveIt">
+<meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://okokfun.github.io/posts/qt-ui%E7%BB%84%E4%BB%B6%E5%BA%93/" /><link rel="prev" href="https://okokfun.github.io/posts/me/" /><link rel="next" href="https://okokfun.github.io/posts/c-%E6%96%B0%E7%89%B9%E6%80%A7/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "QT_UI组件库",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/okokfun.github.io\/posts\/qt-ui%E7%BB%84%E4%BB%B6%E5%BA%93\/"
+        },"image": ["https:\/\/okokfun.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "QT, C\u002b\u002b","wordcount":  246 ,
+        "url": "https:\/\/okokfun.github.io\/posts\/qt-ui%E7%BB%84%E4%BB%B6%E5%BA%93\/","datePublished": "2022-01-24T14:33:42+00:00","dateModified": "2022-01-24T14:33:42+00:00","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": "https:\/\/okokfun.github.io\/images\/avatar.png"},"author": {
+                "@type": "Person",
+                "name": "Author"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="My Blog"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span>My Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/" title="Hello World!"> 文章 </a><a class="menu-item" href="/tags/" title="Hello World!"> 标签 </a><a class="menu-item" href="/categories/" title="Hello World!"> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a><a href="javascript:void(0);" class="menu-item language" title="Select Language">
+                    <i class="fa fa-globe" aria-hidden="true"></i>                      
+                    <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/posts/qt-ui%E7%BB%84%E4%BB%B6%E5%BA%93/" selected></option></select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="My Blog"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span>My Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="Hello World!">文章</a><a class="menu-item" href="/tags/" title="Hello World!">标签</a><a class="menu-item" href="/categories/" title="Hello World!">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="Select Language">
+                    <i class="fa fa-globe fa-fw" aria-hidden="true"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/posts/qt-ui%E7%BB%84%E4%BB%B6%E5%BA%93/" selected></option></select>
+                </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">QT_UI组件库</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Author</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-01-24">2022-01-24</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;246 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;<span id="/posts/qt-ui%E7%BB%84%E4%BB%B6%E5%BA%93/" class="leancloud_visitors" data-flag-title="QT_UI组件库">
+                        <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#qt组件库第1-31">QT组件库第1-31</a></li>
+    <li><a href="#qt组件库第32-56">QT组件库第32-56</a></li>
+    <li><a href="#layouts-布局组件库">Layouts 布局组件库</a>
+      <ul>
+        <li><a href="#1号-vertical-layout">1号 Vertical Layout</a></li>
+        <li><a href="#2号-horizontal-layout">2号 Horizontal Layout</a></li>
+        <li><a href="#3号-grid-layout">3号 Grid Layout</a></li>
+        <li><a href="#4号-form-layout">4号 Form Layout</a></li>
+      </ul>
+    </li>
+    <li><a href="#spacers-空间间隔组弹簧">Spacers 空间间隔组(弹簧)</a>
+      <ul>
+        <li><a href="#5号-horizontal-spacer">5号 Horizontal Spacer</a></li>
+        <li><a href="#6号-vertical-spacer">6号 Vertical Spacer</a></li>
+      </ul>
+    </li>
+    <li><a href="#buttons-按钮">Buttons 按钮</a>
+      <ul>
+        <li><a href="#7号-push-button">7号 Push Button</a></li>
+        <li><a href="#8号-tool-button">8号 Tool Button</a></li>
+        <li><a href="#9号-radio-button">9号 Radio Button</a></li>
+        <li><a href="#10号-check-box">10号 Check Box</a></li>
+        <li><a href="#11号-command-link-button">11号 Command Link Button</a></li>
+        <li><a href="#12号-dialog-button-box">12号 Dialog Button Box</a></li>
+      </ul>
+    </li>
+    <li><a href="#item-views-model-based-清单视图组">Item Views (Model-Based) 清单视图组</a>
+      <ul>
+        <li><a href="#13号-list-view">13号 List View</a></li>
+        <li><a href="#14号-tree-view">14号 Tree View</a></li>
+        <li><a href="#15号-table-view">15号 Table View</a></li>
+        <li><a href="#16号-column-view">16号 Column View</a></li>
+        <li><a href="#17号-undo-view">17号 Undo View</a></li>
+      </ul>
+    </li>
+    <li><a href="#item-widgets-item-based-清单控件组">Item Widgets (Item-Based) 清单控件组</a>
+      <ul>
+        <li><a href="#18号-list-widget">18号 List Widget</a></li>
+        <li><a href="#19号-tree-widget">19号 Tree Widget</a></li>
+        <li><a href="#20号-table-widget">20号 Table Widget</a></li>
+      </ul>
+    </li>
+    <li><a href="#containers-容器组">Containers 容器组</a>
+      <ul>
+        <li><a href="#21号-group-box">21号 Group Box</a></li>
+        <li><a href="#22号-scroll-area">22号 Scroll Area</a></li>
+        <li><a href="#23号-tool-box">23号 Tool Box</a></li>
+        <li><a href="#24号-tab-widget">24号 Tab Widget</a></li>
+        <li><a href="#25号-stacked-widget">25号 Stacked Widget</a></li>
+        <li><a href="#26号-frame">26号 Frame</a></li>
+        <li><a href="#27号-widget">27号 Widget</a></li>
+        <li><a href="#28号-mdi-area">28号 MDI Area</a></li>
+        <li><a href="#29号-dock-widget">29号 Dock Widget</a></li>
+        <li><a href="#30号-qax-widget">30号 QAx Widget</a></li>
+      </ul>
+    </li>
+    <li><a href="#input-widgets-输入部件组">Input Widgets 输入部件组</a>
+      <ul>
+        <li><a href="#31号-combo-box">31号 Combo Box</a></li>
+        <li><a href="#32号-font-combo-box">32号 Font Combo Box</a></li>
+        <li><a href="#33号-line-edit">33号 Line Edit</a></li>
+        <li><a href="#34号-text-edit">34号 Text Edit</a></li>
+        <li><a href="#35号-plain-text-edit">35号 Plain Text Edit</a></li>
+        <li><a href="#36号-spin-box">36号 Spin Box</a></li>
+        <li><a href="#37号-double-spin-box">37号 Double Spin Box</a></li>
+        <li><a href="#38号-time-edit">38号 Time Edit</a></li>
+        <li><a href="#39号-date-edit">39号 Date Edit</a></li>
+        <li><a href="#40号-datetime-edit">40号 Date/Time Edit</a></li>
+        <li><a href="#41号-dial">41号 Dial</a></li>
+        <li><a href="#42号-horizontal-scroll-bar">42号 Horizontal Scroll Bar</a></li>
+        <li><a href="#43号-vertical-scroll-bar">43号 Vertical Scroll Bar</a></li>
+        <li><a href="#44号-horizontal-slider">44号 Horizontal Slider</a></li>
+        <li><a href="#45号-vertical-slider">45号 Vertical Slider</a></li>
+        <li><a href="#46号-key-sequence-edit">46号 Key Sequence Edit</a></li>
+      </ul>
+    </li>
+    <li><a href="#display-widgets-显示控件组">Display Widgets 显示控件组</a>
+      <ul>
+        <li><a href="#47号-label">47号 Label</a></li>
+        <li><a href="#48号-text-browser">48号 text Browser</a></li>
+        <li><a href="#49号-graphics-view">49号 Graphics View</a></li>
+        <li><a href="#50号-calendar-widget">50号 Calendar Widget</a></li>
+        <li><a href="#51号-lcd-number">51号 Lcd Number</a></li>
+        <li><a href="#52号-progress-bar">52号 Progress Bar</a></li>
+        <li><a href="#53号-horizontal-line">53号 Horizontal Line</a></li>
+        <li><a href="#54号-vertical-line">54号 Vertical Line</a></li>
+        <li><a href="#55号-opengl-widget">55号 OpenGL Widget</a></li>
+        <li><a href="#56号-qquick-widget">56号 QQuick Widget</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><!-- raw HTML omitted -->
+<h2 id="qt组件库第1-31">QT组件库第1-31</h2>
+<!-- raw HTML omitted -->
+<h2 id="qt组件库第32-56">QT组件库第32-56</h2>
+<!-- raw HTML omitted -->
+<hr>
+<h2 id="layouts-布局组件库">Layouts 布局组件库</h2>
+<h3 id="1号-vertical-layout">1号 Vertical Layout</h3>
+<blockquote>
+<p>垂直布局</p>
+</blockquote>
+<h3 id="2号-horizontal-layout">2号 Horizontal Layout</h3>
+<blockquote>
+<p>水平布局</p>
+</blockquote>
+<h3 id="3号-grid-layout">3号 Grid Layout</h3>
+<blockquote>
+<p>网格布局</p>
+</blockquote>
+<h3 id="4号-form-layout">4号 Form Layout</h3>
+<blockquote>
+<p>表单布局</p>
+</blockquote>
+<hr>
+<h2 id="spacers-空间间隔组弹簧">Spacers 空间间隔组(弹簧)</h2>
+<h3 id="5号-horizontal-spacer">5号 Horizontal Spacer</h3>
+<blockquote>
+<p>水平间隔</p>
+</blockquote>
+<h3 id="6号-vertical-spacer">6号 Vertical Spacer</h3>
+<blockquote>
+<p>垂直间隔</p>
+</blockquote>
+<hr>
+<h2 id="buttons-按钮">Buttons 按钮</h2>
+<h3 id="7号-push-button">7号 Push Button</h3>
+<blockquote>
+</blockquote>
+<h3 id="8号-tool-button">8号 Tool Button</h3>
+<blockquote>
+</blockquote>
+<h3 id="9号-radio-button">9号 Radio Button</h3>
+<blockquote>
+</blockquote>
+<h3 id="10号-check-box">10号 Check Box</h3>
+<blockquote>
+</blockquote>
+<h3 id="11号-command-link-button">11号 Command Link Button</h3>
+<blockquote>
+</blockquote>
+<h3 id="12号-dialog-button-box">12号 Dialog Button Box</h3>
+<blockquote>
+</blockquote>
+<hr>
+<h2 id="item-views-model-based-清单视图组">Item Views (Model-Based) 清单视图组</h2>
+<h3 id="13号-list-view">13号 List View</h3>
+<blockquote>
+<p>清单视图</p>
+</blockquote>
+<h3 id="14号-tree-view">14号 Tree View</h3>
+<blockquote>
+<p>树视图</p>
+</blockquote>
+<h3 id="15号-table-view">15号 Table View</h3>
+<blockquote>
+<p>表视图</p>
+</blockquote>
+<h3 id="16号-column-view">16号 Column View</h3>
+<blockquote>
+<p>列视图</p>
+</blockquote>
+<h3 id="17号-undo-view">17号 Undo View</h3>
+<blockquote>
+<p>撤消视图</p>
+</blockquote>
+<h2 id="item-widgets-item-based-清单控件组">Item Widgets (Item-Based) 清单控件组</h2>
+<h3 id="18号-list-widget">18号 List Widget</h3>
+<blockquote>
+<p>清单控件</p>
+</blockquote>
+<h3 id="19号-tree-widget">19号 Tree Widget</h3>
+<blockquote>
+<p>树控件</p>
+</blockquote>
+<h3 id="20号-table-widget">20号 Table Widget</h3>
+<blockquote>
+<p>表控件</p>
+</blockquote>
+<h2 id="containers-容器组">Containers 容器组</h2>
+<h3 id="21号-group-box">21号 Group Box</h3>
+<blockquote>
+<p>组框</p>
+</blockquote>
+<h3 id="22号-scroll-area">22号 Scroll Area</h3>
+<blockquote>
+<p>滚动区域</p>
+</blockquote>
+<h3 id="23号-tool-box">23号 Tool Box</h3>
+<blockquote>
+<p>工具箱</p>
+</blockquote>
+<h3 id="24号-tab-widget">24号 Tab Widget</h3>
+<blockquote>
+<p>标签小部件</p>
+</blockquote>
+<h3 id="25号-stacked-widget">25号 Stacked Widget</h3>
+<blockquote>
+<p>堆叠部件</p>
+</blockquote>
+<h3 id="26号-frame">26号 Frame</h3>
+<blockquote>
+<p>帧</p>
+</blockquote>
+<h3 id="27号-widget">27号 Widget</h3>
+<blockquote>
+<p>小部件</p>
+</blockquote>
+<h3 id="28号-mdi-area">28号 MDI Area</h3>
+<blockquote>
+<p>MDI区域</p>
+</blockquote>
+<h3 id="29号-dock-widget">29号 Dock Widget</h3>
+<blockquote>
+<p>停靠窗口不见</p>
+</blockquote>
+<h3 id="30号-qax-widget">30号 QAx Widget</h3>
+<blockquote>
+<p>封装Flash的AciveX控件</p>
+</blockquote>
+<h2 id="input-widgets-输入部件组">Input Widgets 输入部件组</h2>
+<h3 id="31号-combo-box">31号 Combo Box</h3>
+<blockquote>
+<p>组合框</p>
+</blockquote>
+<h3 id="32号-font-combo-box">32号 Font Combo Box</h3>
+<blockquote>
+<p>字体组合框</p>
+</blockquote>
+<h3 id="33号-line-edit">33号 Line Edit</h3>
+<blockquote>
+<p>行编辑</p>
+</blockquote>
+<h3 id="34号-text-edit">34号 Text Edit</h3>
+<blockquote>
+<p>文本编辑</p>
+</blockquote>
+<h3 id="35号-plain-text-edit">35号 Plain Text Edit</h3>
+<blockquote>
+<p>纯文本编辑</p>
+</blockquote>
+<h3 id="36号-spin-box">36号 Spin Box</h3>
+<blockquote>
+<p>数字显示框</p>
+</blockquote>
+<h3 id="37号-double-spin-box">37号 Double Spin Box</h3>
+<blockquote>
+<p>双数字显示框</p>
+</blockquote>
+<h3 id="38号-time-edit">38号 Time Edit</h3>
+<blockquote>
+<p>时间编辑</p>
+</blockquote>
+<h3 id="39号-date-edit">39号 Date Edit</h3>
+<blockquote>
+<p>日期编辑</p>
+</blockquote>
+<h3 id="40号-datetime-edit">40号 Date/Time Edit</h3>
+<blockquote>
+<p>日期或时间编辑</p>
+</blockquote>
+<h3 id="41号-dial">41号 Dial</h3>
+<blockquote>
+<p>拨号</p>
+</blockquote>
+<h3 id="42号-horizontal-scroll-bar">42号 Horizontal Scroll Bar</h3>
+<blockquote>
+<p>水平滚动条</p>
+</blockquote>
+<h3 id="43号-vertical-scroll-bar">43号 Vertical Scroll Bar</h3>
+<blockquote>
+<p>垂直滚动条</p>
+</blockquote>
+<h3 id="44号-horizontal-slider">44号 Horizontal Slider</h3>
+<blockquote>
+<p>水平滑块</p>
+</blockquote>
+<h3 id="45号-vertical-slider">45号 Vertical Slider</h3>
+<blockquote>
+<p>垂直滑块</p>
+</blockquote>
+<h3 id="46号-key-sequence-edit">46号 Key Sequence Edit</h3>
+<blockquote>
+<p>按键序列编辑</p>
+</blockquote>
+<h2 id="display-widgets-显示控件组">Display Widgets 显示控件组</h2>
+<h3 id="47号-label">47号 Label</h3>
+<blockquote>
+<p>标签</p>
+</blockquote>
+<h3 id="48号-text-browser">48号 text Browser</h3>
+<blockquote>
+<p>文本浏览器</p>
+</blockquote>
+<h3 id="49号-graphics-view">49号 Graphics View</h3>
+<blockquote>
+<p>图形视图</p>
+</blockquote>
+<h3 id="50号-calendar-widget">50号 Calendar Widget</h3>
+<blockquote>
+<p>日历</p>
+</blockquote>
+<h3 id="51号-lcd-number">51号 Lcd Number</h3>
+<blockquote>
+<p>液晶数字</p>
+</blockquote>
+<h3 id="52号-progress-bar">52号 Progress Bar</h3>
+<blockquote>
+<p>进度条</p>
+</blockquote>
+<h3 id="53号-horizontal-line">53号 Horizontal Line</h3>
+<blockquote>
+<p>水平线</p>
+</blockquote>
+<h3 id="54号-vertical-line">54号 Vertical Line</h3>
+<blockquote>
+<p>垂直线</p>
+</blockquote>
+<h3 id="55号-opengl-widget">55号 OpenGL Widget</h3>
+<blockquote>
+<p>开放式图形工具</p>
+</blockquote>
+<h3 id="56号-qquick-widget">56号 QQuick Widget</h3>
+<blockquote>
+<p>嵌入QML工具</p>
+</blockquote>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-01-24</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/qt/">QT</a>,&nbsp;<a href="/tags/c&#43;&#43;/">C&#43;&#43;</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/me/" class="prev" rel="prev" title="Me"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Me</a>
+            <a href="/posts/c-%E6%96%B0%E7%89%B9%E6%80%A7/" class="next" rel="next" title="C&#43;&#43;新特性">C++新特性<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.115.4">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank"></a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.5.0/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/twemoji@14.0.2/dist/twemoji.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@14.0.0/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"en","pageSize":10,"placeholder":"Your comment ...","recordIP":true,"serverURLs":"https://leancloud.hugoloveit.com","visitor":true}},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"","algoliaIndex":"","algoliaSearchKey":"","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"},"twemoji":true};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

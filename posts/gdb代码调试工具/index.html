@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>gdb代码调试工具 - My Blog</title><meta name="Description" content="Hugo theme - LoveIt"><meta property="og:title" content="gdb代码调试工具" />
+<meta property="og:description" content="GDB是是 Linux 平台下最常用的一款程序调试器，通常服务于终端下，无GUI。Linux下很多IDE的调试能力源于GDB调试器
+1. Linux下安装二进制版GDB调试器 centos下命令：
+sudo yum -y install gdb Ubuntu下安装命令：
+sudo apt -y install gdb 2. 源码安装下载： sudo wget http://ftp.gnu.org/gnu/gdb/gdb-11.1.tar.xz 解压：
+tar -zxvf gdb-11.1.tar.xz 进入源码目录安装：
+./configure make sudo make install 3. 调试准备 GDB supports the following languages (in alphabetical order):
+Ada Assembly C C&#43;&#43; D Fortran Go Objective-C OpenCL Modula-2 Pascal Rust 只是为了调试代码需要在编译时加入：-g参数，关掉编译器优化参数：-O0，打开所有 warning：-Wall 4. GDB的启动与退出 启动gdb调试 gdb 可执行程序文件名
+(gdb) gdb app 退出调试
+quit = q (gdb) q 命令行传参:show args 设置的时机: 启动gdb之后, 在应用程序启动之前" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://okokfun.github.io/posts/gdb%E4%BB%A3%E7%A0%81%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7/" /><meta property="og:image" content="https://okokfun.github.io"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-12-26T16:46:38+00:00" />
+<meta property="article:modified_time" content="2021-12-26T16:46:38+00:00" /><meta property="og:site_name" content="My Blog" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://okokfun.github.io"/>
+
+<meta name="twitter:title" content="gdb代码调试工具"/>
+<meta name="twitter:description" content="GDB是是 Linux 平台下最常用的一款程序调试器，通常服务于终端下，无GUI。Linux下很多IDE的调试能力源于GDB调试器
+1. Linux下安装二进制版GDB调试器 centos下命令：
+sudo yum -y install gdb Ubuntu下安装命令：
+sudo apt -y install gdb 2. 源码安装下载： sudo wget http://ftp.gnu.org/gnu/gdb/gdb-11.1.tar.xz 解压：
+tar -zxvf gdb-11.1.tar.xz 进入源码目录安装：
+./configure make sudo make install 3. 调试准备 GDB supports the following languages (in alphabetical order):
+Ada Assembly C C&#43;&#43; D Fortran Go Objective-C OpenCL Modula-2 Pascal Rust 只是为了调试代码需要在编译时加入：-g参数，关掉编译器优化参数：-O0，打开所有 warning：-Wall 4. GDB的启动与退出 启动gdb调试 gdb 可执行程序文件名
+(gdb) gdb app 退出调试
+quit = q (gdb) q 命令行传参:show args 设置的时机: 启动gdb之后, 在应用程序启动之前"/>
+<meta name="application-name" content="LoveIt">
+<meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://okokfun.github.io/posts/gdb%E4%BB%A3%E7%A0%81%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7/" /><link rel="prev" href="https://okokfun.github.io/posts/%E4%BB%8Eportainer%E7%82%B9%E5%87%BB%E7%AB%AF%E5%8F%A3%E5%8F%B7%E8%BF%9B%E5%85%A5%E5%AE%B9%E5%99%A8%E6%9C%8D%E5%8A%A1%E6%96%B9%E6%B3%95/" /><link rel="next" href="https://okokfun.github.io/posts/c-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%88%9B%E5%BB%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "gdb代码调试工具",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/okokfun.github.io\/posts\/gdb%E4%BB%A3%E7%A0%81%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7\/"
+        },"image": ["https:\/\/okokfun.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "Linux","wordcount":  1170 ,
+        "url": "https:\/\/okokfun.github.io\/posts\/gdb%E4%BB%A3%E7%A0%81%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7\/","datePublished": "2021-12-26T16:46:38+00:00","dateModified": "2021-12-26T16:46:38+00:00","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": "https:\/\/okokfun.github.io\/images\/avatar.png"},"author": {
+                "@type": "Person",
+                "name": "Author"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="My Blog"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span>My Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/" title="Hello World!"> 文章 </a><a class="menu-item" href="/tags/" title="Hello World!"> 标签 </a><a class="menu-item" href="/categories/" title="Hello World!"> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a><a href="javascript:void(0);" class="menu-item language" title="Select Language">
+                    <i class="fa fa-globe" aria-hidden="true"></i>                      
+                    <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/posts/gdb%E4%BB%A3%E7%A0%81%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7/" selected></option></select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="My Blog"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span>My Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="Hello World!">文章</a><a class="menu-item" href="/tags/" title="Hello World!">标签</a><a class="menu-item" href="/categories/" title="Hello World!">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="Select Language">
+                    <i class="fa fa-globe fa-fw" aria-hidden="true"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/posts/gdb%E4%BB%A3%E7%A0%81%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7/" selected></option></select>
+                </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">gdb代码调试工具</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Author</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2021-12-26">2021-12-26</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1170 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;6 minutes&nbsp;<span id="/posts/gdb%E4%BB%A3%E7%A0%81%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7/" class="leancloud_visitors" data-flag-title="gdb代码调试工具">
+                        <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#1-linux下安装二进制版gdb调试器">1. Linux下安装二进制版GDB调试器</a></li>
+        <li><a href="#2-源码安装下载">2. 源码安装下载：</a></li>
+        <li><a href="#3-调试准备">3. 调试准备</a></li>
+        <li><a href="#只是为了调试代码需要在编译时加入-g参数关掉编译器优化参数-o0打开所有-warning-wall">只是为了调试代码需要在编译时加入：-g参数，关掉编译器优化参数：-O0，打开所有 warning：-Wall</a></li>
+        <li><a href="#4-gdb的启动与退出">4. GDB的启动与退出</a></li>
+        <li><a href="#5-查看代码">5. 查看代码</a></li>
+        <li><a href="#6断点操作">6.断点操作</a></li>
+        <li><a href="#7调试命令">7.调试命令</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><!-- raw HTML omitted -->
+<p>GDB是是 Linux 平台下最常用的一款程序调试器，通常服务于终端下，无GUI。Linux下很多IDE的调试能力源于GDB调试器</p>
+<h3 id="1-linux下安装二进制版gdb调试器">1. Linux下安装二进制版GDB调试器</h3>
+<p>centos下命令：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span>sudo yum <span style="color:#f92672">-</span>y install gdb
+</span></span></code></pre></div><p>Ubuntu下安装命令：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>sudo apt <span style="color:#f92672">-</span>y install gdb
+</span></span></code></pre></div><h3 id="2-源码安装下载">2. 源码安装下载：</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>sudo wget http:<span style="color:#75715e">//ftp.gnu.org/gnu/gdb/gdb-11.1.tar.xz
+</span></span></span></code></pre></div><p>解压：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>tar <span style="color:#f92672">-</span>zxvf gdb<span style="color:#f92672">-</span><span style="color:#ae81ff">11.1</span>.tar.xz
+</span></span></code></pre></div><p>进入源码目录安装：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>.<span style="color:#f92672">/</span>configure
+</span></span><span style="display:flex;"><span>make
+</span></span><span style="display:flex;"><span>sudo make install
+</span></span></code></pre></div><h3 id="3-调试准备">3. 调试准备</h3>
+<p>GDB supports the following languages (in alphabetical order):</p>
+<ul>
+<li>Ada</li>
+<li>Assembly</li>
+<li>C</li>
+<li>C++</li>
+<li>D</li>
+<li>Fortran</li>
+<li>Go</li>
+<li>Objective-C</li>
+<li>OpenCL</li>
+<li>Modula-2</li>
+<li>Pascal</li>
+<li>Rust</li>
+</ul>
+<h3 id="只是为了调试代码需要在编译时加入-g参数关掉编译器优化参数-o0打开所有-warning-wall">只是为了调试代码需要在编译时加入：-g参数，关掉编译器优化参数：-O0，打开所有 warning：-Wall</h3>
+<h3 id="4-gdb的启动与退出">4. GDB的启动与退出</h3>
+<p>启动gdb调试
+gdb 可执行程序文件名</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> gdb app
+</span></span></code></pre></div><p>退出调试</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>quit <span style="color:#f92672">=</span> q
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> q
+</span></span></code></pre></div><h4 id="命令行传参show-args">命令行传参:show args</h4>
+<p>设置的时机: 启动gdb之后, 在应用程序启动之前</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> set args 参数1 参数2 …. …
+</span></span></code></pre></div><p>查看设置的命令行参数</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> show args
+</span></span></code></pre></div><p>例子：
+非gdb调试命令行传参</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>argc <span style="color:#960050;background-color:#1e0010">参数总个数，</span>argv[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">==</span> .<span style="color:#f92672">/</span>app<span style="color:#960050;background-color:#1e0010">，</span> argv[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;11&#34;</span>  argv[<span style="color:#ae81ff">2</span>] <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;22&#34;</span> argv[<span style="color:#ae81ff">3</span>] <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;33&#34;</span>  argv[<span style="color:#ae81ff">4</span>] <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;44&#34;</span> argv[<span style="color:#ae81ff">5</span>] <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;55&#34;</span>
+</span></span><span style="display:flex;"><span>.<span style="color:#f92672">/</span>app <span style="color:#ae81ff">11</span> <span style="color:#ae81ff">22</span> <span style="color:#ae81ff">33</span> <span style="color:#ae81ff">44</span> <span style="color:#ae81ff">55</span>
+</span></span></code></pre></div><p>使用 gdb 调试</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>gdb app
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> set args <span style="color:#ae81ff">11</span> <span style="color:#ae81ff">22</span> <span style="color:#ae81ff">33</span> <span style="color:#ae81ff">44</span> <span style="color:#ae81ff">55</span>
+</span></span></code></pre></div><p>查看设置的命令行参数</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> show args
+</span></span><span style="display:flex;"><span>Argument list to give program being debugged when it is started is <span style="color:#e6db74">&#34;11 22 33 44 55&#34;</span>.
+</span></span></code></pre></div><h4 id="gdb-中启动程序">gdb 中启动程序</h4>
+<p><strong>run</strong>: 缩写为 r,停在第一个断点的位置，如果没有设置断点，程序就执行完了
+<strong>start</strong>: 启动程序，阻塞在 main 函数的第一行，等待输入后续其它 gdb 指令</p>
+<p>例子：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&gt;# 两种方式
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 方式1: run == r</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> run         <span style="color:#f92672">(</span>如果有断点会停在断点处<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 方式2: start    (会停在main函数处)</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> start
+</span></span></code></pre></div><p>继续运行：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># quit == q</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> qui
+</span></span></code></pre></div><h3 id="5-查看代码">5. 查看代码</h3>
+<p>查看代码的命令叫做 <code>list</code> 可以缩写为 l，此命令可以通过行号，函数名查看，也可以查看不同文件的信息</p>
+<p>如果不切换文件会停在main函数所在文件</p>
+<h4 id="当前文件">当前文件</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>从第一行开始显示
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> l
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>默认只显示10行内容，上下文
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> l 行号
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>显示这个函数的上下文内容, 默认显示10行
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> l 函数名
+</span></span></code></pre></div><h4 id="切换文件">切换文件</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>切到指定文件行号处，默认显示10行
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> l 文件名:行号
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>切到指定文件函数处，默认显示10行
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> l 文件名:函数名
+</span></span></code></pre></div><h4 id="设置默认显示的行数">设置默认显示的行数</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 以下两个命令中的 listsize 都可以写成 list</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> set listsize 行数
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 查看当前list一次显示的行数</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> show listsize
+</span></span></code></pre></div><h3 id="6断点操作">6.断点操作</h3>
+<h4 id="设置断点">设置断点</h4>
+<p>断点设置有两个方式：常规断点：程序只要运行到这个位置就会被阻塞</p>
+<p>条件断点：条件被满足了程序才会在断点处阻塞。</p>
+<h5 id="当前文件-1">当前文件：</h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 在当前文件的某一行上设置断点</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># break == b</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> b 行号
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> b 函数名		<span style="color:#75715e"># 停止在函数的第一行</span>
+</span></span></code></pre></div><h5 id="非当前文件">非当前文件：</h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 在非当前文件的某一行上设置断点</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> b 文件名:行号
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> b 文件名:函数名		<span style="color:#75715e"># 停止在函数的第一行</span>
+</span></span></code></pre></div><h5 id="设置条件断点">设置条件断点</h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 必须要满足某个条件, 程序才会停在这个断点的位置上</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 通常情况下, 在循环中条件断点用的比较多</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> b 行数 <span style="color:#66d9ef">if</span> 变量名<span style="color:#f92672">==</span>某个值
+</span></span></code></pre></div><h4 id="查看断点">查看断点</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 查看设置的断点信息</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> i b   <span style="color:#75715e">#info break</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 举例</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> i b
+</span></span><span style="display:flex;"><span>Num     Type           Disp Enb Address            	  What
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">1</span>       breakpoint     keep y   0x0000000000400cb5 in main<span style="color:#f92672">()</span> at test.cpp:12
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">2</span>       breakpoint     keep y   0x0000000000400cbd in main<span style="color:#f92672">()</span> at test.cpp:13
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">3</span>       breakpoint     keep y   0x0000000000400cec in main<span style="color:#f92672">()</span> at test.cpp:18
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">4</span>       breakpoint     keep y   0x00000000004009a5 in insertionSort<span style="color:#f92672">(</span>int*, int<span style="color:#f92672">)</span> 
+</span></span><span style="display:flex;"><span>                                                   at insert.cpp:8
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">5</span>       breakpoint     keep y   0x0000000000400cdd in main<span style="color:#f92672">()</span> at test.cpp:16
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">6</span>       breakpoint     keep y   0x00000000004009e5 in insertionSort<span style="color:#f92672">(</span>int*, int<span style="color:#f92672">)</span> 
+</span></span><span style="display:flex;"><span>                                                   at insert.cpp:16
+</span></span></code></pre></div><p>需要关注的点：</p>
+<ul>
+<li>Num: 断点的编号，删除断点或者设置断点状态的时候都需要使用</li>
+<li>Enb: 当前断点的状态，y 表示断点可用，n 表示断点不可用</li>
+<li>What: 描述断点被设置在了哪个文件的哪一行或者哪个函数上</li>
+</ul>
+<h4 id="删除断点">删除断点</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 需要 info b 查看断点的信息, 第一列就是编号</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> d 断点的编号1 &amp;<span style="color:#75715e">#091;断点编号2 ...]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 举例: </span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> d <span style="color:#ae81ff">1</span>          <span style="color:#75715e"># 删除第1个断点</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> d <span style="color:#ae81ff">2</span> <span style="color:#ae81ff">4</span> <span style="color:#ae81ff">6</span>      <span style="color:#75715e"># 删除第2,4,6个断点</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 删除一个范围, 断点编号 num1 - numN 是一个连续区间</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> d num1-numN
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 举例, 删除第1到第5个断点</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> d 1-5
+</span></span></code></pre></div><h4 id="设置断点状态">设置断点状态</h4>
+<h5 id="断点无效化">断点无效化</h5>
+<p>dis 断点编号
+dis 断点1编号-断点n编号
+断点无效化例子：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 查看断点信息</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> i b
+</span></span><span style="display:flex;"><span>Num     Type           Disp Enb Address            What
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">2</span>       breakpoint     keep y   0x0000000000400cce in main<span style="color:#f92672">()</span> at test.cpp:14
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">4</span>       breakpoint     keep y   0x0000000000400cdd in main<span style="color:#f92672">()</span> at test.cpp:16
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">5</span>       breakpoint     keep y   0x0000000000400d46 in main<span style="color:#f92672">()</span> at test.cpp:23
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">6</span>       breakpoint     keep y   0x0000000000400d4e in main<span style="color:#f92672">()</span> at test.cpp:25
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">7</span>       breakpoint     keep y   0x0000000000400d6e in main<span style="color:#f92672">()</span> at test.cpp:28
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">8</span>       breakpoint     keep y   0x0000000000400d7d in main<span style="color:#f92672">()</span> at test.cpp:30
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 设置第2, 第4 个断点无效</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> dis <span style="color:#ae81ff">2</span> <span style="color:#ae81ff">4</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 查看断点信息</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> i b
+</span></span><span style="display:flex;"><span>Num     Type           Disp Enb Address            What
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">2</span>       breakpoint     keep n   0x0000000000400cce in main<span style="color:#f92672">()</span> at test.cpp:14
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">4</span>       breakpoint     keep n   0x0000000000400cdd in main<span style="color:#f92672">()</span> at test.cpp:16
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">5</span>       breakpoint     keep y   0x0000000000400d46 in main<span style="color:#f92672">()</span> at test.cpp:23
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">6</span>       breakpoint     keep y   0x0000000000400d4e in main<span style="color:#f92672">()</span> at test.cpp:25
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">7</span>       breakpoint     keep y   0x0000000000400d6e in main<span style="color:#f92672">()</span> at test.cpp:28
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">8</span>       breakpoint     keep y   0x0000000000400d7d in main<span style="color:#f92672">()</span> at test.cpp:30
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 设置 第5,6,7,8个 断点无效</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> dis 5-8
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 查看断点信息</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> i b
+</span></span><span style="display:flex;"><span>Num     Type           Disp Enb Address            What
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">2</span>       breakpoint     keep n   0x0000000000400cce in main<span style="color:#f92672">()</span> at test.cpp:14
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">4</span>       breakpoint     keep n   0x0000000000400cdd in main<span style="color:#f92672">()</span> at test.cpp:16
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">5</span>       breakpoint     keep n   0x0000000000400d46 in main<span style="color:#f92672">()</span> at test.cpp:23
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">6</span>       breakpoint     keep n   0x0000000000400d4e in main<span style="color:#f92672">()</span> at test.cpp:25
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">7</span>       breakpoint     keep n   0x0000000000400d6e in main<span style="color:#f92672">()</span> at test.cpp:28
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">8</span>       breakpoint     keep n   0x0000000000400d7d in main<span style="color:#f92672">()</span> at test.cpp:30
+</span></span></code></pre></div><h5 id="让无效的断点生效">让无效的断点生效</h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># enable == ena</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 设置某一个或者某几个断点有效</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> ena 断点1的编号 &amp;<span style="color:#75715e">#091;断点2的编号 ...]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 设置某个区间断点有效</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> ena 断点1编号-断点n编号
+</span></span></code></pre></div><p>有效化例子：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 查看断点信息</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> i b
+</span></span><span style="display:flex;"><span>Num     Type           Disp Enb Address            What
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">2</span>       breakpoint     keep n   0x0000000000400cce in main<span style="color:#f92672">()</span> at test.cpp:14
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">4</span>       breakpoint     keep n   0x0000000000400cdd in main<span style="color:#f92672">()</span> at test.cpp:16
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">5</span>       breakpoint     keep n   0x0000000000400d46 in main<span style="color:#f92672">()</span> at test.cpp:23
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">6</span>       breakpoint     keep n   0x0000000000400d4e in main<span style="color:#f92672">()</span> at test.cpp:25
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">7</span>       breakpoint     keep n   0x0000000000400d6e in main<span style="color:#f92672">()</span> at test.cpp:28
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">8</span>       breakpoint     keep n   0x0000000000400d7d in main<span style="color:#f92672">()</span> at test.cpp:30
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 设置第2, 第4个断点有效</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> ena <span style="color:#ae81ff">2</span> <span style="color:#ae81ff">4</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 查看断点信息</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> i b
+</span></span><span style="display:flex;"><span>Num     Type           Disp Enb Address            What
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">2</span>       breakpoint     keep y   0x0000000000400cce in main<span style="color:#f92672">()</span> at test.cpp:14
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">4</span>       breakpoint     keep y   0x0000000000400cdd in main<span style="color:#f92672">()</span> at test.cpp:16
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">5</span>       breakpoint     keep n   0x0000000000400d46 in main<span style="color:#f92672">()</span> at test.cpp:23
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">6</span>       breakpoint     keep n   0x0000000000400d4e in main<span style="color:#f92672">()</span> at test.cpp:25
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">7</span>       breakpoint     keep n   0x0000000000400d6e in main<span style="color:#f92672">()</span> at test.cpp:28
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">8</span>       breakpoint     keep n   0x0000000000400d7d in main<span style="color:#f92672">()</span> at test.cpp:30
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 设置第5,6,7个断点有效</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> ena 5-7
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 查看断点信息</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> i b
+</span></span><span style="display:flex;"><span>Num     Type           Disp Enb Address            What
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">2</span>       breakpoint     keep y   0x0000000000400cce in main<span style="color:#f92672">()</span> at test.cpp:14
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">4</span>       breakpoint     keep y   0x0000000000400cdd in main<span style="color:#f92672">()</span> at test.cpp:16
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">5</span>       breakpoint     keep y   0x0000000000400d46 in main<span style="color:#f92672">()</span> at test.cpp:23
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">6</span>       breakpoint     keep y   0x0000000000400d4e in main<span style="color:#f92672">()</span> at test.cpp:25
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">7</span>       breakpoint     keep y   0x0000000000400d6e in main<span style="color:#f92672">()</span> at test.cpp:28
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">8</span>       breakpoint     keep n   0x0000000000400d7d in main<span style="color:#f92672">()</span> at test.cpp:30
+</span></span></code></pre></div><h3 id="7调试命令">7.调试命令</h3>
+<h4 id="继续运行-gdb">继续运行 gdb</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># cont = continue</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> cont <span style="color:#f92672">=</span> <span style="color:#66d9ef">continue</span>
+</span></span></code></pre></div><h4 id="手动打印信息">手动打印信息</h4>
+<p>当程序被某个断点阻塞之后，可以通过一些命令打印变量的名字或者变量的类型，并且还可以跟踪打印某个变量的值。</p>
+<h5 id="打印变量值">打印变量值</h5>
+<p>print 命令的语法格式如下:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># print == p</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> p 变量名
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 如果变量是一个整形, 默认对应的值是以10进制格式输出, 其他格式请参考上表</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> p/fmt 变量名
+</span></span></code></pre></div><p>例子：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 举例</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> p i       <span style="color:#75715e"># 10进制</span>
+</span></span><span style="display:flex;"><span>$5 <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> p/x i     <span style="color:#75715e"># 16进制</span>
+</span></span><span style="display:flex;"><span>$6 <span style="color:#f92672">=</span> 0x3
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> p/o i     <span style="color:#75715e"># 8进制</span>
+</span></span><span style="display:flex;"><span>$7 <span style="color:#f92672">=</span> <span style="color:#ae81ff">03</span>
+</span></span></code></pre></div><h4 id="打印变量类型">打印变量类型</h4>
+<p>查看某个变量的类型</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> ptype 变量名
+</span></span></code></pre></div><p>例子：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 打印变量类型</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> ptype i
+</span></span><span style="display:flex;"><span>type <span style="color:#f92672">=</span> int
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> ptype array&amp;<span style="color:#75715e">#091;i]</span>
+</span></span><span style="display:flex;"><span>type <span style="color:#f92672">=</span> int
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> ptype array
+</span></span><span style="display:flex;"><span>type <span style="color:#f92672">=</span> int &amp;<span style="color:#75715e">#091;12]</span>
+</span></span></code></pre></div><h4 id="自动打印信息">自动打印信息</h4>
+<h5 id="设置变量名自动显示">设置变量名自动显示</h5>
+<p>频繁查看某个变量或表达式的值从而观察它的变化情况时，使用 display 命令可以一劳永逸。display 命令没有缩写形式</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 在变量的有效取值范围内, 自动打印变量的值(设置一次, 以后就会自动显示)</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> display 变量名
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 以指定的整形格式打印变量的值, 关于 fmt 的取值, 请参考 print 命令</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> display/fmt 变量名
+</span></span></code></pre></div><h5 id="查看自动显示列表">查看自动显示列表</h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># info == i</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> info display
+</span></span><span style="display:flex;"><span>Auto-display expressions now in effect:
+</span></span><span style="display:flex;"><span>Num Enb Expression
+</span></span><span style="display:flex;"><span>1:   y  i
+</span></span><span style="display:flex;"><span>2:   y  array&amp;<span style="color:#75715e">#091;i]</span>
+</span></span><span style="display:flex;"><span>3:   y  /x array&amp;<span style="color:#75715e">#091;i]</span>
+</span></span></code></pre></div><p>在展示出的信息中，每个列的含义如下:</p>
+<ul>
+<li><strong>Num</strong> : 变量或表达式的编号，GDB 调试器为每个变量或表达式都分配有唯一的编号</li>
+<li><strong>Enb</strong> : 表示当前变量（表达式）是处于激活状态还是禁用状态，如果处于激活状态（用 y 表示），则每次程序停止执行，该变量的值都会被打印出来；反之，如果处于禁用状态（用 n 表示），则该变量（表达式）的值不会被打印。</li>
+<li><strong>Expression</strong> ：被自动打印值的变量或表达式的名字。</li>
+</ul>
+<h4 id="取消自动显示">取消自动显示</h4>
+<p>对于不需要再打印值的变量或表达式，可以将其删除或者禁用。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 命令中的 num 是通过 info display 得到的编号, 编号可以是一个或者多个</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> undisplay num &amp;<span style="color:#75715e">#091;num1 ...]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># num1 - numN 表示一个范围</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> undisplay num1-numN
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> delete display num &amp;<span style="color:#75715e">#091;num1 ...]</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> delete display num1-numN&lt;/code&gt;&lt;/pre&gt;
+</span></span></code></pre></div><p>例子：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 查看显示列表</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> info display
+</span></span><span style="display:flex;"><span>Auto-display expressions now in effect:
+</span></span><span style="display:flex;"><span>Num Enb Expression
+</span></span><span style="display:flex;"><span>1:   y  i
+</span></span><span style="display:flex;"><span>2:   y  array&amp;<span style="color:#75715e">#091;i]</span>
+</span></span><span style="display:flex;"><span>3:   y  /x array&amp;<span style="color:#75715e">#091;i]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 删除变量显示, 需要使用 info display 得到的变量/表达式编号</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> undisplay <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 查看显示列表, 只剩下一个了</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> i display
+</span></span><span style="display:flex;"><span>Auto-display expressions now in effect:
+</span></span><span style="display:flex;"><span>Num Enb Expression
+</span></span><span style="display:flex;"><span>3:   y  /x array&amp;<span style="color:#75715e">#091;i]</span>
+</span></span></code></pre></div><p>禁用自动显示列表中处于激活状态下的变量或表达式</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 命令中的 num 是通过 info display 得到的编号, 编号可以是一个或者多个</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> disable display num &amp;<span style="color:#75715e">#091;num1 ...]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># num1 - numN 表示一个范围</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> disable display num1-numN
+</span></span></code></pre></div><p>当需要启用自动显示列表中被禁用的变量或表达式时，可以使用下边的命令</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 命令中的 num 是通过 info display 得到的编号, 编号可以是一个或者多个</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> enable  display num &amp;<span style="color:#75715e">#091;num1 ...]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># num1 - numN 表示一个范围</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> disable display num1-numN
+</span></span></code></pre></div><h4 id="单步调试">单步调试</h4>
+<p>当程序阻塞到某个断点上之后，可以通过以下命令对程序进行单步调试:</p>
+<h5 id="step">step</h5>
+<p>step 命令可以缩写为 s, 命令被执行一次代码被向下执行一行，如果这一行是一个函数调用，那么程序会进入到函数体内部。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 从当前代码行位置, 一次调试当前行下的每一行代码</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># step == s</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 如果这一行是函数调用, 执行这个命令, 就可以进入到函数体的内部</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> step
+</span></span></code></pre></div><h5 id="finish">finish</h5>
+<p>作用：跳出函数体，函数体内不能有有效断点</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 如果通过 s 单步调试进入到函数内部, 想要跳出这个函数体</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> finish
+</span></span></code></pre></div><h5 id="next">next</h5>
+<p>作用：和step相似，但不会进入函数体内部</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># next == n</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 如果这一行是函数调用, 执行这个命令, 不会进入到函数体的内部</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> next
+</span></span></code></pre></div><h5 id="until">until</h5>
+<p>until作用：直接跳出某个循环体
+循环体内部不能有有效的断点，必须要在循环体的开始 / 结束行执行该命令</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> <span style="color:#66d9ef">until</span>
+</span></span></code></pre></div><h4 id="设置变量值">设置变量值</h4>
+<p>set var 变量名=值</p>
+<p>设置某个变量的值</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2021-12-26</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/linux/">Linux</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/%E4%BB%8Eportainer%E7%82%B9%E5%87%BB%E7%AB%AF%E5%8F%A3%E5%8F%B7%E8%BF%9B%E5%85%A5%E5%AE%B9%E5%99%A8%E6%9C%8D%E5%8A%A1%E6%96%B9%E6%B3%95/" class="prev" rel="prev" title="从Portainer点击端口号进入容器服务方法"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>从Portainer点击端口号进入容器服务方法</a>
+            <a href="/posts/c-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%88%9B%E5%BB%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/" class="next" rel="next" title="C&#43;&#43;设计模式-创建型模式">C++设计模式-创建型模式<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.115.4">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank"></a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.5.0/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/twemoji@14.0.2/dist/twemoji.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@14.0.0/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"en","pageSize":10,"placeholder":"Your comment ...","recordIP":true,"serverURLs":"https://leancloud.hugoloveit.com","visitor":true}},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"","algoliaIndex":"","algoliaSearchKey":"","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"},"twemoji":true};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

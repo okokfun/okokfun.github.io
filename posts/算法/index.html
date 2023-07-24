@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>算法 - My Blog</title><meta name="Description" content="Hugo theme - LoveIt"><meta property="og:title" content="算法" />
+<meta property="og:description" content="推荐看👉 OI Wiki
+算法部分 位图(bitmap) 通过一个bit位来表示某个元素对应的值或者状态，其中的key就是对应元素本身，value对应0或1，我们知道8个bit可以组成一个Byte，所以bitmap本身会极大的节省储存空间。
+位图BitMap
+字典(map) 字典有什么特点呢?
+字典的主要特点是一一对应的关系. 比如保存一个人的信息, 在合适的情况下取出这些信息. 使用数组的方式: [18, &ldquo;Coderwhy&rdquo;, 1.88]. 可以通过下标值取出信息. 使用字典的方式: {&ldquo;age&rdquo; : 18, &ldquo;name&rdquo; : &ldquo;Coderwhy&rdquo;, &ldquo;height&rdquo;: 1.88}. 可以通过key取出value 字典(map)的详细解释
+kmp算法 kmp算法也就是字符串匹配算法。
+比如： 在string str = &ldquo;abcababcba&quot;中匹配 string str2 = &ldquo;ababc&ldquo;字符串
+最长公共前后缀：要匹配的字符串生成的数组
+从一个字符开始到整个字符串，默认每行的公共前后缀最大值为全部字母数，然后判断是否符合其数字，如果不符合减一，一直判断到0结束。一行元素为1的数字为0，最后一行不统计
+0	a
+0	a	b
+1	a	b	a
+2	a	b	a	b
+0	a	b	a	b	c
+得出的公共前后缀为
+0 0 1 2 0 然后整体向后移动一位，原最后一位被覆盖，下标为0的位置设为-1,最后的公共前后缀为
+-1 0 0 1 2 kmp匹配过程" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://okokfun.github.io/posts/%E7%AE%97%E6%B3%95/" /><meta property="og:image" content="https://okokfun.github.io"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-01-01T19:32:29+00:00" />
+<meta property="article:modified_time" content="2022-01-01T19:32:29+00:00" /><meta property="og:site_name" content="My Blog" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://okokfun.github.io"/>
+
+<meta name="twitter:title" content="算法"/>
+<meta name="twitter:description" content="推荐看👉 OI Wiki
+算法部分 位图(bitmap) 通过一个bit位来表示某个元素对应的值或者状态，其中的key就是对应元素本身，value对应0或1，我们知道8个bit可以组成一个Byte，所以bitmap本身会极大的节省储存空间。
+位图BitMap
+字典(map) 字典有什么特点呢?
+字典的主要特点是一一对应的关系. 比如保存一个人的信息, 在合适的情况下取出这些信息. 使用数组的方式: [18, &ldquo;Coderwhy&rdquo;, 1.88]. 可以通过下标值取出信息. 使用字典的方式: {&ldquo;age&rdquo; : 18, &ldquo;name&rdquo; : &ldquo;Coderwhy&rdquo;, &ldquo;height&rdquo;: 1.88}. 可以通过key取出value 字典(map)的详细解释
+kmp算法 kmp算法也就是字符串匹配算法。
+比如： 在string str = &ldquo;abcababcba&quot;中匹配 string str2 = &ldquo;ababc&ldquo;字符串
+最长公共前后缀：要匹配的字符串生成的数组
+从一个字符开始到整个字符串，默认每行的公共前后缀最大值为全部字母数，然后判断是否符合其数字，如果不符合减一，一直判断到0结束。一行元素为1的数字为0，最后一行不统计
+0	a
+0	a	b
+1	a	b	a
+2	a	b	a	b
+0	a	b	a	b	c
+得出的公共前后缀为
+0 0 1 2 0 然后整体向后移动一位，原最后一位被覆盖，下标为0的位置设为-1,最后的公共前后缀为
+-1 0 0 1 2 kmp匹配过程"/>
+<meta name="application-name" content="LoveIt">
+<meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://okokfun.github.io/posts/%E7%AE%97%E6%B3%95/" /><link rel="prev" href="https://okokfun.github.io/posts/c-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%88%9B%E5%BB%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/" /><link rel="next" href="https://okokfun.github.io/posts/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "算法",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/okokfun.github.io\/posts\/%E7%AE%97%E6%B3%95\/"
+        },"image": ["https:\/\/okokfun.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "algorithms","wordcount":  1117 ,
+        "url": "https:\/\/okokfun.github.io\/posts\/%E7%AE%97%E6%B3%95\/","datePublished": "2022-01-01T19:32:29+00:00","dateModified": "2022-01-01T19:32:29+00:00","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": "https:\/\/okokfun.github.io\/images\/avatar.png"},"author": {
+                "@type": "Person",
+                "name": "Author"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="My Blog"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span>My Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/" title="Hello World!"> 文章 </a><a class="menu-item" href="/tags/" title="Hello World!"> 标签 </a><a class="menu-item" href="/categories/" title="Hello World!"> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a><a href="javascript:void(0);" class="menu-item language" title="Select Language">
+                    <i class="fa fa-globe" aria-hidden="true"></i>                      
+                    <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/posts/%E7%AE%97%E6%B3%95/" selected></option></select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="My Blog"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span>My Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="Hello World!">文章</a><a class="menu-item" href="/tags/" title="Hello World!">标签</a><a class="menu-item" href="/categories/" title="Hello World!">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="Select Language">
+                    <i class="fa fa-globe fa-fw" aria-hidden="true"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/posts/%E7%AE%97%E6%B3%95/" selected></option></select>
+                </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">算法</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Author</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-01-01">2022-01-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1117 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;6 minutes&nbsp;<span id="/posts/%E7%AE%97%E6%B3%95/" class="leancloud_visitors" data-flag-title="算法">
+                        <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><!-- raw HTML omitted -->
+<p>推荐看👉 <a href="https://oi-wiki.org/" target="_blank" rel="noopener noreffer ">OI Wiki</a></p>
+<h1 id="算法部分">算法部分</h1>
+<h5 id="位图bitmap"><strong>位图(bitmap)</strong></h5>
+<p>通过一个bit位来表示某个元素对应的值或者状态，其中的key就是对应元素本身，value对应0或1，我们知道8个bit可以组成一个Byte，所以bitmap本身会极大的节省储存空间。</p>
+<p><a href="https://www.cnblogs.com/chjxbt/p/10615304.html" target="_blank" rel="noopener noreffer ">位图BitMap</a></p>
+<h5 id="字典map"><strong>字典(map)</strong></h5>
+<ul>
+<li>
+<p>字典有什么特点呢?</p>
+<ul>
+<li>字典的主要特点是一一对应的关系.</li>
+<li>比如保存一个人的信息, 在合适的情况下取出这些信息.</li>
+<li>使用数组的方式: [18, &ldquo;Coderwhy&rdquo;, 1.88]. 可以通过下标值取出信息.</li>
+<li>使用字典的方式: {&ldquo;age&rdquo; : 18, &ldquo;name&rdquo; : &ldquo;Coderwhy&rdquo;, &ldquo;height&rdquo;: 1.88}. 可以通过key取出value</li>
+</ul>
+<p><a href="https://www.jianshu.com/p/c53460c9c8e4" target="_blank" rel="noopener noreffer ">字典(map)的详细解释</a></p>
+</li>
+</ul>
+<h5 id="kmp算法"><strong>kmp算法</strong></h5>
+<p>kmp算法也就是字符串匹配算法。</p>
+<p>比如：
+在string str = &ldquo;abc<code>ababc</code>ba&quot;中匹配
+string str2 = &ldquo;<code>ababc</code>&ldquo;字符串</p>
+<p>最长公共前后缀：要匹配的字符串生成的数组</p>
+<p>从一个字符开始到整个字符串，默认每行的公共前后缀最大值为全部字母数，然后判断是否符合其数字，如果不符合减一，一直判断到0结束。一行元素为1的数字为0，最后一行不统计</p>
+<p>0	a</p>
+<p>0	a	b</p>
+<p>1	a	b	a</p>
+<p>2	<code>a	b	a	b</code></p>
+<p>0	a	b	a	b	c</p>
+<p>得出的公共前后缀为</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:left"></th>
+<th style="text-align:left"></th>
+<th style="text-align:left"></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">0</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">1</td>
+<td style="text-align:left">2</td>
+<td style="text-align:left">0</td>
+</tr>
+</tbody>
+</table>
+<p>然后整体向后移动一位，原最后一位被覆盖，下标为0的位置设为-1,最后的公共前后缀为</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-1</code></td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<p>kmp匹配过程</p>
+<p>abc<code>ababc</code>ba</p>
+<p>ababc</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://gitee.com/txt1994/images/raw/master/img/algorithm/kmp.png"
+        data-srcset="https://gitee.com/txt1994/images/raw/master/img/algorithm/kmp.png, https://gitee.com/txt1994/images/raw/master/img/algorithm/kmp.png 1.5x, https://gitee.com/txt1994/images/raw/master/img/algorithm/kmp.png 2x"
+        data-sizes="auto"
+        alt="https://gitee.com/txt1994/images/raw/master/img/algorithm/kmp.png"
+        title="https://gitee.com/txt1994/images/raw/master/img/algorithm/kmp.png" /></p>
+<p>如果匹配到不相等元素，则通过next数组(P)决定next数组移动的位置，例如上图next数组(P)下标为2的元素与T字符串不相等，则看一下P数组下标2的next数组的值为0，则把next数组下标为0的位置移动到不匹配的地方</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://gitee.com/txt1994/images/raw/master/img/algorithm/kmp_2.png"
+        data-srcset="https://gitee.com/txt1994/images/raw/master/img/algorithm/kmp_2.png, https://gitee.com/txt1994/images/raw/master/img/algorithm/kmp_2.png 1.5x, https://gitee.com/txt1994/images/raw/master/img/algorithm/kmp_2.png 2x"
+        data-sizes="auto"
+        alt="https://gitee.com/txt1994/images/raw/master/img/algorithm/kmp_2.png"
+        title="https://gitee.com/txt1994/images/raw/master/img/algorithm/kmp_2.png" /></p>
+<p>如果next数组的值为-1则next数组整体右移，或找到T字符串与子字符串第一个元素(如果找到的话)，然后把P移动到此位置(T的剩余的元素大于等于子字符串元素个数)；</p>
+<p><strong>代码</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;cstring&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;string&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 计算最长公共前后缀
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">prefix_table</span>(<span style="color:#66d9ef">char</span> pattern[], <span style="color:#66d9ef">int</span> prefix[], <span style="color:#66d9ef">int</span> n) {
+</span></span><span style="display:flex;"><span>     prefix[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">int</span> len <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">while</span> (i <span style="color:#f92672">&lt;</span> n) {
+</span></span><span style="display:flex;"><span>         <span style="color:#66d9ef">if</span> (pattern[i] <span style="color:#f92672">==</span> pattern[len]) {
+</span></span><span style="display:flex;"><span>             len<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>             prefix[i] <span style="color:#f92672">=</span> len;
+</span></span><span style="display:flex;"><span>             i<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>         } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>             <span style="color:#66d9ef">if</span> (len <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>                 len <span style="color:#f92672">=</span> prefix[len <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>];
+</span></span><span style="display:flex;"><span>             } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>                 prefix[i] <span style="color:#f92672">=</span> len;
+</span></span><span style="display:flex;"><span>                 i<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>             }
+</span></span><span style="display:flex;"><span>         }
+</span></span><span style="display:flex;"><span>     }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 计算next数组
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">move_prefix_table</span>(<span style="color:#66d9ef">int</span> table[], <span style="color:#66d9ef">int</span> n) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> n <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>; <span style="color:#f92672">--</span>i) {
+</span></span><span style="display:flex;"><span>        table[i] <span style="color:#f92672">=</span> table[i <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>];
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    table[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// kmp算法
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">kmp_search</span>(<span style="color:#66d9ef">char</span> text[], <span style="color:#66d9ef">char</span> pattern[]) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> n <span style="color:#f92672">=</span> strlen(pattern);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> m <span style="color:#f92672">=</span> strlen(text);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span>prefix <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span>[n];
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span>    prefix_table(pattern, prefix, n);
+</span></span><span style="display:flex;"><span>    move_prefix_table(prefix, n);
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> (i <span style="color:#f92672">&lt;</span> m) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (j <span style="color:#f92672">==</span> n <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&amp;&amp;</span> text[i] <span style="color:#f92672">==</span> pattern[j]) {
+</span></span><span style="display:flex;"><span>            std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Found pattern at &#34;</span> <span style="color:#f92672">&lt;&lt;</span> i <span style="color:#f92672">-</span> j <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#39;\n&#39;</span>;
+</span></span><span style="display:flex;"><span>            j <span style="color:#f92672">=</span> prefix[j];
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (text[i] <span style="color:#f92672">==</span> pattern[j]) {
+</span></span><span style="display:flex;"><span>            i<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>            j<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>            j <span style="color:#f92672">=</span> prefix[j];
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (j <span style="color:#f92672">==</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) {
+</span></span><span style="display:flex;"><span>                i<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>                j<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">delete</span>[] prefix;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">void</span>) {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">char</span> pattern[] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ABABCABAA&#34;</span>;
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">char</span> text[] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ABABABCABAABABABAAB&#34;</span>;
+</span></span><span style="display:flex;"><span>    kmp_search(text, pattern);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h5 id="双指针"><strong>双指针</strong></h5>
+<h5 id="同向双指针"><strong>同向双指针</strong></h5>
+<p>判断一个链表是否有<strong>环</strong></p>
+<p>创建两个指针<code>ptr1,ptr2</code>,两个指针同时指向链表头结点。ptr1每次向后移动一个结点，ptr2每次移动2个结点，如果链表有环他们会指向同一个结点</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     * @param circles: The value of 6 points on n rings
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     * @return: Whether there are two same circles
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     */</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> samecircle(Node head) {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// write your code here
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        Node ptr2 <span style="color:#f92672">=</span> head;
+</span></span><span style="display:flex;"><span>        Node ptr2 <span style="color:#f92672">=</span> head;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> (p1 <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">&amp;&amp;</span> p2 <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nullptr</span>)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            ptr1 <span style="color:#f92672">=</span> p1.next;
+</span></span><span style="display:flex;"><span>            ptr2 <span style="color:#f92672">=</span> p2.next.next;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (ptr1 <span style="color:#f92672">==</span> ptr2) <span style="color:#75715e">// 结点相遇
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                <span style="color:#66d9ef">return</span> true;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> false;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p><strong>判断环长</strong></p>
+<p>第一次相遇代表有环，第二次相遇代表两个指针发生了套环，所以：</p>
+<p>环长 = 速度差 * 移动次数</p>
+<p><strong>判断入环点</strong></p>
+<p>慢指针<strong>ptr1</strong>每次走一步，所以走的距离是：</p>
+<p>d1 = D  + X * (S1 + S2) + S1</p>
+<p>快指针ptr2走的距离是：</p>
+<p>d2 = D + N * (S1 + S2) + S1</p>
+<p>快指针速度是慢指针2倍。 即：</p>
+<p>2 * d1 = d2</p>
+<p>整理后的公式为</p>
+<p>D = (n - 2X - 1)(S1 + S2) + S2</p>
+<p>假设<code>n - 2X -1</code>的值为0，则<code>D = S2</code>;，那么我们就可以在首次相遇点的时候，定义一个指针指向链表的起点，一个指针指向首次相遇点，然后两个指针每次前进1步，当两个指针相遇的时候就是链表的入环点。</p>
+<p>例子：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     * @param circles: The value of 6 points on n rings
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     * @return: Whether there are two same circles
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     */</span>
+</span></span><span style="display:flex;"><span>    Node find_node(Node head)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// write your code here
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        Node ptr1 <span style="color:#f92672">=</span> head;
+</span></span><span style="display:flex;"><span>        Node ptr2 <span style="color:#f92672">=</span> head;
+</span></span><span style="display:flex;"><span>        Node ptr3 <span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>;
+</span></span><span style="display:flex;"><span>        Node ptr4 <span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> (p1 <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">&amp;&amp;</span> p2 <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nullptr</span>)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            ptr1 <span style="color:#f92672">=</span> p1.next;
+</span></span><span style="display:flex;"><span>            ptr2 <span style="color:#f92672">=</span> p2.next.next;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (ptr1 <span style="color:#f92672">==</span> ptr2) <span style="color:#75715e">// 结点相遇
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                ptr3 <span style="color:#f92672">=</span> head;
+</span></span><span style="display:flex;"><span>            	ptr4 <span style="color:#f92672">=</span> ptr1;
+</span></span><span style="display:flex;"><span>            	<span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (ptr3 <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">!=</span> ptr4 <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nullptr</span>)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">while</span>(ptr3 <span style="color:#f92672">!=</span> ptr4)
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                ptr3 <span style="color:#f92672">=</span> ptr3.next;
+</span></span><span style="display:flex;"><span>                ptr4 <span style="color:#f92672">=</span> ptr4.next;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> ptr4;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">nullptr</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h5 id="相向双指针"><strong>相向双指针</strong></h5>
+<h5 id="二分法"><strong>二分法</strong></h5>
+<ul>
+<li>又称折半搜索，期望时间复杂度为O(log2n)，最差为O(log2(n + 1))</li>
+</ul>
+<blockquote>
+<p>二分法前提是数据已经有序</p>
+<p>在A[0] &hellip; A[n]中搜索K。</p>
+</blockquote>
+<blockquote>
+<p>步骤：
+\1. 令low = 0， high = n - 1，初始的查找区域为[low， high].
+\2. 取low和high的中间值mid = (low+high)/2。
+\3. 如果A[mid] = K，则返回mid, 如果不等，则重新确定查找区间。
+\4. 当low &gt; high 时，则表示区间已经失效，如果还未找到，则表示数组中不包含K的值，返回-1。</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">template</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">T</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> binary_search(vector<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> <span style="color:#f92672">&amp;</span>A, T K)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> low <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> high <span style="color:#f92672">=</span> A.size() <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span>( low <span style="color:#f92672">&lt;</span> high )
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> mid <span style="color:#f92672">=</span> (low <span style="color:#f92672">+</span> high)<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span>( A[mid]  <span style="color:#f92672">&lt;</span> K )
+</span></span><span style="display:flex;"><span>            low <span style="color:#f92672">=</span> mid <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span> <span style="color:#a6e22e">if</span>( A[mid] <span style="color:#f92672">&gt;</span> k )
+</span></span><span style="display:flex;"><span>            high <span style="color:#f92672">=</span> mid <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> mid;
+</span></span><span style="display:flex;"><span>    }  
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;      <span style="color:#75715e">/*返回-1表示数组不存在K的值*/</span>
+</span></span><span style="display:flex;"><span> }
+</span></span></code></pre></div><h5 id="二分答案"><strong>二分答案</strong></h5>
+<blockquote>
+<p><code>二分答案</code>与<code>二分查找</code> 其实是不一样的</p>
+<p><code>二分答案</code>: 即对你要求的答案进行二分
+<code>二分查找</code>: 对一个已知的有序数据集上进行二分的查找</p>
+</blockquote>
+<p><a href="https://www.cnblogs.com/Potassium/p/10125386.html" target="_blank" rel="noopener noreffer ">基础算法·二分答案 - Potassium - 博客园 (cnblogs.com)</a></p>
+<h5 id="分治法"><strong>分治法</strong></h5>
+<blockquote>
+<p>分治分治，即分而治之。分治，就是<strong>把一个复杂的问题分成两个或更多的相同或相似的子问题</strong>，再把子问题分成更小的子问题……直到最后子问题可以简单的直接求解，原问题的解即子问题的解的合并。这个技巧是很多高效算法的基础，如<strong>排序算法</strong>(快速排序，归并排序)，<strong>傅立叶变换</strong>(快速傅立叶变换)……直接说就是将一个难以直接解决的大问题，分割成一些规模比较小的相同的小问题，以便各个击破，分而治之。</p>
+</blockquote>
+<blockquote>
+<p>分治法所能解决的问题一般具有以下几个特征：</p>
+<p>\1) 该问题的规模缩小到一定的程度就可以容易地解决</p>
+<p>\2) 该问题可以分解为若干个规模较小的相同问题，即该问题具有最优子结构性质。</p>
+<p>\3) 利用该问题分解出的子问题的解可以合并为该问题的解；</p>
+<p>\4) 该问题所分解出的各个子问题是相互独立的，即子问题之间不包含公共的子子问题。</p>
+<p>第一条: 特征是绝大多数问题都可以满足的，因为问题的计算复杂性一般是随着问题规模的增加而增加；</p>
+<p><strong>第二条: 特征是应用分治法的前提</strong>它也是大多数问题可以满足的，此特征反映了递归思想的应用；、</p>
+<p><strong>第三条: 特征是关键，能否利用分治法完全取决于问题是否具有第三条特征</strong>，如果具备了第一条和第二条特征，而不具备第三条特征，则可以考虑用贪心法或动态规划法。</p>
+<p><strong>第四条: 特征涉及到分治法的效率</strong>，如果各子问题是不独立的则分治法要做许多不必要的工作，重复地解公共的子问题，此时虽然可用分治法，但<strong>一般用动态规划法较好</strong>。</p>
+</blockquote>
+<p>经典问题:</p>
+<p><strong>二分查找</strong></p>
+<p><strong>棋盘覆盖</strong></p>
+<p><strong>汉诺塔问题</strong></p>
+<p><strong>归并排序/合并排序</strong></p>
+<p><strong>快速排序</strong></p>
+<h5 id="宽度优先搜索bfs"><strong>宽度优先搜索(BFS)</strong></h5>
+<blockquote>
+<p>它并不考虑结果的可能位置，彻底地搜索整张图，直到找到结果为止。</p>
+<p>基本过程，BFS 是从根节点开始，沿着树(图)的宽度遍历树(图)的节点。如果所有节点均被访问，则算法中止。一般用队列数据结构来辅助实现 BFS 算法。</p>
+</blockquote>
+<p><a href="https://www.cnblogs.com/huansky/p/12826857.html" target="_blank" rel="noopener noreffer ">广度优先搜索原理与实践 - huansky - 博客园 (cnblogs.com)</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">private</span> Map<span style="color:#f92672">&lt;</span>String, Boolean<span style="color:#f92672">&gt;</span> status <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashMap<span style="color:#f92672">&lt;</span>String, Boolean<span style="color:#f92672">&gt;</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> Queue<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> queue <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> LinkedList<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">BFSSearch</span>(String startPoint) {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//1.把起始点放入queue；
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        queue.add(startPoint);
+</span></span><span style="display:flex;"><span>        status.put(startPoint, false);
+</span></span><span style="display:flex;"><span>        bfsLoop();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">bfsLoop</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span>(<span style="color:#f92672">!</span>queue.isEmpty()) {
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">//  1) 从queue中取出队列头的点；更新状态为已经遍历。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            String currentQueueHeader <span style="color:#f92672">=</span> queue.poll(); <span style="color:#75715e">//出队
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            status.put(currentQueueHeader, true);
+</span></span><span style="display:flex;"><span>            System.out.println(currentQueueHeader);
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">//  2) 找出与此点邻接的且尚未遍历的点，进行标记，然后全部放入queue中。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            List<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> neighborPoints <span style="color:#f92672">=</span> graph.get(currentQueueHeader);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> (String poinit : neighborPoints) {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>status.getOrDefault(poinit, false)) { <span style="color:#75715e">//未被遍历
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                    <span style="color:#66d9ef">if</span> (queue.contains(poinit)) <span style="color:#66d9ef">continue</span>;
+</span></span><span style="display:flex;"><span>                    queue.add(poinit);
+</span></span><span style="display:flex;"><span>                    status.put(poinit, false);
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div><h5 id="拓扑排序法"><strong>拓扑排序法</strong></h5>
+<ul>
+<li>拓扑排序指的是将有向无环<a href="http://data.biancheng.net/view/200.html" target="_blank" rel="noopener noreffer ">图</a>（又称“DAG”图）中的顶点按照图中指定的先后顺序进行排序。</li>
+</ul>
+<p><a href="https://www.cnblogs.com/MrSaver/p/9994720.html" target="_blank" rel="noopener noreffer ">算法：拓扑排序 - 子烁爱学习 - 博客园 (cnblogs.com)</a></p>
+<p><a href="http://data.biancheng.net/view/43.html" target="_blank" rel="noopener noreffer ">拓扑排序算法及C语言实现 (biancheng.net)</a></p>
+<h5 id="深度优先搜索回溯法-dfs"><strong>深度优先搜索/回溯法 (DFS)</strong></h5>
+<blockquote>
+<p>深度优先搜索（缩写DFS）有点类似广度优先搜索，也是对一个连通图进行遍历的算法。它的思想是<strong>从一个顶点V0开始，沿着一条路一直走到底</strong>，如果发现不能到达目标解，那就返回到上一个节点，然后从另一条路开始走到底，这种尽量往深处走的概念即是深度优先的概念。</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * DFS核心伪代码
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * 前置条件是visit数组全部设置成false
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * @param n 当前开始搜索的节点
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * @param d 当前到达的深度，也即是路径长度
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * @return 是否有解
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> */</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">DFS</span>(Node n, <span style="color:#66d9ef">int</span> d){
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (isEnd(n, d)){<span style="color:#75715e">//路径长度为返回true，表示此次搜索有解
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">return</span> true;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (Node nextNode in n){<span style="color:#75715e">//遍历跟节点n相邻的节点nextNode，
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>visit[nextNode]){<span style="color:#75715e">//未访问过的节点才能继续搜索
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span> 
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">//例如搜索到V1了，那么V1要设置成已访问
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            visit[nextNode] <span style="color:#f92672">=</span> true;
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">//接下来要从V1开始继续访问了，路径长度当然要加
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span> 
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (DFS(nextNode, d<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>)){<span style="color:#75715e">//如果搜索出有解
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                <span style="color:#75715e">//例如到了V6，找到解了，你必须一层一层递归的告诉上层已经找到解
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                <span style="color:#66d9ef">return</span> true;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">//重新设置成未访问，因为它有可能出现在下一次搜索的别的路径中
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            visit[nextNode] <span style="color:#f92672">=</span> false;
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//到这里，发现本次搜索还没找到解，那就要从当前节点的下一个节点开始搜索。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> false;<span style="color:#75715e">//本次搜索无解
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></code></pre></div><h5 id="动态规划"><strong>动态规划</strong></h5>
+<blockquote>
+<p>它将问题分成小问题，并先着手解决这些小问题</p>
+</blockquote>
+<h5 id="背包型dp"><strong>背包型DP</strong></h5>
+<p>假设有三种商品，分别是小汽车1吨，卡车3吨，起重机4吨.价格分别是：3000，4000，6000。</p>
+<p>现在只能卖总共4吨的商品，怎么卖商品售价最高？</p>
+<p>所有的组合为：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">组合</th>
+<th style="text-align:left">价值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">无</td>
+<td style="text-align:left">0</td>
+</tr>
+<tr>
+<td style="text-align:left">小汽车</td>
+<td style="text-align:left">3000</td>
+</tr>
+<tr>
+<td style="text-align:left">卡车</td>
+<td style="text-align:left">4000</td>
+</tr>
+<tr>
+<td style="text-align:left">起重机</td>
+<td style="text-align:left">6000</td>
+</tr>
+<tr>
+<td style="text-align:left">小汽车和起重机</td>
+<td style="text-align:left">重量过大</td>
+</tr>
+<tr>
+<td style="text-align:left">小汽车和卡车</td>
+<td style="text-align:left">7000</td>
+</tr>
+<tr>
+<td style="text-align:left">卡车和起重机</td>
+<td style="text-align:left">重量过大</td>
+</tr>
+<tr>
+<td style="text-align:left">小汽车,卡车，起重机</td>
+<td style="text-align:left">重量过大</td>
+</tr>
+</tbody>
+</table>
+<p>可以看到随着商品种类增加组合也在飞速增长，时间复杂度为O(2^n),太慢了</p>
+<p>动态规划算法可以用网格描述</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://gitee.com/txt1994/images/raw/master/img/algorithm/DP-knapsack.png"
+        data-srcset="https://gitee.com/txt1994/images/raw/master/img/algorithm/DP-knapsack.png, https://gitee.com/txt1994/images/raw/master/img/algorithm/DP-knapsack.png 1.5x, https://gitee.com/txt1994/images/raw/master/img/algorithm/DP-knapsack.png 2x"
+        data-sizes="auto"
+        alt="https://gitee.com/txt1994/images/raw/master/img/algorithm/DP-knapsack.png"
+        title="https://gitee.com/txt1994/images/raw/master/img/algorithm/DP-knapsack.png" /></p>
+<p>填充这些表格最后就是背包问题的解法。</p>
+<blockquote>
+<p>当在小汽车一行时，其他种类的商品选不了，所以都是3000</p>
+</blockquote>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://gitee.com/txt1994/images/raw/master/img/algorithm/DP-knapsack%20-2.png"
+        data-srcset="https://gitee.com/txt1994/images/raw/master/img/algorithm/DP-knapsack%20-2.png, https://gitee.com/txt1994/images/raw/master/img/algorithm/DP-knapsack%20-2.png 1.5x, https://gitee.com/txt1994/images/raw/master/img/algorithm/DP-knapsack%20-2.png 2x"
+        data-sizes="auto"
+        alt="https://gitee.com/txt1994/images/raw/master/img/algorithm/DP-knapsack%20-2.png"
+        title="https://gitee.com/txt1994/images/raw/master/img/algorithm/DP-knapsack%20-2.png" /></p>
+<blockquote>
+<p>当加入卡车时1-2吨放不下3吨的卡车，3吨可以放下卡车，所以为4000，4吨可以放下一个卡车和一个小汽车，共7000</p>
+</blockquote>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://gitee.com/txt1994/images/raw/master/img/algorithm/DP-knapsack%20-%203.png"
+        data-srcset="https://gitee.com/txt1994/images/raw/master/img/algorithm/DP-knapsack%20-%203.png, https://gitee.com/txt1994/images/raw/master/img/algorithm/DP-knapsack%20-%203.png 1.5x, https://gitee.com/txt1994/images/raw/master/img/algorithm/DP-knapsack%20-%203.png 2x"
+        data-sizes="auto"
+        alt="https://gitee.com/txt1994/images/raw/master/img/algorithm/DP-knapsack%20-%203.png"
+        title="https://gitee.com/txt1994/images/raw/master/img/algorithm/DP-knapsack%20-%203.png" /></p>
+<blockquote>
+<p>加入起重机时，1-2背包只能装小汽车，3吨可以装一辆卡车，4吨可以装起重机，但是价格低于7000所以不选起重机的价格，定位卡车加小汽车，价格为7000.</p>
+</blockquote>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://gitee.com/txt1994/images/raw/master/img/algorithm/DP-knapsack%20-%204.png"
+        data-srcset="https://gitee.com/txt1994/images/raw/master/img/algorithm/DP-knapsack%20-%204.png, https://gitee.com/txt1994/images/raw/master/img/algorithm/DP-knapsack%20-%204.png 1.5x, https://gitee.com/txt1994/images/raw/master/img/algorithm/DP-knapsack%20-%204.png 2x"
+        data-sizes="auto"
+        alt="https://gitee.com/txt1994/images/raw/master/img/algorithm/DP-knapsack%20-%204.png"
+        title="https://gitee.com/txt1994/images/raw/master/img/algorithm/DP-knapsack%20-%204.png" /></p>
+<h5 id="坐标型dp"><strong>坐标型DP</strong></h5>
+<blockquote>
+<p>又被称为网格型动态规划</p>
+<p>一个网格有m行n列，一个小动物从(0, 0)出发，每一步可以向下或向右走一步，最总到达(m - 1, n - 1)处</p>
+</blockquote>
+<ul>
+<li>最简单的动态规划类型</li>
+<li>给定一个序列或者网格</li>
+<li>需要找到序列中某个/些子序列或网格中的某条路径
+<ul>
+<li>某种性质最大/最小</li>
+<li>计数</li>
+<li>存在性</li>
+</ul>
+</li>
+<li>动态规划方程 f[i] 中的下标i表示以ai为结尾的满足条件的子序列的性质，f[i][j] 中下标 i , j 表示以格子( i , j )为结尾的满足条件的路径的性质
+<ul>
+<li>最大值/最小值</li>
+<li>个数</li>
+<li>存在性</li>
+</ul>
+</li>
+<li>坐标型动态规划的初始条件f[0]就是指以a0为结尾的子序列的性质</li>
+</ul>
+<p><a href="https://www.motongxue.cn/posts/1487252037/#D2-%E5%9D%90%E6%A0%87%E5%9E%8B%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92" target="_blank" rel="noopener noreffer ">D2-坐标型动态规划</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">uniquePathsWithObstacles</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span><span style="color:#f92672">[][]</span> obstacleGrid<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>obstacleGrid<span style="color:#f92672">==</span><span style="color:#66d9ef">null</span><span style="color:#f92672">||</span>obstacleGrid<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">==</span><span style="color:#ae81ff">0</span><span style="color:#f92672">){</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> <span style="color:#f92672">[]</span> <span style="color:#f92672">[]</span> dp <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[</span>obstacleGrid<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">][</span>obstacleGrid<span style="color:#f92672">[</span><span style="color:#ae81ff">0</span><span style="color:#f92672">].</span><span style="color:#a6e22e">length</span><span style="color:#f92672">];</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span><span style="color:#f92672">;</span>i<span style="color:#f92672">&lt;</span>obstacleGrid<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">;</span>i<span style="color:#f92672">++){</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> j<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span><span style="color:#f92672">;</span>j<span style="color:#f92672">&lt;</span>obstacleGrid<span style="color:#f92672">[</span>i<span style="color:#f92672">].</span><span style="color:#a6e22e">length</span><span style="color:#f92672">;</span>j<span style="color:#f92672">++){</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>obstacleGrid<span style="color:#f92672">[</span>i<span style="color:#f92672">][</span>j<span style="color:#f92672">]==</span><span style="color:#ae81ff">1</span><span style="color:#f92672">){</span><span style="color:#75715e">//有障碍
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                    dp<span style="color:#f92672">[</span>i<span style="color:#f92672">][</span>j<span style="color:#f92672">]=</span><span style="color:#ae81ff">0</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">continue</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">}</span><span style="color:#66d9ef">else</span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>i <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">&amp;&amp;</span> j <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span><span style="color:#f92672">)</span> dp<span style="color:#f92672">[</span>i<span style="color:#f92672">][</span>j<span style="color:#f92672">]=</span><span style="color:#ae81ff">1</span><span style="color:#f92672">;</span><span style="color:#75715e">//没有障碍起点
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                    <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>i<span style="color:#f92672">==</span><span style="color:#ae81ff">0</span><span style="color:#f92672">)</span> dp<span style="color:#f92672">[</span>i<span style="color:#f92672">][</span>j<span style="color:#f92672">]=</span>dp<span style="color:#f92672">[</span>i<span style="color:#f92672">][</span>j<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span><span style="color:#f92672">];</span><span style="color:#75715e">//在第一行,上一题在没有障碍情况下默认是1,但是有障碍就取决于该行前面是否有障碍了
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                    <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>j<span style="color:#f92672">==</span><span style="color:#ae81ff">0</span><span style="color:#f92672">)</span> dp<span style="color:#f92672">[</span>i<span style="color:#f92672">][</span>j<span style="color:#f92672">]=</span>dp<span style="color:#f92672">[</span>i<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span><span style="color:#f92672">][</span>j<span style="color:#f92672">];</span><span style="color:#75715e">//第一列,没有障碍默认是1,有障碍就取决于该列前面是否有障碍了
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                    <span style="color:#66d9ef">else</span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>                         dp<span style="color:#f92672">[</span>i<span style="color:#f92672">][</span>j<span style="color:#f92672">]=</span>dp<span style="color:#f92672">[</span>i<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span><span style="color:#f92672">][</span>j<span style="color:#f92672">]+</span>dp<span style="color:#f92672">[</span>i<span style="color:#f92672">][</span>j<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span><span style="color:#f92672">];</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>                
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> dp<span style="color:#f92672">[</span>obstacleGrid<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span><span style="color:#f92672">][</span>obstacleGrid<span style="color:#f92672">[</span><span style="color:#ae81ff">0</span><span style="color:#f92672">].</span><span style="color:#a6e22e">length</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span><span style="color:#f92672">];</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><h5 id="序列型dp"><strong>序列型DP</strong></h5>
+<p><a href="https://www.motongxue.cn/posts/717263946/" target="_blank" rel="noopener noreffer ">D3-序列型动态规划</a></p>
+<h5 id="双序列型dp"><strong>双序列型DP</strong></h5>
+<p><a href="https://www.motongxue.cn/posts/1999848756/" target="_blank" rel="noopener noreffer ">D7-双序列型动态规划</a></p>
+<h5 id="划分型dp"><strong>划分型DP</strong></h5>
+<p>常见类型：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">1</span><span style="color:#f92672">.</span> <span style="color:#960050;background-color:#1e0010">给定长度为</span><span style="color:#f92672">N</span><span style="color:#960050;background-color:#1e0010">的序列或字符串，要求划分成若干段</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">-</span> <span style="color:#960050;background-color:#1e0010">段数不限，或指定</span><span style="color:#f92672">K</span><span style="color:#960050;background-color:#1e0010">段</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">-</span> <span style="color:#960050;background-color:#1e0010">每一段满足一定的性质</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">2</span><span style="color:#f92672">.</span> <span style="color:#960050;background-color:#1e0010">做法</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">-</span> <span style="color:#960050;background-color:#1e0010">类似于序列型动态规划，但是通常要加上段数信息</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">-</span> <span style="color:#960050;background-color:#1e0010">一般用`</span><span style="color:#f92672">f</span><span style="color:#f92672">[</span><span style="color:#f92672">i</span><span style="color:#f92672">][</span><span style="color:#f92672">j</span><span style="color:#f92672">]</span><span style="color:#960050;background-color:#1e0010">`记录前</span><span style="color:#f92672">i</span><span style="color:#960050;background-color:#1e0010">个元素（元素</span><span style="color:#f92672">0</span><span style="color:#f92672">~</span><span style="color:#f92672">i-1</span><span style="color:#960050;background-color:#1e0010">）分成</span> <span style="color:#f92672">j</span> <span style="color:#960050;background-color:#1e0010">段的性质，如最小代价</span>
+</span></span></code></pre></div><p><a href="https://www.motongxue.cn/posts/2930816015/" target="_blank" rel="noopener noreffer ">D4 划分型动态规划</a></p>
+<h5 id="记忆化搜索"><strong>记忆化搜索</strong></h5>
+<p><a href="https://oi-wiki.org/dp/memo/" target="_blank" rel="noopener noreffer ">记忆化搜索 - OI Wiki (oi-wiki.org)</a></p>
+<h5 id="区间型dp"><strong>区间型DP</strong></h5>
+<p><a href="https://www.motongxue.cn/posts/1906695755/" target="_blank" rel="noopener noreffer ">D6-区间型动态规划</a></p>
+<h5 id="状态压缩dp"><strong>状态压缩DP</strong></h5>
+<p><a href="https://oi-wiki.org/dp/state/" target="_blank" rel="noopener noreffer ">状压 DP - OI Wiki (oi-wiki.org)</a></p>
+<h5 id="博弈型dp"><strong>博弈型DP</strong></h5>
+<p><a href="https://www.motongxue.cn/posts/2506571106/" target="_blank" rel="noopener noreffer ">D4-博弈型动态规划</a></p>
+<h5 id="匹配型dp"><strong>匹配型DP</strong></h5>
+<h5 id="数位-dp">数位 DP</h5>
+<p><a href="https://oi-wiki.org/dp/number/" target="_blank" rel="noopener noreffer ">数位 DP - OI Wiki (oi-wiki.org)</a></p>
+<h5 id="树形dp"><strong>树形DP</strong></h5>
+<p><a href="https://oi-wiki.org/dp/tree/" target="_blank" rel="noopener noreffer ">树形 DP - OI Wiki (oi-wiki.org)</a></p>
+<h5 id="插头-dp">插头 DP</h5>
+<p><a href="https://oi-wiki.org/dp/plug/" target="_blank" rel="noopener noreffer ">插头 DP - OI Wiki (oi-wiki.org)</a></p>
+<h5 id="概率-dp">概率 DP</h5>
+<p><a href="https://oi-wiki.org/dp/probability/" target="_blank" rel="noopener noreffer ">概率 DP - OI Wiki (oi-wiki.org)</a></p>
+<h5 id="动态-dp">动态 DP</h5>
+<p><a href="https://oi-wiki.org/dp/dynamic/" target="_blank" rel="noopener noreffer ">动态 DP - OI Wiki (oi-wiki.org)</a></p>
+<h5 id="排序算法"><strong>排序算法</strong></h5>
+<p><a href="https://oi-wiki.org/basic/sort-intro/" target="_blank" rel="noopener noreffer ">排序简介 - OI Wiki (oi-wiki.org)</a></p>
+<h5 id="外排序算法"><strong>外排序算法</strong></h5>
+<p><a href="https://www.cnblogs.com/codeMedita/p/7425291.html" target="_blank" rel="noopener noreffer ">排序之外部排序 - Judy518 - 博客园 (cnblogs.com)</a></p>
+<h5 id="快速排序算法"><strong>快速排序算法</strong></h5>
+<p><a href="https://oi-wiki.org/basic/quick-sort/" target="_blank" rel="noopener noreffer ">快速排序 - OI Wiki (oi-wiki.org)</a></p>
+<h5 id="欧拉路径"><strong>欧拉路径</strong></h5>
+<blockquote>
+<p>什么是欧拉路径？欧拉路径就是一条能够不重不漏地经过图上的每一条边的路径，即小学奥数中的一笔画问题。而若这条路径的起点和终点相同，则将这条路径称为欧拉回路。</p>
+</blockquote>
+<p><a href="https://www.cnblogs.com/TEoS/p/11376707.html" target="_blank" rel="noopener noreffer ">欧拉路径详解 - TEoS - 博客园 (cnblogs.com)</a></p>
+<h5 id="模拟法"><strong>模拟法</strong></h5>
+<p><a href="https://blog.csdn.net/qq_36257171/article/details/95651331" target="_blank" rel="noopener noreffer ">模拟算法（C++）_1只小弛的博客-CSDN博客_c++模拟</a></p>
+<p><a href="https://www.cnblogs.com/wugu-2333/p/13439938.html" target="_blank" rel="noopener noreffer ">C++算法：模拟 - 无咕 - 博客园 (cnblogs.com)</a></p>
+<h5 id="扫描线算法"><strong>扫描线算法</strong></h5>
+<blockquote>
+<p>扫描线是一种用于求矩阵面积并或者周长并的算法，可以使用 <code>线段树</code> 来优化。假设给定了平面上若干个可能相交的矩阵，需要求出它们的面积并（面积之和减去相交部分）或者周长并（外轮廓的长度）。我们可以虚拟出一条按顺序扫描整个平面的线段，通过对平行或垂直于 <em>[Math Processing Error]x</em> 轴的线段进行处理得到答案。</p>
+</blockquote>
+<p><a href="https://www.cnblogs.com/lingspace/p/scan-line.html" target="_blank" rel="noopener noreffer ">扫描线 - Ling_Lover - 博客园 (cnblogs.com)</a></p>
+<h5 id="枚举法"><strong>枚举法</strong></h5>
+<p><a href="https://www.cnblogs.com/jhpy/articles/11567665.html" target="_blank" rel="noopener noreffer ">枚举法 - Huise.J - 博客园 (cnblogs.com)</a></p>
+<h5 id="最短路径"><strong>最短路径</strong></h5>
+<p><a href="https://www.cnblogs.com/thousfeet/p/9229395.html" target="_blank" rel="noopener noreffer ">看完就懂了！一篇搞定图论最短路径问题 - thousfeet - 博客园 (cnblogs.com)</a></p>
+<h5 id="贪心法"><strong>贪心法</strong></h5>
+<p><a href="https://www.cnblogs.com/goWithHappy/p/greedy-algorithm.html" target="_blank" rel="noopener noreffer ">贪心算法原理及其应用 - vcjmhg - 博客园 (cnblogs.com)</a></p>
+<h5 id="最小生成树"><strong>最小生成树</strong></h5>
+<p><a href="https://www.cnblogs.com/SeanOcean/p/10975694.html" target="_blank" rel="noopener noreffer ">最小生成树 - SeanOcean - 博客园 (cnblogs.com)</a></p>
+<h5 id="狄克斯特拉算法"><strong>狄克斯特拉算法</strong></h5>
+<p><a href="https://www.cnblogs.com/skywang12345/p/3711512.html" target="_blank" rel="noopener noreffer ">Dijkstra算法(一)之 C语言详解 - 如果天空不死 - 博客园 (cnblogs.com)</a></p>
+<h5 id="近似算法"><strong>近似算法</strong></h5>
+<p><a href="https://www.cnblogs.com/f91og/p/6257739.html" target="_blank" rel="noopener noreffer ">算法课堂笔记6—近似算法 - f91og - 博客园 (cnblogs.com)</a></p>
+<h5 id="高精度计算">高精度计算</h5>
+<p><a href="https://www.cnblogs.com/wugu-2333/p/13436997.html" target="_blank" rel="noopener noreffer ">高精度计算</a></p>
+<h5 id="lru算法">LRU算法</h5>
+<blockquote>
+<p>缓存淘汰算法</p>
+<p>长期不被使用的数据，在未来被用到的几率也不大。如果缓存到达了预设值就要删除一些内容，给新的内容腾位置</p>
+</blockquote>
+<p><a href="https://www.cnblogs.com/kyoner/p/11179766.html" target="_blank" rel="noopener noreffer ">如何实现LRU算法？ - murphy_gb - 博客园 (cnblogs.com)</a></p>
+<h5 id="a星寻路算法">A星寻路算法</h5>
+<p><a href="https://www.cnblogs.com/szmtjs10/p/15741514.html" target="_blank" rel="noopener noreffer ">A星寻路算法 - szmtjs10 - 博客园 (cnblogs.com)</a></p>
+<p><a href="https://www.cnblogs.com/zhoug2020/p/3468167.html" target="_blank" rel="noopener noreffer ">A星寻路算法介绍 - 莫水千流 - 博客园 (cnblogs.com)</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/385733813" target="_blank" rel="noopener noreffer ">A-Star（A*）寻路算法原理与实现 - 知乎 (zhihu.com)</a></p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-01-01</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/algorithms/">algorithms</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/c-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%88%9B%E5%BB%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/" class="prev" rel="prev" title="C&#43;&#43;设计模式-创建型模式"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>C++设计模式-创建型模式</a>
+            <a href="/posts/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="next" rel="next" title="数据结构">数据结构<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.115.4">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank"></a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.5.0/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/twemoji@14.0.2/dist/twemoji.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@14.0.0/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"en","pageSize":10,"placeholder":"Your comment ...","recordIP":true,"serverURLs":"https://leancloud.hugoloveit.com","visitor":true}},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"","algoliaIndex":"","algoliaSearchKey":"","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"},"twemoji":true};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

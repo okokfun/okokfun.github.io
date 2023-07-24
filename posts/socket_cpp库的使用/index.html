@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Socket_Cpp库的使用 - My Blog</title><meta name="Description" content="Hugo theme - LoveIt"><meta property="og:title" content="Socket_Cpp库的使用" />
+<meta property="og:description" content="传输控制协议（TCP，Transmission Control Protocol）是一种面向连接的、可靠的、基于字节流的传输层通信协议。
+此库是一个简单的TCP库👉sockpp
+TCP TCP Clien IPV4:tcp_clien sockpp::socket_initializer sockpp环境初始化 sockpp::tcp_connector conn({host, port}) // 初始化一个连接器，并尝试连接到{host, port} !conn.read_timeout(seconds(5)) // 读超时 conn.address() // 连接成功打印地址 conn.connect(sockpp::inet_address(&#34;localhost&#34;, port)) // 链接{localhost, port} sockpp::inet_address(host, port) // 返回一个默认的端口号和地址 conn.clone() // clone一个sockpp::tcp_socket conn.last_error_str() // 返回根据平台各自的错误字符串 conn.last_error() conn.write(s) // 通过coon把字符串s写过去 conn.write_n(buf, n) // 从buf中取n个字节的数据并通过tcp写过去 conn.read(buf, sizeof(buf))) // 读sizeof(buf)个字节到buf中，并返回读到的字节数 conn.read_n() // conn.address() // 服务器的地址 conn.peer_address() conn.shutdown(SHUT_WR) 例子- 单线程
+#include &lt;iostream&gt; #include &lt;string&gt; #include &#34;sockpp/tcp_connector.h&#34; #include &#34;sockpp/version.h&#34; using namespace std; using namespace std::chrono; int main(int argc, char* argv[]) { cout &lt;&lt; &#34;Sample TCP echo client for &#39;sockpp&#39; &#34; &lt;&lt; sockpp::SOCKPP_VERSION &lt;&lt; &#39;\n&#39; &lt;&lt; endl; string host = (argc &gt; 1) ?" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://okokfun.github.io/posts/socket_cpp%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8/" /><meta property="og:image" content="https://okokfun.github.io"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-01-13T20:28:16+00:00" />
+<meta property="article:modified_time" content="2022-01-13T20:28:16+00:00" /><meta property="og:site_name" content="My Blog" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://okokfun.github.io"/>
+
+<meta name="twitter:title" content="Socket_Cpp库的使用"/>
+<meta name="twitter:description" content="传输控制协议（TCP，Transmission Control Protocol）是一种面向连接的、可靠的、基于字节流的传输层通信协议。
+此库是一个简单的TCP库👉sockpp
+TCP TCP Clien IPV4:tcp_clien sockpp::socket_initializer sockpp环境初始化 sockpp::tcp_connector conn({host, port}) // 初始化一个连接器，并尝试连接到{host, port} !conn.read_timeout(seconds(5)) // 读超时 conn.address() // 连接成功打印地址 conn.connect(sockpp::inet_address(&#34;localhost&#34;, port)) // 链接{localhost, port} sockpp::inet_address(host, port) // 返回一个默认的端口号和地址 conn.clone() // clone一个sockpp::tcp_socket conn.last_error_str() // 返回根据平台各自的错误字符串 conn.last_error() conn.write(s) // 通过coon把字符串s写过去 conn.write_n(buf, n) // 从buf中取n个字节的数据并通过tcp写过去 conn.read(buf, sizeof(buf))) // 读sizeof(buf)个字节到buf中，并返回读到的字节数 conn.read_n() // conn.address() // 服务器的地址 conn.peer_address() conn.shutdown(SHUT_WR) 例子- 单线程
+#include &lt;iostream&gt; #include &lt;string&gt; #include &#34;sockpp/tcp_connector.h&#34; #include &#34;sockpp/version.h&#34; using namespace std; using namespace std::chrono; int main(int argc, char* argv[]) { cout &lt;&lt; &#34;Sample TCP echo client for &#39;sockpp&#39; &#34; &lt;&lt; sockpp::SOCKPP_VERSION &lt;&lt; &#39;\n&#39; &lt;&lt; endl; string host = (argc &gt; 1) ?"/>
+<meta name="application-name" content="LoveIt">
+<meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://okokfun.github.io/posts/socket_cpp%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8/" /><link rel="prev" href="https://okokfun.github.io/posts/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BB%8B%E7%BB%8D/" /><link rel="next" href="https://okokfun.github.io/posts/cpr-http%E8%AF%B7%E6%B1%82%E5%BA%93/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Socket_Cpp库的使用",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/okokfun.github.io\/posts\/socket_cpp%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8\/"
+        },"image": ["https:\/\/okokfun.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "TCP\/IP, C\u002b\u002b","wordcount":  2263 ,
+        "url": "https:\/\/okokfun.github.io\/posts\/socket_cpp%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8\/","datePublished": "2022-01-13T20:28:16+00:00","dateModified": "2022-01-13T20:28:16+00:00","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": "https:\/\/okokfun.github.io\/images\/avatar.png"},"author": {
+                "@type": "Person",
+                "name": "Author"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="My Blog"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span>My Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/" title="Hello World!"> 文章 </a><a class="menu-item" href="/tags/" title="Hello World!"> 标签 </a><a class="menu-item" href="/categories/" title="Hello World!"> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a><a href="javascript:void(0);" class="menu-item language" title="Select Language">
+                    <i class="fa fa-globe" aria-hidden="true"></i>                      
+                    <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/posts/socket_cpp%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8/" selected></option></select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="My Blog"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span>My Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="Hello World!">文章</a><a class="menu-item" href="/tags/" title="Hello World!">标签</a><a class="menu-item" href="/categories/" title="Hello World!">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="Select Language">
+                    <i class="fa fa-globe fa-fw" aria-hidden="true"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/posts/socket_cpp%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8/" selected></option></select>
+                </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Socket_Cpp库的使用</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Author</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-01-13">2022-01-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2263 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;11 minutes&nbsp;<span id="/posts/socket_cpp%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8/" class="leancloud_visitors" data-flag-title="Socket_Cpp库的使用">
+                        <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#tcp">TCP</a>
+      <ul>
+        <li><a href="#tcp-clien">TCP Clien</a></li>
+        <li><a href="#tcp-server">TCP Server</a></li>
+      </ul>
+    </li>
+    <li><a href="#udp">UDP</a>
+      <ul>
+        <li><a href="#udp-clien">UDP Clien</a></li>
+        <li><a href="#udp-server">UDP Server</a></li>
+      </ul>
+    </li>
+    <li><a href="#unix">UNIX</a>
+      <ul>
+        <li><a href="#unix-clien">UNIX Clien</a></li>
+        <li><a href="#unix-server">UNIX Server</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><!-- raw HTML omitted -->
+<p>传输控制协议（TCP，Transmission Control Protocol）是一种面向连接的、可靠的、基于字节流的<strong>传输层通信协议</strong>。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://www.linuxblogs.cn/image/20190623_tcp_termination.png"
+        data-srcset="https://www.linuxblogs.cn/image/20190623_tcp_termination.png, https://www.linuxblogs.cn/image/20190623_tcp_termination.png 1.5x, https://www.linuxblogs.cn/image/20190623_tcp_termination.png 2x"
+        data-sizes="auto"
+        alt="https://www.linuxblogs.cn/image/20190623_tcp_termination.png"
+        title="20190623_tcp_termination.png (925×613) (linuxblogs.cn)" /></p>
+<p>此库是一个简单的TCP库👉<a href="https://github.com/fpagliughi/sockpp" target="_blank" rel="noopener noreffer ">sockpp</a></p>
+<h2 id="tcp">TCP</h2>
+<h3 id="tcp-clien">TCP Clien</h3>
+<h4 id="ipv4tcp_clien"><strong>IPV4:tcp_clien</strong></h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>sockpp<span style="color:#f92672">::</span>socket_initializer sockpp<span style="color:#960050;background-color:#1e0010">环境初始化</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sockpp<span style="color:#f92672">::</span>tcp_connector conn({host, port}) <span style="color:#75715e">// 初始化一个连接器，并尝试连接到{host, port}
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">!</span>conn.read_timeout(seconds(<span style="color:#ae81ff">5</span>)) <span style="color:#75715e">// 读超时
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    conn.address() <span style="color:#75715e">// 连接成功打印地址
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>conn.connect(sockpp<span style="color:#f92672">::</span>inet_address(<span style="color:#e6db74">&#34;localhost&#34;</span>, port)) <span style="color:#75715e">// 链接{localhost, port}
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	sockpp<span style="color:#f92672">::</span>inet_address(host, port) <span style="color:#75715e">// 返回一个默认的端口号和地址
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>conn.clone() <span style="color:#75715e">// clone一个sockpp::tcp_socket
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>conn.last_error_str() <span style="color:#75715e">// 返回根据平台各自的错误字符串
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>conn.last_error()
+</span></span><span style="display:flex;"><span>conn.write(s) <span style="color:#75715e">// 通过coon把字符串s写过去
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>conn.write_n(buf, n) <span style="color:#75715e">// 从buf中取n个字节的数据并通过tcp写过去
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>conn.read(buf, <span style="color:#66d9ef">sizeof</span>(buf))) <span style="color:#75715e">// 读sizeof(buf)个字节到buf中，并返回读到的字节数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>conn.read_n() <span style="color:#75715e">// 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>conn.address() <span style="color:#75715e">// 服务器的地址
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>conn.peer_address()
+</span></span><span style="display:flex;"><span>conn.shutdown(SHUT_WR)
+</span></span></code></pre></div><p><strong>例子</strong>- 单线程</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;string&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;sockpp/tcp_connector.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;sockpp/version.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std<span style="color:#f92672">::</span>chrono;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">int</span> argc, <span style="color:#66d9ef">char</span><span style="color:#f92672">*</span> argv[])
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Sample TCP echo client for &#39;sockpp&#39; &#34;</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">&lt;&lt;</span> sockpp<span style="color:#f92672">::</span>SOCKPP_VERSION <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#39;\n&#39;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	string host <span style="color:#f92672">=</span> (argc <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">?</span> argv[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;localhost&#34;</span>;
+</span></span><span style="display:flex;"><span>	in_port_t port <span style="color:#f92672">=</span> (argc <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">2</span>) <span style="color:#f92672">?</span> atoi(argv[<span style="color:#ae81ff">2</span>]) <span style="color:#f92672">:</span> <span style="color:#ae81ff">12345</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	sockpp<span style="color:#f92672">::</span>socket_initializer sockInit;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// Implicitly creates an inet_address from {host,port}
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#75715e">// and then tries the connection.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>	sockpp<span style="color:#f92672">::</span>tcp_connector conn({host, port});
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>conn) {
+</span></span><span style="display:flex;"><span>		cerr <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Error connecting to server at &#34;</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#f92672">&lt;&lt;</span> sockpp<span style="color:#f92672">::</span>inet_address(host, port)
+</span></span><span style="display:flex;"><span>			<span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n\t</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;&lt;</span> conn.last_error_str() <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Created a connection from &#34;</span> <span style="color:#f92672">&lt;&lt;</span> conn.address() <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>	cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Created a connection to &#34;</span> <span style="color:#f92672">&lt;&lt;</span> conn.peer_address() <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Set a timeout for the responses
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>conn.read_timeout(seconds(<span style="color:#ae81ff">5</span>))) {
+</span></span><span style="display:flex;"><span>        cerr <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Error setting timeout on TCP stream: &#34;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&lt;&lt;</span> conn.last_error_str() <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	string s, sret;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">while</span> (getline(cin, s) <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">!</span>s.empty()) {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> (conn.write(s) <span style="color:#f92672">!=</span> ssize_t(s.length())) {
+</span></span><span style="display:flex;"><span>			cerr <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Error writing to the TCP stream: &#34;</span>
+</span></span><span style="display:flex;"><span>				<span style="color:#f92672">&lt;&lt;</span> conn.last_error_str() <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		sret.resize(s.length());
+</span></span><span style="display:flex;"><span>		ssize_t n <span style="color:#f92672">=</span> conn.read_n(<span style="color:#f92672">&amp;</span>sret[<span style="color:#ae81ff">0</span>], s.length());
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> (n <span style="color:#f92672">!=</span> ssize_t(s.length())) {
+</span></span><span style="display:flex;"><span>			cerr <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Error reading from TCP stream: &#34;</span>
+</span></span><span style="display:flex;"><span>				<span style="color:#f92672">&lt;&lt;</span> conn.last_error_str() <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		cout <span style="color:#f92672">&lt;&lt;</span> sret <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> (<span style="color:#f92672">!</span>conn) <span style="color:#f92672">?</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h4 id="ipv6tcp6_clien">IPV6:tcp6_clien</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>sockpp<span style="color:#f92672">::</span>tcp6_connector conn({host, port});
+</span></span><span style="display:flex;"><span>	sockpp<span style="color:#f92672">::</span>inet6_address(host, port);
+</span></span><span style="display:flex;"><span>conn.last_error_str();
+</span></span><span style="display:flex;"><span>conn.read_timeout(seconds(<span style="color:#ae81ff">5</span>));
+</span></span><span style="display:flex;"><span>conn.last_error_str();
+</span></span><span style="display:flex;"><span>conn.write(s);
+</span></span></code></pre></div><p><strong>例子</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;string&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;sockpp/tcp6_connector.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;sockpp/version.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std<span style="color:#f92672">::</span>chrono;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// --------------------------------------------------------------------------
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">int</span> argc, <span style="color:#66d9ef">char</span><span style="color:#f92672">*</span> argv[])
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Sample IPv6 TCP echo client for &#39;sockpp&#39; &#34;</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">&lt;&lt;</span> sockpp<span style="color:#f92672">::</span>SOCKPP_VERSION <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#39;\n&#39;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	std<span style="color:#f92672">::</span>string host <span style="color:#f92672">=</span> (argc <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">?</span> argv[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;::1&#34;</span>;
+</span></span><span style="display:flex;"><span>	in_port_t port <span style="color:#f92672">=</span> (argc <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">2</span>) <span style="color:#f92672">?</span> atoi(argv[<span style="color:#ae81ff">2</span>]) <span style="color:#f92672">:</span> <span style="color:#ae81ff">12345</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	sockpp<span style="color:#f92672">::</span>socket_initializer sockInit;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// Implicitly creates an inet6_address from {host,port}
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#75715e">// and then tries the connection.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>	sockpp<span style="color:#f92672">::</span>tcp6_connector conn({host, port});
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>conn) {
+</span></span><span style="display:flex;"><span>		cerr <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Error connecting to server at &#34;</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#f92672">&lt;&lt;</span> sockpp<span style="color:#f92672">::</span>inet6_address(host, port)
+</span></span><span style="display:flex;"><span>			<span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n\t</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;&lt;</span> conn.last_error_str() <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Created a connection from &#34;</span> <span style="color:#f92672">&lt;&lt;</span> conn.address() <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>	cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Created a connection to &#34;</span> <span style="color:#f92672">&lt;&lt;</span> conn.peer_address() <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Set a timeout for the responses
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>conn.read_timeout(seconds(<span style="color:#ae81ff">5</span>))) {
+</span></span><span style="display:flex;"><span>        cerr <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Error setting timeout on TCP stream: &#34;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&lt;&lt;</span> conn.last_error_str() <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	string s, sret;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">while</span> (getline(cin, s) <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">!</span>s.empty()) {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> (conn.write(s) <span style="color:#f92672">!=</span> ssize_t(s.length())) {
+</span></span><span style="display:flex;"><span>			cerr <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Error writing to the TCP stream: &#34;</span>
+</span></span><span style="display:flex;"><span>				<span style="color:#f92672">&lt;&lt;</span> conn.last_error_str() <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		sret.resize(s.length());
+</span></span><span style="display:flex;"><span>		ssize_t n <span style="color:#f92672">=</span> conn.read_n(<span style="color:#f92672">&amp;</span>sret[<span style="color:#ae81ff">0</span>], s.length());
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> (n <span style="color:#f92672">!=</span> ssize_t(s.length())) {
+</span></span><span style="display:flex;"><span>			cerr <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Error reading from TCP stream: &#34;</span>
+</span></span><span style="display:flex;"><span>				<span style="color:#f92672">&lt;&lt;</span> conn.last_error_str() <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		cout <span style="color:#f92672">&lt;&lt;</span> sret <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> (<span style="color:#f92672">!</span>conn) <span style="color:#f92672">?</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="tcp-server">TCP Server</h3>
+<h4 id="ipv4tcp_server"><strong>IPV4:tcp_server</strong></h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>sockpp<span style="color:#f92672">::</span>tcp_acceptor acc(port) <span style="color:#75715e">// 绑定port,并创建一个sockpp::tcp_socket的acc
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>sockpp<span style="color:#f92672">::</span>tcp_socket sock <span style="color:#f92672">=</span> acc.accept(<span style="color:#f92672">&amp;</span>peer) <span style="color:#75715e">// 接受一个tcp连接并返回sockpp::tcp_socket
+</span></span></span></code></pre></div><p><strong>例子-多线程</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;thread&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;sockpp/tcp_acceptor.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;sockpp/version.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// --------------------------------------------------------------------------
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// The thread function. This is run in a separate thread for each socket.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// Ownership of the socket object is transferred to the thread, so when this
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// function exits, the socket is automatically closed.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">run_echo</span>(sockpp<span style="color:#f92672">::</span>tcp_socket sock)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	ssize_t n;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">char</span> buf[<span style="color:#ae81ff">512</span>];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">while</span> ((n <span style="color:#f92672">=</span> sock.read(buf, <span style="color:#66d9ef">sizeof</span>(buf))) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>		sock.write_n(buf, n);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Connection closed from &#34;</span> <span style="color:#f92672">&lt;&lt;</span> sock.peer_address() <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// --------------------------------------------------------------------------
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// The main thread runs the TCP port acceptor. Each time a connection is
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// made, a new thread is spawned to handle it, leaving this main thread to
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// immediately wait for the next connection.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">int</span> argc, <span style="color:#66d9ef">char</span><span style="color:#f92672">*</span> argv[])
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Sample TCP echo server for &#39;sockpp&#39; &#34;</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">&lt;&lt;</span> sockpp<span style="color:#f92672">::</span>SOCKPP_VERSION <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#39;\n&#39;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	in_port_t port <span style="color:#f92672">=</span> (argc <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">?</span> atoi(argv[<span style="color:#ae81ff">1</span>]) <span style="color:#f92672">:</span> <span style="color:#ae81ff">12345</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	sockpp<span style="color:#f92672">::</span>socket_initializer sockInit;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	sockpp<span style="color:#f92672">::</span>tcp_acceptor acc(port);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>acc) {
+</span></span><span style="display:flex;"><span>		cerr <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Error creating the acceptor: &#34;</span> <span style="color:#f92672">&lt;&lt;</span> acc.last_error_str() <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//cout &lt;&lt; &#34;Acceptor bound to address: &#34; &lt;&lt; acc.address() &lt;&lt; endl;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Awaiting connections on port &#34;</span> <span style="color:#f92672">&lt;&lt;</span> port <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;...&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">while</span> (true) {
+</span></span><span style="display:flex;"><span>		sockpp<span style="color:#f92672">::</span>inet_address peer;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">// Accept a new client connection
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		sockpp<span style="color:#f92672">::</span>tcp_socket sock <span style="color:#f92672">=</span> acc.accept(<span style="color:#f92672">&amp;</span>peer);
+</span></span><span style="display:flex;"><span>		cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Received a connection request from &#34;</span> <span style="color:#f92672">&lt;&lt;</span> peer <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>sock) {
+</span></span><span style="display:flex;"><span>			cerr <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Error accepting incoming connection: &#34;</span> 
+</span></span><span style="display:flex;"><span>				<span style="color:#f92672">&lt;&lt;</span> acc.last_error_str() <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">// Create a thread and transfer the new stream to it.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>			<span style="color:#66d9ef">thread</span> thr(run_echo, std<span style="color:#f92672">::</span>move(sock));
+</span></span><span style="display:flex;"><span>			thr.detach();
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h4 id="ipv6tcp6_server"><strong>IPV6:tcp6_server</strong></h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>sockpp<span style="color:#f92672">::</span>tcp6_acceptor acc(port);
+</span></span><span style="display:flex;"><span>sockpp<span style="color:#f92672">::</span>inet6_address peer;
+</span></span><span style="display:flex;"><span>acc.accept(<span style="color:#f92672">&amp;</span>peer);
+</span></span></code></pre></div><p><strong>例子 - 多线程</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;thread&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;sockpp/tcp6_acceptor.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;sockpp/version.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// --------------------------------------------------------------------------
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// The thread function. This is run in a separate thread for each socket.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// Ownership of the socket object is transferred to the thread, so when this
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// function exits, the socket is automatically closed.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">run_echo</span>(sockpp<span style="color:#f92672">::</span>tcp6_socket sock)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	ssize_t n;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">char</span> buf[<span style="color:#ae81ff">512</span>];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> ((n <span style="color:#f92672">=</span> sock.read(buf, <span style="color:#66d9ef">sizeof</span>(buf))) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>		sock.write_n(buf, n);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Connection closed from &#34;</span> <span style="color:#f92672">&lt;&lt;</span> sock.peer_address() <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// --------------------------------------------------------------------------
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// The main thread runs the TCP port acceptor. Each time a connection is
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// made, a new thread is spawned to handle it, leaving this main thread to
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// immediately wait for the next connection.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">int</span> argc, <span style="color:#66d9ef">char</span><span style="color:#f92672">*</span> argv[])
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Sample IPv6 TCP echo server for &#39;sockpp&#39; &#34;</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">&lt;&lt;</span> sockpp<span style="color:#f92672">::</span>SOCKPP_VERSION <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#39;\n&#39;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	in_port_t port <span style="color:#f92672">=</span> (argc <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">?</span> atoi(argv[<span style="color:#ae81ff">1</span>]) <span style="color:#f92672">:</span> <span style="color:#ae81ff">12345</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	sockpp<span style="color:#f92672">::</span>socket_initializer sockInit;
+</span></span><span style="display:flex;"><span>	sockpp<span style="color:#f92672">::</span>tcp6_acceptor acc(port);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>acc) {
+</span></span><span style="display:flex;"><span>		cerr <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Error creating the acceptor: &#34;</span> <span style="color:#f92672">&lt;&lt;</span> acc.last_error_str() <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Awaiting connections on port &#34;</span> <span style="color:#f92672">&lt;&lt;</span> port <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;...&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">while</span> (true) {
+</span></span><span style="display:flex;"><span>		sockpp<span style="color:#f92672">::</span>inet6_address peer;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">// Accept a new client connection
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		sockpp<span style="color:#f92672">::</span>tcp6_socket sock <span style="color:#f92672">=</span> acc.accept(<span style="color:#f92672">&amp;</span>peer);
+</span></span><span style="display:flex;"><span>		cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Received a connection request from &#34;</span> <span style="color:#f92672">&lt;&lt;</span> peer <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>sock) {
+</span></span><span style="display:flex;"><span>			cerr <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Error accepting incoming connection: &#34;</span> 
+</span></span><span style="display:flex;"><span>				<span style="color:#f92672">&lt;&lt;</span> acc.last_error_str() <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">// Create a thread and transfer the new stream to it.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>			<span style="color:#66d9ef">thread</span> thr(run_echo, std<span style="color:#f92672">::</span>move(sock));
+</span></span><span style="display:flex;"><span>			thr.detach();
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="udp">UDP</h2>
+<h3 id="udp-clien">UDP Clien</h3>
+<h4 id="ipv4udp_clien">IPV4:udp_clien</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>sockpp<span style="color:#f92672">::</span>socket_initializer sockInit;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sockpp<span style="color:#f92672">::</span>udp_socket sock;
+</span></span><span style="display:flex;"><span>sock.connect(sockpp<span style="color:#f92672">::</span>inet_address(host, port));
+</span></span><span style="display:flex;"><span>	sock.last_error_str();
+</span></span><span style="display:flex;"><span>      
+</span></span><span style="display:flex;"><span>sockpp<span style="color:#f92672">::</span>inet_address addr(<span style="color:#e6db74">&#34;localhost&#34;</span>, <span style="color:#ae81ff">12345</span>);
+</span></span><span style="display:flex;"><span>sock.send(s);
+</span></span><span style="display:flex;"><span>sock.send_to(msg, addr);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">char</span> buf[<span style="color:#ae81ff">16</span>];
+</span></span><span style="display:flex;"><span>ssize_t n <span style="color:#f92672">=</span> sock.recv(buf, <span style="color:#66d9ef">sizeof</span>(buf), <span style="color:#f92672">&amp;</span>srcAddr);
+</span></span></code></pre></div><p>例子：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;string&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;sockpp/udp_socket.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;sockpp/version.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// --------------------------------------------------------------------------
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">int</span> argc, <span style="color:#66d9ef">char</span><span style="color:#f92672">*</span> argv[])
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Sample UDP echo client for &#39;sockpp&#39; &#34;</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">&lt;&lt;</span> sockpp<span style="color:#f92672">::</span>SOCKPP_VERSION <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#39;\n&#39;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	string host <span style="color:#f92672">=</span> (argc <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">?</span> argv[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;localhost&#34;</span>;
+</span></span><span style="display:flex;"><span>	in_port_t port <span style="color:#f92672">=</span> (argc <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">2</span>) <span style="color:#f92672">?</span> atoi(argv[<span style="color:#ae81ff">2</span>]) <span style="color:#f92672">:</span> <span style="color:#ae81ff">12345</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	sockpp<span style="color:#f92672">::</span>socket_initializer sockInit;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	sockpp<span style="color:#f92672">::</span>udp_socket sock;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>sock.connect(sockpp<span style="color:#f92672">::</span>inet_address(host, port))) {
+</span></span><span style="display:flex;"><span>		cerr <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Error connecting to server at &#34;</span> <span style="color:#f92672">&lt;&lt;</span> host <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;:&#34;</span> <span style="color:#f92672">&lt;&lt;</span> port 
+</span></span><span style="display:flex;"><span>			<span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n\t</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;&lt;</span> sock.last_error_str() <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Created UDP socket at: &#34;</span> <span style="color:#f92672">&lt;&lt;</span> sock.address() <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	string s, sret;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">while</span> (getline(cin, s) <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">!</span>s.empty()) {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> (sock.send(s) <span style="color:#f92672">!=</span> ssize_t(s.length())) {
+</span></span><span style="display:flex;"><span>			cerr <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Error writing to the UDP socket: &#34;</span>
+</span></span><span style="display:flex;"><span>				<span style="color:#f92672">&lt;&lt;</span> sock.last_error_str() <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		sret.resize(s.length());
+</span></span><span style="display:flex;"><span>		ssize_t n <span style="color:#f92672">=</span> sock.recv(<span style="color:#f92672">&amp;</span>sret[<span style="color:#ae81ff">0</span>], s.length());
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> (n <span style="color:#f92672">!=</span> ssize_t(s.length())) {
+</span></span><span style="display:flex;"><span>			cerr <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Error reading from UDP socket: &#34;</span>
+</span></span><span style="display:flex;"><span>				<span style="color:#f92672">&lt;&lt;</span> sock.last_error_str() <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		cout <span style="color:#f92672">&lt;&lt;</span> sret <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> (<span style="color:#f92672">!</span>sock) <span style="color:#f92672">?</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h4 id="ipv6udp6_clien">IPV6:udp6_clien</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>sockpp<span style="color:#f92672">::</span>socket_initializer sockInit;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sockpp<span style="color:#f92672">::</span>udp6_socket sock;
+</span></span><span style="display:flex;"><span>sock.connect(sockpp<span style="color:#f92672">::</span>inet6_address(host, port));
+</span></span><span style="display:flex;"><span>	sock.last_error_str();
+</span></span><span style="display:flex;"><span>sock.address();
+</span></span><span style="display:flex;"><span>sock.send(s);
+</span></span><span style="display:flex;"><span>sock.recv(<span style="color:#f92672">&amp;</span>sret[<span style="color:#ae81ff">0</span>], s.length());
+</span></span></code></pre></div><p>例子</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;string&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;sockpp/udp6_socket.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;sockpp/version.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// --------------------------------------------------------------------------
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">int</span> argc, <span style="color:#66d9ef">char</span><span style="color:#f92672">*</span> argv[])
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Sample IPv6 UDP echo client for &#39;sockpp&#39; &#34;</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">&lt;&lt;</span> sockpp<span style="color:#f92672">::</span>SOCKPP_VERSION <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#39;\n&#39;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	string host <span style="color:#f92672">=</span> (argc <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">?</span> argv[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;localhost&#34;</span>;
+</span></span><span style="display:flex;"><span>	in_port_t port <span style="color:#f92672">=</span> (argc <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">2</span>) <span style="color:#f92672">?</span> atoi(argv[<span style="color:#ae81ff">2</span>]) <span style="color:#f92672">:</span> <span style="color:#ae81ff">12345</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	sockpp<span style="color:#f92672">::</span>socket_initializer sockInit;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	sockpp<span style="color:#f92672">::</span>udp6_socket sock;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>sock.connect(sockpp<span style="color:#f92672">::</span>inet6_address(host, port))) {
+</span></span><span style="display:flex;"><span>		cerr <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Error connecting to server at &#34;</span> <span style="color:#f92672">&lt;&lt;</span> host <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;:&#34;</span> <span style="color:#f92672">&lt;&lt;</span> port 
+</span></span><span style="display:flex;"><span>			<span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n\t</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;&lt;</span> sock.last_error_str() <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Created UDP socket at: &#34;</span> <span style="color:#f92672">&lt;&lt;</span> sock.address() <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	string s, sret;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">while</span> (getline(cin, s) <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">!</span>s.empty()) {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> (sock.send(s) <span style="color:#f92672">!=</span> ssize_t(s.length())) {
+</span></span><span style="display:flex;"><span>			cerr <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Error writing to the UDP socket: &#34;</span>
+</span></span><span style="display:flex;"><span>				<span style="color:#f92672">&lt;&lt;</span> sock.last_error_str() <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		sret.resize(s.length());
+</span></span><span style="display:flex;"><span>		ssize_t n <span style="color:#f92672">=</span> sock.recv(<span style="color:#f92672">&amp;</span>sret[<span style="color:#ae81ff">0</span>], s.length());
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> (n <span style="color:#f92672">!=</span> ssize_t(s.length())) {
+</span></span><span style="display:flex;"><span>			cerr <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Error reading from UDP socket: &#34;</span>
+</span></span><span style="display:flex;"><span>				<span style="color:#f92672">&lt;&lt;</span> sock.last_error_str() <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		cout <span style="color:#f92672">&lt;&lt;</span> sret <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> (<span style="color:#f92672">!</span>sock) <span style="color:#f92672">?</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="udp-server">UDP Server</h3>
+<h4 id="ipv4udp_server">IPV4:udp_server</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>sockpp<span style="color:#f92672">::</span>socket_initializer sockInit;
+</span></span><span style="display:flex;"><span>sockpp<span style="color:#f92672">::</span>udp_socket	udpsock;
+</span></span><span style="display:flex;"><span>udpsock.bind(sockpp<span style="color:#f92672">::</span>inet_address(<span style="color:#e6db74">&#34;localhost&#34;</span>, port));
+</span></span><span style="display:flex;"><span>udpsock.last_error_str();
+</span></span></code></pre></div><p>例子：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;thread&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;sockpp/udp_socket.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;sockpp/version.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// --------------------------------------------------------------------------
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// The thread function. This is run in a separate thread for each socket.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// Ownership of the socket object is transferred to the thread, so when this
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// function exits, the socket is automatically closed.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> UDPSOCK<span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> run_echo(UDPSOCK sock)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	ssize_t n;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">char</span> buf[<span style="color:#ae81ff">512</span>];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// Each UDP socket type knows its address type as `addr_t`
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">typename</span> UDPSOCK<span style="color:#f92672">::</span>addr_t srcAddr;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// Read some data, also getting the address of the sender,
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#75715e">// then just send it back.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">while</span> ((n <span style="color:#f92672">=</span> sock.recv_from(buf, <span style="color:#66d9ef">sizeof</span>(buf), <span style="color:#f92672">&amp;</span>srcAddr)) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>		sock.send_to(buf, n, srcAddr);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// --------------------------------------------------------------------------
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// The main thread creates the two UDP sockets (one each for IPv4 and IPv6),
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// and then starts them running the echo function each in a separate thread.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">int</span> argc, <span style="color:#66d9ef">char</span><span style="color:#f92672">*</span> argv[])
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Sample UDP echo server for &#39;sockpp&#39; &#34;</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">&lt;&lt;</span> sockpp<span style="color:#f92672">::</span>SOCKPP_VERSION <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#39;\n&#39;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	in_port_t port <span style="color:#f92672">=</span> (argc <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">?</span> atoi(argv[<span style="color:#ae81ff">1</span>]) <span style="color:#f92672">:</span> <span style="color:#ae81ff">12345</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	sockpp<span style="color:#f92672">::</span>socket_initializer sockInit;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	sockpp<span style="color:#f92672">::</span>udp_socket	udpsock;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>udpsock) {
+</span></span><span style="display:flex;"><span>		cerr <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Error creating the UDP v4 socket: &#34;</span> <span style="color:#f92672">&lt;&lt;</span> udpsock.last_error_str() <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>udpsock.bind(sockpp<span style="color:#f92672">::</span>inet_address(<span style="color:#e6db74">&#34;localhost&#34;</span>, port))) {
+</span></span><span style="display:flex;"><span>		cerr <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Error binding the UDP v4 socket: &#34;</span> <span style="color:#f92672">&lt;&lt;</span> udpsock.last_error_str() <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// Spin up a thread to run the IPv4 socket.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">thread</span> thr(run_echo<span style="color:#f92672">&lt;</span>sockpp<span style="color:#f92672">::</span>udp_socket<span style="color:#f92672">&gt;</span>, std<span style="color:#f92672">::</span>move(udpsock));
+</span></span><span style="display:flex;"><span>	thr.detach();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h4 id="ipv6udp6_server">IPV6:udp6_server</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>sockpp<span style="color:#f92672">::</span>socket_initializer sockInit;
+</span></span><span style="display:flex;"><span>sockpp<span style="color:#f92672">::</span>udp6_socket	udp6sock;
+</span></span><span style="display:flex;"><span>udp6sock.last_error_str();
+</span></span><span style="display:flex;"><span>udp6sock.bind(sockpp<span style="color:#f92672">::</span>inet6_address(<span style="color:#e6db74">&#34;localhost&#34;</span>, port));
+</span></span></code></pre></div><p>例子：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;thread&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;sockpp/udp6_socket.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;sockpp/version.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// --------------------------------------------------------------------------
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// The thread function. This is run in a separate thread for each socket.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// Ownership of the socket object is transferred to the thread, so when this
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// function exits, the socket is automatically closed.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> UDPSOCK<span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> run_echo(UDPSOCK sock)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	ssize_t n;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">char</span> buf[<span style="color:#ae81ff">512</span>];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// Each UDP socket type knows its address type as `addr_t`
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">typename</span> UDPSOCK<span style="color:#f92672">::</span>addr_t srcAddr;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// Read some data, also getting the address of the sender,
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#75715e">// then just send it back.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">while</span> ((n <span style="color:#f92672">=</span> sock.recv_from(buf, <span style="color:#66d9ef">sizeof</span>(buf), <span style="color:#f92672">&amp;</span>srcAddr)) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>		sock.send_to(buf, n, srcAddr);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// --------------------------------------------------------------------------
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// The main thread creates the two UDP sockets (one each for IPv4 and IPv6),
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// and then starts them running the echo function each in a separate thread.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">int</span> argc, <span style="color:#66d9ef">char</span><span style="color:#f92672">*</span> argv[])
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Sample UDP echo server for &#39;sockpp&#39; &#34;</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">&lt;&lt;</span> sockpp<span style="color:#f92672">::</span>SOCKPP_VERSION <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#39;\n&#39;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	in_port_t port <span style="color:#f92672">=</span> (argc <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">?</span> atoi(argv[<span style="color:#ae81ff">1</span>]) <span style="color:#f92672">:</span> <span style="color:#ae81ff">12345</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	sockpp<span style="color:#f92672">::</span>socket_initializer sockInit;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	sockpp<span style="color:#f92672">::</span>udp6_socket	udp6sock;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>udp6sock) {
+</span></span><span style="display:flex;"><span>		cerr <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Error creating the UDP v6 socket: &#34;</span> <span style="color:#f92672">&lt;&lt;</span> udp6sock.last_error_str() <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>udp6sock.bind(sockpp<span style="color:#f92672">::</span>inet6_address(<span style="color:#e6db74">&#34;localhost&#34;</span>, port))) {
+</span></span><span style="display:flex;"><span>		cerr <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Error binding the UDP v6 socket: &#34;</span> <span style="color:#f92672">&lt;&lt;</span> udp6sock.last_error_str() <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// Spin up a thread to run the IPv4 socket.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">thread</span> thr(run_echo<span style="color:#f92672">&lt;</span>sockpp<span style="color:#f92672">::</span>udp6_socket<span style="color:#f92672">&gt;</span>, std<span style="color:#f92672">::</span>move(udp6sock));
+</span></span><span style="display:flex;"><span>	thr.detach();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="unix">UNIX</h2>
+<h3 id="unix-clien">UNIX Clien</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>sockpp<span style="color:#f92672">::</span>socket_initializer sockInit;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sockpp<span style="color:#f92672">::</span>unix_connector conn;
+</span></span><span style="display:flex;"><span>conn.connect(sockpp<span style="color:#f92672">::</span>unix_address(path));
+</span></span><span style="display:flex;"><span>conn.last_error_str();
+</span></span><span style="display:flex;"><span>conn.peer_address();
+</span></span></code></pre></div><p>例子：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;string&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;sockpp/unix_connector.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;sockpp/version.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// --------------------------------------------------------------------------
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">int</span> argc, <span style="color:#66d9ef">char</span><span style="color:#f92672">*</span> argv[])
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Sample Unix-domain echo client for &#39;sockpp&#39; &#34;</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">&lt;&lt;</span> sockpp<span style="color:#f92672">::</span>SOCKPP_VERSION <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#39;\n&#39;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	string path <span style="color:#f92672">=</span> (argc <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">?</span> argv[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;/tmp/unechosvr.sock&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	sockpp<span style="color:#f92672">::</span>socket_initializer sockInit;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	sockpp<span style="color:#f92672">::</span>unix_connector conn;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> ok <span style="color:#f92672">=</span> conn.connect(sockpp<span style="color:#f92672">::</span>unix_address(path));
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>ok) {
+</span></span><span style="display:flex;"><span>		cerr <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Error connecting to UNIX socket at &#34;</span> <span style="color:#f92672">&lt;&lt;</span> path
+</span></span><span style="display:flex;"><span>			<span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n\t</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;&lt;</span> conn.last_error_str() <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Created a connection to &#39;&#34;</span> <span style="color:#f92672">&lt;&lt;</span> conn.peer_address() <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;&#39;&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	string s, sret;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">while</span> (getline(cin, s) <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">!</span>s.empty()) {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> (conn.write(s) <span style="color:#f92672">!=</span> (<span style="color:#66d9ef">int</span>) s.length()) {
+</span></span><span style="display:flex;"><span>			cerr <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Error writing to the UNIX stream&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		sret.resize(s.length());
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">int</span> n <span style="color:#f92672">=</span> conn.read_n(<span style="color:#f92672">&amp;</span>sret[<span style="color:#ae81ff">0</span>], s.length());
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> (n <span style="color:#f92672">!=</span> (<span style="color:#66d9ef">int</span>) s.length()) {
+</span></span><span style="display:flex;"><span>			cerr <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Error reading from UNIX stream&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		cout <span style="color:#f92672">&lt;&lt;</span> sret <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> (<span style="color:#f92672">!</span>conn) <span style="color:#f92672">?</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="unix-server">UNIX Server</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>sockpp<span style="color:#f92672">::</span>socket_initializer sockInit;
+</span></span><span style="display:flex;"><span>sockpp<span style="color:#f92672">::</span>unix_acceptor acc;
+</span></span><span style="display:flex;"><span>acc.open(sockpp<span style="color:#f92672">::</span>unix_address(path));
+</span></span><span style="display:flex;"><span>acc.last_error_str();
+</span></span><span style="display:flex;"><span>acc.address();
+</span></span><span style="display:flex;"><span>acc.accept();
+</span></span></code></pre></div><p>例子 - 多线程</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;thread&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;sockpp/unix_acceptor.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;sockpp/version.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// --------------------------------------------------------------------------
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// The thread function. This is run in a separate thread for each socket.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// Ownership of the socket object is transferred to the thread, so when this
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// function exits, the socket is automatically closed.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">run_echo</span>(sockpp<span style="color:#f92672">::</span>unix_socket sock)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">int</span> n;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">char</span> buf[<span style="color:#ae81ff">512</span>];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">while</span> ((n <span style="color:#f92672">=</span> sock.read(buf, <span style="color:#66d9ef">sizeof</span>(buf))) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>		sock.write_n(buf, n);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Connection closed&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// --------------------------------------------------------------------------
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// The main thread runs the UNIX acceptor.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// Each time a connection is made, a new thread is spawned to handle it,
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// leaving this main thread to immediately wait for the next connection.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">int</span> argc, <span style="color:#66d9ef">char</span><span style="color:#f92672">*</span> argv[])
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Sample Unix-domain echo server for &#39;sockpp&#39; &#34;</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">&lt;&lt;</span> sockpp<span style="color:#f92672">::</span>SOCKPP_VERSION <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#39;\n&#39;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	string path <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/tmp/unechosvr.sock&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> (argc <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">1</span>) {
+</span></span><span style="display:flex;"><span>		path <span style="color:#f92672">=</span> argv[<span style="color:#ae81ff">1</span>];
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	sockpp<span style="color:#f92672">::</span>socket_initializer sockInit;
+</span></span><span style="display:flex;"><span>	sockpp<span style="color:#f92672">::</span>unix_acceptor acc;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">bool</span> ok <span style="color:#f92672">=</span> acc.open(sockpp<span style="color:#f92672">::</span>unix_address(path));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>ok) {
+</span></span><span style="display:flex;"><span>		cerr <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Error creating the acceptor: &#34;</span> <span style="color:#f92672">&lt;&lt;</span> acc.last_error_str() <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>    cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Acceptor bound to address: &#39;&#34;</span> <span style="color:#f92672">&lt;&lt;</span> acc.address() <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;&#39;...&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">while</span> (true) {
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">// Accept a new client connection
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		<span style="color:#66d9ef">auto</span> sock <span style="color:#f92672">=</span> acc.accept();
+</span></span><span style="display:flex;"><span>		cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Received a connection&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>sock) {
+</span></span><span style="display:flex;"><span>			cerr <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Error accepting incoming connection: &#34;</span> 
+</span></span><span style="display:flex;"><span>				<span style="color:#f92672">&lt;&lt;</span> acc.last_error_str() <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">// Create a thread and transfer the new stream to it.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>			<span style="color:#66d9ef">thread</span> thr(run_echo, std<span style="color:#f92672">::</span>move(sock));
+</span></span><span style="display:flex;"><span>			thr.detach();
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-01-13</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/tcp/ip/">TCP/IP</a>,&nbsp;<a href="/tags/c&#43;&#43;/">C&#43;&#43;</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BB%8B%E7%BB%8D/" class="prev" rel="prev" title="Oracle数据库介绍"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Oracle数据库介绍</a>
+            <a href="/posts/cpr-http%E8%AF%B7%E6%B1%82%E5%BA%93/" class="next" rel="next" title="cpr请求库">cpr请求库<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.115.4">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank"></a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.5.0/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/twemoji@14.0.2/dist/twemoji.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@14.0.0/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"en","pageSize":10,"placeholder":"Your comment ...","recordIP":true,"serverURLs":"https://leancloud.hugoloveit.com","visitor":true}},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"","algoliaIndex":"","algoliaSearchKey":"","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"},"twemoji":true};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

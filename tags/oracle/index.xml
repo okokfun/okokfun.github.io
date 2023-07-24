@@ -1,19 +1,15 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Oracle on My Blog</title>
-    <link>https://okokfun.github.io/tags/oracle/</link>
-    <description>Recent content in Oracle on My Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language>
-    <lastBuildDate>Sun, 09 Jan 2022 16:51:29 +0000</lastBuildDate><atom:link href="https://okokfun.github.io/tags/oracle/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Oracle数据库介绍</title>
-      <link>https://okokfun.github.io/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BB%8B%E7%BB%8D/</link>
-      <pubDate>Sun, 09 Jan 2022 16:51:29 +0000</pubDate>
-      
-      <guid>https://okokfun.github.io/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BB%8B%E7%BB%8D/</guid>
-      <description>数据库介绍 什么是数据库?
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Oracle - Tag - My Blog</title>
+        <link>https://okokfun.github.io/tags/oracle/</link>
+        <description>Oracle - Tag - My Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 09 Jan 2022 16:51:29 &#43;0000</lastBuildDate><atom:link href="https://okokfun.github.io/tags/oracle/" rel="self" type="application/rss+xml" /><item>
+    <title>Oracle数据库介绍</title>
+    <link>https://okokfun.github.io/posts/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BB%8B%E7%BB%8D/</link>
+    <pubDate>Sun, 09 Jan 2022 16:51:29 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://okokfun.github.io/posts/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BB%8B%E7%BB%8D/</guid>
+    <description><![CDATA[数据库介绍 什么是数据库?
 ​	数据库是为了实现一定的目的按某种规则组织起来的数据的集合, 简单的说,数据库就是存储数据的库.
 ​	举个例子来说明这个问题：每个人都有很多亲戚和朋友，为了保持与他们的联系，
 ​	我们常常用一个笔记本将他们的姓名、地址、电话等信息都记录下来，
@@ -42,11 +38,10 @@ MongoDB数据库
 Mariadb数据库 (由MySQL的创始人Michael Widenius（英语：Michael Widenius）主导开发,MariaDB名称来自Michael Widenius的女儿Maria的名字)
 SQLite (设计目标是嵌入式)
 1 Oracle的体系结构 Oracle服务器：是一个数据管理系统(RDBMS)，它提供开放的, 全面的, 近乎完整的信息管理。由1个数据库和一个（或多个）实例组成。数据库位于硬盘上，实例位于内存中。
-img 1.1 表空间和数据文件 逻辑概念：表空间是由数据文件组成，位于实例上，在内存中。
+1.1 表空间和数据文件 逻辑概念：表空间是由数据文件组成，位于实例上，在内存中。
 物理概念：数据文件，在磁盘上（/home/oracle_11/app/oradata/orcl目录中的.DBF文件）；
 ​ 一个表空间包含一个或者多个数据文件。
-1.2 段、区、块 img 段存在于表空间中，段是区的集合，区是数据块的集合，数据块会被映射到磁盘块。</description>
-    </item>
-    
-  </channel>
+1.2 段、区、块 段存在于表空间中，段是区的集合，区是数据块的集合，数据块会被映射到磁盘块。]]></description>
+</item>
+</channel>
 </rss>

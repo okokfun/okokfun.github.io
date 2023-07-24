@@ -1,21 +1,16 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>XML on My Blog</title>
-    <link>https://okokfun.github.io/tags/xml/</link>
-    <description>Recent content in XML on My Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language>
-    <lastBuildDate>Wed, 02 Feb 2022 20:07:01 +0000</lastBuildDate><atom:link href="https://okokfun.github.io/tags/xml/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>qt中ui简单介绍</title>
-      <link>https://okokfun.github.io/post/qt%E4%B8%ADui%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D/</link>
-      <pubDate>Wed, 02 Feb 2022 20:07:01 +0000</pubDate>
-      
-      <guid>https://okokfun.github.io/post/qt%E4%B8%ADui%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D/</guid>
-      <description>qt ui区别：
-无ui的mainWindow.h #ifndef MAINWINDOW_H #define MAINWINDOW_H #include &amp;lt;QMainWindow&amp;gt; class MainWindow : public QMainWindow { Q_OBJECT public: MainWindow(QWidget *parent = nullptr); ~MainWindow(); }; #endif // MAINWINDOW_H 有ui的mainWindow.h #ifndef MAINWINDOW_H #define MAINWINDOW_H #include &amp;lt;QMainWindow&amp;gt; QT_BEGIN_NAMESPACE namespace Ui { class MainWindow; } QT_END_NAMESPACE // 这个MainWindow和下边的MainWindow没有关系，在不同命名空间内。 class MainWindow : public QMainWindow { Q_OBJECT public: MainWindow(QWidget *parent = nullptr); ~MainWindow(); private: Ui::MainWindow *ui;// ui的指针 }; #endif // MAINWINDOW_H 无ui的mainWindow.cpp #include &amp;#34;mainwindow.h&amp;#34; MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) { } MainWindow::~MainWindow() { } 有ui的mainWindow.</description>
-    </item>
-    
-  </channel>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>XML - Tag - My Blog</title>
+        <link>https://okokfun.github.io/tags/xml/</link>
+        <description>XML - Tag - My Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 02 Feb 2022 20:07:01 &#43;0000</lastBuildDate><atom:link href="https://okokfun.github.io/tags/xml/" rel="self" type="application/rss+xml" /><item>
+    <title>qt中ui简单介绍</title>
+    <link>https://okokfun.github.io/posts/qt%E4%B8%ADui%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D/</link>
+    <pubDate>Wed, 02 Feb 2022 20:07:01 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://okokfun.github.io/posts/qt%E4%B8%ADui%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D/</guid>
+    <description><![CDATA[qt ui区别：
+无ui的mainWindow.h #ifndef MAINWINDOW_H #define MAINWINDOW_H #include &lt;QMainWindow&gt; class MainWindow : public QMainWindow { Q_OBJECT public: MainWindow(QWidget *parent = nullptr); ~MainWindow(); }; #endif // MAINWINDOW_H 有ui的mainWindow.h #ifndef MAINWINDOW_H #define MAINWINDOW_H #include &lt;QMainWindow&gt; QT_BEGIN_NAMESPACE namespace Ui { class MainWindow; } QT_END_NAMESPACE // 这个MainWindow和下边的MainWindow没有关系，在不同命名空间内。 class MainWindow : public QMainWindow { Q_OBJECT public: MainWindow(QWidget *parent = nullptr); ~MainWindow(); private: Ui::MainWindow *ui;// ui的指针 }; #endif // MAINWINDOW_H 无ui的mainWindow.cpp #include &#34;mainwindow.h&#34; MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) { } MainWindow::~MainWindow() { } 有ui的mainWindow.]]></description>
+</item>
+</channel>
 </rss>

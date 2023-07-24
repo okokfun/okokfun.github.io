@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>顺序容器 - My Blog</title><meta name="Description" content="Hugo theme - LoveIt"><meta property="og:title" content="顺序容器" />
+<meta property="og:description" content="顺序容器实现能按顺序访问的数据结构。
+std::array 静态的连续数组
+定义于头文件 &lt;array&gt;
+std::array 是封装 固定大小数组 的容器。 隐式定义的成员函数 (构造函数)(隐式声明) 遵循聚合初始化的规则初始化 array （注意默认初始化可以导致非类的 T 的不确定值） (公开成员函数) (析构函数)(隐式声明) 销毁 array 的每个元素 (公开成员函数) operator=(隐式声明) 以来自另一 array 的每个元素重写 array 的对应元素 (公开成员函数) 元素访问 at(C&#43;&#43;11) 访问指定的元素，同时进行越界检查 (公开成员函数) [operator](C&#43;&#43;11) 访问指定的元素 (公开成员函数) front(C&#43;&#43;11) 访问第一个元素 (公开成员函数) back(C&#43;&#43;11) 访问最后一个元素 (公开成员函数) data(C&#43;&#43;11) 直接访问底层数组 (公开成员函数) 迭代器 begincbegin(C&#43;&#43;11) 返回指向起始的迭代器 (公开成员函数) endcend(C&#43;&#43;11) 返回指向末尾的迭代器 (公开成员函数) rbegincrbegin(C&#43;&#43;11) 返回指向起始的逆向迭代器 (公开成员函数) rendcrend(C&#43;&#43;11) 返回指向末尾的逆向迭代器 (公开成员函数) 容量 empty(C&#43;&#43;11) 检查容器是否为空 (公开成员函数) size(C&#43;&#43;11) 返回容纳的元素数 (公开成员函数) max_size(C&#43;&#43;11) 返回可容纳的最大元素数 (公开成员函数) 操作 fill(C&#43;&#43;11) 以指定值填充容器 (公开成员函数) swap(C&#43;&#43;11) 交换内容 std::vector 定义于头文件 &lt;vector&gt;" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://okokfun.github.io/posts/%E9%A1%BA%E5%BA%8F%E5%AE%B9%E5%99%A8/" /><meta property="og:image" content="https://okokfun.github.io"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-01-19T16:52:52+00:00" />
+<meta property="article:modified_time" content="2022-01-19T16:52:52+00:00" /><meta property="og:site_name" content="My Blog" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://okokfun.github.io"/>
+
+<meta name="twitter:title" content="顺序容器"/>
+<meta name="twitter:description" content="顺序容器实现能按顺序访问的数据结构。
+std::array 静态的连续数组
+定义于头文件 &lt;array&gt;
+std::array 是封装 固定大小数组 的容器。 隐式定义的成员函数 (构造函数)(隐式声明) 遵循聚合初始化的规则初始化 array （注意默认初始化可以导致非类的 T 的不确定值） (公开成员函数) (析构函数)(隐式声明) 销毁 array 的每个元素 (公开成员函数) operator=(隐式声明) 以来自另一 array 的每个元素重写 array 的对应元素 (公开成员函数) 元素访问 at(C&#43;&#43;11) 访问指定的元素，同时进行越界检查 (公开成员函数) [operator](C&#43;&#43;11) 访问指定的元素 (公开成员函数) front(C&#43;&#43;11) 访问第一个元素 (公开成员函数) back(C&#43;&#43;11) 访问最后一个元素 (公开成员函数) data(C&#43;&#43;11) 直接访问底层数组 (公开成员函数) 迭代器 begincbegin(C&#43;&#43;11) 返回指向起始的迭代器 (公开成员函数) endcend(C&#43;&#43;11) 返回指向末尾的迭代器 (公开成员函数) rbegincrbegin(C&#43;&#43;11) 返回指向起始的逆向迭代器 (公开成员函数) rendcrend(C&#43;&#43;11) 返回指向末尾的逆向迭代器 (公开成员函数) 容量 empty(C&#43;&#43;11) 检查容器是否为空 (公开成员函数) size(C&#43;&#43;11) 返回容纳的元素数 (公开成员函数) max_size(C&#43;&#43;11) 返回可容纳的最大元素数 (公开成员函数) 操作 fill(C&#43;&#43;11) 以指定值填充容器 (公开成员函数) swap(C&#43;&#43;11) 交换内容 std::vector 定义于头文件 &lt;vector&gt;"/>
+<meta name="application-name" content="LoveIt">
+<meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://okokfun.github.io/posts/%E9%A1%BA%E5%BA%8F%E5%AE%B9%E5%99%A8/" /><link rel="prev" href="https://okokfun.github.io/posts/%E6%97%A5%E6%9C%9F%E5%92%8C%E6%97%B6%E9%97%B4%E5%B7%A5%E5%85%B7/" /><link rel="next" href="https://okokfun.github.io/posts/%E5%85%B3%E8%81%94%E5%AE%B9%E5%99%A8/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "顺序容器",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/okokfun.github.io\/posts\/%E9%A1%BA%E5%BA%8F%E5%AE%B9%E5%99%A8\/"
+        },"image": ["https:\/\/okokfun.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "Sequence","wordcount":  598 ,
+        "url": "https:\/\/okokfun.github.io\/posts\/%E9%A1%BA%E5%BA%8F%E5%AE%B9%E5%99%A8\/","datePublished": "2022-01-19T16:52:52+00:00","dateModified": "2022-01-19T16:52:52+00:00","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": "https:\/\/okokfun.github.io\/images\/avatar.png"},"author": {
+                "@type": "Person",
+                "name": "Author"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="My Blog"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span>My Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/" title="Hello World!"> 文章 </a><a class="menu-item" href="/tags/" title="Hello World!"> 标签 </a><a class="menu-item" href="/categories/" title="Hello World!"> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a><a href="javascript:void(0);" class="menu-item language" title="Select Language">
+                    <i class="fa fa-globe" aria-hidden="true"></i>                      
+                    <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/posts/%E9%A1%BA%E5%BA%8F%E5%AE%B9%E5%99%A8/" selected></option></select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="My Blog"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span>My Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="Hello World!">文章</a><a class="menu-item" href="/tags/" title="Hello World!">标签</a><a class="menu-item" href="/categories/" title="Hello World!">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="Select Language">
+                    <i class="fa fa-globe fa-fw" aria-hidden="true"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/posts/%E9%A1%BA%E5%BA%8F%E5%AE%B9%E5%99%A8/" selected></option></select>
+                </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">顺序容器</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Author</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-01-19">2022-01-19</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;598 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;<span id="/posts/%E9%A1%BA%E5%BA%8F%E5%AE%B9%E5%99%A8/" class="leancloud_visitors" data-flag-title="顺序容器">
+                        <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#stdarray">std::array</a></li>
+    <li><a href="#stdvector">std::vector</a>
+      <ul>
+        <li><a href="#非成员函数">非成员函数</a></li>
+      </ul>
+    </li>
+    <li><a href="#stddeque">std::deque</a></li>
+    <li><a href="#stdforward_list">std::forward_list</a></li>
+    <li><a href="#stdlist">std::list</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><!-- raw HTML omitted -->
+<p>顺序容器实现能按顺序访问的数据结构。</p>
+<h2 id="stdarray">std::array</h2>
+<p>静态的连续数组</p>
+<blockquote>
+<p>定义于头文件 <code>&lt;array&gt;</code></p>
+</blockquote>
+<ul>
+<li><code>std::array</code> 是封装 <strong>固定大小数组</strong> 的容器。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>隐式定义的成员函数</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>(构造函数)(隐式声明)</td>
+<td>遵循<a href="https://zh.cppreference.com/w/cpp/language/aggregate_initialization" target="_blank" rel="noopener noreffer ">聚合初始化</a>的规则初始化 <code>array</code> （注意默认初始化可以导致非类的 <code>T</code> 的不确定值） (公开成员函数)</td>
+</tr>
+<tr>
+<td>(析构函数)(隐式声明)</td>
+<td>销毁 <code>array</code> 的每个元素 (公开成员函数)</td>
+</tr>
+<tr>
+<td>operator=(隐式声明)</td>
+<td>以来自另一 <code>array</code> 的每个元素重写 <code>array</code> 的对应元素 (公开成员函数)</td>
+</tr>
+<tr>
+<td>元素访问</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/array/at" target="_blank" rel="noopener noreffer ">at</a>(C++11)</td>
+<td>访问指定的元素，同时进行越界检查 (公开成员函数)</td>
+</tr>
+<tr>
+<td>[operator<a href="https://zh.cppreference.com/w/cpp/container/array/operator_at" target="_blank" rel="noopener noreffer ">]</a>(C++11)</td>
+<td>访问指定的元素 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/array/front" target="_blank" rel="noopener noreffer ">front</a>(C++11)</td>
+<td>访问第一个元素 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/array/back" target="_blank" rel="noopener noreffer ">back</a>(C++11)</td>
+<td>访问最后一个元素 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/array/data" target="_blank" rel="noopener noreffer ">data</a>(C++11)</td>
+<td>直接访问底层数组 (公开成员函数)</td>
+</tr>
+<tr>
+<td>迭代器</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/array/begin" target="_blank" rel="noopener noreffer ">begincbegin</a>(C++11)</td>
+<td>返回指向起始的迭代器 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/array/end" target="_blank" rel="noopener noreffer ">endcend</a>(C++11)</td>
+<td>返回指向末尾的迭代器 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/array/rbegin" target="_blank" rel="noopener noreffer ">rbegincrbegin</a>(C++11)</td>
+<td>返回指向起始的逆向迭代器 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/array/rend" target="_blank" rel="noopener noreffer ">rendcrend</a>(C++11)</td>
+<td>返回指向末尾的逆向迭代器 (公开成员函数)</td>
+</tr>
+<tr>
+<td>容量</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/array/empty" target="_blank" rel="noopener noreffer ">empty</a>(C++11)</td>
+<td>检查容器是否为空 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/array/size" target="_blank" rel="noopener noreffer ">size</a>(C++11)</td>
+<td>返回容纳的元素数 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/array/max_size" target="_blank" rel="noopener noreffer ">max_size</a>(C++11)</td>
+<td>返回可容纳的最大元素数 (公开成员函数)</td>
+</tr>
+<tr>
+<td>操作</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/array/fill" target="_blank" rel="noopener noreffer ">fill</a>(C++11)</td>
+<td>以指定值填充容器 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/array/swap" target="_blank" rel="noopener noreffer ">swap</a>(C++11)</td>
+<td>交换内容</td>
+</tr>
+</tbody>
+</table>
+<h2 id="stdvector">std::vector</h2>
+<p>定义于头文件 <code>&lt;vector&gt;</code></p>
+<ul>
+<li><code>std::vector</code> 是封装 <strong>动态数组</strong> 的顺序容器。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th><a href="https://zh.cppreference.com/w/cpp/container/vector/at" target="_blank" rel="noopener noreffer ">at</a></th>
+<th>访问指定的元素，同时进行越界检查 (公开成员函数)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[operator<a href="https://zh.cppreference.com/w/cpp/container/vector/operator_at" target="_blank" rel="noopener noreffer ">]</a></td>
+<td>访问指定的元素 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/vector/front" target="_blank" rel="noopener noreffer ">front</a></td>
+<td>访问第一个元素 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/vector/back" target="_blank" rel="noopener noreffer ">back</a></td>
+<td>访问最后一个元素 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/vector/data" target="_blank" rel="noopener noreffer ">data</a></td>
+<td>直接访问底层数组 (公开成员函数)</td>
+</tr>
+<tr>
+<td>迭代器</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/vector/begin" target="_blank" rel="noopener noreffer ">begincbegin</a>(C++11)</td>
+<td>返回指向起始的迭代器 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/vector/end" target="_blank" rel="noopener noreffer ">endcend</a>(C++11)</td>
+<td>返回指向末尾的迭代器 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/vector/rbegin" target="_blank" rel="noopener noreffer ">rbegincrbegin</a>(C++11)</td>
+<td>返回指向起始的逆向迭代器 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/vector/rend" target="_blank" rel="noopener noreffer ">rendcrend</a>(C++11)</td>
+<td>返回指向末尾的逆向迭代器 (公开成员函数)</td>
+</tr>
+<tr>
+<td>容量</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/vector/empty" target="_blank" rel="noopener noreffer ">empty</a></td>
+<td>检查容器是否为空 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/vector/size" target="_blank" rel="noopener noreffer ">size</a></td>
+<td>返回容纳的元素数 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/vector/max_size" target="_blank" rel="noopener noreffer ">max_size</a></td>
+<td>返回可容纳的最大元素数 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/vector/reserve" target="_blank" rel="noopener noreffer ">reserve</a></td>
+<td>预留存储空间 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/vector/capacity" target="_blank" rel="noopener noreffer ">capacity</a></td>
+<td>返回当前存储空间能够容纳的元素数 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/vector/shrink_to_fit" target="_blank" rel="noopener noreffer ">shrink_to_fit</a>(C++11)</td>
+<td>通过释放未使用的内存减少内存的使用 (公开成员函数)</td>
+</tr>
+<tr>
+<td>修改器</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/vector/clear" target="_blank" rel="noopener noreffer ">clear</a></td>
+<td>清除内容 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/vector/insert" target="_blank" rel="noopener noreffer ">insert</a></td>
+<td>插入元素 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/vector/emplace" target="_blank" rel="noopener noreffer ">emplace</a>(C++11)</td>
+<td>原位构造元素 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/vector/erase" target="_blank" rel="noopener noreffer ">erase</a></td>
+<td>擦除元素 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/vector/push_back" target="_blank" rel="noopener noreffer ">push_back</a></td>
+<td>将元素添加到容器末尾 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/vector/emplace_back" target="_blank" rel="noopener noreffer ">emplace_back</a>(C++11)</td>
+<td>在容器末尾就地构造元素 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/vector/pop_back" target="_blank" rel="noopener noreffer ">pop_back</a></td>
+<td>移除末元素 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/vector/resize" target="_blank" rel="noopener noreffer ">resize</a></td>
+<td>改变容器中可存储元素的个数 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/vector/swap" target="_blank" rel="noopener noreffer ">swap</a></td>
+<td>交换内容 (公开成员函数)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="非成员函数">非成员函数</h3>
+<table>
+<thead>
+<tr>
+<th><a href="https://zh.cppreference.com/w/cpp/container/vector/vector" target="_blank" rel="noopener noreffer ">(构造函数)</a></th>
+<th>构造 <code>vector</code> (公开成员函数)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/vector/~vector" target="_blank" rel="noopener noreffer ">(析构函数)</a></td>
+<td>析构 <code>vector</code> (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/vector/operator%3D" target="_blank" rel="noopener noreffer ">operator=</a></td>
+<td>赋值给容器 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/vector/assign" target="_blank" rel="noopener noreffer ">assign</a></td>
+<td>将值赋给容器 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/vector/get_allocator" target="_blank" rel="noopener noreffer ">get_allocator</a></td>
+<td>返回相关的分配器 (公开成员函数)</td>
+</tr>
+<tr>
+<td>元素访问</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/vector/at" target="_blank" rel="noopener noreffer ">at</a></td>
+<td>访问指定的元素，同时进行越界检查 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/vector/operator_at" target="_blank" rel="noopener noreffer ">operator[]</a></td>
+<td>访问指定的元素 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/vector/front" target="_blank" rel="noopener noreffer ">front</a></td>
+<td>访问第一个元素 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/vector/back" target="_blank" rel="noopener noreffer ">back</a></td>
+<td>访问最后一个元素 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/vector/data" target="_blank" rel="noopener noreffer ">data</a></td>
+<td>直接访问底层数组 (公开成员函数)</td>
+</tr>
+<tr>
+<td>迭代器</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/vector/begin" target="_blank" rel="noopener noreffer ">begin cbegin</a>(C++11)</td>
+<td>返回指向起始的迭代器 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/vector/end" target="_blank" rel="noopener noreffer ">end cend</a>(C++11)</td>
+<td>返回指向末尾的迭代器 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/vector/rbegin" target="_blank" rel="noopener noreffer ">rbegin crbegin</a>(C++11)</td>
+<td>返回指向起始的逆向迭代器 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/vector/rend" target="_blank" rel="noopener noreffer ">rend crend</a>(C++11)</td>
+<td>返回指向末尾的逆向迭代器 (公开成员函数)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>容量</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/vector/empty" target="_blank" rel="noopener noreffer ">empty</a></td>
+<td>检查容器是否为空 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/vector/size" target="_blank" rel="noopener noreffer ">size</a></td>
+<td>返回容纳的元素数 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/vector/max_size" target="_blank" rel="noopener noreffer ">max_size</a></td>
+<td>返回可容纳的最大元素数 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/vector/reserve" target="_blank" rel="noopener noreffer ">reserve</a></td>
+<td>预留存储空间 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/vector/capacity" target="_blank" rel="noopener noreffer ">capacity</a></td>
+<td>返回当前存储空间能够容纳的元素数 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/vector/shrink_to_fit" target="_blank" rel="noopener noreffer ">shrink_to_fit</a>(C++11)</td>
+<td>通过释放未使用的内存减少内存的使用 (公开成员函数)</td>
+</tr>
+<tr>
+<td>修改器</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/vector/clear" target="_blank" rel="noopener noreffer ">clear</a></td>
+<td>清除内容 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/vector/insert" target="_blank" rel="noopener noreffer ">insert</a></td>
+<td>插入元素 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/vector/emplace" target="_blank" rel="noopener noreffer ">emplace</a>(C++11)</td>
+<td>原位构造元素 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/vector/erase" target="_blank" rel="noopener noreffer ">erase</a></td>
+<td>擦除元素 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/vector/push_back" target="_blank" rel="noopener noreffer ">push_back</a></td>
+<td>将元素添加到容器末尾 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/vector/emplace_back" target="_blank" rel="noopener noreffer ">emplace_back</a>(C++11)</td>
+<td>在容器末尾就地构造元素 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/vector/pop_back" target="_blank" rel="noopener noreffer ">pop_back</a></td>
+<td>移除末元素 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/vector/resize" target="_blank" rel="noopener noreffer ">resize</a></td>
+<td>改变容器中可存储元素的个数 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/vector/swap" target="_blank" rel="noopener noreffer ">swap</a></td>
+<td>交换内容 (公开成员函数)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>非成员函数</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><a href="https://zh.cppreference.com/w/cpp/container/vector/swap2" target="_blank" rel="noopener noreffer ">std::swap(std::vector)</a>(C++20)</th>
+<th style="text-align:left">特化<a href="https://zh.cppreference.com/w/cpp/algorithm/swap" target="_blank" rel="noopener noreffer ">std::swap</a> 算法 (函数模板)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><a href="https://zh.cppreference.com/w/cpp/container/vector/erase2" target="_blank" rel="noopener noreffer ">erase(std::vector) erase_if(std::vector)</a>(C++20)</td>
+<td style="text-align:left">擦除所有满足特定判别标准的元素 (函数模板)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="stddeque">std::deque</h2>
+<ul>
+<li>定义于头文件 <!-- raw HTML omitted --></li>
+</ul>
+<blockquote>
+<p>双端队列</p>
+</blockquote>
+<p><code>std::deque</code> （ double-ended queue ，双端队列）是有 <strong>下标顺序容器</strong>，它允许在其首尾两端快速插入及删除。另外，在 deque 任一端插入或删除不会非法化指向其余元素的指针或引用。</p>
+<p>与 <a href="https://zh.cppreference.com/w/cpp/container/vector" target="_blank" rel="noopener noreffer ">std::vector</a> 相反， deque 的元素不是相接存储的：典型实现用单独分配的固定大小数组的序列，外加额外的登记，这表示下标访问必须进行二次指针解引用，与之相比 vector 的下标访问只进行一次。</p>
+<p>deque <strong>的存储按需自动扩展及收缩</strong>。扩张 deque 比扩张 <a href="https://zh.cppreference.com/w/cpp/container/vector" target="_blank" rel="noopener noreffer ">std::vector</a> 更优，因为它不涉及到复制既存元素到新内存位置。另一方面， deque 典型地拥有较大的最小内存开销；只保有一个元素的 deque 必须分配其整个内部数组（例如 64 位 libstdc++ 上为对象大小 8 倍； 64 位 libc++ 上为对象大小 16 倍或 4096 字节的较大者）。</p>
+<p>deque 上常见操作的复杂度（效率）如下：</p>
+<ul>
+<li>随机访问——常数 <em>O(1)</em></li>
+<li>在结尾或起始插入或移除元素——常数 <em>O(1)</em></li>
+<li>插入或移除元素——线性 <em>O(n)</em></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>元素访问</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/deque/at" target="_blank" rel="noopener noreffer ">at</a></td>
+<td>访问指定的元素，同时进行越界检查 (公开成员函数)</td>
+</tr>
+<tr>
+<td>[operator<a href="https://zh.cppreference.com/w/cpp/container/deque/operator_at" target="_blank" rel="noopener noreffer ">]</a></td>
+<td>访问指定的元素 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/deque/front" target="_blank" rel="noopener noreffer ">front</a></td>
+<td>访问第一个元素 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/deque/back" target="_blank" rel="noopener noreffer ">back</a></td>
+<td>访问最后一个元素 (公开成员函数)</td>
+</tr>
+<tr>
+<td>迭代器</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/deque/begin" target="_blank" rel="noopener noreffer ">begincbegin</a>(C++11)</td>
+<td>返回指向起始的迭代器 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/deque/end" target="_blank" rel="noopener noreffer ">endcend</a>(C++11)</td>
+<td>返回指向末尾的迭代器 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/deque/rbegin" target="_blank" rel="noopener noreffer ">rbegincrbegin</a>(C++11)</td>
+<td>返回指向起始的逆向迭代器 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/deque/rend" target="_blank" rel="noopener noreffer ">rendcrend</a>(C++11)</td>
+<td>返回指向末尾的逆向迭代器 (公开成员函数)</td>
+</tr>
+<tr>
+<td>容量</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/deque/empty" target="_blank" rel="noopener noreffer ">empty</a></td>
+<td>检查容器是否为空 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/deque/size" target="_blank" rel="noopener noreffer ">size</a></td>
+<td>返回容纳的元素数 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/deque/max_size" target="_blank" rel="noopener noreffer ">max_size</a></td>
+<td>返回可容纳的最大元素数 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/deque/shrink_to_fit" target="_blank" rel="noopener noreffer ">shrink_to_fit</a>(C++11)</td>
+<td>通过释放未使用的内存减少内存的使用 (公开成员函数)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>修改器</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/deque/clear" target="_blank" rel="noopener noreffer ">clear</a></td>
+<td>清除内容 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/deque/insert" target="_blank" rel="noopener noreffer ">insert</a></td>
+<td>插入元素 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/deque/emplace" target="_blank" rel="noopener noreffer ">emplace</a>(C++11)</td>
+<td>原位构造元素 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/deque/erase" target="_blank" rel="noopener noreffer ">erase</a></td>
+<td>擦除元素 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/deque/push_back" target="_blank" rel="noopener noreffer ">push_back</a></td>
+<td>将元素添加到容器末尾 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/deque/emplace_back" target="_blank" rel="noopener noreffer ">emplace_back</a>(C++11)</td>
+<td>在容器末尾就地构造元素 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/deque/pop_back" target="_blank" rel="noopener noreffer ">pop_back</a></td>
+<td>移除末元素 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/deque/push_front" target="_blank" rel="noopener noreffer ">push_front</a></td>
+<td>插入元素到容器起始 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/deque/emplace_front" target="_blank" rel="noopener noreffer ">emplace_front</a>(C++11)</td>
+<td>在容器头部原位构造元素 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/deque/pop_front" target="_blank" rel="noopener noreffer ">pop_front</a></td>
+<td>移除首元素 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/deque/resize" target="_blank" rel="noopener noreffer ">resize</a></td>
+<td>改变容器中可存储元素的个数 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/deque/swap" target="_blank" rel="noopener noreffer ">swap</a></td>
+<td>交换内容 (公开成员函数)</td>
+</tr>
+</tbody>
+</table>
+<p>非成员函数</p>
+<table>
+<thead>
+<tr>
+<th><a href="https://zh.cppreference.com/w/cpp/container/deque/swap2" target="_blank" rel="noopener noreffer ">std::swap(std::deque)</a></th>
+<th>特化 <a href="https://zh.cppreference.com/w/cpp/algorithm/swap" target="_blank" rel="noopener noreffer ">std::swap</a> 算法 (函数模板)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/deque/erase2" target="_blank" rel="noopener noreffer ">erase(std::deque) erase_if(std::deque)</a>(C++20)</td>
+<td>擦除所有满足特定判别标准的元素 (函数模板)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="stdforward_list">std::forward_list</h2>
+<blockquote>
+<p>定义于头文件 <code>&lt;forward_list&gt;</code></p>
+</blockquote>
+<ul>
+<li>单链表</li>
+</ul>
+<p><code>std::forward_list</code> 是支持从容器中的任何位置快速插入和移除元素的容器。<strong>不支持快速随机访问</strong>。它实现为单链表，且实质上与其在 C 中实现相比无任何开销。与 <a href="https://zh.cppreference.com/w/cpp/container/list" target="_blank" rel="noopener noreffer ">std::list</a> 相比，此容器在不需要双向迭代时提供更有效地利用空间的存储。</p>
+<p>在链表内或跨数个链表添加、移除和移动元素，不会非法化当前指代链表中其他元素的迭代器。然而，在从链表移除元素（通过 <a href="https://zh.cppreference.com/w/cpp/container/forward_list/erase_after" target="_blank" rel="noopener noreffer ">erase_after</a> ）时，指代对应元素的迭代器或引用会被非法化。</p>
+<table>
+<thead>
+<tr>
+<th>元素访问</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/forward_list/front" target="_blank" rel="noopener noreffer ">front</a>(C++11)</td>
+<td>访问第一个元素 (公开成员函数)</td>
+</tr>
+<tr>
+<td>迭代器</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/forward_list/before_begin" target="_blank" rel="noopener noreffer ">before_begincbefore_begin</a>(C++11)</td>
+<td>返回指向第一个元素之前迭代器 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/forward_list/begin" target="_blank" rel="noopener noreffer ">begincbegin</a>(C++11)</td>
+<td>返回指向起始的迭代器 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/forward_list/end" target="_blank" rel="noopener noreffer ">endcend</a>(C++11)</td>
+<td>返回指向末尾的迭代器 (公开成员函数)</td>
+</tr>
+<tr>
+<td>容量</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/forward_list/empty" target="_blank" rel="noopener noreffer ">empty</a>(C++11)</td>
+<td>检查容器是否为空 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/forward_list/max_size" target="_blank" rel="noopener noreffer ">max_size</a>(C++11)</td>
+<td>返回可容纳的最大元素数 (公开成员函数)</td>
+</tr>
+<tr>
+<td>修改器</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/forward_list/clear" target="_blank" rel="noopener noreffer ">clear</a>(C++11)</td>
+<td>清除内容 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/forward_list/insert_after" target="_blank" rel="noopener noreffer ">insert_after</a>(C++11)</td>
+<td>在某个元素后插入新元素 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/forward_list/emplace_after" target="_blank" rel="noopener noreffer ">emplace_after</a>(C++11)</td>
+<td>在元素后原位构造元素 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/forward_list/erase_after" target="_blank" rel="noopener noreffer ">erase_after</a>(C++11)</td>
+<td>擦除元素后的元素 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/forward_list/push_front" target="_blank" rel="noopener noreffer ">push_front</a>(C++11)</td>
+<td>插入元素到容器起始 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/forward_list/emplace_front" target="_blank" rel="noopener noreffer ">emplace_front</a>(C++11)</td>
+<td>在容器头部原位构造元素 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/forward_list/pop_front" target="_blank" rel="noopener noreffer ">pop_front</a>(C++11)</td>
+<td>移除首元素 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/forward_list/resize" target="_blank" rel="noopener noreffer ">resize</a>(C++11)</td>
+<td>改变容器中可存储元素的个数 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/forward_list/swap" target="_blank" rel="noopener noreffer ">swap</a>(C++11)</td>
+<td>交换内容 (公开成员函数)</td>
+</tr>
+<tr>
+<td>操作</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/forward_list/merge" target="_blank" rel="noopener noreffer ">merge</a>(C++11)</td>
+<td>合并二个已排序列表 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/forward_list/splice_after" target="_blank" rel="noopener noreffer ">splice_after</a>(C++11)</td>
+<td>从另一 <code>forward_list</code> 移动元素 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/forward_list/remove" target="_blank" rel="noopener noreffer ">removeremove_if</a>(C++11)</td>
+<td>移除满足特定标准的元素 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/forward_list/reverse" target="_blank" rel="noopener noreffer ">reverse</a>(C++11)</td>
+<td>将该链表的所有元素的顺序反转 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/forward_list/unique" target="_blank" rel="noopener noreffer ">unique</a>(C++11)</td>
+<td>删除连续的重复元素 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/forward_list/sort" target="_blank" rel="noopener noreffer ">sort</a>(C++11)</td>
+<td>对元素进行排序 (公开成员函数)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><a href="https://zh.cppreference.com/w/cpp/container/forward_list/swap2" target="_blank" rel="noopener noreffer ">std::swap(std::forward_list)</a>(C++11)</th>
+<th>特化 <a href="https://zh.cppreference.com/w/cpp/algorithm/swap" target="_blank" rel="noopener noreffer ">std::swap</a> 算法 (函数模板)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/forward_list/erase2" target="_blank" rel="noopener noreffer ">erase(std::forward_list) erase_if(std::forward_list)</a>(C++20)</td>
+<td>擦除所有满足特定判别标准的元素 (函数模板)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="stdlist">std::list</h2>
+<blockquote>
+<p>定义于头文件 <code>&lt;list&gt;</code></p>
+</blockquote>
+<p>双链表</p>
+<p><code>std::list</code> 是支持常数时间从容器任何位置插入和移除元素的容器。<strong>不支持快速随机访问</strong>。它通常实现为双向链表。与 <a href="https://zh.cppreference.com/w/cpp/container/forward_list" target="_blank" rel="noopener noreffer ">std::forward_list</a> 相比，此容器提供双向迭代但在空间上效率稍低。</p>
+<p>在 list 内或在数个 list 间添加、移除和移动元素不会非法化迭代器或引用。迭代器仅在对应元素被删除时非法化。</p>
+<table>
+<thead>
+<tr>
+<th>元素访问</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/list/front" target="_blank" rel="noopener noreffer ">front</a></td>
+<td>访问第一个元素 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/list/back" target="_blank" rel="noopener noreffer ">back</a></td>
+<td>访问最后一个元素 (公开成员函数)</td>
+</tr>
+<tr>
+<td>迭代器</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/list/begin" target="_blank" rel="noopener noreffer ">begincbegin</a>(C++11)</td>
+<td>返回指向起始的迭代器 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/list/end" target="_blank" rel="noopener noreffer ">endcend</a>(C++11)</td>
+<td>返回指向末尾的迭代器 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/list/rbegin" target="_blank" rel="noopener noreffer ">rbegincrbegin</a>(C++11)</td>
+<td>返回指向起始的逆向迭代器 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/list/rend" target="_blank" rel="noopener noreffer ">rendcrend</a>(C++11)</td>
+<td>返回指向末尾的逆向迭代器 (公开成员函数)</td>
+</tr>
+<tr>
+<td>容量</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/list/empty" target="_blank" rel="noopener noreffer ">empty</a></td>
+<td>检查容器是否为空 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/list/size" target="_blank" rel="noopener noreffer ">size</a></td>
+<td>返回容纳的元素数 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/list/max_size" target="_blank" rel="noopener noreffer ">max_size</a></td>
+<td>返回可容纳的最大元素数 (公开成员函数)</td>
+</tr>
+<tr>
+<td>修改器</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/list/clear" target="_blank" rel="noopener noreffer ">clear</a></td>
+<td>清除内容 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/list/insert" target="_blank" rel="noopener noreffer ">insert</a></td>
+<td>插入元素 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/list/emplace" target="_blank" rel="noopener noreffer ">emplace</a>(C++11)</td>
+<td>原位构造元素 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/list/erase" target="_blank" rel="noopener noreffer ">erase</a></td>
+<td>擦除元素 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/list/push_back" target="_blank" rel="noopener noreffer ">push_back</a></td>
+<td>将元素添加到容器末尾 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/list/emplace_back" target="_blank" rel="noopener noreffer ">emplace_back</a>(C++11)</td>
+<td>在容器末尾就地构造元素 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/list/pop_back" target="_blank" rel="noopener noreffer ">pop_back</a></td>
+<td>移除末元素 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/list/push_front" target="_blank" rel="noopener noreffer ">push_front</a></td>
+<td>插入元素到容器起始 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/list/emplace_front" target="_blank" rel="noopener noreffer ">emplace_front</a>(C++11)</td>
+<td>在容器头部原位构造元素 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/list/pop_front" target="_blank" rel="noopener noreffer ">pop_front</a></td>
+<td>移除首元素 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/list/resize" target="_blank" rel="noopener noreffer ">resize</a></td>
+<td>改变容器中可存储元素的个数 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/list/swap" target="_blank" rel="noopener noreffer ">swap</a></td>
+<td>交换内容 (公开成员函数)</td>
+</tr>
+<tr>
+<td>操作</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/list/merge" target="_blank" rel="noopener noreffer ">merge</a></td>
+<td>合并二个已排序列表 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/list/splice" target="_blank" rel="noopener noreffer ">splice</a></td>
+<td>从另一个<code>list</code>中移动元素 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/list/remove" target="_blank" rel="noopener noreffer ">removeremove_if</a></td>
+<td>移除满足特定标准的元素 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/list/reverse" target="_blank" rel="noopener noreffer ">reverse</a></td>
+<td>将该链表的所有元素的顺序反转 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/list/unique" target="_blank" rel="noopener noreffer ">unique</a></td>
+<td>删除连续的重复元素 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/list/sort" target="_blank" rel="noopener noreffer ">sort</a></td>
+<td>对元素进行排序 (公开成员函数)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><a href="https://zh.cppreference.com/w/cpp/container/list/swap2" target="_blank" rel="noopener noreffer ">std::swap(std::list)</a></th>
+<th>特化 <a href="https://zh.cppreference.com/w/cpp/algorithm/swap" target="_blank" rel="noopener noreffer ">std::swap</a> 算法 (函数模板)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/list/erase2" target="_blank" rel="noopener noreffer ">erase(std::list)erase_if(std::list)</a>(C++20)</td>
+<td>擦除所有满足特定判别标准的元素 (函数模板)</td>
+</tr>
+</tbody>
+</table>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-01-19</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/sequence/">Sequence</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/%E6%97%A5%E6%9C%9F%E5%92%8C%E6%97%B6%E9%97%B4%E5%B7%A5%E5%85%B7/" class="prev" rel="prev" title="日期和时间工具"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>日期和时间工具</a>
+            <a href="/posts/%E5%85%B3%E8%81%94%E5%AE%B9%E5%99%A8/" class="next" rel="next" title="关联容器">关联容器<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.115.4">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank"></a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.5.0/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/twemoji@14.0.2/dist/twemoji.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@14.0.0/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"en","pageSize":10,"placeholder":"Your comment ...","recordIP":true,"serverURLs":"https://leancloud.hugoloveit.com","visitor":true}},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"","algoliaIndex":"","algoliaSearchKey":"","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"},"twemoji":true};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

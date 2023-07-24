@@ -1,20 +1,17 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Json on My Blog</title>
-    <link>https://okokfun.github.io/tags/json/</link>
-    <description>Recent content in Json on My Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language>
-    <lastBuildDate>Tue, 04 Jan 2022 17:38:16 +0000</lastBuildDate><atom:link href="https://okokfun.github.io/tags/json/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Json的使用</title>
-      <link>https://okokfun.github.io/post/json%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
-      <pubDate>Tue, 04 Jan 2022 17:38:16 +0000</pubDate>
-      
-      <guid>https://okokfun.github.io/post/json%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
-      <description>百度百科 JSON(JavaScript Object Notation, JS 对象简谱) 是一种轻量级的数据交换格式。它基于 ECMAScript (欧洲计算机协会制定的js规范)的一个子集，采用完全独立于编程语言的文本格式来存储和表示数据。简洁和清晰的层次结构使得 JSON 成为理想的数据交换语言。 易于人阅读和编写，同时也易于机器解析和生成，并有效地提升网络传输效率。
-本文采用 @MistEO MistEO哥哥写的项目。
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Json - Tag - My Blog</title>
+        <link>https://okokfun.github.io/tags/json/</link>
+        <description>Json - Tag - My Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 04 Jan 2022 17:38:16 &#43;0000</lastBuildDate><atom:link href="https://okokfun.github.io/tags/json/" rel="self" type="application/rss+xml" /><item>
+    <title>Json的使用</title>
+    <link>https://okokfun.github.io/posts/json%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
+    <pubDate>Tue, 04 Jan 2022 17:38:16 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://okokfun.github.io/posts/json%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
+    <description><![CDATA[百度百科 JSON(JavaScript Object Notation, JS 对象简谱) 是一种轻量级的数据交换格式。它基于 ECMAScript (欧洲计算机协会制定的js规范)的一个子集，采用完全独立于编程语言的文本格式来存储和表示数据。简洁和清晰的层次结构使得 JSON 成为理想的数据交换语言。 易于人阅读和编写，同时也易于机器解析和生成，并有效地提升网络传输效率。
+本文采用
+MistEO哥哥写的项目。
 他写两个很棒的项目
 Json:MistEO/meojson: A fast and easy-to-use JSON parser/generator for C++ (github.com)
 明日方舟助手：MistEO/MeoAssistantArknights: 明日方舟助手，自动刷图、智能基建换班，全日常一键长草！ (github.com)
@@ -22,8 +19,7 @@ Json:MistEO/meojson: A fast and easy-to-use JSON parser/generator for C++ (githu
 好了开始正题了
 json下载 下载玛丽写的Json项目MistEO:Json
 git clone https://github.com.cnpmjs.org/MistEO/meojson.git 编译 json静态库 make 运行命令后会在build文件夹生成libmeojson.a,然后就在项目中可以使用了
-在代码中添加头文件 #include &amp;#34;json.h&amp;#34; 若您需要解析 Json5, 则请包含 json5.hpp 头文件 #include &amp;#34;json5.hpp&amp;#34; meojson 仅依赖 STL, 但需要 c++17 标准 使用 json /*** * from sample/sample.cpp ***/ #include &amp;lt;iostream&amp;gt; #include &amp;#34;json.hpp&amp;#34; void parsing() { std::string content = R&amp;#34;( { &amp;#34;repo&amp;#34;: &amp;#34;meojson&amp;#34;, &amp;#34;author&amp;#34;: { &amp;#34;MistEO&amp;#34;: &amp;#34;https://github.</description>
-    </item>
-    
-  </channel>
+在代码中添加头文件 #include &#34;json.h&#34; 若您需要解析 Json5, 则请包含 json5.hpp 头文件 #include &#34;json5.hpp&#34; meojson 仅依赖 STL, 但需要 c++17 标准 使用 json /*** * from sample/sample.cpp ***/ #include &lt;iostream&gt; #include &#34;json.hpp&#34; void parsing() { std::string content = R&#34;( { &#34;repo&#34;: &#34;meojson&#34;, &#34;author&#34;: { &#34;MistEO&#34;: &#34;https://github.]]></description>
+</item>
+</channel>
 </rss>

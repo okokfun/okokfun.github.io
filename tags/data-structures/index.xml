@@ -1,19 +1,15 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>data-structures on My Blog</title>
-    <link>https://okokfun.github.io/tags/data-structures/</link>
-    <description>Recent content in data-structures on My Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language>
-    <lastBuildDate>Sat, 01 Jan 2022 19:32:29 +0000</lastBuildDate><atom:link href="https://okokfun.github.io/tags/data-structures/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>数据结构</title>
-      <link>https://okokfun.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</link>
-      <pubDate>Sat, 01 Jan 2022 19:32:29 +0000</pubDate>
-      
-      <guid>https://okokfun.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</guid>
-      <description>推荐看👉 OI Wiki
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>data-structures - Tag - My Blog</title>
+        <link>https://okokfun.github.io/tags/data-structures/</link>
+        <description>data-structures - Tag - My Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 01 Jan 2022 19:32:29 &#43;0000</lastBuildDate><atom:link href="https://okokfun.github.io/tags/data-structures/" rel="self" type="application/rss+xml" /><item>
+    <title>数据结构</title>
+    <link>https://okokfun.github.io/posts/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</link>
+    <pubDate>Sat, 01 Jan 2022 19:32:29 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://okokfun.github.io/posts/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</guid>
+    <description><![CDATA[推荐看👉 OI Wiki
 数据结构：数据结构是为算法服务而设计的。 算法：充分且合理利用计算机资源处理数据而诞生。
 数据结构部分 一. 数据结构的存储方式有两种 1.顺序存储(数组,内存连续) 2.链式存储(链表,内存不连续,依靠节点的指针指向下一个节点) 常见的数据结构有：
 数组(array),链表(LinkedList),
@@ -33,8 +29,7 @@ treap树, k-d树, 伸展树(Splay Tree)
 链表的设计 设计成一个链表节点至少包含两部分：
 数据部和指针部
 数据部为我们要存储的数据,指针部为指向下一个链表节点
-typedef struct ListElmt_ { void *data; struct ListElmt_ *next; } ListElmt; 单向链表 typedef struct ListElmt_ { void *data; struct ListElmt_ *next; } ListElmt; 例子 /*1ist.</description>
-    </item>
-    
-  </channel>
+typedef struct ListElmt_ { void *data; struct ListElmt_ *next; } ListElmt; 单向链表 typedef struct ListElmt_ { void *data; struct ListElmt_ *next; } ListElmt; 例子 /*1ist.]]></description>
+</item>
+</channel>
 </rss>

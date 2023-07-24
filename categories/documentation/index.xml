@@ -1,0 +1,7 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Documentation - Category - My Blog</title>
+        <link>https://okokfun.github.io/categories/documentation/</link>
+        <description>Documentation - Category - My Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><atom:link href="https://okokfun.github.io/categories/documentation/" rel="self" type="application/rss+xml" /></channel>
+</rss>

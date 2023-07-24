@@ -1,0 +1,89 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>All Posts - My Blog</title>
+        <link>https://okokfun.github.io/posts/</link>
+        <description>All Posts | My Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 24 Jul 2023 16:58:24 &#43;0800</lastBuildDate><atom:link href="https://okokfun.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>First</title>
+    <link>https://okokfun.github.io/posts/first/</link>
+    <pubDate>Mon, 24 Jul 2023 16:58:24 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>https://okokfun.github.io/posts/first/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Myfirst</title>
+    <link>https://okokfun.github.io/posts/stm32/</link>
+    <pubDate>Sat, 22 Jul 2023 17:45:15 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>https://okokfun.github.io/posts/stm32/</guid>
+    <description><![CDATA[STM32为意法半导体生产的32位微控制器
+$$ AveP = \int_0^1 p(r) dr $$
+#incldue &lt;iostream&gt; int main(void) ｛ std::cout &lt;&lt; &#34;Hello World&#34; &lt;&lt; std::endl; return 0; ｝ ]]></description>
+</item>
+<item>
+    <title>12.7PMOS、NMOS和E2CMOS</title>
+    <link>https://okokfun.github.io/posts/12-7pmosnmos%E5%92%8Ce2cmos/</link>
+    <pubDate>Fri, 21 Jul 2023 22:33:48 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://okokfun.github.io/posts/12-7pmosnmos%E5%92%8Ce2cmos/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>12.6发射极耦合逻辑-ECL电路</title>
+    <link>https://okokfun.github.io/posts/12-6%E5%8F%91%E5%B0%84%E6%9E%81%E8%80%A6%E5%90%88%E9%80%BB%E8%BE%91-ecl%E7%94%B5%E8%B7%AF/</link>
+    <pubDate>Fri, 21 Jul 2023 22:33:24 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://okokfun.github.io/posts/12-6%E5%8F%91%E5%B0%84%E6%9E%81%E8%80%A6%E5%90%88%E9%80%BB%E8%BE%91-ecl%E7%94%B5%E8%B7%AF/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>12.5CMOS和TTL性能的比较</title>
+    <link>https://okokfun.github.io/posts/12-5cmos%E5%92%8Cttl%E6%80%A7%E8%83%BD%E7%9A%84%E6%AF%94%E8%BE%83/</link>
+    <pubDate>Fri, 21 Jul 2023 22:33:03 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://okokfun.github.io/posts/12-5cmos%E5%92%8Cttl%E6%80%A7%E8%83%BD%E7%9A%84%E6%AF%94%E8%BE%83/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>12.4TTL在实际使用中的注意事项</title>
+    <link>https://okokfun.github.io/posts/12-4ttl%E5%9C%A8%E5%AE%9E%E9%99%85%E4%BD%BF%E7%94%A8%E4%B8%AD%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/</link>
+    <pubDate>Fri, 21 Jul 2023 22:32:51 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://okokfun.github.io/posts/12-4ttl%E5%9C%A8%E5%AE%9E%E9%99%85%E4%BD%BF%E7%94%A8%E4%B8%AD%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>12.3TTL电路</title>
+    <link>https://okokfun.github.io/posts/12-3ttl%E7%94%B5%E8%B7%AF/</link>
+    <pubDate>Fri, 21 Jul 2023 22:32:37 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://okokfun.github.io/posts/12-3ttl%E7%94%B5%E8%B7%AF/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>12.2CMOS电路</title>
+    <link>https://okokfun.github.io/posts/12-2cmos%E7%94%B5%E8%B7%AF/</link>
+    <pubDate>Fri, 21 Jul 2023 22:32:24 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://okokfun.github.io/posts/12-2cmos%E7%94%B5%E8%B7%AF/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>12.1基本操作特性和参数</title>
+    <link>https://okokfun.github.io/posts/12-1%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E7%89%B9%E6%80%A7%E5%92%8C%E5%8F%82%E6%95%B0/</link>
+    <pubDate>Fri, 21 Jul 2023 22:32:11 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://okokfun.github.io/posts/12-1%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E7%89%B9%E6%80%A7%E5%92%8C%E5%8F%82%E6%95%B0/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>11.4数字信号处理基础</title>
+    <link>https://okokfun.github.io/posts/11-4%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86%E5%9F%BA%E7%A1%80/</link>
+    <pubDate>Fri, 21 Jul 2023 22:31:50 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://okokfun.github.io/posts/11-4%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86%E5%9F%BA%E7%A1%80/</guid>
+    <description><![CDATA[]]></description>
+</item>
+</channel>
+</rss>

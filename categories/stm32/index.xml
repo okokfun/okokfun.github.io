@@ -1,21 +1,17 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>STM32 on My Blog</title>
-    <link>https://okokfun.github.io/categories/stm32/</link>
-    <description>Recent content in STM32 on My Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language>
-    <lastBuildDate>Sat, 22 Jul 2023 17:45:15 +0800</lastBuildDate><atom:link href="https://okokfun.github.io/categories/stm32/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Myfirst</title>
-      <link>https://okokfun.github.io/post/stm32/</link>
-      <pubDate>Sat, 22 Jul 2023 17:45:15 +0800</pubDate>
-      
-      <guid>https://okokfun.github.io/post/stm32/</guid>
-      <description>STM32为意法半导体生产的32位微控制器
-$$ AveP = \int_0^1 p(r) dr $$</description>
-    </item>
-    
-  </channel>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>STM32 - Category - My Blog</title>
+        <link>https://okokfun.github.io/categories/stm32/</link>
+        <description>STM32 - Category - My Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 22 Jul 2023 17:45:15 &#43;0800</lastBuildDate><atom:link href="https://okokfun.github.io/categories/stm32/" rel="self" type="application/rss+xml" /><item>
+    <title>Myfirst</title>
+    <link>https://okokfun.github.io/posts/stm32/</link>
+    <pubDate>Sat, 22 Jul 2023 17:45:15 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>https://okokfun.github.io/posts/stm32/</guid>
+    <description><![CDATA[STM32为意法半导体生产的32位微控制器
+$$ AveP = \int_0^1 p(r) dr $$
+#incldue &lt;iostream&gt; int main(void) ｛ std::cout &lt;&lt; &#34;Hello World&#34; &lt;&lt; std::endl; return 0; ｝ ]]></description>
+</item>
+</channel>
 </rss>

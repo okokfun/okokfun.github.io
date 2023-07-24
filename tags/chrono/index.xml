@@ -1,22 +1,17 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Chrono on My Blog</title>
-    <link>https://okokfun.github.io/tags/chrono/</link>
-    <description>Recent content in Chrono on My Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language>
-    <lastBuildDate>Tue, 18 Jan 2022 19:17:29 +0000</lastBuildDate><atom:link href="https://okokfun.github.io/tags/chrono/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>日期和时间工具</title>
-      <link>https://okokfun.github.io/post/%E6%97%A5%E6%9C%9F%E5%92%8C%E6%97%B6%E9%97%B4%E5%B7%A5%E5%85%B7/</link>
-      <pubDate>Tue, 18 Jan 2022 19:17:29 +0000</pubDate>
-      
-      <guid>https://okokfun.github.io/post/%E6%97%A5%E6%9C%9F%E5%92%8C%E6%97%B6%E9%97%B4%E5%B7%A5%E5%85%B7/</guid>
-      <description>此文来源于👉日期和时间工具 - cppreference.com
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Chrono - Tag - My Blog</title>
+        <link>https://okokfun.github.io/tags/chrono/</link>
+        <description>Chrono - Tag - My Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 18 Jan 2022 19:17:29 &#43;0000</lastBuildDate><atom:link href="https://okokfun.github.io/tags/chrono/" rel="self" type="application/rss+xml" /><item>
+    <title>日期和时间工具</title>
+    <link>https://okokfun.github.io/posts/%E6%97%A5%E6%9C%9F%E5%92%8C%E6%97%B6%E9%97%B4%E5%B7%A5%E5%85%B7/</link>
+    <pubDate>Tue, 18 Jan 2022 19:17:29 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://okokfun.github.io/posts/%E6%97%A5%E6%9C%9F%E5%92%8C%E6%97%B6%E9%97%B4%E5%B7%A5%E5%85%B7/</guid>
+    <description><![CDATA[此文来源于👉日期和时间工具 - cppreference.com
 日期和时间工具 std::chrono 库 时钟 时长 时间点 时钟 system_clock(C++11) 来自系统范畴实时时钟的挂钟时间 (类) steady_clock(C++11) 决不会调整的单调时钟 (类) high_resolution_clock(C++11) 拥有可用的最短嘀嗒周期的时钟 (类) is_clockis_clock_v(C++20) 确定类型是否为时钟 (Clock) (类模板) (变量模板) utc_clock(C++20) 协调世界时 (UTC) 的时钟 (Clock) (类) tai_clock(C++20) 国际原子时 (TAI) 的时钟 (Clock) (类) gps_clock(C++20) GPS 时间的时钟 (Clock) (类) file_clock(C++20) 用于文件时间的时钟 (Clock) (typedef) local_t(C++20) 表示本地时间的伪时钟 时间点 时间点是从特定时钟的纪元开始经过的时间时长。
-定义于头文件 &amp;lt;chrono&amp;gt; 定义于命名空间 std::chrono time_point(C++11) 时间中的点 (类模板) clock_time_conversion(C++20) 定义如何转换一个时钟的时间点为另一个的特性类 (类模板) clock_cast(C++20) 转换一个时钟的时间点为另一个 (函数模板) 时长 时长由时间跨度组成，定义为某时间单位的某个计次数。例如，“ 42 秒”可表示为由 42 个 1 秒时间点位的计次所组成的时长。</description>
-    </item>
-    
-  </channel>
+定义于头文件 &lt;chrono&gt; 定义于命名空间 std::chrono time_point(C++11) 时间中的点 (类模板) clock_time_conversion(C++20) 定义如何转换一个时钟的时间点为另一个的特性类 (类模板) clock_cast(C++20) 转换一个时钟的时间点为另一个 (函数模板) 时长 时长由时间跨度组成，定义为某时间单位的某个计次数。例如，“ 42 秒”可表示为由 42 个 1 秒时间点位的计次所组成的时长。]]></description>
+</item>
+</channel>
 </rss>

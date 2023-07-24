@@ -1,19 +1,15 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>nginx on My Blog</title>
-    <link>https://okokfun.github.io/tags/nginx/</link>
-    <description>Recent content in nginx on My Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language>
-    <lastBuildDate>Sat, 08 Jan 2022 16:07:29 +0000</lastBuildDate><atom:link href="https://okokfun.github.io/tags/nginx/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>nginx安装</title>
-      <link>https://okokfun.github.io/post/nginx%E5%AE%89%E8%A3%85/</link>
-      <pubDate>Sat, 08 Jan 2022 16:07:29 +0000</pubDate>
-      
-      <guid>https://okokfun.github.io/post/nginx%E5%AE%89%E8%A3%85/</guid>
-      <description>1. 一些基本概念 ###1.1 Nginx初步认识
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>nginx - Tag - My Blog</title>
+        <link>https://okokfun.github.io/tags/nginx/</link>
+        <description>nginx - Tag - My Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 08 Jan 2022 16:07:29 &#43;0000</lastBuildDate><atom:link href="https://okokfun.github.io/tags/nginx/" rel="self" type="application/rss+xml" /><item>
+    <title>nginx安装</title>
+    <link>https://okokfun.github.io/posts/nginx%E5%AE%89%E8%A3%85/</link>
+    <pubDate>Sat, 08 Jan 2022 16:07:29 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://okokfun.github.io/posts/nginx%E5%AE%89%E8%A3%85/</guid>
+    <description><![CDATA[1. 一些基本概念 ###1.1 Nginx初步认识
 Nginx介绍
 engine x
 俄罗斯
@@ -40,8 +36,7 @@ BSD许可协议允许用户免费使用nginx, 修改nginx源码,然后再发布 
 客户端给服务器发送请求, 连接服务器, 用户不知道服务器地址, 只有反向代理服务器的地址是公开的
 请求直接发给反向代理服务器
 反向代理服务器将请求转发给后边的web服务器
-web服务器 N 台 反向代理服务器转发请求会轮询进行 web服务器收到请求进行处理, 得到结果</description>
-    </item>
-    
-  </channel>
+web服务器 N 台 反向代理服务器转发请求会轮询进行 web服务器收到请求进行处理, 得到结果]]></description>
+</item>
+</channel>
 </rss>

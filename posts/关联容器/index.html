@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>关联容器 - My Blog</title><meta name="Description" content="Hugo theme - LoveIt"><meta property="og:title" content="关联容器" />
+<meta property="og:description" content="此文整理与👉容器库 - cppreference.com
+关联容器实现能快速查找（ O(log n) 复杂度）的数据结构。
+std::set 定义于头文件 &lt;set&gt;
+std::set 是关联容器，含有 Key 类型对象的已排序集并去重。用比较函数 比较 (Compare) 进行排序。搜索、移除和插入拥有对数复杂度。 set 通常以红黑树实现。
+返回指向 set 首元素的迭代器。
+若 set 为空，则返回的迭代器将等于 end() 。
+返回值
+指向首元素的迭代器。
+复杂度 常数。
+std::set&lt;&gt;::begin,std::set&lt;&gt;::cbegin #include &lt;algorithm&gt; #include &lt;iostream&gt; #include &lt;set&gt; int main() { std::set&lt;int&gt; set = { 3, 1, 4, 1, 5, 9, 2, 6, 5 }; std::for_each(set.cbegin(), set.cend(), [](int x) { std::cout &lt;&lt; x &lt;&lt; &#39; &#39;; }); std::cout &lt;&lt; &#39;\n&#39;; } std::set&lt;Key,Compare,Allocator&gt;::empty 检查容器是否无元素" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://okokfun.github.io/posts/%E5%85%B3%E8%81%94%E5%AE%B9%E5%99%A8/" /><meta property="og:image" content="https://okokfun.github.io"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-01-19T16:53:07+00:00" />
+<meta property="article:modified_time" content="2022-01-19T16:53:07+00:00" /><meta property="og:site_name" content="My Blog" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://okokfun.github.io"/>
+
+<meta name="twitter:title" content="关联容器"/>
+<meta name="twitter:description" content="此文整理与👉容器库 - cppreference.com
+关联容器实现能快速查找（ O(log n) 复杂度）的数据结构。
+std::set 定义于头文件 &lt;set&gt;
+std::set 是关联容器，含有 Key 类型对象的已排序集并去重。用比较函数 比较 (Compare) 进行排序。搜索、移除和插入拥有对数复杂度。 set 通常以红黑树实现。
+返回指向 set 首元素的迭代器。
+若 set 为空，则返回的迭代器将等于 end() 。
+返回值
+指向首元素的迭代器。
+复杂度 常数。
+std::set&lt;&gt;::begin,std::set&lt;&gt;::cbegin #include &lt;algorithm&gt; #include &lt;iostream&gt; #include &lt;set&gt; int main() { std::set&lt;int&gt; set = { 3, 1, 4, 1, 5, 9, 2, 6, 5 }; std::for_each(set.cbegin(), set.cend(), [](int x) { std::cout &lt;&lt; x &lt;&lt; &#39; &#39;; }); std::cout &lt;&lt; &#39;\n&#39;; } std::set&lt;Key,Compare,Allocator&gt;::empty 检查容器是否无元素"/>
+<meta name="application-name" content="LoveIt">
+<meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://okokfun.github.io/posts/%E5%85%B3%E8%81%94%E5%AE%B9%E5%99%A8/" /><link rel="prev" href="https://okokfun.github.io/posts/%E9%A1%BA%E5%BA%8F%E5%AE%B9%E5%99%A8/" /><link rel="next" href="https://okokfun.github.io/posts/%E5%AE%B9%E5%99%A8%E9%80%82%E9%85%8D%E5%99%A8/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "关联容器",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/okokfun.github.io\/posts\/%E5%85%B3%E8%81%94%E5%AE%B9%E5%99%A8\/"
+        },"image": ["https:\/\/okokfun.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "Associative","wordcount":  473 ,
+        "url": "https:\/\/okokfun.github.io\/posts\/%E5%85%B3%E8%81%94%E5%AE%B9%E5%99%A8\/","datePublished": "2022-01-19T16:53:07+00:00","dateModified": "2022-01-19T16:53:07+00:00","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": "https:\/\/okokfun.github.io\/images\/avatar.png"},"author": {
+                "@type": "Person",
+                "name": "Author"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="My Blog"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span>My Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/" title="Hello World!"> 文章 </a><a class="menu-item" href="/tags/" title="Hello World!"> 标签 </a><a class="menu-item" href="/categories/" title="Hello World!"> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a><a href="javascript:void(0);" class="menu-item language" title="Select Language">
+                    <i class="fa fa-globe" aria-hidden="true"></i>                      
+                    <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/posts/%E5%85%B3%E8%81%94%E5%AE%B9%E5%99%A8/" selected></option></select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="My Blog"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span>My Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="Hello World!">文章</a><a class="menu-item" href="/tags/" title="Hello World!">标签</a><a class="menu-item" href="/categories/" title="Hello World!">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="Select Language">
+                    <i class="fa fa-globe fa-fw" aria-hidden="true"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/posts/%E5%85%B3%E8%81%94%E5%AE%B9%E5%99%A8/" selected></option></select>
+                </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">关联容器</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Author</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-01-19">2022-01-19</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;473 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;<span id="/posts/%E5%85%B3%E8%81%94%E5%AE%B9%E5%99%A8/" class="leancloud_visitors" data-flag-title="关联容器">
+                        <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#stdset">std::set</a>
+      <ul>
+        <li><a href="#stdsetbeginstdsetcbegin">std::set&lt;&gt;::begin,std::set&lt;&gt;::cbegin</a></li>
+        <li><a href="#stdsetkeycompareallocatorempty">std::set&lt;Key,Compare,Allocator&gt;::empty</a></li>
+        <li><a href="#stdsetkeycompareallocatorsize">std::set&lt;Key,Compare,Allocator&gt;::size</a></li>
+        <li><a href="#stdsetkeycompareallocatorclear">std::set&lt;Key,Compare,Allocator&gt;::clear</a></li>
+        <li><a href="#stdsetkeycompareallocatorinsert">std::set&lt;Key,Compare,Allocator&gt;::insert</a></li>
+        <li><a href="#stdsetkeycompareallocatoremplace">std::set&lt;Key,Compare,Allocator&gt;::emplace</a></li>
+        <li><a href="#stdsetkeycompareallocatorerase">std::set&lt;Key,Compare,Allocator&gt;::erase</a></li>
+        <li><a href="#stdsetkeycompareallocatorfind">std::set&lt;Key,Compare,Allocator&gt;::find</a></li>
+      </ul>
+    </li>
+    <li><a href="#stdmap">std::map</a>
+      <ul>
+        <li><a href="#stdmapkeytcompareallocatorat">std::map&lt;Key,T,Compare,Allocator&gt;::at</a></li>
+        <li><a href="#stdmapkeytcompareallocatorempty">std::map&lt;Key,T,Compare,Allocator&gt;::empty</a></li>
+        <li><a href="#stdmapkeytcompareallocatorsize">std::map&lt;Key,T,Compare,Allocator&gt;::size</a></li>
+        <li><a href="#stdmapkeytcompareallocatorclear">std::map&lt;Key,T,Compare,Allocator&gt;::clear</a></li>
+        <li><a href="#stdmapkeytcompareallocatorinsert">std::map&lt;Key,T,Compare,Allocator&gt;::insert</a></li>
+        <li><a href="#stdmapkeytcompareallocatorinsert_or_assign">std::map&lt;Key,T,Compare,Allocator&gt;::insert_or_assign</a></li>
+        <li><a href="#stdmapkeytcompareallocatoremplace">std::map&lt;Key,T,Compare,Allocator&gt;::emplace</a></li>
+        <li><a href="#stdmapkeytcompareallocatoremplace_hint">std::map&lt;Key,T,Compare,Allocator&gt;::emplace_hint</a></li>
+        <li><a href="#stdmapkeytcompareallocatortry_emplace">std::map&lt;Key,T,Compare,Allocator&gt;::try_emplace</a></li>
+        <li><a href="#stdmapkeytcompareallocatorerase">std::map&lt;Key,T,Compare,Allocator&gt;::erase</a></li>
+        <li><a href="#stdmapkeytcompareallocatorfind">std::map&lt;Key,T,Compare,Allocator&gt;::find</a></li>
+        <li><a href="#stderase_if-stdmap">std::erase_if (std::map)</a></li>
+      </ul>
+    </li>
+    <li><a href="#stdmultiset">std::multiset</a></li>
+    <li><a href="#stdmultimap">std::multimap</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><!-- raw HTML omitted -->
+<p>此文整理与👉<a href="https://zh.cppreference.com/w/cpp/container" target="_blank" rel="noopener noreffer ">容器库 - cppreference.com</a></p>
+<blockquote>
+<p>关联容器实现能快速查找（ <em>O(log n)</em> 复杂度）的数据结构。</p>
+</blockquote>
+<h2 id="stdset">std::set</h2>
+<p><strong>定义于头文件 <code>&lt;set&gt;</code></strong></p>
+<blockquote>
+<p>std::set 是关联容器，含有 Key 类型对象的<strong>已排序集</strong>并<strong>去重</strong>。用比较函数 比较 (Compare) 进行排序。搜索、移除和插入拥有对数复杂度。 set 通常以<strong>红黑树</strong>实现。</p>
+</blockquote>
+<ul>
+<li>
+<p>返回指向 <code>set</code> 首元素的迭代器。</p>
+</li>
+<li>
+<p>若 <code>set</code> 为空，则返回的迭代器将等于 <a href="https://zh.cppreference.com/w/cpp/container/set/end" target="_blank" rel="noopener noreffer ">end()</a> 。</p>
+</li>
+<li>
+<p>返回值</p>
+</li>
+</ul>
+<p>指向首元素的迭代器。</p>
+<ul>
+<li>复杂度</li>
+</ul>
+<p>常数。</p>
+<h3 id="stdsetbeginstdsetcbegin">std::set&lt;&gt;::begin,std::set&lt;&gt;::cbegin</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;algorithm&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;set&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>set<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> set <span style="color:#f92672">=</span> { <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">9</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">5</span> };
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>for_each(set.cbegin(), set.cend(), [](<span style="color:#66d9ef">int</span> x) {
+</span></span><span style="display:flex;"><span>        std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> x <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#39; &#39;</span>;
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#39;\n&#39;</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="stdsetkeycompareallocatorempty">std::set&lt;Key,Compare,Allocator&gt;::empty</h3>
+<blockquote>
+<p>检查容器是否无元素</p>
+</blockquote>
+<h3 id="stdsetkeycompareallocatorsize">std::set&lt;Key,Compare,Allocator&gt;::size</h3>
+<blockquote>
+<p>返回容器中的元素数</p>
+</blockquote>
+<h3 id="stdsetkeycompareallocatorclear">std::set&lt;Key,Compare,Allocator&gt;::clear</h3>
+<blockquote>
+<p>从容器擦除所有元素。此调用后 size() 返回零</p>
+</blockquote>
+<h3 id="stdsetkeycompareallocatorinsert">std::set&lt;Key,Compare,Allocator&gt;::insert</h3>
+<blockquote>
+<p>插入元素到容器，若容器未含拥有等价关键的元素。</p>
+</blockquote>
+<h3 id="stdsetkeycompareallocatoremplace">std::set&lt;Key,Compare,Allocator&gt;::emplace</h3>
+<blockquote>
+<p>若容器中无拥有该关键的元素，则插入以给定的 args 原位构造的新元素到容器。</p>
+</blockquote>
+<blockquote>
+<p>细心地使用 emplace 允许在构造新元素的同时<strong>避免不必要的复制或移动操作</strong></p>
+</blockquote>
+<h3 id="stdsetkeycompareallocatorerase">std::set&lt;Key,Compare,Allocator&gt;::erase</h3>
+<blockquote>
+<p>擦除元素</p>
+</blockquote>
+<h3 id="stdsetkeycompareallocatorfind">std::set&lt;Key,Compare,Allocator&gt;::find</h3>
+<blockquote>
+<p>寻找键等于 key 的的元素。</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;set&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span> 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>set<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> numbers;
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Initially, numbers.empty(): &#34;</span> <span style="color:#f92672">&lt;&lt;</span> numbers.empty() <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#39;\n&#39;</span>;
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span>    numbers.insert(<span style="color:#ae81ff">13317</span>); 
+</span></span><span style="display:flex;"><span>    numbers.insert(<span style="color:#ae81ff">3</span>);
+</span></span><span style="display:flex;"><span>    numbers.insert(<span style="color:#ae81ff">2</span>);
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;After adding elements, numbers.empty(): &#34;</span> <span style="color:#f92672">&lt;&lt;</span> numbers.empty() <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#39;\n&#39;</span>;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>for_each(numbers.cbegin(), numbers.cend(), [](<span style="color:#66d9ef">int</span> x) {
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> x <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#39; &#39;</span>;
+</span></span><span style="display:flex;"><span>  	});
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    numbers.emplace(<span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    numbers.erase(<span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">uint32_t</span> size <span style="color:#f92672">=</span> numbers.size();
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;nums contains &#34;</span> <span style="color:#f92672">&lt;&lt;</span> size <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; elements.</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">auto</span> search <span style="color:#f92672">=</span> numbers.find(<span style="color:#ae81ff">2</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (search <span style="color:#f92672">!=</span> numbers.end()) {
+</span></span><span style="display:flex;"><span>        std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Found &#34;</span> <span style="color:#f92672">&lt;&lt;</span> (<span style="color:#f92672">*</span>search) <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#39;\n&#39;</span>;
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>        std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Not found</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    numbers.clear();
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="stdmap">std::map</h2>
+<blockquote>
+<p>键值对的集合，按照键排序，键是唯一的</p>
+</blockquote>
+<ul>
+<li>
+<p>std::map 是有序键值对容器，它的元素的键是唯一的。</p>
+</li>
+<li>
+<p>用比较函数 Compare 排序键。搜索、移除和插入操作拥有对数复杂度。</p>
+</li>
+<li>
+<p>map 通常实现为红黑树。</p>
+</li>
+</ul>
+<p><strong>元素访问</strong></p>
+<h3 id="stdmapkeytcompareallocatorat">std::map&lt;Key,T,Compare,Allocator&gt;::at</h3>
+<blockquote>
+<p>返回到拥有等于 key 的关键的元素被映射值的引用。</p>
+</blockquote>
+<h3 id="stdmapkeytcompareallocatorempty">std::map&lt;Key,T,Compare,Allocator&gt;::empty</h3>
+<blockquote>
+<p>检查容器是否为空</p>
+</blockquote>
+<h3 id="stdmapkeytcompareallocatorsize">std::map&lt;Key,T,Compare,Allocator&gt;::size</h3>
+<blockquote>
+<p>返回容纳的元素数</p>
+</blockquote>
+<h3 id="stdmapkeytcompareallocatorclear">std::map&lt;Key,T,Compare,Allocator&gt;::clear</h3>
+<blockquote>
+<p>清除内容</p>
+</blockquote>
+<h3 id="stdmapkeytcompareallocatorinsert">std::map&lt;Key,T,Compare,Allocator&gt;::insert</h3>
+<blockquote>
+<p>插入元素或结点 (C++17 起)</p>
+</blockquote>
+<h3 id="stdmapkeytcompareallocatorinsert_or_assign">std::map&lt;Key,T,Compare,Allocator&gt;::insert_or_assign</h3>
+<blockquote>
+<p>插入元素，或若键已存在则赋值给当前元素</p>
+</blockquote>
+<h3 id="stdmapkeytcompareallocatoremplace">std::map&lt;Key,T,Compare,Allocator&gt;::emplace</h3>
+<blockquote>
+<p>原位构造元素</p>
+</blockquote>
+<h3 id="stdmapkeytcompareallocatoremplace_hint">std::map&lt;Key,T,Compare,Allocator&gt;::emplace_hint</h3>
+<blockquote>
+<p>使用提示原位构造元素</p>
+</blockquote>
+<h3 id="stdmapkeytcompareallocatortry_emplace">std::map&lt;Key,T,Compare,Allocator&gt;::try_emplace</h3>
+<blockquote>
+<p>若键不存在则原位插入，若键存在则不做任何事</p>
+</blockquote>
+<h3 id="stdmapkeytcompareallocatorerase">std::map&lt;Key,T,Compare,Allocator&gt;::erase</h3>
+<blockquote>
+<p>擦除元素</p>
+</blockquote>
+<h3 id="stdmapkeytcompareallocatorfind">std::map&lt;Key,T,Compare,Allocator&gt;::find</h3>
+<blockquote>
+<p>寻找带有特定键的元素</p>
+</blockquote>
+<h3 id="stderase_if-stdmap">std::erase_if (std::map)</h3>
+<blockquote>
+<p>擦除所有满足特定判别标准的元素</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;map&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;utility&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span> 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">void</span>)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>map<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span>,<span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> numbers;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    numbers.emplace(<span style="color:#ae81ff">42</span>, <span style="color:#ae81ff">13</span>);
+</span></span><span style="display:flex;"><span>    numbers.emplace_hint(<span style="color:#ae81ff">41</span>, <span style="color:#ae81ff">12</span>);
+</span></span><span style="display:flex;"><span>    numbers.insert(std<span style="color:#f92672">::</span>make_pair(<span style="color:#ae81ff">13317</span>, <span style="color:#ae81ff">123</span>)); 
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;After adding elements, numbers.empty(): &#34;</span> <span style="color:#f92672">&lt;&lt;</span> numbers.empty() <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#39;\n&#39;</span>;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;After elements, numbers.size(): &#34;</span> <span style="color:#f92672">&lt;&lt;</span> numbers.size() <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#39;\n&#39;</span>;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    numbers.try_emplace(<span style="color:#ae81ff">40</span>, <span style="color:#ae81ff">10</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	numbers.erase(<span style="color:#ae81ff">40</span>);
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">auto</span> count <span style="color:#f92672">=</span> std<span style="color:#f92672">::</span>erase_if(data, [](<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">auto</span><span style="color:#f92672">&amp;</span> item) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">auto</span> <span style="color:#66d9ef">const</span><span style="color:#f92672">&amp;</span> [key, value] <span style="color:#f92672">=</span> item;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> (key <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Erase items with odd keys:</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;&lt;</span> data <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#39;\n&#39;</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">&lt;&lt;</span> count <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; items removed.</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    myMap.insert_or_assign(<span style="color:#e6db74">&#34;a&#34;</span>, <span style="color:#e6db74">&#34;apple&#34;</span>);
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>	numbers.find(<span style="color:#ae81ff">42</span>);
+</span></span><span style="display:flex;"><span>	std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;After elements, numbers.clear(): &#34;</span> <span style="color:#f92672">&lt;&lt;</span> numbers.clear() <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#39;\n&#39;</span>;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="stdmultiset">std::multiset</h2>
+<blockquote>
+<p>键的集合，按照键排序</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>迭代器</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/multiset/begin" target="_blank" rel="noopener noreffer ">begin cbegin</a>(C++11)</td>
+<td>返回指向起始的迭代器 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/multiset/end" target="_blank" rel="noopener noreffer ">end cend</a>(C++11)</td>
+<td>返回指向末尾的迭代器 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/multiset/rbegin" target="_blank" rel="noopener noreffer ">rbegin crbegin</a>(C++11)</td>
+<td>返回指向起始的逆向迭代器 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/multiset/rend" target="_blank" rel="noopener noreffer ">rend crend</a>(C++11)</td>
+<td>返回指向末尾的逆向迭代器 (公开成员函数)</td>
+</tr>
+<tr>
+<td>容量</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/multiset/empty" target="_blank" rel="noopener noreffer ">empty</a></td>
+<td>检查容器是否为空 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/multiset/size" target="_blank" rel="noopener noreffer ">size</a></td>
+<td>返回容纳的元素数 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/multiset/max_size" target="_blank" rel="noopener noreffer ">max_size</a></td>
+<td>返回可容纳的最大元素数 (公开成员函数)</td>
+</tr>
+<tr>
+<td>修改器</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/multiset/clear" target="_blank" rel="noopener noreffer ">clear</a></td>
+<td>清除内容 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/multiset/insert" target="_blank" rel="noopener noreffer ">insert</a></td>
+<td>插入元素或结点 (C++17 起) (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/multiset/emplace" target="_blank" rel="noopener noreffer ">emplace</a>(C++11)</td>
+<td>原位构造元素 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/multiset/emplace_hint" target="_blank" rel="noopener noreffer ">emplace_hint</a>(C++11)</td>
+<td>使用提示原位构造元素 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/multiset/erase" target="_blank" rel="noopener noreffer ">erase</a></td>
+<td>擦除元素 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/multiset/swap" target="_blank" rel="noopener noreffer ">swap</a></td>
+<td>交换内容 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/multiset/extract" target="_blank" rel="noopener noreffer ">extract</a>(C++17)</td>
+<td>从另一容器释出结点 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/multiset/merge" target="_blank" rel="noopener noreffer ">merge</a>(C++17)</td>
+<td>从另一容器接合结点 (公开成员函数)</td>
+</tr>
+<tr>
+<td>查找</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/multiset/count" target="_blank" rel="noopener noreffer ">count</a></td>
+<td>返回匹配特定键的元素数量 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/multiset/find" target="_blank" rel="noopener noreffer ">find</a></td>
+<td>寻找带有特定键的元素 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/multiset/contains" target="_blank" rel="noopener noreffer ">contains</a>(C++20)</td>
+<td>检查容器是否含有带特定键的元素 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/multiset/equal_range" target="_blank" rel="noopener noreffer ">equal_range</a></td>
+<td>返回匹配特定键的元素范围 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/multiset/lower_bound" target="_blank" rel="noopener noreffer ">lower_bound</a></td>
+<td>返回指向首个<em>不小于</em>给定键的元素的迭代器 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/multiset/upper_bound" target="_blank" rel="noopener noreffer ">upper_bound</a></td>
+<td>返回指向首个<em>大于</em>给定键的元素的迭代器</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/multiset/erase_if" target="_blank" rel="noopener noreffer ">erase_if(std::multiset)</a>(C++20)</td>
+<td>擦除所有满足特定判别标准的元素</td>
+</tr>
+</tbody>
+</table>
+<h2 id="stdmultimap">std::multimap</h2>
+<blockquote>
+<p>键值对的集合，按照键排序</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>迭代器</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/multimap/begin" target="_blank" rel="noopener noreffer ">begincbegin</a>(C++11)</td>
+<td>返回指向起始的迭代器 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/multimap/end" target="_blank" rel="noopener noreffer ">endcend</a>(C++11)</td>
+<td>返回指向末尾的迭代器 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/multimap/rbegin" target="_blank" rel="noopener noreffer ">rbegincrbegin</a>(C++11)</td>
+<td>返回指向起始的逆向迭代器 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/multimap/rend" target="_blank" rel="noopener noreffer ">rendcrend</a>(C++11)</td>
+<td>返回指向末尾的逆向迭代器 (公开成员函数)</td>
+</tr>
+<tr>
+<td>容量</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/multimap/empty" target="_blank" rel="noopener noreffer ">empty</a></td>
+<td>检查容器是否为空 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/multimap/size" target="_blank" rel="noopener noreffer ">size</a></td>
+<td>返回容纳的元素数 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/multimap/max_size" target="_blank" rel="noopener noreffer ">max_size</a></td>
+<td>返回可容纳的最大元素数 (公开成员函数)</td>
+</tr>
+<tr>
+<td>修改器</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/multimap/clear" target="_blank" rel="noopener noreffer ">clear</a></td>
+<td>清除内容 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/multimap/insert" target="_blank" rel="noopener noreffer ">insert</a></td>
+<td>插入元素或结点 (C++17 起) (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/multimap/emplace" target="_blank" rel="noopener noreffer ">emplace</a>(C++11)</td>
+<td>原位构造元素 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/multimap/emplace_hint" target="_blank" rel="noopener noreffer ">emplace_hint</a>(C++11)</td>
+<td>使用提示原位构造元素 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/multimap/erase" target="_blank" rel="noopener noreffer ">erase</a></td>
+<td>擦除元素 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/multimap/swap" target="_blank" rel="noopener noreffer ">swap</a></td>
+<td>交换内容 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/multimap/extract" target="_blank" rel="noopener noreffer ">extract</a>(C++17)</td>
+<td>从另一容器释出结点 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/multimap/merge" target="_blank" rel="noopener noreffer ">merge</a>(C++17)</td>
+<td>从另一容器接合结点 (公开成员函数)</td>
+</tr>
+<tr>
+<td>查找</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/multimap/count" target="_blank" rel="noopener noreffer ">count</a></td>
+<td>返回匹配特定键的元素数量 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/multimap/find" target="_blank" rel="noopener noreffer ">find</a></td>
+<td>寻找带有特定键的元素 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/multimap/contains" target="_blank" rel="noopener noreffer ">contains</a>(C++20)</td>
+<td>检查容器是否含有带特定键的元素 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/multimap/equal_range" target="_blank" rel="noopener noreffer ">equal_range</a></td>
+<td>返回匹配特定键的元素范围 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/multimap/lower_bound" target="_blank" rel="noopener noreffer ">lower_bound</a></td>
+<td>返回指向首个<em>不小于</em>给定键的元素的迭代器 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/multimap/upper_bound" target="_blank" rel="noopener noreffer ">upper_bound</a></td>
+<td>返回指向首个<em>大于</em>给定键的元素的迭代器 (公开成员函数)</td>
+</tr>
+<tr>
+<td>观察器</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/multimap/key_comp" target="_blank" rel="noopener noreffer ">key_comp</a></td>
+<td>返回用于比较键的函数 (公开成员函数)</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/multimap/value_comp" target="_blank" rel="noopener noreffer ">value_comp</a></td>
+<td>返回用于在value_type类型的对象中比较键的函数。</td>
+</tr>
+<tr>
+<td><a href="https://zh.cppreference.com/w/cpp/container/multimap/erase_if" target="_blank" rel="noopener noreffer ">erase_if(std::multimap)</a>(C++20)</td>
+<td>擦除所有满足特定判别标准的元素</td>
+</tr>
+</tbody>
+</table>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-01-19</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/associative/">Associative</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/%E9%A1%BA%E5%BA%8F%E5%AE%B9%E5%99%A8/" class="prev" rel="prev" title="顺序容器"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>顺序容器</a>
+            <a href="/posts/%E5%AE%B9%E5%99%A8%E9%80%82%E9%85%8D%E5%99%A8/" class="next" rel="next" title="容器适配器">容器适配器<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.115.4">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank"></a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.5.0/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/twemoji@14.0.2/dist/twemoji.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@14.0.0/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"en","pageSize":10,"placeholder":"Your comment ...","recordIP":true,"serverURLs":"https://leancloud.hugoloveit.com","visitor":true}},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"","algoliaIndex":"","algoliaSearchKey":"","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"},"twemoji":true};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

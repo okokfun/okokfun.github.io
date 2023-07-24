@@ -1,25 +1,20 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Timer on My Blog</title>
-    <link>https://okokfun.github.io/tags/timer/</link>
-    <description>Recent content in Timer on My Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language>
-    <lastBuildDate>Thu, 10 Feb 2022 17:01:05 +0000</lastBuildDate><atom:link href="https://okokfun.github.io/tags/timer/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>C&#43;&#43;计时器</title>
-      <link>https://okokfun.github.io/post/c&#43;&#43;%E8%AE%A1%E6%97%B6%E5%99%A8/</link>
-      <pubDate>Thu, 10 Feb 2022 17:01:05 +0000</pubDate>
-      
-      <guid>https://okokfun.github.io/post/c&#43;&#43;%E8%AE%A1%E6%97%B6%E5%99%A8/</guid>
-      <description>此文来自于👉由UP主神经元猫 神经元猫的个人空间_哔哩哔哩_bilibili 翻译 【63】【Cherno C++】【中字】C++的计时_哔哩哔哩_bilibili ，并由我整理。
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Timer - Tag - My Blog</title>
+        <link>https://okokfun.github.io/tags/timer/</link>
+        <description>Timer - Tag - My Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Thu, 10 Feb 2022 17:01:05 &#43;0000</lastBuildDate><atom:link href="https://okokfun.github.io/tags/timer/" rel="self" type="application/rss+xml" /><item>
+    <title>C&#43;&#43;计时器</title>
+    <link>https://okokfun.github.io/posts/c&#43;&#43;%E8%AE%A1%E6%97%B6%E5%99%A8/</link>
+    <pubDate>Thu, 10 Feb 2022 17:01:05 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://okokfun.github.io/posts/c&#43;&#43;%E8%AE%A1%E6%97%B6%E5%99%A8/</guid>
+    <description><![CDATA[此文来自于👉由UP主神经元猫 神经元猫的个人空间_哔哩哔哩_bilibili 翻译 【63】【Cherno C++】【中字】C++的计时_哔哩哔哩_bilibili ，并由我整理。
 C++计时器
 std::chrono::high_resolution_clock高分辨率时钟在不同标准库有所区别，尽量不要使用。
 对时长度量使用 steady_clock 对壁钟时间使用 system_clock 。 基础计时器
-#include &amp;lt;iostream&amp;gt; #include &amp;lt;chrono&amp;gt; #include &amp;lt;thread&amp;gt; int main(void) { auto start = std::chrono::steady_clock::now(); std::this_thread::sleep_for(std::chrono::seconds(1)); auto end = std::chrono::steady_clock::now(); std::chrono::duration&amp;lt;float&amp;gt; time = end - start; std::cout &amp;lt;&amp;lt; time.count() &amp;lt;&amp;lt; &amp;#34;s \n&amp;#34;; std::cin.get(); } 计算打印hello用时
-struct Timer { std::chrono::time_point&amp;lt;std::chrono::steady_clock&amp;gt; start, end; std::chrono::duration&amp;lt;float&amp;gt; duration; Timer() { start = std::chrono::steady_clock::now(); } ~Timer() { end = std::chrono::steady_clock::now(); duration = end - start; float ms = duration.</description>
-    </item>
-    
-  </channel>
+#include &lt;iostream&gt; #include &lt;chrono&gt; #include &lt;thread&gt; int main(void) { auto start = std::chrono::steady_clock::now(); std::this_thread::sleep_for(std::chrono::seconds(1)); auto end = std::chrono::steady_clock::now(); std::chrono::duration&lt;float&gt; time = end - start; std::cout &lt;&lt; time.count() &lt;&lt; &#34;s \n&#34;; std::cin.get(); } 计算打印hello用时
+struct Timer { std::chrono::time_point&lt;std::chrono::steady_clock&gt; start, end; std::chrono::duration&lt;float&gt; duration; Timer() { start = std::chrono::steady_clock::now(); } ~Timer() { end = std::chrono::steady_clock::now(); duration = end - start; float ms = duration.]]></description>
+</item>
+</channel>
 </rss>

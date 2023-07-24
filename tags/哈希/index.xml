@@ -1,27 +1,22 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>哈希 on My Blog</title>
-    <link>https://okokfun.github.io/tags/%E5%93%88%E5%B8%8C/</link>
-    <description>Recent content in 哈希 on My Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language>
-    <lastBuildDate>Tue, 18 Jan 2022 16:54:33 +0000</lastBuildDate><atom:link href="https://okokfun.github.io/tags/%E5%93%88%E5%B8%8C/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>C&#43;&#43;无序容器</title>
-      <link>https://okokfun.github.io/post/c-%E6%97%A0%E5%BA%8F%E5%AE%B9%E5%99%A8/</link>
-      <pubDate>Tue, 18 Jan 2022 16:54:33 +0000</pubDate>
-      
-      <guid>https://okokfun.github.io/post/c-%E6%97%A0%E5%BA%8F%E5%AE%B9%E5%99%A8/</guid>
-      <description>此文来自👉容器库 - cppreference.com
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>哈希 - Tag - My Blog</title>
+        <link>https://okokfun.github.io/tags/%E5%93%88%E5%B8%8C/</link>
+        <description>哈希 - Tag - My Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 18 Jan 2022 16:54:33 &#43;0000</lastBuildDate><atom:link href="https://okokfun.github.io/tags/%E5%93%88%E5%B8%8C/" rel="self" type="application/rss+xml" /><item>
+    <title>C&#43;&#43;无序容器</title>
+    <link>https://okokfun.github.io/posts/c-%E6%97%A0%E5%BA%8F%E5%AE%B9%E5%99%A8/</link>
+    <pubDate>Tue, 18 Jan 2022 16:54:33 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://okokfun.github.io/posts/c-%E6%97%A0%E5%BA%8F%E5%AE%B9%E5%99%A8/</guid>
+    <description><![CDATA[此文来自👉容器库 - cppreference.com
 容器库是类模板与算法的汇集，允许程序员简单地访问常见数据结构，例如队列、链表和栈。有三类容器——顺序容器、关联容器和无序关联容器——每种都被设计为支持不同组的操作
 无序关联容器提供能快速查找（均摊 O(1) ，最坏情况 O(n) 的复杂度）的无序（哈希）数据结构。
 1. std::unordered_set 唯一键的集合，按照键生成散列
 unordered_set 是含有 Key 类型唯一对象集合的关联容器。搜索、插入和移除拥有平均常数时间复杂度。
 在内部，元素并 不以任何特别顺序排序，而是组织进桶中。元素被放进哪个桶完全依赖其值的哈希。这允许对单独元素的快速访问，因为哈希一旦确定，就准确指代元素被放入的桶。
 不可修改容器元素（即使通过非 const 迭代器），因为修改可能 更改元素的哈希，并破坏容器。
-例子 #include &amp;lt;iostream&amp;gt; #include &amp;lt;string&amp;gt; #include &amp;lt;unordered_set&amp;gt; int main() { // 创建三个 string 的 unordered_set（映射到 string ） std::unordered_set&amp;lt;std::string&amp;gt; u = { &amp;#34;RED&amp;#34;, &amp;#34;GREEN&amp;#34;, &amp;#34;BLUE&amp;#34; }; // 迭代并打印 unordered_set 的关键和值 for (const auto &amp;amp;n : u) { std::cout &amp;lt;&amp;lt; &amp;#34;Key:&amp;#34; &amp;lt;&amp;lt; n &amp;lt;&amp;lt; &amp;#34;\n&amp;#34;; } // // 添加新入口到 unordered_set // &amp;#34;BLACK&amp;#34;; // &amp;#34;WHITE&amp;#34;; u.</description>
-    </item>
-    
-  </channel>
+例子 #include &lt;iostream&gt; #include &lt;string&gt; #include &lt;unordered_set&gt; int main() { // 创建三个 string 的 unordered_set（映射到 string ） std::unordered_set&lt;std::string&gt; u = { &#34;RED&#34;, &#34;GREEN&#34;, &#34;BLUE&#34; }; // 迭代并打印 unordered_set 的关键和值 for (const auto &amp;n : u) { std::cout &lt;&lt; &#34;Key:&#34; &lt;&lt; n &lt;&lt; &#34;\n&#34;; } // // 添加新入口到 unordered_set // &#34;BLACK&#34;; // &#34;WHITE&#34;; u.]]></description>
+</item>
+</channel>
 </rss>

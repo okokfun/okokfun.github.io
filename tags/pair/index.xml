@@ -1,26 +1,21 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Pair on My Blog</title>
-    <link>https://okokfun.github.io/tags/pair/</link>
-    <description>Recent content in Pair on My Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language>
-    <lastBuildDate>Sat, 29 Jan 2022 17:41:10 +0000</lastBuildDate><atom:link href="https://okokfun.github.io/tags/pair/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>C&#43;&#43;元组与对组</title>
-      <link>https://okokfun.github.io/post/c-%E5%85%83%E7%BB%84%E4%B8%8E%E5%AF%B9%E7%BB%84/</link>
-      <pubDate>Sat, 29 Jan 2022 17:41:10 +0000</pubDate>
-      
-      <guid>https://okokfun.github.io/post/c-%E5%85%83%E7%BB%84%E4%B8%8E%E5%AF%B9%E7%BB%84/</guid>
-      <description>来自于👉 tuple - C++ Reference (cplusplus.com) 并整理
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Pair - Tag - My Blog</title>
+        <link>https://okokfun.github.io/tags/pair/</link>
+        <description>Pair - Tag - My Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 29 Jan 2022 17:41:10 &#43;0000</lastBuildDate><atom:link href="https://okokfun.github.io/tags/pair/" rel="self" type="application/rss+xml" /><item>
+    <title>C&#43;&#43;元组与对组</title>
+    <link>https://okokfun.github.io/posts/c-%E5%85%83%E7%BB%84%E4%B8%8E%E5%AF%B9%E7%BB%84/</link>
+    <pubDate>Sat, 29 Jan 2022 17:41:10 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://okokfun.github.io/posts/c-%E5%85%83%E7%BB%84%E4%B8%8E%E5%AF%B9%E7%BB%84/</guid>
+    <description><![CDATA[来自于👉 tuple - C++ Reference (cplusplus.com) 并整理
 一个元组std::tuple是一个能够容纳 元素集合 的对象。每个元素都可以是 不同的类型。
 std::make_pair()可以构建一个配对对象，其第一个元素设置为x，第二个元素设置为y，并返回。
-std::tie可以绑定std::tuple&amp;lt;T,T,T,...&amp;gt;的实例，并分别给这些元素起别名
-std::tuple 所在头文件 &amp;lt;tuple&amp;gt;
+std::tie可以绑定std::tuple&lt;T,T,T,...&gt;的实例，并分别给这些元素起别名
+std::tuple 所在头文件 &lt;tuple&gt;
 例子：
-// tuple example #include &amp;lt;iostream&amp;gt; // std::cout #include &amp;lt;tuple&amp;gt; // std::tuple, std::get, std::tie, std::ignore int main () { std::tuple&amp;lt;int,char&amp;gt; foo (10,&amp;#39;x&amp;#39;); auto bar = std::make_tuple (&amp;#34;test&amp;#34;, 3.1, 14, &amp;#39;y&amp;#39;); std::cout &amp;lt;&amp;lt; &amp;#34;bar has &amp;#34;&amp;lt;&amp;lt;std::tuple_size&amp;lt;decltype(bar)&amp;gt;::value &amp;lt;&amp;lt; elements&amp;lt;&amp;lt; &amp;#39;\n&amp;#39;; std::tuple_element&amp;lt;0,decltype(bar)&amp;gt;::type first = std::get&amp;lt;0&amp;gt;(bar); std::cout &amp;lt;&amp;lt; &amp;#34;bar contains: &amp;#34; &amp;lt;&amp;lt; first &amp;lt;&amp;lt; &amp;#39;\n&amp;#39;; std::get&amp;lt;2&amp;gt;(bar) = 100; // access element int myint; char mychar; std::tie (myint, mychar) = foo; // unpack elements std::tie (std::ignore, std::ignore, myint, mychar) = bar; // unpack (with ignore) mychar = std::get&amp;lt;3&amp;gt;(bar); std::get&amp;lt;0&amp;gt;(foo) = std::get&amp;lt;2&amp;gt;(bar); std::get&amp;lt;1&amp;gt;(foo) = mychar; std::cout &amp;lt;&amp;lt; &amp;#34;foo contains: &amp;#34;; std::cout &amp;lt;&amp;lt; std::get&amp;lt;0&amp;gt;(foo) &amp;lt;&amp;lt; &amp;#39; &amp;#39;; std::cout &amp;lt;&amp;lt; std::get&amp;lt;1&amp;gt;(foo) &amp;lt;&amp;lt; &amp;#39;\n&amp;#39;; return 0; } 答案：</description>
-    </item>
-    
-  </channel>
+// tuple example #include &lt;iostream&gt; // std::cout #include &lt;tuple&gt; // std::tuple, std::get, std::tie, std::ignore int main () { std::tuple&lt;int,char&gt; foo (10,&#39;x&#39;); auto bar = std::make_tuple (&#34;test&#34;, 3.1, 14, &#39;y&#39;); std::cout &lt;&lt; &#34;bar has &#34;&lt;&lt;std::tuple_size&lt;decltype(bar)&gt;::value &lt;&lt; elements&lt;&lt; &#39;\n&#39;; std::tuple_element&lt;0,decltype(bar)&gt;::type first = std::get&lt;0&gt;(bar); std::cout &lt;&lt; &#34;bar contains: &#34; &lt;&lt; first &lt;&lt; &#39;\n&#39;; std::get&lt;2&gt;(bar) = 100; // access element int myint; char mychar; std::tie (myint, mychar) = foo; // unpack elements std::tie (std::ignore, std::ignore, myint, mychar) = bar; // unpack (with ignore) mychar = std::get&lt;3&gt;(bar); std::get&lt;0&gt;(foo) = std::get&lt;2&gt;(bar); std::get&lt;1&gt;(foo) = mychar; std::cout &lt;&lt; &#34;foo contains: &#34;; std::cout &lt;&lt; std::get&lt;0&gt;(foo) &lt;&lt; &#39; &#39;; std::cout &lt;&lt; std::get&lt;1&gt;(foo) &lt;&lt; &#39;\n&#39;; return 0; } 答案：]]></description>
+</item>
+</channel>
 </rss>

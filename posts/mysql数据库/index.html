@@ -1,0 +1,1836 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Mysql数据库 - My Blog</title><meta name="Description" content="Hugo theme - LoveIt"><meta property="og:title" content="Mysql数据库" />
+<meta property="og:description" content="1 MySQL基础知识 瑞典MySQL AB公司开发，由SUN收购，而后SUN被甲骨文并购，目前属于Oracle公司。
+MySQL是一种关联数据库管理系统 由于其体积小、速度快、总体拥有成本低、MySQL软件采用了双授权政策，分为社区版和企业版。
+1.1 MySQL版本及下载 MySQL数据库版本相对比较繁杂。常见的有：Community社区版、Enterprise企业版。
+MySQL Community Server 版是开源免费的，这也是我们通常用的MySQL的版本。可以满足绝大多数用户需求。
+MySQL Enterprise Edition 企业版收费的，官方指出提供30天免费试用期。可进一步划分为MySQL标准版、MySQL企业版、MySQL集群版。官方提供付费服务。
+其中Community Server 可以直接从mysql 的官网下载。但Enterprice Edition只能从Oracle edelivery上下载，而Edelivery有时会屏蔽中国IP。
+MySQL各版本区别参见：
+http://www.admin10000.com/Document/62.html
+下载mysql时注意区分版本细节及所应用的系统平台：linux(32/64) 、win(32/64)
+举例：
+win版本：
+mysql-installer-community-8.0.26.0.msi版本
+​ GA 是指软件的通用版本，一般指正式发布的版本 (Generally Available (GA) Release)
+​ mysql-essential-5.1.60-win32.msi精简版，如果只需要mysql服务，就选择此版本。
+​ mysql-5.1.60-win32.msi 是完 是整版，包含安装程序和配置向导，有MySQL文档。
+mysql-noinstall-5.1.60-win32.zip 是非安装的zip压缩包，没有自动安装程序和配置向导，无安装向导
+​ mysql-5.1.60.zip 是用于windows的Mysql源码压缩包
+linux版本
+​ 在http://www.mysql.com/downloads/网站上下载不了
+​ 在 www.oracle.com/downloads 找mysql 注册用户, 选择操作系统平台和mysql版本 进行下载
+官方文档上有关MySQL安装，介绍了3种类型及其对应安装方式来安装MySQL数据库：
+Linux supports a number of different solutions for installing MySQL. The recommended method is to use one of the distributions from Oracle." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://okokfun.github.io/posts/mysql%E6%95%B0%E6%8D%AE%E5%BA%93/" /><meta property="og:image" content="https://okokfun.github.io"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-01-05T12:57:29+00:00" />
+<meta property="article:modified_time" content="2022-01-05T12:57:29+00:00" /><meta property="og:site_name" content="My Blog" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://okokfun.github.io"/>
+
+<meta name="twitter:title" content="Mysql数据库"/>
+<meta name="twitter:description" content="1 MySQL基础知识 瑞典MySQL AB公司开发，由SUN收购，而后SUN被甲骨文并购，目前属于Oracle公司。
+MySQL是一种关联数据库管理系统 由于其体积小、速度快、总体拥有成本低、MySQL软件采用了双授权政策，分为社区版和企业版。
+1.1 MySQL版本及下载 MySQL数据库版本相对比较繁杂。常见的有：Community社区版、Enterprise企业版。
+MySQL Community Server 版是开源免费的，这也是我们通常用的MySQL的版本。可以满足绝大多数用户需求。
+MySQL Enterprise Edition 企业版收费的，官方指出提供30天免费试用期。可进一步划分为MySQL标准版、MySQL企业版、MySQL集群版。官方提供付费服务。
+其中Community Server 可以直接从mysql 的官网下载。但Enterprice Edition只能从Oracle edelivery上下载，而Edelivery有时会屏蔽中国IP。
+MySQL各版本区别参见：
+http://www.admin10000.com/Document/62.html
+下载mysql时注意区分版本细节及所应用的系统平台：linux(32/64) 、win(32/64)
+举例：
+win版本：
+mysql-installer-community-8.0.26.0.msi版本
+​ GA 是指软件的通用版本，一般指正式发布的版本 (Generally Available (GA) Release)
+​ mysql-essential-5.1.60-win32.msi精简版，如果只需要mysql服务，就选择此版本。
+​ mysql-5.1.60-win32.msi 是完 是整版，包含安装程序和配置向导，有MySQL文档。
+mysql-noinstall-5.1.60-win32.zip 是非安装的zip压缩包，没有自动安装程序和配置向导，无安装向导
+​ mysql-5.1.60.zip 是用于windows的Mysql源码压缩包
+linux版本
+​ 在http://www.mysql.com/downloads/网站上下载不了
+​ 在 www.oracle.com/downloads 找mysql 注册用户, 选择操作系统平台和mysql版本 进行下载
+官方文档上有关MySQL安装，介绍了3种类型及其对应安装方式来安装MySQL数据库：
+Linux supports a number of different solutions for installing MySQL. The recommended method is to use one of the distributions from Oracle."/>
+<meta name="application-name" content="LoveIt">
+<meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://okokfun.github.io/posts/mysql%E6%95%B0%E6%8D%AE%E5%BA%93/" /><link rel="prev" href="https://okokfun.github.io/posts/json%E7%9A%84%E4%BD%BF%E7%94%A8/" /><link rel="next" href="https://okokfun.github.io/posts/mysql%E6%95%B0%E6%8D%AE%E5%BA%93api%E5%BA%93/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Mysql数据库",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/okokfun.github.io\/posts\/mysql%E6%95%B0%E6%8D%AE%E5%BA%93\/"
+        },"image": ["https:\/\/okokfun.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "DataBase, Mysql","wordcount":  3161 ,
+        "url": "https:\/\/okokfun.github.io\/posts\/mysql%E6%95%B0%E6%8D%AE%E5%BA%93\/","datePublished": "2022-01-05T12:57:29+00:00","dateModified": "2022-01-05T12:57:29+00:00","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": "https:\/\/okokfun.github.io\/images\/avatar.png"},"author": {
+                "@type": "Person",
+                "name": "Author"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="My Blog"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span>My Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/" title="Hello World!"> 文章 </a><a class="menu-item" href="/tags/" title="Hello World!"> 标签 </a><a class="menu-item" href="/categories/" title="Hello World!"> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a><a href="javascript:void(0);" class="menu-item language" title="Select Language">
+                    <i class="fa fa-globe" aria-hidden="true"></i>                      
+                    <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/posts/mysql%E6%95%B0%E6%8D%AE%E5%BA%93/" selected></option></select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="My Blog"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span>My Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="Hello World!">文章</a><a class="menu-item" href="/tags/" title="Hello World!">标签</a><a class="menu-item" href="/categories/" title="Hello World!">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="Select Language">
+                    <i class="fa fa-globe fa-fw" aria-hidden="true"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/posts/mysql%E6%95%B0%E6%8D%AE%E5%BA%93/" selected></option></select>
+                </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Mysql数据库</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Author</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-01-05">2022-01-05</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;3161 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;15 minutes&nbsp;<span id="/posts/mysql%E6%95%B0%E6%8D%AE%E5%BA%93/" class="leancloud_visitors" data-flag-title="Mysql数据库">
+                        <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#11-mysql版本及下载">1.1 MySQL版本及下载</a></li>
+    <li><a href="#12-下载安装包">1.2 下载安装包</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#21-查询服务器上已经安装的mysql">2.1 查询服务器上已经安装的mysql</a></li>
+    <li><a href="#22-卸载旧的版本">2.2 卸载旧的版本</a></li>
+    <li><a href="#23-安装">2.3 安装</a>
+      <ul>
+        <li><a href="#231-安装服务器">2.3.1 安装服务器</a></li>
+        <li><a href="#232-安装客户端">2.3.2 安装客户端：</a></li>
+        <li><a href="#24-查看mysql服务器是否已经启动">2.4 查看mysql服务器是否已经启动</a></li>
+      </ul>
+    </li>
+    <li><a href="#25-登录mysql">2.5 登录Mysql</a>
+      <ul>
+        <li><a href="#1查看文件寻找密码">1.查看文件寻找密码</a></li>
+        <li><a href="#2以root用户身份登陆mysql">2.以root用户身份登陆MySQL</a></li>
+        <li><a href="#3修改密码">3.修改密码</a></li>
+        <li><a href="#4查看数据库">4.查看数据库</a></li>
+        <li><a href="#5远程root登录mysql">5.远程root登录mysql</a></li>
+        <li><a href="#526查看-root-用户的-host">5.2.6查看 root 用户的 host</a></li>
+      </ul>
+    </li>
+    <li><a href="#6--数据库的curd">6.  数据库的CURD</a>
+      <ul>
+        <li><a href="#61查看数据库">6.1查看数据库</a></li>
+        <li><a href="#62创建数据库">6.2创建数据库</a></li>
+        <li><a href="#63修改数据库">6.3修改数据库</a></li>
+        <li><a href="#64删除数据库">6.4删除数据库</a></li>
+      </ul>
+    </li>
+    <li><a href="#7-表的curd">7. 表的CURD</a>
+      <ul>
+        <li><a href="#71-查看表">7.1 查看表</a></li>
+        <li><a href="#72创建表">7.2创建表</a></li>
+        <li><a href="#73修改表">7.3修改表</a></li>
+        <li><a href="#74-删除表">7.4 删除表</a></li>
+      </ul>
+    </li>
+    <li><a href="#8-表数据的curd">8. 表数据的CURD</a></li>
+    <li><a href="#9-mysql函数的使用">9. mysql函数的使用</a>
+      <ul>
+        <li><a href="#91-日期函数">9.1 日期函数</a></li>
+        <li><a href="#92-字符串函数">9.2 字符串函数</a></li>
+        <li><a href="#93-数学函数">9.3 数学函数</a></li>
+        <li><a href="#94-日期转换">9.4 日期转换</a></li>
+      </ul>
+    </li>
+    <li><a href="#10-多表查询">10. 多表查询</a>
+      <ul>
+        <li><a href="#101-内连接----inner-join">10.1 内连接 &ndash; inner join</a></li>
+        <li><a href="#102-外连接----outer-join">10.2 外连接 &ndash; outer join</a></li>
+        <li><a href="#103-自连接">10.3 自连接</a></li>
+      </ul>
+    </li>
+    <li><a href="#11-表的约束">11. 表的约束</a>
+      <ul>
+        <li><a href="#111-约束种类">11.1 约束种类</a></li>
+        <li><a href="#112-约束的使用">11.2 约束的使用</a></li>
+      </ul>
+    </li>
+    <li><a href="#12-事务">12. 事务</a></li>
+    <li><a href="#13-mysql-api">13. mysql API</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><!-- raw HTML omitted -->
+<h1 id="1--mysql基础知识">1  MySQL基础知识</h1>
+<p>瑞典MySQL AB公司开发，由SUN收购，而后SUN被甲骨文并购，目前属于Oracle公司。</p>
+<p>MySQL是一种关联数据库管理系统 由于其体积小、速度快、总体拥有成本低、MySQL软件采用了双授权政策，分为社区版和企业版。</p>
+<h2 id="11-mysql版本及下载">1.1 MySQL版本及下载</h2>
+<p>MySQL数据库版本相对比较繁杂。常见的有：Community社区版、Enterprise企业版。</p>
+<p>MySQL Community Server 版是开源免费的，这也是我们通常用的MySQL的版本。可以满足绝大多数用户需求。</p>
+<p>MySQL Enterprise Edition 企业版收费的，官方指出提供30天免费试用期。可进一步划分为MySQL标准版、MySQL企业版、MySQL集群版。官方提供付费服务。</p>
+<p>其中Community Server 可以直接从mysql 的官网下载。但Enterprice Edition只能从Oracle edelivery上下载，而Edelivery有时会屏蔽中国IP。</p>
+<p>MySQL各版本区别参见：</p>
+<p><a href="http://www.admin10000.com/Document/62.html" target="_blank" rel="noopener noreffer ">http://www.admin10000.com/Document/62.html</a></p>
+<p>下载mysql时注意区分版本细节及所应用的系统平台：<code>linux(32/64)</code> 、<code>win(32/64)</code></p>
+<p>举例：</p>
+<p><strong>win版本：</strong></p>
+<p>mysql-installer-community-8.0.26.0.msi版本</p>
+<p>​    GA 是指软件的通用版本，一般指正式发布的版本 (Generally Available (GA) Release)</p>
+<p>​    mysql-essential-5.1.60-win32.msi精简版，如果只需要mysql服务，就选择此版本。</p>
+<p>​    mysql-5.1.60-win32.msi          是完    是整版，包含安装程序和配置向导，有MySQL文档。</p>
+<p>mysql-noinstall-5.1.60-win32.zip 是非安装的zip压缩包，没有自动安装程序和配置向导，无安装向导</p>
+<p>​    mysql-5.1.60.zip 是用于windows的Mysql源码压缩包</p>
+<p><strong>linux版本</strong></p>
+<p>​    在http://www.mysql.com/downloads/网站上下载不了</p>
+<p>​    在 <a href="https://www.oracle.com/downloads" target="_blank" rel="noopener noreffer ">www.oracle.com/downloads</a> 找mysql 注册用户, 选择操作系统平台和mysql版本 进行下载</p>
+<p>官方文档上有关MySQL安装，介绍了3种类型及其对应安装方式来安装MySQL数据库：</p>
+<p>　　Linux supports a number of different solutions for installing MySQL. The recommended method is to use one of the distributions from Oracle. If you choose this method, there are three options available:</p>
+<p>(1)  Installing from a generic binary package in .tar.gz format. See Section 2.2,“Installing MySQL from Generic Binaries on Unix/Linux”for more information.</p>
+<p>(2)  Extracting and compiling MySQL from a source distribution. For detailed instructions, see Section 2.9, “Installing MySQL from Source”.</p>
+<p>(3)  Installing using a pre-compiled RPM package. For more information on using the RPM solution, see Section 2.5.1,“Installing MySQL from RPM Packages on Linux”</p>
+<p>我们选用较简单的RPM 包来安装。</p>
+<h2 id="12-下载安装包">1.2 下载安装包</h2>
+<p><strong>Community Server</strong> 下载地址：https://dev.mysql.com/downloads/mysql/</p>
+<p>MySQL Community Server.          mysql社区版，开源、免费</p>
+<p>MySQL Enterprise Edition.        mysql企业版，非免费</p>
+<p>MySQL Cluster.                   mysql集群版，开源、免费</p>
+<h1 id="2---mysql服务器安装和启动">2   MySQL服务器安装和启动</h1>
+<h2 id="21-查询服务器上已经安装的mysql">2.1 查询服务器上已经安装的mysql</h2>
+<p>​    在终端提示符输入：<code>rpm -aq | grep mysql</code>    命令。查询结果如下显示：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>qt-mysql-4.6.2-25.el6.x86_64
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>mysql-connector-odbc-5.1.5r1144-7.el6.x86_64
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>mysql-bench-5.1.66-2.el6_3.x86_64
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>mysql-devel-5.1.66-2.el6_3.x86_64
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>libdbi-dbd-mysql-0.8.3-5.1.el6.x86_64
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>mysql-test-5.1.66-2.el6_3.x86_64
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>mysql-libs-5.1.66-2.el6_3.x86_64
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>mysql-5.1.66-2.el6_3.x86_64
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>mysql-connector-java-5.1.17-6.el6.noarch
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>mysql-server-5.1.66-2.el6_3.x86_64
+</span></span></code></pre></div><p>​    注：各机器有可能不相同，软件列表视实际情况。</p>
+<h2 id="22-卸载旧的版本">2.2 卸载旧的版本</h2>
+<p>rpm -e 软件包名 &ndash;nodeps &ndash;allmatches (不理会依赖关系，删除所有上一步查出来的相同的mysql)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#f92672">[</span>root@localhost home<span style="color:#f92672">]</span><span style="color:#75715e"># rpm -e mysql-connector-odbc-3.51.26r1127-1.el5 --nodeps --allmatches</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>root@localhost home<span style="color:#f92672">]</span><span style="color:#75715e"># rpm -e libdbi-dbd-mysql-0.8.1a-1.2.2 --nodeps --allmatches</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>root@localhost home<span style="color:#f92672">]</span><span style="color:#75715e"># rpm -e mysql-server-5.0.77-3.el5 --nodeps --allmatches</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>root@localhost home<span style="color:#f92672">]</span><span style="color:#75715e"># rpm -aq | grep mysql</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>root@localhost home<span style="color:#f92672">]</span><span style="color:#75715e"># </span>
+</span></span></code></pre></div><p>​    <strong>将老版本的几个文件手动删除</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>rm -f /etc/my.cnf
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>rm -rf /var/lib/mysql
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>rm -rf /var/share/mysql
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>rm -rf /usr/bin/mysql*
+</span></span></code></pre></div><h2 id="23-安装">2.3 安装</h2>
+<p>解压.zip安装包</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>unzip V46610-01-MySQL Database 5.6.20 RPM <span style="color:#66d9ef">for</span> Oracle Linux RHEL <span style="color:#ae81ff">6</span> x86 <span style="color:#f92672">(</span>64bit<span style="color:#f92672">)</span>.zip
+</span></span></code></pre></div><p><strong>得到如下软件包</strong>：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>MySQL-client-advanced-5.6.20-1.el6.x86_64.rpm
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>MySQL-devil-advanced-5.6.20-1.el6.x86_64.rpm
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>MySQL-server-advanced-5.6.20-1.el6.x86_64.rpm
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>MySQL-embedded-advanced-5.6.20-1.el6.x86_64.rpm
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>MySQL-shared-advanced-5.6.20-1.el6.x86_64.rpm
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>MySQL-shared-compal-advanced-5.6.20-1.el6.x86_64.rpm
+</span></span><span style="display:flex;"><span>   
+</span></span><span style="display:flex;"><span>MySQL-test-advanced-5.6.20-1.el6.x86_64.rpm
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>README.txt
+</span></span></code></pre></div><h3 id="231-安装服务器">2.3.1 安装服务器</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>rpm -ivh MySQL-server-advanced-5.6.****-1.el6.x86_64.rpm
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>A RANDOM PASSWORD HAS BEEN SET FOR THE MySQL root USER !
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>You will find that password in <span style="color:#e6db74">&#39;/root/.mysql_secret&#39;</span>.
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>You must change that password on your first connect,
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>no other statement but <span style="color:#e6db74">&#39;SET PASSWORD&#39;</span> will be accepted.
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>See the manual <span style="color:#66d9ef">for</span> the semantics of the <span style="color:#e6db74">&#39;password expired&#39;</span> flag.
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>Also, the account <span style="color:#66d9ef">for</span> the anonymous user has been removed.
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>In addition, you can run:
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    /usr/bin/mysql_secure_installation
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>which will also give you the option of removing the test database.
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>This is strongly recommended <span style="color:#66d9ef">for</span> production servers.
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>See the manual <span style="color:#66d9ef">for</span> more instructions.
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>Please report any problems at http://bugs.mysql.com/
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>The latest information about MySQL is available on the web at
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>http://www.mysql.com
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>Support MySQL by buying support/licenses at http://shop.mysql.com
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>New default config file was created as /usr/my.cnf and
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>will be used by default by the server when you start it.
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>You may edit this file to change server settings
+</span></span></code></pre></div><h3 id="232-安装客户端">2.3.2 安装客户端：</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>rpm -ivh MySQL-client-advanced-5.6.****-1.el6.x86_64.rpm
+</span></span></code></pre></div><p><strong>说明</strong>:不安装mysql-client是不能使用mysql工具登陆到mysql数据库</p>
+<p>​    其他软件包选择性安装：
+<code>rpm -ivh MySQL-devel-advanced-5.6.20-1.el6.x86_64.rpm</code></p>
+<h3 id="24-查看mysql服务器是否已经启动">2.4 查看mysql服务器是否已经启动</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># 查看状态</span>
+</span></span><span style="display:flex;"><span>systemctl status mysqld 
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 启动mysql</span>
+</span></span><span style="display:flex;"><span>systemctl start mysqld 
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 关闭mysql</span>
+</span></span><span style="display:flex;"><span>systemctl stop mysqld 
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 重新启动mysql</span>
+</span></span><span style="display:flex;"><span>systemctl restart mysqld 
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 开机启动mysql</span>
+</span></span><span style="display:flex;"><span>systemctl enable mysqld 
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 关闭开机启动mysql</span>
+</span></span><span style="display:flex;"><span>systemctl disable mysqld
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 另外一种操作方式</span>
+</span></span><span style="display:flex;"><span>service mysqld status 
+</span></span></code></pre></div><h2 id="25-登录mysql">2.5 登录Mysql</h2>
+<p>oracle收购Mysql后, 新版的mysql刚安装完mysql后不能直接输入mysql登录数据库, 而是设置了默认free password密码, 默认密码放在了/root/.mysql_secret文件中, 登陆后需要修改密码。</p>
+<h3 id="1查看文件寻找密码">1.查看文件寻找密码</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>cat /root/.mysql_secret
+</span></span></code></pre></div><h3 id="2以root用户身份登陆mysql">2.以root用户身份登陆MySQL</h3>
+<p>服务启动和关闭：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>service mysql start
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>service mysql stop
+</span></span></code></pre></div><p><code>ps -u mysql</code> #可以查看mysql用户（安装MySQL时，系统自动创建该用户）的进程</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>PID TTY     TIME CMD
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">7586</span> ?         00:00:50 mysqld     守护进程
+</span></span></code></pre></div><p><strong>登陆服务器</strong>：</p>
+<p><code>mysql -uroot –p 密码</code></p>
+<p>输入从.mysql_secret中读到的密码登录。</p>
+<p>如果登录期间发生异常，无法登陆：</p>
+<p>使用root将mysql的后台进程kill -9 PID</p>
+<h3 id="3修改密码">3.修改密码</h3>
+<p><code>mysql&gt; set password=password('123456');    将密码设置为：123456</code></p>
+<p>密码修改成后，再次登录使用：</p>
+<p>$mysql -uroot -p123456   即可。</p>
+<h3 id="4查看数据库">4.查看数据库</h3>
+<p><code>mysql&gt; show databases;</code>
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://gitee.com/txt1994/images/raw/master/img/2021/08/clip_image002.jpg"
+        data-srcset="https://gitee.com/txt1994/images/raw/master/img/2021/08/clip_image002.jpg, https://gitee.com/txt1994/images/raw/master/img/2021/08/clip_image002.jpg 1.5x, https://gitee.com/txt1994/images/raw/master/img/2021/08/clip_image002.jpg 2x"
+        data-sizes="auto"
+        alt="https://gitee.com/txt1994/images/raw/master/img/2021/08/clip_image002.jpg"
+        title="https://gitee.com/txt1994/images/raw/master/img/2021/08/clip_image002.jpg" /></p>
+<h3 id="5远程root登录mysql">5.远程root登录mysql</h3>
+<h4 id="51mysql80创建用户和授权">5.1Mysql8.0创建用户和授权</h4>
+<p>mysql8.0需要先创建用户和设置密码,然后才能授权.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#f92672">#</span><span style="color:#960050;background-color:#1e0010">先创建一个用户</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">create</span> <span style="color:#66d9ef">user</span> <span style="color:#e6db74">&#39;tone&#39;</span><span style="color:#f92672">@</span><span style="color:#e6db74">&#39;%&#39;</span> identified <span style="color:#66d9ef">by</span> <span style="color:#e6db74">&#39;123123&#39;</span>;
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span><span style="color:#f92672">#</span><span style="color:#960050;background-color:#1e0010">再进行授权</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">grant</span> <span style="color:#66d9ef">all</span> <span style="color:#66d9ef">privileges</span> <span style="color:#66d9ef">on</span> <span style="color:#f92672">*</span>.<span style="color:#f92672">*</span> <span style="color:#66d9ef">to</span> <span style="color:#e6db74">&#39;tone&#39;</span><span style="color:#f92672">@</span><span style="color:#e6db74">&#39;%&#39;</span> <span style="color:#66d9ef">with</span> <span style="color:#66d9ef">grant</span> <span style="color:#66d9ef">option</span>;
+</span></span></code></pre></div><h4 id="52mysql80-的远程链接">5.2MySQL8.0 的远程链接</h4>
+<p>MySQL 安装完成后只支持 localhost 访问，我们必须设置一下才可以远程访问，另外还有一些 MySQL 8.0 连接时的一些问题.</p>
+<h5 id="521登录mysql">5.2.1登录MySQL</h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>mysql -u root -p
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#然后输入您的密码</span>
+</span></span></code></pre></div><h5 id="522选择-mysql-数据库">5.2.2选择 mysql 数据库</h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>use mysql;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">--因为 mysql 数据库中存储了用户信息的 user 表。   
+</span></span></span></code></pre></div><h5 id="523在-mysql-数据库的-user-表中查看当前-root-用户的相关信息">5.2.3在 mysql 数据库的 user 表中查看当前 root 用户的相关信息</h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">select</span> <span style="color:#66d9ef">host</span>, <span style="color:#66d9ef">user</span>, authentication_string, plugin <span style="color:#66d9ef">from</span> <span style="color:#66d9ef">user</span>; 
+</span></span><span style="display:flex;"><span><span style="color:#75715e">--执行完上面的命令后会显示一个表格
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">--查看表格中 root 用户的 host，默认应该显示的 localhost，只支持本地访问，不允许远程访问。
+</span></span></span></code></pre></div><h5 id="524授权-root-用户的所有权限并设置远程访问">5.2.4授权 root 用户的所有权限并设置远程访问</h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">GRANT</span> <span style="color:#66d9ef">ALL</span> <span style="color:#66d9ef">ON</span> <span style="color:#f92672">*</span>.<span style="color:#f92672">*</span> <span style="color:#66d9ef">TO</span> <span style="color:#e6db74">&#39;root&#39;</span><span style="color:#f92672">@</span><span style="color:#e6db74">&#39;%&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">GRANT</span> <span style="color:#66d9ef">ALL</span> <span style="color:#66d9ef">ON</span> <span style="color:#960050;background-color:#1e0010">表示所有权限，</span><span style="color:#f92672">%</span> <span style="color:#960050;background-color:#1e0010">表示通配所有</span> <span style="color:#66d9ef">host</span><span style="color:#960050;background-color:#1e0010">，可以访问远程。</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">ALTER</span> <span style="color:#66d9ef">USER</span> <span style="color:#e6db74">&#39;root&#39;</span><span style="color:#f92672">@</span><span style="color:#e6db74">&#39;%&#39;</span> IDENTIFIED <span style="color:#66d9ef">WITH</span> mysql_native_password <span style="color:#66d9ef">BY</span> <span style="color:#e6db74">&#39;你自己的密码&#39;</span>;
+</span></span></code></pre></div><h5 id="525刷新权限">5.2.5刷新权限</h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">--所有操作后，应执行    
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>flush <span style="color:#66d9ef">privileges</span>;
+</span></span></code></pre></div><h3 id="526查看-root-用户的-host">5.2.6查看 root 用户的 host</h3>
+<pre><code>use mysql;
+select host, user, authentication_string, plugin from user;
+--会发现 root 用户的 host 已经变成 %，说明我们的修改已经成功，可以远程访问了。
+</code></pre>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://gitee.com/txt1994/images/raw/master/img/2021/08/mysql8%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5.bmp"
+        data-srcset="https://gitee.com/txt1994/images/raw/master/img/2021/08/mysql8%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5.bmp, https://gitee.com/txt1994/images/raw/master/img/2021/08/mysql8%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5.bmp 1.5x, https://gitee.com/txt1994/images/raw/master/img/2021/08/mysql8%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5.bmp 2x"
+        data-sizes="auto"
+        alt="https://gitee.com/txt1994/images/raw/master/img/2021/08/mysql8%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5.bmp"
+        title="https://gitee.com/txt1994/images/raw/master/img/2021/08/mysql8%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5.bmp" /></p>
+<h4 id="53访问数据库">5.3访问数据库</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>    <span style="color:#75715e">--输入访问的 host 和密码，报 2059 错误，这是因为 MySql8.0 版本 和 5.7 的加密规则不一样，而现在的可视化工具只支持旧的加密方式。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">--出现这个原因是mysql8 之前的版本中加密规则是mysql_native_password,而在mysql8之后,加密规则是caching_sha2_password.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">--解决问题方法有两种,一种是升级navicat驱动,一种是把mysql用户登录密码加密规则还原成mysql_native_password.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">--这里采用第二种方式 ：
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">--修改加密规则:
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">ALTER</span> <span style="color:#66d9ef">USER</span> <span style="color:#e6db74">&#39;root&#39;</span><span style="color:#f92672">@</span><span style="color:#e6db74">&#39;%&#39;</span> IDENTIFIED <span style="color:#66d9ef">BY</span> <span style="color:#e6db74">&#39;password&#39;</span> PASSWORD EXPIRE NEVER; 
+</span></span><span style="display:flex;"><span>        password <span style="color:#960050;background-color:#1e0010">为你当前密码。</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">--更新 root 用户密码:
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">ALTER</span> <span style="color:#66d9ef">USER</span> <span style="color:#e6db74">&#39;root&#39;</span><span style="color:#f92672">@</span><span style="color:#e6db74">&#39;%&#39;</span> IDENTIFIED <span style="color:#66d9ef">WITH</span> mysql_native_password <span style="color:#66d9ef">BY</span> <span style="color:#e6db74">&#39;password&#39;</span>; 
+</span></span><span style="display:flex;"><span>        password <span style="color:#960050;background-color:#1e0010">为你新设置的密码。</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">--刷新权限:
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        FLUSH <span style="color:#66d9ef">PRIVILEGES</span>; 
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">--OK，设置完成，再次使用 Navicat 连接数据库
+</span></span></span></code></pre></div><h2 id="6--数据库的curd">6.  数据库的CURD</h2>
+<blockquote>
+<p>对数据库进行增(Create)、改(Update) 、查(Retrieve) 、删(Delete)操作。</p>
+</blockquote>
+<h3 id="61查看数据库">6.1查看数据库</h3>
+<ul>
+<li>显示所有数据库</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>mysql<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">show</span> databases;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">+</span><span style="color:#75715e">--------------------+
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">|</span> <span style="color:#66d9ef">Database</span>           <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">+</span><span style="color:#75715e">--------------------+
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">|</span> information_schema <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">|</span> itcast             <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">|</span> itcast1            <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">|</span> itcast2            <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">|</span> mysql              <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">|</span> performance_schema <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">|</span> sys                <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">+</span><span style="color:#75715e">--------------------+
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#ae81ff">7</span> <span style="color:#66d9ef">rows</span> <span style="color:#66d9ef">in</span> <span style="color:#66d9ef">set</span> (<span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">01</span> sec)
+</span></span></code></pre></div><ul>
+<li>显示创建数据库的语句信息</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>mysql<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">show</span> <span style="color:#66d9ef">create</span> <span style="color:#66d9ef">database</span> itcast;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">+</span><span style="color:#75715e">----------+-----------------------------------------------------------------+
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">|</span> <span style="color:#66d9ef">Database</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">Create</span> <span style="color:#66d9ef">Database</span>                                              <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">+</span><span style="color:#75715e">----------+-----------------------------------------------------------------+
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">|</span> itcast   <span style="color:#f92672">|</span> <span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">DATABASE</span> <span style="color:#f92672">`</span>itcast<span style="color:#f92672">`</span> <span style="color:#75715e">/*!40100 DEFAULT CHARACTER SET utf8 */</span> <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">+</span><span style="color:#75715e">----------+-----------------------------------------------------------------+
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#ae81ff">1</span> <span style="color:#66d9ef">row</span> <span style="color:#66d9ef">in</span> <span style="color:#66d9ef">set</span> (<span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">00</span> sec)
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/* `itcast` 两端是反单引号, esc下的键, 使用``包含数据库的名字是区分大小写的 */</span>
+</span></span></code></pre></div><ul>
+<li>使用数据库</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">/* 我们以root用户登录, 用户下有很多数据库, 需要指定, 当前使用哪一个数据库, 操作的就是那个数据库中的数据 */</span>
+</span></span><span style="display:flex;"><span>mysql<span style="color:#f92672">&gt;</span> use itcast1;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">Database</span> changed
+</span></span><span style="display:flex;"><span>mysql<span style="color:#f92672">&gt;</span> use itcast2;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">Database</span> changed
+</span></span></code></pre></div><h3 id="62创建数据库">6.2创建数据库</h3>
+<pre><code>-- IF NOT EXISTS 表示只有数据库不存在的时候才创建，如果存在同名就不再执行该语句
+-- create_specification是建库的一些选项
+-- 关键字不区分大小写
+CREATE {DATABASE} [IF NOT EXISTS] db_name
+  [create_specification [, create_specification] ...]
+</code></pre>
+<ul>
+<li>创建一名为itcast的数据库</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>mysql<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">create</span> <span style="color:#66d9ef">database</span> itheima;                          <span style="color:#75715e">/* utf8 */</span>
+</span></span></code></pre></div><ul>
+<li>创建一个使用 latin1 字符集的数据库</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>mysql<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">create</span> <span style="color:#66d9ef">database</span> itheima character <span style="color:#66d9ef">set</span> latin1; 
+</span></span></code></pre></div><h3 id="63修改数据库">6.3修改数据库</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- 修改字符集, 不能改名
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">alter</span> <span style="color:#66d9ef">database</span> itcast character <span style="color:#66d9ef">set</span> utf8;
+</span></span></code></pre></div><h3 id="64删除数据库">6.4删除数据库</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">drop</span> <span style="color:#66d9ef">database</span> itcast;
+</span></span></code></pre></div><h2 id="7-表的curd">7. 表的CURD</h2>
+<blockquote>
+<p>对表本身进行操作：创建，查看，修改，删除</p>
+</blockquote>
+<h3 id="71-查看表">7.1 查看表</h3>
+<ul>
+<li>
+<p>查看当前数据库下的数据库表</p>
+<p>&ndash; 当前使用的数据库下的表
+mysql&gt; show tables;</p>
+</li>
+<li>
+<p>查看指定表的创建语句</p>
+<p>mysql&gt; show create table 表名;</p>
+</li>
+<li>
+<p>查看表结构</p>
+<p>mysql&gt; desc 表名;</p>
+</li>
+</ul>
+<h3 id="72创建表">7.2创建表</h3>
+<blockquote>
+<p>mysql中表名区分大小写, 列名不区分大小写</p>
+</blockquote>
+<ul>
+<li>数据类型</li>
+</ul>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://gitee.com/txt1994/images/raw/master/img/2021/07/20180606134721859.png"
+        data-srcset="https://gitee.com/txt1994/images/raw/master/img/2021/07/20180606134721859.png, https://gitee.com/txt1994/images/raw/master/img/2021/07/20180606134721859.png 1.5x, https://gitee.com/txt1994/images/raw/master/img/2021/07/20180606134721859.png 2x"
+        data-sizes="auto"
+        alt="https://gitee.com/txt1994/images/raw/master/img/2021/07/20180606134721859.png"
+        title="https://gitee.com/txt1994/images/raw/master/img/2021/07/20180606134721859.png" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://gitee.com/txt1994/images/raw/master/img/2021/07/20180606134730934.png"
+        data-srcset="https://gitee.com/txt1994/images/raw/master/img/2021/07/20180606134730934.png, https://gitee.com/txt1994/images/raw/master/img/2021/07/20180606134730934.png 1.5x, https://gitee.com/txt1994/images/raw/master/img/2021/07/20180606134730934.png 2x"
+        data-sizes="auto"
+        alt="https://gitee.com/txt1994/images/raw/master/img/2021/07/20180606134730934.png"
+        title="https://gitee.com/txt1994/images/raw/master/img/2021/07/20180606134730934.png" /></p>
+<ul>
+<li>float/double: 指定精确到小数点以后第几位, 比如: 精确到后3位</li>
+<li>通过计算得到一个数据: 12.345678</li>
+<li>这个数的678会被抹掉</li>
+<li>decimal</li>
+<li>完整的保存精度, 最少有小数后有两位</li>
+<li>12.3 保存为: 12.30</li>
+</ul>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://gitee.com/txt1994/images/raw/master/img/2021/07/20180606133023230.png"
+        data-srcset="https://gitee.com/txt1994/images/raw/master/img/2021/07/20180606133023230.png, https://gitee.com/txt1994/images/raw/master/img/2021/07/20180606133023230.png 1.5x, https://gitee.com/txt1994/images/raw/master/img/2021/07/20180606133023230.png 2x"
+        data-sizes="auto"
+        alt="https://gitee.com/txt1994/images/raw/master/img/2021/07/20180606133023230.png"
+        title="https://gitee.com/txt1994/images/raw/master/img/2021/07/20180606133023230.png" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://gitee.com/txt1994/images/raw/master/img/2021/07/20180606133307614.png"
+        data-srcset="https://gitee.com/txt1994/images/raw/master/img/2021/07/20180606133307614.png, https://gitee.com/txt1994/images/raw/master/img/2021/07/20180606133307614.png 1.5x, https://gitee.com/txt1994/images/raw/master/img/2021/07/20180606133307614.png 2x"
+        data-sizes="auto"
+        alt="https://gitee.com/txt1994/images/raw/master/img/2021/07/20180606133307614.png"
+        title="https://gitee.com/txt1994/images/raw/master/img/2021/07/20180606133307614.png" /></p>
+<ul>
+<li>创建表
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">create</span> <span style="color:#66d9ef">table</span> <span style="color:#960050;background-color:#1e0010">表名</span>(
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">列名</span> text [<span style="color:#66d9ef">default</span> <span style="color:#e6db74">&#39;xxx&#39;</span>],
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">列名</span> <span style="color:#960050;background-color:#1e0010">类型</span> [<span style="color:#66d9ef">default</span> value],
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">类名</span> <span style="color:#960050;background-color:#1e0010">类型</span> [<span style="color:#66d9ef">default</span> value],
+</span></span><span style="display:flex;"><span>  ......
+</span></span><span style="display:flex;"><span>);
+</span></span></code></pre></div></li>
+</ul>
+<h3 id="73修改表">7.3修改表</h3>
+<ul>
+<li>
+<p>修改表名</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- oracle和mysql相同
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">rename</span> <span style="color:#66d9ef">table</span> oldN <span style="color:#66d9ef">to</span> newN;
+</span></span></code></pre></div></li>
+<li>
+<p>添加一个字段</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- oracle
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">alter</span> <span style="color:#66d9ef">table</span> <span style="color:#960050;background-color:#1e0010">表名</span> <span style="color:#66d9ef">add</span> <span style="color:#960050;background-color:#1e0010">列名</span> <span style="color:#960050;background-color:#1e0010">列的类型</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- mysql
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">alter</span> <span style="color:#66d9ef">table</span> <span style="color:#960050;background-color:#1e0010">表名</span> <span style="color:#66d9ef">add</span> <span style="color:#66d9ef">column</span> <span style="color:#960050;background-color:#1e0010">列名</span> <span style="color:#960050;background-color:#1e0010">列的类型</span>;
+</span></span></code></pre></div></li>
+<li>
+<p>修改一个字段</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- oracle
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">alter</span> <span style="color:#66d9ef">table</span> <span style="color:#960050;background-color:#1e0010">表名</span> <span style="color:#66d9ef">modify</span> <span style="color:#960050;background-color:#1e0010">列名</span> <span style="color:#960050;background-color:#1e0010">列的类型</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- mysql
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">alter</span> <span style="color:#66d9ef">table</span> <span style="color:#960050;background-color:#1e0010">表名</span> <span style="color:#66d9ef">modify</span> <span style="color:#66d9ef">column</span> <span style="color:#960050;background-color:#1e0010">列名</span> <span style="color:#960050;background-color:#1e0010">列的类型</span>;
+</span></span></code></pre></div></li>
+<li>
+<p>删除一个字段</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- mysql和oracle相同
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">alter</span> <span style="color:#66d9ef">table</span> <span style="color:#960050;background-color:#1e0010">表名</span> <span style="color:#66d9ef">drop</span> <span style="color:#66d9ef">column</span> <span style="color:#960050;background-color:#1e0010">列</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- mysql中没有对对字段的rename操作
+</span></span></span></code></pre></div></li>
+<li>
+<p>修改表的字符集</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">alter</span> <span style="color:#66d9ef">table</span> <span style="color:#960050;background-color:#1e0010">表名</span> character <span style="color:#66d9ef">set</span> utf8;
+</span></span></code></pre></div></li>
+</ul>
+<h3 id="74-删除表">7.4 删除表</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">drop</span> <span style="color:#66d9ef">table</span> <span style="color:#960050;background-color:#1e0010">表名</span>;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- oracle中可以这么做, mysql中不行
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">drop</span> <span style="color:#66d9ef">table</span> <span style="color:#960050;background-color:#1e0010">表名</span> purge
+</span></span></code></pre></div><h2 id="8-表数据的curd">8. 表数据的CURD</h2>
+<ul>
+<li>
+<p>插入数据</p>
+<ul>
+<li>表名后的列名什么时候可以省略?</li>
+<li>在values(列的值, 列的值, &hellip;.)中将表有的字段值都指定出来的时候, 列名可以省略</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">insert</span> <span style="color:#66d9ef">into</span> <span style="color:#960050;background-color:#1e0010">表名</span>[(<span style="color:#960050;background-color:#1e0010">列名</span>, <span style="color:#960050;background-color:#1e0010">列名</span>, ...)] <span style="color:#66d9ef">values</span>(<span style="color:#960050;background-color:#1e0010">列的值</span>, <span style="color:#960050;background-color:#1e0010">列的值</span>, ....);
+</span></span></code></pre></div></li>
+<li>
+<p>更新数据</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">update</span> <span style="color:#960050;background-color:#1e0010">表名</span> <span style="color:#66d9ef">set</span> <span style="color:#960050;background-color:#1e0010">列名</span><span style="color:#f92672">=</span><span style="color:#960050;background-color:#1e0010">新值</span> <span style="color:#66d9ef">where</span> <span style="color:#960050;background-color:#1e0010">列名</span><span style="color:#f92672">=</span><span style="color:#960050;background-color:#1e0010">值</span>;
+</span></span></code></pre></div></li>
+<li>
+<p>删除数据</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">delete</span> <span style="color:#66d9ef">from</span> <span style="color:#960050;background-color:#1e0010">表名</span>; <span style="color:#75715e">-- 删除所有行
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">delete</span> <span style="color:#66d9ef">from</span> <span style="color:#960050;background-color:#1e0010">表名</span> <span style="color:#66d9ef">where</span> <span style="color:#960050;background-color:#1e0010">列名</span><span style="color:#f92672">=</span><span style="color:#960050;background-color:#1e0010">值</span>; <span style="color:#75715e">-- 删除满足条件的行
+</span></span></span></code></pre></div></li>
+<li>
+<p>查询数据</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">select</span> <span style="color:#f92672">*|</span><span style="color:#960050;background-color:#1e0010">列名</span><span style="color:#f92672">|</span><span style="color:#960050;background-color:#1e0010">表达式</span> <span style="color:#66d9ef">from</span> <span style="color:#960050;background-color:#1e0010">表名</span> <span style="color:#66d9ef">where</span> <span style="color:#960050;background-color:#1e0010">条件</span> <span style="color:#66d9ef">group</span> <span style="color:#66d9ef">by</span> <span style="color:#960050;background-color:#1e0010">列名</span> <span style="color:#66d9ef">having</span> <span style="color:#960050;background-color:#1e0010">条件</span> <span style="color:#66d9ef">order</span> <span style="color:#66d9ef">by</span> <span style="color:#66d9ef">asc</span><span style="color:#f92672">|</span><span style="color:#66d9ef">desc</span>;
+</span></span></code></pre></div></li>
+<li>
+<p>练习</p>
+<ul>
+<li>创建数据库 student 表
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">create</span> <span style="color:#66d9ef">table</span> student(
+</span></span><span style="display:flex;"><span>  id int,
+</span></span><span style="display:flex;"><span>  name varchar(<span style="color:#ae81ff">20</span>),
+</span></span><span style="display:flex;"><span>  chinese int,
+</span></span><span style="display:flex;"><span>  english int,
+</span></span><span style="display:flex;"><span>  math int
+</span></span><span style="display:flex;"><span>);
+</span></span></code></pre></div></li>
+<li>插入数据
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">insert</span> <span style="color:#66d9ef">into</span> student(id,name,chinese,english,math) <span style="color:#66d9ef">values</span>(<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#39;范建&#39;</span>,<span style="color:#ae81ff">80</span>,<span style="color:#ae81ff">85</span>,<span style="color:#ae81ff">90</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">insert</span> <span style="color:#66d9ef">into</span> student(id,name,chinese,english,math) <span style="color:#66d9ef">values</span>(<span style="color:#ae81ff">2</span>,<span style="color:#e6db74">&#39;罗况&#39;</span>,<span style="color:#ae81ff">90</span>,<span style="color:#ae81ff">95</span>,<span style="color:#ae81ff">95</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">insert</span> <span style="color:#66d9ef">into</span> student(id,name,chinese,english,math) <span style="color:#66d9ef">values</span>(<span style="color:#ae81ff">3</span>,<span style="color:#e6db74">&#39;杜子腾&#39;</span>,<span style="color:#ae81ff">80</span>,<span style="color:#ae81ff">96</span>,<span style="color:#ae81ff">96</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">insert</span> <span style="color:#66d9ef">into</span> student(id,name,chinese,english,math) <span style="color:#66d9ef">values</span>(<span style="color:#ae81ff">4</span>,<span style="color:#e6db74">&#39;范冰&#39;</span>,<span style="color:#ae81ff">81</span>,<span style="color:#ae81ff">97</span>,<span style="color:#ae81ff">85</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">insert</span> <span style="color:#66d9ef">into</span> student(id,name,chinese,english,math) <span style="color:#66d9ef">values</span>(<span style="color:#ae81ff">5</span>,<span style="color:#e6db74">&#39;申晶冰&#39;</span>,<span style="color:#ae81ff">85</span>,<span style="color:#ae81ff">84</span>,<span style="color:#ae81ff">90</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">insert</span> <span style="color:#66d9ef">into</span> student(id,name,chinese,english,math) <span style="color:#66d9ef">values</span>(<span style="color:#ae81ff">6</span>,<span style="color:#e6db74">&#39;郝丽海&#39;</span>,<span style="color:#ae81ff">92</span>,<span style="color:#ae81ff">85</span>,<span style="color:#ae81ff">87</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">insert</span> <span style="color:#66d9ef">into</span> student(id,name,chinese,english,math) <span style="color:#66d9ef">values</span>(<span style="color:#ae81ff">7</span>,<span style="color:#e6db74">&#39;郭迪辉&#39;</span>,<span style="color:#ae81ff">75</span>,<span style="color:#ae81ff">81</span>,<span style="color:#ae81ff">80</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">insert</span> <span style="color:#66d9ef">into</span> student(id,name,chinese,english,math) <span style="color:#66d9ef">values</span>(<span style="color:#ae81ff">8</span>,<span style="color:#e6db74">&#39;拎壶冲&#39;</span>,<span style="color:#ae81ff">77</span>,<span style="color:#ae81ff">80</span>,<span style="color:#ae81ff">79</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">insert</span> <span style="color:#66d9ef">into</span> student(id,name,chinese,english,math) <span style="color:#66d9ef">values</span>(<span style="color:#ae81ff">9</span>,<span style="color:#e6db74">&#39;任我行&#39;</span>,<span style="color:#ae81ff">95</span>,<span style="color:#ae81ff">85</span>,<span style="color:#ae81ff">85</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">insert</span> <span style="color:#66d9ef">into</span> student(id,name,chinese,english,math) <span style="color:#66d9ef">values</span>(<span style="color:#ae81ff">10</span>,<span style="color:#e6db74">&#39;史泰香&#39;</span>,<span style="color:#ae81ff">94</span>,<span style="color:#ae81ff">85</span>,<span style="color:#ae81ff">84</span>);
+</span></span></code></pre></div></li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<ul>
+<li>查询表中所有学生的信息。</li>
+<li>查询表中所有学生的姓名和对应的英语成绩。</li>
+<li></li>
+</ul>
+<p>将第二步查询结果中的重复成绩过滤掉。</p>
+<ul>
+<li></li>
+</ul>
+<p>在所有学生英语分数上加10分特长分。</p>
+<ul>
+<li></li>
+</ul>
+<p>统计每个学生的总分。</p>
+<ul>
+<li></li>
+</ul>
+<p>使用别名表示学生分数</p>
+<ul>
+<li></li>
+</ul>
+<p>查询姓名为何东的学生成绩</p>
+<ul>
+<li></li>
+</ul>
+<p>查询英语成绩大于90分的同学</p>
+<ul>
+<li></li>
+</ul>
+<p>查询总分大于250分的所有同学</p>
+<ul>
+<li></li>
+</ul>
+<p>查询英语分数在 85－95之间的同学。</p>
+<ul>
+<li></li>
+</ul>
+<p>查询数学分数为84,90,91的同学。</p>
+<ul>
+<li></li>
+</ul>
+<p>查询所有姓何的学生成绩。</p>
+<ul>
+<li></li>
+</ul>
+<p>查询数学分&gt;85，语文分&gt;90的同学。</p>
+<ul>
+<li></li>
+</ul>
+<p>对数学成绩排序后输出。</p>
+<ul>
+<li></li>
+</ul>
+<p>对总分排序后输出，然后再按从高到低的顺序输出</p>
+<ul>
+<li></li>
+</ul>
+<p>对姓何的学生成绩排序输出</p>
+<ul>
+<li></li>
+</ul>
+<p>统计一个班级共有多少学生？</p>
+<ul>
+<li></li>
+</ul>
+<p>统计数学成绩大于90的学生有多少个？</p>
+<ul>
+<li></li>
+</ul>
+<p>统计总分大于250的人数有多少？</p>
+<ul>
+<li></li>
+</ul>
+<p>统计一个班级数学总成绩？</p>
+<ul>
+<li></li>
+</ul>
+<p>统计一个班级语文、英语、数学各科的总成绩</p>
+<ul>
+<li></li>
+</ul>
+<p>统计一个班级语文、英语、数学的成绩总和</p>
+<ul>
+<li></li>
+</ul>
+<p>求一个班级数学平均分？</p>
+<ul>
+<li></li>
+</ul>
+<p>求一个班级总分平均分</p>
+<ul>
+<li></li>
+</ul>
+<p>求班级最高分和最低分</p>
+</blockquote>
+<h2 id="9-mysql函数的使用">9. mysql函数的使用</h2>
+<h3 id="91-日期函数">9.1 日期函数</h3>
+<blockquote>
+<p>MySQL里面时间分为三类：时间、日期、时间戳(含有时分秒的sysdate)。</p>
+</blockquote>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://gitee.com/txt1994/images/raw/master/img/2021/07/image-20191130180806388.png"
+        data-srcset="https://gitee.com/txt1994/images/raw/master/img/2021/07/image-20191130180806388.png, https://gitee.com/txt1994/images/raw/master/img/2021/07/image-20191130180806388.png 1.5x, https://gitee.com/txt1994/images/raw/master/img/2021/07/image-20191130180806388.png 2x"
+        data-sizes="auto"
+        alt="https://gitee.com/txt1994/images/raw/master/img/2021/07/image-20191130180806388.png"
+        title="https://gitee.com/txt1994/images/raw/master/img/2021/07/image-20191130180806388.png" /></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>    <span style="color:#75715e">-- 当前时间: now() == sysdate()
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    mysql<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">select</span> sysdate() <span style="color:#66d9ef">from</span> dual;
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">+</span><span style="color:#75715e">---------------------+
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">|</span> sysdate()           <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">+</span><span style="color:#75715e">---------------------+
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">|</span> <span style="color:#ae81ff">2019</span><span style="color:#f92672">-</span><span style="color:#ae81ff">12</span><span style="color:#f92672">-</span><span style="color:#ae81ff">02</span> <span style="color:#ae81ff">09</span>:<span style="color:#ae81ff">03</span>:<span style="color:#ae81ff">42</span> <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">+</span><span style="color:#75715e">---------------------+
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">row</span> <span style="color:#66d9ef">in</span> <span style="color:#66d9ef">set</span> (<span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">00</span> sec)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    mysql<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">select</span> now() <span style="color:#66d9ef">from</span> dual;
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">+</span><span style="color:#75715e">---------------------+
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">|</span> now()               <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">+</span><span style="color:#75715e">---------------------+
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">|</span> <span style="color:#ae81ff">2019</span><span style="color:#f92672">-</span><span style="color:#ae81ff">12</span><span style="color:#f92672">-</span><span style="color:#ae81ff">02</span> <span style="color:#ae81ff">09</span>:<span style="color:#ae81ff">04</span>:<span style="color:#ae81ff">35</span> <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">+</span><span style="color:#75715e">---------------------+
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">row</span> <span style="color:#66d9ef">in</span> <span style="color:#66d9ef">set</span> (<span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">00</span> sec)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">-- addtime(time, s) 给当前实际, 添加对应的秒数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">select</span> addtime(<span style="color:#e6db74">&#39;09:04:35&#39;</span>,<span style="color:#ae81ff">20</span>) <span style="color:#66d9ef">from</span> dual; 
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">+</span><span style="color:#75715e">------------------------+
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">|</span> addtime(<span style="color:#e6db74">&#39;09:04:35&#39;</span>,<span style="color:#ae81ff">20</span>) <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">+</span><span style="color:#75715e">------------------------+
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">|</span> <span style="color:#ae81ff">09</span>:<span style="color:#ae81ff">04</span>:<span style="color:#ae81ff">55</span>               <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">+</span><span style="color:#75715e">------------------------+
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">-- 当前日期: 年, 月, 日
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    mysql<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">select</span> <span style="color:#66d9ef">current_date</span>() <span style="color:#66d9ef">from</span> dual;
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">+</span><span style="color:#75715e">----------------+
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">|</span> <span style="color:#66d9ef">current_date</span>() <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">+</span><span style="color:#75715e">----------------+
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">|</span> <span style="color:#ae81ff">2019</span><span style="color:#f92672">-</span><span style="color:#ae81ff">12</span><span style="color:#f92672">-</span><span style="color:#ae81ff">02</span>     <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">+</span><span style="color:#75715e">----------------+
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">row</span> <span style="color:#66d9ef">in</span> <span style="color:#66d9ef">set</span> (<span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">00</span> sec)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">-- 当前时间: 时, 分, 秒
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    mysql<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">select</span> <span style="color:#66d9ef">current_time</span>() <span style="color:#66d9ef">from</span> dual;    
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">+</span><span style="color:#75715e">----------------+
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">|</span> <span style="color:#66d9ef">current_time</span>() <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">+</span><span style="color:#75715e">----------------+
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">|</span> <span style="color:#ae81ff">09</span>:<span style="color:#ae81ff">08</span>:<span style="color:#ae81ff">10</span>       <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">+</span><span style="color:#75715e">----------------+
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">row</span> <span style="color:#66d9ef">in</span> <span style="color:#66d9ef">set</span> (<span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">00</span> sec)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">-- 时间戳
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    mysql<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">select</span> <span style="color:#66d9ef">current_timestamp</span>() <span style="color:#66d9ef">from</span> dual;    
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">+</span><span style="color:#75715e">---------------------+
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">|</span> <span style="color:#66d9ef">current_timestamp</span>() <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">+</span><span style="color:#75715e">---------------------+
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">|</span> <span style="color:#ae81ff">2019</span><span style="color:#f92672">-</span><span style="color:#ae81ff">12</span><span style="color:#f92672">-</span><span style="color:#ae81ff">02</span> <span style="color:#ae81ff">09</span>:<span style="color:#ae81ff">09</span>:<span style="color:#ae81ff">47</span> <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">+</span><span style="color:#75715e">---------------------+
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">row</span> <span style="color:#66d9ef">in</span> <span style="color:#66d9ef">set</span> (<span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">00</span> sec)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">-- 将给定时间的日期取出
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">select</span> date(now()) <span style="color:#66d9ef">from</span> dual;                 
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">+</span><span style="color:#75715e">-------------+
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">|</span> date(now()) <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">+</span><span style="color:#75715e">-------------+
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">|</span> <span style="color:#ae81ff">2019</span><span style="color:#f92672">-</span><span style="color:#ae81ff">12</span><span style="color:#f92672">-</span><span style="color:#ae81ff">02</span>  <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">+</span><span style="color:#75715e">-------------+
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">row</span> <span style="color:#66d9ef">in</span> <span style="color:#66d9ef">set</span> (<span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">00</span> sec)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">-- date_add(), 第二个参数的type: 天: day, 月:month, 年: year
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    mysql<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">select</span> date_add(now(), interval <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">day</span>) <span style="color:#66d9ef">from</span> dual;               
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">+</span><span style="color:#75715e">---------------------------------+
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">|</span> date_add(now(), interval <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">day</span>) <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">+</span><span style="color:#75715e">---------------------------------+
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">|</span> <span style="color:#ae81ff">2019</span><span style="color:#f92672">-</span><span style="color:#ae81ff">12</span><span style="color:#f92672">-</span><span style="color:#ae81ff">03</span> <span style="color:#ae81ff">09</span>:<span style="color:#ae81ff">14</span>:<span style="color:#ae81ff">57</span>             <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">+</span><span style="color:#75715e">---------------------------------+
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">row</span> <span style="color:#66d9ef">in</span> <span style="color:#66d9ef">set</span> (<span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">00</span> sec)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    mysql<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">select</span> date_add(now(), interval <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">month</span>) <span style="color:#66d9ef">from</span> dual;   
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">+</span><span style="color:#75715e">-----------------------------------+
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">|</span> date_add(now(), interval <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">month</span>) <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">+</span><span style="color:#75715e">-----------------------------------+
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">|</span> <span style="color:#ae81ff">2020</span><span style="color:#f92672">-</span><span style="color:#ae81ff">01</span><span style="color:#f92672">-</span><span style="color:#ae81ff">02</span> <span style="color:#ae81ff">09</span>:<span style="color:#ae81ff">15</span>:<span style="color:#ae81ff">27</span>               <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">+</span><span style="color:#75715e">-----------------------------------+
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">row</span> <span style="color:#66d9ef">in</span> <span style="color:#66d9ef">set</span> (<span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">00</span> sec)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    mysql<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">select</span> date_add(now(), interval <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">year</span>) <span style="color:#66d9ef">from</span> dual;     
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">+</span><span style="color:#75715e">----------------------------------+
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">|</span> date_add(now(), interval <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">year</span>) <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">+</span><span style="color:#75715e">----------------------------------+
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">|</span> <span style="color:#ae81ff">2020</span><span style="color:#f92672">-</span><span style="color:#ae81ff">12</span><span style="color:#f92672">-</span><span style="color:#ae81ff">02</span> <span style="color:#ae81ff">09</span>:<span style="color:#ae81ff">15</span>:<span style="color:#ae81ff">37</span>              <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">+</span><span style="color:#75715e">----------------------------------+
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">row</span> <span style="color:#66d9ef">in</span> <span style="color:#66d9ef">set</span> (<span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">00</span> sec)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">-- 计算两个日期的差值
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    mysql<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">select</span> datediff(<span style="color:#e6db74">&#39;2019-12-01 09:18:06&#39;</span>, <span style="color:#e6db74">&#39;2019-1-02 09:18:06&#39;</span>); 
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">+</span><span style="color:#75715e">-------------------------------------------------------+
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">|</span> datediff(<span style="color:#e6db74">&#39;2019-12-01 09:18:06&#39;</span>, <span style="color:#e6db74">&#39;2019-1-02 09:18:06&#39;</span>) <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">+</span><span style="color:#75715e">-------------------------------------------------------+
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">|</span>                                                   <span style="color:#ae81ff">333</span> <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">+</span><span style="color:#75715e">-------------------------------------------------------+
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">row</span> <span style="color:#66d9ef">in</span> <span style="color:#66d9ef">set</span> (<span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">00</span> sec)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    mysql<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">select</span> datediff(<span style="color:#e6db74">&#39;2018-12-01 09:18:06&#39;</span>, <span style="color:#e6db74">&#39;2019-1-02 09:18:06&#39;</span>); 
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">+</span><span style="color:#75715e">-------------------------------------------------------+
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">|</span> datediff(<span style="color:#e6db74">&#39;2018-12-01 09:18:06&#39;</span>, <span style="color:#e6db74">&#39;2019-1-02 09:18:06&#39;</span>) <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">+</span><span style="color:#75715e">-------------------------------------------------------+
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">|</span>                                                   <span style="color:#f92672">-</span><span style="color:#ae81ff">32</span> <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">+</span><span style="color:#75715e">-------------------------------------------------------+
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">row</span> <span style="color:#66d9ef">in</span> <span style="color:#66d9ef">set</span> (<span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">00</span> sec)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">-- 单独显示当前年, 月, 日
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">select</span> <span style="color:#66d9ef">year</span>(now()) <span style="color:#e6db74">&#34;年&#34;</span>, <span style="color:#66d9ef">month</span>(now()) <span style="color:#e6db74">&#34;月&#34;</span>, <span style="color:#66d9ef">day</span>(now()) <span style="color:#e6db74">&#34;日&#34;</span> <span style="color:#66d9ef">from</span> dual;
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">-- 单独显示当前日期, 时间, 时间戳
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">-- 显示昨天, 今天, 明天
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">select</span>  date_sub(now(), interval <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">day</span>), now(), date_add(now(), interval <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">day</span>) <span style="color:#66d9ef">from</span> dual;
+</span></span></code></pre></div><h3 id="92-字符串函数">9.2 字符串函数</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://gitee.com/txt1994/images/raw/master/img/2021/07/image-20191130182700039.png"
+        data-srcset="https://gitee.com/txt1994/images/raw/master/img/2021/07/image-20191130182700039.png, https://gitee.com/txt1994/images/raw/master/img/2021/07/image-20191130182700039.png 1.5x, https://gitee.com/txt1994/images/raw/master/img/2021/07/image-20191130182700039.png 2x"
+        data-sizes="auto"
+        alt="https://gitee.com/txt1994/images/raw/master/img/2021/07/image-20191130182700039.png"
+        title="https://gitee.com/txt1994/images/raw/master/img/2021/07/image-20191130182700039.png" /></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- 字符串连接
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">-- mydql中可以连接多个字符串, oracle中只能连接两个字符串
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    mysql<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">select</span> concat(<span style="color:#e6db74">&#34;hello&#34;</span>, <span style="color:#e6db74">&#34; world&#34;</span>, <span style="color:#e6db74">&#34; 你好,&#34;</span>, <span style="color:#e6db74">&#34;世界&#34;</span>) <span style="color:#66d9ef">from</span> dual;
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">+</span><span style="color:#75715e">-------------------------------------------------+
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">|</span> concat(<span style="color:#e6db74">&#34;hello&#34;</span>, <span style="color:#e6db74">&#34; world&#34;</span>, <span style="color:#e6db74">&#34; 你好,&#34;</span>, <span style="color:#e6db74">&#34;世界&#34;</span>)     <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">+</span><span style="color:#75715e">-------------------------------------------------+
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">|</span> hello world <span style="color:#960050;background-color:#1e0010">你好</span>,<span style="color:#960050;background-color:#1e0010">世界</span>                           <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">+</span><span style="color:#75715e">-------------------------------------------------+
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- 大小写转换
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    mysql<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">select</span> ucase(<span style="color:#e6db74">&#34;hello&#34;</span>), lcase(<span style="color:#e6db74">&#34;WORLD&#34;</span>) <span style="color:#66d9ef">from</span> dual;
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">+</span><span style="color:#75715e">----------------+----------------+
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">|</span> ucase(<span style="color:#e6db74">&#34;hello&#34;</span>) <span style="color:#f92672">|</span> lcase(<span style="color:#e6db74">&#34;WORLD&#34;</span>) <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">+</span><span style="color:#75715e">----------------+----------------+
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">|</span> HELLO          <span style="color:#f92672">|</span> world          <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">+</span><span style="color:#75715e">----------------+----------------+
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">row</span> <span style="color:#66d9ef">in</span> <span style="color:#66d9ef">set</span> (<span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">00</span> sec)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- 字符串截取, 从左侧开始
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    mysql<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">select</span> <span style="color:#66d9ef">left</span>(<span style="color:#e6db74">&#34;hello,world&#34;</span>, <span style="color:#ae81ff">5</span>) <span style="color:#66d9ef">from</span> dual;                      
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">+</span><span style="color:#75715e">------------------------+
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">|</span> <span style="color:#66d9ef">left</span>(<span style="color:#e6db74">&#34;hello,world&#34;</span>, <span style="color:#ae81ff">5</span>) <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">+</span><span style="color:#75715e">------------------------+
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">|</span> hello                  <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">+</span><span style="color:#75715e">------------------------+
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">row</span> <span style="color:#66d9ef">in</span> <span style="color:#66d9ef">set</span> (<span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">00</span> sec)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- 字符串比较
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    mysql<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">select</span> strcmp(<span style="color:#e6db74">&#34;abc&#34;</span>, <span style="color:#e6db74">&#34;bca&#34;</span>) <span style="color:#66d9ef">from</span> dual;
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">+</span><span style="color:#75715e">----------------------+
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">|</span> strcmp(<span style="color:#e6db74">&#34;abc&#34;</span>, <span style="color:#e6db74">&#34;bca&#34;</span>) <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">+</span><span style="color:#75715e">----------------------+
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">|</span>                   <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span> <span style="color:#f92672">|</span>  <span style="color:#75715e">-- 小于
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">+</span><span style="color:#75715e">----------------------+
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">row</span> <span style="color:#66d9ef">in</span> <span style="color:#66d9ef">set</span> (<span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">00</span> sec)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    mysql<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">select</span> strcmp(<span style="color:#e6db74">&#34;aaa&#34;</span>, <span style="color:#e6db74">&#34;aa&#34;</span>) <span style="color:#66d9ef">from</span> dual;     
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">+</span><span style="color:#75715e">---------------------+
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">|</span> strcmp(<span style="color:#e6db74">&#34;aaa&#34;</span>, <span style="color:#e6db74">&#34;aa&#34;</span>) <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">+</span><span style="color:#75715e">---------------------+
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">|</span>                   <span style="color:#ae81ff">1</span> <span style="color:#f92672">|</span> <span style="color:#75715e">-- 大于
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">+</span><span style="color:#75715e">---------------------+
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">row</span> <span style="color:#66d9ef">in</span> <span style="color:#66d9ef">set</span> (<span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">00</span> sec)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    mysql<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">select</span> strcmp(<span style="color:#e6db74">&#34;aaa&#34;</span>, <span style="color:#e6db74">&#34;aaa&#34;</span>) <span style="color:#66d9ef">from</span> dual;
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">+</span><span style="color:#75715e">----------------------+
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">|</span> strcmp(<span style="color:#e6db74">&#34;aaa&#34;</span>, <span style="color:#e6db74">&#34;aaa&#34;</span>) <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">+</span><span style="color:#75715e">----------------------+
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">|</span>                    <span style="color:#ae81ff">0</span> <span style="color:#f92672">|</span> <span style="color:#75715e">-- 等于
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">+</span><span style="color:#75715e">----------------------+
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">row</span> <span style="color:#66d9ef">in</span> <span style="color:#66d9ef">set</span> (<span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">00</span> sec)
+</span></span></code></pre></div><h3 id="93-数学函数">9.3 数学函数</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://gitee.com/txt1994/images/raw/master/img/2021/07/image-20191130183602147.png"
+        data-srcset="https://gitee.com/txt1994/images/raw/master/img/2021/07/image-20191130183602147.png, https://gitee.com/txt1994/images/raw/master/img/2021/07/image-20191130183602147.png 1.5x, https://gitee.com/txt1994/images/raw/master/img/2021/07/image-20191130183602147.png 2x"
+        data-sizes="auto"
+        alt="https://gitee.com/txt1994/images/raw/master/img/2021/07/image-20191130183602147.png"
+        title="https://gitee.com/txt1994/images/raw/master/img/2021/07/image-20191130183602147.png" />
+&ndash; 向上取整
+&ndash; mysql
+ceiling(小数)
+&ndash; oracle
+ceil(小数)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>    <span style="color:#75715e">-- 进制转换
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    mysql<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">select</span> conv(<span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">16</span>) <span style="color:#66d9ef">from</span> dual; 
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">+</span><span style="color:#75715e">-------------------+
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">|</span> conv(<span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">16</span>) <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">+</span><span style="color:#75715e">-------------------+
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">|</span> <span style="color:#ae81ff">64</span>                <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">+</span><span style="color:#75715e">-------------------+
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">-- 保留指定的小数位数, 可以四舍五入
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    mysql<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">select</span> format(<span style="color:#ae81ff">12</span>.<span style="color:#ae81ff">345</span>, <span style="color:#ae81ff">2</span>) <span style="color:#66d9ef">from</span> dual;
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">+</span><span style="color:#75715e">-------------------+
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">|</span> format(<span style="color:#ae81ff">12</span>.<span style="color:#ae81ff">345</span>, <span style="color:#ae81ff">2</span>) <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">+</span><span style="color:#75715e">-------------------+
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">|</span> <span style="color:#ae81ff">12</span>.<span style="color:#ae81ff">35</span>             <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">+</span><span style="color:#75715e">-------------------+
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">row</span> <span style="color:#66d9ef">in</span> <span style="color:#66d9ef">set</span> (<span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">00</span> sec)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">-- 取集合中的最小值
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    mysql<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">select</span> least(<span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">0</span>) <span style="color:#66d9ef">from</span> dual;
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">+</span><span style="color:#75715e">-----------------------+
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">|</span> least(<span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">0</span>) <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">+</span><span style="color:#75715e">-----------------------+
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">|</span>                     <span style="color:#ae81ff">0</span> <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">+</span><span style="color:#75715e">-----------------------+
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">row</span> <span style="color:#66d9ef">in</span> <span style="color:#66d9ef">set</span> (<span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">00</span> sec)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">-- 生成随机数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">-- 生成的随机数范围: 0-1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    mysql<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">select</span> rand(now()) <span style="color:#66d9ef">from</span> dual;
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">+</span><span style="color:#75715e">--------------------+
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">|</span> rand(now())        <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">+</span><span style="color:#75715e">--------------------+
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">|</span> <span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">8633374812671333</span> <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">+</span><span style="color:#75715e">--------------------+
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">row</span> <span style="color:#66d9ef">in</span> <span style="color:#66d9ef">set</span> (<span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">00</span> sec)
+</span></span></code></pre></div><h3 id="94-日期转换">9.4 日期转换</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>    <span style="color:#75715e">-- oracle 日期格式: yyyy-mm-dd hh24:mi:ss 不区分大小写
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    to_char()  <span style="color:#960050;background-color:#1e0010">日期转字符串</span>
+</span></span><span style="display:flex;"><span>    to_date()  <span style="color:#960050;background-color:#1e0010">字符串转日期</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">-- mysql 日期格式: %Y-%m-%d %H:%i:%s    区分大小写
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    date_format() <span style="color:#960050;background-color:#1e0010">日期转字符串</span>
+</span></span><span style="display:flex;"><span>    str_to_date() <span style="color:#960050;background-color:#1e0010">字符串转日期</span>
+</span></span></code></pre></div><table>
+<thead>
+<tr>
+<th></th>
+<th>值</th>
+<th style="text-align:center">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>秒</td>
+<td>%S、%s</td>
+<td style="text-align:center">两位数字形式的秒（ 00,01, &hellip;, 59）</td>
+</tr>
+<tr>
+<td>分</td>
+<td>%i</td>
+<td style="text-align:center">两位数字形式的分（ 00,01, &hellip;, 59）</td>
+</tr>
+<tr>
+<td>小时</td>
+<td>%H</td>
+<td style="text-align:center">24小时制，两位数形式小时（00,01, &hellip;,23）</td>
+</tr>
+<tr>
+<td></td>
+<td>%h</td>
+<td style="text-align:center">12小时制，两位数形式小时（00,01, &hellip;,12）</td>
+</tr>
+<tr>
+<td></td>
+<td>%k</td>
+<td style="text-align:center">24小时制，数形式小时（0,1, &hellip;,23）</td>
+</tr>
+<tr>
+<td></td>
+<td>%l</td>
+<td style="text-align:center">12小时制，数形式小时（0,1, &hellip;,12）</td>
+</tr>
+<tr>
+<td></td>
+<td>%T</td>
+<td style="text-align:center">24小时制，时间形式（HH:mm:ss）</td>
+</tr>
+<tr>
+<td></td>
+<td>%r</td>
+<td style="text-align:center">12小时制，时间形式（hh:mm:ss AM 或 PM）</td>
+</tr>
+<tr>
+<td></td>
+<td>%p</td>
+<td style="text-align:center">AM上午或PM下午</td>
+</tr>
+<tr>
+<td>周</td>
+<td>%W</td>
+<td style="text-align:center">一周中每一天的名称（Sunday,Monday, &hellip;,Saturday）</td>
+</tr>
+<tr>
+<td></td>
+<td>%a</td>
+<td style="text-align:center">一周中每一天名称的缩写（Sun,Mon, &hellip;,Sat）</td>
+</tr>
+<tr>
+<td></td>
+<td>%w</td>
+<td style="text-align:center">以数字形式标识周（0=Sunday,1=Monday, &hellip;,6=Saturday）</td>
+</tr>
+<tr>
+<td></td>
+<td>%U</td>
+<td style="text-align:center">数字表示周数，星期天为周中第一天</td>
+</tr>
+<tr>
+<td></td>
+<td>%u</td>
+<td style="text-align:center">数字表示周数，星期一为周中第一天</td>
+</tr>
+<tr>
+<td>天</td>
+<td>%d</td>
+<td style="text-align:center">两位数字表示月中天数（01,02, &hellip;,31）</td>
+</tr>
+<tr>
+<td></td>
+<td>%e</td>
+<td style="text-align:center">数字表示月中天数（1,2, &hellip;,31）</td>
+</tr>
+<tr>
+<td></td>
+<td>%D</td>
+<td style="text-align:center">英文后缀表示月中天数（1st,2nd,3rd &hellip;）</td>
+</tr>
+<tr>
+<td></td>
+<td>%j</td>
+<td style="text-align:center">以三位数字表示年中天数（001,002, &hellip;,366）</td>
+</tr>
+<tr>
+<td></td>
+<td>%M</td>
+<td style="text-align:center">英文月名（January,February, &hellip;,December）</td>
+</tr>
+<tr>
+<td></td>
+<td>%b</td>
+<td style="text-align:center">英文缩写月名（Jan,Feb, &hellip;,Dec）</td>
+</tr>
+<tr>
+<td></td>
+<td>%m</td>
+<td style="text-align:center">两位数字表示月份（01,02, &hellip;,12）</td>
+</tr>
+<tr>
+<td></td>
+<td>%c</td>
+<td style="text-align:center">数字表示月份（1,2, &hellip;,12）</td>
+</tr>
+<tr>
+<td>年</td>
+<td>%Y</td>
+<td style="text-align:center">四位数字表示的年份（2015,2016&hellip;）</td>
+</tr>
+<tr>
+<td></td>
+<td>%y</td>
+<td style="text-align:center">两位数字表示的年份（15,16&hellip;）</td>
+</tr>
+<tr>
+<td>文字输出</td>
+<td>%文字</td>
+<td style="text-align:center">直接输出文字内容</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<p>date类型装换为varchar类型</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- date_format(日期, fmt)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>mysql<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">select</span> date_format(now(), <span style="color:#e6db74">&#39;%Y/%m/%d %H:%i:%s&#39;</span>) <span style="color:#66d9ef">from</span> dual;   
+</span></span><span style="display:flex;"><span><span style="color:#f92672">+</span><span style="color:#75715e">-----------------------------------------+
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">|</span> date_format(now(), <span style="color:#e6db74">&#39;%Y/%m/%d %H:%i:%s&#39;</span>) <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">+</span><span style="color:#75715e">-----------------------------------------+
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">|</span> <span style="color:#ae81ff">2019</span><span style="color:#f92672">/</span><span style="color:#ae81ff">12</span><span style="color:#f92672">/</span><span style="color:#ae81ff">02</span> <span style="color:#ae81ff">10</span>:<span style="color:#ae81ff">07</span>:<span style="color:#ae81ff">37</span>                     <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">+</span><span style="color:#75715e">-----------------------------------------+
+</span></span></span></code></pre></div></li>
+<li>
+<p>varchar类型转换为date类型</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- 参数fmt的个数应该和日期字符串的形式一致
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">-- str_to_date(日期字符串, fmt)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>mysql<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">select</span> str_to_date(<span style="color:#e6db74">&#34;2019/12/02 10:07:37&#34;</span>, <span style="color:#e6db74">&#34;%Y/%m/%d %H:%i:%s&#34;</span>) <span style="color:#66d9ef">from</span> dual;  
+</span></span><span style="display:flex;"><span><span style="color:#f92672">+</span><span style="color:#75715e">---------------------------------------------------------+
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">|</span> str_to_date(<span style="color:#e6db74">&#34;2019/12/02 10:07:37&#34;</span>, <span style="color:#e6db74">&#34;%Y/%m/%d %H:%i:%s&#34;</span>) <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">+</span><span style="color:#75715e">---------------------------------------------------------+
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">|</span> <span style="color:#ae81ff">2019</span><span style="color:#f92672">-</span><span style="color:#ae81ff">12</span><span style="color:#f92672">-</span><span style="color:#ae81ff">02</span> <span style="color:#ae81ff">10</span>:<span style="color:#ae81ff">07</span>:<span style="color:#ae81ff">37</span>                                     <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">+</span><span style="color:#75715e">---------------------------------------------------------+
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#ae81ff">1</span> <span style="color:#66d9ef">row</span> <span style="color:#66d9ef">in</span> <span style="color:#66d9ef">set</span> (<span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">00</span> sec)
+</span></span></code></pre></div></li>
+</ul>
+<h2 id="10-多表查询">10. 多表查询</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>    <span style="color:#75715e">-- 分组函数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">count</span>(); <span style="color:#75715e">-- 求总数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">avg</span>();     <span style="color:#75715e">-- 求平均值
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">sum</span>();       <span style="color:#75715e">-- 求和
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">min</span>();       <span style="color:#75715e">-- 最小值
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">max</span>();     <span style="color:#75715e">-- 最大值
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">-- having 必须出现在group by 后边, 不能写where
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">-- where 写在 from 的后边
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">-- order by: 默认升序 asc, 降序 desc
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">select</span> <span style="color:#960050;background-color:#1e0010">列名</span><span style="color:#f92672">|</span><span style="color:#960050;background-color:#1e0010">表达式</span> <span style="color:#66d9ef">as</span> <span style="color:#e6db74">&#34;别名&#34;</span> <span style="color:#66d9ef">from</span> <span style="color:#960050;background-color:#1e0010">表名</span> <span style="color:#e6db74">&#34;表的别名&#34;</span> <span style="color:#66d9ef">where</span> <span style="color:#960050;background-color:#1e0010">表达式</span> <span style="color:#66d9ef">group</span> <span style="color:#66d9ef">by</span> <span style="color:#960050;background-color:#1e0010">列名</span> <span style="color:#66d9ef">having</span> <span style="color:#960050;background-color:#1e0010">条件</span> <span style="color:#66d9ef">order</span> <span style="color:#66d9ef">by</span> <span style="color:#66d9ef">asc</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">desc</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">-- 求两个表的笛卡尔积 cross join
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">-- 最简单的两个表查询
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">select</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">from</span> dept, emp;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">select</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">from</span> dept <span style="color:#66d9ef">cross</span> <span style="color:#66d9ef">join</span> emp;
+</span></span></code></pre></div><h3 id="101-内连接----inner-join">10.1 内连接 &ndash; inner join</h3>
+<blockquote>
+<p>显示部门名称, 部门编号, 员工编号,和员工姓名</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- mysql+oracle
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> d.deptno, d.dname, e.empno, e.ename <span style="color:#66d9ef">from</span> dept d, emp e <span style="color:#66d9ef">where</span> d.deptno<span style="color:#f92672">=</span>e.deptno;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- mysql+oracle
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">-- 将表之间的逗号替换为 inner join --&gt; 简写为 join
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">-- 将 where 替换为 on
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> d.deptno, d.dname, e.empno, e.ename <span style="color:#66d9ef">from</span> dept d  <span style="color:#66d9ef">join</span> emp e <span style="color:#66d9ef">on</span> d.deptno<span style="color:#f92672">=</span>e.deptno;
+</span></span></code></pre></div><h3 id="102-外连接----outer-join">10.2 外连接 &ndash; outer join</h3>
+<blockquote>
+<p>外连接: 在多表查询的时候, 要通过where进行过滤, 有些表中的字段值不满足条件, 被过滤掉了, 不会显示在最终的结果集中, 必须使用外连接的方式, 才能够使其显示在结果集中.</p>
+<p>按部门统计员工人数，显示如下信息：部门号，部门名称，人数(所有部门的人数都统计)</p>
+</blockquote>
+<ul>
+<li>左外连接 &ndash; left outer join</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>  <span style="color:#75715e">-- oracle
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">select</span> d.deptno, d.dname, <span style="color:#66d9ef">count</span>(e.empno) <span style="color:#66d9ef">from</span> dept d, emp e <span style="color:#66d9ef">where</span> d.deptno<span style="color:#f92672">=</span>e.deptno(<span style="color:#f92672">+</span>) <span style="color:#66d9ef">group</span> <span style="color:#66d9ef">by</span> d.deptno, d.dname;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">-- mysql + oracle
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">-- 表之间的逗号替换为:   left outer join -&gt; outer 可以省略 -&gt; left join
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">-- where -&gt; on
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">select</span> d.deptno, d.dname, <span style="color:#66d9ef">count</span>(e.empno) <span style="color:#66d9ef">from</span> dept d <span style="color:#66d9ef">left</span> <span style="color:#66d9ef">outer</span> <span style="color:#66d9ef">join</span> emp e <span style="color:#66d9ef">on</span> d.deptno<span style="color:#f92672">=</span>e.deptno <span style="color:#66d9ef">group</span> <span style="color:#66d9ef">by</span> d.deptno, d.dname;
+</span></span></code></pre></div><ul>
+<li>右外连接 &ndash; right outer join</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>    <span style="color:#75715e">-- oracle
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">select</span> d.deptno, d.dname, <span style="color:#66d9ef">count</span>(e.empno) <span style="color:#66d9ef">from</span> dept d, emp e <span style="color:#66d9ef">where</span> e.deptno(<span style="color:#f92672">+</span>)<span style="color:#f92672">=</span>d.deptno <span style="color:#66d9ef">group</span> <span style="color:#66d9ef">by</span> d.deptno, d.dname;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">-- mysql + oracle
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">-- 表之间的逗号替换为:   right outer join -&gt; outer 可以省略 -&gt; right join
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">-- where -&gt; on
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">select</span> d.deptno, d.dname, <span style="color:#66d9ef">count</span>(e.empno) <span style="color:#66d9ef">from</span> emp e <span style="color:#66d9ef">right</span> <span style="color:#66d9ef">join</span> dept d <span style="color:#66d9ef">on</span> e.deptno<span style="color:#f92672">=</span>d.deptno <span style="color:#66d9ef">group</span> <span style="color:#66d9ef">by</span> d.deptno, d.dname;
+</span></span></code></pre></div><ul>
+<li>全外连接 &ndash; full outer join</li>
+</ul>
+<blockquote>
+<p>在多表查询的时候, 要通过where进行过滤, 有些表中的字段值不满足条件, 被过滤掉了, 不会显示在最终的结果集中, 不知道的那个表的字段不满足条件或者是左侧不满足条件或右侧表不满足条件, 需要将这些不满条件对数据全部显示到结果集中, 可以使用全外连接.</p>
+<ul>
+<li>两个表互相补充</li>
+</ul>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>      <span style="color:#75715e">-- 在mysql中不支持全外连接, oracle中是支持的
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">-- full outer join -&gt; 简写: full join
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#75715e">-- 有可能emp表给dept提供补充, 也有可能dept给emp提供补充
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#66d9ef">select</span> d.deptno, d.dname, <span style="color:#66d9ef">count</span>(e.empno) <span style="color:#66d9ef">from</span> emp e <span style="color:#66d9ef">full</span> <span style="color:#66d9ef">join</span> dept d <span style="color:#66d9ef">on</span> e.deptno<span style="color:#f92672">=</span>d.deptno <span style="color:#66d9ef">group</span> <span style="color:#66d9ef">by</span> d.deptno, d.dname;
+</span></span></code></pre></div><h3 id="103-自连接">10.3 自连接</h3>
+<blockquote>
+<p>查询员工、老板信息，显示: xxx的老板是xxx</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- oracle
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> e.ename <span style="color:#e6db74">&#34;员工&#34;</span>, nvl(b.ename, <span style="color:#e6db74">&#39;jump&#39;</span>) <span style="color:#e6db74">&#34;领导&#34;</span>  <span style="color:#66d9ef">from</span> emp e, emp b <span style="color:#66d9ef">where</span> e.mgr<span style="color:#f92672">=</span>b.empno(<span style="color:#f92672">+</span>); 
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- mysql
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">-- mysql 中的ifnull 等价于 oracle 中的 nvl
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> e.ename <span style="color:#e6db74">&#34;员工&#34;</span>, ifnull(b.ename, <span style="color:#e6db74">&#39;jump&#39;</span>) <span style="color:#e6db74">&#34;领导&#34;</span>  <span style="color:#66d9ef">from</span> emp e <span style="color:#66d9ef">left</span> <span style="color:#66d9ef">join</span> emp b <span style="color:#66d9ef">on</span> e.mgr<span style="color:#f92672">=</span>b.empno; 
+</span></span></code></pre></div><h2 id="11-表的约束">11. 表的约束</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">create</span> <span style="color:#66d9ef">table</span> <span style="color:#960050;background-color:#1e0010">表名</span>(
+</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">列名</span> <span style="color:#960050;background-color:#1e0010">列的类型</span> <span style="color:#66d9ef">default</span> <span style="color:#960050;background-color:#1e0010">默认值</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">列名</span> <span style="color:#960050;background-color:#1e0010">列的类型</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">列名</span> <span style="color:#960050;background-color:#1e0010">列的类型</span>
+</span></span><span style="display:flex;"><span>);
+</span></span></code></pre></div><h3 id="111-约束种类">11.1 约束种类</h3>
+<p>mysql中常用的约束有五种:</p>
+<ul>
+<li>
+<p>主键约束　<strong>primary key</strong></p>
+<ul>
+<li>非空 + 唯一</li>
+</ul>
+</li>
+<li>
+<p>主键自动增长　<strong>auto_increment</strong></p>
+<ul>
+<li>给主键用的, 只有列是主键才能加这个约束</li>
+<li>主键是数字的时候使用</li>
+</ul>
+</li>
+<li>
+<p>唯一约束　 <strong>unique</strong></p>
+</li>
+<li>
+<p>非空约束　 <strong>not null</strong></p>
+</li>
+<li>
+<p>外键约束　 <strong>foreign key</strong></p>
+</li>
+<li>
+<p>检查约束 check (在MySQL中语法保留，但没有效果)</p>
+</li>
+</ul>
+<h3 id="112-约束的使用">11.2 约束的使用</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">create</span> <span style="color:#66d9ef">table</span> persion(
+</span></span><span style="display:flex;"><span>    id int,            <span style="color:#75715e">-- 主键, 自动增长
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    age int,            <span style="color:#75715e">-- 非空
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    name varchar(<span style="color:#ae81ff">20</span>),    <span style="color:#75715e">-- 唯一
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    deptno int        <span style="color:#75715e">-- 外键
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>);
+</span></span></code></pre></div><ul>
+<li>表级别的约束</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- auto_increment只能放到列的位置
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">-- not null 非空只能在列上添加约束
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">create</span> <span style="color:#66d9ef">table</span> persion(
+</span></span><span style="display:flex;"><span>    id int auto_increment,            <span style="color:#75715e">-- 主键, 自动增长
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    age int <span style="color:#66d9ef">not</span> <span style="color:#66d9ef">null</span>,            <span style="color:#75715e">-- 非空
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    name varchar(<span style="color:#ae81ff">20</span>),    <span style="color:#75715e">-- 唯一
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    deptno int,        <span style="color:#75715e">-- 外键
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">constraint</span> pk_id_xxx <span style="color:#66d9ef">primary</span> <span style="color:#66d9ef">key</span>(id) ,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">constraint</span> un_name_xxx <span style="color:#66d9ef">unique</span>(name),
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">constraint</span> fk_deptno_xx <span style="color:#66d9ef">foreign</span> <span style="color:#66d9ef">key</span>(deptno) <span style="color:#66d9ef">references</span> dept(deptno)
+</span></span><span style="display:flex;"><span>);
+</span></span></code></pre></div><ul>
+<li>列级别的约束</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">create</span> <span style="color:#66d9ef">table</span> persion1(
+</span></span><span style="display:flex;"><span>    id int <span style="color:#66d9ef">primary</span> <span style="color:#66d9ef">key</span> auto_increment,            <span style="color:#75715e">-- 主键, 自动增长
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    age int <span style="color:#66d9ef">not</span> <span style="color:#66d9ef">null</span>,            <span style="color:#75715e">-- 非空
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    name varchar(<span style="color:#ae81ff">20</span>) <span style="color:#66d9ef">unique</span>,    <span style="color:#75715e">-- 唯一
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    deptno int <span style="color:#66d9ef">references</span> dept(deptno)    <span style="color:#75715e">-- 外键
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>);
+</span></span></code></pre></div><h2 id="12-事务">12. 事务</h2>
+<blockquote>
+<p>在mysql中事务默认是自动提交的，oracle中默认是手动提交的。</p>
+<ul>
+<li>原子性</li>
+<li>一致性</li>
+<li>隔离性</li>
+<li>永久性</li>
+</ul>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- 修改事务提交方式
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span> 
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- 手动提交
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>mysql<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">set</span> autocommit<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>Query OK, <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">rows</span> affected (<span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">00</span> sec)
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- 提交数据
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>mysql<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">commit</span>;
+</span></span><span style="display:flex;"><span>Query OK, <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">rows</span> affected (<span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">00</span> sec)
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- 数据回滚
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>mysql<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">rollback</span>;
+</span></span><span style="display:flex;"><span>Query OK, <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">rows</span> affected (<span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">00</span> sec)
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- 自动提交
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>mysql<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">set</span> autocommit<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>Query OK, <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">rows</span> affected (<span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">00</span> sec)
+</span></span></code></pre></div><h2 id="13-mysql-api">13. mysql API</h2>
+<blockquote>
+<ol>
+<li>初始化连接环境</li>
+<li>连接mysql的服务器</li>
+<li>执行sql语句</li>
+</ol>
+<ul>
+<li>查询</li>
+<li>插入</li>
+<li>更新</li>
+<li>删除</li>
+<li>创建/删除/修改数据库表</li>
+</ul>
+<ol start="4">
+<li>如果是插入/删除/修改数据等操作只能看到状态</li>
+</ol>
+<ul>
+<li>成功</li>
+<li>失败</li>
+</ul>
+<ol start="5">
+<li>如果sql语句是查询, 得到结果集</li>
+<li>遍历结果集</li>
+<li>释放资源</li>
+</ol>
+</blockquote>
+<ul>
+<li>初始化连接环境</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// 参数: NULL
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 返回值: 返回函数申请的内存的地址
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>MYSQL <span style="color:#f92672">*</span>mysql_init(MYSQL <span style="color:#f92672">*</span>mysql)  
+</span></span></code></pre></div><ul>
+<li>连接mysql服务器</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span> <span style="color:#75715e">// 返回值: 失败-&gt; NULL, 成功了-&gt; 返回值和第一个参数的地址相同
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>MYSQL <span style="color:#f92672">*</span>mysql_real_connect(
+</span></span><span style="display:flex;"><span>                MYSQL <span style="color:#f92672">*</span>mysql,     <span style="color:#75715e">// mysql_init函数的返回值
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                <span style="color:#75715e">// 本地: localhost, 远程连接:192.168.xx.xx;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>host,     <span style="color:#75715e">// mysql服务器地址, IP/主机名      
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>user,     <span style="color:#75715e">// mysql数据用户名, root       
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>passwd,   <span style="color:#75715e">// root用户的密码
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>db,       <span style="color:#75715e">// 数据库的名字       
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                <span style="color:#75715e">// 如果port==0, 使用默认端口, !=0是使用指定的端口
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> port,    <span style="color:#75715e">// 数据库的端口, 默认3306    
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>unix_socket,   <span style="color:#75715e">// NULL  
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span> client_flag  <span style="color:#75715e">// 0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>);
+</span></span></code></pre></div><ul>
+<li>执行sql语句</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// 添删查改的sql语句都是可以执行的
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 参数:
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//         mysql: mysql_real_connect()函数的返回值
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//      query: sql语句, 语句的结尾不要加 ;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 返回值: 成功-&gt; 0, 失败-&gt;非0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">mysql_query</span>(MYSQL <span style="color:#f92672">*</span>mysql, <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>query);
+</span></span></code></pre></div><ul>
+<li>获取结果集</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// 将结果集保存到本地内存中
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 返回值: 错误-&gt;null, 成功-&gt;非空
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 参数 mysql: mysql_real_connect() 返回值
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 结果集中保存了多条记录, 每条记录中有若干个字段
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>MYSQL_RES <span style="color:#f92672">*</span><span style="color:#a6e22e">mysql_store_result</span>(MYSQL <span style="color:#f92672">*</span>mysql);
+</span></span></code></pre></div><ul>
+<li>得到结果集的列数</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> mysql_num_fields(MYSQL_RES <span style="color:#f92672">*</span>result)
+</span></span></code></pre></div><ul>
+<li>获取表头 -&gt; 列名(字段名)</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#f92672">/</span> mysql.h
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">st_mysql_field</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>name;                 <span style="color:#75715e">/* Name of column */</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>org_name;             <span style="color:#75715e">/* Original column name, if an alias */</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>table;                <span style="color:#75715e">/* Table of column if column was a field */</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>org_table;            <span style="color:#75715e">/* Org table name, if table was an alias */</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>db;                   <span style="color:#75715e">/* Database for table */</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>catalog;          <span style="color:#75715e">/* Catalog for table */</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>def;                  <span style="color:#75715e">/* Default value (set by mysql_list_fields) */</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span> length;       <span style="color:#75715e">/* Width of column (create length) */</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span> max_length;   <span style="color:#75715e">/* Max width for selected set */</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> name_length;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> org_name_length;                                                                                        
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> table_length;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> org_table_length;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> db_length;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> catalog_length;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> def_length;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> flags;         <span style="color:#75715e">/* Div flags */</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> decimals;      <span style="color:#75715e">/* Number of decimals in field */</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> charsetnr;     <span style="color:#75715e">/* Character set */</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">enum</span> <span style="color:#a6e22e">enum_field_types</span> type; <span style="color:#75715e">/* Type of field. See mysql_com.h for types */</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>extension;
+</span></span><span style="display:flex;"><span>} MYSQL_FIELD;
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 返回值 中保存了所有的字段名, 返回值是一个数组
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>MYSQL_FIELD <span style="color:#f92672">*</span><span style="color:#a6e22e">mysql_fetch_fields</span>(MYSQL_RES <span style="color:#f92672">*</span>result);
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span>MYSQL_FIELD <span style="color:#f92672">*</span>fields <span style="color:#f92672">=</span> mysql_fetch_fields(result);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">int</span> i<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>; i<span style="color:#f92672">&lt;</span>num; <span style="color:#f92672">++</span>i)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    fields[i].name
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
+<li>遍历结果集</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">char</span><span style="color:#f92672">**</span> MYSQL_ROW;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 函数每调用一次, 从结果集中取出一条记录(行)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 参数: 结果集, mysql_store_result()返回值
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 返回值: char* row[], char**执向一个指针数组, 数组中的每一个元素都是一个字符串, 字符串就是字段值
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//        不管字段原来是什么类型, 结果集中都是以字符串形式保存的
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 如果还有下一行返回非空, 没有下一行, 或者失败了返回NULL
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>MYSQL_ROW <span style="color:#a6e22e">mysql_fetch_row</span>(MYSQL_RES <span style="color:#f92672">*</span>result);
+</span></span></code></pre></div><ul>
+<li>资源回收</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">// 参数是 mysql_store_result() 函数的返回值
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">mysql_free_result</span>(MYSQL_RES <span style="color:#f92672">*</span>result);
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 参数是: mysql_init() 函数的返回值
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">mysql_close</span>(MYSQL <span style="color:#f92672">*</span>mysql);
+</span></span></code></pre></div><ul>
+<li>字符编码</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// 获取字节编码
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">mysql_character_set_name</span>(MYSQL <span style="color:#f92672">*</span>mysql);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 设置字节编码
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// csname: 编码的名字, utf8
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">mysql_set_character_set</span>(MYSQL <span style="color:#f92672">*</span>mysql, <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>csname);
+</span></span></code></pre></div><ul>
+<li>事务操作</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// mode==0 -&gt; 手动提交, mode1 -&gt; 自动提交事务
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>my_bool <span style="color:#a6e22e">mysql_autocommit</span>(MYSQL <span style="color:#f92672">*</span>mysql, my_bool mode);
+</span></span><span style="display:flex;"><span>my_bool <span style="color:#a6e22e">mysql_commit</span>(MYSQL <span style="color:#f92672">*</span>mysql);
+</span></span><span style="display:flex;"><span>my_bool <span style="color:#a6e22e">mysql_rollback</span>(MYSQL <span style="color:#f92672">*</span>mysql);
+</span></span></code></pre></div><ul>
+<li>打印错误信息</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// 返回错误的描述
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">mysql_error</span>(MYSQL <span style="color:#f92672">*</span>mysql);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 返回错误的编号
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">mysql_errno</span>(MYSQL <span style="color:#f92672">*</span>mysql);
+</span></span></code></pre></div><ul>
+<li>需要的头文件</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;mysql.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span> 
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 动态库名: libmysqlclient.so
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 静态库名: libmysqlclient.a
+</span></span></span></code></pre></div><ul>
+<li>搜索文件</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>find 路径 -name 文件名
+</span></span><span style="display:flex;"><span>locate 文件名  
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># centos</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 切换到root下安装</span>
+</span></span><span style="display:flex;"><span>yum install mlocate
+</span></span><span style="display:flex;"><span>updatedb    <span style="color:#75715e"># 只需要做一次, 安装完成之后做</span>
+</span></span></code></pre></div><ul>
+<li>完整实例</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdlib.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;unistd.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;string.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;mysql.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span> 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    MYSQL <span style="color:#f92672">*</span>mysql <span style="color:#f92672">=</span> mysql_init(NULL);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (mysql <span style="color:#f92672">==</span> <span style="color:#66d9ef">nullptr</span>)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        printf(<span style="color:#e6db74">&#34;mysql_init() failed</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    mysql_real_connect(mysql, <span style="color:#e6db74">&#34;192.168.213.128&#34;</span>, <span style="color:#e6db74">&#34;root&#34;</span>, <span style="color:#e6db74">&#34;zzc123&#34;</span>, <span style="color:#e6db74">&#34;scott&#34;</span>, <span style="color:#ae81ff">0</span>, NULL, <span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (mysql <span style="color:#f92672">==</span> NULL)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        printf(<span style="color:#e6db74">&#34;mysql_real_connect() failed</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    printf(<span style="color:#e6db74">&#34;服务器连接成功!</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>    printf(<span style="color:#e6db74">&#34;原字符编码: %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, mysql_character_set_name(mysql));
+</span></span><span style="display:flex;"><span>    mysql_set_character_set(mysql, <span style="color:#e6db74">&#34;utf8&#34;</span>);
+</span></span><span style="display:flex;"><span>    printf(<span style="color:#e6db74">&#34;现字符编码: %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, mysql_character_set_name(mysql));
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> ret <span style="color:#f92672">=</span> mysql_query(mysql, <span style="color:#e6db74">&#34;select * from emp&#34;</span>);
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (ret <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        printf(<span style="color:#e6db74">&#34;mysql_query(select) failed: %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, mysql_error(mysql));
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    MYSQL_RES <span style="color:#f92672">*</span>res <span style="color:#f92672">=</span> mysql_store_result(mysql);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> colNum <span style="color:#f92672">=</span> mysql_num_fields(res);
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//fields是一个结构体数组
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    MYSQL_FIELD <span style="color:#f92672">*</span>fields <span style="color:#f92672">=</span> mysql_fetch_fields(res);
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> colNum; i <span style="color:#f92672">++</span>)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//遍历结构体内名字字段
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        printf(<span style="color:#e6db74">&#34;%s</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">&#34;</span>, fields[i].name);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    printf(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//读取每一行
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">//二级指针
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    MYSQL_ROW row;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> ((row <span style="color:#f92672">=</span> mysql_fetch_row(res)) <span style="color:#f92672">!=</span> NULL)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> colNum; i <span style="color:#f92672">++</span>)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            printf(<span style="color:#e6db74">&#34;%s</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">&#34;</span>, row[i]);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        printf(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//释放结果集
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    mysql_free_result(res);
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//设置事务手动提交
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    mysql_autocommit(mysql, <span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//将下面的四个操作设置为事务
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">//插入数据
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">int</span> fl1 <span style="color:#f92672">=</span> mysql_query(mysql, <span style="color:#e6db74">&#34;insert into dept values(11, &#39;海军&#39;, &#39;china&#39;)&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> fl2 <span style="color:#f92672">=</span> mysql_query(mysql, <span style="color:#e6db74">&#34;insert into dept values(12, &#39;革命军&#39;, &#39;china&#39;)&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> fl3 <span style="color:#f92672">=</span> mysql_query(mysql, <span style="color:#e6db74">&#34;insert into dept values(13, &#39;马戏团&#39;, &#39;china&#39;)&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//更新数据
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">int</span> fl4 <span style="color:#f92672">=</span> mysql_query(mysql, <span style="color:#e6db74">&#34;update dept set dname=&#39;群众&#39; where loc=&#39;china&#39;&#34;</span>);
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//全部成功
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>fl1 <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">!</span>fl2 <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">!</span>fl3 <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">!</span>fl4)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//提交事务
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        mysql_commit(mysql);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//事务回滚
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        mysql_roolback(mysql);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//释放资源
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    mysql_close(mysql);
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
+<li>
+<p>mysql和oracle区别</p>
+<ul>
+<li>
+<p>结构不同</p>
+<ul>
+<li>
+<p>msyql 基于数据库</p>
+<ul>
+<li>表存储在数据库中</li>
+</ul>
+</li>
+<li>
+<p>oracle 基于用户的</p>
+<ul>
+<li>表属于用户</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>mysql没有表空间, oracle有表空间</p>
+</li>
+<li>
+<p>管理员</p>
+<ul>
+<li>
+<p>mysql</p>
+<ul>
+<li>root</li>
+</ul>
+</li>
+<li>
+<p>oralce</p>
+<ul>
+<li>sys -&gt; 管理员, 身份 sysdba</li>
+<li>system -&gt; 管理员, 登录的时候需要使用normal身份登录</li>
+<li>其他的普通用户</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>事务</p>
+<ul>
+<li>
+<p>oracle默认手动提交</p>
+<ul>
+<li>occi接口 (C++接口), 这个接口中是自动提交事务的</li>
+</ul>
+</li>
+<li>
+<p>mysql中默认是自动提交</p>
+</li>
+</ul>
+</li>
+<li>
+<p>sql语句</p>
+<ul>
+<li>
+<p>外连接</p>
+<ul>
+<li>oralce中可以使用 (+)</li>
+<li>mysql中必须使用 , 不支持(+)
+<ul>
+<li>right outer join -&gt; oracle也支持这种写法</li>
+<li>left outer join</li>
+</ul>
+</li>
+<li>mysql不支持全外连接, oracle支持的
+<ul>
+<li>full outer join</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>函数:</p>
+<ul>
+<li>
+<p>nvl -&gt; oralce</p>
+</li>
+<li>
+<p>ifnull -&gt; mysql</p>
+</li>
+<li>
+<p>日期</p>
+</li>
+<li>
+<p>字符串</p>
+</li>
+<li>
+<p>数学函数</p>
+</li>
+</ul>
+</li>
+<li>
+<p>建表的时候的约束指定</p>
+<ul>
+<li>
+<p>都有:</p>
+<ul>
+<li>主键 -&gt; primary key</li>
+<li>非空: not null</li>
+<li>唯一性: unique</li>
+<li>外键约束: foreign key</li>
+</ul>
+</li>
+<li>
+<p>不同:</p>
+<ul>
+<li>oralce:
+<ul>
+<li>check, 在mysql中也有, 但是不起作用</li>
+</ul>
+</li>
+<li>mysql
+<ul>
+<li>
+<p>主键自动增长: auto_increment</p>
+<ul>
+<li>需要和主键约束一起使用</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>删除表</p>
+<ul>
+<li>
+<p>oracle</p>
+<ul>
+<li>drop talbe 表名 purge;</li>
+</ul>
+</li>
+<li>
+<p>msyql</p>
+<ul>
+<li>drop talbe 表名; &ndash;&gt; 不能使用 purge</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>字段的修改</p>
+<ul>
+<li>
+<p>oralce</p>
+<ul>
+<li>列的添加
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">alter</span> <span style="color:#66d9ef">table</span> <span style="color:#960050;background-color:#1e0010">表名</span> <span style="color:#66d9ef">add</span> <span style="color:#960050;background-color:#1e0010">列名</span> <span style="color:#960050;background-color:#1e0010">列的属性</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">alter</span> <span style="color:#66d9ef">table</span> <span style="color:#960050;background-color:#1e0010">表名</span> <span style="color:#66d9ef">modify</span> <span style="color:#960050;background-color:#1e0010">列名</span> <span style="color:#960050;background-color:#1e0010">列的属性</span>;
+</span></span></code></pre></div></li>
+</ul>
+</li>
+<li>
+<p>mysql</p>
+<ul>
+<li>列的添加修改
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">alter</span> <span style="color:#66d9ef">table</span> <span style="color:#960050;background-color:#1e0010">表名</span> <span style="color:#66d9ef">add</span> <span style="color:#66d9ef">column</span> <span style="color:#960050;background-color:#1e0010">列名</span> <span style="color:#960050;background-color:#1e0010">列的属性</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">alter</span> <span style="color:#66d9ef">table</span> <span style="color:#960050;background-color:#1e0010">表名</span> <span style="color:#66d9ef">modify</span> <span style="color:#66d9ef">column</span> <span style="color:#960050;background-color:#1e0010">列名</span> <span style="color:#960050;background-color:#1e0010">列的属性</span>;
+</span></span></code></pre></div></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-01-05</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/database/">DataBase</a>,&nbsp;<a href="/tags/mysql/">Mysql</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/json%E7%9A%84%E4%BD%BF%E7%94%A8/" class="prev" rel="prev" title="Json的使用"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Json的使用</a>
+            <a href="/posts/mysql%E6%95%B0%E6%8D%AE%E5%BA%93api%E5%BA%93/" class="next" rel="next" title="MySQL数据库API库">MySQL数据库API库<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.115.4">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank"></a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.5.0/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/twemoji@14.0.2/dist/twemoji.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@14.0.0/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"en","pageSize":10,"placeholder":"Your comment ...","recordIP":true,"serverURLs":"https://leancloud.hugoloveit.com","visitor":true}},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"","algoliaIndex":"","algoliaSearchKey":"","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"},"twemoji":true};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

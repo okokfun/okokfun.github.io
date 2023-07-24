@@ -1,19 +1,15 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>github on My Blog</title>
-    <link>https://okokfun.github.io/tags/github/</link>
-    <description>Recent content in github on My Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language>
-    <lastBuildDate>Wed, 19 Jan 2022 23:46:32 +0000</lastBuildDate><atom:link href="https://okokfun.github.io/tags/github/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>github资源资源下载加速</title>
-      <link>https://okokfun.github.io/post/github%E8%B5%84%E6%BA%90%E8%B5%84%E6%BA%90%E4%B8%8B%E8%BD%BD%E5%8A%A0%E9%80%9F/</link>
-      <pubDate>Wed, 19 Jan 2022 23:46:32 +0000</pubDate>
-      
-      <guid>https://okokfun.github.io/post/github%E8%B5%84%E6%BA%90%E8%B5%84%E6%BA%90%E4%B8%8B%E8%BD%BD%E5%8A%A0%E9%80%9F/</guid>
-      <description> 由于大家都知道原因，国内使用github下载源码和Releases文件时都慢如龟速 下边根据我所使用的方法介绍几种方法
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>github - Tag - My Blog</title>
+        <link>https://okokfun.github.io/tags/github/</link>
+        <description>github - Tag - My Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 19 Jan 2022 23:46:32 &#43;0000</lastBuildDate><atom:link href="https://okokfun.github.io/tags/github/" rel="self" type="application/rss+xml" /><item>
+    <title>github资源资源下载加速</title>
+    <link>https://okokfun.github.io/posts/github%E8%B5%84%E6%BA%90%E8%B5%84%E6%BA%90%E4%B8%8B%E8%BD%BD%E5%8A%A0%E9%80%9F/</link>
+    <pubDate>Wed, 19 Jan 2022 23:46:32 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://okokfun.github.io/posts/github%E8%B5%84%E6%BA%90%E8%B5%84%E6%BA%90%E4%B8%8B%E8%BD%BD%E5%8A%A0%E9%80%9F/</guid>
+    <description><![CDATA[ 由于大家都知道原因，国内使用github下载源码和Releases文件时都慢如龟速 下边根据我所使用的方法介绍几种方法
 1. 通过命令行克隆源码 通过添加.cnpmjs.org 在
 git clone https://github.com/MistEO/MeoAssistantArknights.git 的.com后边添加.cnpmjs.org
 git clone https://github.com.cnpmjs.org/MistEO/MeoAssistantArknights.git 通过替换为hub.fastgit.org 喜欢的话请他喝杯茶捐赠相关 | FastGit UK Document
@@ -25,8 +21,7 @@ https://github.com/MistEO/MeoAssistantArknights/archive/refs/heads/master.zip �
 https://download.fastgit.org/MistEO/MeoAssistantArknights/archive/refs/heads/master.zip 下载二进制releases文件 此为个人项目喜欢的话请他喝杯茶GitHub Proxy 代理加速 (ghproxy.com)
 通过添加https://ghproxy.com/ 把
 https://github.com//MistEO/MeoAssistantArknights/releases/download/v2.7.9/MeoAssistantArknights_v2.7.9.zip 在https://github添加https://ghproxy.com/
-https://ghproxy.com/https://github.com//MistEO/MeoAssistantArknights/releases/download/v2.7.9/MeoAssistantArknights_v2.7.9.zip </description>
-    </item>
-    
-  </channel>
+https://ghproxy.com/https://github.com//MistEO/MeoAssistantArknights/releases/download/v2.7.9/MeoAssistantArknights_v2.7.9.zip ]]></description>
+</item>
+</channel>
 </rss>

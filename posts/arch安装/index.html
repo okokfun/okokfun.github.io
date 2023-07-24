@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Arch安装 - My Blog</title><meta name="Description" content="Hugo theme - LoveIt"><meta property="og:title" content="Arch安装" />
+<meta property="og:description" content="Arch安装 一.准备工作 1.1下载镜像 地址：
+清华：https://mirrors.tuna.tsinghua.edu.cn/archlinux/iso/latest/ 163:https://mirrors.163.com/archlinux/iso/latest/ 中科大：https://mirrors.ustc.edu.cn/archlinux/iso/latest/ 上海交通：https://mirror.sjtu.edu.cn/archlinux/iso/latest/ 北大：https://mirrors.pku.edu.cn/archlinux/iso/latest/ 本文是Arch官方文档的再次梳理版
+https://wiki.archlinux.org/title/Installation_guide_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87) 安装方法有很多种比如脚本，实体机，虚拟机
+本文采用虚拟机&#43;SSH安装&#43;UEFI，SSH方便复制命令
+二.安装 1.键盘布局,默认为us，不需要更改 2.验证引导模式 ls /sys/firmware/efi/efivars 结果无错误切有目录则是UEFI，反之是BIOS引导
+3.连接网络 ip link 用 ping 检查网络连接
+ping archlinux.org 4.更新系统时间 timedatectl set-ntp true 可用 timedatectl status 检查服务状态
+5.建立硬盘分区 cfdisk比fdisk配置简单许多，因此本文采用cfdisk
+cfdisk -l cfdisk UEFI采用GPT分区，一般情况下需要创建
+挂载点 分区 分区类型 建议大小 /mnt/boot 或 /mnt/efi /dev/efi_system_partition（efi 系统分区） EFI 系统分区 至少 260 MiB [SWAP] /dev/swap_partition（交换空间分区） Linux swap (交换空间) 大于 512 MiB /mnt /dev/root_partition（根分区） Linux x86-64 根目录 (/) 剩余空间 文件系统 创建命令 工具 Archiso [1] 内核文档 [2] 说明 Btrfs mkfs." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://okokfun.github.io/posts/arch%E5%AE%89%E8%A3%85/" /><meta property="og:image" content="https://okokfun.github.io"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-12-24T19:34:05+00:00" />
+<meta property="article:modified_time" content="2021-12-24T19:34:05+00:00" /><meta property="og:site_name" content="My Blog" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://okokfun.github.io"/>
+
+<meta name="twitter:title" content="Arch安装"/>
+<meta name="twitter:description" content="Arch安装 一.准备工作 1.1下载镜像 地址：
+清华：https://mirrors.tuna.tsinghua.edu.cn/archlinux/iso/latest/ 163:https://mirrors.163.com/archlinux/iso/latest/ 中科大：https://mirrors.ustc.edu.cn/archlinux/iso/latest/ 上海交通：https://mirror.sjtu.edu.cn/archlinux/iso/latest/ 北大：https://mirrors.pku.edu.cn/archlinux/iso/latest/ 本文是Arch官方文档的再次梳理版
+https://wiki.archlinux.org/title/Installation_guide_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87) 安装方法有很多种比如脚本，实体机，虚拟机
+本文采用虚拟机&#43;SSH安装&#43;UEFI，SSH方便复制命令
+二.安装 1.键盘布局,默认为us，不需要更改 2.验证引导模式 ls /sys/firmware/efi/efivars 结果无错误切有目录则是UEFI，反之是BIOS引导
+3.连接网络 ip link 用 ping 检查网络连接
+ping archlinux.org 4.更新系统时间 timedatectl set-ntp true 可用 timedatectl status 检查服务状态
+5.建立硬盘分区 cfdisk比fdisk配置简单许多，因此本文采用cfdisk
+cfdisk -l cfdisk UEFI采用GPT分区，一般情况下需要创建
+挂载点 分区 分区类型 建议大小 /mnt/boot 或 /mnt/efi /dev/efi_system_partition（efi 系统分区） EFI 系统分区 至少 260 MiB [SWAP] /dev/swap_partition（交换空间分区） Linux swap (交换空间) 大于 512 MiB /mnt /dev/root_partition（根分区） Linux x86-64 根目录 (/) 剩余空间 文件系统 创建命令 工具 Archiso [1] 内核文档 [2] 说明 Btrfs mkfs."/>
+<meta name="application-name" content="LoveIt">
+<meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://okokfun.github.io/posts/arch%E5%AE%89%E8%A3%85/" /><link rel="prev" href="https://okokfun.github.io/posts/c-%E7%BA%BF%E7%A8%8B%E6%B1%A0/" /><link rel="next" href="https://okokfun.github.io/posts/openlib-c/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Arch安装",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/okokfun.github.io\/posts\/arch%E5%AE%89%E8%A3%85\/"
+        },"image": ["https:\/\/okokfun.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "Linux","wordcount":  733 ,
+        "url": "https:\/\/okokfun.github.io\/posts\/arch%E5%AE%89%E8%A3%85\/","datePublished": "2021-12-24T19:34:05+00:00","dateModified": "2021-12-24T19:34:05+00:00","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": "https:\/\/okokfun.github.io\/images\/avatar.png"},"author": {
+                "@type": "Person",
+                "name": "Author"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="My Blog"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span>My Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/" title="Hello World!"> 文章 </a><a class="menu-item" href="/tags/" title="Hello World!"> 标签 </a><a class="menu-item" href="/categories/" title="Hello World!"> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a><a href="javascript:void(0);" class="menu-item language" title="Select Language">
+                    <i class="fa fa-globe" aria-hidden="true"></i>                      
+                    <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/posts/arch%E5%AE%89%E8%A3%85/" selected></option></select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="My Blog"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span>My Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="Hello World!">文章</a><a class="menu-item" href="/tags/" title="Hello World!">标签</a><a class="menu-item" href="/categories/" title="Hello World!">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="Select Language">
+                    <i class="fa fa-globe fa-fw" aria-hidden="true"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/posts/arch%E5%AE%89%E8%A3%85/" selected></option></select>
+                </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Arch安装</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Author</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2021-12-24">2021-12-24</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;733 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;4 minutes&nbsp;<span id="/posts/arch%E5%AE%89%E8%A3%85/" class="leancloud_visitors" data-flag-title="Arch安装">
+                        <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#arch安装">Arch安装</a>
+      <ul>
+        <li><a href="#一准备工作">一.准备工作</a></li>
+        <li><a href="#二安装">二.安装</a></li>
+        <li><a href="#三设置时区">三.设置时区</a></li>
+        <li><a href="#四配置主机名">四.配置主机名</a></li>
+        <li><a href="#五配置hosts">五.配置hosts</a></li>
+        <li><a href="#六引导系统">六.引导系统</a></li>
+        <li><a href="#安装微码">|安装微码</a></li>
+        <li><a href="#七用户设置">七.	用户设置</a></li>
+        <li><a href="#八设置默认编辑器">八.设置默认编辑器</a></li>
+        <li><a href="#九安装网络驱动">九.安装网络驱动</a></li>
+        <li><a href="#十退出chroot并重启">十.退出chroot并重启</a></li>
+      </ul>
+    </li>
+    <li><a href="#配置系统">配置系统</a></li>
+    <li><a href="#一网络配置">（一）网络配置</a>
+      <ul>
+        <li><a href="#1wi-fi">1）Wi-Fi</a></li>
+        <li><a href="#2dhcp">2）dhcp</a></li>
+        <li><a href="#3-timezone">3) timezone</a></li>
+        <li><a href="#4-set-ntp">4) set-ntp</a></li>
+        <li><a href="#5-etcskelbashrc">5) /etc/skel/.bashrc</a></li>
+      </ul>
+    </li>
+    <li><a href="#二安装驱动">（二）安装驱动</a>
+      <ul>
+        <li><a href="#1显卡驱动">1）显卡驱动</a></li>
+        <li><a href="#2触摸板驱动">2）触摸板驱动</a></li>
+        <li><a href="#3安装声卡驱动">3）安装声卡驱动</a></li>
+      </ul>
+    </li>
+    <li><a href="#三安装桌面以gnome桌面为例">（三）安装桌面（以gnome桌面为例）</a></li>
+    <li><a href="#四安装aur包软件管理">（四）安装AUR包软件管理</a></li>
+    <li><a href="#五arch-linux-gnome桌面环境管理extensions">（五）Arch Linux Gnome桌面环境管理extensions</a></li>
+    <li><a href="#六gnome应用启动器">（六）Gnome应用启动器</a></li>
+    <li><a href="#七输入法安装">（七）输入法安装</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><!-- raw HTML omitted -->
+<h2 id="arch安装">Arch安装</h2>
+<h3 id="一准备工作">一.准备工作</h3>
+<h4 id="11下载镜像">1.1下载镜像</h4>
+<p>地址：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">清华：</span><span style="color:#f92672">https</span><span style="color:#f92672">://</span><span style="color:#f92672">mirrors</span>.<span style="color:#a6e22e">tuna</span>.<span style="color:#a6e22e">tsinghua</span>.<span style="color:#a6e22e">edu</span>.<span style="color:#a6e22e">cn</span><span style="color:#f92672">/</span><span style="color:#f92672">archlinux</span><span style="color:#f92672">/</span><span style="color:#f92672">iso</span><span style="color:#f92672">/</span><span style="color:#f92672">latest</span><span style="color:#f92672">/</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">163</span>:<span style="color:#a6e22e">https</span><span style="color:#f92672">://</span><span style="color:#f92672">mirrors</span>.<span style="color:#a6e22e">163</span>.<span style="color:#a6e22e">com</span><span style="color:#f92672">/</span><span style="color:#f92672">archlinux</span><span style="color:#f92672">/</span><span style="color:#f92672">iso</span><span style="color:#f92672">/</span><span style="color:#f92672">latest</span><span style="color:#f92672">/</span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">中科大：</span><span style="color:#f92672">https</span><span style="color:#f92672">://</span><span style="color:#f92672">mirrors</span>.<span style="color:#a6e22e">ustc</span>.<span style="color:#a6e22e">edu</span>.<span style="color:#a6e22e">cn</span><span style="color:#f92672">/</span><span style="color:#f92672">archlinux</span><span style="color:#f92672">/</span><span style="color:#f92672">iso</span><span style="color:#f92672">/</span><span style="color:#f92672">latest</span><span style="color:#f92672">/</span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">上海交通：</span><span style="color:#f92672">https</span><span style="color:#f92672">://</span><span style="color:#f92672">mirror</span>.<span style="color:#a6e22e">sjtu</span>.<span style="color:#a6e22e">edu</span>.<span style="color:#a6e22e">cn</span><span style="color:#f92672">/</span><span style="color:#f92672">archlinux</span><span style="color:#f92672">/</span><span style="color:#f92672">iso</span><span style="color:#f92672">/</span><span style="color:#f92672">latest</span><span style="color:#f92672">/</span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">北大：</span><span style="color:#f92672">https</span><span style="color:#f92672">://</span><span style="color:#f92672">mirrors</span>.<span style="color:#a6e22e">pku</span>.<span style="color:#a6e22e">edu</span>.<span style="color:#a6e22e">cn</span><span style="color:#f92672">/</span><span style="color:#f92672">archlinux</span><span style="color:#f92672">/</span><span style="color:#f92672">iso</span><span style="color:#f92672">/</span><span style="color:#f92672">latest</span><span style="color:#f92672">/</span>
+</span></span></code></pre></div><p>本文是Arch官方文档的再次梳理版</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">https</span><span style="color:#f92672">://</span><span style="color:#f92672">wiki</span>.<span style="color:#a6e22e">archlinux</span>.<span style="color:#a6e22e">org</span><span style="color:#f92672">/</span><span style="color:#f92672">title</span><span style="color:#f92672">/</span><span style="color:#f92672">Installation_guide_</span><span style="color:#f92672">(%</span><span style="color:#f92672">E7</span><span style="color:#f92672">%</span><span style="color:#f92672">AE</span><span style="color:#f92672">%</span><span style="color:#f92672">80</span><span style="color:#f92672">%</span><span style="color:#f92672">E4</span><span style="color:#f92672">%</span><span style="color:#f92672">BD</span><span style="color:#f92672">%</span><span style="color:#f92672">93</span><span style="color:#f92672">%</span><span style="color:#f92672">E4</span><span style="color:#f92672">%</span><span style="color:#f92672">B8</span><span style="color:#f92672">%</span><span style="color:#f92672">AD</span><span style="color:#f92672">%</span><span style="color:#f92672">E6</span><span style="color:#f92672">%</span><span style="color:#f92672">96</span><span style="color:#f92672">%</span><span style="color:#f92672">87</span><span style="color:#f92672">)</span>
+</span></span></code></pre></div><p>安装方法有很多种比如脚本，实体机，虚拟机</p>
+<p>本文采用虚拟机+SSH安装+UEFI，SSH方便复制命令</p>
+<h3 id="二安装">二.安装</h3>
+<h4 id="1键盘布局默认为us不需要更改">1.键盘布局,默认为us，不需要更改</h4>
+<h4 id="2验证引导模式">2.验证引导模式</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ls /sys/firmware/efi/efivars
+</span></span></code></pre></div><p>结果无错误切有目录则是UEFI，反之是BIOS引导</p>
+<h4 id="3连接网络">3.连接网络</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>ip link
+</span></span></code></pre></div><p>用 <a href="https://en.wikipedia.org/wiki/ping_%28networking_utility%29" target="_blank" rel="noopener noreffer ">ping</a> 检查网络连接</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>ping archlinux.org
+</span></span></code></pre></div><h4 id="4更新系统时间">4.更新系统时间</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>timedatectl set-ntp true
+</span></span></code></pre></div><p>可用 timedatectl status 检查服务状态</p>
+<h4 id="5建立硬盘分区">5.建立硬盘分区</h4>
+<p>cfdisk比fdisk配置简单许多，因此本文采用cfdisk</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cfdisk -l
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>cfdisk
+</span></span></code></pre></div><p>UEFI采用GPT分区，一般情况下需要创建</p>
+<table>
+<thead>
+<tr>
+<th><strong>挂载点</strong></th>
+<th>分区</th>
+<th>分区类型</th>
+<th>建议大小</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/mnt/boot</code> 或 <code>/mnt/efi</code></td>
+<td>/dev/<em>efi_system_partition（efi 系统分区）</em></td>
+<td>EFI 系统分区</td>
+<td>至少 260 MiB</td>
+</tr>
+<tr>
+<td>[SWAP]</td>
+<td>/dev/<em>swap_partition（交换空间分区）</em></td>
+<td>Linux swap (交换空间)</td>
+<td>大于 512 MiB</td>
+</tr>
+<tr>
+<td>/mnt</td>
+<td>/dev/<em>root_partition（根分区）</em></td>
+<td>Linux x86-64 根目录 (/)</td>
+<td>剩余空间</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">文件系统</th>
+<th style="text-align:center">创建命令</th>
+<th style="text-align:center">工具</th>
+<th style="text-align:center"><a href="https://wiki.archlinux.org/title/Archiso" target="_blank" rel="noopener noreffer ">Archiso</a> [<a href="https://gitlab.archlinux.org/archlinux/archiso/blob/master/configs/releng/packages.x86_64" target="_blank" rel="noopener noreffer ">1]</a></th>
+<th style="text-align:center">内核文档 [<a href="https://www.kernel.org/doc/html/latest/filesystems/" target="_blank" rel="noopener noreffer ">2]</a></th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><a href="https://wiki.archlinux.org/title/Btrfs" target="_blank" rel="noopener noreffer ">Btrfs</a></td>
+<td style="text-align:center"><a href="https://man.archlinux.org/man/mkfs.btrfs.8" target="_blank" rel="noopener noreffer ">mkfs.btrfs(8)</a></td>
+<td style="text-align:center"><a href="https://archlinux.org/packages/?name=btrfs-progs" target="_blank" rel="noopener noreffer ">btrfs-progs</a></td>
+<td style="text-align:center">是</td>
+<td style="text-align:center"><a href="https://www.kernel.org/doc/html/latest/filesystems/btrfs.html" target="_blank" rel="noopener noreffer ">btrfs.html</a></td>
+<td style="text-align:center"><a href="https://btrfs.wiki.kernel.org/index.php/Status" target="_blank" rel="noopener noreffer ">可靠性</a></td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="https://wiki.archlinux.org/title/VFAT" target="_blank" rel="noopener noreffer ">VFAT</a></td>
+<td style="text-align:center"><a href="https://man.archlinux.org/man/mkfs.fat.8" target="_blank" rel="noopener noreffer ">mkfs.fat(8)</a></td>
+<td style="text-align:center"><a href="https://archlinux.org/packages/?name=dosfstools" target="_blank" rel="noopener noreffer ">dosfstools</a></td>
+<td style="text-align:center">是</td>
+<td style="text-align:center"><a href="https://www.kernel.org/doc/html/latest/filesystems/vfat.html" target="_blank" rel="noopener noreffer ">vfat.html</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="https://en.wikipedia.org/wiki/exFAT" target="_blank" rel="noopener noreffer ">exFAT</a></td>
+<td style="text-align:center"><a href="https://man.archlinux.org/man/mkexfatfs.8" target="_blank" rel="noopener noreffer ">mkexfatfs(8)</a></td>
+<td style="text-align:center"><a href="https://archlinux.org/packages/?name=exfat-utils" target="_blank" rel="noopener noreffer ">exfat-utils</a></td>
+<td style="text-align:center">是</td>
+<td style="text-align:center">N/A (FUSE-based)</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="https://wiki.archlinux.org/title/F2FS" target="_blank" rel="noopener noreffer ">F2FS</a></td>
+<td style="text-align:center"><a href="https://man.archlinux.org/man/mkfs.f2fs.8" target="_blank" rel="noopener noreffer ">mkfs.f2fs(8)</a></td>
+<td style="text-align:center"><a href="https://archlinux.org/packages/?name=f2fs-tools" target="_blank" rel="noopener noreffer ">f2fs-tools</a></td>
+<td style="text-align:center">是</td>
+<td style="text-align:center"><a href="https://www.kernel.org/doc/html/latest/filesystems/f2fs.html" target="_blank" rel="noopener noreffer ">f2fs.html</a></td>
+<td style="text-align:center">基于闪存的设备</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="https://wiki.archlinux.org/title/Ext3" target="_blank" rel="noopener noreffer ">ext3</a></td>
+<td style="text-align:center"><a href="https://man.archlinux.org/man/mke2fs.8" target="_blank" rel="noopener noreffer ">mke2fs(8)</a></td>
+<td style="text-align:center"><a href="https://archlinux.org/packages/?name=e2fsprogs" target="_blank" rel="noopener noreffer ">e2fsprogs</a></td>
+<td style="text-align:center">是 (<a href="https://archlinux.org/packages/?name=base" target="_blank" rel="noopener noreffer ">base</a>)</td>
+<td style="text-align:center"><a href="https://www.kernel.org/doc/html/latest/filesystems/ext3.html" target="_blank" rel="noopener noreffer ">ext3.html</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="https://wiki.archlinux.org/title/Ext4" target="_blank" rel="noopener noreffer ">ext4</a></td>
+<td style="text-align:center"><a href="https://man.archlinux.org/man/mke2fs.8" target="_blank" rel="noopener noreffer ">mke2fs(8)</a></td>
+<td style="text-align:center"><a href="https://archlinux.org/packages/?name=e2fsprogs" target="_blank" rel="noopener noreffer ">e2fsprogs</a></td>
+<td style="text-align:center">是 (<a href="https://archlinux.org/packages/?name=base" target="_blank" rel="noopener noreffer ">base</a>)</td>
+<td style="text-align:center"><a href="https://www.kernel.org/doc/Documentation/filesystems/ext4.txt" target="_blank" rel="noopener noreffer ">ext4.txt</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="https://en.wikipedia.org/wiki/Hierarchical_File_System" target="_blank" rel="noopener noreffer ">HFS</a></td>
+<td style="text-align:center">mkfs.hfsplus(8)</td>
+<td style="text-align:center"><a href="https://aur.archlinux.org/packages/hfsprogs/" target="_blank" rel="noopener noreffer ">hfsprogs</a>AUR</td>
+<td style="text-align:center">否</td>
+<td style="text-align:center"><a href="https://www.kernel.org/doc/html/latest/filesystems/hfs.html" target="_blank" rel="noopener noreffer ">hfs.html</a></td>
+<td style="text-align:center"><a href="https://en.wikipedia.org/wiki/macOS" target="_blank" rel="noopener noreffer ">macOS</a> (8.x-10.12.x) 文件系统</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="https://wiki.archlinux.org/title/JFS" target="_blank" rel="noopener noreffer ">JFS</a></td>
+<td style="text-align:center"><a href="https://man.archlinux.org/man/mkfs.jfs.8" target="_blank" rel="noopener noreffer ">mkfs.jfs(8)</a></td>
+<td style="text-align:center"><a href="https://archlinux.org/packages/?name=jfsutils" target="_blank" rel="noopener noreffer ">jfsutils</a></td>
+<td style="text-align:center">是 (<a href="https://archlinux.org/packages/?name=base" target="_blank" rel="noopener noreffer ">base</a>)</td>
+<td style="text-align:center"><a href="https://www.kernel.org/doc/Documentation/filesystems/jfs.txt" target="_blank" rel="noopener noreffer ">jfs.txt</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="https://en.wikipedia.org/wiki/NILFS" target="_blank" rel="noopener noreffer ">NILFS2</a></td>
+<td style="text-align:center"><a href="https://man.archlinux.org/man/mkfs.nilfs2.8" target="_blank" rel="noopener noreffer ">mkfs.nilfs2(8)</a></td>
+<td style="text-align:center"><a href="https://archlinux.org/packages/?name=nilfs-utils" target="_blank" rel="noopener noreffer ">nilfs-utils</a></td>
+<td style="text-align:center">是</td>
+<td style="text-align:center"><a href="https://www.kernel.org/doc/html/latest/filesystems/nilfs2.html" target="_blank" rel="noopener noreffer ">nilfs2.html</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="https://wiki.archlinux.org/title/NTFS" target="_blank" rel="noopener noreffer ">NTFS</a></td>
+<td style="text-align:center"><a href="https://man.archlinux.org/man/mkfs.ntfs.8" target="_blank" rel="noopener noreffer ">mkfs.ntfs(8)</a></td>
+<td style="text-align:center"><a href="https://archlinux.org/packages/?name=ntfs-3g" target="_blank" rel="noopener noreffer ">ntfs-3g</a></td>
+<td style="text-align:center">是</td>
+<td style="text-align:center">N/A (FUSE-based)</td>
+<td style="text-align:center"><a href="https://en.wikipedia.org/wiki/Microsoft_Windows" target="_blank" rel="noopener noreffer ">Windows</a> 文件系统</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="https://wiki.archlinux.org/title/Reiser4" target="_blank" rel="noopener noreffer ">Reiser4</a></td>
+<td style="text-align:center">mkfs.reiser4(8)</td>
+<td style="text-align:center"><a href="https://aur.archlinux.org/packages/reiser4progs/" target="_blank" rel="noopener noreffer ">reiser4progs</a>AUR</td>
+<td style="text-align:center">否</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="https://en.wikipedia.org/wiki/ReiserFS" target="_blank" rel="noopener noreffer ">ReiserFS</a></td>
+<td style="text-align:center"><a href="https://man.archlinux.org/man/mkfs.reiserfs.8" target="_blank" rel="noopener noreffer ">mkfs.reiserfs(8)</a></td>
+<td style="text-align:center"><a href="https://archlinux.org/packages/?name=reiserfsprogs" target="_blank" rel="noopener noreffer ">reiserfsprogs</a></td>
+<td style="text-align:center">是 (<a href="https://archlinux.org/packages/?name=base" target="_blank" rel="noopener noreffer ">base</a>)</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="https://en.wikipedia.org/wiki/Universal_Disk_Format" target="_blank" rel="noopener noreffer ">UDF</a></td>
+<td style="text-align:center"><a href="https://man.archlinux.org/man/mkfs.udf.8" target="_blank" rel="noopener noreffer ">mkfs.udf(8)</a></td>
+<td style="text-align:center"><a href="https://archlinux.org/packages/?name=udftools" target="_blank" rel="noopener noreffer ">udftools</a></td>
+<td style="text-align:center">Optional</td>
+<td style="text-align:center"><a href="https://www.kernel.org/doc/html/latest/filesystems/udf.html" target="_blank" rel="noopener noreffer ">udf.html</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="https://wiki.archlinux.org/title/XFS" target="_blank" rel="noopener noreffer ">XFS</a></td>
+<td style="text-align:center"><a href="https://man.archlinux.org/man/mkfs.xfs.8" target="_blank" rel="noopener noreffer ">mkfs.xfs(8)</a></td>
+<td style="text-align:center"><a href="https://archlinux.org/packages/?name=xfsprogs" target="_blank" rel="noopener noreffer ">xfsprogs</a></td>
+<td style="text-align:center">是 (<a href="https://archlinux.org/packages/?name=base" target="_blank" rel="noopener noreffer ">base</a>)</td>
+<td style="text-align:center"><a href="https://www.kernel.org/doc/Documentation/filesystems/xfs.txt" target="_blank" rel="noopener noreffer ">xfs.txt</a> <a href="https://www.kernel.org/doc/html/latest/filesystems/xfs-delayed-logging-design.html" target="_blank" rel="noopener noreffer ">xfs-delayed-logging-design.html</a> <a href="https://www.kernel.org/doc/html/latest/filesystems/xfs-self-describing-metadata.html" target="_blank" rel="noopener noreffer ">xfs-self-describing-metadata.html</a></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="https://wiki.archlinux.org/title/ZFS" target="_blank" rel="noopener noreffer ">ZFS</a></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"><a href="https://aur.archlinux.org/packages/zfs-linux/" target="_blank" rel="noopener noreffer ">zfs-linux</a>AUR</td>
+<td style="text-align:center">否</td>
+<td style="text-align:center">N/A (<a href="https://en.wikipedia.org/wiki/OpenZFS" target="_blank" rel="noopener noreffer ">OpenZFS</a> 移植)</td>
+<td style="text-align:center"></td>
+</tr>
+</tbody>
+</table>
+<p>本文创建俩分区：根分区和ESP分区，ESP分区300M，根分区剩余全部空间</p>
+<h4 id="6格式化上边创建的分区">6.格式化上边创建的分区</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkfs.ext4 /dev/sda2 //根分区
+</span></span><span style="display:flex;"><span>mkfs.vfat /dev/sda1	//ESP分区
+</span></span></code></pre></div><h4 id="7挂载格式化后的分区">7.挂载格式化后的分区</h4>
+<p>挂载有先后顺序， 先挂载根（root）分区（到 <code>/mnt</code>），再挂载引导（boot）分区（到 <code>/mnt/boot</code> 或 <code>/mnt/efi</code> ， 否则您可能遇到安装完成后无法启动系统的问题</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mount /dev/sda2 /mnt
+</span></span><span style="display:flex;"><span>mkdir /mnt/efi
+</span></span><span style="display:flex;"><span>mount /dev/sda1 /mnt/efi
+</span></span></code></pre></div><h4 id="8更换软件源">8.更换软件源</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -L -o /etc/pacman.d/mirrorlist <span style="color:#e6db74">&#34;https://www.archlinux.org/mirrorlist/?country=CN&#34;</span>
+</span></span></code></pre></div><p>编辑<code>/etc/pacman.d/mirrorlist</code>，反注释其中一个或多个链接</p>
+<p>本文采用中科大和清华源</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>vim /etc/pacman.d/mirrorlist
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Server <span style="color:#f92672">=</span> https://mirrors.tuna.tsinghua.edu.cn/archlinux/$repo/os/$arch
+</span></span><span style="display:flex;"><span>Server <span style="color:#f92672">=</span> https://mirrors.ustc.edu.cn/archlinux/$repo/os/$arch
+</span></span></code></pre></div><h4 id="9安装系统到磁盘">9.安装系统到磁盘</h4>
+<p>基础包：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pacstrap /mnt base base-devel linux linux-firmware  <span style="color:#75715e">#base-devel在AUR包的安装是必须的</span>
+</span></span></code></pre></div><p>功能性软件 :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pacstrap /mnt vim nano ctags wget clang clangd gcc g++ cmake make git networkmanager dhcpcd iwd sudo bash-completion openssh   <span style="color:#75715e">#一个有线所需 一个无线所需 一个编辑器  一个提权工具 一个补全工具 iwd也需要dhcpcd</span>
+</span></span></code></pre></div><h4 id="10配置系统">10.配置系统</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>genfstab -U /mnt &gt;&gt; /mnt/etc/fstab
+</span></span><span style="display:flex;"><span>cat /mnt/etc/fstab
+</span></span></code></pre></div><h4 id="11切换到新系统">11.切换到新系统</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>arch-chroot /mnt
+</span></span></code></pre></div><h3 id="三设置时区">三.设置时区</h3>
+<p>本地时区配置</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+</span></span></code></pre></div><p>生成 <code>/etc/adjtime</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hwclock --systohc --utc
+</span></span></code></pre></div><p>本地化： 明确规定了地域、货币、时区日期的格式、字符排列方式和其他本地化标准。</p>
+<p>需在这两个文件设置：<code>locale.gen</code> 与 <code>locale.conf</code>。</p>
+<p>编辑 <code>/etc/locale.gen</code>，然后取消掉 <code>en_US.UTF-8 UTF-8</code>，<code>zh_CN.UTF-8 UTF-8</code> 和其他需要的 <a href="https://wiki.archlinux.org/title/Locale_%28%e7%ae%80%e4%bd%93%e4%b8%ad%e6%96%87%29" target="_blank" rel="noopener noreffer ">地区</a> 前的注释（#）。</p>
+<p>接着执行 <code>locale-gen</code> 以生成 locale 信息：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>locale-gen
+</span></span></code></pre></div><p>编辑： /etc/locale.conf</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>echo <span style="color:#e6db74">&#39;LANG=en_US.UTF-8&#39;</span>  &gt; /etc/locale.conf
+</span></span></code></pre></div><h3 id="四配置主机名">四.配置主机名</h3>
+<p>编辑<code>/etc/hostname</code>，写入<code>myhostname</code>  默认为archlinux</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;archlinux&#34;</span> &gt;&gt; /etc/hostname
+</span></span></code></pre></div><h3 id="五配置hosts">五.配置hosts</h3>
+<p>编辑<code>/etc/hosts</code>，把<code>myhostname</code>改为你自己的主机名</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>127.0.0.1   localhost
+</span></span><span style="display:flex;"><span>::1         localhost
+</span></span><span style="display:flex;"><span>127.0.1.1   archlinux.localdomain  archlinux
+</span></span></code></pre></div><h3 id="六引导系统">六.引导系统</h3>
+<h4 id="1grub引导windows或其他linux">1）Grub引导Windows或其他Linux</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pacman -S os-prober
+</span></span></code></pre></div><h4 id="2主板支持uefi引导">2)	主板支持UEFI引导</h4>
+<h3 id="安装微码">|安装微码</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pacman -S intel-ucode   <span style="color:#75715e">#Intel</span>
+</span></span><span style="display:flex;"><span>pacman -S amd-ucode     <span style="color:#75715e">#AMD</span>
+</span></span></code></pre></div><h5 id="21下载grub安装时所必需的文件">2.1)	下载grub安装时所必需的文件</h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pacman -S grub efibootmgr
+</span></span></code></pre></div><h5 id="22安装grub">2.2)	安装grub</h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>grub-install --target<span style="color:#f92672">=</span>x86_64-efi --efi-directory<span style="color:#f92672">=</span>/efi --bootloader-id<span style="color:#f92672">=</span>GRUB
+</span></span></code></pre></div><p>编辑/etc/default/grub 文件，去掉<code>GRUB_CMDLINE_LINUX_DEFAULT</code>一行中最后的 quiet 参数，同时把 log level 的数值从 3 改成 5。这样是为了后续如果出现系统错误，方便排错。同时加入 nowatchdog 参数，这可以显著提高开关机速度</p>
+<h5 id="23-更新grub">2.3)	 更新grub</h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>grub-mkconfig -o /boot/grub/grub.cfg
+</span></span></code></pre></div><h3 id="七用户设置">七.	用户设置</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>vim /etc/hostname <span style="color:#75715e">#输入主机名，只能输入字母</span>
+</span></span><span style="display:flex;"><span>passwd root <span style="color:#75715e">#设置root密码</span>
+</span></span><span style="display:flex;"><span>useradd -m -g users -G wheel -s /bin/bash username <span style="color:#75715e">#添加用户</span>
+</span></span><span style="display:flex;"><span>passwd username <span style="color:#75715e">#设置用户密码</span>
+</span></span><span style="display:flex;"><span>vim /etc/sudoers <span style="color:#75715e">#为用户添加sudo权限 反注释%wheel ALL=(ALL) ALL</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#如果想在输入密码时显示星号，可以追加Defaults env_reset,pwfeedback</span>
+</span></span></code></pre></div><h3 id="八设置默认编辑器">八.设置默认编辑器</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ln -f /usr/bin/vim /usr/bin/vi
+</span></span></code></pre></div><h3 id="九安装网络驱动">九.安装网络驱动</h3>
+<h4 id="1wifi">1）wifi</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pacman -S netctl iw wpa_supplicant dialog networkmanager
+</span></span><span style="display:flex;"><span>pacman -S broadcom-wl <span style="color:#75715e">#博通无线网卡驱动</span>
+</span></span></code></pre></div><h4 id="2有线连接dhcp">2）有线连接dhcp</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pacman -S dhcp dhcpcd
+</span></span></code></pre></div><h3 id="十退出chroot并重启">十.退出chroot并重启</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 退出chroot</span>
+</span></span><span style="display:flex;"><span>exit
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 卸载 /mnt</span>
+</span></span><span style="display:flex;"><span>umount -R /mnt
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 重启电脑</span>
+</span></span><span style="display:flex;"><span>reboot
+</span></span></code></pre></div><blockquote>
+<p><strong>注意</strong>
+运行reboot命令后，请拔掉U盘
+使用ssh或其他Linux发行版本安装的用户请在新系统中配置好ssh环境，重启后可以直接ssh连接（需要安装net-tools软件包，不然无法运行ifconfig命令）</p>
+</blockquote>
+<h2 id="配置系统">配置系统</h2>
+<h2 id="一网络配置">（一）网络配置</h2>
+<h3 id="1wi-fi">1）Wi-Fi</h3>
+<p>最新版的arch可能没有wifi-menu命令</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo wifi-menu
+</span></span></code></pre></div><h3 id="2dhcp">2）dhcp</h3>
+<p>有线连接</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo systemctl enable --now dhcpcd
+</span></span></code></pre></div><h3 id="3-timezone">3) timezone</h3>
+<p>设置系统时区</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo timedatectl set-timezone Asia/Shanghai
+</span></span></code></pre></div><h3 id="4-set-ntp">4) set-ntp</h3>
+<p>网络时间同步</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo timedatectl set-ntp true
+</span></span></code></pre></div><p>查看时间状态</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>timedatectl status
+</span></span></code></pre></div><h3 id="5-etcskelbashrc">5) /etc/skel/.bashrc</h3>
+<p>编辑用户配置文件.bashrc以在终端显示文件夹，以颜色</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd /etc/skel/
+</span></span><span style="display:flex;"><span>ls -la
+</span></span><span style="display:flex;"><span>vim .bashrc
+</span></span></code></pre></div><p>在PS1之前添加如下文本</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>export EDITOR<span style="color:#f92672">=</span>vim
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>alias ls<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;ls --color=auto&#39;</span>
+</span></span><span style="display:flex;"><span>alias grep<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;grep --color=auto&#39;</span>
+</span></span><span style="display:flex;"><span>alias egrep<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;egrep --color=auto&#39;</span>
+</span></span><span style="display:flex;"><span>alias fgrep<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;fgrep --color=auto&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span> ! -e ~/.dircolors <span style="color:#f92672">]</span> <span style="color:#f92672">&amp;&amp;</span> eval <span style="color:#66d9ef">$(</span>dircolors -p &gt; ~/.dircolors<span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span> -e /bin/dircolors <span style="color:#f92672">]</span> <span style="color:#f92672">&amp;&amp;</span> eval <span style="color:#66d9ef">$(</span>dircolors -b &gt; ~/.dircolors<span style="color:#66d9ef">)</span>
+</span></span></code></pre></div><p>覆盖家目录的文件</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cp -a . ~
+</span></span></code></pre></div><h2 id="二安装驱动">（二）安装驱动</h2>
+<h3 id="1显卡驱动">1）显卡驱动</h3>
+<p>运行<code>lspci | grep VGA</code>查看显卡型号 按照自己的显卡型号安装相应驱动</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">显卡</th>
+<th style="text-align:center">驱动名称</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Intel</td>
+<td style="text-align:center">xf86-video-intel vulkan-intel mesa</td>
+</tr>
+<tr>
+<td style="text-align:center">NVIDIA</td>
+<td style="text-align:center">nvidia nvidia-utils nvidia-settings opencl-nvidia lib32-opencl-nvidia lib32-nvidia-utils</td>
+</tr>
+<tr>
+<td style="text-align:center"><del>开源NVIDIA(不推荐)</del></td>
+<td style="text-align:center"><del>xf86-video-nouveau</del></td>
+</tr>
+<tr>
+<td style="text-align:center">AMD</td>
+<td style="text-align:center">xf86-video-amdgpu xf86-video-ati mesa vulkan-radeom</td>
+</tr>
+</tbody>
+</table>
+<p><strong>FBI Warning</strong>
+千万不要安装nouveau，千万不要安装nouveau，千万不要安装nouveau！重要的事情说三遍。如果你不怕电脑莫名卡死，当我没说。（doge）
+ps：博主受过nouveau的折磨</p>
+<h3 id="2触摸板驱动">2）触摸板驱动</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo pacman -S xf86-input-synaptics //笔记本,外置触摸
+</span></span></code></pre></div><h3 id="3安装声卡驱动">3）安装声卡驱动</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pacman -S alsa-utils pulseaudio pulseaudio-bluetooth cups
+</span></span></code></pre></div><h2 id="三安装桌面以gnome桌面为例">（三）安装桌面（以gnome桌面为例）</h2>
+<p>安装x窗口系统</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#安装英文字体</span>
+</span></span><span style="display:flex;"><span>sudo pacman -S ttf-dejavu ttf-droid ttf-hack ttf-fonts-awesome otf-font-awesome ttf-lato ttf-liberation ttf-linux-libertine ttf-opensans ttf-roboto ttf-ubuntu-font-family 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#安装中文字体</span>
+</span></span><span style="display:flex;"><span>sudo pacman -S ttf-hannom noto-fonts noto-fonts-extra noto-fonts-cjk noto-fonts-emoji adobe-source-code-oro-fonts adobe-source-sans-fonts adobe-source-serif-fonts adobe-source-han-serif-cn-fonts adobe-source-han-sans-cn-fonts adobe-source-han-sans-hk-fonts adobe-source-han-sans-tw-fonts  wqy-zenhei wqy-microhei
+</span></span><span style="display:flex;"><span>sudo vim /etc/locale.conf <span style="color:#75715e">#将语言改成中文</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 将英语注释掉，添加以下内容LANG=zh_CN.UTF-8</span>
+</span></span><span style="display:flex;"><span>locale-gen
+</span></span><span style="display:flex;"><span>sudo pacman -S xorg <span style="color:#75715e">#安装x窗口系统</span>
+</span></span></code></pre></div><p>安装kde桌面</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo pacman -S plasma-meta plasma-nm konsole dolphin kde-connect firefox <span style="color:#75715e">#简洁的kde桌面</span>
+</span></span><span style="display:flex;"><span>sudo pacman -S plasma plasma-nm kde-applications <span style="color:#75715e">#kde全家桶</span>
+</span></span><span style="display:flex;"><span>sudo systemctl enable sddm <span style="color:#75715e">#启动sddm服务</span>
+</span></span><span style="display:flex;"><span>sudo systemctl enable NetworkManager <span style="color:#75715e">#启动网络管理器</span>
+</span></span><span style="display:flex;"><span>sudo reboot重启
+</span></span></code></pre></div><p>安装gnome桌面</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pacman -S gnome gnome-extra gdm#<span style="color:#f92672">(</span>gdb是登陆管理器<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>systemctl enable gdm.service
+</span></span><span style="display:flex;"><span>reboot
+</span></span></code></pre></div><p>开启字体渲染引擎</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>vim /etc/profile.d/freetype2.sh
+</span></span></code></pre></div><p>去掉 <code>#export FREETYPE_PROPERTIES=&quot;truetype:interpreter-version=40&quot;</code> 的 <code>#</code> 号</p>
+<p>清空无用缓存和语言</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pacman -Scc
+</span></span></code></pre></div><h2 id="四安装aur包软件管理">（四）安装AUR包软件管理</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone https://aur.archlinux.org/paru.git
+</span></span></code></pre></div><p>打包工具</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo vim /etc/makepkg.conf
+</span></span></code></pre></div><p>取消注释<code>#MAKEFLAGS=&quot;-j$(nproc)&quot;</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>makepkg -si
+</span></span></code></pre></div><p>此时<code>paru</code>已经被安装了</p>
+<p>修改paru排序的相关性，倒序</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>vim /etc/paru.conf
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 取消注释#BottomUp</span>
+</span></span></code></pre></div><h2 id="五arch-linux-gnome桌面环境管理extensions">（五）Arch Linux Gnome桌面环境管理extensions</h2>
+<p>Gnome桌面管理extensions是内置的，但主题较少，在archwiki可以用-theme搜索到想要的主题
+然后用：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo pacman -S 主题名
+</span></span></code></pre></div><h2 id="六gnome应用启动器">（六）Gnome应用启动器</h2>
+<p>要使用Gnome启动器要先安装connector,此文件在AUR里，所以要使用paru安装
+<code>https://extensions.gnome.org</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>paru chrome-gnome-shell
+</span></span></code></pre></div><p>安装<code>dash to dock</code>
+<code>blur my shell</code></p>
+<p><code>ArcMenu</code></p>
+<p><code>Vitals</code></p>
+<p><code>Just Perfection</code></p>
+<h2 id="七输入法安装">（七）输入法安装</h2>
+<p>fcitx5</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo pacman -S fcitx5-im fcitx5-chinese-addons fcitx5-material-color
+</span></span></code></pre></div><p>环境变量与故障处理,wps和firefox无法正确输入
+编辑<code>~/.pam_environment</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>GTK_IM_MODULE DEFAULT<span style="color:#f92672">=</span>fcitx
+</span></span><span style="display:flex;"><span>QT_IM_MODULE  DEFAULT<span style="color:#f92672">=</span>fcitx
+</span></span><span style="display:flex;"><span>XMODIFIERS    DEFAULT<span style="color:#f92672">=</span>@im<span style="color:#f92672">=</span>fcitx
+</span></span></code></pre></div><p>主题安装</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo pacman -S fcitx5-nord
+</span></span></code></pre></div><p>输入法联想与准确度</p>
+<ol>
+<li>fcitx5-config-qt配置工具选择Input Method下Pinyin,选择Enable Cloud Pinyin，字库(Cloud Pinyin)来自Baidu。</li>
+<li>离线字库Dictionaries
+加入清华的源需要编辑<code>/etc/pacman.conf</code></li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>archlinuxcn<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>Server <span style="color:#f92672">=</span> https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch 
+</span></span></code></pre></div><p>更新数据库</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo pacman -Syy
+</span></span></code></pre></div><p>安装拼音联想词库</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo pacman -S archlinuxcn-keyring fcitx5-pinyin-moegirl fcitx5-pinyin-zhwiki
+</span></span></code></pre></div><h1 id="键盘布局配置">键盘布局配置</h1>
+<p>编辑：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/etc/vconsole.conf
+</span></span><span style="display:flex;"><span>KEYMAP<span style="color:#f92672">=</span>de-latin1
+</span></span></code></pre></div></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2021-12-24</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/linux/">Linux</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/c-%E7%BA%BF%E7%A8%8B%E6%B1%A0/" class="prev" rel="prev" title="C&#43;&#43;线程池"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>C++线程池</a>
+            <a href="/posts/openlib-c/" class="next" rel="next" title="OpenLib-c&#43;&#43;">OpenLib-c++<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.115.4">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank"></a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.5.0/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/twemoji@14.0.2/dist/twemoji.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@14.0.0/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"en","pageSize":10,"placeholder":"Your comment ...","recordIP":true,"serverURLs":"https://leancloud.hugoloveit.com","visitor":true}},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"","algoliaIndex":"","algoliaSearchKey":"","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"},"twemoji":true};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

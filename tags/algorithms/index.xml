@@ -1,25 +1,21 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>algorithms on My Blog</title>
-    <link>https://okokfun.github.io/tags/algorithms/</link>
-    <description>Recent content in algorithms on My Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language>
-    <lastBuildDate>Sat, 01 Jan 2022 19:32:29 +0000</lastBuildDate><atom:link href="https://okokfun.github.io/tags/algorithms/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>算法</title>
-      <link>https://okokfun.github.io/post/%E7%AE%97%E6%B3%95/</link>
-      <pubDate>Sat, 01 Jan 2022 19:32:29 +0000</pubDate>
-      
-      <guid>https://okokfun.github.io/post/%E7%AE%97%E6%B3%95/</guid>
-      <description>推荐看👉 OI Wiki
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>algorithms - Tag - My Blog</title>
+        <link>https://okokfun.github.io/tags/algorithms/</link>
+        <description>algorithms - Tag - My Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 01 Jan 2022 19:32:29 &#43;0000</lastBuildDate><atom:link href="https://okokfun.github.io/tags/algorithms/" rel="self" type="application/rss+xml" /><item>
+    <title>算法</title>
+    <link>https://okokfun.github.io/posts/%E7%AE%97%E6%B3%95/</link>
+    <pubDate>Sat, 01 Jan 2022 19:32:29 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://okokfun.github.io/posts/%E7%AE%97%E6%B3%95/</guid>
+    <description><![CDATA[推荐看👉 OI Wiki
 算法部分 位图(bitmap) 通过一个bit位来表示某个元素对应的值或者状态，其中的key就是对应元素本身，value对应0或1，我们知道8个bit可以组成一个Byte，所以bitmap本身会极大的节省储存空间。
 位图BitMap
 字典(map) 字典有什么特点呢?
-字典的主要特点是一一对应的关系. 比如保存一个人的信息, 在合适的情况下取出这些信息. 使用数组的方式: [18, &amp;ldquo;Coderwhy&amp;rdquo;, 1.88]. 可以通过下标值取出信息. 使用字典的方式: {&amp;ldquo;age&amp;rdquo; : 18, &amp;ldquo;name&amp;rdquo; : &amp;ldquo;Coderwhy&amp;rdquo;, &amp;ldquo;height&amp;rdquo;: 1.88}. 可以通过key取出value 字典(map)的详细解释
+字典的主要特点是一一对应的关系. 比如保存一个人的信息, 在合适的情况下取出这些信息. 使用数组的方式: [18, &ldquo;Coderwhy&rdquo;, 1.88]. 可以通过下标值取出信息. 使用字典的方式: {&ldquo;age&rdquo; : 18, &ldquo;name&rdquo; : &ldquo;Coderwhy&rdquo;, &ldquo;height&rdquo;: 1.88}. 可以通过key取出value 字典(map)的详细解释
 kmp算法 kmp算法也就是字符串匹配算法。
-比如： 在string str = &amp;ldquo;abcababcba&amp;quot;中匹配 string str2 = &amp;ldquo;ababc&amp;ldquo;字符串
+比如： 在string str = &ldquo;abcababcba&quot;中匹配 string str2 = &ldquo;ababc&ldquo;字符串
 最长公共前后缀：要匹配的字符串生成的数组
 从一个字符开始到整个字符串，默认每行的公共前后缀最大值为全部字母数，然后判断是否符合其数字，如果不符合减一，一直判断到0结束。一行元素为1的数字为0，最后一行不统计
 0	a
@@ -29,8 +25,7 @@ kmp算法 kmp算法也就是字符串匹配算法。
 0	a	b	a	b	c
 得出的公共前后缀为
 0 0 1 2 0 然后整体向后移动一位，原最后一位被覆盖，下标为0的位置设为-1,最后的公共前后缀为
--1 0 0 1 2 kmp匹配过程</description>
-    </item>
-    
-  </channel>
+-1 0 0 1 2 kmp匹配过程]]></description>
+</item>
+</channel>
 </rss>

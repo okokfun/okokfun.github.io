@@ -1,971 +1,225 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
     <head>
-	<meta name="generator" content="Hugo 0.115.4"><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content=''><title>My Blog</title>
-
-<link rel='canonical' href='https://okokfun.github.io/'>
-
-<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='My Blog'>
-<meta property='og:description' content=''>
-<meta property='og:url' content='https://okokfun.github.io/'>
-<meta property='og:site_name' content='My Blog'>
-<meta property='og:type' content='website'><meta property='og:updated_time' content=' 2023-07-22T17:45:15&#43;08:00 '/>
-<meta name="twitter:title" content="My Blog">
-<meta name="twitter:description" content=""><link rel="alternate" type="application/rss&#43;xml" href="https://okokfun.github.io/index.xml"><script>
-    (function(){
-        if(''){
-            if (prompt('请输入文章密码') !== ''){
-                alert('密码错误！');
-                history.back();
-            }
-        }
-    })();
-</script>
-
-
-    </head>
-    <body class="">
-    <script>
-        (function() {
-            const colorSchemeKey = 'StackColorScheme';
-            if(!localStorage.getItem(colorSchemeKey)){
-                localStorage.setItem(colorSchemeKey, "auto");
-            }
-        })();
-    </script><script>
-    (function() {
-        const colorSchemeKey = 'StackColorScheme';
-        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
-        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
-
-        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
-            
-
-            document.documentElement.dataset.scheme = 'dark';
-        } else {
-            document.documentElement.dataset.scheme = 'light';
-        }
-    })();
-</script>
-<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky">
-    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
-        <span class="hamburger-box">
-            <span class="hamburger-inner"></span>
-        </span>
-    </button>
-
-    <header class="site-info">
-        
-            
-            <figure class="site-avatar">
-                
-                    
-                    
-                    
-                        
-                        <img src="/img/avatar_hu71fc3898bde3464d50a00f65e63c7ec2_517570_300x0_resize_box_3.png" width="300"
-                            height="354" class="site-logo" loading="lazy" alt="Avatar">
-                    
-                
-
-                
-            </figure>
-            
-        
-        
-        <h1 class="site-name"><a href="/">My Blog</a></h1>
-        <h2 class="site-description"></h2></header>
-
-    <ol class="menu" id="main-menu">
-        
-        
-        
-
-        <li >
-            <a href='/page/about/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="7" r="4" />
-  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
-</svg>
-
-
-
-                
-                <span>About</span>
-            </a>
-        </li>
-        
-        
-
-        <li >
-            <a href='/page/archives/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <rect x="3" y="4" width="18" height="4" rx="2" />
-  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
-  <line x1="10" y1="12" x2="14" y2="12" />
-</svg>
-
-
-
-                
-                <span>Archives</span>
-            </a>
-        </li>
-        
-        
-
-        <li >
-            <a href='/page/search/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="10" cy="10" r="7" />
-  <line x1="21" y1="21" x2="15" y2="15" />
-</svg>
-
-
-
-                
-                <span>Search</span>
-            </a>
-        </li>
-        
-
-        
-            <li id="dark-mode-toggle">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="8" cy="12" r="2" />
-  <rect x="2" y="6" width="20" height="12" rx="6" />
-</svg>
-
-
-
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="16" cy="12" r="2" />
-  <rect x="2" y="6" width="20" height="12" rx="6" />
-</svg>
-
-
-
-                <span>Dark Mode</span>
-            </li>
-        
-    </ol>
-</aside>
-<main class="main full-width">
-    
-    
-    
-    
-
-    <section class="article-list">
-        
-            
-<article class="">
-    <header class="article-header">
-
-    <div class="article-details">
-    
-
-    <h2 class="article-title">
-        <a href="/post/mysql%E6%95%B0%E6%8D%AE%E5%BA%93/">Mysql数据库</a>
-    </h2>
-
-    
-
-    
-    <footer class="article-time">
-        
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
-  <circle cx="18" cy="18" r="4" />
-  <path d="M15 3v4" />
-  <path d="M7 3v4" />
-  <path d="M3 11h16" />
-  <path d="M18 16.496v1.504l1 1" />
-</svg>
-                <time class="article-time--published">Jan 05, 2022</time>
-            </div>
-        
-
-        
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="12" r="9" />
-  <polyline points="12 7 12 12 15 15" />
-</svg>
-
-
-
-                <time class="article-time--reading">
-                    15 minute read
-                </time>
-            </div>
-        
-    </footer>
-    
-</div>
-</header>
-</article>
-        
-            
-<article class="">
-    <header class="article-header">
-
-    <div class="article-details">
-    
-
-    <h2 class="article-title">
-        <a href="/post/json%E7%9A%84%E4%BD%BF%E7%94%A8/">Json的使用</a>
-    </h2>
-
-    
-
-    
-    <footer class="article-time">
-        
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
-  <circle cx="18" cy="18" r="4" />
-  <path d="M15 3v4" />
-  <path d="M7 3v4" />
-  <path d="M3 11h16" />
-  <path d="M18 16.496v1.504l1 1" />
-</svg>
-                <time class="article-time--published">Jan 04, 2022</time>
-            </div>
-        
-
-        
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="12" r="9" />
-  <polyline points="12 7 12 12 15 15" />
-</svg>
-
-
-
-                <time class="article-time--reading">
-                    3 minute read
-                </time>
-            </div>
-        
-    </footer>
-    
-</div>
-</header>
-</article>
-        
-            
-<article class="">
-    <header class="article-header">
-
-    <div class="article-details">
-    
-
-    <h2 class="article-title">
-        <a href="/post/visual-studio-2022%E6%B7%BB%E5%8A%A0%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93/">Visual_Studio_2022添加第三方库</a>
-    </h2>
-
-    
-
-    
-    <footer class="article-time">
-        
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
-  <circle cx="18" cy="18" r="4" />
-  <path d="M15 3v4" />
-  <path d="M7 3v4" />
-  <path d="M3 11h16" />
-  <path d="M18 16.496v1.504l1 1" />
-</svg>
-                <time class="article-time--published">Jan 04, 2022</time>
-            </div>
-        
-
-        
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="12" r="9" />
-  <polyline points="12 7 12 12 15 15" />
-</svg>
-
-
-
-                <time class="article-time--reading">
-                    1 minute read
-                </time>
-            </div>
-        
-    </footer>
-    
-</div>
-</header>
-</article>
-        
-            
-<article class="">
-    <header class="article-header">
-
-    <div class="article-details">
-    
-
-    <h2 class="article-title">
-        <a href="/post/cmake%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8Ecmakelists-txt%E7%9A%84%E7%BC%96%E5%86%99/">Cmake的安装与CMakeLists.txt的编写</a>
-    </h2>
-
-    
-
-    
-    <footer class="article-time">
-        
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
-  <circle cx="18" cy="18" r="4" />
-  <path d="M15 3v4" />
-  <path d="M7 3v4" />
-  <path d="M3 11h16" />
-  <path d="M18 16.496v1.504l1 1" />
-</svg>
-                <time class="article-time--published">Jan 03, 2022</time>
-            </div>
-        
-
-        
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="12" r="9" />
-  <polyline points="12 7 12 12 15 15" />
-</svg>
-
-
-
-                <time class="article-time--reading">
-                    2 minute read
-                </time>
-            </div>
-        
-    </footer>
-    
-</div>
-</header>
-</article>
-        
-            
-<article class="">
-    <header class="article-header">
-
-    <div class="article-details">
-    
-
-    <h2 class="article-title">
-        <a href="/post/c-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%A1%8C%E4%B8%BA%E6%A8%A1%E5%BC%8F/">C&#43;&#43;设计模式-行为模式</a>
-    </h2>
-
-    
-
-    
-    <footer class="article-time">
-        
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
-  <circle cx="18" cy="18" r="4" />
-  <path d="M15 3v4" />
-  <path d="M7 3v4" />
-  <path d="M3 11h16" />
-  <path d="M18 16.496v1.504l1 1" />
-</svg>
-                <time class="article-time--published">Jan 03, 2022</time>
-            </div>
-        
-
-        
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="12" r="9" />
-  <polyline points="12 7 12 12 15 15" />
-</svg>
-
-
-
-                <time class="article-time--reading">
-                    22 minute read
-                </time>
-            </div>
-        
-    </footer>
-    
-</div>
-</header>
-</article>
-        
-            
-<article class="">
-    <header class="article-header">
-
-    <div class="article-details">
-    
-
-    <h2 class="article-title">
-        <a href="/post/c-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F/">C&#43;&#43;设计模式-结构型模式</a>
-    </h2>
-
-    
-
-    
-    <footer class="article-time">
-        
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
-  <circle cx="18" cy="18" r="4" />
-  <path d="M15 3v4" />
-  <path d="M7 3v4" />
-  <path d="M3 11h16" />
-  <path d="M18 16.496v1.504l1 1" />
-</svg>
-                <time class="article-time--published">Jan 03, 2022</time>
-            </div>
-        
-
-        
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="12" r="9" />
-  <polyline points="12 7 12 12 15 15" />
-</svg>
-
-
-
-                <time class="article-time--reading">
-                    16 minute read
-                </time>
-            </div>
-        
-    </footer>
-    
-</div>
-</header>
-</article>
-        
-            
-<article class="">
-    <header class="article-header">
-
-    <div class="article-details">
-    
-
-    <h2 class="article-title">
-        <a href="/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
-    </h2>
-
-    
-
-    
-    <footer class="article-time">
-        
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
-  <circle cx="18" cy="18" r="4" />
-  <path d="M15 3v4" />
-  <path d="M7 3v4" />
-  <path d="M3 11h16" />
-  <path d="M18 16.496v1.504l1 1" />
-</svg>
-                <time class="article-time--published">Jan 01, 2022</time>
-            </div>
-        
-
-        
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="12" r="9" />
-  <polyline points="12 7 12 12 15 15" />
-</svg>
-
-
-
-                <time class="article-time--reading">
-                    29 minute read
-                </time>
-            </div>
-        
-    </footer>
-    
-</div>
-</header>
-</article>
-        
-            
-<article class="">
-    <header class="article-header">
-
-    <div class="article-details">
-    
-
-    <h2 class="article-title">
-        <a href="/post/%E7%AE%97%E6%B3%95/">算法</a>
-    </h2>
-
-    
-
-    
-    <footer class="article-time">
-        
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
-  <circle cx="18" cy="18" r="4" />
-  <path d="M15 3v4" />
-  <path d="M7 3v4" />
-  <path d="M3 11h16" />
-  <path d="M18 16.496v1.504l1 1" />
-</svg>
-                <time class="article-time--published">Jan 01, 2022</time>
-            </div>
-        
-
-        
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="12" r="9" />
-  <polyline points="12 7 12 12 15 15" />
-</svg>
-
-
-
-                <time class="article-time--reading">
-                    6 minute read
-                </time>
-            </div>
-        
-    </footer>
-    
-</div>
-</header>
-</article>
-        
-            
-<article class="">
-    <header class="article-header">
-
-    <div class="article-details">
-    
-
-    <h2 class="article-title">
-        <a href="/post/c-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%88%9B%E5%BB%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/">C&#43;&#43;设计模式-创建型模式</a>
-    </h2>
-
-    
-
-    
-    <footer class="article-time">
-        
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
-  <circle cx="18" cy="18" r="4" />
-  <path d="M15 3v4" />
-  <path d="M7 3v4" />
-  <path d="M3 11h16" />
-  <path d="M18 16.496v1.504l1 1" />
-</svg>
-                <time class="article-time--published">Dec 27, 2021</time>
-            </div>
-        
-
-        
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="12" r="9" />
-  <polyline points="12 7 12 12 15 15" />
-</svg>
-
-
-
-                <time class="article-time--reading">
-                    5 minute read
-                </time>
-            </div>
-        
-    </footer>
-    
-</div>
-</header>
-</article>
-        
-            
-<article class="">
-    <header class="article-header">
-
-    <div class="article-details">
-    
-
-    <h2 class="article-title">
-        <a href="/post/gdb%E4%BB%A3%E7%A0%81%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7/">gdb代码调试工具</a>
-    </h2>
-
-    
-
-    
-    <footer class="article-time">
-        
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
-  <circle cx="18" cy="18" r="4" />
-  <path d="M15 3v4" />
-  <path d="M7 3v4" />
-  <path d="M3 11h16" />
-  <path d="M18 16.496v1.504l1 1" />
-</svg>
-                <time class="article-time--published">Dec 26, 2021</time>
-            </div>
-        
-
-        
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="12" r="9" />
-  <polyline points="12 7 12 12 15 15" />
-</svg>
-
-
-
-                <time class="article-time--reading">
-                    6 minute read
-                </time>
-            </div>
-        
-    </footer>
-    
-</div>
-</header>
-</article>
-        
-    </section>
-    <nav class='pagination'>
-        
-        
-
-        
-            
-                    <a class='page-link' href='/'>1</a>
-                
-            
-            
-                    
-                        
-                        <span class='page-link dots'>&hellip;</span>
-                    
-                
-            
-            
-                    
-                
-            
-            
-                    
-                
-            
-            
-                    
-                
-            
-            
-                    
-                
-            
-            
-                    
-                
-            
-            
-                    
-                
-            
-            
-                    
-                
-            
-            
-                    
-                
-            
-            
-                    
-                
-            
-            
-                    
-                
-            
-            
-                    
-                
-            
-            
-                    
-                
-            
-            
-                    
-                
-            
-            
-                    
-                
-            
-            
-                    
-                
-            
-            
-                    
-                
-            
-            
-                    
-                
-            
-            
-                    
-                
-            
-            
-                    
-                
-            
-            
-                    
-                
-            
-            
-                    
-                
-            
-            
-                    <a class='page-link' href='/page/24/'>24</a>
-                
-            
-            
-                <span class='page-link current'>25</span>
-                
-            
-            
-                    <a class='page-link' href='/page/26/'>26</a>
-                
-            
-    </nav>
-
-<footer class="site-footer">
-    <section class="copyright">
-        &copy; 
-        
-        2023 My Blog
-    </section>
-    
-    <section class="powerby">
-        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.5.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
-    </section>
-</footer>
-
-            </main>
-    
-    
-    <aside class="sidebar right-sidebar sticky">
-        
-            <form action="/page/search/" class="search-form widget" >
-        <p>
-            <label>Search</label>
-            <input name="keyword" required placeholder="Type something..." />
-        
-            <button title="Search">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="10" cy="10" r="7" />
-  <line x1="21" y1="21" x2="15" y2="15" />
-</svg>
-
-
-
-            </button>
-        </p>
-    </form>
-        
-            <section class="widget archives">
-        <div class="widget-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-infinity" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <path d="M9.828 9.172a4 4 0 1 0 0 5.656 a10 10 0 0 0 2.172 -2.828a10 10 0 0 1 2.172 -2.828 a4 4 0 1 1 0 5.656a10 10 0 0 1 -2.172 -2.828a10 10 0 0 0 -2.172 -2.828" />
-</svg>
-
-
-
+	<meta name="generator" content="Hugo 0.115.4">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>My Blog</title><meta name="Description" content="Hugo theme - LoveIt"><meta property="og:title" content="My Blog" />
+<meta property="og:description" content="Hugo theme - LoveIt" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://okokfun.github.io/" /><meta property="og:image" content="https://okokfun.github.io"/><meta property="og:site_name" content="My Blog" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://okokfun.github.io"/>
+
+<meta name="twitter:title" content="My Blog"/>
+<meta name="twitter:description" content="Hugo theme - LoveIt"/>
+<meta name="application-name" content="LoveIt">
+<meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://okokfun.github.io/" /><link rel="alternate" href="/index.xml" type="application/rss+xml" title="My Blog">
+    <link rel="feed" href="/index.xml" type="application/rss+xml" title="My Blog"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "WebSite",
+        "url": "https:\/\/okokfun.github.io\/","inLanguage": "zh-CN","description": "Hugo theme - LoveIt","image": "https:\/\/okokfun.github.io\/images\/Apple-Devices-Preview.png","thumbnailUrl": "https:\/\/okokfun.github.io\/images\/screenshot.png","name": "My Blog"
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="My Blog"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span>My Blog</a>
         </div>
-        <h2 class="widget-title section-title">Archives</h2>
-
-        
-        
-        
-        
-        
-        <div class="widget-archive--list">
-            <div class="archives-year">
-                    <a href="/page/archives/#2023">
-                        
-                            <span class="year">2023</span>
-                            <span class="count">196</span>
-                        
-                    </a> 
-                </div>
-            <div class="archives-year">
-                    <a href="/page/archives/#2022">
-                        
-                            <span class="year">2022</span>
-                            <span class="count">52</span>
-                        
-                    </a> 
-                </div>
-            <div class="archives-year">
-                    <a href="/page/archives/#2021">
-                        
-                            <span class="year">2021</span>
-                            <span class="count">10</span>
-                        
-                    </a> 
-                </div>
-            <div class="archives-year">
-                    <a href="/page/archives/#0001">
-                        
-                            <span class="year">0001</span>
-                            <span class="count">1</span>
-                        
-                    </a> 
-                </div>
-            
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/" title="Hello World!"> 文章 </a><a class="menu-item" href="/tags/" title="Hello World!"> 标签 </a><a class="menu-item" href="/categories/" title="Hello World!"> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a><a href="javascript:void(0);" class="menu-item language" title="Select Language">
+                    <i class="fa fa-globe" aria-hidden="true"></i>                      
+                    <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/zh-cn/">简体中文</option><option value="/" selected></option></select>
+                </a></div>
         </div>
-    </section>
-        
-            <section class="widget tagCloud">
-    <div class="widget-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
-  <circle cx="9" cy="9" r="2" />
-</svg>
-
-
-
     </div>
-    <h2 class="widget-title section-title">Tags</h2>
-
-    <div class="tagCloud-tags">
-        
-            <a href="/tags/analog/" class="font_size_104">
-                Analog
-            </a>
-        
-            <a href="/tags/digital/" class="font_size_89">
-                Digital
-            </a>
-        
-            <a href="/tags/c&#43;&#43;/" class="font_size_17">
-                C&#43;&#43;
-            </a>
-        
-            <a href="/tags/c&#43;&#43;17/" class="font_size_9">
-                C&#43;&#43;17
-            </a>
-        
-            <a href="/tags/nas/" class="font_size_5">
-                nas
-            </a>
-        
-            <a href="/tags/c&#43;&#43;11/" class="font_size_4">
-                C&#43;&#43;11
-            </a>
-        
-            <a href="/tags/qt/" class="font_size_4">
-                QT
-            </a>
-        
-            <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="font_size_4">
-                设计模式
-            </a>
-        
-            <a href="/tags/database/" class="font_size_2">
-                DataBase
-            </a>
-        
-            <a href="/tags/linux/" class="font_size_2">
-                Linux
-            </a>
-        
-    </div>
-</section>
-        
-    </aside>
-
-
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="My Blog"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span>My Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
         </div>
-        <script 
-                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
-                defer="false"
-                >
-            </script><script type="text/javascript" src="/ts/main.js" defer></script>
-<script>
-    (function () {
-        const customFont = document.createElement('link');
-        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="Hello World!">文章</a><a class="menu-item" href="/tags/" title="Hello World!">标签</a><a class="menu-item" href="/categories/" title="Hello World!">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="Select Language">
+                    <i class="fa fa-globe fa-fw" aria-hidden="true"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/zh-cn/">简体中文</option><option value="/" selected></option></select>
+                </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="page home" data-home="posts"><div class="home-profile"><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"><a href="https://github.com/okokfun" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github fa-fw" aria-hidden="true"></i></a><a href="mailto:linguangyuan88@gmail.com" title="Email" rel="me"><i class="far fa-envelope fa-fw" aria-hidden="true"></i></a></div></div>
+<article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/posts/1-2%E6%A8%A1%E6%8B%9F%E4%BF%A1%E5%8F%B7/">1.2模拟信号</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Author</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-07-14">2023-07-14</time></span></div><div class="content"></div><div class="post-footer">
+        <a href="/posts/1-2%E6%A8%A1%E6%8B%9F%E4%BF%A1%E5%8F%B7/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/analog/">Analog</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/posts/1-1%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E5%AD%A6/">1.1模拟电子学</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Author</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-07-12">2023-07-12</time></span></div><div class="content">1.1 模拟电子学 模拟信号: 我们测量到的自然现象的特性(比如,压力，流速和温度)都来源于模拟信号
+信号可分为有 二进制数字 表示的数字信号和有 连续变化量 表示的模拟信号
+模拟电子学包括所有其他(非数字)信号，它包括信号处理功能，比如放大,微分和集成等。
+1.1.1 线型方程 线型方程式:
+$$ y = mx + b $$
+式中，y是因变量，x自变量，m是斜率，b是y轴上的截距。 欧姆定理：
+$$ I=V/R $$
+电流(I)是因变量，自变量是电压(V),斜率是电阻的倒数(1/R), 也就是电导.欧姆定律可变化为：
+$$ I=GV $$
+特性曲线是能够反应一个器件两个变化特性之间关系的图</div><div class="post-footer">
+        <a href="/posts/1-1%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E5%AD%A6/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/analog/">Analog</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/posts/%E6%95%B0%E5%AD%97%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF/">数字电子技术</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Author</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-07-12">2023-07-12</time></span></div><div class="content">第1章 基本概念 1.1 数字量与模拟量 1.2 二进制数、逻辑电平和数字波形 1.3 固定功能的集成电路 关键词 判断题 自测题 习题 答案
+第2章 数字系统、运算和编码 2.1 十进制数 2.2 二进制数 2.3 十进制数到二进制数的转换 2.4 二进制算术 2.5 二进制数的反码和补码 2.6 带符号数 2.7 带符号数的算术运算 2.8 十六进制数 2.9 八进制数 2.10 二—十进制编码(BCD) 2.11 数字编码 2.12 错误检测码 关键词 判断题 自测题 习题 答案
+第3章 逻辑门 3.1 反相器 3.2 与门 3.3 或门 3.4 与非门 3.5 或非门 3.6 异或门和同或门 3.7 固定功能逻辑 关键词 判断题 自测题 习题 答案
+第4章 布尔代数和逻辑化简 4.1 布尔运算和表达式 4.</div><div class="post-footer">
+        <a href="/posts/%E6%95%B0%E5%AD%97%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/digital/">Digital</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/posts/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/">模拟电子技术基础</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Author</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-07-12">2023-07-12</time></span></div><div class="content">出版者的话 译者序 前言 第1章 基本模拟概念 ##### 1.1 模拟电子学 ##### 1.2 模拟信号 ##### 1.3 信号源 ##### 1.4 放大器 ##### 1.5 故障检测
+第2章 二极管及其应用 ##### 2.1 半导体原子结构 ##### 2.2 pn结 ##### 2.3 半导体二极管的偏置 ##### 2.4 二极管特性 ##### 2.5 整流器 ##### 2.6 整流滤波器和IC稳压器 ##### 2.7 二极管限幅电路和钳位电路 ##### 2.8 特殊用途二极管 ##### 2.9 二极管数据手册 ##### 2.10 故障检测
+第3章 BJT ##### 3.1 BJT的结构 ##### 3.2 BJT偏置电路 ##### 3.3 数据手册中的参数及交流分析 ##### 3.4 共发射极放大器 ##### 3.5 共集电极放大器 ##### 3.</div><div class="post-footer">
+        <a href="/posts/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/analog/">Analog</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/posts/keil%E6%8F%92%E4%BB%B6%E5%90%88%E9%9B%86/">适用于Keil的插件合集</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Author</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-07-11">2023-07-11</time></span></div><div class="content">文件下载链接 https://github.com/txt1994/keil_plugs 本人收集的Keil插件，当然也可用于其他软件
+1.AStyle 下载链接:
+https://sourceforge.net/projects/astyle/files 1.1 AStyle可以对代码进行格式化分别是对单个文件格式化，命令： -n !E --style=google -s4 对多个文件格式化，但需要在同一个文件夹，命令：
+-n &#34;$E*.c&#34; &#34;$E*.h&#34; --style=google -p -s4 -S -f -xW -w -xw -R 2.FileComments 2.1 FileComments可以对*.h和*.c进行快速添加注释，但需要模版文件，此文件在最下面提供下载，命令： !E 3.DateTime 3.1 DateTime可以识别当前日期和时间，用的不多，命令： 当前日期：
+!E ~E ^E 当前时间：
+!E ~E ^E T 4.FunctionComment 4.1 FunctionComment可以提供函数快速添加注释，命令： !E ~E 把这些插件添加到keil中，打开keil，依次点击Tools-&gt;Customize Tools Menu,此时页面是这样的： 把上述的插件添加进去，Command是插件路径，Arguments是使用插件时的参数，可以根据需要自行定制
+添加插件的快捷键：点击keil页面的小扳手，找到Shortcut Keys,把下拉框拉到刚才添加的插件处，右边是添加快键键的地方，添加后可以使用了</div><div class="post-footer">
+        <a href="/posts/keil%E6%8F%92%E4%BB%B6%E5%90%88%E9%9B%86/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/keil/">Keil</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/posts/%E7%AC%AC%E4%B8%89%E9%83%A8%E5%88%86-%E6%96%B0%E7%9A%84%E6%A0%87%E5%87%86%E5%BA%93%E7%BB%84%E4%BB%B6/">第三部分-新的标准库组件</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Author</a></span>&nbsp;<span class="post-publish">published on <time datetime="2022-03-19">2022-03-19</time></span></div><div class="content">第三部分 新的标准库组件 本部分介绍了 C++17 的新库组件。
+15 std::optional&lt;&gt; 在编程中，我们经常遇到可能返回/传递/使用某种类型的对象的情况。也就是说，我们可以有一个特定类型的值，或者我们可能根本没有任何值。因此，我们需要一种模拟类似于指针的语义的方法，我们可以通过使用 nullptr 来表示没有值。处理这个问题的方法是定义一个特定类型的对象，带有一个额外的布尔成员/标志，表明一个值是否存在。 std::optional&lt;&gt; 以类型安全的方式提供此类对象。
+可选对象仅具有包含对象的内部存储器以及布尔标志。因此，大小通常比包含的对象大一个字节。对于某些包含的类型，甚至可能根本没有大小开销，前提是可以将附加信息放置在包含的对象中。没有分配堆内存。对象使用与包含类型相同的对齐方式。
+但是，可选对象不仅仅是将布尔标志的功能添加到值成员的结构。例如，如果没有值，则不会为包含的类型调用构造函数（因此，您可以为对象提供没有的默认状态）。
+与 std::variant&lt;&gt; 和 std::any 一样，结果对象具有值语义。也就是说，复制被实现为深度复制，创建一个独立的对象，带有标志和包含的值（如果有的话）在它自己的内存中。复制没有包含值的 std::optional&lt;&gt; 很便宜；复制带有包含值的 std::optional&lt;&gt; 与复制包含的类型/值一样便宜/昂贵。支持移动语义。
+15.1 使用 std::optional&lt;&gt; std::optional&lt;&gt;模型是一个任意类型的可忽略的实例。这个实例可能是一个成员，一个参数，或者一个返回值。你也可以说，std::optional&lt;&gt;是一个容纳零或一个元素的容器。
+15.1.1 可选的返回值 以下程序演示了 std::optional&lt;&gt; 用作返回值的能力： lib/optional.cpp
+#include &lt;optional&gt; #include &lt;string&gt; #include &lt;iostream&gt; // 如果可能，将字符串转换为 int: std::optional&lt;int&gt; asInt(const std::string&amp; s) { try { return std::stoi(s); } catch (...) { return std::nullopt; } } int main() { for (auto s : {&#34;42&#34;, &#34; 077&#34;, &#34;hello&#34;, &#34;0x33&#34;} ) { // 如果可能，尝试将 s 转换为 int 并打印结果: std::optional&lt;int&gt; oi = asInt(s); if (oi) { std::cout &lt;&lt; &#34;convert &#39;&#34; &lt;&lt; s &lt;&lt; &#34;&#39; to int: &#34; &lt;&lt; *oi &lt;&lt; &#34;\n&#34;; } else { std::cout &lt;&lt; &#34;can&#39;t convert &#39;&#34; &lt;&lt; s &lt;&lt; &#34;&#39; to int\n&#34;; } } } 在程序中 asInt() 是将传递的字符串转换为整数的函数。 但是，这可能不会成功。 出于这个原因，使用了 std::optional&lt;&gt; 以便我们可以返回&quot;no int&quot;并避免为其定义一个特殊的 int 值或向调用者抛出异常。 因此，我们要么返回调用 stoi() 的结果，它用一个 int 初始化返回值，要么我们返回 std::nullopt，表明我们没有一个 int 值。 我们可以实现如下相同的行为：</div><div class="post-footer">
+        <a href="/posts/%E7%AC%AC%E4%B8%89%E9%83%A8%E5%88%86-%E6%96%B0%E7%9A%84%E6%A0%87%E5%87%86%E5%BA%93%E7%BB%84%E4%BB%B6/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/stl/">STL</a>,&nbsp;<a href="/tags/c&#43;&#43;17/">C&#43;&#43;17</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/posts/%E7%AC%AC%E4%BA%94%E9%83%A8%E5%88%86-%E4%B8%93%E4%B8%9A%E5%B7%A5%E5%85%B7-/">第五部分-专业工具</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Author</a></span>&nbsp;<span class="post-publish">published on <time datetime="2022-03-19">2022-03-19</time></span></div><div class="content">第五部分 专业工具 这部分介绍了普通应用程序程序员通常不必知道的新语言和库特性。 它可能涵盖基础库、特定模式或特殊环境中的程序员的工具。
+27 多态的内存资源 (PMR) 自C++98以来，标准库就支持配置类分配其内部（堆）内存的方式的能力。由于这个原因，标准库中几乎所有分配内存的类型都有一个分配器参数。因此，你可以配置容器、字符串和其他类型分配其内部内存的方式，如果它们需要比堆栈上分配的空间更多的话。 分配这种内存的默认方式是从堆中分配。但是有不同的理由来修改这个默认行为：
+你可以使用你自己的方式分配内存，以减少系统调用的数量。 你可以确保分配的内存位于彼此的旁边，以从CPU缓存中获益。 你可以把容器和它们的元素放在可供多进程使用的共享内存中。 你甚至可以重定向这些堆内存调用，以使用早期在堆栈上分配的内存。因此，可以有性能和功能方面的原因。 然而，在C++17之前，使用分配器（右）在很多方面都是既棘手又笨拙的（由于一些缺陷，太过复杂，以及与后向兼容的修改）。 现在，C++17为预定义和用户定义的内存分配方式提供了一个相当容易使用的方法，它可以用于标准类型和用户定义的类型。 基于这个原因，本章将讨论：
+使用标准库提供的标准内存资源 定义自定义内存资源 为自定义类型提供内存资源支持 如果没有Pablo Halpern、Arthur O&rsquo;Dwyer、David Sankel和Jonathan Wakely的大力帮助，本章就不可能完成。一些视频解释了这里提供的功能：
+分配器：Pablo Halpern 的好零件 C++17 的 std::pmr 有代价 David Sankel 分配器是 Arthur O&rsquo;Dwyer 的堆句柄 27.1 使用标准内存资源 本节介绍了标准内存资源以及如何使用它们。
+27.1.1 激励性的例子 让我们首先比较一下没有和有标准内存资源的内存消耗。
+为容器和字符串分配内存 假设在你的程序中，你有一个由一些字符串组成的向量，你用相当长的方式初始化这些字符串字符串：
+pmr/pmr0.cpp #include &lt;iostream&gt; #include &lt;string&gt; #include &lt;vector&gt; #include &#34;../lang/tracknew.hpp&#34; int main() { TrackNew::reset(); std::vector&lt;std::string&gt; coll; for (int i=0; i &lt; 1000; ++i) { coll.emplace_back(&#34;just a non-SSO string&#34;); } TrackNew::status(); } 注意，我们使用一个类来跟踪内存分配的数量，该类跟踪所有用以下循环执行的::new调用：</div><div class="post-footer">
+        <a href="/posts/%E7%AC%AC%E4%BA%94%E9%83%A8%E5%88%86-%E4%B8%93%E4%B8%9A%E5%B7%A5%E5%85%B7-/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/tool/">TOOL</a>,&nbsp;<a href="/tags/c&#43;&#43;17/">C&#43;&#43;17</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/posts/%E7%AC%AC%E5%9B%9B%E9%83%A8%E5%88%86-%E6%A0%87%E5%87%86%E5%BA%93%E6%89%A9%E5%B1%95%E5%92%8C%E4%BF%AE%E6%94%B9/">第四部分-标准库扩展和修改</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Author</a></span>&nbsp;<span class="post-publish">published on <time datetime="2022-03-19">2022-03-19</time></span></div><div class="content">第四部分 标准库扩展和修改 这一部分介绍了用C++17对现有库组件的扩展和修改。
+21类型特征扩展 关于类型特征（标准类型函数），C++17扩展了使用它们的一般能力，并且 引入了一些新的类型特征。
+21.1 类型特征的Suffix _v 从C++17开始，你可以对所有产生数值的类型特征使用后缀_v（因为你可以对所有产生类型的类型特征使用后缀_t）。例如，对于任何类型的T，而不是
+std::is_const&lt;T&gt;::value 你现在可以写:
+std::is_const_v&lt;T&gt; // since C++17 这适用于所有类型特征。其方法是，为每个标准类型特征定义一个相应的 变量模板。比如说:
+namespace std { template&lt;typename T&gt; constexpr bool is_const_v = is_const&lt;T&gt;::value; } 通常，这有助于制定布尔条件，你可以在运行时使用:
+if (std::is_signed_v&lt;char&gt;) { ... } 但由于类型特征是在编译时评估的，所以你可以在编译时使用编译时的结果，即compile-time if:
+if constexpr (std::is_signed_v&lt;char&gt;) { ... } 或在实例化模板时:
+// C&lt;T&gt;类的主要模板 template&lt;typename T, bool = std::is_pointer_v&lt;T&gt;&gt; class C { ... }; // 指针类型的部分特殊化。 template&lt;typename T&gt; class C&lt;T, true&gt; { ... }; 在这里，以C类为例，它为指针类型提供了一个特殊的实现。 但是如果类型特征产生一个非布尔值，后缀_v也可以使用，比如std::extreme&lt;&gt;。它产生的是一个原始数组的维度大小:
+int a[5][7]; std::cout &lt;&lt; std::extent_v&lt;decltype(a)&gt; &lt;&lt; &#39;\n&#39;; // prints 5 std::cout &lt;&lt; std::extent_v&lt;decltype(a),1&gt; &lt;&lt; &#39;\n&#39;; // prints 7 21.</div><div class="post-footer">
+        <a href="/posts/%E7%AC%AC%E5%9B%9B%E9%83%A8%E5%88%86-%E6%A0%87%E5%87%86%E5%BA%93%E6%89%A9%E5%B1%95%E5%92%8C%E4%BF%AE%E6%94%B9/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/stl/">STL</a>,&nbsp;<a href="/tags/c&#43;&#43;17/">C&#43;&#43;17</a></div></div>
+</article><ul class="pagination"><li class="page-item ">
+                    <span class="page-link">
+                        <a href="/">1</a>
+                    </span>
+                </li><li class="page-item ">
+                    <span class="page-link" aria-hidden="true">&hellip;</span>
+                </li><li class="page-item ">
+                    <span class="page-link">
+                        <a href="/page/23/">23</a>
+                    </span>
+                </li><li class="page-item ">
+                    <span class="page-link">
+                        <a href="/page/24/">24</a>
+                    </span>
+                </li><li class="page-item active">
+                    <span class="page-link">
+                        <a href="/page/25/">25</a>
+                    </span>
+                </li><li class="page-item ">
+                    <span class="page-link">
+                        <a href="/page/26/">26</a>
+                    </span>
+                </li><li class="page-item ">
+                    <span class="page-link">
+                        <a href="/page/27/">27</a>
+                    </span>
+                </li><li class="page-item ">
+                    <span class="page-link" aria-hidden="true">&hellip;</span>
+                </li><li class="page-item ">
+                    <span class="page-link">
+                        <a href="/page/33/">33</a>
+                    </span>
+                </li></ul></div></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.115.4">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank"></a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
 
-        customFont.type = "text/css";
-        customFont.rel = "stylesheet";
-
-        document.head.appendChild(customFont);
-    }());
-</script>
-
-    </body>
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/twemoji@14.0.2/dist/twemoji.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@8.6.0/dist/index.umd.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"data":{"id-1":"A Clean, Elegant but Advanced Hugo Theme"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"","algoliaIndex":"","algoliaSearchKey":"","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"},"twemoji":true,"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
 </html>

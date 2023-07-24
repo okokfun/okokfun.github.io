@@ -1,0 +1,2384 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Qt概述 - My Blog</title><meta name="Description" content="Hugo theme - LoveIt"><meta property="og:title" content="Qt概述" />
+<meta property="og:description" content="1. Qt概述 1.1 什么是Qt Qt是一个跨平台的C&#43;&#43;图形用户界面应用程序框架。它为应用程序开发者提供建立艺术级图形界面所需的所有功能。它是完全面向对象的，很容易扩展，并且允许真正的组件编程。
+1.2 Qt的发展史 1991年 Qt最早由奇趣科技开发
+1996年 进入商业领域，它也是目前流行的Linux桌面环境KDE的基础
+2008年 奇趣科技被诺基亚公司收购，Qt称为诺基亚旗下的编程语言
+2012年 Qt又被Digia公司收购
+2014年4月 跨平台的集成开发环境Qt Creator3.1.0发布，同年5月20日配发了Qt5.3正式版，至此Qt实现了对iOS、Android、WP等各平台的全面支持。
+截至2022年1月31日Qt最新版本为 6.2.3
+1.3 支持的平台 Windows – XP、Vista、Win7、Win8、Win2008、Win10、Win11
+Uinux/X11 – Linux、Sun Solaris、HP-UX、Compaq Tru64 UNIX、IBM AIX、SGI IRIX、FreeBSD、BSD/OS、和其他很多X11平台
+Macintosh – Mac OS X
+Embedded – 有帧缓冲支持的嵌入式Linux平台，Windows CE
+1.4 Qt版本 Qt按照不同的版本发行，分为商业版和开源版
+商业版 为商业软件提供开发，他们提供传统商业软件发行版，并且提供在商业有效期内的免费升级和技术支持服务。
+开源的LGPL版本： 为了开发自有而设计的开放源码软件，它提供了和商业版本同样的功能，在GNU通用公共许可下，它是免费的。
+1.5 Qt的下载与安装 下载地址： 现在QT有两种安装方式
+在线安装：使用qt的安装器
+https://download.qt.io/archive/online_installers/4.2/ 不同系统下载对应安装器,然后安装
+离线安装
+qt最后的一个离线安装版本是5.14.2,超过此版本是在线安装版，不提供整合二进制版本。
+Linux Host 下载链接👉Qt 5.14.2 for Linux 64-bit ( 1.2G )
+OS X Host 下载链接👉Qt 5." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://okokfun.github.io/posts/qt%E6%A6%82%E8%BF%B0/" /><meta property="og:image" content="https://okokfun.github.io"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-02-01T17:40:05+00:00" />
+<meta property="article:modified_time" content="2022-02-01T17:40:05+00:00" /><meta property="og:site_name" content="My Blog" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://okokfun.github.io"/>
+
+<meta name="twitter:title" content="Qt概述"/>
+<meta name="twitter:description" content="1. Qt概述 1.1 什么是Qt Qt是一个跨平台的C&#43;&#43;图形用户界面应用程序框架。它为应用程序开发者提供建立艺术级图形界面所需的所有功能。它是完全面向对象的，很容易扩展，并且允许真正的组件编程。
+1.2 Qt的发展史 1991年 Qt最早由奇趣科技开发
+1996年 进入商业领域，它也是目前流行的Linux桌面环境KDE的基础
+2008年 奇趣科技被诺基亚公司收购，Qt称为诺基亚旗下的编程语言
+2012年 Qt又被Digia公司收购
+2014年4月 跨平台的集成开发环境Qt Creator3.1.0发布，同年5月20日配发了Qt5.3正式版，至此Qt实现了对iOS、Android、WP等各平台的全面支持。
+截至2022年1月31日Qt最新版本为 6.2.3
+1.3 支持的平台 Windows – XP、Vista、Win7、Win8、Win2008、Win10、Win11
+Uinux/X11 – Linux、Sun Solaris、HP-UX、Compaq Tru64 UNIX、IBM AIX、SGI IRIX、FreeBSD、BSD/OS、和其他很多X11平台
+Macintosh – Mac OS X
+Embedded – 有帧缓冲支持的嵌入式Linux平台，Windows CE
+1.4 Qt版本 Qt按照不同的版本发行，分为商业版和开源版
+商业版 为商业软件提供开发，他们提供传统商业软件发行版，并且提供在商业有效期内的免费升级和技术支持服务。
+开源的LGPL版本： 为了开发自有而设计的开放源码软件，它提供了和商业版本同样的功能，在GNU通用公共许可下，它是免费的。
+1.5 Qt的下载与安装 下载地址： 现在QT有两种安装方式
+在线安装：使用qt的安装器
+https://download.qt.io/archive/online_installers/4.2/ 不同系统下载对应安装器,然后安装
+离线安装
+qt最后的一个离线安装版本是5.14.2,超过此版本是在线安装版，不提供整合二进制版本。
+Linux Host 下载链接👉Qt 5.14.2 for Linux 64-bit ( 1.2G )
+OS X Host 下载链接👉Qt 5."/>
+<meta name="application-name" content="LoveIt">
+<meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://okokfun.github.io/posts/qt%E6%A6%82%E8%BF%B0/" /><link rel="prev" href="https://okokfun.github.io/posts/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%87%86%E5%88%99/" /><link rel="next" href="https://okokfun.github.io/posts/qt%E4%B8%ADui%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Qt概述",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/okokfun.github.io\/posts\/qt%E6%A6%82%E8%BF%B0\/"
+        },"image": ["https:\/\/okokfun.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "C\u002b\u002b, QT","wordcount":  2829 ,
+        "url": "https:\/\/okokfun.github.io\/posts\/qt%E6%A6%82%E8%BF%B0\/","datePublished": "2022-02-01T17:40:05+00:00","dateModified": "2022-02-01T17:40:05+00:00","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": "https:\/\/okokfun.github.io\/images\/avatar.png"},"author": {
+                "@type": "Person",
+                "name": "Author"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="My Blog"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span>My Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/" title="Hello World!"> 文章 </a><a class="menu-item" href="/tags/" title="Hello World!"> 标签 </a><a class="menu-item" href="/categories/" title="Hello World!"> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a><a href="javascript:void(0);" class="menu-item language" title="Select Language">
+                    <i class="fa fa-globe" aria-hidden="true"></i>                      
+                    <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/posts/qt%E6%A6%82%E8%BF%B0/" selected></option></select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="My Blog"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span>My Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="Hello World!">文章</a><a class="menu-item" href="/tags/" title="Hello World!">标签</a><a class="menu-item" href="/categories/" title="Hello World!">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="Select Language">
+                    <i class="fa fa-globe fa-fw" aria-hidden="true"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/posts/qt%E6%A6%82%E8%BF%B0/" selected></option></select>
+                </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Qt概述</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Author</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-02-01">2022-02-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2829 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;14 minutes&nbsp;<span id="/posts/qt%E6%A6%82%E8%BF%B0/" class="leancloud_visitors" data-flag-title="Qt概述">
+                        <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#11-什么是qt">1.1 什么是Qt</a></li>
+    <li><a href="#12-qt的发展史">1.2 Qt的发展史</a></li>
+    <li><a href="#13-支持的平台">1.3 支持的平台</a></li>
+    <li><a href="#14-qt版本">1.4 Qt版本</a></li>
+    <li><a href="#15-qt的下载与安装">1.5 Qt的下载与安装</a>
+      <ul>
+        <li><a href="#下载地址">下载地址：</a></li>
+        <li><a href="#linux-host">Linux Host</a></li>
+        <li><a href="#os-x-host">OS X Host</a></li>
+        <li><a href="#windows-host">Windows Host</a></li>
+        <li><a href="#安装">安装</a></li>
+      </ul>
+    </li>
+    <li><a href="#16-qt的优点">1.6 Qt的优点</a></li>
+    <li><a href="#17-成功案例">1.7 成功案例</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#21-使用向导创建">2.1 使用向导创建</a></li>
+    <li><a href="#22-手动创建"><strong>2.2</strong> 手动创建</a></li>
+    <li><a href="#23-pro文件"><strong>2.3</strong> .pro文件</a></li>
+    <li><a href="#24-一个最简单的qt应用程序"><strong>2.4</strong> 一个最简单的Qt应用程序</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#31-按钮的创建">3.1 按钮的创建</a></li>
+    <li><a href="#32-对象模型对象树">3.2 对象模型（对象树）</a></li>
+    <li><a href="#33-qt窗口坐标体系">3.3 Qt窗口坐标体系</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#41-系统自带的信号和槽">4.1 系统自带的信号和槽</a></li>
+    <li><a href="#42-自定义信号和槽">4.2 自定义信号和槽</a></li>
+    <li><a href="#43信号槽的拓展">4.3信号槽的拓展</a></li>
+    <li><a href="#44-qt4版本的信号槽写法">4.4 Qt4版本的信号槽写法</a></li>
+    <li><a href="#45-lambda表达式">4.5 Lambda表达式</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#51-菜单栏">5.1 菜单栏</a></li>
+    <li><a href="#52-工具栏">5.2 工具栏</a></li>
+    <li><a href="#53-状态栏">5.3 状态栏</a></li>
+    <li><a href="#54-铆接部件">5.4 铆接部件</a></li>
+    <li><a href="#55-核心部件中心部件">5.5 核心部件（中心部件）</a></li>
+    <li><a href="#56-资源文件">5.6 资源文件</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#61-基本概念">6.1 基本概念</a></li>
+    <li><a href="#62-标准对话框">6.2 标准对话框</a></li>
+    <li><a href="#63-自定义消息框">6.3 自定义消息框</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#64-消息对话框">6.4 消息对话框</a></li>
+    <li><a href="#65-标准文件对话框">6.5 标准文件对话框</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#71-系统提供的布局控件">7.1 系统提供的布局控件</a></li>
+    <li><a href="#72-利用widget做布局">7.2 利用widget做布局</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#81-qlabel控件使用">8.1 QLabel控件使用</a>
+      <ul>
+        <li><a href="#显示文字-普通文本html">显示文字 （普通文本、html）</a></li>
+        <li><a href="#显示图片">显示图片</a></li>
+        <li><a href="#显示动画">显示动画</a></li>
+      </ul>
+    </li>
+    <li><a href="#82-qlineedit">8.2 QLineEdit</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#83-其他控件">8.3 其他控件</a></li>
+    <li><a href="#84-自定义控件">8.4 自定义控件</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#91-事件">9.1 事件</a></li>
+    <li><a href="#92-event">9.2 event（）</a></li>
+    <li><a href="#93-事件过滤器">9.3 事件过滤器</a></li>
+    <li><a href="#94-总结">9.4 总结</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#101-qpainter">10.1 QPainter</a></li>
+    <li><a href="#102-绘图设备">10.2 绘图设备</a>
+      <ul>
+        <li><a href="#1021-qpixmapqbitmapqimage">10.2.1 QPixmap、QBitmap、QImage</a></li>
+        <li><a href="#1022-qpicture">10.2.2 QPicture</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#111-基本文件操作">11.1 基本文件操作</a></li>
+    <li><a href="#112-二进制文件读写">11.2 二进制文件读写</a></li>
+    <li><a href="#113-文本文件读写">11.3 文本文件读写</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><!-- raw HTML omitted -->
+<h1 id="1-qt概述">1. Qt概述</h1>
+<h2 id="11-什么是qt">1.1 什么是Qt</h2>
+<p>Qt是一个跨平台的C++图形用户界面应用程序框架。它为应用程序开发者提供建立艺术级图形界面所需的所有功能。它是完全面向对象的，很容易扩展，并且允许真正的组件编程。</p>
+<h2 id="12-qt的发展史">1.2 Qt的发展史</h2>
+<p>1991年 Qt最早由奇趣科技开发</p>
+<p>1996年 进入商业领域，它也是目前流行的Linux桌面环境KDE的基础</p>
+<p>2008年 奇趣科技被诺基亚公司收购，Qt称为诺基亚旗下的编程语言</p>
+<p>2012年 Qt又被Digia公司收购</p>
+<p>2014年4月 跨平台的集成开发环境Qt Creator3.1.0发布，同年5月20日配发了Qt5.3正式版，至此Qt实现了对iOS、Android、WP等各平台的全面支持。</p>
+<p>截至2022年1月31日Qt最新版本为 6.2.3</p>
+<h2 id="13-支持的平台">1.3 支持的平台</h2>
+<ul>
+<li>
+<p>Windows – XP、Vista、Win7、Win8、Win2008、Win10、Win11</p>
+</li>
+<li>
+<p>Uinux/X11 – Linux、Sun Solaris、HP-UX、Compaq Tru64 UNIX、IBM AIX、SGI IRIX、FreeBSD、BSD/OS、和其他很多X11平台</p>
+</li>
+<li>
+<p>Macintosh – Mac OS X</p>
+</li>
+<li>
+<p>Embedded – 有帧缓冲支持的嵌入式Linux平台，Windows CE</p>
+</li>
+</ul>
+<h2 id="14-qt版本">1.4 Qt版本</h2>
+<p>Qt按照不同的版本发行，分为商业版和开源版</p>
+<ul>
+<li>商业版</li>
+</ul>
+<p>为商业软件提供开发，他们提供传统商业软件发行版，并且提供在商业有效期内的免费升级和技术支持服务。</p>
+<ul>
+<li>开源的LGPL版本：</li>
+</ul>
+<p>为了开发自有而设计的开放源码软件，它提供了和商业版本同样的功能，在GNU通用公共许可下，它是免费的。</p>
+<h2 id="15-qt的下载与安装">1.5 Qt的下载与安装</h2>
+<h3 id="下载地址">下载地址：</h3>
+<p>现在QT有两种安装方式</p>
+<ol>
+<li>
+<p>在线安装：使用qt的安装器</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>https://download.qt.io/archive/online_installers/4.2/
+</span></span></code></pre></div><p>不同系统下载对应安装器,然后安装</p>
+</li>
+<li>
+<p>离线安装</p>
+<p>qt最后的一个离线安装版本是5.14.2,超过此版本是在线安装版，不提供整合二进制版本。</p>
+</li>
+</ol>
+<h3 id="linux-host">Linux Host</h3>
+<p>下载链接👉<a href="https://download.qt.io/archive/qt/5.14/5.14.2/qt-opensource-linux-x64-5.14.2.run" target="_blank" rel="noopener noreffer ">Qt 5.14.2 for Linux 64-bit ( 1.2G )</a></p>
+<h3 id="os-x-host">OS X Host</h3>
+<p>下载链接👉<a href="https://download.qt.io/archive/qt/5.14/5.14.2/qt-opensource-mac-x64-5.14.2.dmg" target="_blank" rel="noopener noreffer ">Qt 5.14.2 for Mac 64-bit ( 2.6G )</a></p>
+<h3 id="windows-host">Windows Host</h3>
+<p>下载链接👉<a href="https://download.qt.io/archive/qt/5.14/5.14.2/qt-opensource-windows-x86-5.14.2.exe" target="_blank" rel="noopener noreffer ">Qt 5.14.2 for Win 64-bit ( 2.3G )</a></p>
+<h3 id="安装">安装</h3>
+<p>默认安装（建议组件全部选中）</p>
+<p>· Qt对不同的平台提供了不同版本的安装包，可根据实际情况自行下载安装，本文档使用<code>qt-opensource-windows-x86-5.14.2</code> 版本进行讲解</p>
+<h2 id="16-qt的优点">1.6 Qt的优点</h2>
+<ul>
+<li>
+<p>跨平台，几乎支持所有的平台</p>
+</li>
+<li>
+<p>接口简单，容易上手，学习QT框架对学习其他框架有参考意义。</p>
+</li>
+<li>
+<p>一定程度上简化了内存回收机制</p>
+</li>
+<li>
+<p>有很好的社区氛围，市场份额在缓慢上升。</p>
+</li>
+<li>
+<p>可以进行嵌入式开发。</p>
+</li>
+</ul>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://gitee.com/txt1994/images/raw/master/img/QT/wps1.jpg"
+        data-srcset="https://gitee.com/txt1994/images/raw/master/img/QT/wps1.jpg, https://gitee.com/txt1994/images/raw/master/img/QT/wps1.jpg 1.5x, https://gitee.com/txt1994/images/raw/master/img/QT/wps1.jpg 2x"
+        data-sizes="auto"
+        alt="https://gitee.com/txt1994/images/raw/master/img/QT/wps1.jpg"
+        title="img" /></p>
+<h2 id="17-成功案例">1.7 成功案例</h2>
+<ul>
+<li>
+<p>Linux桌面环境KDE</p>
+</li>
+<li>
+<p>WPS Office 办公软件</p>
+</li>
+<li>
+<p>Skype 网络电话</p>
+</li>
+<li>
+<p>Google Earth 谷歌地图</p>
+</li>
+<li>
+<p>VLC多媒体播放器</p>
+</li>
+<li>
+<p>VirtualBox虚拟机软件</p>
+</li>
+</ul>
+<h1 id="2-创建qt项目"><strong>2</strong> 创建Qt项目</h1>
+<h2 id="21-使用向导创建">2.1 使用向导创建</h2>
+<p>打开Qt Creator 界面选择 New Project或者选择菜单栏 【文件】-【新建文件或项目】菜单项</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://gitee.com/txt1994/images/raw/master/img/QT/wps2.png"
+        data-srcset="https://gitee.com/txt1994/images/raw/master/img/QT/wps2.png, https://gitee.com/txt1994/images/raw/master/img/QT/wps2.png 1.5x, https://gitee.com/txt1994/images/raw/master/img/QT/wps2.png 2x"
+        data-sizes="auto"
+        alt="https://gitee.com/txt1994/images/raw/master/img/QT/wps2.png"
+        title="img" /></p>
+<p>弹出New Project对话框，选择Qt Widgets Application，</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://gitee.com/txt1994/images/raw/master/img/QT/wps3.jpg"
+        data-srcset="https://gitee.com/txt1994/images/raw/master/img/QT/wps3.jpg, https://gitee.com/txt1994/images/raw/master/img/QT/wps3.jpg 1.5x, https://gitee.com/txt1994/images/raw/master/img/QT/wps3.jpg 2x"
+        data-sizes="auto"
+        alt="https://gitee.com/txt1994/images/raw/master/img/QT/wps3.jpg"
+        title="img" /></p>
+<p>选择【Choose】按钮，弹出如下对话框</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://gitee.com/txt1994/images/raw/master/img/QT/wps4.jpg"
+        data-srcset="https://gitee.com/txt1994/images/raw/master/img/QT/wps4.jpg, https://gitee.com/txt1994/images/raw/master/img/QT/wps4.jpg 1.5x, https://gitee.com/txt1994/images/raw/master/img/QT/wps4.jpg 2x"
+        data-sizes="auto"
+        alt="https://gitee.com/txt1994/images/raw/master/img/QT/wps4.jpg"
+        title="img" /></p>
+<p>选择项目构建系统</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://gitee.com/txt1994/images/raw/master/img/QT/wps4-1.jpg"
+        data-srcset="https://gitee.com/txt1994/images/raw/master/img/QT/wps4-1.jpg, https://gitee.com/txt1994/images/raw/master/img/QT/wps4-1.jpg 1.5x, https://gitee.com/txt1994/images/raw/master/img/QT/wps4-1.jpg 2x"
+        data-sizes="auto"
+        alt="https://gitee.com/txt1994/images/raw/master/img/QT/wps4-1.jpg"
+        title="img" /></p>
+<p>向导会默认添加一个继承自MainWindow的类，可以在此修改类的名字和基类。默认的基类有QMainWindow、QWidget以及QDialog三个，我们可以选择QWidget（类似于空窗口），这里我们可以先创建一个不带UI的界面，继续下一步</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://gitee.com/txt1994/images/raw/master/img/QT/wps6.jpg"
+        data-srcset="https://gitee.com/txt1994/images/raw/master/img/QT/wps6.jpg, https://gitee.com/txt1994/images/raw/master/img/QT/wps6.jpg 1.5x, https://gitee.com/txt1994/images/raw/master/img/QT/wps6.jpg 2x"
+        data-sizes="auto"
+        alt="https://gitee.com/txt1994/images/raw/master/img/QT/wps6.jpg"
+        title="img" /></p>
+<p>语言默认，下一步</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://gitee.com/txt1994/images/raw/master/img/QT/wps6-1.jpg"
+        data-srcset="https://gitee.com/txt1994/images/raw/master/img/QT/wps6-1.jpg, https://gitee.com/txt1994/images/raw/master/img/QT/wps6-1.jpg 1.5x, https://gitee.com/txt1994/images/raw/master/img/QT/wps6-1.jpg 2x"
+        data-sizes="auto"
+        alt="https://gitee.com/txt1994/images/raw/master/img/QT/wps6-1.jpg"
+        title="img" /></p>
+<p>设置项目名称和路径，按照向导进行下一步，选择编译套件</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://gitee.com/txt1994/images/raw/master/img/QT/wps5.jpg"
+        data-srcset="https://gitee.com/txt1994/images/raw/master/img/QT/wps5.jpg, https://gitee.com/txt1994/images/raw/master/img/QT/wps5.jpg 1.5x, https://gitee.com/txt1994/images/raw/master/img/QT/wps5.jpg 2x"
+        data-sizes="auto"
+        alt="https://gitee.com/txt1994/images/raw/master/img/QT/wps5.jpg"
+        title="img" /></p>
+<p>系统会默认给我们添加main.cpp、mywidget.cpp、 mywidget.h和一个CMakeLists.txt文件，点击完成，即可创建出一个Qt桌面程序。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://gitee.com/txt1994/images/raw/master/img/QT/wps7.jpg"
+        data-srcset="https://gitee.com/txt1994/images/raw/master/img/QT/wps7.jpg, https://gitee.com/txt1994/images/raw/master/img/QT/wps7.jpg 1.5x, https://gitee.com/txt1994/images/raw/master/img/QT/wps7.jpg 2x"
+        data-sizes="auto"
+        alt="https://gitee.com/txt1994/images/raw/master/img/QT/wps7.jpg"
+        title="img" /></p>
+<h2 id="22-手动创建"><strong>2.2</strong> 手动创建</h2>
+<p>添加一个空项目</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://gitee.com/txt1994/images/raw/master/img/QT/wps8.jpg"
+        data-srcset="https://gitee.com/txt1994/images/raw/master/img/QT/wps8.jpg, https://gitee.com/txt1994/images/raw/master/img/QT/wps8.jpg 1.5x, https://gitee.com/txt1994/images/raw/master/img/QT/wps8.jpg 2x"
+        data-sizes="auto"
+        alt="https://gitee.com/txt1994/images/raw/master/img/QT/wps8.jpg"
+        title="img" /></p>
+<p>选择【choose】进行下一步。设置项目名称和路径 —&gt; 选择编译套件 &ndash;&gt; 修改类信息 &ndash;&gt; 完成（步骤同上），生成一个空项目。在空项目中添加文件：在项目名称上单击鼠标右键弹出右键菜单，选择【添加新文件】</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://gitee.com/txt1994/images/raw/master/img/QT/wps9.jpg"
+        data-srcset="https://gitee.com/txt1994/images/raw/master/img/QT/wps9.jpg, https://gitee.com/txt1994/images/raw/master/img/QT/wps9.jpg 1.5x, https://gitee.com/txt1994/images/raw/master/img/QT/wps9.jpg 2x"
+        data-sizes="auto"
+        alt="https://gitee.com/txt1994/images/raw/master/img/QT/wps9.jpg"
+        title="img" /></p>
+<p>弹出新建文件对话框</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://gitee.com/txt1994/images/raw/master/img/QT/wps10.jpg"
+        data-srcset="https://gitee.com/txt1994/images/raw/master/img/QT/wps10.jpg, https://gitee.com/txt1994/images/raw/master/img/QT/wps10.jpg 1.5x, https://gitee.com/txt1994/images/raw/master/img/QT/wps10.jpg 2x"
+        data-sizes="auto"
+        alt="https://gitee.com/txt1994/images/raw/master/img/QT/wps10.jpg"
+        title="img" /></p>
+<p>在此对话框中选择要添加的类或者文件，根据向导完成文件的添加。</p>
+<h2 id="23-pro文件"><strong>2.3</strong> .pro文件</h2>
+<p>在使用Qt向导生成的应用程序.pro文件格式如下：</p>
+<p>QT    += core gui  //包含的模块</p>
+<p>greaterThan(QT_MAJOR_VERSION, 4): QT += widgets //大于Qt4版本 才包含widget模块</p>
+<p>TARGET = QtFirst  //应用程序名  生成的.exe程序名称</p>
+<p>TEMPLATE = app   //模板类型   应用程序模板</p>
+<p>SOURCES += main.cpp\  //源文件</p>
+<p>​    mywidget.cpp</p>
+<p>HEADERS  += mywidget.h  //头文件</p>
+<p>.pro就是工程文件(project)，它是qmake自动生成的用于生产makefile的配置文件。.pro文件的写法如下：</p>
+<p>注释</p>
+<p>从“#”开始，到这一行结束。</p>
+<ul>
+<li>
+<p>模板变量告诉qmake为这个应用程序生成哪种makefile。下面是可供使用的选择：TEMPLATE = app</p>
+</li>
+<li>
+<p>app -建立一个应用程序的makefile。这是默认值，所以如果模板没有被指定，这个将被使用。</p>
+</li>
+<li>
+<p>lib - 建立一个库的makefile。</p>
+</li>
+<li>
+<p>vcapp - 建立一个应用程序的VisualStudio项目文件。</p>
+</li>
+<li>
+<p>vclib - 建立一个库的VisualStudio项目文件。</p>
+</li>
+<li>
+<p>subdirs -这是一个特殊的模板，它可以创建一个能够进入特定目录并且为一个项目文件生成makefile并且为它调用make的makefile。</p>
+</li>
+<li>
+<p>#指定生成的应用程序名：</p>
+</li>
+</ul>
+<p>TARGET = QtDemo</p>
+<ul>
+<li>#工程中包含的头文件</li>
+</ul>
+<p>HEADERS += include/painter.h</p>
+<ul>
+<li>#工程中包含的.ui设计文件</li>
+</ul>
+<p>FORMS += forms/painter.ui</p>
+<ul>
+<li>#工程中包含的源文件</li>
+</ul>
+<p>SOURCES += sources/main.cpp sources</p>
+<ul>
+<li>#工程中包含的资源文件</li>
+</ul>
+<p>RESOURCES += qrc/painter.qrc</p>
+<p>greaterThan(QT_MAJOR_VERSION, 4): QT += widgets</p>
+<p>这条语句的含义是，如果<code>QT_MAJOR_VERSION</code>大于4（也就是当前使用的Qt5及更高版本）需要增加widgets模块。如果项目仅需支持Qt5，也可以直接添加“QT += widgets”一句。不过为了保持代码兼容，最好还是按照QtCreator生成的语句编写。</p>
+<ul>
+<li>#配置信息</li>
+</ul>
+<p>CONFIG用来告诉qmake关于应用程序的配置信息。</p>
+<p>CONFIG += c++11	//使用c++11的特性</p>
+<p>在这里使用“+=”，是因为我们添加我们的配置选项到任何一个已经存在中。这样做比使用“=”那样替换已经指定的所有选项更安全。</p>
+<h2 id="24-一个最简单的qt应用程序"><strong>2.4</strong> 一个最简单的Qt应用程序</h2>
+<p>main入口函数中</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;widget.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;QApplication&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">int</span> argc, <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>argv[])
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    QApplication a(argc, argv);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    Widget w;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    w.show();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> a.exec();
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>解释：</p>
+<ul>
+<li>
+<p>Qt系统提供的标准类名声明头文件没有.h后缀</p>
+</li>
+<li>
+<p>Qt一个类对应一个头文件，类名就是头文件名</p>
+</li>
+<li>
+<p>QApplication应用程序类</p>
+</li>
+<li>
+<p>管理图形用户界面应用程序的控制流和主要设置。</p>
+</li>
+<li>
+<p>是Qt的整个后台管理的命脉它包含主事件循环，在其中来自窗口系统和其它资源的所有事件处理和调度。它也处理应用程序的初始化和结束，并且提供对话管理。</p>
+</li>
+<li>
+<p>对于任何一个使用Qt的图形用户界面应用程序，都正好存在一个QApplication 对象，而不论这个应用程序在同一时间内是不是有0、1、2或更多个窗口。</p>
+</li>
+<li>
+<p>a.exec()</p>
+</li>
+</ul>
+<p>程序进入消息循环，等待对用户输入进行响应。这里main()把控制权转交给Qt，Qt完成事件处理工作，当应用程序退出的时候exec()的值就会返回。在exec()中，Qt接受并处理用户和系统的事件并且把它们传递给适当的窗口部件。</p>
+<h1 id="3-第一个qt小程序">3 第一个Qt小程序</h1>
+<h2 id="31-按钮的创建">3.1 按钮的创建</h2>
+<p>在Qt程序中，最常用的控件之一就是按钮了，首先我们来看下如何创建一个按钮</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;QPushButton&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>QPushButton <span style="color:#f92672">*</span> btn <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> QPushButton;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//设置父亲
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>btn<span style="color:#f92672">-&gt;</span>setParent(<span style="color:#66d9ef">this</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//设置文字
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>btn<span style="color:#f92672">-&gt;</span>setText(<span style="color:#e6db74">&#34;德玛西亚&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//移动位置
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>btn<span style="color:#f92672">-&gt;</span>move(<span style="color:#ae81ff">100</span>,<span style="color:#ae81ff">100</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//第二种创建
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>QPushButton <span style="color:#f92672">*</span> btn2 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> QPushButton(<span style="color:#e6db74">&#34;孙悟空&#34;</span>,<span style="color:#66d9ef">this</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//重新指定窗口大小
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">this</span><span style="color:#f92672">-&gt;</span>resize(<span style="color:#ae81ff">600</span>,<span style="color:#ae81ff">400</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//设置窗口标题
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">this</span><span style="color:#f92672">-&gt;</span>setWindowTitle(<span style="color:#e6db74">&#34;第一个项目&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//限制窗口大小
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">this</span><span style="color:#f92672">-&gt;</span>setFixedSize(<span style="color:#ae81ff">600</span>,<span style="color:#ae81ff">400</span>);
+</span></span></code></pre></div><p>上面代码中，一个按钮其实就是一个<code>QPushButton类</code>下的对象，如果只是创建出对象，是无法显示到窗口中的，所以我们需要依赖一个父窗口，也就是指定一个父亲利用setParent函数即可，如果想设置按钮上显示的文字利用setText，移动按钮位置用move</p>
+<p>​	对于窗口而言，我们可以修改左上角窗口的标题setWindowTitle，重新指定窗口大小：resize，或者设置固定的窗口大小setFixedSize；</p>
+<h2 id="32-对象模型对象树">3.2 对象模型（对象树）</h2>
+<p>在Qt中创建对象的时候会提供一个Parent对象指针，下面来解释这个parent到底是干什么的。</p>
+<ul>
+<li>
+<p>QObject是以对象树的形式组织起来的。</p>
+</li>
+<li>
+<p>parent，也就是父对象指针。</p>
+</li>
+</ul>
+<p>这相当于，在创建QObject对象时，可以提供一个其父对象，我们创建的这个QObject对象会自动添加到其父对象的children()列表。</p>
+<ul>
+<li>当父对象析构的时候，这个列表中的所有对象也会被析构。（注意，这里的父对象并不是继承意义上的父类！）</li>
+</ul>
+<p>这种机制在 GUI 程序设计中相当有用。例如，一个按钮有一个QShortcut（快捷键）对象作为其子对象。当我们删除按钮的时候，这个快捷键理应被删除。这是合理的。</p>
+<ul>
+<li>
+<p>QWidget是能够在屏幕上显示的一切组件的父类。</p>
+</li>
+<li>
+<p>QWidget继承自QObject，因此也继承了这种对象树关系。一个孩子自动地成为父组件的一个子组件。因此，它会显示在父组件的坐标系统中，被父组件的边界剪裁。例如，当用户关闭一个对话框的时候，应用程序将其删除，那么，我们希望属于这个对话框的按钮、图标等应该一起被删除。事实就是如此，因为这些都是对话框的子组件。</p>
+</li>
+<li>
+<p>当然，我们也可以自己删除子对象，它们会自动从其父对象列表中删除。比如，当我们删除了一个工具栏时，其所在的主窗口会自动将该工具栏从其子对象列表中删除，并且自动调整屏幕显示。</p>
+</li>
+</ul>
+<p>Qt 引入对象树的概念，在一定程度上解决了内存问题。</p>
+<ul>
+<li>
+<p>当一个QObject对象在堆上创建的时候，Qt 会同时为其创建一个对象树。不过，对象树中对象的顺序是没有定义的。这意味着，销毁这些对象的顺序也是未定义的。</p>
+</li>
+<li>
+<p>任何对象树中的 QObject对象 delete 的时候，如果这个对象有 parent，则自动将其从 parent 的children()列表中删除；如果有孩子，则自动 delete 每一个孩子。Qt 保证没有QObject会被 delete 两次，这是由析构顺序决定的。</p>
+</li>
+</ul>
+<p>如果QObject在栈上创建，Qt 保持同样的行为。正常情况下，这也不会发生什么问题。来看下下面的代码片段：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    QWidget window;
+</span></span><span style="display:flex;"><span>    QPushButton <span style="color:#a6e22e">quit</span>(<span style="color:#e6db74">&#34;Quit&#34;</span>, <span style="color:#f92672">&amp;</span>window);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>作为父组件的 window 和作为子组件的 quit 都是QObject的子类（事实上，它们都是QWidget的子类，而QWidget是QObject的子类）。这段代码是正确的，quit 的析构函数不会被调用两次，因为标准 C++要求，局部对象的析构顺序应该按照其创建顺序的相反过程。因此，这段代码在超出作用域时，会先调用 quit 的析构函数，将其从父对象 window 的子对象列表中删除，然后才会再调用 window 的析构函数。</p>
+<p>但是，如果我们使用下面的代码：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    QPushButton <span style="color:#a6e22e">quit</span>(<span style="color:#e6db74">&#34;Quit&#34;</span>);
+</span></span><span style="display:flex;"><span>    QWidget window;
+</span></span><span style="display:flex;"><span>    quit.setParent(<span style="color:#f92672">&amp;</span>window);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>情况又有所不同，析构顺序就有了问题。我们看到，在上面的代码中，作为父对象的 window 会首先被析构，因为它是最后一个创建的对象。在析构过程中，它会调用子对象列表中每一个对象的析构函数，也就是说， quit 此时就被析构了。然后，代码继续执行，在 window 析构之后，quit 也会被析构，因为 quit 也是一个局部变量，在超出作用域的时候当然也需要析构。但是，这时候已经是第二次调用 quit 的析构函数了，C++ 不允许调用两次析构函数，因此，程序崩溃了。</p>
+<p>由此我们看到，Qt 的对象树机制虽然帮助我们在一定程度上解决了内存问题，但是也引入了一些值得注意的事情。这些细节在今后的开发过程中很可能时不时跳出来烦扰一下，所以，我们最好从开始就养成良好习惯，在 Qt 中，尽量在构造的时候就指定 parent 对象，并且大胆在堆上创建。</p>
+<h2 id="33-qt窗口坐标体系">3.3 Qt窗口坐标体系</h2>
+<p>坐标体系：</p>
+<p>以左上角为原点（0,0），X向右增加，Y向下增加。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://gitee.com/txt1994/images/raw/master/img/QT/wps11.jpg"
+        data-srcset="https://gitee.com/txt1994/images/raw/master/img/QT/wps11.jpg, https://gitee.com/txt1994/images/raw/master/img/QT/wps11.jpg 1.5x, https://gitee.com/txt1994/images/raw/master/img/QT/wps11.jpg 2x"
+        data-sizes="auto"
+        alt="https://gitee.com/txt1994/images/raw/master/img/QT/wps11.jpg"
+        title="img" /></p>
+<p>对于嵌套窗口，其坐标是相对于父窗口来说的。</p>
+<h1 id="4-信号和槽机制">4 信号和槽机制</h1>
+<p>信号槽是 Qt 框架引以为豪的机制之一。所谓信号槽，实际就是观察者模式。当某个事件发生之后，比如，按钮检测到自己被点击了一下，它就会发出一个信号（signal）。这种发出是没有目的的，类似广播。如果有对象对这个信号感兴趣，它就会使用连接（connect）函数，意思是，将想要处理的信号和自己的一个函数（称为槽（slot））绑定来处理这个信号。也就是说，当信号发出时，被连接的槽函数会自动被回调。这就类似观察者模式：当发生了感兴趣的事件，某一个操作就会被自动触发。</p>
+<h2 id="41-系统自带的信号和槽">4.1 系统自带的信号和槽</h2>
+<p>下面我们完成一个小功能，上面我们已经学习了按钮的创建，但是还没有体现出按钮的功能，按钮最大的功能也就是点击后触发一些事情，比如我们点击按钮，就把当前的窗口给关闭掉，那么在Qt中，这样的功能如何实现呢？</p>
+<p>​	其实无法两行代码就可以搞定了，我们看下面的代码</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>QPushButton <span style="color:#f92672">*</span> quitBtn <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> QPushButton(<span style="color:#e6db74">&#34;关闭窗口&#34;</span>,<span style="color:#66d9ef">this</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>connect(quitBtn,<span style="color:#f92672">&amp;</span>QPushButton<span style="color:#f92672">::</span>clicked,<span style="color:#66d9ef">this</span>,<span style="color:#f92672">&amp;</span>MyWidget<span style="color:#f92672">::</span>close);
+</span></span></code></pre></div><p>第一行是创建一个关闭按钮，这个之前已经学过，第二行就是核心了，也就是信号槽的使用方式</p>
+<p>connect()函数最常用的一般形式：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>connect(sender, signal, receiver, slot);
+</span></span></code></pre></div><p>参数解释：</p>
+<ul>
+<li>
+<p>sender：发出信号的对象</p>
+</li>
+<li>
+<p>signal：发送对象发出的信号</p>
+</li>
+<li>
+<p>receiver：接收信号的对象</p>
+</li>
+<li>
+<p>slot：接收对象在接收到信号之后所需要调用的函数（槽函数）</p>
+</li>
+</ul>
+<p>那么系统自带的信号和槽通常如何查找呢，这个就需要利用帮助文档了，在帮助文档中比如我们上面的按钮的点击信号，在帮助文档中输入<code>QPushButton</code>，首先我们可以在Contents中寻找关键字 signals，信号的意思，但是我们发现并没有找到，这时候我们应该想到也许这个信号的被父类继承下来的，因此我们去他的<code>父类QAbstractButton</code>中就可以找到该关键字，点击signals索引到系统自带的信号有如下几个</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://gitee.com/txt1994/images/raw/master/img/QT/wps12.jpg"
+        data-srcset="https://gitee.com/txt1994/images/raw/master/img/QT/wps12.jpg, https://gitee.com/txt1994/images/raw/master/img/QT/wps12.jpg 1.5x, https://gitee.com/txt1994/images/raw/master/img/QT/wps12.jpg 2x"
+        data-sizes="auto"
+        alt="https://gitee.com/txt1994/images/raw/master/img/QT/wps12.jpg"
+        title="img" /></p>
+<p>这里的clicked就是我们要找到，槽函数的寻找方式和信号一样，只不过他的关键字是slot。</p>
+<h2 id="42-自定义信号和槽">4.2 自定义信号和槽</h2>
+<p>使用connect()可以让我们连接系统提供的信号和槽。但是，Qt 的信号槽机制并不仅仅是使用系统提供的那部分，还会允许我们自己设计自己的信号和槽。</p>
+<p>下面我们看看使用 Qt 的信号槽：</p>
+<p>首先定义一个学生类和老师类：</p>
+<p>​	老师类中声明信号 饿了 hungry</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>signals:
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> hungury();
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//学生类中声明槽  请客 treat
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span> slots:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> treat();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//在窗口中声明一个公共方法下课，这个方法的调用会触发老师饿了这个信号，而响应槽函数学生请客
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> MyWidget<span style="color:#f92672">::</span>ClassIsOver()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//发送信号
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    emit teacher<span style="color:#f92672">-&gt;</span>hungury();
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//学生响应了槽函数，并且打印信息
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//自定义槽函数 实现
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> Student<span style="color:#f92672">::</span>eat()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    qDebug() <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;该吃饭了！&#34;</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>在窗口中连接信号槽</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>teacher <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Teacher(<span style="color:#66d9ef">this</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>student <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Student(<span style="color:#66d9ef">this</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>connect(teacher,<span style="color:#f92672">&amp;</span>Teacher<span style="color:#f92672">::</span>hungury,student,<span style="color:#f92672">&amp;</span>Student<span style="color:#f92672">::</span>treat);
+</span></span></code></pre></div><p>并且调用下课函数，测试打印出 “该吃饭了”</p>
+<p>自定义的信号 hungry带参数，需要提供重载的自定义信号和 自定义槽</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">hungury</span>(QString name); <span style="color:#75715e">// 自定义信号
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">treat</span>(QString name );  <span style="color:#75715e">// 自定义槽
+</span></span></span></code></pre></div><p>但是由于有两个重名的自定义信号和自定义的槽，直接连接会报错，所以需要利用函数指针来指向函数地址， 然后在做连接</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> (Teacher<span style="color:#f92672">::</span> <span style="color:#f92672">*</span> teacherSingal)(QString) <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>Teacher<span style="color:#f92672">::</span>hungury;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> (Student<span style="color:#f92672">::</span> <span style="color:#f92672">*</span> studentSlot)(QString) <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>Student<span style="color:#f92672">::</span>treat;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>connect(teacher,teacherSingal,student,studentSlot);
+</span></span></code></pre></div><p>自定义信号槽需要注意的事项：</p>
+<ol>
+<li>
+<p>发送者和接收者都需要是QObject的子类（当然，槽函数是全局函数、Lambda 表达式等无需接收者的时候除外）；</p>
+</li>
+<li>
+<p>信号和槽函数返回值是 void</p>
+</li>
+<li>
+<p>信号只需要声明，不需要实现</p>
+</li>
+<li>
+<p>槽函数需要声明也需要实现</p>
+</li>
+<li>
+<p>槽函数是普通的成员函数，作为成员函数，会受到 public、private、protected 的影响；</p>
+</li>
+<li>
+<p>使用 emit 在恰当的位置发送信号；</p>
+</li>
+<li>
+<p>使用connect()函数连接信号和槽。</p>
+</li>
+<li>
+<p>任何成员函数、static 函数、全局函数和 Lambda 表达式都可以作为槽函数</p>
+</li>
+<li>
+<p>信号槽要求信号和槽的参数一致，所谓一致，是参数类型一致。</p>
+</li>
+<li>
+<p>如果信号和槽的参数不一致，允许的情况是，槽函数的参数可以比信号的少，即便如此，槽函数存在的那些参数的顺序也必须和信号的前面几个一致起来。这是因为，你可以在槽函数中选择忽略信号传来的数据（也就是槽函数的参数比信号的少）。</p>
+</li>
+</ol>
+<h2 id="43信号槽的拓展">4.3信号槽的拓展</h2>
+<ol>
+<li>一个信号可以和多个槽相连</li>
+</ol>
+<p>如果是这种情况，这些槽会一个接一个的被调用，但是它们的调用顺序是不确定的。</p>
+<ol start="2">
+<li>多个信号可以连接到一个槽</li>
+</ol>
+<p>只要任意一个信号发出，这个槽就会被调用。</p>
+<ol start="3">
+<li>一个信号可以连接到另外的一个信号</li>
+</ol>
+<p>当第一个信号发出时，第二个信号被发出。除此之外，这种信号-信号的形式和信号-槽的形式没有什么区别。</p>
+<ol start="4">
+<li>槽可以被取消链接</li>
+</ol>
+<p>这种情况并不经常出现，因为当一个对象delete之后，Qt自动取消所有连接到这个对象上面的槽。</p>
+<ol start="5">
+<li>信号槽可以断开</li>
+</ol>
+<p>利用disconnect关键字是可以断开信号槽的</p>
+<ol start="6">
+<li>使用Lambda 表达式</li>
+</ol>
+<p>在使用 Qt 5 的时候，能够支持 Qt 5 的编译器都是支持 Lambda 表达式的。</p>
+<p>​	在连接信号和槽的时候，槽函数可以使用Lambda表达式的方式进行处理。后面我们会详细介绍什么是Lambda表达式</p>
+<h2 id="44-qt4版本的信号槽写法">4.4 Qt4版本的信号槽写法</h2>
+<p>connect(zt, SIGNAL(hungry(QString)), st, SLOT(treat(QString)));</p>
+<p>这里使用了SIGNAL和SLOT这两个宏，将两个函数名转换成了字符串。注意到connect()函数的 signal 和 slot 都是接受字符串，一旦出现连接不成功的情况，Qt4是没有编译错误的（因为一切都是字符串，编译期是不检查字符串是否匹配），而是在运行时给出错误。这无疑会增加程序的不稳定性。</p>
+<p>Qt5在语法上完全兼容Qt4，而反之是不可以的。</p>
+<h2 id="45-lambda表达式">4.5 Lambda表达式</h2>
+<p>C++11中的Lambda表达式用于定义并创建匿名的函数对象，以简化编程工作。首先看一下Lambda表达式的基本构成：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>[capture](parameters) <span style="color:#66d9ef">mutable</span> <span style="color:#f92672">-&gt;</span><span style="color:#66d9ef">return</span><span style="color:#f92672">-</span>type
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    statement
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><code>[函数对象参数](操作符重载函数参数)mutable -&gt;返回值{函数体}</code></p>
+<p>① 函数对象参数；</p>
+<p>[]，标识一个Lambda的开始，这部分必须存在，<em><strong>不能省略</strong></em>。函数对象参数是传递给编译器自动生成的函数对象类的构造函数的。函数对象参数只能使用那些到定义Lambda为止时Lambda所在作用范围内可见的局部变量（包括Lambda所在类的this）。函数对象参数有以下形式：</p>
+<ul>
+<li>
+<p><code>空</code>。没有使用任何函数对象参数。</p>
+</li>
+<li>
+<p><code>=</code>。函数体内可以使用Lambda所在作用范围内所有可见的局部变量（包括Lambda所在类的this），并且是值传递方式（相当于编译器自动为我们按值传递了所有局部变量）。</p>
+</li>
+<li>
+<p><code>&amp;</code>。函数体内可以使用Lambda所在作用范围内所有可见的局部变量（包括Lambda所在类的this），并且是引用传递方式（相当于编译器自动为我们按引用传递了所有局部变量）。</p>
+</li>
+<li>
+<p><code>this</code>。函数体内可以使用Lambda所在类中的成员变量。</p>
+</li>
+<li>
+<p><code>a</code>。将a按值进行传递。按值进行传递时，函数体内不能修改传递进来的a的拷贝，因为默认情况下函数是const的。要修改传递进来的a的拷贝，可以添加mutable修饰符。</p>
+</li>
+<li>
+<p><code>&amp;a</code>。将a按引用进行传递。</p>
+</li>
+<li>
+<p><code>a, &amp;b</code>。将a按值进行传递，b按引用进行传递。</p>
+</li>
+<li>
+<p><code>=，&amp;a, &amp;b</code>。除a和b按引用进行传递外，其他参数都按值进行传递。</p>
+</li>
+<li>
+<p><code>&amp;, a, b</code>。除a和b按值进行传递外，其他参数都按引用进行传递。</p>
+</li>
+</ul>
+<p>② 操作符重载函数参数；</p>
+<p>标识重载的()操作符的参数，没有参数时，这部分可以省略。参数可以通过按值（如：(a,b)）和按引用（如：(&amp;a,&amp;b)）两种方式进行传递。</p>
+<p>③ 可修改标示符；</p>
+<p>mutable声明，这部分可以省略。按值传递函数对象参数时，加上mutable修饰符后，可以修改按值传递进来的拷贝（注意是能修改拷贝，而不是值本身）。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>QPushButton <span style="color:#f92672">*</span> myBtn <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> QPushButton (<span style="color:#66d9ef">this</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>QPushButton <span style="color:#f92672">*</span> myBtn2 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> QPushButton (<span style="color:#66d9ef">this</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>myBtn2<span style="color:#f92672">-&gt;</span>move(<span style="color:#ae81ff">100</span>,<span style="color:#ae81ff">100</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> m <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>connect(myBtn,<span style="color:#f92672">&amp;</span>QPushButton<span style="color:#f92672">::</span>clicked,<span style="color:#66d9ef">this</span>,[m] ()<span style="color:#66d9ef">mutable</span> { m <span style="color:#f92672">=</span> <span style="color:#ae81ff">20</span>; qDebug() <span style="color:#f92672">&lt;&lt;</span> m; });
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>connect(myBtn2,<span style="color:#f92672">&amp;</span>QPushButton<span style="color:#f92672">::</span>clicked,<span style="color:#66d9ef">this</span>,[<span style="color:#f92672">=</span>] ()  { qDebug() <span style="color:#f92672">&lt;&lt;</span> m; });
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>qDebug() <span style="color:#f92672">&lt;&lt;</span> m;
+</span></span></code></pre></div><p>④ 函数返回值；</p>
+<p>-&gt;返回值类型，标识函数返回值的类型，当返回值为void，或者函数体中只有一处return的地方（此时编译器可以自动推断出返回值类型）时，这部分可以省略。</p>
+<p>⑤ 是函数体；</p>
+<p>​	{}，标识函数的实现，这部分不能省略，但函数体可以为空。</p>
+<h1 id="5-qmainwindow">5 QMainWindow</h1>
+<p>QMainWindow是一个为用户提供主窗口程序的类，包含一个菜单栏（menu bar）、多个工具栏(tool bars)、多个锚接部件(dock widgets)、一个状态栏(status bar)及一个中心部件(central widget)，是许多应用程序的基础，如文本编辑器，图片编辑器等。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://gitee.com/txt1994/images/raw/master/img/QT/wps13.jpg"
+        data-srcset="https://gitee.com/txt1994/images/raw/master/img/QT/wps13.jpg, https://gitee.com/txt1994/images/raw/master/img/QT/wps13.jpg 1.5x, https://gitee.com/txt1994/images/raw/master/img/QT/wps13.jpg 2x"
+        data-sizes="auto"
+        alt="https://gitee.com/txt1994/images/raw/master/img/QT/wps13.jpg"
+        title="img" /></p>
+<h2 id="51-菜单栏">5.1 菜单栏</h2>
+<p>一个主窗口最多只有一个菜单栏。位于主窗口顶部、主窗口标题栏下面。</p>
+<ul>
+<li>创建菜单栏，通过QMainWindow类的menubar（）函数获取主窗口菜单栏指针</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>QMenuBar <span style="color:#f92672">*</span>	<span style="color:#a6e22e">menuBar</span>() <span style="color:#66d9ef">const</span>;
+</span></span></code></pre></div><ul>
+<li>创建菜单，调用QMenu的成员函数addMenu来添加菜单</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>QAction<span style="color:#f92672">*</span> addMenu(QMenu <span style="color:#f92672">*</span> menu)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>QMenu<span style="color:#f92672">*</span> addMenu(<span style="color:#66d9ef">const</span> QString <span style="color:#f92672">&amp;</span> title)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>QMenu<span style="color:#f92672">*</span> addMenu(<span style="color:#66d9ef">const</span> QIcon <span style="color:#f92672">&amp;</span> icon, <span style="color:#66d9ef">const</span> QString <span style="color:#f92672">&amp;</span> title)
+</span></span></code></pre></div><ul>
+<li>创建菜单项，调用QMenu的成员函数addAction来添加菜单项</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>QAction<span style="color:#f92672">*</span> activeAction() <span style="color:#66d9ef">const</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>QAction<span style="color:#f92672">*</span> addAction(<span style="color:#66d9ef">const</span> QString <span style="color:#f92672">&amp;</span> text)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>QAction<span style="color:#f92672">*</span> addAction(<span style="color:#66d9ef">const</span> QIcon <span style="color:#f92672">&amp;</span> icon, <span style="color:#66d9ef">const</span> QString <span style="color:#f92672">&amp;</span> text)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>QAction<span style="color:#f92672">*</span> addAction(<span style="color:#66d9ef">const</span> QString <span style="color:#f92672">&amp;</span> text, <span style="color:#66d9ef">const</span> QObject <span style="color:#f92672">*</span> receiver,
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> member, <span style="color:#66d9ef">const</span> QKeySequence <span style="color:#f92672">&amp;</span> shortcut <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>QAction<span style="color:#f92672">*</span> addAction(<span style="color:#66d9ef">const</span> QIcon <span style="color:#f92672">&amp;</span> icon, <span style="color:#66d9ef">const</span> QString <span style="color:#f92672">&amp;</span> text, 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> QObject <span style="color:#f92672">*</span> receiver, <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> member, 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> QKeySequence <span style="color:#f92672">&amp;</span> shortcut <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>)
+</span></span></code></pre></div><p>Qt 并没有专门的菜单项类，只是使用一个QAction类，抽象出公共的动作。当我们把QAction对象添加到菜单，就显示成一个菜单项，添加到工具栏，就显示成一个工具按钮。用户可以通过点击菜单项、点击工具栏按钮、点击快捷键来激活这个动作。</p>
+<h2 id="52-工具栏">5.2 工具栏</h2>
+<p>主窗口的工具栏上可以有多个工具条，通常采用一个菜单对应一个工具条的的方式，也可根据需要进行工具条的划分。</p>
+<ul>
+<li>
+<p>直接调用QMainWindow类的addToolBar（）函数获取主窗口的工具条对象，每增加一个工具条都需要调用一次该函数。</p>
+</li>
+<li>
+<p>插入属于工具条的动作，即在工具条上添加操作。</p>
+</li>
+</ul>
+<p>通过QToolBar类的addAction函数添加。</p>
+<ul>
+<li>
+<p>工具条是一个可移动的窗口，它的停靠区域由QToolBar的allowAreas决定，包括：</p>
+</li>
+<li>
+<p>Qt::LeftToolBarArea		停靠在左侧</p>
+</li>
+<li>
+<p>Qt::RightToolBarArea		停靠在右侧</p>
+</li>
+<li>
+<p>Qt::TopToolBarArea		停靠在顶部</p>
+</li>
+<li>
+<p>Qt::BottomToolBarArea  	停靠在底部</p>
+</li>
+<li>
+<p>Qt::AllToolBarAreas		以上四个位置都可停靠</p>
+</li>
+</ul>
+<p>使用setAllowedAreas（）函数指定停靠区域：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>setAllowedAreas<span style="color:#960050;background-color:#1e0010">（</span>Qt<span style="color:#f92672">::</span>LeftToolBarArea <span style="color:#f92672">|</span> Qt<span style="color:#f92672">::</span>RightToolBarArea<span style="color:#960050;background-color:#1e0010">）</span>
+</span></span></code></pre></div><p>使用setMoveable（）函数设定工具栏的可移动性：</p>
+<p>setMoveable（false）//工具条不可移动, 只能停靠在初始化的位置上</p>
+<h2 id="53-状态栏">5.3 状态栏</h2>
+<p>派生自QWidget类，使用方法与QWidget类似，QStatusBar类常用成员函数：</p>
+<p>状态栏也只能最多有一个</p>
+<p>// 添加小部件</p>
+<ul>
+<li>void addWidget(QWidget * widget, int stretch = 0)</li>
+</ul>
+<p>// 插入小部件</p>
+<ul>
+<li>int	insertWidget(int index, QWidget * widget, int stretch = 0)</li>
+</ul>
+<p>// 删除小部件</p>
+<ul>
+<li>void removeWidget(QWidget * widget)</li>
+</ul>
+<h2 id="54-铆接部件">5.4 铆接部件</h2>
+<p>铆接部件 QDockWidget，也称浮动窗口，可以有多个。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>QDockWidget <span style="color:#f92672">*</span> dock <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> QDockWidget(<span style="color:#e6db74">&#34;标题&#34;</span>,<span style="color:#66d9ef">this</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>addDockWidget(Qt<span style="color:#f92672">::</span>LeftDockWidgetArea,dock);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>dock<span style="color:#f92672">-&gt;</span>setAllowedAreas(Qt<span style="color:#f92672">::</span>LeftDockWidgetArea <span style="color:#f92672">|</span> Qt<span style="color:#f92672">::</span>RightDockWidgetArea <span style="color:#f92672">|</span> Qt<span style="color:#f92672">::</span>TopDockWidgetArea); <span style="color:#75715e">//设置区域范围
+</span></span></span></code></pre></div><h2 id="55-核心部件中心部件">5.5 核心部件（中心部件）</h2>
+<p>除了以上几个部件，中心显示的部件都可以作为核心部件，例如一个记事本文件，可以利用QTextEdit做核心部件</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>QTextEdit <span style="color:#f92672">*</span> edit <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> QTextEdit(<span style="color:#66d9ef">this</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>setCentralWidget(edit);
+</span></span></code></pre></div><h2 id="56-资源文件">5.6 资源文件</h2>
+<p>Qt 资源系统是一个跨平台的资源机制，用于将程序运行时所需要的资源以二进制的形式存储于可执行文件内部。如果你的程序需要加载特定的资源（图标、文本翻译等），那么，将其放置在资源文件中，就再也不需要担心这些文件的丢失。也就是说，如果你将资源以资源文件形式存储，它是会编译到可执行文件内部。</p>
+<p>使用 Qt Creator 可以很方便地创建资源文件。我们可以在工程上点右键，选择“添加新文件…”，可以在 Qt 分类下找到“Qt 资源文件”：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://gitee.com/txt1994/images/raw/master/img/QT/wps14.jpg"
+        data-srcset="https://gitee.com/txt1994/images/raw/master/img/QT/wps14.jpg, https://gitee.com/txt1994/images/raw/master/img/QT/wps14.jpg 1.5x, https://gitee.com/txt1994/images/raw/master/img/QT/wps14.jpg 2x"
+        data-sizes="auto"
+        alt="https://gitee.com/txt1994/images/raw/master/img/QT/wps14.jpg"
+        title="img" /></p>
+<p>点击“选择…”按钮，打开“新建 Qt 资源文件”对话框。在这里我们输入资源文件的名字和路径：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://gitee.com/txt1994/images/raw/master/img/QT/wps15.jpg"
+        data-srcset="https://gitee.com/txt1994/images/raw/master/img/QT/wps15.jpg, https://gitee.com/txt1994/images/raw/master/img/QT/wps15.jpg 1.5x, https://gitee.com/txt1994/images/raw/master/img/QT/wps15.jpg 2x"
+        data-sizes="auto"
+        alt="https://gitee.com/txt1994/images/raw/master/img/QT/wps15.jpg"
+        title="img" /></p>
+<p>点击下一步，选择所需要的版本控制系统，然后直接选择完成。我们可以在 Qt Creator 的左侧文件列表中看到“资源文件”一项，也就是我们新创建的资源文件：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://gitee.com/txt1994/images/raw/master/img/QT/wps16.jpg"
+        data-srcset="https://gitee.com/txt1994/images/raw/master/img/QT/wps16.jpg, https://gitee.com/txt1994/images/raw/master/img/QT/wps16.jpg 1.5x, https://gitee.com/txt1994/images/raw/master/img/QT/wps16.jpg 2x"
+        data-sizes="auto"
+        alt="https://gitee.com/txt1994/images/raw/master/img/QT/wps16.jpg"
+        title="img" /></p>
+<p>右侧的编辑区有个“添加”，我们首先需要添加前缀，比如我们将前缀取名为 images。然后选中这个前缀，继续点击添加文件，可以找到我们所需添加的文件。这里，我们选择 document-open.png 文件。当我们完成操作之后，Qt Creator 应该是这样子的：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://gitee.com/txt1994/images/raw/master/img/QT/wps17.jpg"
+        data-srcset="https://gitee.com/txt1994/images/raw/master/img/QT/wps17.jpg, https://gitee.com/txt1994/images/raw/master/img/QT/wps17.jpg 1.5x, https://gitee.com/txt1994/images/raw/master/img/QT/wps17.jpg 2x"
+        data-sizes="auto"
+        alt="https://gitee.com/txt1994/images/raw/master/img/QT/wps17.jpg"
+        title="img" /></p>
+<p>接下来，我们还可以添加另外的前缀或者另外的文件。这取决于你的需要。当我们添加完成之后，我们可以像前面一章讲解的那样，通过使用 : 开头的路径来找到这个文件。比如，我们的前缀是 /images，文件是 document-open.png，那么就可以使用:/images/document-open.png找到这个文件。</p>
+<p>这么做带来的一个问题是，如果以后我们要更改文件名，比如将 docuemnt-open.png 改成 docopen.png，那么，所有使用了这个名字的路径都需要修改。所以，更好的办法是，我们给这个文件去一个“别名”，以后就以这个别名来引用这个文件。具体做法是，选中这个文件，添加别名信息：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://gitee.com/txt1994/images/raw/master/img/QT/wps18.jpg"
+        data-srcset="https://gitee.com/txt1994/images/raw/master/img/QT/wps18.jpg, https://gitee.com/txt1994/images/raw/master/img/QT/wps18.jpg 1.5x, https://gitee.com/txt1994/images/raw/master/img/QT/wps18.jpg 2x"
+        data-sizes="auto"
+        alt="https://gitee.com/txt1994/images/raw/master/img/QT/wps18.jpg"
+        title="img" /></p>
+<p>这样，我们可以直接使用:/images/doc-open引用到这个资源，无需关心图片的真实文件名。</p>
+<p>如果我们使用文本编辑器打开 res.qrc 文件，就会看到一下内容：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&lt;RCC&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  	&lt;qresource prefix<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/images&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    	&lt;file alias<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;doc-open&#34;</span>&gt;document-open.png&lt;/file&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  	&lt;/qresource&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  	&lt;qresource prefix<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/images/fr&#34;</span> lang<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;fr&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    	&lt;file alias<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;doc-open&#34;</span>&gt;document-open-fr.png&lt;/file&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  	&lt;/qresource&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;/RCC&gt;
+</span></span></code></pre></div><p>我们可以对比一下，看看 Qt Creator 帮我们生成的是怎样的 qrc 文件。当我们编译工程之后，我们可以在构建目录中找到 qrc_res.cpp 文件，这就是 Qt 将我们的资源编译成了 C++ 代码。</p>
+<h1 id="6-对话框qdialog">6 对话框QDialog</h1>
+<h2 id="61-基本概念">6.1 基本概念</h2>
+<p>对话框是 GUI 程序中不可或缺的组成部分。很多不能或者不适合放入主窗口的功能组件都必须放在对话框中设置。对话框通常会是一个顶层窗口，出现在程序最上层，用于实现短期任务或者简洁的用户交互。</p>
+<p>Qt 中使用QDialog类实现对话框。就像主窗口一样，我们通常会设计一个类继承QDialog。QDialog（及其子类，以及所有Qt::Dialog类型的类）的对于其 parent 指针都有额外的解释：如果 parent 为 NULL，则该对话框会作为一个顶层窗口，否则则作为其父组件的子对话框（此时，其默认出现的位置是 parent 的中心）。顶层窗口与非顶层窗口的区别在于，顶层窗口在任务栏会有自己的位置，而非顶层窗口则会共享其父组件的位置。</p>
+<p>对话框分为模态对话框和非模态对话框。</p>
+<ul>
+<li>模态对话框，就是会阻塞同一应用程序中其它窗口的输入。</li>
+</ul>
+<p>模态对话框很常见，比如“打开文件”功能。你可以尝试一下记事本的打开文件，当打开文件对话框出现时，我们是不能对除此对话框之外的窗口部分进行操作的。</p>
+<ul>
+<li>与此相反的是非模态对话框，例如查找对话框，我们可以在显示着查找对话框的同时，继续对记事本的内容进行编辑。</li>
+</ul>
+<h2 id="62-标准对话框">6.2 标准对话框</h2>
+<p>所谓标准对话框，是 Qt 内置的一系列对话框，用于简化开发。事实上，有很多对话框都是通用的，比如打开文件、设置颜色、打印设置等。这些对话框在所有程序中几乎相同，因此没有必要在每一个程序中都自己实现这么一个对话框。</p>
+<p>Qt 的内置对话框大致分为以下几类：</p>
+<ul>
+<li>
+<p>QColorDialog：		选择颜色；</p>
+</li>
+<li>
+<p>QFileDialog：			选择文件或者目录；</p>
+</li>
+<li>
+<p>QFontDialog：			选择字体；</p>
+</li>
+<li>
+<p>QInputDialog：		允许用户输入一个值，并将其值返回；</p>
+</li>
+<li>
+<p>QMessageBox：			模态对话框，用于显示信息、询问问题等；</p>
+</li>
+<li>
+<p>QPageSetupDialog：	为打印机提供纸张相关的选项；</p>
+</li>
+<li>
+<p>QPrintDialog：		打印机配置；</p>
+</li>
+<li>
+<p>QPrintPreviewDialog：打印预览；</p>
+</li>
+<li>
+<p>QProgressDialog：		显示操作过程。</p>
+</li>
+</ul>
+<h2 id="63-自定义消息框">6.3 自定义消息框</h2>
+<p>Qt 支持模态对话框和非模态对话框。</p>
+<p>模态与非模态的实现：</p>
+<ul>
+<li>
+<p>使用QDialog::exec()实现应用程序级别的模态对话框</p>
+</li>
+<li>
+<p>使用QDialog::open()实现窗口级别的模态对话框</p>
+</li>
+<li>
+<p>使用QDialog::show()实现非模态对话框。</p>
+</li>
+</ul>
+<h4 id="模态对话框">模态对话框</h4>
+<ul>
+<li>Qt 有两种级别的模态对话框：</li>
+</ul>
+<ol>
+<li>应用程序级别的模态</li>
+</ol>
+<p>当该种模态的对话框出现时，用户必须首先对对话框进行交互，直到关闭对话框，然后才能访问程序中其他的窗口。</p>
+<ol start="2">
+<li>窗口级别的模态</li>
+</ol>
+<p>该模态仅仅阻塞与对话框关联的窗口，但是依然允许用户与程序中其它窗口交互。窗口级别的模态尤其适用于多窗口模式。</p>
+<p>一般默认是应用程序级别的模态。</p>
+<p>在下面的示例中，我们调用了exec()将对话框显示出来，因此这就是一个模态对话框。当对话框出现时，我们不能与主窗口进行任何交互，直到我们关闭了该对话框。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>QDialog dialog;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>dialog.setWindowTitle(tr(<span style="color:#e6db74">&#34;Hello, dialog!&#34;</span>));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>dialog.exec();
+</span></span></code></pre></div><h4 id="非模态对话框">非模态对话框</h4>
+<p>下面我们试着将exec()修改为show()，看看非模态对话框：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>QDialog <span style="color:#a6e22e">dialog</span>(<span style="color:#66d9ef">this</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>dialog.setWindowTitle(tr(<span style="color:#e6db74">&#34;Hello, dialog!&#34;</span>));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>dialog.show();
+</span></span></code></pre></div><p>是不是事与愿违？对话框竟然一闪而过！这是因为，show()函数不会阻塞当前线程，对话框会显示出来，然后函数立即返回，代码继续执行。注意，dialog 是建立在栈上的，show()函数返回，MainWindow::open()函数结束，dialog 超出作用域被析构，因此对话框消失了。知道了原因就好改了，我们将 dialog 改成堆上建立，当然就没有这个问题了：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>QDialog <span style="color:#f92672">*</span>dialog <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> QDialog;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>dialog<span style="color:#f92672">-&gt;</span>setWindowTitle(tr(<span style="color:#e6db74">&#34;Hello, dialog!&#34;</span>));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>dialog<span style="color:#f92672">-&gt;</span>show();
+</span></span></code></pre></div><p>如果你足够细心，应该发现上面的代码是有问题的：dialog 存在内存泄露！dialog 使用 new 在堆上分配空间，却一直没有 delete。解决方案也很简单：将 MainWindow 的指针赋给 dialog 即可。还记得我们前面说过的 Qt 的对象系统吗？</p>
+<p>不过，这样做有一个问题：如果我们的对话框不是在一个界面类中出现呢？由于QWidget的 parent 必须是QWidget指针，那就限制了我们不能将一个普通的 C++ 类指针传给 Qt 对话框。另外，如果对内存占用有严格限制的话，当我们将主窗口作为 parent 时，主窗口不关闭，对话框就不会被销毁，所以会一直占用内存。在这种情景下，我们可以设置 dialog 的WindowAttribute：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>QDialog <span style="color:#f92672">*</span>dialog <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> QDialog;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>dialog<span style="color:#f92672">-&gt;</span>setAttribute(Qt<span style="color:#f92672">::</span>WA_DeleteOnClose);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>dialog<span style="color:#f92672">-&gt;</span>setWindowTitle(tr(<span style="color:#e6db74">&#34;Hello, dialog!&#34;</span>));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>dialog<span style="color:#f92672">-&gt;</span>show();
+</span></span></code></pre></div><p>setAttribute()函数设置对话框关闭时，自动销毁对话框。</p>
+<h2 id="64-消息对话框">6.4 消息对话框</h2>
+<p>QMessageBox用于显示消息提示。我们一般会使用其提供的几个 static 函数：</p>
+<ol>
+<li>显示关于对话框。</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> about(QWidget <span style="color:#f92672">*</span> parent, <span style="color:#66d9ef">const</span> QString <span style="color:#f92672">&amp;</span> title, <span style="color:#66d9ef">const</span> QString <span style="color:#f92672">&amp;</span> text)
+</span></span></code></pre></div><p>这是一个最简单的对话框，其标题是 title，内容是 text，父窗口是 parent。对话框只有一个 OK 按钮。</p>
+<ol start="2">
+<li>显示关于 Qt 对话框。该对话框用于显示有关 Qt 的信息。</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> aboutQt(QWidget <span style="color:#f92672">*</span> parent, <span style="color:#66d9ef">const</span> QString <span style="color:#f92672">&amp;</span> title <span style="color:#f92672">=</span> QString())
+</span></span></code></pre></div><ol start="3">
+<li>显示严重错误对话框。</li>
+</ol>
+<p>StandardButton critical(QWidget * parent,</p>
+<p>const QString &amp; title,</p>
+<p>const QString &amp; text,</p>
+<p>StandardButtons buttons = Ok,</p>
+<p>StandardButton defaultButton = NoButton)：</p>
+<p>这个对话框将显示一个红色的错误符号。我们可以通过 buttons 参数指明其显示的按钮。默认情况下只有一个 Ok 按钮，我们可以使用StandardButtons类型指定多种按钮。</p>
+<ol>
+<li>与QMessageBox::critical()类似，不同之处在于这个对话框提供一个普通信息图标。</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>StandardButton information(QWidget <span style="color:#f92672">*</span> parent, 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> QString <span style="color:#f92672">&amp;</span> title, 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> QString <span style="color:#f92672">&amp;</span> text, 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>StandardButtons buttons <span style="color:#f92672">=</span> Ok, 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>StandardButton defaultButton <span style="color:#f92672">=</span> NoButton)
+</span></span></code></pre></div><ol start="2">
+<li>与QMessageBox::critical ()类似，不同之处在于这个对话框提供一个问号图标，并且其显示的按钮是“是”和“否”。</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>StandardButton question(QWidget <span style="color:#f92672">*</span> parent,
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> QString <span style="color:#f92672">&amp;</span> title, 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> QString <span style="color:#f92672">&amp;</span> text, 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>StandardButtons buttons <span style="color:#f92672">=</span> StandardButtons( Yes <span style="color:#f92672">|</span> No ), 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>StandardButton defaultButton <span style="color:#f92672">=</span> NoButton) 
+</span></span></code></pre></div><ol start="3">
+<li>与QMessageBox::critical()类似，不同之处在于这个对话框提供一个黄色叹号图标。</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>StandardButton warning(QWidget <span style="color:#f92672">*</span> parent, 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> QString <span style="color:#f92672">&amp;</span> title, 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> QString <span style="color:#f92672">&amp;</span> text, 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>StandardButtons buttons <span style="color:#f92672">=</span> Ok, 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>StandardButton defaultButton <span style="color:#f92672">=</span> NoButton)
+</span></span></code></pre></div><p>我们可以通过下面的代码来演示下如何使用QMessageBox。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (QMessageBox<span style="color:#f92672">::</span>Yes <span style="color:#f92672">==</span> QMessageBox<span style="color:#f92672">::</span>question(<span style="color:#66d9ef">this</span>,
+</span></span><span style="display:flex;"><span>                                              tr(<span style="color:#e6db74">&#34;Question&#34;</span>), tr(<span style="color:#e6db74">&#34;Are you OK?&#34;</span>),
+</span></span><span style="display:flex;"><span>                                              QMessageBox<span style="color:#f92672">::</span>Yes <span style="color:#f92672">|</span> QMessageBox<span style="color:#f92672">::</span>No,
+</span></span><span style="display:flex;"><span>                                              QMessageBox<span style="color:#f92672">::</span>Yes)) 
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    QMessageBox<span style="color:#f92672">::</span>information(<span style="color:#66d9ef">this</span>, tr(<span style="color:#e6db74">&#34;Hmmm...&#34;</span>), 
+</span></span><span style="display:flex;"><span>                             tr(<span style="color:#e6db74">&#34;I&#39;m glad to hear that!&#34;</span>));
+</span></span><span style="display:flex;"><span>} 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">else</span> 
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    QMessageBox<span style="color:#f92672">::</span>information(<span style="color:#66d9ef">this</span>, tr(<span style="color:#e6db74">&#34;Hmmm...&#34;</span>), 
+</span></span><span style="display:flex;"><span>                             tr(<span style="color:#e6db74">&#34;I&#39;m sorry!&#34;</span>));
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>我们使用QMessageBox::question()来询问一个问题。</p>
+<ol>
+<li>这个对话框的父窗口是 this。</li>
+</ol>
+<p>QMessageBox是QDialog的子类，这意味着它的初始显示位置将会是在 parent 窗口的中央。</p>
+<ol start="2">
+<li>
+<p>第二个参数是对话框的标题。</p>
+</li>
+<li>
+<p>第三个参数是我们想要显示的内容。</p>
+</li>
+<li>
+<p>第四个参数是关联的按键类型，我们可以使用或运算符（|）指定对话框应该出现的按钮。比如我们希望是一个 Yes 和一个 No。</p>
+</li>
+<li>
+<p>最后一个参数指定默认选择的按钮。</p>
+</li>
+</ol>
+<p>这个函数有一个返回值，用于确定用户点击的是哪一个按钮。按照我们的写法，应该很容易的看出，这是一个模态对话框，因此我们可以直接获取其返回值。</p>
+<p>QMessageBox类的 static 函数优点是方便使用，缺点也很明显：非常不灵活。我们只能使用简单的几种形式。为了能够定制QMessageBox细节，我们必须使用QMessageBox的属性设置 API。如果我们希望制作一个询问是否保存的对话框，我们可以使用如下的代码：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>QMessageBox msgBox;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>msgBox.setText(tr(<span style="color:#e6db74">&#34;The document has been modified.&#34;</span>));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>msgBox.setInformativeText(tr(<span style="color:#e6db74">&#34;Do you want to save your changes?&#34;</span>));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>msgBox.setDetailedText(tr(<span style="color:#e6db74">&#34;Differences here...&#34;</span>));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>msgBox.setStandardButtons(QMessageBox<span style="color:#f92672">::</span>Save; 
+</span></span><span style="display:flex;"><span>                          QMessageBox<span style="color:#f92672">::</span>Discard;  
+</span></span><span style="display:flex;"><span>                          QMessageBox<span style="color:#f92672">::</span>Cancel);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>msgBox.setDefaultButton(QMessageBox<span style="color:#f92672">::</span>Save);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> ret <span style="color:#f92672">=</span> msgBox.exec();
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">switch</span> (ret) 
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">case</span> QMessageBox<span style="color:#f92672">::</span>Save:
+</span></span><span style="display:flex;"><span>      	qDebug() <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Save document!&#34;</span>;
+</span></span><span style="display:flex;"><span>      	<span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">case</span> QMessageBox<span style="color:#f92672">::</span>Discard:
+</span></span><span style="display:flex;"><span>      	qDebug() <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Discard changes!&#34;</span>;
+</span></span><span style="display:flex;"><span>      	<span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">case</span> QMessageBox<span style="color:#f92672">::</span>Cancel:
+</span></span><span style="display:flex;"><span>      	qDebug() <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Close document!&#34;</span>;
+</span></span><span style="display:flex;"><span>      	<span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>msgBox 是一个建立在栈上的QMessageBox实例。我们设置其主要文本信息为“The document has been modified.”，informativeText 则是会在对话框中显示的简单说明文字。下面我们使用了一个detailedText，也就是详细信息，当我们点击了详细信息按钮时，对话框可以自动显示更多信息。我们自己定义的对话框的按钮有三个：保存、丢弃和取消。然后我们使用了exec()是其成为一个模态对话框，根据其返回值进行相应的操作。</p>
+<h2 id="65-标准文件对话框">6.5 标准文件对话框</h2>
+<p>QFileDialog，也就是文件对话框。在本节中，我们将尝试编写一个简单的文本文件编辑器，我们将使用QFileDialog来打开一个文本文件，并将修改过的文件保存到硬盘。</p>
+<p>首先，我们需要创建一个带有文本编辑功能的窗口。借用我们前面的程序代码，应该可以很方便地完成：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>openAction <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> QAction(QIcon(<span style="color:#e6db74">&#34;:/images/file-open&#34;</span>),tr(<span style="color:#e6db74">&#34;&amp;Open...&#34;</span>), <span style="color:#66d9ef">this</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>openAction<span style="color:#f92672">-&gt;</span>setStatusTip(tr(<span style="color:#e6db74">&#34;Open an existing file&#34;</span>));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>saveAction <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> QAction(QIcon(<span style="color:#e6db74">&#34;:/images/file-save&#34;</span>), tr(<span style="color:#e6db74">&#34;&amp;Save...&#34;</span>), <span style="color:#66d9ef">this</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>saveAction<span style="color:#f92672">-&gt;</span>setStatusTip(tr(<span style="color:#e6db74">&#34;Save a new file&#34;</span>)); 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>QMenu <span style="color:#f92672">*</span>file <span style="color:#f92672">=</span> menuBar()<span style="color:#f92672">-&gt;</span>addMenu(tr(<span style="color:#e6db74">&#34;&amp;File&#34;</span>));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>file<span style="color:#f92672">-&gt;</span>addAction(openAction);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>file<span style="color:#f92672">-&gt;</span>addAction(saveAction);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>QToolBar <span style="color:#f92672">*</span>toolBar <span style="color:#f92672">=</span> addToolBar(tr(<span style="color:#e6db74">&#34;&amp;File&#34;</span>));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>toolBar<span style="color:#f92672">-&gt;</span>addAction(openAction);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>toolBar<span style="color:#f92672">-&gt;</span>addAction(saveAction);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>textEdit <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> QTextEdit(<span style="color:#66d9ef">this</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>setCentralWidget(textEdit);
+</span></span></code></pre></div><p>我们在菜单和工具栏添加了两个动作：打开和保存。接下来是一个QTextEdit类，这个类用于显示富文本文件。也就是说，它不仅仅用于显示文本，还可以显示图片、表格等等。不过，我们现在只用它显示纯文本文件。QMainWindow有一个setCentralWidget()函数，可以将一个组件作为窗口的中心组件，放在窗口中央显示区。显然，在一个文本编辑器中，文本编辑区就是这个中心组件，因此我们将QTextEdit作为这种组件。</p>
+<p>我们使用connect()函数，为这两个QAction对象添加响应的动作：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>connect(openAction, <span style="color:#f92672">&amp;</span>QAction<span style="color:#f92672">::</span>triggered, 
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>, <span style="color:#f92672">&amp;</span>MainWindow<span style="color:#f92672">::</span>openFile);
+</span></span><span style="display:flex;"><span>connect(saveAction, <span style="color:#f92672">&amp;</span>QAction<span style="color:#f92672">::</span>triggered, 
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>, <span style="color:#f92672">&amp;</span>MainWindow<span style="color:#f92672">::</span>saveFile);
+</span></span></code></pre></div><p>下面是最主要的openFile()和saveFile()这两个函数的代码：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">//打开文件
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> MainWindow<span style="color:#f92672">::</span>openFile()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    QString path <span style="color:#f92672">=</span> QFileDialog<span style="color:#f92672">::</span>getOpenFileName(<span style="color:#66d9ef">this</span>,
+</span></span><span style="display:flex;"><span>                                                tr(<span style="color:#e6db74">&#34;Open File&#34;</span>), <span style="color:#e6db74">&#34;.&#34;</span>, tr(<span style="color:#e6db74">&#34;Text Files(*.txt)&#34;</span>));
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span>(<span style="color:#f92672">!</span>path.isEmpty()) 
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        QFile <span style="color:#a6e22e">file</span>(path);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>file.open(QIODevice<span style="color:#f92672">::</span>ReadOnly <span style="color:#f92672">|</span> QIODevice<span style="color:#f92672">::</span>Text)) 
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            QMessageBox<span style="color:#f92672">::</span>warning(<span style="color:#66d9ef">this</span>, tr(<span style="color:#e6db74">&#34;Read File&#34;</span>),
+</span></span><span style="display:flex;"><span>                                 tr(<span style="color:#e6db74">&#34;Cannot open file:</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">%1&#34;</span>).arg(path));
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        QTextStream <span style="color:#a6e22e">in</span>(<span style="color:#f92672">&amp;</span>file);
+</span></span><span style="display:flex;"><span>        textEdit<span style="color:#f92672">-&gt;</span>setText(in.readAll());
+</span></span><span style="display:flex;"><span>        file.close();
+</span></span><span style="display:flex;"><span>    } 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span> 
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        QMessageBox<span style="color:#f92672">::</span>warning(<span style="color:#66d9ef">this</span>, tr(<span style="color:#e6db74">&#34;Path&#34;</span>),
+</span></span><span style="display:flex;"><span>                             tr(<span style="color:#e6db74">&#34;You did not select any file.&#34;</span>));
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//保存文件
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> MainWindow<span style="color:#f92672">::</span>saveFile()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    QString path <span style="color:#f92672">=</span> QFileDialog<span style="color:#f92672">::</span>getSaveFileName(<span style="color:#66d9ef">this</span>,
+</span></span><span style="display:flex;"><span>                                                tr(<span style="color:#e6db74">&#34;Open File&#34;</span>), <span style="color:#e6db74">&#34;.&#34;</span>, tr(<span style="color:#e6db74">&#34;Text Files(*.txt)&#34;</span>));
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span>(<span style="color:#f92672">!</span>path.isEmpty()) 
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        QFile <span style="color:#a6e22e">file</span>(path);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>file.open(QIODevice<span style="color:#f92672">::</span>WriteOnly <span style="color:#f92672">|</span> QIODevice<span style="color:#f92672">::</span>Text)) 
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            QMessageBox<span style="color:#f92672">::</span>warning(<span style="color:#66d9ef">this</span>, tr(<span style="color:#e6db74">&#34;Write File&#34;</span>),
+</span></span><span style="display:flex;"><span>                                 tr(<span style="color:#e6db74">&#34;Cannot open file:</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">%1&#34;</span>).arg(path));
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        QTextStream <span style="color:#a6e22e">out</span>(<span style="color:#f92672">&amp;</span>file);
+</span></span><span style="display:flex;"><span>        out <span style="color:#f92672">&lt;&lt;</span> textEdit<span style="color:#f92672">-&gt;</span>toPlainText();
+</span></span><span style="display:flex;"><span>        file.close();
+</span></span><span style="display:flex;"><span>    } 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span> 
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        QMessageBox<span style="color:#f92672">::</span>warning(<span style="color:#66d9ef">this</span>, tr(<span style="color:#e6db74">&#34;Path&#34;</span>),
+</span></span><span style="display:flex;"><span>                             tr(<span style="color:#e6db74">&#34;You did not select any file.&#34;</span>));
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>在openFile()函数中，我们使用QFileDialog::getOpenFileName()来获取需要打开的文件的路径。这个函数原型如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>QString getOpenFileName(QWidget <span style="color:#f92672">*</span> parent <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>                        <span style="color:#66d9ef">const</span> QString <span style="color:#f92672">&amp;</span> caption <span style="color:#f92672">=</span> QString(),
+</span></span><span style="display:flex;"><span>                        <span style="color:#66d9ef">const</span> QString <span style="color:#f92672">&amp;</span> dir <span style="color:#f92672">=</span> QString(),
+</span></span><span style="display:flex;"><span>                        <span style="color:#66d9ef">const</span> QString <span style="color:#f92672">&amp;</span> filter <span style="color:#f92672">=</span> QString(),
+</span></span><span style="display:flex;"><span>                        QString <span style="color:#f92672">*</span> selectedFilter <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>                        Options options <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>)
+</span></span></code></pre></div><p>不过注意，它的所有参数都是可选的，因此在一定程度上说，这个函数也是简单的。这六个参数分别是：</p>
+<ul>
+<li>parent：父窗口。</li>
+</ul>
+<p>Qt 的标准对话框提供静态函数，用于返回一个模态对话框；</p>
+<ul>
+<li>
+<p>caption：对话框标题；</p>
+</li>
+<li>
+<p>dir：对话框打开时的默认目录</p>
+</li>
+<li>
+<p>“.” 代表程序运行目录</p>
+</li>
+<li>
+<p>“/” 代表当前盘符的根目录（特指 Windows 平台；Linux 平台当然就是根目录），这个参数也可以是平台相关的，比如“C:\”等；</p>
+</li>
+<li>
+<p>filter：过滤器。</p>
+</li>
+</ul>
+<p>我们使用文件对话框可以浏览很多类型的文件，但是，很多时候我们仅希望打开特定类型的文件。比如，文本编辑器希望打开文本文件，图片浏览器希望打开图片文件。过滤器就是用于过滤特定的后缀名。如果我们使用“Image Files(<em>.jpg <em>.png)”，则只能显示后缀名是 jpg 或者 png 的文件。如果需要多个过滤器，使用“;;”分割，比如“JPEG Files(</em>.jpg);;PNG Files(</em>.png)”；</p>
+<ul>
+<li>
+<p>selectedFilter：默认选择的过滤器；</p>
+</li>
+<li>
+<p>options：对话框的一些参数设定</p>
+</li>
+</ul>
+<p>比如只显示文件夹等等，它的取值是enum QFileDialog::Option，每个选项可以使用 | 运算组合起来。</p>
+<p>QFileDialog::getOpenFileName()返回值是选择的文件路径。我们将其赋值给 path。通过判断 path 是否为空，可以确定用户是否选择了某一文件。只有当用户选择了一个文件时，我们才执行下面的操作。</p>
+<p>在saveFile()中使用的QFileDialog::getSaveFileName()也是类似的。使用这种静态函数，在 Windows、Mac OS 上面都是直接调用本地对话框，但是 Linux 上则是QFileDialog自己的模拟。这暗示了，如果你不使用这些静态函数，而是直接使用QFileDialog进行设置，那么得到的对话框很可能与系统对话框的外观不一致。这一点是需要注意的。</p>
+<h1 id="7-布局管理器">7 布局管理器</h1>
+<p>所谓 GUI 界面，归根结底，就是一堆组件的叠加。我们创建一个窗口，把按钮放上面，把图标放上面，这样就成了一个界面。在放置时，组件的位置尤其重要。我们必须要指定组件放在哪里，以便窗口能够按照我们需要的方式进行渲染。这就涉及到组件定位的机制。</p>
+<p>Qt 提供了两种组件定位机制：绝对定位和布局定位。</p>
+<ul>
+<li>绝对定位就是一种最原始的定位方法：给出这个组件的坐标和长宽值。</li>
+</ul>
+<p>这样，Qt 就知道该把组件放在哪里以及如何设置组件的大小。但是这样做带来的一个问题是，如果用户改变了窗口大小，比如点击最大化按钮或者使用鼠标拖动窗口边缘，采用绝对定位的组件是不会有任何响应的。这也很自然，因为你并没有告诉 Qt，在窗口变化时，组件是否要更新自己以及如何更新。或者，还有更简单的方法：禁止用户改变窗口大小。但这总不是长远之计。</p>
+<ul>
+<li>布局定位：你只要把组件放入某一种布局，布局由专门的布局管理器进行管理。当需要调整大小或者位置的时候，Qt 使用对应的布局管理器进行调整。</li>
+</ul>
+<p>布局定位完美的解决了使用绝对定位的缺陷。</p>
+<p>Qt 提供的布局中以下三种是我们最常用的：</p>
+<ul>
+<li>
+<p>QHBoxLayout：按照水平方向从左到右布局；</p>
+</li>
+<li>
+<p>QVBoxLayout：按照竖直方向从上到下布局；</p>
+</li>
+<li>
+<p>QGridLayout：在一个网格中进行布局，类似于 HTML 的 table；</p>
+</li>
+</ul>
+<h2 id="71-系统提供的布局控件">7.1 系统提供的布局控件</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://gitee.com/txt1994/images/raw/master/img/QT/wps19.jpg"
+        data-srcset="https://gitee.com/txt1994/images/raw/master/img/QT/wps19.jpg, https://gitee.com/txt1994/images/raw/master/img/QT/wps19.jpg 1.5x, https://gitee.com/txt1994/images/raw/master/img/QT/wps19.jpg 2x"
+        data-sizes="auto"
+        alt="https://gitee.com/txt1994/images/raw/master/img/QT/wps19.jpg"
+        title="img" /></p>
+<p>这4个为系统给我们提供的布局的控件，但是使用起来不是非常的灵活，这里就不详细介绍了。</p>
+<h2 id="72-利用widget做布局">7.2 利用widget做布局</h2>
+<p>第二种布局方式是利用控件里的widget来做布局，在Containers中</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://gitee.com/txt1994/images/raw/master/img/QT/wps20.jpg"
+        data-srcset="https://gitee.com/txt1994/images/raw/master/img/QT/wps20.jpg, https://gitee.com/txt1994/images/raw/master/img/QT/wps20.jpg 1.5x, https://gitee.com/txt1994/images/raw/master/img/QT/wps20.jpg 2x"
+        data-sizes="auto"
+        alt="https://gitee.com/txt1994/images/raw/master/img/QT/wps20.jpg"
+        title="img" /></p>
+<p>在widget中的控件可以进行水平、垂直、栅格布局等操作，比较灵活。</p>
+<p>再布局的同时我们需要灵活运用弹簧的特性让我们的布局更加的美观，下面是一个登陆窗口，利用widget可以搭建出如下登陆界面：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://gitee.com/txt1994/images/raw/master/img/QT/wps21.jpg"
+        data-srcset="https://gitee.com/txt1994/images/raw/master/img/QT/wps21.jpg, https://gitee.com/txt1994/images/raw/master/img/QT/wps21.jpg 1.5x, https://gitee.com/txt1994/images/raw/master/img/QT/wps21.jpg 2x"
+        data-sizes="auto"
+        alt="https://gitee.com/txt1994/images/raw/master/img/QT/wps21.jpg"
+        title="img" /></p>
+<h1 id="8-常用控件">8 常用控件</h1>
+<p>Qt为我们应用程序界面开发提供的一系列的控件，下面我们介绍两种最常用一些控件，所有控件的使用方法我们都可以通过帮助文档获取。</p>
+<h2 id="81-qlabel控件使用">8.1 QLabel控件使用</h2>
+<p>QLabel是我们最常用的控件之一，其功能很强大，我们可以用来显示文本，图片和动画等。</p>
+<h3 id="显示文字-普通文本html">显示文字 （普通文本、html）</h3>
+<p>通过QLabel类的setText函数设置显示的内容:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">void</span>	<span style="color:#a6e22e">setText</span>(<span style="color:#66d9ef">const</span> QString <span style="color:#f92672">&amp;</span>);
+</span></span></code></pre></div><ul>
+<li>可以显示普通文本字符串</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>QLable <span style="color:#f92672">*</span>label <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> QLable;
+</span></span><span style="display:flex;"><span>label<span style="color:#f92672">-&gt;</span>setText(<span style="color:#960050;background-color:#1e0010">“</span>Hello, World<span style="color:#f92672">!</span><span style="color:#960050;background-color:#1e0010">”</span>);
+</span></span></code></pre></div><ul>
+<li>可以显示HTML格式的字符串</li>
+</ul>
+<p>比如显示一个链接:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>QLabel <span style="color:#f92672">*</span> label <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> QLabel(<span style="color:#66d9ef">this</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>label <span style="color:#f92672">-&gt;</span>setText(<span style="color:#e6db74">&#34;Hello, World&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>label <span style="color:#f92672">-&gt;</span>setText(<span style="color:#e6db74">&#34;&lt;h1&gt;&lt;a href=</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">https://www.baidu.com</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">&gt;百度一下&lt;/a&gt;&lt;/h1&gt;&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>label <span style="color:#f92672">-&gt;</span>setOpenExternalLinks(true);
+</span></span></code></pre></div><p>其中setOpenExternalLinks()函数是用来设置用户点击链接之后是否自动打开链接，如果参数指定为true则会自动打开。</p>
+<h3 id="显示图片">显示图片</h3>
+<p>可以使用QLabel的成员函数setPixmap设置图片</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> setPixmap(<span style="color:#66d9ef">const</span> QPixmap <span style="color:#f92672">&amp;</span>)
+</span></span></code></pre></div><p>首先定义QPixmap对象</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>QPixmap pixmap;
+</span></span></code></pre></div><p>然后加载图片</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>pixmap.load(<span style="color:#e6db74">&#34;:/Image/boat.jpg&#34;</span>);
+</span></span></code></pre></div><p>最后将图片设置到QLabel中</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>QLabel <span style="color:#f92672">*</span>label <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> QLabel;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>label.setPixmap(pixmap);
+</span></span></code></pre></div><h3 id="显示动画">显示动画</h3>
+<p>可以使用QLabel 的成员函数setMovie加载动画，可以播放gif格式的文件</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">void</span>	setMovie(QMovie <span style="color:#f92672">*</span> movie)
+</span></span></code></pre></div><p>首先定义QMovied对象，并初始化:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>QMovie <span style="color:#f92672">*</span>movie <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> QMovie(<span style="color:#e6db74">&#34;:/Mario.gif&#34;</span>);
+</span></span></code></pre></div><p>播放加载的动画：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>movie<span style="color:#f92672">-&gt;</span>start();
+</span></span></code></pre></div><p>将动画设置到QLabel中：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>QLabel <span style="color:#f92672">*</span>label <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> QLabel<span style="color:#960050;background-color:#1e0010">；</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>label<span style="color:#f92672">-&gt;</span>setMovie(movie);
+</span></span></code></pre></div><h2 id="82-qlineedit">8.2 QLineEdit</h2>
+<p>Qt提供的单行文本编辑框。</p>
+<h4 id="设置获取内容">设置/获取内容</h4>
+<ul>
+<li>获取编辑框内容使用text（），函数声明如下：</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>QString	text() <span style="color:#66d9ef">const</span>
+</span></span></code></pre></div><ul>
+<li>设置编辑框内容</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">void</span>	<span style="color:#a6e22e">setText</span>(<span style="color:#66d9ef">const</span> QString <span style="color:#f92672">&amp;</span>);
+</span></span></code></pre></div><h4 id="设置显示模式">设置显示模式</h4>
+<p>使用QLineEdit类的setEchoMode () 函数设置文本的显示模式,函数声明:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">void</span>	setEchoMode(EchoMode mode)
+</span></span></code></pre></div><p>EchoMode是一个枚举类型,一共定义了四种显示模式:</p>
+<ul>
+<li>
+<p>QLineEdit::Normal	 模式显示方式，按照输入的内容显示。</p>
+</li>
+<li>
+<p>QLineEdit::NoEcho	不显示任何内容，此模式下无法看到用户的输入。</p>
+</li>
+<li>
+<p>QLineEdit::Password	密码模式，输入的字符会根据平台转换为特殊字符。</p>
+</li>
+<li>
+<p>QLineEdit::PasswordEchoOnEdit	编辑时显示字符否则显示字符作为密码。</p>
+</li>
+</ul>
+<p>另外，我们再使用QLineEdit显示文本的时候，希望在左侧留出一段空白的区域，那么，就可以使用QLineEdit给我们提供的setTextMargins函数：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> setTextMargins(<span style="color:#66d9ef">int</span> left, <span style="color:#66d9ef">int</span> top, <span style="color:#66d9ef">int</span> right, <span style="color:#66d9ef">int</span> bottom)
+</span></span></code></pre></div><p>用此函数可以指定显示的文本与输入框上下左右边界的间隔的像素数。</p>
+<h2 id="83-其他控件">8.3 其他控件</h2>
+<p>Qt中控件的使用方法可参考Qt提供的帮助文档。</p>
+<h2 id="84-自定义控件">8.4 自定义控件</h2>
+<p>在搭建Qt窗口界面的时候，在一个项目中很多窗口，或者是窗口中的某个模块会被经常性的重复使用。一般遇到这种情况我们都会将这个窗口或者模块拿出来做成一个独立的窗口类，以备以后重复使用。</p>
+<p>在使用Qt的ui文件搭建界面的时候，工具栏栏中只为我们提供了标准的窗口控件，如果我们想使用自定义控件怎么办？</p>
+<p>例如：我们从QWidget派生出一个类SmallWidget，实现了一个自定窗口，</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">// smallwidget.h
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SmallWidget</span> <span style="color:#f92672">:</span> <span style="color:#66d9ef">public</span> QWidget
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    Q_OBJECT
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">explicit</span> SmallWidget(QWidget <span style="color:#f92672">*</span>parent <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>signals:
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> slots:
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    QSpinBox<span style="color:#f92672">*</span> spin;
+</span></span><span style="display:flex;"><span>    QSlider<span style="color:#f92672">*</span> slider;
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// smallwidget.cpp
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>SmallWidget<span style="color:#f92672">::</span>SmallWidget(QWidget <span style="color:#f92672">*</span>parent) <span style="color:#f92672">:</span> QWidget(parent)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    spin <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> QSpinBox(<span style="color:#66d9ef">this</span>);
+</span></span><span style="display:flex;"><span>    slider <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> QSlider(Qt<span style="color:#f92672">::</span>Horizontal, <span style="color:#66d9ef">this</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 创建布局对象
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    QHBoxLayout<span style="color:#f92672">*</span> layout <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> QHBoxLayout;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 将控件添加到布局中
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    layout<span style="color:#f92672">-&gt;</span>addWidget(spin);
+</span></span><span style="display:flex;"><span>    layout<span style="color:#f92672">-&gt;</span>addWidget(slider);
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 将布局设置到窗口中
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    setLayout(layout);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 添加消息响应
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    connect(spin, 
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">static_cast</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">void</span> (QSpinBox<span style="color:#f92672">::*</span>)(<span style="color:#66d9ef">int</span>)<span style="color:#f92672">&gt;</span>(<span style="color:#f92672">&amp;</span>QSpinBox<span style="color:#f92672">::</span>valueChanged),
+</span></span><span style="display:flex;"><span>            slider, <span style="color:#f92672">&amp;</span>QSlider<span style="color:#f92672">::</span>setValue);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    connect(slider, <span style="color:#f92672">&amp;</span>QSlider<span style="color:#f92672">::</span>valueChanged, 
+</span></span><span style="display:flex;"><span>            spin, <span style="color:#f92672">&amp;</span>QSpinBox<span style="color:#f92672">::</span>setValue);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://gitee.com/txt1994/images/raw/master/img/QT/wps22.jpg"
+        data-srcset="https://gitee.com/txt1994/images/raw/master/img/QT/wps22.jpg, https://gitee.com/txt1994/images/raw/master/img/QT/wps22.jpg 1.5x, https://gitee.com/txt1994/images/raw/master/img/QT/wps22.jpg 2x"
+        data-sizes="auto"
+        alt="https://gitee.com/txt1994/images/raw/master/img/QT/wps22.jpg"
+        title="img" /></p>
+<p>那么这个SmallWidget可以作为独立的窗口显示,也可以作为一个控件来使用：</p>
+<p>打开Qt的.ui文件,因为SmallWidget是派生自Qwidget类,所以需要在ui文件中先放入一个QWidget控件, 然后再上边鼠标右键</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://gitee.com/txt1994/images/raw/master/img/QT/wps23.jpg"
+        data-srcset="https://gitee.com/txt1994/images/raw/master/img/QT/wps23.jpg, https://gitee.com/txt1994/images/raw/master/img/QT/wps23.jpg 1.5x, https://gitee.com/txt1994/images/raw/master/img/QT/wps23.jpg 2x"
+        data-sizes="auto"
+        alt="https://gitee.com/txt1994/images/raw/master/img/QT/wps23.jpg"
+        title="img" /></p>
+<p>弹出提升窗口部件对话框</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://gitee.com/txt1994/images/raw/master/img/QT/wps24.jpg"
+        data-srcset="https://gitee.com/txt1994/images/raw/master/img/QT/wps24.jpg, https://gitee.com/txt1994/images/raw/master/img/QT/wps24.jpg 1.5x, https://gitee.com/txt1994/images/raw/master/img/QT/wps24.jpg 2x"
+        data-sizes="auto"
+        alt="https://gitee.com/txt1994/images/raw/master/img/QT/wps24.jpg"
+        title="img" /></p>
+<p>添加要提升的类的名字,然后选择 添加</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://gitee.com/txt1994/images/raw/master/img/QT/wps25.jpg"
+        data-srcset="https://gitee.com/txt1994/images/raw/master/img/QT/wps25.jpg, https://gitee.com/txt1994/images/raw/master/img/QT/wps25.jpg 1.5x, https://gitee.com/txt1994/images/raw/master/img/QT/wps25.jpg 2x"
+        data-sizes="auto"
+        alt="https://gitee.com/txt1994/images/raw/master/img/QT/wps25.jpg"
+        title="img" /></p>
+<p>添加之后,类名会显示到上边的列表框中,然后单击提升按钮,完成操作.</p>
+<p>我们可以看到, 这个窗口对应的类从原来的QWidget变成了SmallWidget</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://gitee.com/txt1994/images/raw/master/img/QT/wps26.jpg"
+        data-srcset="https://gitee.com/txt1994/images/raw/master/img/QT/wps26.jpg, https://gitee.com/txt1994/images/raw/master/img/QT/wps26.jpg 1.5x, https://gitee.com/txt1994/images/raw/master/img/QT/wps26.jpg 2x"
+        data-sizes="auto"
+        alt="https://gitee.com/txt1994/images/raw/master/img/QT/wps26.jpg"
+        title="img" /></p>
+<p>再次运行程序,这个widget_3中就能显示出我们自定义的窗口了.</p>
+<h1 id="9-qt消息机制和事件">9 Qt消息机制和事件</h1>
+<h2 id="91-事件">9.1 事件</h2>
+<p>事件（event）是由系统或者 Qt 本身在不同的时刻发出的。当用户按下鼠标、敲下键盘，或者是窗口需要重新绘制的时候，都会发出一个相应的事件。一些事件在对用户操作做出响应时发出，如键盘事件等；另一些事件则是由系统自动发出，如计时器事件。</p>
+<p>在前面我们也曾经简单提到，Qt 程序需要在main()函数创建一个QApplication对象，然后调用它的exec()函数。这个函数就是开始 Qt 的事件循环。在执行exec()函数之后，程序将进入事件循环来监听应用程序的事件。当事件发生时，Qt 将创建一个事件对象。Qt 中所有事件类都继承于QEvent。在事件对象创建完毕后，Qt 将这个事件对象传递给QObject的event()函数。event()函数并不直接处理事件，而是按照事件对象的类型分派给特定的事件处理函数（event handler），关于这一点，会在后边详细说明。</p>
+<p>在所有组件的父类QWidget中，定义了很多事件处理的回调函数，如</p>
+<ul>
+<li>
+<p>keyPressEvent()</p>
+</li>
+<li>
+<p>keyReleaseEvent()</p>
+</li>
+<li>
+<p>mouseDoubleClickEvent()</p>
+</li>
+<li>
+<p>mouseMoveEvent()</p>
+</li>
+<li>
+<p>mousePressEvent()</p>
+</li>
+<li>
+<p>mouseReleaseEvent() 等。</p>
+</li>
+</ul>
+<p>这些函数都是 protected virtual 的，也就是说，我们可以在子类中重新实现这些函数。下面来看一个例子：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">EventLabel</span> <span style="color:#f92672">:</span> <span style="color:#66d9ef">public</span> QLabel
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">protected</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> mouseMoveEvent(QMouseEvent <span style="color:#f92672">*</span>event);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">mousePressEvent</span>(QMouseEvent <span style="color:#f92672">*</span>event);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">mouseReleaseEvent</span>(QMouseEvent <span style="color:#f92672">*</span>event);
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> EventLabel<span style="color:#f92672">::</span>mouseMoveEvent(QMouseEvent <span style="color:#f92672">*</span>event)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span><span style="color:#f92672">-&gt;</span>setText(QString(<span style="color:#e6db74">&#34;&lt;center&gt;&lt;h1&gt;Move: (%1, %2)</span>
+</span></span><span style="display:flex;"><span>                          <span style="color:#f92672">&lt;/</span>h1<span style="color:#f92672">&gt;&lt;/</span>center<span style="color:#f92672">&gt;</span><span style="color:#e6db74">&#34;).arg(QString::number(event-&gt;x()),</span>
+</span></span><span style="display:flex;"><span>                          QString<span style="color:#f92672">::</span>number(event<span style="color:#f92672">-&gt;</span>y())));
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> EventLabel<span style="color:#f92672">::</span>mousePressEvent(QMouseEvent <span style="color:#f92672">*</span>event)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span><span style="color:#f92672">-&gt;</span>setText(QString(<span style="color:#e6db74">&#34;&lt;center&gt;&lt;h1&gt;Press:(%1, %2)</span>
+</span></span><span style="display:flex;"><span>                          <span style="color:#f92672">&lt;/</span>h1<span style="color:#f92672">&gt;&lt;/</span>center<span style="color:#f92672">&gt;</span><span style="color:#e6db74">&#34;).arg(QString::number(event-&gt;x()),</span>
+</span></span><span style="display:flex;"><span>                          QString<span style="color:#f92672">::</span>number(event<span style="color:#f92672">-&gt;</span>y())));
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> EventLabel<span style="color:#f92672">::</span>mouseReleaseEvent(QMouseEvent <span style="color:#f92672">*</span>event)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    QString msg;
+</span></span><span style="display:flex;"><span>    msg.sprintf(<span style="color:#e6db74">&#34;&lt;center&gt;&lt;h1&gt;Release: (%d, %d)&lt;/h1&gt;&lt;/center&gt;&#34;</span>,
+</span></span><span style="display:flex;"><span>                event<span style="color:#f92672">-&gt;</span>x(), event<span style="color:#f92672">-&gt;</span>y());
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span><span style="color:#f92672">-&gt;</span>setText(msg);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">int</span> argc, <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>argv[])
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    QApplication a(argc, argv);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    EventLabel <span style="color:#f92672">*</span>label <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> EventLabel;
+</span></span><span style="display:flex;"><span>    label<span style="color:#f92672">-&gt;</span>setWindowTitle(<span style="color:#e6db74">&#34;MouseEvent Demo&#34;</span>);
+</span></span><span style="display:flex;"><span>    label<span style="color:#f92672">-&gt;</span>resize(<span style="color:#ae81ff">300</span>, <span style="color:#ae81ff">200</span>);
+</span></span><span style="display:flex;"><span>    label<span style="color:#f92672">-&gt;</span>show();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> a.exec();
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
+<li>
+<p>EventLabel继承了QLabel，覆盖了mousePressEvent()、mouseMoveEvent()和MouseReleaseEvent()三个函数。我们并没有添加什么功能，只是在鼠标按下（press）、鼠标移动（move）和鼠标释放（release）的时候，把当前鼠标的坐标值显示在这个Label上面。由于QLabel是支持 HTML 代码的，因此我们直接使用了 HTML 代码来格式化文字。</p>
+</li>
+<li>
+<p>QString的arg()函数可以自动替换掉QString中出现的占位符。其占位符以 % 开始，后面是占位符的位置，例如 %1，%2 这种。</p>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>QString(<span style="color:#e6db74">&#34;[%1, %2]&#34;</span>).arg(x).arg(y);
+</span></span></code></pre></div><p>语句将会使用x替换 %1，y替换 %2，因此，生成的QString为[x, y]。</p>
+<ul>
+<li>在mouseReleaseEvent()函数中，我们使用了另外一种QString的构造方法。我们使用类似 C 风格的格式化函数sprintf()来构造QString。</li>
+</ul>
+<p>运行上面的代码，当我们点击了一下鼠标之后，label 上将显示鼠标当前坐标值。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://gitee.com/txt1994/images/raw/master/img/QT/wps27.jpg"
+        data-srcset="https://gitee.com/txt1994/images/raw/master/img/QT/wps27.jpg, https://gitee.com/txt1994/images/raw/master/img/QT/wps27.jpg 1.5x, https://gitee.com/txt1994/images/raw/master/img/QT/wps27.jpg 2x"
+        data-sizes="auto"
+        alt="https://gitee.com/txt1994/images/raw/master/img/QT/wps27.jpg"
+        title="img" /></p>
+<p>为什么要点击鼠标之后才能在mouseMoveEvent()函数中显示鼠标坐标值？</p>
+<p>这是因为QWidget中有一个mouseTracking属性，该属性用于设置是否追踪鼠标。只有鼠标被追踪时，mouseMoveEvent()才会发出。如果mouseTracking是 false（默认即是），组件在至少一次鼠标点击之后，才能够被追踪，也就是能够发出mouseMoveEvent()事件。如果mouseTracking为 true，则mouseMoveEvent()直接可以被发出。</p>
+<p>知道了这一点，我们就可以在main()函数中添加如下代码：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>label<span style="color:#f92672">-&gt;</span>setMouseTracking(true);
+</span></span></code></pre></div><p>在运行程序就没有这个问题了。</p>
+<h2 id="92-event">9.2 event（）</h2>
+<p>事件对象创建完毕后，Qt 将这个事件对象传递给QObject的event()函数。event()函数并不直接处理事件，而是将这些事件对象按照它们不同的类型，分发给不同的事件处理器（event handler）。</p>
+<p>如上所述，event()函数主要用于事件的分发。所以，如果你希望在事件分发之前做一些操作，就可以重写这个event()函数了。例如，我们希望在一个QWidget组件中监听 tab 键的按下，那么就可以继承QWidget，并重写它的event()函数，来达到这个目的：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">bool</span> CustomWidget<span style="color:#f92672">::</span>event(QEvent <span style="color:#f92672">*</span>e)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (e<span style="color:#f92672">-&gt;</span>type() <span style="color:#f92672">==</span> QEvent<span style="color:#f92672">::</span>KeyPress) {
+</span></span><span style="display:flex;"><span>        QKeyEvent <span style="color:#f92672">*</span>keyEvent <span style="color:#f92672">=</span> <span style="color:#66d9ef">static_cast</span><span style="color:#f92672">&lt;</span>QKeyEvent <span style="color:#f92672">*&gt;</span>(e);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (keyEvent<span style="color:#f92672">-&gt;</span>key() <span style="color:#f92672">==</span> Qt<span style="color:#f92672">::</span>Key_Tab) {
+</span></span><span style="display:flex;"><span>            qDebug() <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;You press tab.&#34;</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> true;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> QWidget<span style="color:#f92672">::</span>event(e);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>CustomWidget是一个普通的QWidget子类。我们重写了它的event()函数，这个函数有一个QEvent对象作为参数，也就是需要转发的事件对象。函数返回值是 bool 类型。</p>
+<ul>
+<li>
+<p>如果传入的事件已被识别并且处理，则需要返回 true，否则返回 false。如果返回值是 true，那么 Qt 会认为这个事件已经处理完毕，不会再将这个事件发送给其它对象，而是会继续处理事件队列中的下一事件。</p>
+</li>
+<li>
+<p>在event()函数中，调用事件对象的accept()和ignore()函数是没有作用的，不会影响到事件的传播。</p>
+</li>
+</ul>
+<p>我们可以通过使用QEvent::type()函数可以检查事件的实际类型，其返回值是QEvent::Type类型的枚举。我们处理过自己感兴趣的事件之后，可以直接返回 true，表示我们已经对此事件进行了处理；对于其它我们不关心的事件，则需要调用父类的event()函数继续转发，否则这个组件就只能处理我们定义的事件了。为了测试这一种情况，我们可以尝试下面的代码：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">bool</span> CustomTextEdit<span style="color:#f92672">::</span>event(QEvent <span style="color:#f92672">*</span>e)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (e<span style="color:#f92672">-&gt;</span>type() <span style="color:#f92672">==</span> QEvent<span style="color:#f92672">::</span>KeyPress) 
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        QKeyEvent <span style="color:#f92672">*</span>keyEvent <span style="color:#f92672">=</span> <span style="color:#66d9ef">static_cast</span><span style="color:#f92672">&lt;</span>QKeyEvent <span style="color:#f92672">*&gt;</span>(e);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (keyEvent<span style="color:#f92672">-&gt;</span>key() <span style="color:#f92672">==</span> Qt<span style="color:#f92672">::</span>Key_Tab) 
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            qDebug() <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;You press tab.&#34;</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> true;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> false;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>CustomTextEdit是QTextEdit的一个子类。我们重写了其event()函数，却没有调用父类的同名函数。这样，我们的组件就只能处理 Tab 键，再也无法输入任何文本，也不能响应其它事件，比如鼠标点击之后也不会有光标出现。这是因为我们只处理的KeyPress类型的事件，并且如果不是KeyPress事件，则直接返回 false，鼠标事件根本不会被转发，也就没有了鼠标事件。</p>
+<p>通过查看QObject::event()的实现，我们可以理解，event()函数同前面的章节中我们所说的事件处理器有什么联系：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">//!!! Qt5
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">bool</span> QObject<span style="color:#f92672">::</span>event(QEvent <span style="color:#f92672">*</span>e)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">switch</span> (e<span style="color:#f92672">-&gt;</span>type()) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">case</span> QEvent<span style="color:#f92672">::</span>Timer:
+</span></span><span style="display:flex;"><span>            timerEvent((QTimerEvent<span style="color:#f92672">*</span>)e);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">case</span> QEvent<span style="color:#f92672">::</span>ChildAdded:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">case</span> QEvent<span style="color:#f92672">::</span>ChildPolished:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">case</span> QEvent<span style="color:#f92672">::</span>ChildRemoved:
+</span></span><span style="display:flex;"><span>            childEvent((QChildEvent<span style="color:#f92672">*</span>)e);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// ...
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">default</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (e<span style="color:#f92672">-&gt;</span>type() <span style="color:#f92672">&gt;=</span> QEvent<span style="color:#f92672">::</span>User) {
+</span></span><span style="display:flex;"><span>                customEvent(e);
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> false;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> true;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>这是 Qt 5 中QObject::event()函数的源代码（Qt 4 的版本也是类似的）。我们可以看到，同前面我们所说的一样，Qt 也是使用QEvent::type()判断事件类型，然后调用了特定的事件处理器。比如，如果event-&gt;type()返回值是QEvent::Timer，则调用timerEvent()函数。可以想象，QWidget::event()中一定会有如下的代码：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">switch</span> (event<span style="color:#f92672">-&gt;</span>type()) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">case</span> QEvent<span style="color:#f92672">::</span>MouseMove:
+</span></span><span style="display:flex;"><span>        mouseMoveEvent((QMouseEvent<span style="color:#f92672">*</span>)event);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// ...
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></code></pre></div><p>事实也的确如此。timerEvent()和mouseMoveEvent()这样的函数，就是我们前面章节所说的事件处理器 event handler。也就是说，event()函数中实际是通过事件处理器来响应一个具体的事件。这相当于event()函数将具体事件的处理“委托”给具体的事件处理器。而这些事件处理器是 protected virtual 的，因此，我们重写了某一个事件处理器，即可让 Qt 调用我们自己实现的版本。</p>
+<p>由此可以见，event()是一个集中处理不同类型的事件的地方。如果你不想重写一大堆事件处理器，就可以重写这个event()函数，通过<code>QEvent::type()</code>判断不同的事件。鉴于重写event()函数需要十分小心注意父类的同名函数的调用，一不留神就可能出现问题，所以一般还是建议只重写事件处理器（当然，也必须记得是不是应该调用父类的同名处理器）。这其实暗示了event()函数的另外一个作用：屏蔽掉某些不需要的事件处理器。正如我们前面的CustomTextEdit例子看到的那样，我们创建了一个只能响应 tab 键的组件。这种作用是重写事件处理器所不能实现的。</p>
+<h2 id="93-事件过滤器">9.3 事件过滤器</h2>
+<p>有时候，对象需要查看、甚至要拦截发送到另外对象的事件。例如，对话框可能想要拦截按键事件，不让别的组件接收到；或者要修改回车键的默认处理。</p>
+<p>通过前面的章节，我们已经知道，Qt 创建了QEvent事件对象之后，会调用QObject的event()函数处理事件的分发。显然，我们可以在event()函数中实现拦截的操作。由于event()函数是 protected 的，因此，需要继承已有类。如果组件很多，就需要重写很多个event()函数。这当然相当麻烦，更不用说重写event()函数还得小心一堆问题。好在 Qt 提供了另外一种机制来达到这一目的：事件过滤器。</p>
+<p>QObject有一个eventFilter()函数，用于建立事件过滤器。函数原型如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">virtual</span> <span style="color:#66d9ef">bool</span> QObject<span style="color:#f92672">::</span>eventFilter ( QObject <span style="color:#f92672">*</span> watched, QEvent <span style="color:#f92672">*</span> event );
+</span></span></code></pre></div><p>这个函数正如其名字显示的那样，是一个“事件过滤器”。所谓事件过滤器，可以理解成一种过滤代码。事件过滤器会检查接收到的事件。如果这个事件是我们感兴趣的类型，就进行我们自己的处理；如果不是，就继续转发。这个函数返回一个 bool 类型，如果你想将参数 event 过滤出来，比如，不想让它继续转发，就返回 true，否则返回 false。事件过滤器的调用时间是目标对象（也就是参数里面的watched对象）接收到事件对象之前。也就是说，如果你在事件过滤器中停止了某个事件，那么，watched对象以及以后所有的事件过滤器根本不会知道这么一个事件。</p>
+<p>我们来看一段简单的代码：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MainWindow</span> <span style="color:#f92672">:</span> <span style="color:#66d9ef">public</span> QMainWindow
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    MainWindow();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">protected</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> eventFilter(QObject <span style="color:#f92672">*</span>obj, QEvent <span style="color:#f92672">*</span>event);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    QTextEdit <span style="color:#f92672">*</span>textEdit;
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>MainWindow<span style="color:#f92672">::</span>MainWindow()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    textEdit <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> QTextEdit;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    setCentralWidget(textEdit);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    textEdit<span style="color:#f92672">-&gt;</span>installEventFilter(<span style="color:#66d9ef">this</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">bool</span> MainWindow<span style="color:#f92672">::</span>eventFilter(QObject <span style="color:#f92672">*</span>obj, QEvent <span style="color:#f92672">*</span>event)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (obj <span style="color:#f92672">==</span> textEdit) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (event<span style="color:#f92672">-&gt;</span>type() <span style="color:#f92672">==</span> QEvent<span style="color:#f92672">::</span>KeyPress) {
+</span></span><span style="display:flex;"><span>            QKeyEvent <span style="color:#f92672">*</span>keyEvent <span style="color:#f92672">=</span> <span style="color:#66d9ef">static_cast</span><span style="color:#f92672">&lt;</span>QKeyEvent <span style="color:#f92672">*&gt;</span>(event);
+</span></span><span style="display:flex;"><span>            qDebug() <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Ate key press&#34;</span> <span style="color:#f92672">&lt;&lt;</span> keyEvent<span style="color:#f92672">-&gt;</span>key();
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> true;
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> false;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// pass the event on to the parent class
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">return</span> QMainWindow<span style="color:#f92672">::</span>eventFilter(obj, event);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
+<li>
+<p>MainWindow是我们定义的一个类。我们重写了它的eventFilter()函数。为了过滤特定组件上的事件，首先需要判断这个对象是不是我们感兴趣的组件，然后判断这个事件的类型。在上面的代码中，我们不想让textEdit组件处理键盘按下的事件。所以，首先我们找到这个组件，如果这个事件是键盘事件，则直接返回 true，也就是过滤掉了这个事件，其他事件还是要继续处理，所以返回 false。对于其它的组件，我们并不保证是不是还有过滤器，于是最保险的办法是调用父类的函数。</p>
+</li>
+<li>
+<p>eventFilter()函数相当于创建了过滤器，然后我们需要安装这个过滤器。安装过滤器需要调用QObject::installEventFilter()函数。函数的原型如下：</p>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> QObject<span style="color:#f92672">::</span>installEventFilter ( QObject <span style="color:#f92672">*</span> filterObj )
+</span></span></code></pre></div><p>这个函数接受一个QObject *类型的参数。记得刚刚我们说的，eventFilter()函数是QObject的一个成员函数，因此，任意QObject都可以作为事件过滤器（问题在于，如果你没有重写eventFilter()函数，这个事件过滤器是没有任何作用的，因为默认什么都不会过滤）。已经存在的过滤器则可以通过QObject::removeEventFilter()函数移除。</p>
+<ul>
+<li>我们可以向一个对象上面安装多个事件处理器，只要调用多次installEventFilter()函数。如果一个对象存在多个事件过滤器，那么，最后一个安装的会第一个执行，也就是后进先执行的顺序。</li>
+</ul>
+<p>还记得我们前面的那个例子吗？我们使用event()函数处理了 Tab 键：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">bool</span> CustomWidget<span style="color:#f92672">::</span>event(QEvent <span style="color:#f92672">*</span>e)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (e<span style="color:#f92672">-&gt;</span>type() <span style="color:#f92672">==</span> QEvent<span style="color:#f92672">::</span>KeyPress) {
+</span></span><span style="display:flex;"><span>        QKeyEvent <span style="color:#f92672">*</span>keyEvent <span style="color:#f92672">=</span> <span style="color:#66d9ef">static_cast</span><span style="color:#f92672">&lt;</span>QKeyEvent <span style="color:#f92672">*&gt;</span>(e);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (keyEvent<span style="color:#f92672">-&gt;</span>key() <span style="color:#f92672">==</span> Qt<span style="color:#f92672">::</span>Key_Tab) {
+</span></span><span style="display:flex;"><span>            qDebug() <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;You press tab.&#34;</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> true;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> QWidget<span style="color:#f92672">::</span>event(e);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>现在，我们可以给出一个使用事件过滤器的版本：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">bool</span> FilterObject<span style="color:#f92672">::</span>eventFilter(QObject <span style="color:#f92672">*</span>object, QEvent <span style="color:#f92672">*</span>event)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (object <span style="color:#f92672">==</span> target <span style="color:#f92672">&amp;&amp;</span> event<span style="color:#f92672">-&gt;</span>type() <span style="color:#f92672">==</span> QEvent<span style="color:#f92672">::</span>KeyPress) 
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        QKeyEvent <span style="color:#f92672">*</span>keyEvent <span style="color:#f92672">=</span> <span style="color:#66d9ef">static_cast</span><span style="color:#f92672">&lt;</span>QKeyEvent <span style="color:#f92672">*&gt;</span>(event);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (keyEvent<span style="color:#f92672">-&gt;</span>key() <span style="color:#f92672">==</span> Qt<span style="color:#f92672">::</span>Key_Tab) {
+</span></span><span style="display:flex;"><span>            qDebug() <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;You press tab.&#34;</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> true;
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> false;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> false;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>事件过滤器的强大之处在于，我们可以为整个应用程序添加一个事件过滤器。记得，installEventFilter()函数是QObject的函数，QApplication或者QCoreApplication对象都是QObject的子类，因此，我们可以向QApplication或者QCoreApplication添加事件过滤器。这种全局的事件过滤器将会在所有其它特性对象的事件过滤器之前调用。尽管很强大，但这种行为会严重降低整个应用程序的事件分发效率。因此，除非是不得不使用的情况，否则的话我们不应该这么做。</p>
+<p><strong>注意，</strong></p>
+<p>事件过滤器和被安装过滤器的组件必须在同一线程，否则，过滤器将不起作用。另外，如果在安装过滤器之后，这两个组件到了不同的线程，那么，只有等到二者重新回到同一线程的时候过滤器才会有效。</p>
+<h2 id="94-总结">9.4 总结</h2>
+<p>Qt 的事件是整个 Qt 框架的核心机制之一，也比较复杂。说它复杂，更多是因为它涉及到的函数众多，而处理方法也很多，有时候让人难以选择。现在我们简单总结一下 Qt 中的事件机制。</p>
+<p>Qt 中有很多种事件：鼠标事件、键盘事件、大小改变的事件、位置移动的事件等等。如何处理这些事件，实际有两种选择：</p>
+<p>l 所有事件对应一个事件处理函数，在这个事件处理函数中用一个很大的分支语句进行选择，其代表作就是 win32 API 的WndProc()函数：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>LRESULT CALLBACK <span style="color:#a6e22e">WndProc</span>(HWND hWnd,
+</span></span><span style="display:flex;"><span>                         UINT message,
+</span></span><span style="display:flex;"><span>                         WPARAM wParam,
+</span></span><span style="display:flex;"><span>                         LPARAM lParam);
+</span></span></code></pre></div><p>在这个函数中，我们需要使用switch语句，选择message参数的类型进行处理，典型代码是：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">switch</span>(message)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">case</span> WM_PAINT:
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// ...
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">case</span> WM_DESTROY:
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// ...
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>        ...
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
+<li>每一种事件对应一个事件处理函数。Qt 就是使用的这么一种机制：</li>
+</ul>
+<p>mouseEvent()</p>
+<p>keyPressEvent()</p>
+<p>…</p>
+<p>Qt 具有这么多种事件处理函数，肯定有一个地方对其进行分发，否则，Qt 怎么知道哪一种事件调用哪一个事件处理函数呢？这个分发的函数，就是event()。显然，当QMouseEvent产生之后，event()函数将其分发给mouseEvent()事件处理器进行处理。</p>
+<p>event()函数会有两个问题：</p>
+<ol>
+<li>
+<p>event()函数是一个 protected 的函数，这意味着我们要想重写event()，必须继承一个已有的类。试想，我的程序根本不想要鼠标事件，程序中所有组件都不允许处理鼠标事件，是不是我得继承所有组件，一一重写其event()函数？protected 函数带来的另外一个问题是，如果我基于第三方库进行开发，而对方没有提供源代码，只有一个链接库，其它都是封装好的。我怎么去继承这种库中的组件呢？</p>
+</li>
+<li>
+<p>event()函数的确有一定的控制，不过有时候我的需求更严格一些：我希望那些组件根本看不到这种事件。event()函数虽然可以拦截，但其实也是接收到了QMouseEvent对象。我连让它收都收不到。这样做的好处是，模拟一种系统根本没有那个事件的效果，所以其它组件根本不会收到这个事件，也就无需修改自己的事件处理函数。这种需求怎么办呢？</p>
+</li>
+</ol>
+<p>这两个问题是event()函数无法处理的。于是，Qt 提供了另外一种解决方案：事件过滤器。事件过滤器给我们一种能力，让我们能够完全移除某种事件。事件过滤器可以安装到任意QObject类型上面，并且可以安装多个。如果要实现全局的事件过滤器，则可以安装到QApplication或者QCoreApplication上面。这里需要注意的是，如果使用installEventFilter()函数给一个对象安装事件过滤器，那么该事件过滤器只对该对象有效，只有这个对象的事件需要先传递给事件过滤器的eventFilter()函数进行过滤，其它对象不受影响。如果给QApplication对象安装事件过滤器，那么该过滤器对程序中的每一个对象都有效，任何对象的事件都是先传给eventFilter()函数。</p>
+<p>事件过滤器可以解决刚刚我们提出的event()函数的两点不足：</p>
+<ol>
+<li>
+<p>首先，事件过滤器不是 protected 的，因此我们可以向任何QObject子类安装事件过滤器；</p>
+</li>
+<li>
+<p>其次，事件过滤器在目标对象接收到事件之前进行处理，如果我们将事件过滤掉，目标对象根本不会见到这个事件。</p>
+</li>
+</ol>
+<p>事实上，还有一种方法，我们没有介绍。Qt 事件的调用最终都会追溯到QCoreApplication::notify()函数，因此，最大的控制权实际上是重写QCoreApplication::notify()。这个函数的声明是：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">virtual</span> <span style="color:#66d9ef">bool</span> QCoreApplication<span style="color:#f92672">::</span>notify ( QObject <span style="color:#f92672">*</span> receiver,
+</span></span><span style="display:flex;"><span>                                       QEvent <span style="color:#f92672">*</span> event );
+</span></span></code></pre></div><p>该函数会将event发送给receiver，也就是调用receiver-&gt;event(event)，其返回值就是来自receiver的事件处理器。注意，这个函数为任意线程的任意对象的任意事件调用，因此，它不存在事件过滤器的线程的问题。不过我们并不推荐这么做，因为notify()函数只有一个，而事件过滤器要灵活得多。</p>
+<p>现在我们可以总结一下 Qt 的事件处理，实际上是有五个层次：</p>
+<ol>
+<li>
+<p>重写paintEvent()、mousePressEvent()等事件处理函数。这是最普通、最简单的形式，同时功能也最简单。</p>
+</li>
+<li>
+<p>重写event()函数。event()函数是所有对象的事件入口，QObject和QWidget中的实现，默认是把事件传递给特定的事件处理函数。</p>
+</li>
+<li>
+<p>在特定对象上面安装事件过滤器。该过滤器仅过滤该对象接收到的事件。</p>
+</li>
+<li>
+<p>在QCoreApplication::instance()上面安装事件过滤器。该过滤器将过滤所有对象的所有事件，因此和notify()函数一样强大，但是它更灵活，因为可以安装多个过滤器。全局的事件过滤器可以看到 disabled 组件上面发出的鼠标事件。全局过滤器有一个问题：只能用在主线程。</p>
+</li>
+<li>
+<p>重写QCoreApplication::notify()函数。这是最强大的，和全局事件过滤器一样提供完全控制，并且不受线程的限制。但是全局范围内只能有一个被使用（因为QCoreApplication是单例的）。</p>
+</li>
+</ol>
+<h1 id="10-绘图和绘图设备">10 绘图和绘图设备</h1>
+<h2 id="101-qpainter">10.1 QPainter</h2>
+<p>Qt 的绘图系统允许使用相同的 API 在屏幕和其它打印设备上进行绘制。整个绘图系统基于QPainter，QPainterDevice和QPaintEngine三个类。</p>
+<p>QPainter用来执行绘制的操作；QPaintDevice是一个二维空间的抽象，这个二维空间允许QPainter在其上面进行绘制，也就是QPainter工作的空间；QPaintEngine提供了画笔（QPainter）在不同的设备上进行绘制的统一的接口。QPaintEngine类应用于QPainter和QPaintDevice之间，通常对开发人员是透明的。除非你需要自定义一个设备，否则你是不需要关心QPaintEngine这个类的。我们可以把QPainter理解成画笔；把QPaintDevice理解成使用画笔的地方，比如纸张、屏幕等；而对于纸张、屏幕而言，肯定要使用不同的画笔绘制，为了统一使用一种画笔，我们设计了QPaintEngine类，这个类让不同的纸张、屏幕都能使用一种画笔。</p>
+<p>下图给出了这三个类之间的层次结构:</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://gitee.com/txt1994/images/raw/master/img/QT/wps28.jpg"
+        data-srcset="https://gitee.com/txt1994/images/raw/master/img/QT/wps28.jpg, https://gitee.com/txt1994/images/raw/master/img/QT/wps28.jpg 1.5x, https://gitee.com/txt1994/images/raw/master/img/QT/wps28.jpg 2x"
+        data-sizes="auto"
+        alt="https://gitee.com/txt1994/images/raw/master/img/QT/wps28.jpg"
+        title="img" /></p>
+<p>上面的示意图告诉我们，Qt 的绘图系统实际上是，使用QPainter在QPainterDevice上进行绘制，它们之间使用QPaintEngine进行通讯（也就是翻译QPainter的指令）。</p>
+<p>下面我们通过一个实例来介绍QPainter的使用：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">PaintedWidget</span> <span style="color:#f92672">:</span> <span style="color:#66d9ef">public</span> QWidget
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    Q_OBJECT
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    PaintedWidget(QWidget <span style="color:#f92672">*</span>parent <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">protected</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> paintEvent(QPaintEvent <span style="color:#f92672">*</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>注意我们重写了QWidget的paintEvent()函数。接下来就是PaintedWidget的源代码：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>PaintedWidget<span style="color:#f92672">::</span>PaintedWidget(QWidget <span style="color:#f92672">*</span>parent) <span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>QWidget(parent)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    resize(<span style="color:#ae81ff">800</span>, <span style="color:#ae81ff">600</span>);
+</span></span><span style="display:flex;"><span>    setWindowTitle(tr(<span style="color:#e6db74">&#34;Paint Demo&#34;</span>));
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> PaintedWidget<span style="color:#f92672">::</span>paintEvent(QPaintEvent <span style="color:#f92672">*</span>)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    QPainter <span style="color:#a6e22e">painter</span>(<span style="color:#66d9ef">this</span>);
+</span></span><span style="display:flex;"><span>    painter.drawLine(<span style="color:#ae81ff">80</span>, <span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">650</span>, <span style="color:#ae81ff">500</span>);
+</span></span><span style="display:flex;"><span>    painter.setPen(Qt<span style="color:#f92672">::</span>red);
+</span></span><span style="display:flex;"><span>    painter.drawRect(<span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">400</span>);
+</span></span><span style="display:flex;"><span>    painter.setPen(QPen(Qt<span style="color:#f92672">::</span>green, <span style="color:#ae81ff">5</span>));
+</span></span><span style="display:flex;"><span>    painter.setBrush(Qt<span style="color:#f92672">::</span>blue);
+</span></span><span style="display:flex;"><span>    painter.drawEllipse(<span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">150</span>, <span style="color:#ae81ff">400</span>, <span style="color:#ae81ff">200</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>在构造函数中，我们仅仅设置了窗口的大小和标题。而paintEvent()函数则是绘制的代码。首先，我们在栈上创建了一个QPainter对象，也就是说，每次运行paintEvent()函数的时候，都会重建这个QPainter对象。注意，这一点可能会引发某些细节问题：由于我们每次重建QPainter，因此第一次运行时所设置的画笔颜色、状态等，第二次再进入这个函数时就会全部丢失。有时候我们希望保存画笔状态，就必须自己保存数据，否则的话则需要将QPainter作为类的成员变量。</p>
+<p>QPainter接收一个QPaintDevice指针作为参数。QPaintDevice有很多子类，比如QImage，以及QWidget。注意回忆一下，QPaintDevice可以理解成要在哪里去绘制，而现在我们希望画在这个组件，因此传入的是 this 指针。</p>
+<p>QPainter有很多以 draw 开头的函数，用于各种图形的绘制，比如这里的drawLine()，drawRect()以及drawEllipse()等。当绘制轮廓线时，使用QPainter的pen()属性。比如，我们调用了painter.setPen(Qt::red)将 pen 设置为红色，则下面绘制的矩形具有红色的轮廓线。接下来，我们将 pen 修改为绿色，5 像素宽（painter.setPen(QPen(Qt::green, 5))），又设置了画刷为蓝色。这时候再调用 draw 函数，则是具有绿色 5 像素宽轮廓线、蓝色填充的椭圆。</p>
+<h2 id="102-绘图设备">10.2 绘图设备</h2>
+<p>绘图设备是指继承QPainterDevice的子类。Qt提供了很多这样的类，例如QPixmap、QBitmap、QImage和 QPicture。其中，</p>
+<ul>
+<li>
+<p>QPixmap专门为图像在屏幕上的显示做了优化</p>
+</li>
+<li>
+<p>QBitmap是QPixmap的一个子类，它的色深限定为1，可以使用 QPixmap的isQBitmap()函数来确定这个QPixmap是不是一个QBitmap。</p>
+</li>
+<li>
+<p>QImage专门为图像的像素级访问做了优化。</p>
+</li>
+<li>
+<p>QPicture则可以记录和重现QPainter的各条命令。</p>
+</li>
+</ul>
+<h3 id="1021-qpixmapqbitmapqimage">10.2.1 QPixmap、QBitmap、QImage</h3>
+<p>QPixmap继承了QPaintDevice，因此，你可以使用QPainter直接在上面绘制图形。QPixmap也可以接受一个字符串作为一个文件的路径来显示这个文件，比如你想在程序之中打开png、jpeg之类的文件，就可以使用 QPixmap。使用QPainter的drawPixmap()函数可以把这个文件绘制到一个QLabel、QPushButton或者其他的设备上面。QPixmap是针对屏幕进行特殊优化的，因此，它与实际的底层显示设备息息相关。注意，这里说的显示设备并不是硬件，而是操作系统提供的原生的绘图引擎。所以，在不同的操作系统平台下，QPixmap的显示可能会有所差别。</p>
+<p>QBitmap继承自QPixmap，因此具有QPixmap的所有特性，提供单色图像。QBitmap的色深始终为1. 色深这个概念来自计算机图形学，是指用于表现颜色的二进制的位数。我们知道，计算机里面的数据都是使用二进制表示的。为了表示一种颜色，我们也会使用二进制。比如我们要表示8种颜色，需要用3个二进制位，这时我们就说色深是3. 因此，所谓色深为1，也就是使用1个二进制位表示颜色。1个位只有两种状态：0和1，因此它所表示的颜色就有两种，黑和白。所以说，QBitmap实际上是只有黑白两色的图像数据。</p>
+<p>由于QBitmap色深小，因此只占用很少的存储空间，所以适合做光标文件和笔刷。</p>
+<p>下面我们来看同一个图像文件在QPixmap和QBitmap下的不同表现：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> PaintWidget<span style="color:#f92672">::</span>paintEvent(QPaintEvent <span style="color:#f92672">*</span>)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    QPixmap <span style="color:#a6e22e">pixmap</span>(<span style="color:#e6db74">&#34;:/Image/butterfly.png&#34;</span>);
+</span></span><span style="display:flex;"><span>    QPixmap <span style="color:#a6e22e">pixmap1</span>(<span style="color:#e6db74">&#34;:/Image/butterfly1.png&#34;</span>);
+</span></span><span style="display:flex;"><span>    QBitmap <span style="color:#a6e22e">bitmap</span>(<span style="color:#e6db74">&#34;:/Image/butterfly.png&#34;</span>);
+</span></span><span style="display:flex;"><span>    QBitmap <span style="color:#a6e22e">bitmap1</span>(<span style="color:#e6db74">&#34;:/Image/butterfly1.png&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    QPainter <span style="color:#a6e22e">painter</span>(<span style="color:#66d9ef">this</span>);
+</span></span><span style="display:flex;"><span>    painter.drawPixmap(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, pixmap);
+</span></span><span style="display:flex;"><span>    painter.drawPixmap(<span style="color:#ae81ff">200</span>, <span style="color:#ae81ff">0</span>, pixmap1);
+</span></span><span style="display:flex;"><span>    painter.drawPixmap(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">130</span>, bitmap);
+</span></span><span style="display:flex;"><span>    painter.drawPixmap(<span style="color:#ae81ff">200</span>, <span style="color:#ae81ff">130</span>, bitmap1);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://gitee.com/txt1994/images/raw/master/img/QT/wps29.jpg"
+        data-srcset="https://gitee.com/txt1994/images/raw/master/img/QT/wps29.jpg, https://gitee.com/txt1994/images/raw/master/img/QT/wps29.jpg 1.5x, https://gitee.com/txt1994/images/raw/master/img/QT/wps29.jpg 2x"
+        data-sizes="auto"
+        alt="https://gitee.com/txt1994/images/raw/master/img/QT/wps29.jpg"
+        title="img" /></p>
+<p>这里我们给出了两张png图片。butterfly1.png是没有透明色的纯白背景，而butterfly.png是具有透明色的背景。我们分别使用QPixmap和QBitmap来加载它们。注意看它们的区别：白色的背景在QBitmap中消失了，而透明色在QBitmap中转换成了黑色；其他颜色则是使用点的疏密程度来体现的。</p>
+<p>QPixmap使用底层平台的绘制系统进行绘制，无法提供像素级别的操作，而QImage则是使用独立于硬件的绘制系统，实际上是自己绘制自己，因此提供了像素级别的操作，并且能够在不同系统之上提供一个一致的显示形式。</p>
+<p>我们声明了一个QImage对象，大小是300 x 300，颜色模式是RGB32，即使用32位数值表示一个颜色的RGB值，也就是说每种颜色使用8位。然后我们对每个像素进行颜色赋值，从而构成了这个图像。我们可以把QImage想象成一个RGB颜色的二维数组，记录了每一像素的颜色。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> PaintWidget<span style="color:#f92672">::</span>paintEvent(QPaintEvent <span style="color:#f92672">*</span>)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    QPainter <span style="color:#a6e22e">painter</span>(<span style="color:#66d9ef">this</span>);
+</span></span><span style="display:flex;"><span>    QImage <span style="color:#a6e22e">image</span>(<span style="color:#ae81ff">300</span>, <span style="color:#ae81ff">300</span>, QImage<span style="color:#f92672">::</span>Format_RGB32);
+</span></span><span style="display:flex;"><span>    QRgb value;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//将图片背景填充为白色
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    image.fill(Qt<span style="color:#f92672">::</span>white);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//改变指定区域的像素点的值
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">int</span> i<span style="color:#f92672">=</span><span style="color:#ae81ff">50</span>; i<span style="color:#f92672">&lt;</span><span style="color:#ae81ff">100</span>; <span style="color:#f92672">++</span>i)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">int</span> j<span style="color:#f92672">=</span><span style="color:#ae81ff">50</span>; j<span style="color:#f92672">&lt;</span><span style="color:#ae81ff">100</span>; <span style="color:#f92672">++</span>j)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            value <span style="color:#f92672">=</span> qRgb(<span style="color:#ae81ff">255</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>); <span style="color:#75715e">// 红色
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            image.setPixel(i, j, value);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//将图片绘制到窗口中
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    painter.drawImage(QPoint(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>), image);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://gitee.com/txt1994/images/raw/master/img/QT/wps30.jpg"
+        data-srcset="https://gitee.com/txt1994/images/raw/master/img/QT/wps30.jpg, https://gitee.com/txt1994/images/raw/master/img/QT/wps30.jpg 1.5x, https://gitee.com/txt1994/images/raw/master/img/QT/wps30.jpg 2x"
+        data-sizes="auto"
+        alt="https://gitee.com/txt1994/images/raw/master/img/QT/wps30.jpg"
+        title="img" /></p>
+<p>QImage与QPixmap的区别:</p>
+<ul>
+<li>
+<p>QPixmap主要是用于绘图，针对屏幕显示而最佳化设计，QImage主要是为图像I/O、图片访问和像素修改而设计的</p>
+</li>
+<li>
+<p>QPixmap依赖于所在的平台的绘图引擎，故例如反锯齿等一些效果在不同的平台上可能会有不同的显示效果，QImage使用Qt自身的绘图引擎，可在不同平台上具有相同的显示效果</p>
+</li>
+<li>
+<p>由于QImage是独立于硬件的，也是一种QPaintDevice，因此我们可以在另一个线程中对其进行绘制，而不需要在GUI线程中处理，使用这一方式可以很大幅度提高UI响应速度。</p>
+</li>
+<li>
+<p>QImage可通过setPixpel()和pixel()等方法直接存取指定的像素。</p>
+</li>
+</ul>
+<p>QImage与QPixmap之间的转换:</p>
+<ul>
+<li>QImage转QPixmap</li>
+</ul>
+<p>使用QPixmap的静态成员函数: fromImage()</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>QPixmap	fromImage(<span style="color:#66d9ef">const</span> QImage <span style="color:#f92672">&amp;</span> image, 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Qt<span style="color:#f92672">::</span>ImageConversionFlags flags <span style="color:#f92672">=</span> Qt<span style="color:#f92672">::</span>AutoColor)
+</span></span></code></pre></div><ul>
+<li>QPixmap转QImage:</li>
+</ul>
+<p>使用QPixmap类的成员函数: toImage()</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>QImage toImage() cons
+</span></span></code></pre></div><h3 id="1022-qpicture">10.2.2 QPicture</h3>
+<p>最后一个需要说明的是QPicture。这是一个可以记录和重现QPainter命令的绘图设备。 QPicture将QPainter的命令序列化到一个IO设备，保存为一个平台独立的文件格式。这种格式有时候会是“元文件(meta- files)”。Qt的这种格式是二进制的，不同于某些本地的元文件，Qt的pictures文件没有内容上的限制，只要是能够被QPainter绘制的元素，不论是字体还是pixmap，或者是变换，都可以保存进一个picture中。</p>
+<p>QPicture是平台无关的，因此它可以使用在多种设备之上，比如svg、pdf、ps、打印机或者屏幕。回忆下我们这里所说的QPaintDevice，实际上是说可以有QPainter绘制的对象。QPicture使用系统的分辨率，并且可以调整 QPainter来消除不同设备之间的显示差异。</p>
+<p>如果我们要记录下QPainter的命令，首先要使用QPainter::begin()函数，将QPicture实例作为参数传递进去，以便告诉系统开始记录，记录完毕后使用QPainter::end()命令终止。代码示例如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> PaintWidget<span style="color:#f92672">::</span>paintEvent(QPaintEvent <span style="color:#f92672">*</span>)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    QPicture pic;
+</span></span><span style="display:flex;"><span>    QPainter painter;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//将图像绘制到QPicture中,并保存到文件
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    painter.begin(<span style="color:#f92672">&amp;</span>pic);
+</span></span><span style="display:flex;"><span>    painter.drawEllipse(<span style="color:#ae81ff">20</span>, <span style="color:#ae81ff">20</span>, <span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">50</span>);
+</span></span><span style="display:flex;"><span>    painter.fillRect(<span style="color:#ae81ff">20</span>, <span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">100</span>, Qt<span style="color:#f92672">::</span>red);
+</span></span><span style="display:flex;"><span>    painter.end();
+</span></span><span style="display:flex;"><span>    pic.save(<span style="color:#e6db74">&#34;D:</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">drawing.pic&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//将保存的绘图动作重新绘制到设备上
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    pic.load(<span style="color:#e6db74">&#34;D:</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">drawing.pic&#34;</span>);
+</span></span><span style="display:flex;"><span>    painter.begin(<span style="color:#66d9ef">this</span>);
+</span></span><span style="display:flex;"><span>    painter.drawPicture(<span style="color:#ae81ff">200</span>, <span style="color:#ae81ff">200</span>, pic);
+</span></span><span style="display:flex;"><span>    painter.end();
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h1 id="11-文件系统">11 文件系统</h1>
+<p>文件操作是应用程序必不可少的部分。Qt 作为一个通用开发库，提供了跨平台的文件操作能力。Qt 通过QIODevice提供了对 I/O 设备的抽象，这些设备具有读写字节块的能力。下面是 I/O 设备的类图（Qt5）：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://gitee.com/txt1994/images/raw/master/img/QT/wps31.jpg"
+        data-srcset="https://gitee.com/txt1994/images/raw/master/img/QT/wps31.jpg, https://gitee.com/txt1994/images/raw/master/img/QT/wps31.jpg 1.5x, https://gitee.com/txt1994/images/raw/master/img/QT/wps31.jpg 2x"
+        data-sizes="auto"
+        alt="https://gitee.com/txt1994/images/raw/master/img/QT/wps31.jpg"
+        title="img" /></p>
+<ul>
+<li>
+<p>QIODevice：所有 I/O 设备类的父类，提供了字节块读写的通用操作以及基本接口；</p>
+</li>
+<li>
+<p>QFileDevice：Qt5新增加的类，提供了有关文件操作的通用实现。</p>
+</li>
+<li>
+<p>QFlie：访问本地文件或者嵌入资源；</p>
+</li>
+<li>
+<p>QTemporaryFile：创建和访问本地文件系统的临时文件；</p>
+</li>
+<li>
+<p>QBuffer：读写QbyteArray, 内存文件；</p>
+</li>
+<li>
+<p>QProcess：运行外部程序，处理进程间通讯；</p>
+</li>
+<li>
+<p>QAbstractSocket：所有套接字类的父类；</p>
+</li>
+<li>
+<p>QTcpSocket：TCP协议网络数据传输；</p>
+</li>
+<li>
+<p>QUdpSocket：传输 UDP 报文；</p>
+</li>
+<li>
+<p>QSslSocket：使用 SSL/TLS 传输数据；</p>
+</li>
+</ul>
+<p><strong>文件系统分类:</strong></p>
+<ul>
+<li>顺序访问设备:</li>
+</ul>
+<p>是指它们的数据只能访问一遍：从头走到尾，从第一个字节开始访问，直到最后一个字节，中途不能返回去读取上一个字节，这其中，QProcess、QTcpSocket、QUdpSoctet和QSslSocket是顺序访问设备。</p>
+<ul>
+<li>随机访问设备:</li>
+</ul>
+<p>可以访问任意位置任意次数，还可以使用QIODevice::seek()函数来重新定位文件访问位置指针，QFile、QTemporaryFile和QBuffer是随机访问设备，</p>
+<h2 id="111-基本文件操作">11.1 基本文件操作</h2>
+<p>文件操作是应用程序必不可少的部分。Qt 作为一个通用开发库，提供了跨平台的文件操作能力。在所有的 I/O 设备中，文件 I/O 是最重要的部分之一。因为我们大多数的程序依旧需要首先访问本地文件（当然，在云计算大行其道的将来，这一观点可能改变）。<strong>QFile提供了从文件中读取和写入数据的能力。</strong></p>
+<p><strong>我们通常会将文件路径作为参数传给QFile的构造函数。不过也可以在创建好对象最后，使用setFileName()来修改</strong>。QFile需要使用 / 作为文件分隔符，不过，它会自动将其转换成操作系统所需要的形式。例如 C:/windows 这样的路径在 Windows 平台下同样是可以的。</p>
+<p>QFile主要提供了有关文件的各种操作，比如打开文件、关闭文件、刷新文件等。我们可以使用QDataStream或QTextStream类来读写文件，也可以使用QIODevice类提供的read()、readLine()、readAll()以及write()这样的函数。值得注意的是，有关文件本身的信息，比如文件名、文件所在目录的名字等，则是通过QFileInfo获取，而不是自己分析文件路径字符串。</p>
+<p>下面我们使用一段代码来看看QFile的有关操作：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">int</span> argc, <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>argv[])
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    QApplication app(argc, argv);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    QFile file(<span style="color:#e6db74">&#34;in.txt&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>file.open(QIODevice<span style="color:#f92672">::</span>ReadOnly <span style="color:#f92672">|</span> QIODevice<span style="color:#f92672">::</span>Text)) {
+</span></span><span style="display:flex;"><span>        qDebug() <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Open file failed.&#34;</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> (<span style="color:#f92672">!</span>file.atEnd()) {
+</span></span><span style="display:flex;"><span>            qDebug() <span style="color:#f92672">&lt;&lt;</span> file.readLine();
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    QFileInfo info(file);
+</span></span><span style="display:flex;"><span>    qDebug() <span style="color:#f92672">&lt;&lt;</span> info.isDir();
+</span></span><span style="display:flex;"><span>    qDebug() <span style="color:#f92672">&lt;&lt;</span> info.isExecutable();
+</span></span><span style="display:flex;"><span>    qDebug() <span style="color:#f92672">&lt;&lt;</span> info.baseName();
+</span></span><span style="display:flex;"><span>    qDebug() <span style="color:#f92672">&lt;&lt;</span> info.completeBaseName();
+</span></span><span style="display:flex;"><span>    qDebug() <span style="color:#f92672">&lt;&lt;</span> info.suffix();
+</span></span><span style="display:flex;"><span>    qDebug() <span style="color:#f92672">&lt;&lt;</span> info.completeSuffix();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> app.exec();
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
+<li>我们首先使用QFile创建了一个文件对象。</li>
+</ul>
+<p>这个文件名字是 in.txt。如果你不知道应该把它放在哪里，可以使用QDir::currentPath()来获得应用程序执行时的当前路径。只要将这个文件放在与当前路径一致的目录下即可。</p>
+<ul>
+<li>使用open()函数打开这个文件，打开形式是只读方式，文本格式。</li>
+</ul>
+<p>这个类似于fopen()的 r 这样的参数。open()函数返回一个 bool 类型，如果打开失败，我们在控制台输出一段提示然后程序退出。否则，我们利用 while 循环，将每一行读到的内容输出。</p>
+<ul>
+<li>可以使用QFileInfo获取有关该文件的信息。</li>
+</ul>
+<p>QFileInfo有很多类型的函数，我们只举出一些例子。比如：</p>
+<ul>
+<li>
+<ul>
+<li>isDir()检查该文件是否是目录；</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>isExecutable()	检查该文件是否是可执行文件等。</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>baseName()		可以直接获得文件名；</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>completeBaseName() 	获取完整的文件名</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>suffix()	则直接获取文件后缀名。</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>completeSuffix() 	获取完整的文件后缀</li>
+</ul>
+</li>
+</ul>
+<p>我们可以由下面的示例看到，baseName()和completeBaseName()，以及suffix()和completeSuffix()的区别：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>QFileInfo <span style="color:#a6e22e">fi</span>(<span style="color:#e6db74">&#34;/tmp/archive.tar.gz&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>QString base  <span style="color:#f92672">=</span> fi.baseName();  <span style="color:#75715e">// base = &#34;archive&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>QString base  <span style="color:#f92672">=</span> fi.completeBaseName();  <span style="color:#75715e">// base = &#34;archive.tar&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>QString ext  <span style="color:#f92672">=</span> fi.suffix();  <span style="color:#75715e">// ext = &#34;gz&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>QString ext  <span style="color:#f92672">=</span> fi.completeSuffix();  <span style="color:#75715e">// ext = &#34;tar.gz&#34;
+</span></span></span></code></pre></div><h2 id="112-二进制文件读写">11.2 二进制文件读写</h2>
+<p>QDataStream提供了基于QIODevice的二进制数据的序列化。数据流是一种二进制流，这种流完全不依赖于底层操作系统、CPU 或者字节顺序（大端或小端）。例如，在安装了 Windows 平台的 PC 上面写入的一个数据流，可以不经过任何处理，直接拿到运行了 Solaris 的 SPARC 机器上读取。由于数据流就是二进制流，因此我们也可以直接读写没有编码的二进制数据，例如图像、视频、音频等。</p>
+<p>QDataStream既能够存取 C++ 基本类型，如 int、char、short 等，也可以存取复杂的数据类型，例如自定义的类。实际上，QDataStream对于类的存储，是将复杂的类分割为很多基本单元实现的。</p>
+<p>结合QIODevice，QDataStream可以很方便地对文件、网络套接字等进行读写操作。我们从代码开始看起：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>QFile <span style="color:#a6e22e">file</span>(<span style="color:#e6db74">&#34;file.dat&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>file.open(QIODevice<span style="color:#f92672">::</span>WriteOnly);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>QDataStream <span style="color:#a6e22e">out</span>(<span style="color:#f92672">&amp;</span>file);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>out <span style="color:#f92672">&lt;&lt;</span> QString(<span style="color:#e6db74">&#34;the answer is&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>out <span style="color:#f92672">&lt;&lt;</span> (qint32)<span style="color:#ae81ff">42</span>;
+</span></span></code></pre></div><ul>
+<li>
+<p>在这段代码中，我们首先打开一个名为 file.dat 的文件（注意，我们为简单起见，并没有检查文件打开是否成功，这在正式程序中是不允许的）。然后，我们将刚刚创建的file对象的指针传递给一个QDataStream实例out。类似于std::cout标准输出流，QDataStream也重载了输出重定向&laquo;运算符。后面的代码就很简单了：将“the answer is”和数字 42 输出到数据流。由于我们的 out 对象建立在file之上，因此相当于将问题和答案写入file。</p>
+</li>
+<li>
+<p>需要指出一点：最好使用 Qt 整型来进行读写，比如程序中的qint32。这保证了在任意平台和任意编译器都能够有相同的行为。</p>
+</li>
+</ul>
+<p>如果你直接运行这段代码，你会得到一个空白的 file.dat，并没有写入任何数据。这是因为我们的file没有正常关闭。为性能起见，数据只有在文件关闭时才会真正写入。因此，我们必须在最后添加一行代码：</p>
+<p>file.close(); // 如果不想关闭文件，可以使用 file.flush();</p>
+<p>接下来我们将存储到文件中的答案取出来</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>QFile <span style="color:#a6e22e">file</span>(<span style="color:#e6db74">&#34;file.dat&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>file.open(QIODevice<span style="color:#f92672">::</span>ReadOnly);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>QDataStream <span style="color:#a6e22e">in</span>(<span style="color:#f92672">&amp;</span>file);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>QString str;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>qint32 a;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>in <span style="color:#f92672">&gt;&gt;</span> str <span style="color:#f92672">&gt;&gt;</span> a;
+</span></span></code></pre></div><p>唯一需要注意的是，你必须按照写入的顺序，将数据读取出来。顺序颠倒的话，程序行为是不确定的，严重时会直接造成程序崩溃。</p>
+<p>那么，既然QIODevice提供了read()、readLine()之类的函数，为什么还要有QDataStream呢？QDataStream同QIODevice有什么区别？区别在于，QDataStream提供流的形式，性能上一般比直接调用原始 API 更好一些。我们通过下面一段代码看看什么是流的形式：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>QFile <span style="color:#a6e22e">file</span>(<span style="color:#e6db74">&#34;file.dat&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>file.open(QIODevice<span style="color:#f92672">::</span>ReadWrite);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>QDataStream <span style="color:#a6e22e">stream</span>(<span style="color:#f92672">&amp;</span>file);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>QString str <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;the answer is 42&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>stream <span style="color:#f92672">&lt;&lt;</span> str;
+</span></span></code></pre></div><h2 id="113-文本文件读写">11.3 文本文件读写</h2>
+<p>上一节我们介绍了有关二进制文件的读写。二进制文件比较小巧，却不是人可读的格式。而文本文件是一种人可读的文件。为了操作这种文件，我们需要使用QTextStream类。QTextStream和QDataStream的使用类似，只不过它是操作纯文本文件的。</p>
+<p>QTextStream会自动将 Unicode 编码同操作系统的编码进行转换，这一操作对开发人员是透明的。它也会将换行符进行转换，同样不需要自己处理。QTextStream使用 16 位的QChar作为基础的数据存储单位，同样，它也支持 C++ 标准类型，如 int 等。实际上，这是将这种标准类型与字符串进行了相互转换。</p>
+<p>QTextStream同QDataStream的使用基本一致，例如下面的代码将把“The answer is 42”写入到 file.txt 文件中：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>QFile <span style="color:#a6e22e">data</span>(<span style="color:#e6db74">&#34;file.txt&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (data.open(QFile<span style="color:#f92672">::</span>WriteOnly <span style="color:#f92672">|</span> QIODevice<span style="color:#f92672">::</span>Truncate)) 
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    QTextStream <span style="color:#a6e22e">out</span>(<span style="color:#f92672">&amp;</span>data);
+</span></span><span style="display:flex;"><span>    out <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;The answer is &#34;</span> <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">42</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>这里，我们在open()函数中增加了QIODevice::Truncate打开方式。我们可以从下表中看到这些打开方式的区别：</p>
+<table>
+<thead>
+<tr>
+<th>枚举值</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>QIODevice::NotOpen</td>
+<td style="text-align:left">未打开</td>
+</tr>
+<tr>
+<td>QIODevice::ReadOnly</td>
+<td style="text-align:left">以只读方式打开</td>
+</tr>
+<tr>
+<td>QIODevice::WriteOnly</td>
+<td style="text-align:left">以只写方式打开</td>
+</tr>
+<tr>
+<td>QIODevice::ReadWrite</td>
+<td style="text-align:left">以读写方式打开</td>
+</tr>
+<tr>
+<td>QIODevice::Append</td>
+<td style="text-align:left">以追加的方式打开,新增加的内容将被追加到文件末尾</td>
+</tr>
+<tr>
+<td>QIODevice::Truncate</td>
+<td style="text-align:left">以重写的方式打开，在写入新的数据时会将原有数据全部清除，游标设置在文件开头。</td>
+</tr>
+<tr>
+<td>QIODevice::Text</td>
+<td style="text-align:left">在读取时，将行结束符转换成 \n；在写入时，将行结束符转换成本地格式，例如 Win32 平台上是 \r\n</td>
+</tr>
+<tr>
+<td>QIODevice::Unbuffered</td>
+<td style="text-align:left">忽略缓存</td>
+</tr>
+</tbody>
+</table>
+<p>我们在这里使用了QFile::WriteOnly | QIODevice::Truncate，也就是以只写并且覆盖已有内容的形式操作文件。注意，QIODevice::Truncate会直接将文件内容清空。</p>
+<p>虽然QTextStream的写入内容与QDataStream一致，但是读取时却会有些困难：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>QFile <span style="color:#a6e22e">data</span>(<span style="color:#e6db74">&#34;file.txt&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (data.open(QFile<span style="color:#f92672">::</span>ReadOnly)) 
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    QTextStream <span style="color:#a6e22e">in</span>(<span style="color:#f92672">&amp;</span>data);
+</span></span><span style="display:flex;"><span>    QString str;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> ans <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>    in <span style="color:#f92672">&gt;&gt;</span> str <span style="color:#f92672">&gt;&gt;</span> ans;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>在使用QDataStream的时候，这样的代码很方便，但是使用了QTextStream时却有所不同：读出的时候，str 里面将是 The answer is 42，ans 是 0。这是因为当使用QDataStream写入的时候，实际上会在要写入的内容前面，额外添加一个这段内容的长度值。而以文本形式写入数据，是没有数据之间的分隔的。因此，使用文本文件时，很少会将其分割开来读取，而是使用诸如使用：</p>
+<ul>
+<li>
+<p>QTextStream::readLine()	读取一行</p>
+</li>
+<li>
+<p>QTextStream::readAll()读取所有文本</p>
+</li>
+</ul>
+<p>这种函数之后再对获得的QString对象进行处理。</p>
+<p>默认情况下，QTextStream的编码格式是 Unicode，如果我们需要使用另外的编码，可以使用：</p>
+<p><code>stream.setCodec(&quot;UTF-8&quot;);</code></p>
+<p>这样的函数进行设置。</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-02-01</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/c&#43;&#43;/">C&#43;&#43;</a>,&nbsp;<a href="/tags/qt/">QT</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%87%86%E5%88%99/" class="prev" rel="prev" title="设计模式准则"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>设计模式准则</a>
+            <a href="/posts/qt%E4%B8%ADui%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D/" class="next" rel="next" title="qt中ui简单介绍">qt中ui简单介绍<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.115.4">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank"></a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.5.0/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/twemoji@14.0.2/dist/twemoji.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@14.0.0/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"en","pageSize":10,"placeholder":"Your comment ...","recordIP":true,"serverURLs":"https://leancloud.hugoloveit.com","visitor":true}},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"","algoliaIndex":"","algoliaSearchKey":"","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"},"twemoji":true};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

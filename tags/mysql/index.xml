@@ -1,41 +1,36 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Mysql on My Blog</title>
-    <link>https://okokfun.github.io/tags/mysql/</link>
-    <description>Recent content in Mysql on My Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language>
-    <lastBuildDate>Wed, 05 Jan 2022 20:21:29 +0000</lastBuildDate><atom:link href="https://okokfun.github.io/tags/mysql/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>MySQL数据库API库</title>
-      <link>https://okokfun.github.io/post/mysql%E6%95%B0%E6%8D%AE%E5%BA%93api%E5%BA%93/</link>
-      <pubDate>Wed, 05 Jan 2022 20:21:29 +0000</pubDate>
-      
-      <guid>https://okokfun.github.io/post/mysql%E6%95%B0%E6%8D%AE%E5%BA%93api%E5%BA%93/</guid>
-      <description>MySQL数据库API库 访问MySQL服务器，这需要使用mysqlclient库，MySQL的大多数客户端API（除Java和.NET）都是通过这个库来和MySQL服务器通讯的，而这个库正是使用C语言编写的。
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Mysql - Tag - My Blog</title>
+        <link>https://okokfun.github.io/tags/mysql/</link>
+        <description>Mysql - Tag - My Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 05 Jan 2022 20:21:29 &#43;0000</lastBuildDate><atom:link href="https://okokfun.github.io/tags/mysql/" rel="self" type="application/rss+xml" /><item>
+    <title>MySQL数据库API库</title>
+    <link>https://okokfun.github.io/posts/mysql%E6%95%B0%E6%8D%AE%E5%BA%93api%E5%BA%93/</link>
+    <pubDate>Wed, 05 Jan 2022 20:21:29 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://okokfun.github.io/posts/mysql%E6%95%B0%E6%8D%AE%E5%BA%93api%E5%BA%93/</guid>
+    <description><![CDATA[MySQL数据库API库 访问MySQL服务器，这需要使用mysqlclient库，MySQL的大多数客户端API（除Java和.NET）都是通过这个库来和MySQL服务器通讯的，而这个库正是使用C语言编写的。
 可使用mysql -V 命令查看当前系统内所使用的mysql数据库版本信息。数据库版本为5.6.20版。因此，我们可从帮助手册refman-5.6-en.a4.pdf入手，了解学习MySQL C API使用的一般信息。
 从API手册23.8中可获取信息，MySQL客户端使用 libmysqlclient 库内部的函数访问MySQL服务器。因此我们在编程过程中，如若使用到库内的函数，必须链接函数库，对应的要找到头文件所在目录位置、函数库路径。以便我们在使用gcc编译工具时可以填充参数-I、-L、-l。
 从手册中可获知，函数库名为mysqlclient。
 因此我们使用命令:
 find / -name libmysqlclient* 查找该库的路径。得到 /usr/lib64/mysql/libmysqlclient.a。 nm /usr/lib64/mysql/libmysqlclient.a命令可查看库内包含的函数。
 编写hello应用链接函数库 编写一个hello.c应用程序，链接使用该库。
-用到头文件 &amp;lt;mysql.h&amp;gt; 可使用locate mysql.h查看其目录位置/usr/include/mysql/mysql.h。
+用到头文件 &lt;mysql.h&gt; 可使用locate mysql.h查看其目录位置/usr/include/mysql/mysql.h。
 编译引用了库的应用程序。
 gcc hello.c -o hello -I/usr/include/mysql/ -L/usr/lib64/mysql/ -lmysqlclient 参见帮助手册refman-5.6-en.a4.pdf：23.8.4.3小节。
 MySQL API常用函数 总体印象 使用MySQL库API函数的一般步骤：
 a. 初始化. MYSQL *mysql_init(MYSQL *mysql);
 b. 错误处理	unsigned int mysql_errno(MYSQL *mysql);char *mysql_error(MYSQL *mysql);
-c. 建立连接.	MYSQL *mysql_real_connect(MYSQL *mysql, const char *host, const char *user, const char *passwd,const char *db, unsigned int port, const char *unix_socket, unsigned long client_flag);</description>
-    </item>
-    
-    <item>
-      <title>Mysql数据库</title>
-      <link>https://okokfun.github.io/post/mysql%E6%95%B0%E6%8D%AE%E5%BA%93/</link>
-      <pubDate>Wed, 05 Jan 2022 12:57:29 +0000</pubDate>
-      
-      <guid>https://okokfun.github.io/post/mysql%E6%95%B0%E6%8D%AE%E5%BA%93/</guid>
-      <description>1 MySQL基础知识 瑞典MySQL AB公司开发，由SUN收购，而后SUN被甲骨文并购，目前属于Oracle公司。
+c. 建立连接.	MYSQL *mysql_real_connect(MYSQL *mysql, const char *host, const char *user, const char *passwd,const char *db, unsigned int port, const char *unix_socket, unsigned long client_flag);]]></description>
+</item>
+<item>
+    <title>Mysql数据库</title>
+    <link>https://okokfun.github.io/posts/mysql%E6%95%B0%E6%8D%AE%E5%BA%93/</link>
+    <pubDate>Wed, 05 Jan 2022 12:57:29 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://okokfun.github.io/posts/mysql%E6%95%B0%E6%8D%AE%E5%BA%93/</guid>
+    <description><![CDATA[1 MySQL基础知识 瑞典MySQL AB公司开发，由SUN收购，而后SUN被甲骨文并购，目前属于Oracle公司。
 MySQL是一种关联数据库管理系统 由于其体积小、速度快、总体拥有成本低、MySQL软件采用了双授权政策，分为社区版和企业版。
 1.1 MySQL版本及下载 MySQL数据库版本相对比较繁杂。常见的有：Community社区版、Enterprise企业版。
 MySQL Community Server 版是开源免费的，这也是我们通常用的MySQL的版本。可以满足绝大多数用户需求。
@@ -56,8 +51,7 @@ linux版本
 ​ 在http://www.mysql.com/downloads/网站上下载不了
 ​ 在 www.oracle.com/downloads 找mysql 注册用户, 选择操作系统平台和mysql版本 进行下载
 官方文档上有关MySQL安装，介绍了3种类型及其对应安装方式来安装MySQL数据库：
-Linux supports a number of different solutions for installing MySQL. The recommended method is to use one of the distributions from Oracle.</description>
-    </item>
-    
-  </channel>
+Linux supports a number of different solutions for installing MySQL. The recommended method is to use one of the distributions from Oracle.]]></description>
+</item>
+</channel>
 </rss>
