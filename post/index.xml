@@ -14,7 +14,8 @@
       
       <guid>https://okokfun.github.io/post/stm32/</guid>
       <description>STM32为意法半导体生产的32位微控制器
-$$ AveP = \int_0^1 p(r) dr $$</description>
+$$ AveP = \int_0^1 p(r) dr $$
+#incldue &amp;lt;iostream&amp;gt; int main(void) ｛ std::cout &amp;lt;&amp;lt; &amp;#34;Hello World&amp;#34; &amp;lt;&amp;lt; std::endl; return 0; ｝ </description>
     </item>
     
     <item>
@@ -1745,8 +1746,12 @@ $$ AveP = \int_0^1 p(r) dr $$</description>
       <description>1.1 模拟电子学 模拟信号: 我们测量到的自然现象的特性(比如,压力，流速和温度)都来源于模拟信号
 信号可分为有 二进制数字 表示的数字信号和有 连续变化量 表示的模拟信号
 模拟电子学包括所有其他(非数字)信号，它包括信号处理功能，比如放大,微分和集成等。
-1.1.1 线型方程 线型方程式: $$ y = mx + b $$ 式中，y是因变量，x自变量，m是斜率，b是y轴上的截距。 欧姆定理： $$ I=V/R $$
-电流(I)是因变量，自变量是电压(V),斜率是电阻的倒数(1/R), 也就是电导.欧姆定律可变化为： $$ I=GV $$
+1.1.1 线型方程 线型方程式:
+$$ y = mx + b $$
+式中，y是因变量，x自变量，m是斜率，b是y轴上的截距。 欧姆定理：
+$$ I=V/R $$
+电流(I)是因变量，自变量是电压(V),斜率是电阻的倒数(1/R), 也就是电导.欧姆定律可变化为：
+$$ I=GV $$
 特性曲线是能够反应一个器件两个变化特性之间关系的图</description>
     </item>
     
@@ -2436,13 +2441,11 @@ BSD许可协议允许用户免费使用nginx, 修改nginx源码,然后再发布 
 正向代理的典型用途就是为在防火墙内的局域网客户端提供访问Internet的途径, 比如:
 学校的局域网
 单位局域网访问外部资源
-正向代理服务器是为用户服务的
+051157002507977.jpg 正向代理服务器是为用户服务的
 反向代理
 反向代理方式是指代理原始服务器来接受来自Internet的链接请求，然后将请求转发给内部网络上的原始服务器，并将从原始服务器上得到的结果转发给Internet上请求数据的客户端。那么顾名思义，反向代理就是位于Internet和原始服务器之间的服务器，对于客户端来说就表现为一台服务器，客户端所发送的请求都是直接发送给反向代理服务器，然后由反向代理服务器统一调配。
-客户端给服务器发送请求, 连接服务器, 用户不知道服务器地址, 只有反向代理服务器的地址是公开的
-请求直接发给反向代理服务器
-反向代理服务器将请求转发给后边的web服务器
-web服务器 N 台 反向代理服务器转发请求会轮询进行 web服务器收到请求进行处理, 得到结果</description>
+1.png 2.png 3.png 4.png 客户端给服务器发送请求, 连接服务器, 用户不知道服务器地址, 只有反向代理服务器的地址是公开的
+请求直接发给反向代理服务器</description>
     </item>
     
     <item>
@@ -2775,19 +2778,6 @@ cfdisk -l cfdisk UEFI采用GPT分区，一般情况下需要创建
       
       <guid>https://okokfun.github.io/post/c-%E7%BA%BF%E7%A8%8B%E6%B1%A0/</guid>
       <description>C++线程池 任务类 #pragma once #include &amp;lt;mutex&amp;gt; #include &amp;lt;queue&amp;gt; // 定义任务结构体 using callback = void (*)(void *); struct Task { Task() { this-&amp;gt;function = nullptr; this-&amp;gt;arg = nullptr; } Task(callback f, void *arg) { this-&amp;gt;function = f; this-&amp;gt;arg = arg; } callback function; void *arg; }; class TaskQueue { public: TaskQueue(); ~TaskQueue(); // 添加任务 void addTask(Task task); void addTask(callback f, void *arg); // 取出一个任务 Task getTask(); // 判断队列任务是否为空 inline bool empty() { return m_taskQ.</description>
-    </item>
-    
-    <item>
-      <title>Hello World</title>
-      <link>https://okokfun.github.io/post/hello-world/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://okokfun.github.io/post/hello-world/</guid>
-      <description>Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick Start Create a new post $ hexo new &amp;#34;My New Post&amp;#34; More info: Writing
-Run server $ hexo server More info: Server
-Generate static files $ hexo generate More info: Generating
-Deploy to remote sites $ hexo deploy More info: Deployment</description>
     </item>
     
   </channel>

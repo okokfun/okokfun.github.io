@@ -1695,52 +1695,27 @@ C++17 引入了具有以下能力的新基本字符串转换函数（引用自�
      
     
         
-    <script
-    src="https://giscus.app/client.js"
-    data-repo="okokfun/okokfun.github.io"
-    data-repo-id="R_kgDOG7cB0g"
-    data-category="Announcements"
-    data-category-id="DIC_kwDOG7cB0s4CYEpm"
-    data-mapping="pathname"
-    data-reactions-enabled="1"
-    data-emit-metadata="0"
-    data-theme="preferred_color_scheme"
-    crossorigin="anonymous"
-    async
-></script>
+    <div id="cusdis_thread"
+    data-host="https://cusdis.com"
+    data-app-id="d44db3f9-a0ff-4551-a44d-316afd2e5835"
+    data-page-id="d5637e34effb553035a0becbde581139"
+    data-page-url="https://okokfun.github.io/post/%E7%AC%AC%E4%BA%94%E9%83%A8%E5%88%86-%E4%B8%93%E4%B8%9A%E5%B7%A5%E5%85%B7-/"
+    data-page-title="第五部分-专业工具"></div>
+<script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
+
 <script>
-    function setGiscusTheme(theme) {
-        let giscus = document.querySelector('iframe.giscus-frame');
-        if (giscus) {
-            giscus.contentWindow.postMessage(
-                { 
-                    giscus: {
-                        setConfig: { 
-                            theme: theme 
-                        }
-                    }
-                },
-                "https://giscus.app"
-            );
-        };
-    };
+    function setCusdisTheme(theme) {
+        let cusdis = document.querySelector('#cusdis_thread iframe');
+        if (cusdis) {
+            window.CUSDIS.setTheme(theme)
+        }
+    }
 
-    (function(){
-        addEventListener('message', (e) => {
-            if (event.origin !== 'https://giscus.app') return;
-            handler()
-        });
-        window.addEventListener('onColorSchemeChange', handler);
-
-        function handler() {
-            if (document.documentElement.dataset.scheme === "light") {
-                setGiscusTheme('preferred_color_scheme');
-            } else {
-                setGiscusTheme('preferred_color_scheme');
-            };
-        };
-    }());
+    window.addEventListener('onColorSchemeChange', (e) => {
+        setCusdisTheme(e.detail)
+    })
 </script>
+
 
     
 

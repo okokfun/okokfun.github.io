@@ -1463,31 +1463,27 @@ typedef struct ListElmt_ { void *data; struct ListElmt_ *next; } ListElmt; 单�
 <p>在计算机科学中，树由称之为节点的元素按照层次结构方式组织而成。层次最顶端为根(root)。与根相连的为子节点，通常子节点也有自己的子节点。二叉树是分支因子为2的树。二叉搜索树是专门用于查找的树。</p>
 </blockquote>
 <h5 id="二叉树">二叉树</h5>
-<p><figure 
-	>
+<p><figure >
 	<a href="https://gitee.com/txt1994/images/raw/master/img/Algorithmic_refinement/%E4%BA%8C%E5%8F%89%E6%A0%91.png" >
-		<img src="https://gitee.com/txt1994/images/raw/master/img/Algorithmic_refinement/%E4%BA%8C%E5%8F%89%E6%A0%91.png"
-			
-			
-			
-			loading="lazy"
-			>
+		<img src="https://gitee.com/txt1994/images/raw/master/img/Algorithmic_refinement/%E4%BA%8C%E5%8F%89%E6%A0%91.png"    loading="lazy" >
 	</a>
 	
-</figure></p>
+</figure>
+
+<p class="md_image">
+	<img loading='lazy' src="https://gitee.com/txt1994/images/raw/master/img/Algorithmic_refinement/%E4%BA%8C%E5%8F%89%E6%A0%91.png" alt=""  />
+</p></p>
 <p>二叉树的一个节点包含三部分：一个<code>数据部</code>和两个左右<code>指针部</code></p>
-<p><figure 
-	>
+<p><figure >
 	<a href="https://gitee.com/txt1994/images/raw/master/img/Algorithmic_refinement/%E8%8A%82%E7%82%B9%E4%BA%8C%E5%8F%89%E6%A0%91.png" >
-		<img src="https://gitee.com/txt1994/images/raw/master/img/Algorithmic_refinement/%E8%8A%82%E7%82%B9%E4%BA%8C%E5%8F%89%E6%A0%91.png"
-			
-			
-			
-			loading="lazy"
-			>
+		<img src="https://gitee.com/txt1994/images/raw/master/img/Algorithmic_refinement/%E8%8A%82%E7%82%B9%E4%BA%8C%E5%8F%89%E6%A0%91.png"    loading="lazy" >
 	</a>
 	
-</figure></p>
+</figure>
+
+<p class="md_image">
+	<img loading='lazy' src="https://gitee.com/txt1994/images/raw/master/img/Algorithmic_refinement/%E8%8A%82%E7%82%B9%E4%BA%8C%E5%8F%89%E6%A0%91.png" alt=""  />
+</p></p>
 <h6 id="树的遍历算法">树的遍历算法</h6>
 <p>先序遍历：根(root)，左，右</p>
 <p>中层遍历：左，根(root)，右</p>
@@ -1495,18 +1491,16 @@ typedef struct ListElmt_ { void *data; struct ListElmt_ *next; } ListElmt; 单�
 <p>层序遍历：根(root), 一层一层遍历到叶子</p>
 <h5 id="树的平衡">树的平衡</h5>
 <p>树的平衡是指对于给定数量的节点，保证树的高度尽可能短的过程。这意味着在结点加入下一层之前必须保证本层结点满额。也就是说树的叶子都在倒数两层，且倒数第二层叶子是满的，则称这棵树是平衡的。最后一层叶子结点靠左，则称这棵树是左平衡的。</p>
-<p><figure 
-	>
+<p><figure >
 	<a href="https://gitee.com/txt1994/images/raw/master/img/Algorithmic_refinement/%E5%B7%A6%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91.png" >
-		<img src="https://gitee.com/txt1994/images/raw/master/img/Algorithmic_refinement/%E5%B7%A6%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91.png"
-			
-			
-			
-			loading="lazy"
-			>
+		<img src="https://gitee.com/txt1994/images/raw/master/img/Algorithmic_refinement/%E5%B7%A6%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91.png"    loading="lazy" >
 	</a>
 	
-</figure></p>
+</figure>
+
+<p class="md_image">
+	<img loading='lazy' src="https://gitee.com/txt1994/images/raw/master/img/Algorithmic_refinement/%E5%B7%A6%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91.png" alt=""  />
+</p></p>
 <h5 id="二叉树的接口定义">二叉树的接口定义：</h5>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">/* bitree.h */</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">#ifndef BITREE_H
@@ -1762,18 +1756,16 @@ typedef struct ListElmt_ { void *data; struct ListElmt_ *next; } ListElmt; 单�
 <p>+1：代表树是左倾斜的</p>
 <p>-1：代表树是右倾斜的</p>
 </blockquote>
-<p><figure 
-	>
+<p><figure >
 	<a href="https://gitee.com/txt1994/images/raw/master/img/Algorithmic_refinement/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91.png" >
-		<img src="https://gitee.com/txt1994/images/raw/master/img/Algorithmic_refinement/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91.png"
-			
-			
-			
-			loading="lazy"
-			>
+		<img src="https://gitee.com/txt1994/images/raw/master/img/Algorithmic_refinement/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91.png"    loading="lazy" >
 	</a>
 	
-</figure></p>
+</figure>
+
+<p class="md_image">
+	<img loading='lazy' src="https://gitee.com/txt1994/images/raw/master/img/Algorithmic_refinement/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91.png" alt=""  />
+</p></p>
 <p>平衡因子改变：</p>
 <blockquote>
 <p>插入新的结点会造成平衡因子改变，因此这棵树需要重新平衡，我们称这种平衡为<code>AVL树的旋转</code></p>
@@ -2243,18 +2235,16 @@ typedef struct ListElmt_ { void *data; struct ListElmt_ *next; } ListElmt; 单�
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> lookup(tree, bitree_root(tree), data);
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h5 id="红黑树r-b树">红黑树（R-B树）</h5>
-<p><figure 
-	>
+<p><figure >
 	<a href="https://gitee.com/txt1994/images/raw/master/img/R_B_tree/R_B_tree.png" >
-		<img src="https://gitee.com/txt1994/images/raw/master/img/R_B_tree/R_B_tree.png"
-			
-			
-			
-			loading="lazy"
-			>
+		<img src="https://gitee.com/txt1994/images/raw/master/img/R_B_tree/R_B_tree.png"    loading="lazy" >
 	</a>
 	
-</figure></p>
+</figure>
+
+<p class="md_image">
+	<img loading='lazy' src="https://gitee.com/txt1994/images/raw/master/img/R_B_tree/R_B_tree.png" alt=""  />
+</p></p>
 <h6 id="定义-1">定义：</h6>
 <p><strong>红黑树</strong> 为妥协的AVL树，平衡要求没AVL树严格，因此适用范围比AVL树多</p>
 <p>红黑树是每个结点都带有颜色属性的二叉查找树，颜色或红色或黑色。待插入结点默认为红色结点，插入时按照二分插入。</p>
@@ -2293,31 +2283,27 @@ typedef struct ListElmt_ { void *data; struct ListElmt_ *next; } ListElmt; 单�
 <p>1、红黑树删除的情形</p>
 <p>​	一、从树中删除节点X（以寻找后继节点的方式进行删除）</p>
 <p>​		情况①：如果X没有孩子，且如果X是红色，直接删除X；如果X是黑色，则以X为当前节点进行旋转调色，最后删掉X</p>
-<p><figure 
-	>
+<p><figure >
 	<a href="https://gitee.com/txt1994/images/raw/master/img/R_B_tree/R_B_Tree_leaf.svg" >
-		<img src="https://gitee.com/txt1994/images/raw/master/img/R_B_tree/R_B_Tree_leaf.svg"
-			
-			
-			
-			loading="lazy"
-			>
+		<img src="https://gitee.com/txt1994/images/raw/master/img/R_B_tree/R_B_Tree_leaf.svg"    loading="lazy" >
 	</a>
 	
-</figure></p>
+</figure>
+
+<p class="md_image">
+	<img loading='lazy' src="https://gitee.com/txt1994/images/raw/master/img/R_B_tree/R_B_Tree_leaf.svg" alt=""  />
+</p></p>
 <p>​		情况②：如果X只有一个孩子C，交换X和C的数值，再对新X进行删除。根据红黑树特性，此时X不可能为红色，因为红色节点要么没有孩子，要么有两个黑孩子。此时以新X为当前节点进行情况①的判断</p>
-<p><figure 
-	>
+<p><figure >
 	<a href="https://gitee.com/txt1994/images/raw/master/img/R_B_tree/R_B_Tree_one_node.svg" >
-		<img src="https://gitee.com/txt1994/images/raw/master/img/R_B_tree/R_B_Tree_one_node.svg"
-			
-			
-			
-			loading="lazy"
-			>
+		<img src="https://gitee.com/txt1994/images/raw/master/img/R_B_tree/R_B_Tree_one_node.svg"    loading="lazy" >
 	</a>
 	
-</figure></p>
+</figure>
+
+<p class="md_image">
+	<img loading='lazy' src="https://gitee.com/txt1994/images/raw/master/img/R_B_tree/R_B_Tree_one_node.svg" alt=""  />
+</p></p>
 <p>​		情况③：如果X有两个孩子，则从后继中找到最小节点D，交换X和D的数值，再对新X进行删除。此时以新X为当前节点进行情况①或②的判断</p>
 <p>​	二、旋转调色（N=旋转调色的当前节点[等于情况①中的X]，P=N的父亲，W=N的兄弟，Nf=N的远侄子，Nn=N的近侄子）</p>
 <p>​		情况1：N是根或者N是红色，则：直接将N设为黑色</p>
@@ -2344,18 +2330,16 @@ typedef struct ListElmt_ { void *data; struct ListElmt_ *next; } ListElmt; 单�
 </li>
 <li>
 <p>所有叶子都出现在同一水平，没有任何信息（高度一致）。</p>
-<p><figure 
-	>
+<p><figure >
 	<a href="https://gitee.com/txt1994/images/raw/master/img/data-structure/997909-20190727111522935-981534929.png" >
-		<img src="https://gitee.com/txt1994/images/raw/master/img/data-structure/997909-20190727111522935-981534929.png"
-			
-			
-			
-			loading="lazy"
-			>
+		<img src="https://gitee.com/txt1994/images/raw/master/img/data-structure/997909-20190727111522935-981534929.png"    loading="lazy" >
 	</a>
 	
-</figure></p>
+</figure>
+
+<p class="md_image">
+	<img loading='lazy' src="https://gitee.com/txt1994/images/raw/master/img/data-structure/997909-20190727111522935-981534929.png" alt=""  />
+</p></p>
 </li>
 </ul>
 <p>此树的一个节点最多有4个结点，一个节点最多有三个值，</p>
@@ -2363,32 +2347,28 @@ typedef struct ListElmt_ { void *data; struct ListElmt_ *next; } ListElmt; 单�
     ><strong>B树插入与删除</strong></a></p>
 <p><strong>B+树</strong></p>
 <p>在B树的基础上增加了数据遍历优点，想要遍历整个树的数据只要把叶子节点便完毕就行，因为B+树的叶子节点数据是整棵树数据，非叶子节点是叶子节点索引。</p>
-<p><figure 
-	>
+<p><figure >
 	<a href="https://gitee.com/txt1994/images/raw/master/img/data-structure/997909-20190728114240297-169990922.png" >
-		<img src="https://gitee.com/txt1994/images/raw/master/img/data-structure/997909-20190728114240297-169990922.png"
-			
-			
-			
-			loading="lazy"
-			>
+		<img src="https://gitee.com/txt1994/images/raw/master/img/data-structure/997909-20190728114240297-169990922.png"    loading="lazy" >
 	</a>
 	
-</figure></p>
+</figure>
+
+<p class="md_image">
+	<img loading='lazy' src="https://gitee.com/txt1994/images/raw/master/img/data-structure/997909-20190728114240297-169990922.png" alt=""  />
+</p></p>
 <p><strong>B*树</strong></p>
 <p>B*树在B+树的基础上增加了非叶子结点之间链表相联系。</p>
-<p><figure 
-	>
+<p><figure >
 	<a href="https://gitee.com/txt1994/images/raw/master/img/data-structure/171056_sAnR_135650.jpg" >
-		<img src="https://gitee.com/txt1994/images/raw/master/img/data-structure/171056_sAnR_135650.jpg"
-			
-			
-			
-			loading="lazy"
-			>
+		<img src="https://gitee.com/txt1994/images/raw/master/img/data-structure/171056_sAnR_135650.jpg"    loading="lazy" >
 	</a>
 	
-</figure></p>
+</figure>
+
+<p class="md_image">
+	<img loading='lazy' src="https://gitee.com/txt1994/images/raw/master/img/data-structure/171056_sAnR_135650.jpg" alt=""  />
+</p></p>
 <h5 id="2-3-4树"><strong>2-3-4树</strong></h5>
 <p>2-3-4树是4阶B树，<a class="link" href="https://www.cnblogs.com/sfencs-hcy/p/10363259.html"  target="_blank" rel="noopener"
     ><strong>2-3-4树插入与删除</strong></a></p>
@@ -2437,18 +2417,16 @@ typedef struct ListElmt_ { void *data; struct ListElmt_ *next; } ListElmt; 单�
 </blockquote>
 <p><a class="link" href="https://gitee.com/txt1994/images/raw/master/img/Heap_tree/heap.svg"  target="_blank" rel="noopener"
     >堆排序</a></p>
-<p><figure 
-	>
+<p><figure >
 	<a href="https://gitee.com/txt1994/images/raw/master/img/Heap_tree/heap.svg" >
-		<img src="https://gitee.com/txt1994/images/raw/master/img/Heap_tree/heap.svg"
-			
-			
-			
-			loading="lazy"
-			>
+		<img src="https://gitee.com/txt1994/images/raw/master/img/Heap_tree/heap.svg"    loading="lazy" >
 	</a>
 	
-</figure></p>
+</figure>
+
+<p class="md_image">
+	<img loading='lazy' src="https://gitee.com/txt1994/images/raw/master/img/Heap_tree/heap.svg" alt=""  />
+</p></p>
 <p><strong>优先队列的描述:</strong></p>
 <p>优先队列将数据按照优先级顺序排列。一个优先队列由许多有序的元素构成，所以优先级最高的元素可以有效而快速地确定,例如，我们看一组用来做负载均衡的服务器，时时观察它们的使用情况。当连接请求到达时，优先队列可以告知当前哪个服务器是处理 此连接请求的最佳服务器。在这种情况下，最空闲的服务器获取的优先级最高，因为它 可以最好地处理服务请求。</p>
 
@@ -2478,52 +2456,27 @@ typedef struct ListElmt_ { void *data; struct ListElmt_ *next; } ListElmt; 单�
      
     
         
-    <script
-    src="https://giscus.app/client.js"
-    data-repo="okokfun/okokfun.github.io"
-    data-repo-id="R_kgDOG7cB0g"
-    data-category="Announcements"
-    data-category-id="DIC_kwDOG7cB0s4CYEpm"
-    data-mapping="pathname"
-    data-reactions-enabled="1"
-    data-emit-metadata="0"
-    data-theme="preferred_color_scheme"
-    crossorigin="anonymous"
-    async
-></script>
+    <div id="cusdis_thread"
+    data-host="https://cusdis.com"
+    data-app-id="d44db3f9-a0ff-4551-a44d-316afd2e5835"
+    data-page-id="05921fef8805b022148a0c3559be48de"
+    data-page-url="https://okokfun.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"
+    data-page-title="数据结构"></div>
+<script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
+
 <script>
-    function setGiscusTheme(theme) {
-        let giscus = document.querySelector('iframe.giscus-frame');
-        if (giscus) {
-            giscus.contentWindow.postMessage(
-                { 
-                    giscus: {
-                        setConfig: { 
-                            theme: theme 
-                        }
-                    }
-                },
-                "https://giscus.app"
-            );
-        };
-    };
+    function setCusdisTheme(theme) {
+        let cusdis = document.querySelector('#cusdis_thread iframe');
+        if (cusdis) {
+            window.CUSDIS.setTheme(theme)
+        }
+    }
 
-    (function(){
-        addEventListener('message', (e) => {
-            if (event.origin !== 'https://giscus.app') return;
-            handler()
-        });
-        window.addEventListener('onColorSchemeChange', handler);
-
-        function handler() {
-            if (document.documentElement.dataset.scheme === "light") {
-                setGiscusTheme('preferred_color_scheme');
-            } else {
-                setGiscusTheme('preferred_color_scheme');
-            };
-        };
-    }());
+    window.addEventListener('onColorSchemeChange', (e) => {
+        setCusdisTheme(e.detail)
+    })
 </script>
+
 
     
 

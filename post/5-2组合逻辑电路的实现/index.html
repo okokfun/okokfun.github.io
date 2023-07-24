@@ -319,52 +319,27 @@
      
     
         
-    <script
-    src="https://giscus.app/client.js"
-    data-repo="okokfun/okokfun.github.io"
-    data-repo-id="R_kgDOG7cB0g"
-    data-category="Announcements"
-    data-category-id="DIC_kwDOG7cB0s4CYEpm"
-    data-mapping="pathname"
-    data-reactions-enabled="1"
-    data-emit-metadata="0"
-    data-theme="preferred_color_scheme"
-    crossorigin="anonymous"
-    async
-></script>
+    <div id="cusdis_thread"
+    data-host="https://cusdis.com"
+    data-app-id="d44db3f9-a0ff-4551-a44d-316afd2e5835"
+    data-page-id="a5f00bc8f4b0016b6d0542c66faafcbe"
+    data-page-url="https://okokfun.github.io/post/5-2%E7%BB%84%E5%90%88%E9%80%BB%E8%BE%91%E7%94%B5%E8%B7%AF%E7%9A%84%E5%AE%9E%E7%8E%B0/"
+    data-page-title="5.2组合逻辑电路的实现"></div>
+<script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
+
 <script>
-    function setGiscusTheme(theme) {
-        let giscus = document.querySelector('iframe.giscus-frame');
-        if (giscus) {
-            giscus.contentWindow.postMessage(
-                { 
-                    giscus: {
-                        setConfig: { 
-                            theme: theme 
-                        }
-                    }
-                },
-                "https://giscus.app"
-            );
-        };
-    };
+    function setCusdisTheme(theme) {
+        let cusdis = document.querySelector('#cusdis_thread iframe');
+        if (cusdis) {
+            window.CUSDIS.setTheme(theme)
+        }
+    }
 
-    (function(){
-        addEventListener('message', (e) => {
-            if (event.origin !== 'https://giscus.app') return;
-            handler()
-        });
-        window.addEventListener('onColorSchemeChange', handler);
-
-        function handler() {
-            if (document.documentElement.dataset.scheme === "light") {
-                setGiscusTheme('preferred_color_scheme');
-            } else {
-                setGiscusTheme('preferred_color_scheme');
-            };
-        };
-    }());
+    window.addEventListener('onColorSchemeChange', (e) => {
+        setCusdisTheme(e.detail)
+    })
 </script>
+
 
     
 

@@ -319,52 +319,27 @@
      
     
         
-    <script
-    src="https://giscus.app/client.js"
-    data-repo="okokfun/okokfun.github.io"
-    data-repo-id="R_kgDOG7cB0g"
-    data-category="Announcements"
-    data-category-id="DIC_kwDOG7cB0s4CYEpm"
-    data-mapping="pathname"
-    data-reactions-enabled="1"
-    data-emit-metadata="0"
-    data-theme="preferred_color_scheme"
-    crossorigin="anonymous"
-    async
-></script>
+    <div id="cusdis_thread"
+    data-host="https://cusdis.com"
+    data-app-id="d44db3f9-a0ff-4551-a44d-316afd2e5835"
+    data-page-id="344d7be6dd82e41120df3b97a6917a68"
+    data-page-url="https://okokfun.github.io/post/8-4%E8%BD%AC%E6%8D%A2%E5%99%A8%E5%92%8C%E5%85%B6%E4%BB%96%E8%BF%90%E7%AE%97%E6%94%BE%E5%A4%A7%E5%99%A8%E7%94%B5%E8%B7%AF/"
+    data-page-title="8.4转换器和其他运算放大器电路"></div>
+<script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
+
 <script>
-    function setGiscusTheme(theme) {
-        let giscus = document.querySelector('iframe.giscus-frame');
-        if (giscus) {
-            giscus.contentWindow.postMessage(
-                { 
-                    giscus: {
-                        setConfig: { 
-                            theme: theme 
-                        }
-                    }
-                },
-                "https://giscus.app"
-            );
-        };
-    };
+    function setCusdisTheme(theme) {
+        let cusdis = document.querySelector('#cusdis_thread iframe');
+        if (cusdis) {
+            window.CUSDIS.setTheme(theme)
+        }
+    }
 
-    (function(){
-        addEventListener('message', (e) => {
-            if (event.origin !== 'https://giscus.app') return;
-            handler()
-        });
-        window.addEventListener('onColorSchemeChange', handler);
-
-        function handler() {
-            if (document.documentElement.dataset.scheme === "light") {
-                setGiscusTheme('preferred_color_scheme');
-            } else {
-                setGiscusTheme('preferred_color_scheme');
-            };
-        };
-    }());
+    window.addEventListener('onColorSchemeChange', (e) => {
+        setCusdisTheme(e.detail)
+    })
 </script>
+
 
     
 

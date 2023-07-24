@@ -161,18 +161,16 @@ https://sourceforge.net/projects/astyle/files 1.1 AStyle可以对代码进行格
 <h3 id="41-functioncomment可以提供函数快速添加注释命令">4.1 FunctionComment可以提供函数快速添加注释，命令：</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>!E ~E
 </span></span></code></pre></div><p>把这些插件添加到keil中，打开keil，依次点击Tools-&gt;Customize Tools Menu,此时页面是这样的：
-<figure 
-	>
+<figure >
 	<a href="/img/155637.png" >
-		<img src="/img/155637.png"
-			
-			
-			
-			loading="lazy"
-			>
+		<img src="/img/155637.png"    loading="lazy" >
 	</a>
 	
-</figure></p>
+</figure>
+
+<p class="md_image">
+	<img loading='lazy' src="/img/155637.png" alt=""  />
+</p></p>
 <p>把上述的插件添加进去，Command是插件路径，Arguments是使用插件时的参数，可以根据需要自行定制</p>
 <p>添加插件的快捷键：点击keil页面的小扳手，找到Shortcut Keys,把下拉框拉到刚才添加的插件处，右边是添加快键键的地方，添加后可以使用了</p>
 
@@ -202,52 +200,27 @@ https://sourceforge.net/projects/astyle/files 1.1 AStyle可以对代码进行格
      
     
         
-    <script
-    src="https://giscus.app/client.js"
-    data-repo="okokfun/okokfun.github.io"
-    data-repo-id="R_kgDOG7cB0g"
-    data-category="Announcements"
-    data-category-id="DIC_kwDOG7cB0s4CYEpm"
-    data-mapping="pathname"
-    data-reactions-enabled="1"
-    data-emit-metadata="0"
-    data-theme="preferred_color_scheme"
-    crossorigin="anonymous"
-    async
-></script>
+    <div id="cusdis_thread"
+    data-host="https://cusdis.com"
+    data-app-id="d44db3f9-a0ff-4551-a44d-316afd2e5835"
+    data-page-id="473aa4b1a31e50edf24edff1029960a1"
+    data-page-url="https://okokfun.github.io/post/keil%E6%8F%92%E4%BB%B6%E5%90%88%E9%9B%86/"
+    data-page-title="适用于Keil的插件合集"></div>
+<script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
+
 <script>
-    function setGiscusTheme(theme) {
-        let giscus = document.querySelector('iframe.giscus-frame');
-        if (giscus) {
-            giscus.contentWindow.postMessage(
-                { 
-                    giscus: {
-                        setConfig: { 
-                            theme: theme 
-                        }
-                    }
-                },
-                "https://giscus.app"
-            );
-        };
-    };
+    function setCusdisTheme(theme) {
+        let cusdis = document.querySelector('#cusdis_thread iframe');
+        if (cusdis) {
+            window.CUSDIS.setTheme(theme)
+        }
+    }
 
-    (function(){
-        addEventListener('message', (e) => {
-            if (event.origin !== 'https://giscus.app') return;
-            handler()
-        });
-        window.addEventListener('onColorSchemeChange', handler);
-
-        function handler() {
-            if (document.documentElement.dataset.scheme === "light") {
-                setGiscusTheme('preferred_color_scheme');
-            } else {
-                setGiscusTheme('preferred_color_scheme');
-            };
-        };
-    }());
+    window.addEventListener('onColorSchemeChange', (e) => {
+        setCusdisTheme(e.detail)
+    })
 </script>
+
 
     
 

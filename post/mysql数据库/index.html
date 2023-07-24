@@ -361,18 +361,16 @@ Linux supports a number of different solutions for installing MySQL. The recomme
 <p>$mysql -uroot -p123456   即可。</p>
 <h3 id="4查看数据库">4.查看数据库</h3>
 <p><code>mysql&gt; show databases;</code>
-<figure 
-	>
+<figure >
 	<a href="https://gitee.com/txt1994/images/raw/master/img/2021/08/clip_image002.jpg" >
-		<img src="https://gitee.com/txt1994/images/raw/master/img/2021/08/clip_image002.jpg"
-			
-			
-			
-			loading="lazy"
-			>
+		<img src="https://gitee.com/txt1994/images/raw/master/img/2021/08/clip_image002.jpg"    loading="lazy" >
 	</a>
 	
-</figure></p>
+</figure>
+
+<p class="md_image">
+	<img loading='lazy' src="https://gitee.com/txt1994/images/raw/master/img/2021/08/clip_image002.jpg" alt=""  />
+</p></p>
 <h3 id="5远程root登录mysql">5.远程root登录mysql</h3>
 <h4 id="51mysql80创建用户和授权">5.1Mysql8.0创建用户和授权</h4>
 <p>mysql8.0需要先创建用户和设置密码,然后才能授权.</p>
@@ -405,18 +403,16 @@ Linux supports a number of different solutions for installing MySQL. The recomme
 select host, user, authentication_string, plugin from user;
 --会发现 root 用户的 host 已经变成 %，说明我们的修改已经成功，可以远程访问了。
 </code></pre>
-<p><figure 
-	>
+<p><figure >
 	<a href="https://gitee.com/txt1994/images/raw/master/img/2021/08/mysql8%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5.bmp" >
-		<img src="https://gitee.com/txt1994/images/raw/master/img/2021/08/mysql8%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5.bmp"
-			
-			
-			
-			loading="lazy"
-			>
+		<img src="https://gitee.com/txt1994/images/raw/master/img/2021/08/mysql8%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5.bmp"    loading="lazy" >
 	</a>
 	
-</figure></p>
+</figure>
+
+<p class="md_image">
+	<img loading='lazy' src="https://gitee.com/txt1994/images/raw/master/img/2021/08/mysql8%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5.bmp" alt=""  />
+</p></p>
 <h4 id="53访问数据库">5.3访问数据库</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>    <span style="color:#75715e">--输入访问的 host 和密码，报 2059 错误，这是因为 MySql8.0 版本 和 5.7 的加密规则不一样，而现在的可视化工具只支持旧的加密方式。
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    
@@ -525,30 +521,26 @@ mysql&gt; show tables;</p>
 <ul>
 <li>数据类型</li>
 </ul>
-<p><figure 
-	>
+<p><figure >
 	<a href="https://gitee.com/txt1994/images/raw/master/img/2021/07/20180606134721859.png" >
-		<img src="https://gitee.com/txt1994/images/raw/master/img/2021/07/20180606134721859.png"
-			
-			
-			
-			loading="lazy"
-			>
+		<img src="https://gitee.com/txt1994/images/raw/master/img/2021/07/20180606134721859.png"    loading="lazy" >
 	</a>
 	
 </figure>
-<figure 
-	>
+
+<p class="md_image">
+	<img loading='lazy' src="https://gitee.com/txt1994/images/raw/master/img/2021/07/20180606134721859.png" alt=""  />
+</p>
+<figure >
 	<a href="https://gitee.com/txt1994/images/raw/master/img/2021/07/20180606134730934.png" >
-		<img src="https://gitee.com/txt1994/images/raw/master/img/2021/07/20180606134730934.png"
-			
-			
-			
-			loading="lazy"
-			>
+		<img src="https://gitee.com/txt1994/images/raw/master/img/2021/07/20180606134730934.png"    loading="lazy" >
 	</a>
 	
-</figure></p>
+</figure>
+
+<p class="md_image">
+	<img loading='lazy' src="https://gitee.com/txt1994/images/raw/master/img/2021/07/20180606134730934.png" alt=""  />
+</p></p>
 <ul>
 <li>float/double: 指定精确到小数点以后第几位, 比如: 精确到后3位</li>
 <li>通过计算得到一个数据: 12.345678</li>
@@ -557,30 +549,26 @@ mysql&gt; show tables;</p>
 <li>完整的保存精度, 最少有小数后有两位</li>
 <li>12.3 保存为: 12.30</li>
 </ul>
-<p><figure 
-	>
+<p><figure >
 	<a href="https://gitee.com/txt1994/images/raw/master/img/2021/07/20180606133023230.png" >
-		<img src="https://gitee.com/txt1994/images/raw/master/img/2021/07/20180606133023230.png"
-			
-			
-			
-			loading="lazy"
-			>
+		<img src="https://gitee.com/txt1994/images/raw/master/img/2021/07/20180606133023230.png"    loading="lazy" >
 	</a>
 	
 </figure>
-<figure 
-	>
+
+<p class="md_image">
+	<img loading='lazy' src="https://gitee.com/txt1994/images/raw/master/img/2021/07/20180606133023230.png" alt=""  />
+</p>
+<figure >
 	<a href="https://gitee.com/txt1994/images/raw/master/img/2021/07/20180606133307614.png" >
-		<img src="https://gitee.com/txt1994/images/raw/master/img/2021/07/20180606133307614.png"
-			
-			
-			
-			loading="lazy"
-			>
+		<img src="https://gitee.com/txt1994/images/raw/master/img/2021/07/20180606133307614.png"    loading="lazy" >
 	</a>
 	
-</figure></p>
+</figure>
+
+<p class="md_image">
+	<img loading='lazy' src="https://gitee.com/txt1994/images/raw/master/img/2021/07/20180606133307614.png" alt=""  />
+</p></p>
 <ul>
 <li>创建表
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">create</span> <span style="color:#66d9ef">table</span> <span style="color:#960050;background-color:#1e0010">表名</span>(
@@ -782,18 +770,16 @@ mysql&gt; show tables;</p>
 <blockquote>
 <p>MySQL里面时间分为三类：时间、日期、时间戳(含有时分秒的sysdate)。</p>
 </blockquote>
-<p><figure 
-	>
+<p><figure >
 	<a href="https://gitee.com/txt1994/images/raw/master/img/2021/07/image-20191130180806388.png" >
-		<img src="https://gitee.com/txt1994/images/raw/master/img/2021/07/image-20191130180806388.png"
-			
-			
-			
-			loading="lazy"
-			>
+		<img src="https://gitee.com/txt1994/images/raw/master/img/2021/07/image-20191130180806388.png"    loading="lazy" >
 	</a>
 	
-</figure></p>
+</figure>
+
+<p class="md_image">
+	<img loading='lazy' src="https://gitee.com/txt1994/images/raw/master/img/2021/07/image-20191130180806388.png" alt=""  />
+</p></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>    <span style="color:#75715e">-- 当前时间: now() == sysdate()
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    mysql<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">select</span> sysdate() <span style="color:#66d9ef">from</span> dual;
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">+</span><span style="color:#75715e">---------------------+
@@ -901,18 +887,16 @@ mysql&gt; show tables;</p>
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">-- 显示昨天, 今天, 明天
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">select</span>  date_sub(now(), interval <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">day</span>), now(), date_add(now(), interval <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">day</span>) <span style="color:#66d9ef">from</span> dual;
 </span></span></code></pre></div><h3 id="92-字符串函数">9.2 字符串函数</h3>
-<p><figure 
-	>
+<p><figure >
 	<a href="https://gitee.com/txt1994/images/raw/master/img/2021/07/image-20191130182700039.png" >
-		<img src="https://gitee.com/txt1994/images/raw/master/img/2021/07/image-20191130182700039.png"
-			
-			
-			
-			loading="lazy"
-			>
+		<img src="https://gitee.com/txt1994/images/raw/master/img/2021/07/image-20191130182700039.png"    loading="lazy" >
 	</a>
 	
-</figure></p>
+</figure>
+
+<p class="md_image">
+	<img loading='lazy' src="https://gitee.com/txt1994/images/raw/master/img/2021/07/image-20191130182700039.png" alt=""  />
+</p></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- 字符串连接
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">-- mydql中可以连接多个字符串, oracle中只能连接两个字符串
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    mysql<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">select</span> concat(<span style="color:#e6db74">&#34;hello&#34;</span>, <span style="color:#e6db74">&#34; world&#34;</span>, <span style="color:#e6db74">&#34; 你好,&#34;</span>, <span style="color:#e6db74">&#34;世界&#34;</span>) <span style="color:#66d9ef">from</span> dual;
@@ -966,18 +950,16 @@ mysql&gt; show tables;</p>
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">+</span><span style="color:#75715e">----------------------+
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">row</span> <span style="color:#66d9ef">in</span> <span style="color:#66d9ef">set</span> (<span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">00</span> sec)
 </span></span></code></pre></div><h3 id="93-数学函数">9.3 数学函数</h3>
-<p><figure 
-	>
+<p><figure >
 	<a href="https://gitee.com/txt1994/images/raw/master/img/2021/07/image-20191130183602147.png" >
-		<img src="https://gitee.com/txt1994/images/raw/master/img/2021/07/image-20191130183602147.png"
-			
-			
-			
-			loading="lazy"
-			>
+		<img src="https://gitee.com/txt1994/images/raw/master/img/2021/07/image-20191130183602147.png"    loading="lazy" >
 	</a>
 	
 </figure>
+
+<p class="md_image">
+	<img loading='lazy' src="https://gitee.com/txt1994/images/raw/master/img/2021/07/image-20191130183602147.png" alt=""  />
+</p>
 &ndash; 向上取整
 &ndash; mysql
 ceiling(小数)
@@ -1815,52 +1797,27 @@ ceil(小数)</p>
      
     
         
-    <script
-    src="https://giscus.app/client.js"
-    data-repo="okokfun/okokfun.github.io"
-    data-repo-id="R_kgDOG7cB0g"
-    data-category="Announcements"
-    data-category-id="DIC_kwDOG7cB0s4CYEpm"
-    data-mapping="pathname"
-    data-reactions-enabled="1"
-    data-emit-metadata="0"
-    data-theme="preferred_color_scheme"
-    crossorigin="anonymous"
-    async
-></script>
+    <div id="cusdis_thread"
+    data-host="https://cusdis.com"
+    data-app-id="d44db3f9-a0ff-4551-a44d-316afd2e5835"
+    data-page-id="9cd0d5c58f1467f89014d09d3ef8d8cb"
+    data-page-url="https://okokfun.github.io/post/mysql%E6%95%B0%E6%8D%AE%E5%BA%93/"
+    data-page-title="Mysql数据库"></div>
+<script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
+
 <script>
-    function setGiscusTheme(theme) {
-        let giscus = document.querySelector('iframe.giscus-frame');
-        if (giscus) {
-            giscus.contentWindow.postMessage(
-                { 
-                    giscus: {
-                        setConfig: { 
-                            theme: theme 
-                        }
-                    }
-                },
-                "https://giscus.app"
-            );
-        };
-    };
+    function setCusdisTheme(theme) {
+        let cusdis = document.querySelector('#cusdis_thread iframe');
+        if (cusdis) {
+            window.CUSDIS.setTheme(theme)
+        }
+    }
 
-    (function(){
-        addEventListener('message', (e) => {
-            if (event.origin !== 'https://giscus.app') return;
-            handler()
-        });
-        window.addEventListener('onColorSchemeChange', handler);
-
-        function handler() {
-            if (document.documentElement.dataset.scheme === "light") {
-                setGiscusTheme('preferred_color_scheme');
-            } else {
-                setGiscusTheme('preferred_color_scheme');
-            };
-        };
-    }());
+    window.addEventListener('onColorSchemeChange', (e) => {
+        setCusdisTheme(e.detail)
+    })
 </script>
+
 
     
 

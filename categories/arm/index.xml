@@ -14,7 +14,8 @@
       
       <guid>https://okokfun.github.io/post/stm32/</guid>
       <description>STM32为意法半导体生产的32位微控制器
-$$ AveP = \int_0^1 p(r) dr $$</description>
+$$ AveP = \int_0^1 p(r) dr $$
+#incldue &amp;lt;iostream&amp;gt; int main(void) ｛ std::cout &amp;lt;&amp;lt; &amp;#34;Hello World&amp;#34; &amp;lt;&amp;lt; std::endl; return 0; ｝ </description>
     </item>
     
   </channel>

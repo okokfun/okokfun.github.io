@@ -121,44 +121,38 @@
     <section class="article-content">
     <!-- raw HTML omitted -->
 <h3 id="1-安装完第三方插件后再安装docker与portainer">1. 安装完第三方插件后，再安装docker与portainer</h3>
-<p><figure 
-	>
+<p><figure >
 	<a href="https://gitee.com/txt1994/images/raw/master/img/2021/05/2021-05-05-214837.png" >
-		<img src="https://gitee.com/txt1994/images/raw/master/img/2021/05/2021-05-05-214837.png"
-			
-			
-			
-			loading="lazy"
-			>
+		<img src="https://gitee.com/txt1994/images/raw/master/img/2021/05/2021-05-05-214837.png"    loading="lazy" >
 	</a>
 	
-</figure></p>
+</figure>
+
+<p class="md_image">
+	<img loading='lazy' src="https://gitee.com/txt1994/images/raw/master/img/2021/05/2021-05-05-214837.png" alt=""  />
+</p></p>
 <h3 id="2-点击opem-portainer创建管理账号">2. 点击Opem Portainer创建管理账号</h3>
-<p><figure 
-	>
+<p><figure >
 	<a href="https://gitee.com/txt1994/images/raw/master/img/2021/05/image-1.png" >
-		<img src="https://gitee.com/txt1994/images/raw/master/img/2021/05/image-1.png"
-			
-			
-			
-			loading="lazy"
-			>
+		<img src="https://gitee.com/txt1994/images/raw/master/img/2021/05/image-1.png"    loading="lazy" >
 	</a>
 	
-</figure></p>
+</figure>
+
+<p class="md_image">
+	<img loading='lazy' src="https://gitee.com/txt1994/images/raw/master/img/2021/05/image-1.png" alt=""  />
+</p></p>
 <h3 id="3-然后创建一个容器网络">3. 然后创建一个容器网络</h3>
-<p><figure 
-	>
+<p><figure >
 	<a href="https://gitee.com/txt1994/images/raw/master/img/2021/05/image-2.png" >
-		<img src="https://gitee.com/txt1994/images/raw/master/img/2021/05/image-2.png"
-			
-			
-			
-			loading="lazy"
-			>
+		<img src="https://gitee.com/txt1994/images/raw/master/img/2021/05/image-2.png"    loading="lazy" >
 	</a>
 	
-</figure></p>
+</figure>
+
+<p class="md_image">
+	<img loading='lazy' src="https://gitee.com/txt1994/images/raw/master/img/2021/05/image-2.png" alt=""  />
+</p></p>
 
 </section>
 
@@ -229,52 +223,27 @@
      
     
         
-    <script
-    src="https://giscus.app/client.js"
-    data-repo="okokfun/okokfun.github.io"
-    data-repo-id="R_kgDOG7cB0g"
-    data-category="Announcements"
-    data-category-id="DIC_kwDOG7cB0s4CYEpm"
-    data-mapping="pathname"
-    data-reactions-enabled="1"
-    data-emit-metadata="0"
-    data-theme="preferred_color_scheme"
-    crossorigin="anonymous"
-    async
-></script>
+    <div id="cusdis_thread"
+    data-host="https://cusdis.com"
+    data-app-id="d44db3f9-a0ff-4551-a44d-316afd2e5835"
+    data-page-id="2b6f10fae7c5a9eb1a0b64512c7e9ed3"
+    data-page-url="https://okokfun.github.io/post/openmediavault%E4%B8%AD%E5%AE%89%E8%A3%85docker%E4%B8%8Egui%E5%B7%A5%E5%85%B7portainer/"
+    data-page-title="OpenMediaVault中docker与工具portainer"></div>
+<script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
+
 <script>
-    function setGiscusTheme(theme) {
-        let giscus = document.querySelector('iframe.giscus-frame');
-        if (giscus) {
-            giscus.contentWindow.postMessage(
-                { 
-                    giscus: {
-                        setConfig: { 
-                            theme: theme 
-                        }
-                    }
-                },
-                "https://giscus.app"
-            );
-        };
-    };
+    function setCusdisTheme(theme) {
+        let cusdis = document.querySelector('#cusdis_thread iframe');
+        if (cusdis) {
+            window.CUSDIS.setTheme(theme)
+        }
+    }
 
-    (function(){
-        addEventListener('message', (e) => {
-            if (event.origin !== 'https://giscus.app') return;
-            handler()
-        });
-        window.addEventListener('onColorSchemeChange', handler);
-
-        function handler() {
-            if (document.documentElement.dataset.scheme === "light") {
-                setGiscusTheme('preferred_color_scheme');
-            } else {
-                setGiscusTheme('preferred_color_scheme');
-            };
-        };
-    }());
+    window.addEventListener('onColorSchemeChange', (e) => {
+        setCusdisTheme(e.detail)
+    })
 </script>
+
 
     
 

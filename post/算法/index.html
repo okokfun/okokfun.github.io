@@ -246,31 +246,27 @@ string str2 = &ldquo;<code>ababc</code>&ldquo;字符串</p>
 <p>kmp匹配过程</p>
 <p>abc<code>ababc</code>ba</p>
 <p>ababc</p>
-<p><figure 
-	>
+<p><figure >
 	<a href="https://gitee.com/txt1994/images/raw/master/img/algorithm/kmp.png" >
-		<img src="https://gitee.com/txt1994/images/raw/master/img/algorithm/kmp.png"
-			
-			
-			
-			loading="lazy"
-			>
+		<img src="https://gitee.com/txt1994/images/raw/master/img/algorithm/kmp.png"    loading="lazy" >
 	</a>
 	
-</figure></p>
+</figure>
+
+<p class="md_image">
+	<img loading='lazy' src="https://gitee.com/txt1994/images/raw/master/img/algorithm/kmp.png" alt=""  />
+</p></p>
 <p>如果匹配到不相等元素，则通过next数组(P)决定next数组移动的位置，例如上图next数组(P)下标为2的元素与T字符串不相等，则看一下P数组下标2的next数组的值为0，则把next数组下标为0的位置移动到不匹配的地方</p>
-<p><figure 
-	>
+<p><figure >
 	<a href="https://gitee.com/txt1994/images/raw/master/img/algorithm/kmp_2.png" >
-		<img src="https://gitee.com/txt1994/images/raw/master/img/algorithm/kmp_2.png"
-			
-			
-			
-			loading="lazy"
-			>
+		<img src="https://gitee.com/txt1994/images/raw/master/img/algorithm/kmp_2.png"    loading="lazy" >
 	</a>
 	
-</figure></p>
+</figure>
+
+<p class="md_image">
+	<img loading='lazy' src="https://gitee.com/txt1994/images/raw/master/img/algorithm/kmp_2.png" alt=""  />
+</p></p>
 <p>如果next数组的值为-1则next数组整体右移，或找到T字符串与子字符串第一个元素(如果找到的话)，然后把P移动到此位置(T的剩余的元素大于等于子字符串元素个数)；</p>
 <p><strong>代码</strong></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;cstring&gt;</span><span style="color:#75715e">
@@ -613,64 +609,56 @@ string str2 = &ldquo;<code>ababc</code>&ldquo;字符串</p>
 </table>
 <p>可以看到随着商品种类增加组合也在飞速增长，时间复杂度为O(2^n),太慢了</p>
 <p>动态规划算法可以用网格描述</p>
-<p><figure 
-	>
+<p><figure >
 	<a href="https://gitee.com/txt1994/images/raw/master/img/algorithm/DP-knapsack.png" >
-		<img src="https://gitee.com/txt1994/images/raw/master/img/algorithm/DP-knapsack.png"
-			
-			
-			
-			loading="lazy"
-			>
+		<img src="https://gitee.com/txt1994/images/raw/master/img/algorithm/DP-knapsack.png"    loading="lazy" >
 	</a>
 	
-</figure></p>
+</figure>
+
+<p class="md_image">
+	<img loading='lazy' src="https://gitee.com/txt1994/images/raw/master/img/algorithm/DP-knapsack.png" alt=""  />
+</p></p>
 <p>填充这些表格最后就是背包问题的解法。</p>
 <blockquote>
 <p>当在小汽车一行时，其他种类的商品选不了，所以都是3000</p>
 </blockquote>
-<p><figure 
-	>
+<p><figure >
 	<a href="https://gitee.com/txt1994/images/raw/master/img/algorithm/DP-knapsack%20-2.png" >
-		<img src="https://gitee.com/txt1994/images/raw/master/img/algorithm/DP-knapsack%20-2.png"
-			
-			
-			
-			loading="lazy"
-			>
+		<img src="https://gitee.com/txt1994/images/raw/master/img/algorithm/DP-knapsack%20-2.png"    loading="lazy" >
 	</a>
 	
-</figure></p>
+</figure>
+
+<p class="md_image">
+	<img loading='lazy' src="https://gitee.com/txt1994/images/raw/master/img/algorithm/DP-knapsack%20-2.png" alt=""  />
+</p></p>
 <blockquote>
 <p>当加入卡车时1-2吨放不下3吨的卡车，3吨可以放下卡车，所以为4000，4吨可以放下一个卡车和一个小汽车，共7000</p>
 </blockquote>
-<p><figure 
-	>
+<p><figure >
 	<a href="https://gitee.com/txt1994/images/raw/master/img/algorithm/DP-knapsack%20-%203.png" >
-		<img src="https://gitee.com/txt1994/images/raw/master/img/algorithm/DP-knapsack%20-%203.png"
-			
-			
-			
-			loading="lazy"
-			>
+		<img src="https://gitee.com/txt1994/images/raw/master/img/algorithm/DP-knapsack%20-%203.png"    loading="lazy" >
 	</a>
 	
-</figure></p>
+</figure>
+
+<p class="md_image">
+	<img loading='lazy' src="https://gitee.com/txt1994/images/raw/master/img/algorithm/DP-knapsack%20-%203.png" alt=""  />
+</p></p>
 <blockquote>
 <p>加入起重机时，1-2背包只能装小汽车，3吨可以装一辆卡车，4吨可以装起重机，但是价格低于7000所以不选起重机的价格，定位卡车加小汽车，价格为7000.</p>
 </blockquote>
-<p><figure 
-	>
+<p><figure >
 	<a href="https://gitee.com/txt1994/images/raw/master/img/algorithm/DP-knapsack%20-%204.png" >
-		<img src="https://gitee.com/txt1994/images/raw/master/img/algorithm/DP-knapsack%20-%204.png"
-			
-			
-			
-			loading="lazy"
-			>
+		<img src="https://gitee.com/txt1994/images/raw/master/img/algorithm/DP-knapsack%20-%204.png"    loading="lazy" >
 	</a>
 	
-</figure></p>
+</figure>
+
+<p class="md_image">
+	<img loading='lazy' src="https://gitee.com/txt1994/images/raw/master/img/algorithm/DP-knapsack%20-%204.png" alt=""  />
+</p></p>
 <h5 id="坐标型dp"><strong>坐标型DP</strong></h5>
 <blockquote>
 <p>又被称为网格型动态规划</p>
@@ -854,52 +842,27 @@ string str2 = &ldquo;<code>ababc</code>&ldquo;字符串</p>
      
     
         
-    <script
-    src="https://giscus.app/client.js"
-    data-repo="okokfun/okokfun.github.io"
-    data-repo-id="R_kgDOG7cB0g"
-    data-category="Announcements"
-    data-category-id="DIC_kwDOG7cB0s4CYEpm"
-    data-mapping="pathname"
-    data-reactions-enabled="1"
-    data-emit-metadata="0"
-    data-theme="preferred_color_scheme"
-    crossorigin="anonymous"
-    async
-></script>
+    <div id="cusdis_thread"
+    data-host="https://cusdis.com"
+    data-app-id="d44db3f9-a0ff-4551-a44d-316afd2e5835"
+    data-page-id="f55aa2c17b425ce976b7d6798e4e7593"
+    data-page-url="https://okokfun.github.io/post/%E7%AE%97%E6%B3%95/"
+    data-page-title="算法"></div>
+<script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
+
 <script>
-    function setGiscusTheme(theme) {
-        let giscus = document.querySelector('iframe.giscus-frame');
-        if (giscus) {
-            giscus.contentWindow.postMessage(
-                { 
-                    giscus: {
-                        setConfig: { 
-                            theme: theme 
-                        }
-                    }
-                },
-                "https://giscus.app"
-            );
-        };
-    };
+    function setCusdisTheme(theme) {
+        let cusdis = document.querySelector('#cusdis_thread iframe');
+        if (cusdis) {
+            window.CUSDIS.setTheme(theme)
+        }
+    }
 
-    (function(){
-        addEventListener('message', (e) => {
-            if (event.origin !== 'https://giscus.app') return;
-            handler()
-        });
-        window.addEventListener('onColorSchemeChange', handler);
-
-        function handler() {
-            if (document.documentElement.dataset.scheme === "light") {
-                setGiscusTheme('preferred_color_scheme');
-            } else {
-                setGiscusTheme('preferred_color_scheme');
-            };
-        };
-    }());
+    window.addEventListener('onColorSchemeChange', (e) => {
+        setCusdisTheme(e.detail)
+    })
 </script>
+
 
     
 

@@ -9,9 +9,10 @@
 <meta property='og:description' content='安乐死是对人最后的仁慈，让人可以有尊严和最后无痛苦的离开这个世界，当然前提是有病痛且无法医治，比如物理学家霍金的 肌萎缩性脊髓侧索硬化症（ALS）。'>
 <meta property='og:url' content='https://okokfun.github.io/post/me/'>
 <meta property='og:site_name' content='My Blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2022-01-24T13:37:38&#43;00:00'/><meta property='article:modified_time' content='2022-01-24T13:37:38&#43;00:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2022-01-24T13:37:38&#43;00:00'/><meta property='article:modified_time' content='2022-01-24T13:37:38&#43;00:00'/><meta property='og:image' content='https://okokfun.github.io/Me_logo.png' />
 <meta name="twitter:title" content="Me">
-<meta name="twitter:description" content="安乐死是对人最后的仁慈，让人可以有尊严和最后无痛苦的离开这个世界，当然前提是有病痛且无法医治，比如物理学家霍金的 肌萎缩性脊髓侧索硬化症（ALS）。"><script>
+<meta name="twitter:description" content="安乐死是对人最后的仁慈，让人可以有尊严和最后无痛苦的离开这个世界，当然前提是有病痛且无法医治，比如物理学家霍金的 肌萎缩性脊髓侧索硬化症（ALS）。"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://okokfun.github.io/Me_logo.png' /><script>
     (function(){
         if('hello'){
             if (prompt('请输入文章密码') !== 'hello'){
@@ -175,8 +176,16 @@
 
     
 <main class="main full-width">
-    <article class="main-article">
+    <article class="has-image main-article">
     <header class="article-header">
+        <div class="article-image">
+            <a href="/post/me/">
+                
+                    <img src="/Me_logo.png" loading="lazy" alt="Featured image of post Me" />
+                
+            </a>
+        </div>
+    
 
     <div class="article-details">
     
@@ -248,52 +257,27 @@
      
     
         
-    <script
-    src="https://giscus.app/client.js"
-    data-repo="okokfun/okokfun.github.io"
-    data-repo-id="R_kgDOG7cB0g"
-    data-category="Announcements"
-    data-category-id="DIC_kwDOG7cB0s4CYEpm"
-    data-mapping="pathname"
-    data-reactions-enabled="1"
-    data-emit-metadata="0"
-    data-theme="preferred_color_scheme"
-    crossorigin="anonymous"
-    async
-></script>
+    <div id="cusdis_thread"
+    data-host="https://cusdis.com"
+    data-app-id="d44db3f9-a0ff-4551-a44d-316afd2e5835"
+    data-page-id="4f04fedeacdba4688e3b7437d054a51c"
+    data-page-url="https://okokfun.github.io/post/me/"
+    data-page-title="Me"></div>
+<script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
+
 <script>
-    function setGiscusTheme(theme) {
-        let giscus = document.querySelector('iframe.giscus-frame');
-        if (giscus) {
-            giscus.contentWindow.postMessage(
-                { 
-                    giscus: {
-                        setConfig: { 
-                            theme: theme 
-                        }
-                    }
-                },
-                "https://giscus.app"
-            );
-        };
-    };
+    function setCusdisTheme(theme) {
+        let cusdis = document.querySelector('#cusdis_thread iframe');
+        if (cusdis) {
+            window.CUSDIS.setTheme(theme)
+        }
+    }
 
-    (function(){
-        addEventListener('message', (e) => {
-            if (event.origin !== 'https://giscus.app') return;
-            handler()
-        });
-        window.addEventListener('onColorSchemeChange', handler);
-
-        function handler() {
-            if (document.documentElement.dataset.scheme === "light") {
-                setGiscusTheme('preferred_color_scheme');
-            } else {
-                setGiscusTheme('preferred_color_scheme');
-            };
-        };
-    }());
+    window.addEventListener('onColorSchemeChange', (e) => {
+        setCusdisTheme(e.detail)
+    })
 </script>
+
 
     
 
