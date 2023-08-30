@@ -263,8 +263,7 @@ std::tuple 所在头文件 &amp;lt;tuple&amp;gt;
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;     // std::cout</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;tuple&gt;        // std::tuple, std::get, std::tie, std::ignore</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span> ()
-</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span> () {
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>tuple<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span>,<span style="color:#66d9ef">char</span><span style="color:#f92672">&gt;</span> foo (<span style="color:#ae81ff">10</span>,<span style="color:#e6db74">&#39;x&#39;</span>);
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">auto</span> bar <span style="color:#f92672">=</span> std<span style="color:#f92672">::</span>make_tuple (<span style="color:#e6db74">&#34;test&#34;</span>, <span style="color:#ae81ff">3.1</span>, <span style="color:#ae81ff">14</span>, <span style="color:#e6db74">&#39;y&#39;</span>);
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;bar has &#34;</span><span style="color:#f92672">&lt;&lt;</span>std<span style="color:#f92672">::</span>tuple_size<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">decltype</span>(bar)<span style="color:#f92672">&gt;::</span>value <span style="color:#f92672">&lt;&lt;</span> elements<span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#39;\n&#39;</span>;
@@ -301,8 +300,7 @@ std::tuple 所在头文件 &amp;lt;tuple&amp;gt;
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;     // std::cout</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;tuple&gt;        // std::tuple, std::make_tuple, std::tie</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span> ()
-</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span> () {
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>tuple<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span>,<span style="color:#66d9ef">float</span>,<span style="color:#66d9ef">char</span><span style="color:#f92672">&gt;</span> mytuple;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    mytuple <span style="color:#f92672">=</span> std<span style="color:#f92672">::</span>make_tuple (<span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">2.6</span>, <span style="color:#e6db74">&#39;a&#39;</span>);          <span style="color:#75715e">// packing values into tuple

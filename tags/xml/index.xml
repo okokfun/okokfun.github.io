@@ -14,7 +14,7 @@
       
       <guid>https://okokfun.github.io/post/qt%E4%B8%ADui%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D/</guid>
       <description>qt ui区别：
-无ui的mainWindow.h #ifndef MAINWINDOW_H #define MAINWINDOW_H #include &amp;lt;QMainWindow&amp;gt; class MainWindow : public QMainWindow { Q_OBJECT public: MainWindow(QWidget *parent = nullptr); ~MainWindow(); }; #endif // MAINWINDOW_H 有ui的mainWindow.h #ifndef MAINWINDOW_H #define MAINWINDOW_H #include &amp;lt;QMainWindow&amp;gt; QT_BEGIN_NAMESPACE namespace Ui { class MainWindow; } QT_END_NAMESPACE // 这个MainWindow和下边的MainWindow没有关系，在不同命名空间内。 class MainWindow : public QMainWindow { Q_OBJECT public: MainWindow(QWidget *parent = nullptr); ~MainWindow(); private: Ui::MainWindow *ui;// ui的指针 }; #endif // MAINWINDOW_H 无ui的mainWindow.cpp #include &amp;#34;mainwindow.h&amp;#34; MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) { } MainWindow::~MainWindow() { } 有ui的mainWindow.</description>
+无ui的mainWindow.h #ifndef MAINWINDOW_H #define MAINWINDOW_H #include &amp;lt;QMainWindow&amp;gt; class MainWindow : public QMainWindow { Q_OBJECT public: MainWindow(QWidget *parent = nullptr); ~MainWindow(); }; #endif // MAINWINDOW_H 有ui的mainWindow.h #ifndef MAINWINDOW_H #define MAINWINDOW_H #include &amp;lt;QMainWindow&amp;gt; QT_BEGIN_NAMESPACE namespace Ui { class MainWindow; } QT_END_NAMESPACE // 这个MainWindow和下边的MainWindow没有关系，在不同命名空间内。 class MainWindow : public QMainWindow { Q_OBJECT public: MainWindow(QWidget *parent = nullptr); ~MainWindow(); private: Ui::MainWindow *ui;// ui的指针 }; #endif // MAINWINDOW_H 无ui的mainWindow.cpp #include &amp;#34;mainwindow.h&amp;#34; MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {} MainWindow::~MainWindow() {} 有ui的mainWindow.</description>
     </item>
     
   </channel>

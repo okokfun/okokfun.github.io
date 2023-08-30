@@ -1,17 +1,47 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content=''><title>1.3信号源</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='戴维南定理：可以用一个电压源串联一个电阻代替一个复杂的线性电路，这个电路可以看成一个二端口。
+诺顿定理：可以用一个电流源并联一个电阻代替一个二端口线性电路。
+1.3.1 独立源 理想的独立电压源产生的$\color{#376956}{电压}$与$\color{#871F78}{负载电流}$无关。
+理想的独立电流源产生的$\color{#871F78}{电流}$与$\color{#376956}{负载电压}$无关。
+理想的独立信号源的值是固定的，与电路中的所有其他参数都无关。虽然无法实现个真正理想的信号源，但是在某些情况下(例如稳压电源)，它可以很接近理想情况。实际中的信号源可以看成一个理想的源与一个电阻(对交流源而言也可以是其他的无源器件)的组合。
+1.3.2 戴维南定理 它的适用前提是线性元件。
+1.3.3 诺顿定理 诺顿电流的幅度等于负载短路后流经端口的电流。
+1.3.4 负载线 戴维南的电流-电压特性曲线是负载线。
+短路和开路的特性曲线
+在一个线性曲线，接在输出端口的任何负载都满足此特性曲线，
+1.3.5 传感器 传感器是一种将物理量(例如位置、压力或温度)从一种形式转换成另一种形式。'><title>1.3信号源</title>
 
 <link rel='canonical' href='https://okokfun.github.io/post/1-3%E4%BF%A1%E5%8F%B7%E6%BA%90/'>
 
 <link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='1.3信号源'>
-<meta property='og:description' content=''>
+<meta property='og:description' content='戴维南定理：可以用一个电压源串联一个电阻代替一个复杂的线性电路，这个电路可以看成一个二端口。
+诺顿定理：可以用一个电流源并联一个电阻代替一个二端口线性电路。
+1.3.1 独立源 理想的独立电压源产生的$\color{#376956}{电压}$与$\color{#871F78}{负载电流}$无关。
+理想的独立电流源产生的$\color{#871F78}{电流}$与$\color{#376956}{负载电压}$无关。
+理想的独立信号源的值是固定的，与电路中的所有其他参数都无关。虽然无法实现个真正理想的信号源，但是在某些情况下(例如稳压电源)，它可以很接近理想情况。实际中的信号源可以看成一个理想的源与一个电阻(对交流源而言也可以是其他的无源器件)的组合。
+1.3.2 戴维南定理 它的适用前提是线性元件。
+1.3.3 诺顿定理 诺顿电流的幅度等于负载短路后流经端口的电流。
+1.3.4 负载线 戴维南的电流-电压特性曲线是负载线。
+短路和开路的特性曲线
+在一个线性曲线，接在输出端口的任何负载都满足此特性曲线，
+1.3.5 传感器 传感器是一种将物理量(例如位置、压力或温度)从一种形式转换成另一种形式。'>
 <meta property='og:url' content='https://okokfun.github.io/post/1-3%E4%BF%A1%E5%8F%B7%E6%BA%90/'>
 <meta property='og:site_name' content='My Blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Analog' /><meta property='article:published_time' content='2023-07-14T14:58:21&#43;00:00'/><meta property='article:modified_time' content='2023-07-14T14:58:21&#43;00:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Analog' /><meta property='article:published_time' content='2023-07-14T14:58:21&#43;08:00'/><meta property='article:modified_time' content='2023-07-14T14:58:21&#43;08:00'/>
 <meta name="twitter:title" content="1.3信号源">
-<meta name="twitter:description" content=""><script>
+<meta name="twitter:description" content="戴维南定理：可以用一个电压源串联一个电阻代替一个复杂的线性电路，这个电路可以看成一个二端口。
+诺顿定理：可以用一个电流源并联一个电阻代替一个二端口线性电路。
+1.3.1 独立源 理想的独立电压源产生的$\color{#376956}{电压}$与$\color{#871F78}{负载电流}$无关。
+理想的独立电流源产生的$\color{#871F78}{电流}$与$\color{#376956}{负载电压}$无关。
+理想的独立信号源的值是固定的，与电路中的所有其他参数都无关。虽然无法实现个真正理想的信号源，但是在某些情况下(例如稳压电源)，它可以很接近理想情况。实际中的信号源可以看成一个理想的源与一个电阻(对交流源而言也可以是其他的无源器件)的组合。
+1.3.2 戴维南定理 它的适用前提是线性元件。
+1.3.3 诺顿定理 诺顿电流的幅度等于负载短路后流经端口的电流。
+1.3.4 负载线 戴维南的电流-电压特性曲线是负载线。
+短路和开路的特性曲线
+在一个线性曲线，接在输出端口的任何负载都满足此特性曲线，
+1.3.5 传感器 传感器是一种将物理量(例如位置、压力或温度)从一种形式转换成另一种形式。"><script>
     (function(){
         if(''){
             if (prompt('请输入文章密码') !== ''){
@@ -25,7 +55,7 @@
 
     </head>
     <body class="
-    article-page 
+    article-page has-toc
 ">
     <script>
         (function() {
@@ -51,128 +81,22 @@
 </script>
 <div class="container main-container flex 
     
-        on-phone--column extended
+        extended
     
 ">
     
-        <aside class="sidebar left-sidebar sticky">
-    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
-        <span class="hamburger-box">
-            <span class="hamburger-inner"></span>
-        </span>
-    </button>
-
-    <header class="site-info">
-        
-            
-            <figure class="site-avatar">
-                
-                    
-                    
-                    
-                        
-                        <img src="/img/avatar_hu71fc3898bde3464d50a00f65e63c7ec2_517570_300x0_resize_box_3.png" width="300"
-                            height="354" class="site-logo" loading="lazy" alt="Avatar">
-                    
-                
-
-                
-            </figure>
-            
-        
-        
-        <h1 class="site-name"><a href="/">My Blog</a></h1>
-        <h2 class="site-description"></h2></header>
-
-    <ol class="menu" id="main-menu">
-        
-        
-        
-
-        <li >
-            <a href='/page/about/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <div id="article-toolbar">
+            <a href="/" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="7" r="4" />
-  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+  <polyline points="15 6 9 12 15 18" />
 </svg>
 
 
 
-                
-                <span>About</span>
+                <span>Back</span>
             </a>
-        </li>
-        
-        
-
-        <li >
-            <a href='/page/archives/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <rect x="3" y="4" width="18" height="4" rx="2" />
-  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
-  <line x1="10" y1="12" x2="14" y2="12" />
-</svg>
-
-
-
-                
-                <span>Archives</span>
-            </a>
-        </li>
-        
-        
-
-        <li >
-            <a href='/page/search/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="10" cy="10" r="7" />
-  <line x1="21" y1="21" x2="15" y2="15" />
-</svg>
-
-
-
-                
-                <span>Search</span>
-            </a>
-        </li>
-        
-
-        
-            <li id="dark-mode-toggle">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="8" cy="12" r="2" />
-  <rect x="2" y="6" width="20" height="12" rx="6" />
-</svg>
-
-
-
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="16" cy="12" r="2" />
-  <rect x="2" y="6" width="20" height="12" rx="6" />
-</svg>
-
-
-
-                <span>Dark Mode</span>
-            </li>
-        
-    </ol>
-</aside>
-
+        </div>
     
 <main class="main full-width">
     <article class="main-article">
@@ -215,7 +139,7 @@
 
 
                 <time class="article-time--reading">
-                    0 minute read
+                    1 minute read
                 </time>
             </div>
         
@@ -225,7 +149,25 @@
 </header>
 
     <section class="article-content">
-    
+    <p><strong>戴维南定理</strong>：可以用一个电压源串联一个电阻代替一个复杂的线性电路，这个电路可以看成一个二端口。</p>
+<p><strong>诺顿定理</strong>：可以用一个电流源并联一个电阻代替一个二端口线性电路。</p>
+<h3 id="131-独立源">1.3.1 独立源</h3>
+<p>理想的独立电压源产生的$\color{#376956}{电压}$与$\color{#871F78}{负载电流}$无关。</p>
+<p>理想的独立电流源产生的$\color{#871F78}{电流}$与$\color{#376956}{负载电压}$无关。</p>
+<p>理想的独立信号源的值是固定的，与电路中的所有其他参数都无关。虽然无法实现个真正理想的信号源，但是在某些情况下(例如稳压电源)，它可以很接近理想情况。实际中的信号源可以看成一个理想的源与一个电阻(对交流源而言也可以是其他的无源器件)的组合。</p>
+<h3 id="132-戴维南定理">1.3.2 戴维南定理</h3>
+<p>它的适用前提是线性元件。</p>
+<h3 id="133-诺顿定理">1.3.3 诺顿定理</h3>
+<p>诺顿电流的幅度等于负载短路后流经端口的电流。</p>
+<h3 id="134-负载线">1.3.4 负载线</h3>
+<p>戴维南的电流-电压特性曲线是负载线。</p>
+<blockquote>
+<p>短路和开路的特性曲线</p>
+</blockquote>
+<p>在一个线性曲线，接在输出端口的任何负载都满足此特性曲线，</p>
+<h3 id="135-传感器">1.3.5 传感器</h3>
+<p>传感器是一种将物理量(例如位置、压力或温度)从一种形式转换成另一种形式。</p>
+
 </section>
 
 
@@ -265,24 +207,24 @@
                 
                     
 <article class="">
-    <a href="/post/1-1%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E5%AD%A6/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">1.1模拟电子学</h2>
-        </div>
-    </a>
-</article>
-                
-                    
-<article class="">
     <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/">
         
         
 
         <div class="article-details">
             <h2 class="article-title">模拟电子技术基础</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/1-1%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E5%AD%A6/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">1.1模拟电子学</h2>
         </div>
     </a>
 </article>
@@ -412,6 +354,40 @@
             >
 
             </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">Table of contents</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#131-独立源">1.3.1 独立源</a></li>
+        <li><a href="#132-戴维南定理">1.3.2 戴维南定理</a></li>
+        <li><a href="#133-诺顿定理">1.3.3 诺顿定理</a></li>
+        <li><a href="#134-负载线">1.3.4 负载线</a></li>
+        <li><a href="#135-传感器">1.3.5 传感器</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                </div>
+            </section>
+        </aside>
     
 
         </div>

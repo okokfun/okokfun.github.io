@@ -14,16 +14,16 @@
       
       <guid>https://okokfun.github.io/post/visual-studio-2022-pre%E6%B7%BB%E5%8A%A0opencv%E5%BA%93/</guid>
       <description>此篇是VS添加OpenCV库教程
-1. 创建一个新工程 img img 2. 创建完工程后切到属性管理器 img 3. 添加新项目属性列表 然后切到Debug | x64添加新项目属性列表(P) img 然后双击新建的文件。
-4. 添加库头文件路径和库文件路径 添加库头文件路径 img img 添加库文件路径
-img 5. 填写要使用的库文件名 img 这里使用debug版
+1. 创建一个新工程 visual_studio_opencv_1.jpg visual_studio_opencv_2.jpg 2. 创建完工程后切到属性管理器 visual_studio_opencv_3.jpg 3. 添加新项目属性列表 然后切到Debug | x64添加新项目属性列表(P) visual_studio_opencv_4.jpg 然后双击新建的文件。
+4. 添加库头文件路径和库文件路径 添加库头文件路径 visual_studio_opencv_5.jpg visual_studio_opencv_6.jpg 添加库文件路径
+visual_studio_opencv_7.jpg 5. 填写要使用的库文件名 visual_studio_opencv_8.jpg 这里使用debug版
 End.</description>
     </item>
     
     <item>
       <title>cmake编译opencv及Clion使用</title>
       <link>https://okokfun.github.io/post/cmake%E7%BC%96%E8%AF%91opencv%E5%8F%8Aclion%E4%BD%BF%E7%94%A8/</link>
-      <pubDate>Tue, 15 Feb 2022 19:21:35 +0000</pubDate>
+      <pubDate>Tue, 15 Feb 2022 19:21:35 +0800</pubDate>
       
       <guid>https://okokfun.github.io/post/cmake%E7%BC%96%E8%AF%91opencv%E5%8F%8Aclion%E4%BD%BF%E7%94%A8/</guid>
       <description>采用了linux下编译OpenCV, Visual Studio 2022, QT6.2.3都不成功。
@@ -31,9 +31,9 @@ End.</description>
 1. 下载OpenCV源码 源码地址👇
 Github:
 https://github.com/opencv/opencv/archive/4.5.5.zip
-2. 编译OpenCV源码 解压文件夹 OpenCV源码 解压win下exe文件解压后由两个文件夹，source为源码目录 OpenCV源码 build为已经建好的库文件目录
-OpenCV源码 CMake-gui工具构建
-OpenCV源码 source code选择带有源码的目录，binaries选择一个新创建一个mingw-build目录，然后点击Configure，弹出的窗口选择MinGW Makefiles,第一次可能会失败，失败后再点击Configure，还不行的百度吧。 配置成功后点击Generate cd到mingw-bulid目录执行mingw32-make -j8,根据自己机器性能设置线程数，这里设置8个线程，编译时间较久，等待完成。 然后执行mingw32-make install生成库，在mingw-build生成install保存了生成库库文件和头文件。 3. 后续配置 把C:\\Users\\用户名\\Downloads\\opencv\\mingw-build\\install\\x64\\mingw\\bin路径添加到win的环境变量
+2. 编译OpenCV源码 解压文件夹 opencv_1.jpg 解压win下exe文件解压后由两个文件夹，source为源码目录 opencv_2.jpg build为已经建好的库文件目录
+opencv_3.jpg CMake-gui工具构建
+opencv_4.jpg source code选择带有源码的目录，binaries选择一个新创建一个mingw-build目录，然后点击Configure，弹出的窗口选择MinGW Makefiles,第一次可能会失败，失败后再点击Configure，还不行的百度吧。 配置成功后点击Generate cd到mingw-bulid目录执行mingw32-make -j8,根据自己机器性能设置线程数，这里设置8个线程，编译时间较久，等待完成。 然后执行mingw32-make install生成库，在mingw-build生成install保存了生成库库文件和头文件。 3. 后续配置 把C:\\Users\\用户名\\Downloads\\opencv\\mingw-build\\install\\x64\\mingw\\bin路径添加到win的环境变量
 👇此为一个CMakeLists.txt
 cmake_minimum_required(VERSION 3.19) project(opencv_learn) set(CMAKE_CXX_STANDARD 20) include_directories($ENV{CMAKE_INCLUDE_PATH}) set(OpenCV_DIR C:\\Users\\用户名\\Downloads\\opencv\\mingw-build\\install\\x64\\mingw\\bin) #需要的openCV库 FIND_PACKAGE(OpenCV REQUIRED) #显示OpenCV的版本号 MESSAGE(&amp;#34;OpenCV version : ${OpenCV_VERSION}&amp;#34;) MESSAGE(&amp;#34;OpenCV include : ${OpenCV_INCLUDE_DIRS}&amp;#34;) MESSAGE(&amp;#34;OpenCV libs11 : ${OpenCV_LIBS}&amp;#34;) MESSAGE(&amp;#34;OpenCV DIR : ${OpenCV_DIR}&amp;#34;) include_directories(${OpenCV_INCLUDE_DIRS}) link_directories(${OpenCV_LIBS}) MESSAGE(&amp;#34;OpenCV libs : ${OpenCV_LIBS}&amp;#34;) include_directories(${OpenCV_INCLUDE_DIRS}) link_directories(${OpenCV_LIBS}) set(SOURCE main.</description>
     </item>

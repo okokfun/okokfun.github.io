@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Analog on My Blog</title>
+    <link>https://okokfun.github.io/categories/analog/</link>
+    <description>Recent content in Analog on My Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 14 Jul 2023 14:57:45 +0800</lastBuildDate><atom:link href="https://okokfun.github.io/categories/analog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>1.2模拟信号</title>
+      <link>https://okokfun.github.io/post/1-2%E6%A8%A1%E6%8B%9F%E4%BF%A1%E5%8F%B7/</link>
+      <pubDate>Fri, 14 Jul 2023 14:57:45 +0800</pubDate>
+      
+      <guid>https://okokfun.github.io/post/1-2%E6%A8%A1%E6%8B%9F%E4%BF%A1%E5%8F%B7/</guid>
+      <description>是指任何携带信息的物理量，力、热、声、光、电等。
+1.2.1 模拟信号和数字信号 信号分为：离散信号和连续信号。离散信号可以只有几个值，连续信号可以无限细分下去。
+离散和连续指信号
+的幅度，也可以指时间。
+采样和量化：
+​	采样：将模拟波形在时间域上进行切分，每个切片大小大致等于原来波形的值，会丢失一些信息。
+​	量化：给每个时间片分配一个数字，量化后的数字可以交给计算机或其它素质电路处理
+1.2.2 周期信号 重复的波形称为周期性的，此周期信号有变化。
+周期(period, $T$)表示一个周期信号完成一个循环所需要的时间。周期(cycle)是指在波形呈现出另一个完全相同的图案之前波形的完整序列值。可以是在逐次循环的波形上任意两个相应点来测出周期。
+向量：既有大小又有方向的量。
+频率和周期：
+频率：每1s内完成的完整周期的个数，单位Hz
+周期：一个循环所经历的时间，单位s，所以周期的倒数就是频率，频率的倒数是周期
+$$ T = \frac{1}{f} $$
+和 $$ f = \frac{1}{T} $$ 正弦曲线的瞬时值： $$ v(t) = V_Psin(wt + ⌀) $$ $V_p$
+正弦曲线的平均值： $$ V_{avg} = \frac{2V_P}{π} $$ 化简得： $$ V_{avg} = 0.637V_P $$ 电流平均值： $$ I_{avg} = 0.637I_p $$ 正弦曲线的有效值： $$ P = IV $$ 计算与直流电压电流产生相同的热效应时的交流电压、电流，通过积分可以求出等效的热量，称为方均根电压(rms)或者电流。
+方均根电压和峰值电压的关系： $$ V_{rms} = 0.707V_p $$ 方均根电流与有效电流的关系是： $$ I_{rms} = 0.</description>
+    </item>
+    
+  </channel>
+</rss>

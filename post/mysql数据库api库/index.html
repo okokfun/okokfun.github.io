@@ -314,16 +314,16 @@ c. 建立连接.	MYSQL *mysql_real_connect(MYSQL *mysql, const char *host, const
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>MYSQL_ROW的本质是 typedef char ** MYSQL_ROW; 数据信息存储的形式如下图所示：</p>
 <p><figure >
-	<a href="https://gitee.com/txt1994/images/raw/master/img/mysql/wps1.jpg" >
-		<img src="https://gitee.com/txt1994/images/raw/master/img/mysql/wps1.jpg"    loading="lazy" alt="img" >
+	<a href="https://s2.loli.net/2023/08/30/P6iKpx7VhGWYqUZ.jpg" >
+		<img src="https://s2.loli.net/2023/08/30/P6iKpx7VhGWYqUZ.jpg"    loading="lazy" alt="wps1.jpg" >
 	</a>
 	
-	<figcaption>img</figcaption>
+	<figcaption>wps1.jpg</figcaption>
 	
 </figure>
 
 <p class="md_image">
-	<img loading='lazy' src="https://gitee.com/txt1994/images/raw/master/img/mysql/wps1.jpg" alt="img"  />
+	<img loading='lazy' src="https://s2.loli.net/2023/08/30/P6iKpx7VhGWYqUZ.jpg" alt="wps1.jpg"  />
 </p></p>
 <p>从<code>mysql.h</code>头文件可查看MYSQL_ROW定义: 118. typedef char **MYSQL_ROW; /<em>return data as array of string</em>/</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">// 从上图分析MYSQL_ROW为什么被定义为char**类型呢？推测mysq_fetch_row()的函数实现大致思想如下：
@@ -591,16 +591,16 @@ c. 建立连接.	MYSQL *mysql_real_connect(MYSQL *mysql, const char *host, const
 <p><code>mysql_stmt_bind_param()</code>		将?对应的实参，设置到预处理环境句柄中</p>
 <p><code>mysql_stmt_execute()</code>			执行预处理的SQL语句</p>
 <p><figure >
-	<a href="https://gitee.com/txt1994/images/raw/master/img/mysql/wps2.jpg" >
-		<img src="https://gitee.com/txt1994/images/raw/master/img/mysql/wps2.jpg"    loading="lazy" alt="img" >
+	<a href="https://s2.loli.net/2023/08/30/nxlOrh7sp1JTBNj.jpg" >
+		<img src="https://s2.loli.net/2023/08/30/nxlOrh7sp1JTBNj.jpg"    loading="lazy" alt="wps2.jpg" >
 	</a>
 	
-	<figcaption>img</figcaption>
+	<figcaption>wps2.jpg</figcaption>
 	
 </figure>
 
 <p class="md_image">
-	<img loading='lazy' src="https://gitee.com/txt1994/images/raw/master/img/mysql/wps2.jpg" alt="img"  />
+	<img loading='lazy' src="https://s2.loli.net/2023/08/30/nxlOrh7sp1JTBNj.jpg" alt="wps2.jpg"  />
 </p></p>
 <blockquote>
 <p>在不熟悉这套API函数的情况下，如何能快速的找到一个完整的案例，使用这套函数呢？分析：在以上4个过程中，哪个最重要呢？找到它，去查看API文档！发现有对应的demo程序。将该demo导入到我们的程序中，运行，观察它的作用。</p>

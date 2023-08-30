@@ -6,7 +6,35 @@
     <description>Recent content in Posts on My Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 22 Jul 2023 17:45:15 +0800</lastBuildDate><atom:link href="https://okokfun.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 29 Aug 2023 17:08:35 +0800</lastBuildDate><atom:link href="https://okokfun.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>自动控制系统目录</title>
+      <link>https://okokfun.github.io/post/%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E7%B3%BB%E7%BB%9F%E7%9B%AE%E5%BD%95/</link>
+      <pubDate>Tue, 29 Aug 2023 17:08:35 +0800</pubDate>
+      
+      <guid>https://okokfun.github.io/post/%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E7%B3%BB%E7%BB%9F%E7%9B%AE%E5%BD%95/</guid>
+      <description>第1章　绪论 1.1　控制系统的基本组成部分 1.2　控制系统应用举例 1.2.1　智能交通系统 1.2.2　汽车转向控制 1.2.3　汽车怠速控制 1.2.4　太阳能收集器的太阳跟踪控制 1.3　开环控制系统（无反馈系统） 1.4　闭环控制系统（反馈控制系统） 1.5　反馈的含义及其作用 1.5.1　反馈对于总增益的影响 1.5.2　反馈对于稳定性的影响 1.5.3　反馈对于外部干扰或噪声的作用 1.6　反馈控制系统的类型 1.7　线性系统与非线性系统 1.8　时不变与时变系统 1.9　连续控制系统 1.10　离散控制系统 1.11　案例研究：基于LEGOMINDSTORMS 的智能车辆避障 1.12　小结 第2章　动态系统的建模 2.1　简单机械系统的建模 2.1.1　平移运动 2.1.2　旋转运动 2.1.3　平移和旋转运动之间的转换 2.1.4　齿轮系 2.1.5　齿隙和死区（非线性特性） 2.2　简单电气系统的建模 2.2.1　无源电气元件建模 2.2.2　电气网络建模 2.3　简单热系统和简单流体系统的建模 2.3.1　热系统的基本属性 2.3.2　流体系统的基本属性 2.4　非线性系统的线性化 2.5　类比 2.</description>
+    </item>
+    
+    <item>
+      <title>Word_origins</title>
+      <link>https://okokfun.github.io/post/word_origins/</link>
+      <pubDate>Sun, 13 Aug 2023 19:12:26 +0800</pubDate>
+      
+      <guid>https://okokfun.github.io/post/word_origins/</guid>
+      <description>此书作者：JOHN AYTO
+介绍 讲英语的人平均知道大约50000个单词。这代表惊人的多样性&amp;amp;单词数量几乎是单个恒星的25倍在夜空中肉眼可见。即使是5万似乎也微不足道除了《牛津英语词典》中记录的50万。但是看着从历史的角度来看，这种多样性变得更加明显而非真实。 追溯一个词的发展历程可以发现，在许多情况下单独的词汇术语以前是同一个词。深史前我们的语言培育了一颗小小的单词种子，几千年来扩散到差异很大的词汇家族中。</description>
+    </item>
+    
+    <item>
+      <title>3.1STM32是什么</title>
+      <link>https://okokfun.github.io/post/3-1stm32%E6%98%AF%E4%BB%80%E4%B9%88/</link>
+      <pubDate>Sun, 30 Jul 2023 17:35:07 +0800</pubDate>
+      
+      <guid>https://okokfun.github.io/post/3-1stm32%E6%98%AF%E4%BB%80%E4%B9%88/</guid>
+      <description>3.1 STM32 是什么 从字面意义来看： ST：意法半导体，是一个公司的名字。 M：Microelectronics 的缩写，表示微控制器，要注意微控制器和微处理器的区别 32：32bit 的意思，表示这是一个 32bit 的微控制器</description>
+    </item>
+    
     <item>
       <title>Myfirst</title>
       <link>https://okokfun.github.io/post/stm32/</link>
@@ -816,7 +844,10 @@ $$ AveP = \int_0^1 p(r) dr $$
       <pubDate>Fri, 14 Jul 2023 18:57:32 +0000</pubDate>
       
       <guid>https://okokfun.github.io/post/1-1%E6%95%B0%E5%AD%97%E9%87%8F%E4%B8%8E%E6%A8%A1%E6%8B%9F%E9%87%8F/</guid>
-      <description></description>
+      <description>模拟量具有连续的数值，数字量具有离散的数值。自然界中大多数可以测量的事物都以模拟量的形式出现。例如，空气温度在一个连续的范围内变化。在给定的一天里，温度不会立即从70°F下上升到71°F；这中间经历无数个温度值。如果绘制一个典型的夏季温度图，将会得到一个平滑和连续的曲线（类似于图1.1的曲线）。其他模拟量的例子是时间、压力、距离和声音。
+​ 相对于一个连续的温度图，假设每小时测量一次温度。现在有一个24小时内每隔一小时采样测量到的离散温度值，如图1.2所示，这样就可以有效地将模拟量转换成数字量的形式，即用一个个数字码对应于每个采样到的温度值。注意，图1.2本身并不是模拟量的数字表示。
+​ 数字量的优点，在电学应用方面，数字量表示法和模拟量表示法相比有一定的优势。其，数字数据和模拟数据相比，前者在处理和传输方面更有效、更可靠。其二，数字数据在需要保存时，更显示了它的优越性。例如，转换成数字形式的音乐，要比相对应的模拟形式更简洁，复制时更精确、更清晰。噪声（不需要的电压波动）几乎不会影响数字数据，但会影响模拟信号。
+1.1.1 模拟电子系统 ​ 扩音系统用于把声音放大，从而让更多的听众听到，这是模拟电子应用的一个简单例子。图1.3的基本图示给出了自然界中的模拟量，即声波，它由麦克风接收，并将其转换为较弱的模拟电压，称为声频信号。这个电压随着声波的音量大小和频率变化而连续变化，随即加到线性放大器的输入中。放大器的输出，也就是放大的输入电压，随即传人扬声器。扬声器将放大的音频信号再变回声波，而这时的声波音量比话简接收到的原始声波的音量大很多。</description>
     </item>
     
     <item>
@@ -1671,88 +1702,135 @@ $$ AveP = \int_0^1 p(r) dr $$
       <pubDate>Fri, 14 Jul 2023 15:05:04 +0000</pubDate>
       
       <guid>https://okokfun.github.io/post/2-4%E4%BA%8C%E6%9E%81%E7%AE%A1%E7%89%B9%E6%80%A7/</guid>
-      <description></description>
+      <description>2.4.1二级管管符号 通用二极管的标准电路符号： 二极管的两极是 A 和 K ，A 是阳极，K 是阴极。箭头符号总是指向阴极。</description>
     </item>
     
     <item>
       <title>2.3半导体二极管的偏置</title>
       <link>https://okokfun.github.io/post/2-3%E5%8D%8A%E5%AF%BC%E4%BD%93%E4%BA%8C%E6%9E%81%E7%AE%A1%E7%9A%84%E5%81%8F%E7%BD%AE/</link>
-      <pubDate>Fri, 14 Jul 2023 15:04:21 +0000</pubDate>
+      <pubDate>Fri, 14 Jul 2023 15:04:21 +0800</pubDate>
       
       <guid>https://okokfun.github.io/post/2-3%E5%8D%8A%E5%AF%BC%E4%BD%93%E4%BA%8C%E6%9E%81%E7%AE%A1%E7%9A%84%E5%81%8F%E7%BD%AE/</guid>
-      <description></description>
+      <description>一个pn结就构成一只半导体二极管。平衡时pn结中没有电流。半导体二极管的主要用处是它能够根据偏置使得电流只朝着一个方向流动。pn结有两种偏置条件——正向偏置和反向偏置。这两种偏置都需要在pn结上外接合适方向的直流电压。
+2.3.1 正向偏置 在电子学中，术语偏置是指给半导体器件外加固定直流电压的工作条件。正向偏置是允许电流流过pn结的条件。
+图2-6给出了半导体二极管正向偏置时直流电源的极性。电源的负极连接到n区（阴极端），电源的正极连接到p区（阳极端）。当半导体二极管正向偏置时，二极管的阳极电位比其阴极电位高。
+正向偏置时是这样工作的：当一个直流电源正向偏置二极管时，由于静电排斥，电源负极推动n区的导带电子向结处运动。同样地，电源正极推动力p区的空穴向结处运动。当外部偏置电压足够可以克服势垒电压时，电子就会有足够的能量进入耗尽区，并穿过pn结进入p区。进入p区的电子会和p区的空穴复合。当电子离开n区时，更多的电子流从电源负极进入n区。因此，通过导带电子（多数载流子）向结的定向移动产生流向n区的电流。当导带电子进入p区并和p区的空穴复合后，这些导带电子就成为价电子。然后，这些价电子向着正阳极连接方向不断地从一个空穴跳到另一个空六。这些价电子的定向移动本质上形成空穴朝着相反方向的定向移动。因此，通过空穴（多数载流子）朝着结方向的定向运动在p区产生电流。
+2.3.2 反向偏置 反向偏置是阻止电流流过pn结的偏置条件。图2-7a给出了反向偏置一个半导体二极管所需的直流电源极性。注意，电源负极连接p区，电源正极连接n区。当半导体二极管反向偏置时，二极管的阳极电位比其阴极电位低。
+反向偏置时是这样工作的：由于相反的电荷相互吸引，电源负极吸引p区的空穴离开pn结，同时电源正极吸引电子离开pn结。由于电子和空穴离开pn结，耗尽区的宽度变得越来越大；在n区产生越来越多的正离子，在p区产生越来越多的负离子。直到势垒电压等于外部偏置电压时，耗尽层的宽度不再增加，当二极管反向偏置时，耗尽区实际上相当于位于正离子层和负离子层之间的绝缘体。
+峰值反向电压(PIV) 当一个二极管反向偏置时，它必须承受住加在两端之上的最大反向电压，否则二极管会被击穿，二极管的这个最大额定电压称为峰值反向电压(PIV)，所需要的PIV值取决于应用场合；在大多数使用普通二极管的情况下，PIV应该高于反向偏置电压.
+反向击穿 当外部反向偏置电压增大到足够大时，会发生雪击穿。雪崩击穿是这样产生的：假设少数导带电子从外部电源获得足够大的能量，从而加速它向二极管正极快速运动。在它的运动过程中，它碰撞一个原子并给予这个原子足够的能量使得一个价电子进人导带。这时，就有两个导带电子。每个导带电子又去碰撞原子，使得又有两个价电子被撞入导带。这时，就有4个导带电子。接着，这4个导带电子又撞击4个价电子使它们进入导带。导带电子这种快速的倍增称为雪崩效应，雪崩效应使得反向电流急剧增大。
+因为大多数二极管电路并不是为工作在反向击穿条件下而设计的，所以这些二极管工作在反向击穿条件下时可能会损坏。反向击穿也可以不损坏二极管，但是必须限制流过二极管 的电流大小，防止温度过高而损害二极管。有一种类型的二极管，即稳压二极管，就是专门 为工作在反向击穿而设计的，稳压二极管同样需要进行限流（稳压管在2.8节中讨论）。</description>
     </item>
     
     <item>
       <title>2.2pn结</title>
       <link>https://okokfun.github.io/post/2-2pn%E7%BB%93/</link>
-      <pubDate>Fri, 14 Jul 2023 15:03:21 +0000</pubDate>
+      <pubDate>Fri, 14 Jul 2023 15:03:21 +0800</pubDate>
       
       <guid>https://okokfun.github.io/post/2-2pn%E7%BB%93/</guid>
-      <description></description>
+      <description>本征半导体硅(纯度99.999999999%)和锗的导电性能不好，通过加入杂质可以改善其导电性能。
+在纯净的硅中加入5价杂质，形成n(negative)型半导体。
+在纯净的硅中加入3价杂质，形成p(positive)型半导体。
+将两种材料合在一起，则在它们交界处就会形成pn结。
+2.2.1 掺杂 掺杂可以增加载流子(电子和空穴)的数量，低电阻率和导电性能。
+加入5价电子，形成n型半导体。在n型半导体材料中，自由电子称为多数载流子；空穴为少数载流子
+加入3价电子，形成p型半导体。在p型半导体材料中，空穴称为多数载流子；自由电子为少数载流子
+2.2.2 pn结 在一块本征硅上参杂，使得硅的一半形成n型半导体，另一半形成p型半导体，则在交界处会形成pn结。在n区有很多自由电子（多数载流子）和少量由热激发产生的空穴（少数载流子）。在p区有很多空穴（多数载流子）和少量由热激发产生的自由电子（少数载流子）。pn结形成了基本的二极管，它是所有固态半导体器件的工作基础。二极管是一种只允许电流朝一个方向流动的器件。
+耗尽区当pn结形成之后，在结附近的一些导带电子漂移到区并且和区的空穴复合，如图2-5a所示。每个电子穿过结并且和空穴复合后，在n区靠近结处会留下带一个净正电荷的五价原子。同样，当电子和p区的一个空穴复合，一个3价原子会带一个净负电荷。因此，结的n区会有正离子，区会有负离子。正负离子出现在结的相对一侧，在耗尽区处产生势垒电压（V）。势垒电压的大小受温度影响。在室温下，一般硅大约为0.7V，锗为0.3V。因为二极管很少使用，所以在实际应用中势电压为0.7V，本书内容也假设势电压为0.7V。
+为了扩散到p区，n区的导带电子必须克服所有正离子的吸力和负离子的力。在离子层形成后，结两边的区域中自由电子和空穴的数量会急剧减少，这个区域称为耗尽区，如图2-5b所示。电荷穿过交界处的任何运动都需要克服势垒电压。</description>
     </item>
     
     <item>
       <title>2.1半导体原子结构</title>
       <link>https://okokfun.github.io/post/2-1%E5%8D%8A%E5%AF%BC%E4%BD%93%E5%8E%9F%E5%AD%90%E7%BB%93%E6%9E%84/</link>
-      <pubDate>Fri, 14 Jul 2023 15:01:04 +0000</pubDate>
+      <pubDate>Fri, 14 Jul 2023 15:01:04 +0800</pubDate>
       
       <guid>https://okokfun.github.io/post/2-1%E5%8D%8A%E5%AF%BC%E4%BD%93%E5%8E%9F%E5%AD%90%E7%BB%93%E6%9E%84/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>1.5故障检测</title>
-      <link>https://okokfun.github.io/post/1-5%E6%95%85%E9%9A%9C%E6%A3%80%E6%B5%8B/</link>
-      <pubDate>Fri, 14 Jul 2023 14:59:05 +0000</pubDate>
-      
-      <guid>https://okokfun.github.io/post/1-5%E6%95%85%E9%9A%9C%E6%A3%80%E6%B5%8B/</guid>
-      <description></description>
+      <description>2.1.1 原子的电子层和轨道： 每个原子的电子不是混乱的堆杂在一起的，而是分层的，每层有其合适的电子数运动，离原子核越近能量越低，活跃度越低。
+2.1.2 价电子、传导电子、离子 离原子核越远越活跃，越近舒服越强。最外层的电子称为价电子,能量最强，束缚最小。
+传导电子：价电子又被称为自由电子，获得足够的能量可以脱离原子核的束缚电子。
+离子：自由电子附身于中性原子上，此原子被称为负离子。
+2.1.3 金属键 原子的原子核和内层电子占据固定的晶格位置。外层价电子受到晶体原子束缚非常小并且可以自由移动，这些带有负电的大量电子和正离子一起形成金属键。
+价带：价电子的离散能级模糊成一个带，这个带被测称为价带。
+导带：价带的下一个能级(通常被占用)也被模糊成一个能带，被称为导带。
+2.1.4 共价键 在钻石中相邻碳原子组成4个键，效果是每个原子周边的8个价电子形成一个化学稳定状态。共用价电子产生很强的共价键。使原子紧密的结合在一起。
+共用电子是不可移动的。所以价带和导带之间存在很大的能带间隔。
+2.1.5 电子电流和空穴电流 当价带电子获得足够的能量时会进入导带，会在价带留下一个空穴。这些空穴和和进入的导带的电子行成电子-空穴对。
+导带电子失去能量并且跌落到价带的空穴时，这种现象称为复合。
+电子电流：在半导体材料中，自由电子的移动是电流的一种。
+空穴电流：在晶体结构中从一个位置移动到另一个位置，，这个电流称为空穴电流。</description>
     </item>
     
     <item>
       <title>1.4放大器</title>
       <link>https://okokfun.github.io/post/1-4%E6%94%BE%E5%A4%A7%E5%99%A8/</link>
-      <pubDate>Fri, 14 Jul 2023 14:58:40 +0000</pubDate>
+      <pubDate>Fri, 14 Jul 2023 14:58:40 +0800</pubDate>
       
       <guid>https://okokfun.github.io/post/1-4%E6%94%BE%E5%A4%A7%E5%99%A8/</guid>
-      <description></description>
+      <description>信号在之前，大多数都需要放大。放大器简单地增加了信号的幅度(电压、电流)。
+1.4.1 线性放大器 线性放大器对输入信号进行幅度上的放大。
+理想放大器指对信号的放大不产生噪声和失真，随着时间变化而变化，并且对输入的精确再现。
+主要用于放大电压和功率。
+电压放大器：$V_{out}$(t)正比于$V_{in}$(t),其比值为电压增益，公式： $$ A_v = \frac{V_{out}}{V_{in}} $$
+$A_{v}$=电压增益；$V_{out}$=输出信号电压；$V_{in}$=输入信号电压
+理想的放大器的传输曲线应该是一条固定斜率无限延伸的直线，但实际没有这样的器件，在$V_{in}$达到一定的时会达到饱和(斜率不变)，最后$V_{in}$怎么变大$V_{out}$都不会变，在达到$V_{out}$ = $V_{max}$ 时曲线会平行于$X$轴。在达到$V_{out}$ = $V_{max}$之前，饱和之后存在一段非线性曲线。
+1.4.2 非线性放大器 放大曲线也可能不是直线，而是曲线。
+有两类放大器：波形整形和开关。
+波形整形放大器：用于改变波形的形状。
+开关放大器：从其他波形产生一个矩形输出。
+功率增益$V_p$,信号的输出·比上输入功率。用电压或电流的有效值来求功率。公式： $$ A_p = \frac{P_{out}}{P_{in}} $$ $A_p$=功率增益，$P_{out}$=输出功率， $P_{in}$=输入功率 $$ A_p = \frac{I_{out}V_{out}}{I_{in}V_{in}} $$
+$$ A_p = (\frac{V^2_{out}/R_L}{V^2_{in}/R_{in}}) $$
+1.4.3 放大器模型 放大器是负载用来放大信号幅度的器件。可以认为放大器是源和负载之间的一个接口。
+1.4.4 级联 多个放大器可以结合成一个更大放大能力的放大器的。
+1.4.5 对数 对数就是幂，方程： $$ y = b^x $$ y值取决于底为b的幂指数，而幂x则是y的对数值。
+有两个常用的对数底：10和e
+log以底为10的对数
+ln以底为e的对数
+以10为底的对数用来描述分贝，对于以10位底，有： $$ y = 10^x $$ 得 $$ x = log_{10}y $$ 把10省掉，简写成$log$。</description>
     </item>
     
     <item>
       <title>1.3信号源</title>
       <link>https://okokfun.github.io/post/1-3%E4%BF%A1%E5%8F%B7%E6%BA%90/</link>
-      <pubDate>Fri, 14 Jul 2023 14:58:21 +0000</pubDate>
+      <pubDate>Fri, 14 Jul 2023 14:58:21 +0800</pubDate>
       
       <guid>https://okokfun.github.io/post/1-3%E4%BF%A1%E5%8F%B7%E6%BA%90/</guid>
-      <description></description>
+      <description>戴维南定理：可以用一个电压源串联一个电阻代替一个复杂的线性电路，这个电路可以看成一个二端口。
+诺顿定理：可以用一个电流源并联一个电阻代替一个二端口线性电路。
+1.3.1 独立源 理想的独立电压源产生的$\color{#376956}{电压}$与$\color{#871F78}{负载电流}$无关。
+理想的独立电流源产生的$\color{#871F78}{电流}$与$\color{#376956}{负载电压}$无关。
+理想的独立信号源的值是固定的，与电路中的所有其他参数都无关。虽然无法实现个真正理想的信号源，但是在某些情况下(例如稳压电源)，它可以很接近理想情况。实际中的信号源可以看成一个理想的源与一个电阻(对交流源而言也可以是其他的无源器件)的组合。
+1.3.2 戴维南定理 它的适用前提是线性元件。
+1.3.3 诺顿定理 诺顿电流的幅度等于负载短路后流经端口的电流。
+1.3.4 负载线 戴维南的电流-电压特性曲线是负载线。
+短路和开路的特性曲线
+在一个线性曲线，接在输出端口的任何负载都满足此特性曲线，
+1.3.5 传感器 传感器是一种将物理量(例如位置、压力或温度)从一种形式转换成另一种形式。</description>
     </item>
     
     <item>
       <title>1.2模拟信号</title>
       <link>https://okokfun.github.io/post/1-2%E6%A8%A1%E6%8B%9F%E4%BF%A1%E5%8F%B7/</link>
-      <pubDate>Fri, 14 Jul 2023 14:57:45 +0000</pubDate>
+      <pubDate>Fri, 14 Jul 2023 14:57:45 +0800</pubDate>
       
       <guid>https://okokfun.github.io/post/1-2%E6%A8%A1%E6%8B%9F%E4%BF%A1%E5%8F%B7/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>1.1模拟电子学</title>
-      <link>https://okokfun.github.io/post/1-1%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E5%AD%A6/</link>
-      <pubDate>Wed, 12 Jul 2023 22:05:41 +0000</pubDate>
-      
-      <guid>https://okokfun.github.io/post/1-1%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E5%AD%A6/</guid>
-      <description>1.1 模拟电子学 模拟信号: 我们测量到的自然现象的特性(比如,压力，流速和温度)都来源于模拟信号
-信号可分为有 二进制数字 表示的数字信号和有 连续变化量 表示的模拟信号
-模拟电子学包括所有其他(非数字)信号，它包括信号处理功能，比如放大,微分和集成等。
-1.1.1 线型方程 线型方程式:
-$$ y = mx + b $$
-式中，y是因变量，x自变量，m是斜率，b是y轴上的截距。 欧姆定理：
-$$ I=V/R $$
-电流(I)是因变量，自变量是电压(V),斜率是电阻的倒数(1/R), 也就是电导.欧姆定律可变化为：
-$$ I=GV $$
-特性曲线是能够反应一个器件两个变化特性之间关系的图</description>
+      <description>是指任何携带信息的物理量，力、热、声、光、电等。
+1.2.1 模拟信号和数字信号 信号分为：离散信号和连续信号。离散信号可以只有几个值，连续信号可以无限细分下去。
+离散和连续指信号
+的幅度，也可以指时间。
+采样和量化：
+​	采样：将模拟波形在时间域上进行切分，每个切片大小大致等于原来波形的值，会丢失一些信息。
+​	量化：给每个时间片分配一个数字，量化后的数字可以交给计算机或其它素质电路处理
+1.2.2 周期信号 重复的波形称为周期性的，此周期信号有变化。
+周期(period, $T$)表示一个周期信号完成一个循环所需要的时间。周期(cycle)是指在波形呈现出另一个完全相同的图案之前波形的完整序列值。可以是在逐次循环的波形上任意两个相应点来测出周期。
+向量：既有大小又有方向的量。
+频率和周期：
+频率：每1s内完成的完整周期的个数，单位Hz
+周期：一个循环所经历的时间，单位s，所以周期的倒数就是频率，频率的倒数是周期
+$$ T = \frac{1}{f} $$
+和 $$ f = \frac{1}{T} $$ 正弦曲线的瞬时值： $$ v(t) = V_Psin(wt + ⌀) $$ $V_p$
+正弦曲线的平均值： $$ V_{avg} = \frac{2V_P}{π} $$ 化简得： $$ V_{avg} = 0.637V_P $$ 电流平均值： $$ I_{avg} = 0.637I_p $$ 正弦曲线的有效值： $$ P = IV $$ 计算与直流电压电流产生相同的热效应时的交流电压、电流，通过积分可以求出等效的热量，称为方均根电压(rms)或者电流。
+方均根电压和峰值电压的关系： $$ V_{rms} = 0.707V_p $$ 方均根电流与有效电流的关系是： $$ I_{rms} = 0.</description>
     </item>
     
     <item>
@@ -1779,6 +1857,30 @@ $$ I=GV $$
     </item>
     
     <item>
+      <title>1.1模拟电子学</title>
+      <link>https://okokfun.github.io/post/1-1%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E5%AD%A6/</link>
+      <pubDate>Wed, 12 Jul 2023 22:05:41 +0800</pubDate>
+      
+      <guid>https://okokfun.github.io/post/1-1%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E5%AD%A6/</guid>
+      <description>1.1 模拟电子学 模拟信号: 我们测量到的自然现象的特性(比如,压力，流速和温度)都来源于模拟信号
+信号可分为有 二进制数字 表示的数字信号和有 连续变化量 表示的模拟信号
+模拟电子学包括所有其他(非数字)信号，它包括信号处理功能，比如放大,微分和集成等。
+1.1.1 线型方程 线型方程式:
+$$ y = mx + b $$
+式中，y是因变量，x自变量，m是斜率，b是y轴上的截距。 欧姆定理：
+$$ I = \frac{V}{R} $$
+电流(I)是因变量，自变量是电压(V),斜率是电阻的倒数(1/R), 也就是电导(G).欧姆定律可变化为：
+$$ I = GV $$
+特性曲线是能够反应一个器件两个变化特性之间关系的图
+线性分量：在欧姆定理给定的形式中电流的增加正比于所施加电压的变化
+1.1.2 交流电阻 在模拟电子学中，很多器件的特性曲线中电流和电压不成正比。这些器件是非线性器件，但由于这些器件采用了连续的输入信号，它依然在模拟电子学的研究范围内。
+交流电阻：将电压的一个微小变化量除以相应的电流变化量(即∆U/∆I)的比值定义为模拟器件的交流电阻(r)，又被称为动态小信号电阻或体电阻。 $$ r_{ac} = \frac{∆U}{∆I} $$
+1.1.3 传统的电流与电子流动 电流是电荷的流动速率。
+电流的流向：从电源正极流出，负极流入。
+电子的流向：从负极流出，正极流入。</description>
+    </item>
+    
+    <item>
       <title>适用于Keil的插件合集</title>
       <link>https://okokfun.github.io/post/keil%E6%8F%92%E4%BB%B6%E5%90%88%E9%9B%86/</link>
       <pubDate>Tue, 11 Jul 2023 13:55:45 +0000</pubDate>
@@ -1789,7 +1891,7 @@ $$ I=GV $$
 https://sourceforge.net/projects/astyle/files 1.1 AStyle可以对代码进行格式化分别是对单个文件格式化，命令： -n !E --style=google -s4 对多个文件格式化，但需要在同一个文件夹，命令：
 -n &amp;#34;$E*.c&amp;#34; &amp;#34;$E*.h&amp;#34; --style=google -p -s4 -S -f -xW -w -xw -R 2.FileComments 2.1 FileComments可以对*.h和*.c进行快速添加注释，但需要模版文件，此文件在最下面提供下载，命令： !E 3.DateTime 3.1 DateTime可以识别当前日期和时间，用的不多，命令： 当前日期：
 !E ~E ^E 当前时间：
-!E ~E ^E T 4.FunctionComment 4.1 FunctionComment可以提供函数快速添加注释，命令： !E ~E 把这些插件添加到keil中，打开keil，依次点击Tools-&amp;gt;Customize Tools Menu,此时页面是这样的： 把上述的插件添加进去，Command是插件路径，Arguments是使用插件时的参数，可以根据需要自行定制
+!E ~E ^E T 4.FunctionComment 4.1 FunctionComment可以提供函数快速添加注释，命令： !E ~E 把这些插件添加到keil中，打开keil，依次点击Tools-&amp;gt;Customize Tools Menu,此时页面是这样的： 155637.png 把上述的插件添加进去，Command是插件路径，Arguments是使用插件时的参数，可以根据需要自行定制
 添加插件的快捷键：点击keil页面的小扳手，找到Shortcut Keys,把下拉框拉到刚才添加的插件处，右边是添加快键键的地方，添加后可以使用了</description>
     </item>
     
@@ -1900,16 +2002,16 @@ std::complex c1{1.1, 2.2}; // 推断出 std::complex&amp;lt;double&amp;gt; std::
       
       <guid>https://okokfun.github.io/post/visual-studio-2022-pre%E6%B7%BB%E5%8A%A0opencv%E5%BA%93/</guid>
       <description>此篇是VS添加OpenCV库教程
-1. 创建一个新工程 img img 2. 创建完工程后切到属性管理器 img 3. 添加新项目属性列表 然后切到Debug | x64添加新项目属性列表(P) img 然后双击新建的文件。
-4. 添加库头文件路径和库文件路径 添加库头文件路径 img img 添加库文件路径
-img 5. 填写要使用的库文件名 img 这里使用debug版
+1. 创建一个新工程 visual_studio_opencv_1.jpg visual_studio_opencv_2.jpg 2. 创建完工程后切到属性管理器 visual_studio_opencv_3.jpg 3. 添加新项目属性列表 然后切到Debug | x64添加新项目属性列表(P) visual_studio_opencv_4.jpg 然后双击新建的文件。
+4. 添加库头文件路径和库文件路径 添加库头文件路径 visual_studio_opencv_5.jpg visual_studio_opencv_6.jpg 添加库文件路径
+visual_studio_opencv_7.jpg 5. 填写要使用的库文件名 visual_studio_opencv_8.jpg 这里使用debug版
 End.</description>
     </item>
     
     <item>
       <title>cmake编译opencv及Clion使用</title>
       <link>https://okokfun.github.io/post/cmake%E7%BC%96%E8%AF%91opencv%E5%8F%8Aclion%E4%BD%BF%E7%94%A8/</link>
-      <pubDate>Tue, 15 Feb 2022 19:21:35 +0000</pubDate>
+      <pubDate>Tue, 15 Feb 2022 19:21:35 +0800</pubDate>
       
       <guid>https://okokfun.github.io/post/cmake%E7%BC%96%E8%AF%91opencv%E5%8F%8Aclion%E4%BD%BF%E7%94%A8/</guid>
       <description>采用了linux下编译OpenCV, Visual Studio 2022, QT6.2.3都不成功。
@@ -1917,9 +2019,9 @@ End.</description>
 1. 下载OpenCV源码 源码地址👇
 Github:
 https://github.com/opencv/opencv/archive/4.5.5.zip
-2. 编译OpenCV源码 解压文件夹 OpenCV源码 解压win下exe文件解压后由两个文件夹，source为源码目录 OpenCV源码 build为已经建好的库文件目录
-OpenCV源码 CMake-gui工具构建
-OpenCV源码 source code选择带有源码的目录，binaries选择一个新创建一个mingw-build目录，然后点击Configure，弹出的窗口选择MinGW Makefiles,第一次可能会失败，失败后再点击Configure，还不行的百度吧。 配置成功后点击Generate cd到mingw-bulid目录执行mingw32-make -j8,根据自己机器性能设置线程数，这里设置8个线程，编译时间较久，等待完成。 然后执行mingw32-make install生成库，在mingw-build生成install保存了生成库库文件和头文件。 3. 后续配置 把C:\\Users\\用户名\\Downloads\\opencv\\mingw-build\\install\\x64\\mingw\\bin路径添加到win的环境变量
+2. 编译OpenCV源码 解压文件夹 opencv_1.jpg 解压win下exe文件解压后由两个文件夹，source为源码目录 opencv_2.jpg build为已经建好的库文件目录
+opencv_3.jpg CMake-gui工具构建
+opencv_4.jpg source code选择带有源码的目录，binaries选择一个新创建一个mingw-build目录，然后点击Configure，弹出的窗口选择MinGW Makefiles,第一次可能会失败，失败后再点击Configure，还不行的百度吧。 配置成功后点击Generate cd到mingw-bulid目录执行mingw32-make -j8,根据自己机器性能设置线程数，这里设置8个线程，编译时间较久，等待完成。 然后执行mingw32-make install生成库，在mingw-build生成install保存了生成库库文件和头文件。 3. 后续配置 把C:\\Users\\用户名\\Downloads\\opencv\\mingw-build\\install\\x64\\mingw\\bin路径添加到win的环境变量
 👇此为一个CMakeLists.txt
 cmake_minimum_required(VERSION 3.19) project(opencv_learn) set(CMAKE_CXX_STANDARD 20) include_directories($ENV{CMAKE_INCLUDE_PATH}) set(OpenCV_DIR C:\\Users\\用户名\\Downloads\\opencv\\mingw-build\\install\\x64\\mingw\\bin) #需要的openCV库 FIND_PACKAGE(OpenCV REQUIRED) #显示OpenCV的版本号 MESSAGE(&amp;#34;OpenCV version : ${OpenCV_VERSION}&amp;#34;) MESSAGE(&amp;#34;OpenCV include : ${OpenCV_INCLUDE_DIRS}&amp;#34;) MESSAGE(&amp;#34;OpenCV libs11 : ${OpenCV_LIBS}&amp;#34;) MESSAGE(&amp;#34;OpenCV DIR : ${OpenCV_DIR}&amp;#34;) include_directories(${OpenCV_INCLUDE_DIRS}) link_directories(${OpenCV_LIBS}) MESSAGE(&amp;#34;OpenCV libs : ${OpenCV_LIBS}&amp;#34;) include_directories(${OpenCV_INCLUDE_DIRS}) link_directories(${OpenCV_LIBS}) set(SOURCE main.</description>
     </item>
@@ -1972,7 +2074,7 @@ static std::mutex s_MeshesMutex; static void LoadMesh(std::vector&amp;lt;Ref&amp
       <description> qt添加第三方库方法
 添加库 选择项目名右击
 选择添加库
-选择外部库，下一步 库文件填写库文件路径和库名字，包含路径是库头文件路径，平台选择一个或全部选择，链接选择动态，点击下一步 汇总将会显示添加到.pro文件中，在项目中可以添加头文件使用此库了 </description>
+libs_1.jpg 选择外部库，下一步 libs_2.jpg 库文件填写库文件路径和库名字，包含路径是库头文件路径，平台选择一个或全部选择，链接选择动态，点击下一步 libs_3.jpg 汇总将会显示添加到.pro文件中，在项目中可以添加头文件使用此库了 libs_4.jpg </description>
     </item>
     
     <item>
@@ -1982,7 +2084,7 @@ static std::mutex s_MeshesMutex; static void LoadMesh(std::vector&amp;lt;Ref&amp
       
       <guid>https://okokfun.github.io/post/qt%E4%B8%ADui%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D/</guid>
       <description>qt ui区别：
-无ui的mainWindow.h #ifndef MAINWINDOW_H #define MAINWINDOW_H #include &amp;lt;QMainWindow&amp;gt; class MainWindow : public QMainWindow { Q_OBJECT public: MainWindow(QWidget *parent = nullptr); ~MainWindow(); }; #endif // MAINWINDOW_H 有ui的mainWindow.h #ifndef MAINWINDOW_H #define MAINWINDOW_H #include &amp;lt;QMainWindow&amp;gt; QT_BEGIN_NAMESPACE namespace Ui { class MainWindow; } QT_END_NAMESPACE // 这个MainWindow和下边的MainWindow没有关系，在不同命名空间内。 class MainWindow : public QMainWindow { Q_OBJECT public: MainWindow(QWidget *parent = nullptr); ~MainWindow(); private: Ui::MainWindow *ui;// ui的指针 }; #endif // MAINWINDOW_H 无ui的mainWindow.cpp #include &amp;#34;mainwindow.h&amp;#34; MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) { } MainWindow::~MainWindow() { } 有ui的mainWindow.</description>
+无ui的mainWindow.h #ifndef MAINWINDOW_H #define MAINWINDOW_H #include &amp;lt;QMainWindow&amp;gt; class MainWindow : public QMainWindow { Q_OBJECT public: MainWindow(QWidget *parent = nullptr); ~MainWindow(); }; #endif // MAINWINDOW_H 有ui的mainWindow.h #ifndef MAINWINDOW_H #define MAINWINDOW_H #include &amp;lt;QMainWindow&amp;gt; QT_BEGIN_NAMESPACE namespace Ui { class MainWindow; } QT_END_NAMESPACE // 这个MainWindow和下边的MainWindow没有关系，在不同命名空间内。 class MainWindow : public QMainWindow { Q_OBJECT public: MainWindow(QWidget *parent = nullptr); ~MainWindow(); private: Ui::MainWindow *ui;// ui的指针 }; #endif // MAINWINDOW_H 无ui的mainWindow.cpp #include &amp;#34;mainwindow.h&amp;#34; MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {} MainWindow::~MainWindow() {} 有ui的mainWindow.</description>
     </item>
     
     <item>
@@ -2047,9 +2149,9 @@ bool condition = true; int i = 0; for (; ; ) { //... ++i; if (!</description>
       <guid>https://okokfun.github.io/post/visual-studio-2022%E5%9F%BA%E6%9C%AC%E8%AE%BE%E7%BD%AE/</guid>
       <description>用微软家的Visual Studio 2022创建项目，为了避免文件混乱，可以采用下边的设置方法,当然也可以使用默认的设置。
 点击解决方案下的项目名，例如sendbox👇
-在弹出的对话窗中点击属性👇
-然后在弹出的对话框中👇，选择所有配置,平台选择所有平台
-上图有一个错误去掉bin前面的\.
+vs-setting-1 在弹出的对话窗中点击属性👇
+vs-setting-2 然后在弹出的对话框中👇，选择所有配置,平台选择所有平台
+vs-setting-3 上图有一个错误去掉bin前面的\.
 配置属性-&amp;gt;常规，
 在常规属性-&amp;gt;输出目录填写$(SolutionDir)bin\$(Platform)\$(Configuration)\
 在常规属性-&amp;gt;中间目录填写$(SolutionDir)bin\intermediates\$(Platform)\$(Configuration)\
@@ -2057,8 +2159,8 @@ bool condition = true; int i = 0; for (; ; ) { //... ++i; if (!</description>
 设置完点击项目，选择清理，然后重新生成
 编译器语言标准
 配置属性-&amp;gt;常规-&amp;gt;C++语言标准
-C++标准 配置属性-&amp;gt;常规-&amp;gt;C语言标准
-C标准 End.</description>
+ISO_C++_STD.jpg 配置属性-&amp;gt;常规-&amp;gt;C语言标准
+ISO_C_STD End.</description>
     </item>
     
     <item>
@@ -2305,7 +2407,7 @@ unordered_set 是含有 Key 类型唯一对象集合的关联容器。搜索、�
       <guid>https://okokfun.github.io/post/%E5%8A%A8%E6%80%81%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/</guid>
       <description>此文取自于👉动态内存管理 - cppreference.com
 std::unique_ptr 拥有独有对象所有权语义的智能指针
-#include &amp;lt;iostream&amp;gt; #include &amp;lt;vector&amp;gt; #include &amp;lt;memory&amp;gt; #include &amp;lt;cstdio&amp;gt; #include &amp;lt;fstream&amp;gt; #include &amp;lt;cassert&amp;gt; #include &amp;lt;functional&amp;gt; struct B { virtual void bar() { std::cout &amp;lt;&amp;lt; &amp;#34;B::bar\n&amp;#34;; } virtual ~B() = default; }; struct D : B { D() { std::cout &amp;lt;&amp;lt; &amp;#34;D::D\n&amp;#34;; } ~D() { std::cout &amp;lt;&amp;lt; &amp;#34;D::~D\n&amp;#34;; } void bar() override { std::cout &amp;lt;&amp;lt; &amp;#34;D::bar\n&amp;#34;; } }; // 消费 unique_ptr 的函数能以值或以右值引用接收它 std::unique_ptr&amp;lt;D&amp;gt; pass_through(std::unique_ptr&amp;lt;D&amp;gt; p) { p-&amp;gt;bar(); return p; } void close_file(std::FILE* fp) { std::fclose(fp); } int main() { std::cout &amp;lt;&amp;lt; &amp;#34;unique ownership semantics demo\n&amp;#34;; { auto p = std::make_unique&amp;lt;D&amp;gt;(); // p 是占有 D 的 unique_ptr auto q = pass_through(std::move(p)); assert(!</description>
+#include &amp;lt;iostream&amp;gt; #include &amp;lt;vector&amp;gt; #include &amp;lt;memory&amp;gt; #include &amp;lt;cstdio&amp;gt; #include &amp;lt;fstream&amp;gt; #include &amp;lt;cassert&amp;gt; #include &amp;lt;functional&amp;gt; struct B { virtual void bar() { std::cout &amp;lt;&amp;lt; &amp;#34;B::bar\n&amp;#34;; } virtual ~B() = default; }; struct D : B{ D() { std::cout &amp;lt;&amp;lt; &amp;#34;D::D\n&amp;#34;; } ~D() { std::cout &amp;lt;&amp;lt; &amp;#34;D::~D\n&amp;#34;; } void bar() override { std::cout &amp;lt;&amp;lt; &amp;#34;D::bar\n&amp;#34;; } }; // 消费 unique_ptr 的函数能以值或以右值引用接收它 std::unique_ptr&amp;lt;D&amp;gt; pass_through(std::unique_ptr&amp;lt;D&amp;gt; p) { p-&amp;gt;bar(); return p; } void close_file(std::FILE* fp) { std::fclose(fp); } int main() { std::cout &amp;lt;&amp;lt; &amp;#34;unique ownership semantics demo\n&amp;#34;; { auto p = std::make_unique&amp;lt;D&amp;gt;(); // p 是占有 D 的 unique_ptr auto q = pass_through(std::move(p)); assert(!</description>
     </item>
     
     <item>
@@ -2408,10 +2510,10 @@ MongoDB数据库
 Mariadb数据库 (由MySQL的创始人Michael Widenius（英语：Michael Widenius）主导开发,MariaDB名称来自Michael Widenius的女儿Maria的名字)
 SQLite (设计目标是嵌入式)
 1 Oracle的体系结构 Oracle服务器：是一个数据管理系统(RDBMS)，它提供开放的, 全面的, 近乎完整的信息管理。由1个数据库和一个（或多个）实例组成。数据库位于硬盘上，实例位于内存中。
-img 1.1 表空间和数据文件 逻辑概念：表空间是由数据文件组成，位于实例上，在内存中。
+wps1 1.1 表空间和数据文件 逻辑概念：表空间是由数据文件组成，位于实例上，在内存中。
 物理概念：数据文件，在磁盘上（/home/oracle_11/app/oradata/orcl目录中的.DBF文件）；
 ​ 一个表空间包含一个或者多个数据文件。
-1.2 段、区、块 img 段存在于表空间中，段是区的集合，区是数据块的集合，数据块会被映射到磁盘块。</description>
+1.2 段、区、块 wps2 段存在于表空间中，段是区的集合，区是数据块的集合，数据块会被映射到磁盘块。</description>
     </item>
     
     <item>
@@ -2473,7 +2575,7 @@ c. 建立连接.	MYSQL *mysql_real_connect(MYSQL *mysql, const char *host, const
     <item>
       <title>Mysql数据库</title>
       <link>https://okokfun.github.io/post/mysql%E6%95%B0%E6%8D%AE%E5%BA%93/</link>
-      <pubDate>Wed, 05 Jan 2022 12:57:29 +0000</pubDate>
+      <pubDate>Wed, 05 Jan 2022 12:57:29 +0800</pubDate>
       
       <guid>https://okokfun.github.io/post/mysql%E6%95%B0%E6%8D%AE%E5%BA%93/</guid>
       <description>1 MySQL基础知识 瑞典MySQL AB公司开发，由SUN收购，而后SUN被甲骨文并购，目前属于Oracle公司。
@@ -2524,14 +2626,14 @@ git clone https://github.com.cnpmjs.org/MistEO/meojson.git 编译 json静态库 
       <pubDate>Tue, 04 Jan 2022 17:36:44 +0000</pubDate>
       
       <guid>https://okokfun.github.io/post/visual-studio-2022%E6%B7%BB%E5%8A%A0%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93/</guid>
-      <description>文件夹创建 在项目根目录创建Dependencies,然后在Dependencies创建include目录 在Dependencies中创建Libs 把头文件和库文件放到对目录
-项目头文件添加 然后用Visual Studio打开项目，找到 红色圈中的功能条
+      <description>文件夹创建 在项目根目录创建Dependencies,然后在Dependencies创建include目录 explorer_dZv7Sj1zKv.png 在Dependencies中创建Libs explorer_OfVTAKdKwG.png 把头文件和库文件放到对目录
+项目头文件添加 然后用Visual Studio打开项目，找到 devenv_m2Hpr9hqkF.png 红色圈中的功能条
 再点击最下边的属性
-定位到常规，然后再编辑附加包含目录，添加一条新item为$(SolutionDir)Dependencies\include\
-其中 $(SolutionDir)为项目根目录，Dependencies\include\为头文件目录
+mia3Eg3WRZ.png 定位到常规，然后再编辑附加包含目录，添加一条新item为$(SolutionDir)Dependencies\include\
+devenv_4dDWoNrKwt.png 其中 $(SolutionDir)为项目根目录，Dependencies\include\为头文件目录
 至此第三方库的头文件已经添加完成
-项目库文件添加 点击链接器，常规，附加库目录，添加一条$(SolutionDir)Dependencies\Libs\GLFW,
-然后点击输入，附加依赖项，写入要使用的库文件名，点击确定，第三方库已被添加到项目中
+项目库文件添加 devenv_dX8CZIf3KK.png 点击链接器，常规，附加库目录，添加一条$(SolutionDir)Dependencies\Libs\GLFW,
+devenv_R78BVre94f.png 然后点击输入，附加依赖项，写入要使用的库文件名，点击确定，第三方库已被添加到项目中
 End.</description>
     </item>
     
@@ -2690,7 +2792,7 @@ quit = q (gdb) q 命令行传参:show args 设置的时机: 启动gdb之后, 在
       <pubDate>Sun, 26 Dec 2021 13:43:29 +0000</pubDate>
       
       <guid>https://okokfun.github.io/post/%E4%BB%8Eportainer%E7%82%B9%E5%87%BB%E7%AB%AF%E5%8F%A3%E5%8F%B7%E8%BF%9B%E5%85%A5%E5%AE%B9%E5%99%A8%E6%9C%8D%E5%8A%A1%E6%96%B9%E6%B3%95/</guid>
-      <description> 1.点击home,再点击配置，然后填写nas的ip地址即可 </description>
+      <description> 端口进入容器 1.点击home,再点击配置，然后填写nas的ip地址即可 进入IP设置 IP地址填写 </description>
     </item>
     
     <item>
@@ -2699,7 +2801,7 @@ quit = q (gdb) q 命令行传参:show args 设置的时机: 启动gdb之后, 在
       <pubDate>Sun, 26 Dec 2021 13:42:29 +0000</pubDate>
       
       <guid>https://okokfun.github.io/post/openmediavault%E4%B8%AD%E5%AE%89%E8%A3%85docker%E4%B8%8Egui%E5%B7%A5%E5%85%B7portainer/</guid>
-      <description> 1. 安装完第三方插件后，再安装docker与portainer 2. 点击Opem Portainer创建管理账号 3. 然后创建一个容器网络 </description>
+      <description> 1. 安装完第三方插件后，再安装docker与portainer docker与portainer 2. 点击Opem Portainer创建管理账号 account 3. 然后创建一个容器网络 network </description>
     </item>
     
     <item>
@@ -2724,7 +2826,7 @@ deb https://mirrors.tuna.tsinghua.edu.cn/debian/ buster main # deb-src https://m
       
       <guid>https://okokfun.github.io/post/openmediavault%E5%88%9B%E5%BB%BA%E5%AE%B9%E5%99%A8/</guid>
       <description>要创建的容器有：
-Mariadb: 关系型数据库，mysql的开源版本Adminer：开源的数据库管理软件Gitea：开源的私人代码版本管理器Flarum：开源的论坛WordPress：开源的博客软件NextCloud：开源的私人网盘软件1.在一个分区上创建我们需要的文件夹存放配置文件 2.在终端拉取上面的各个镜像文件 1.flarum docker pull mondedie/flarum:latest2.wordpress docker pull wordpress3.adminer docker pull adminer4.mariadb docker pull mariadb5.gitea docker pull gitea/gitea6.nextcloud docker pull nextcloud3.创建各个容器 按顺序应该创建数据库软件与数据库管理软件 1.mariadb容器创建参考 container_name: mariadbenvironment:- PUID=1000- PGID=1000- MYSQL_ROOT_PASSWORD=1- TZ=Asia/Shanghaivolumes:- /srv/dev-disk-by-id-ata-VBOX_HARDDISK_VBdf1e9e6f-f90961e1-part1/mariadb/config:/configports:- 3306:3306networks:- mynetrestart: alwaysnetworks:mynet:external:name: mynet2.adminer创建参考 container_name: adminerenvironment:- ADMINER_DEFAULT_SERVER=mariadbports:- 8080:8080networks:- mynetrestart: alwaysnetworks:mynet:external:name: mynet3.</description>
+Mariadb: 关系型数据库，mysql的开源版本Adminer：开源的数据库管理软件Gitea：开源的私人代码版本管理器Flarum：开源的论坛WordPress：开源的博客软件NextCloud：开源的私人网盘软件1.在一个分区上创建我们需要的文件夹存放配置文件 文件夹创建 2.在终端拉取上面的各个镜像文件 1.flarum docker pull mondedie/flarum:latest2.wordpress docker pull wordpress3.adminer docker pull adminer4.mariadb docker pull mariadb5.gitea docker pull gitea/gitea6.nextcloud docker pull nextcloud3.创建各个容器 按顺序应该创建数据库软件与数据库管理软件 database 1.mariadb容器创建参考 container_name: mariadbenvironment:- PUID=1000- PGID=1000- MYSQL_ROOT_PASSWORD=1- TZ=Asia/Shanghaivolumes:- /srv/dev-disk-by-id-ata-VBOX_HARDDISK_VBdf1e9e6f-f90961e1-part1/mariadb/config:/configports:- 3306:3306networks:- mynetrestart: alwaysnetworks:mynet:external:name: mynet2.adminer创建参考 container_name: adminerenvironment:- ADMINER_DEFAULT_SERVER=mariadbports:- 8080:8080networks:- mynetrestart: alwaysnetworks:mynet:external:name: mynet3.</description>
     </item>
     
     <item>
@@ -2736,8 +2838,8 @@ Mariadb: 关系型数据库，mysql的开源版本Adminer：开源的数据库�
       <description>OpenMediaVault（omv）是开源的nas系统，本博客尽量采用开源的代码和软件
 1. 镜像下载 下载地址
 https://sourceforge.net/projects/openmediavault/files/latest/download 2. 刻录或虚拟机安装 可以用etcher软件刻录镜像
-安装 omv-extras 启用 OMV 5 社区插件支持 3. 安装依赖的工具 sudo apt --yes --no-install-recommends install dirmngr gnupg 4. 下载最新的omv-extras 安装包 地址：https://mirrors.tuna.tsinghua.edu.cn/OpenMediaVault/openmediavault-plugin-developers/pool/main/o/openmediavault-omvextrasorg/openmediavault-omvextrasorg_5.6.2_all.deb 下载命令：sudo wget https://mirrors.tuna.tsinghua.edu.cn/OpenMediaVault/openmediavault-plugin-developers/pool/main/o/openmediavault-omvextrasorg/openmediavault-omvextrasorg_5.6.2_all.deb 5. 安装 sudo dpkg -i openmediavault-omvextrasorg_5.6.2_all.deb 6. 安装完开启docker扩展源 7. Docker修改镜像源并在OMV 中的安装和使用 Docker 设置国内镜像服务器
-第一步 创建 docker 配置文件目录 sudo mkdir /etc/docker 第二步 创建 daemon.json 配置文件 sudo touch /etc/docker/daemon.json 第三步 编辑配置文件 sudo nano /etc/docker/daemon.json 在编辑器中粘贴以下内容: { &amp;#34;registry-mirrors&amp;#34;: [ &amp;#34;https://hub-mirror.c.163.com&amp;#34;, &amp;#34;https://mirror.baidubce.com&amp;#34; ] } 第四步 重启 docker 服务 sudo systemctl daemon-reload sudo systemctl restart docker 检查设置是否生效</description>
+安装 omv-extras 启用 OMV 5 社区插件支持 3. 安装依赖的工具 sudo apt --yes --no-install-recommends install dirmngr gnupg 4. 下载最新的omv-extras 安装包 地址：https://mirrors.tuna.tsinghua.edu.cn/OpenMediaVault/openmediavault-plugin-developers/pool/main/o/openmediavault-omvextrasorg/openmediavault-omvextrasorg_5.6.2_all.deb 下载命令：sudo wget https://mirrors.tuna.tsinghua.edu.cn/OpenMediaVault/openmediavault-plugin-developers/pool/main/o/openmediavault-omvextrasorg/openmediavault-omvextrasorg_5.6.2_all.deb 5. 安装 sudo dpkg -i openmediavault-omvextrasorg_5.6.2_all.deb 6. 安装完开启docker扩展源 OpenMediaVault2021-05-05 214136.png 软件源2021-05-05 214306.png 7. Docker修改镜像源并在OMV 中的安装和使用 Docker 设置国内镜像服务器
+第一步 创建 docker 配置文件目录 sudo mkdir /etc/docker 第二步 创建 daemon.json 配置文件 sudo touch /etc/docker/daemon.json 第三步 编辑配置文件 sudo nano /etc/docker/daemon.json 在编辑器中粘贴以下内容: { &amp;#34;registry-mirrors&amp;#34;: [ &amp;#34;https://hub-mirror.</description>
     </item>
     
     <item>

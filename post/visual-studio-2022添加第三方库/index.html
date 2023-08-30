@@ -1,40 +1,40 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='文件夹创建 在项目根目录创建Dependencies,然后在Dependencies创建include目录 在Dependencies中创建Libs 把头文件和库文件放到对目录
-项目头文件添加 然后用Visual Studio打开项目，找到 红色圈中的功能条
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='文件夹创建 在项目根目录创建Dependencies,然后在Dependencies创建include目录 explorer_dZv7Sj1zKv.png 在Dependencies中创建Libs explorer_OfVTAKdKwG.png 把头文件和库文件放到对目录
+项目头文件添加 然后用Visual Studio打开项目，找到 devenv_m2Hpr9hqkF.png 红色圈中的功能条
 再点击最下边的属性
-定位到常规，然后再编辑附加包含目录，添加一条新item为$(SolutionDir)Dependencies\include\
-其中 $(SolutionDir)为项目根目录，Dependencies\include\为头文件目录
+mia3Eg3WRZ.png 定位到常规，然后再编辑附加包含目录，添加一条新item为$(SolutionDir)Dependencies\include\
+devenv_4dDWoNrKwt.png 其中 $(SolutionDir)为项目根目录，Dependencies\include\为头文件目录
 至此第三方库的头文件已经添加完成
-项目库文件添加 点击链接器，常规，附加库目录，添加一条$(SolutionDir)Dependencies\Libs\GLFW,
-然后点击输入，附加依赖项，写入要使用的库文件名，点击确定，第三方库已被添加到项目中
+项目库文件添加 devenv_dX8CZIf3KK.png 点击链接器，常规，附加库目录，添加一条$(SolutionDir)Dependencies\Libs\GLFW,
+devenv_R78BVre94f.png 然后点击输入，附加依赖项，写入要使用的库文件名，点击确定，第三方库已被添加到项目中
 End.'><title>Visual_Studio_2022添加第三方库</title>
 
 <link rel='canonical' href='https://okokfun.github.io/post/visual-studio-2022%E6%B7%BB%E5%8A%A0%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93/'>
 
 <link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='Visual_Studio_2022添加第三方库'>
-<meta property='og:description' content='文件夹创建 在项目根目录创建Dependencies,然后在Dependencies创建include目录 在Dependencies中创建Libs 把头文件和库文件放到对目录
-项目头文件添加 然后用Visual Studio打开项目，找到 红色圈中的功能条
+<meta property='og:description' content='文件夹创建 在项目根目录创建Dependencies,然后在Dependencies创建include目录 explorer_dZv7Sj1zKv.png 在Dependencies中创建Libs explorer_OfVTAKdKwG.png 把头文件和库文件放到对目录
+项目头文件添加 然后用Visual Studio打开项目，找到 devenv_m2Hpr9hqkF.png 红色圈中的功能条
 再点击最下边的属性
-定位到常规，然后再编辑附加包含目录，添加一条新item为$(SolutionDir)Dependencies\include\
-其中 $(SolutionDir)为项目根目录，Dependencies\include\为头文件目录
+mia3Eg3WRZ.png 定位到常规，然后再编辑附加包含目录，添加一条新item为$(SolutionDir)Dependencies\include\
+devenv_4dDWoNrKwt.png 其中 $(SolutionDir)为项目根目录，Dependencies\include\为头文件目录
 至此第三方库的头文件已经添加完成
-项目库文件添加 点击链接器，常规，附加库目录，添加一条$(SolutionDir)Dependencies\Libs\GLFW,
-然后点击输入，附加依赖项，写入要使用的库文件名，点击确定，第三方库已被添加到项目中
+项目库文件添加 devenv_dX8CZIf3KK.png 点击链接器，常规，附加库目录，添加一条$(SolutionDir)Dependencies\Libs\GLFW,
+devenv_R78BVre94f.png 然后点击输入，附加依赖项，写入要使用的库文件名，点击确定，第三方库已被添加到项目中
 End.'>
 <meta property='og:url' content='https://okokfun.github.io/post/visual-studio-2022%E6%B7%BB%E5%8A%A0%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93/'>
 <meta property='og:site_name' content='My Blog'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='C&#43;&#43;' /><meta property='article:published_time' content='2022-01-04T17:36:44&#43;00:00'/><meta property='article:modified_time' content='2022-01-04T17:36:44&#43;00:00'/>
 <meta name="twitter:title" content="Visual_Studio_2022添加第三方库">
-<meta name="twitter:description" content="文件夹创建 在项目根目录创建Dependencies,然后在Dependencies创建include目录 在Dependencies中创建Libs 把头文件和库文件放到对目录
-项目头文件添加 然后用Visual Studio打开项目，找到 红色圈中的功能条
+<meta name="twitter:description" content="文件夹创建 在项目根目录创建Dependencies,然后在Dependencies创建include目录 explorer_dZv7Sj1zKv.png 在Dependencies中创建Libs explorer_OfVTAKdKwG.png 把头文件和库文件放到对目录
+项目头文件添加 然后用Visual Studio打开项目，找到 devenv_m2Hpr9hqkF.png 红色圈中的功能条
 再点击最下边的属性
-定位到常规，然后再编辑附加包含目录，添加一条新item为$(SolutionDir)Dependencies\include\
-其中 $(SolutionDir)为项目根目录，Dependencies\include\为头文件目录
+mia3Eg3WRZ.png 定位到常规，然后再编辑附加包含目录，添加一条新item为$(SolutionDir)Dependencies\include\
+devenv_4dDWoNrKwt.png 其中 $(SolutionDir)为项目根目录，Dependencies\include\为头文件目录
 至此第三方库的头文件已经添加完成
-项目库文件添加 点击链接器，常规，附加库目录，添加一条$(SolutionDir)Dependencies\Libs\GLFW,
-然后点击输入，附加依赖项，写入要使用的库文件名，点击确定，第三方库已被添加到项目中
+项目库文件添加 devenv_dX8CZIf3KK.png 点击链接器，常规，附加库目录，添加一条$(SolutionDir)Dependencies\Libs\GLFW,
+devenv_R78BVre94f.png 然后点击输入，附加依赖项，写入要使用的库文件名，点击确定，第三方库已被添加到项目中
 End."><script>
     (function(){
         if(''){
@@ -254,88 +254,102 @@ End."><script>
 <ol>
 <li>在项目根目录创建<code>Dependencies</code>,然后在<code>Dependencies</code>创建<code>include</code>目录
 <figure >
-	<a href="https://gitee.com/txt1994/images/raw/master/img/Visual_Studio/explorer_dZv7Sj1zKv.png" >
-		<img src="https://gitee.com/txt1994/images/raw/master/img/Visual_Studio/explorer_dZv7Sj1zKv.png"    loading="lazy" >
+	<a href="https://s2.loli.net/2023/08/30/Y6uGAmtp9ToVOkR.png" >
+		<img src="https://s2.loli.net/2023/08/30/Y6uGAmtp9ToVOkR.png"    loading="lazy" alt="explorer_dZv7Sj1zKv.png" >
 	</a>
+	
+	<figcaption>explorer_dZv7Sj1zKv.png</figcaption>
 	
 </figure>
 
 <p class="md_image">
-	<img loading='lazy' src="https://gitee.com/txt1994/images/raw/master/img/Visual_Studio/explorer_dZv7Sj1zKv.png" alt=""  />
+	<img loading='lazy' src="https://s2.loli.net/2023/08/30/Y6uGAmtp9ToVOkR.png" alt="explorer_dZv7Sj1zKv.png"  />
 </p></li>
 <li>在<code>Dependencies</code>中创建Libs</li>
 </ol>
 <p><figure >
-	<a href="https://gitee.com/txt1994/images/raw/master/img/Visual_Studio/explorer_OfVTAKdKwG.png" >
-		<img src="https://gitee.com/txt1994/images/raw/master/img/Visual_Studio/explorer_OfVTAKdKwG.png"    loading="lazy" >
+	<a href="https://s2.loli.net/2023/08/30/NS6tUR8ykg7PODz.png" >
+		<img src="https://s2.loli.net/2023/08/30/NS6tUR8ykg7PODz.png"    loading="lazy" alt="explorer_OfVTAKdKwG.png" >
 	</a>
+	
+	<figcaption>explorer_OfVTAKdKwG.png</figcaption>
 	
 </figure>
 
 <p class="md_image">
-	<img loading='lazy' src="https://gitee.com/txt1994/images/raw/master/img/Visual_Studio/explorer_OfVTAKdKwG.png" alt=""  />
+	<img loading='lazy' src="https://s2.loli.net/2023/08/30/NS6tUR8ykg7PODz.png" alt="explorer_OfVTAKdKwG.png"  />
 </p></p>
 <p>把头文件和库文件放到对目录</p>
 <h1 id="项目头文件添加">项目头文件添加</h1>
 <ol>
 <li>然后用Visual Studio打开项目，找到
 <figure >
-	<a href="https://gitee.com/txt1994/images/raw/master/img/Visual_Studio/devenv_m2Hpr9hqkF.png" >
-		<img src="https://gitee.com/txt1994/images/raw/master/img/Visual_Studio/devenv_m2Hpr9hqkF.png"    loading="lazy" >
+	<a href="https://s2.loli.net/2023/08/30/yOK2MxPmwUbQE1j.png" >
+		<img src="https://s2.loli.net/2023/08/30/yOK2MxPmwUbQE1j.png"    loading="lazy" alt="devenv_m2Hpr9hqkF.png" >
 	</a>
+	
+	<figcaption>devenv_m2Hpr9hqkF.png</figcaption>
 	
 </figure>
 
 <p class="md_image">
-	<img loading='lazy' src="https://gitee.com/txt1994/images/raw/master/img/Visual_Studio/devenv_m2Hpr9hqkF.png" alt=""  />
+	<img loading='lazy' src="https://s2.loli.net/2023/08/30/yOK2MxPmwUbQE1j.png" alt="devenv_m2Hpr9hqkF.png"  />
 </p></li>
 </ol>
 <p>红色圈中的功能条</p>
 <p>再点击最下边的属性</p>
 <p><figure >
-	<a href="https://gitee.com/txt1994/images/raw/master/img/Visual_Studio/mia3Eg3WRZ.png" >
-		<img src="https://gitee.com/txt1994/images/raw/master/img/Visual_Studio/mia3Eg3WRZ.png"    loading="lazy" >
+	<a href="https://s2.loli.net/2023/08/30/jkhaW2RPmT6QUOt.png" >
+		<img src="https://s2.loli.net/2023/08/30/jkhaW2RPmT6QUOt.png"    loading="lazy" alt="mia3Eg3WRZ.png" >
 	</a>
+	
+	<figcaption>mia3Eg3WRZ.png</figcaption>
 	
 </figure>
 
 <p class="md_image">
-	<img loading='lazy' src="https://gitee.com/txt1994/images/raw/master/img/Visual_Studio/mia3Eg3WRZ.png" alt=""  />
+	<img loading='lazy' src="https://s2.loli.net/2023/08/30/jkhaW2RPmT6QUOt.png" alt="mia3Eg3WRZ.png"  />
 </p></p>
 <p>定位到常规，然后再编辑附加包含目录，添加一条新item为<code>$(SolutionDir)Dependencies\include\</code></p>
 <p><figure >
-	<a href="https://gitee.com/txt1994/images/raw/master/img/Visual_Studio/devenv_4dDWoNrKwt.png" >
-		<img src="https://gitee.com/txt1994/images/raw/master/img/Visual_Studio/devenv_4dDWoNrKwt.png"    loading="lazy" >
+	<a href="https://s2.loli.net/2023/08/30/BLgTdZ5bkWsleiU.png" >
+		<img src="https://s2.loli.net/2023/08/30/BLgTdZ5bkWsleiU.png"    loading="lazy" alt="devenv_4dDWoNrKwt.png" >
 	</a>
+	
+	<figcaption>devenv_4dDWoNrKwt.png</figcaption>
 	
 </figure>
 
 <p class="md_image">
-	<img loading='lazy' src="https://gitee.com/txt1994/images/raw/master/img/Visual_Studio/devenv_4dDWoNrKwt.png" alt=""  />
+	<img loading='lazy' src="https://s2.loli.net/2023/08/30/BLgTdZ5bkWsleiU.png" alt="devenv_4dDWoNrKwt.png"  />
 </p></p>
 <p>其中 <code>$(SolutionDir)</code>为项目根目录，<code>Dependencies\include\</code>为头文件目录</p>
 <p>至此第三方库的头文件已经添加完成</p>
 <h1 id="项目库文件添加">项目库文件添加</h1>
 <p><figure >
-	<a href="https://gitee.com/txt1994/images/raw/master/img/Visual_Studio/devenv_dX8CZIf3KK.png" >
-		<img src="https://gitee.com/txt1994/images/raw/master/img/Visual_Studio/devenv_dX8CZIf3KK.png"    loading="lazy" >
+	<a href="https://s2.loli.net/2023/08/30/r6Ac4ODX9PRfLYy.png" >
+		<img src="https://s2.loli.net/2023/08/30/r6Ac4ODX9PRfLYy.png"    loading="lazy" alt="devenv_dX8CZIf3KK.png" >
 	</a>
+	
+	<figcaption>devenv_dX8CZIf3KK.png</figcaption>
 	
 </figure>
 
 <p class="md_image">
-	<img loading='lazy' src="https://gitee.com/txt1994/images/raw/master/img/Visual_Studio/devenv_dX8CZIf3KK.png" alt=""  />
+	<img loading='lazy' src="https://s2.loli.net/2023/08/30/r6Ac4ODX9PRfLYy.png" alt="devenv_dX8CZIf3KK.png"  />
 </p></p>
 <p>点击链接器，常规，附加库目录，添加一条<code>$(SolutionDir)Dependencies\Libs\GLFW</code>,</p>
 <p><figure >
-	<a href="https://gitee.com/txt1994/images/raw/master/img/Visual_Studio/devenv_R78BVre94f.png" >
-		<img src="https://gitee.com/txt1994/images/raw/master/img/Visual_Studio/devenv_R78BVre94f.png"    loading="lazy" >
+	<a href="https://s2.loli.net/2023/08/30/5Ypa1y6XeQ8boZm.png" >
+		<img src="https://s2.loli.net/2023/08/30/5Ypa1y6XeQ8boZm.png"    loading="lazy" alt="devenv_R78BVre94f.png" >
 	</a>
+	
+	<figcaption>devenv_R78BVre94f.png</figcaption>
 	
 </figure>
 
 <p class="md_image">
-	<img loading='lazy' src="https://gitee.com/txt1994/images/raw/master/img/Visual_Studio/devenv_R78BVre94f.png" alt=""  />
+	<img loading='lazy' src="https://s2.loli.net/2023/08/30/5Ypa1y6XeQ8boZm.png" alt="devenv_R78BVre94f.png"  />
 </p></p>
 <p>然后点击输入，附加依赖项，写入要使用的库文件名，点击确定，第三方库已被添加到项目中</p>
 <p>End.</p>

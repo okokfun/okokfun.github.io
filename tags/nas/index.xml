@@ -13,7 +13,7 @@
       <pubDate>Sun, 26 Dec 2021 13:43:29 +0000</pubDate>
       
       <guid>https://okokfun.github.io/post/%E4%BB%8Eportainer%E7%82%B9%E5%87%BB%E7%AB%AF%E5%8F%A3%E5%8F%B7%E8%BF%9B%E5%85%A5%E5%AE%B9%E5%99%A8%E6%9C%8D%E5%8A%A1%E6%96%B9%E6%B3%95/</guid>
-      <description> 1.点击home,再点击配置，然后填写nas的ip地址即可 </description>
+      <description> 端口进入容器 1.点击home,再点击配置，然后填写nas的ip地址即可 进入IP设置 IP地址填写 </description>
     </item>
     
     <item>
@@ -22,7 +22,7 @@
       <pubDate>Sun, 26 Dec 2021 13:42:29 +0000</pubDate>
       
       <guid>https://okokfun.github.io/post/openmediavault%E4%B8%AD%E5%AE%89%E8%A3%85docker%E4%B8%8Egui%E5%B7%A5%E5%85%B7portainer/</guid>
-      <description> 1. 安装完第三方插件后，再安装docker与portainer 2. 点击Opem Portainer创建管理账号 3. 然后创建一个容器网络 </description>
+      <description> 1. 安装完第三方插件后，再安装docker与portainer docker与portainer 2. 点击Opem Portainer创建管理账号 account 3. 然后创建一个容器网络 network </description>
     </item>
     
     <item>
@@ -47,7 +47,7 @@ deb https://mirrors.tuna.tsinghua.edu.cn/debian/ buster main # deb-src https://m
       
       <guid>https://okokfun.github.io/post/openmediavault%E5%88%9B%E5%BB%BA%E5%AE%B9%E5%99%A8/</guid>
       <description>要创建的容器有：
-Mariadb: 关系型数据库，mysql的开源版本Adminer：开源的数据库管理软件Gitea：开源的私人代码版本管理器Flarum：开源的论坛WordPress：开源的博客软件NextCloud：开源的私人网盘软件1.在一个分区上创建我们需要的文件夹存放配置文件 2.在终端拉取上面的各个镜像文件 1.flarum docker pull mondedie/flarum:latest2.wordpress docker pull wordpress3.adminer docker pull adminer4.mariadb docker pull mariadb5.gitea docker pull gitea/gitea6.nextcloud docker pull nextcloud3.创建各个容器 按顺序应该创建数据库软件与数据库管理软件 1.mariadb容器创建参考 container_name: mariadbenvironment:- PUID=1000- PGID=1000- MYSQL_ROOT_PASSWORD=1- TZ=Asia/Shanghaivolumes:- /srv/dev-disk-by-id-ata-VBOX_HARDDISK_VBdf1e9e6f-f90961e1-part1/mariadb/config:/configports:- 3306:3306networks:- mynetrestart: alwaysnetworks:mynet:external:name: mynet2.adminer创建参考 container_name: adminerenvironment:- ADMINER_DEFAULT_SERVER=mariadbports:- 8080:8080networks:- mynetrestart: alwaysnetworks:mynet:external:name: mynet3.</description>
+Mariadb: 关系型数据库，mysql的开源版本Adminer：开源的数据库管理软件Gitea：开源的私人代码版本管理器Flarum：开源的论坛WordPress：开源的博客软件NextCloud：开源的私人网盘软件1.在一个分区上创建我们需要的文件夹存放配置文件 文件夹创建 2.在终端拉取上面的各个镜像文件 1.flarum docker pull mondedie/flarum:latest2.wordpress docker pull wordpress3.adminer docker pull adminer4.mariadb docker pull mariadb5.gitea docker pull gitea/gitea6.nextcloud docker pull nextcloud3.创建各个容器 按顺序应该创建数据库软件与数据库管理软件 database 1.mariadb容器创建参考 container_name: mariadbenvironment:- PUID=1000- PGID=1000- MYSQL_ROOT_PASSWORD=1- TZ=Asia/Shanghaivolumes:- /srv/dev-disk-by-id-ata-VBOX_HARDDISK_VBdf1e9e6f-f90961e1-part1/mariadb/config:/configports:- 3306:3306networks:- mynetrestart: alwaysnetworks:mynet:external:name: mynet2.adminer创建参考 container_name: adminerenvironment:- ADMINER_DEFAULT_SERVER=mariadbports:- 8080:8080networks:- mynetrestart: alwaysnetworks:mynet:external:name: mynet3.</description>
     </item>
     
     <item>
@@ -59,8 +59,8 @@ Mariadb: 关系型数据库，mysql的开源版本Adminer：开源的数据库�
       <description>OpenMediaVault（omv）是开源的nas系统，本博客尽量采用开源的代码和软件
 1. 镜像下载 下载地址
 https://sourceforge.net/projects/openmediavault/files/latest/download 2. 刻录或虚拟机安装 可以用etcher软件刻录镜像
-安装 omv-extras 启用 OMV 5 社区插件支持 3. 安装依赖的工具 sudo apt --yes --no-install-recommends install dirmngr gnupg 4. 下载最新的omv-extras 安装包 地址：https://mirrors.tuna.tsinghua.edu.cn/OpenMediaVault/openmediavault-plugin-developers/pool/main/o/openmediavault-omvextrasorg/openmediavault-omvextrasorg_5.6.2_all.deb 下载命令：sudo wget https://mirrors.tuna.tsinghua.edu.cn/OpenMediaVault/openmediavault-plugin-developers/pool/main/o/openmediavault-omvextrasorg/openmediavault-omvextrasorg_5.6.2_all.deb 5. 安装 sudo dpkg -i openmediavault-omvextrasorg_5.6.2_all.deb 6. 安装完开启docker扩展源 7. Docker修改镜像源并在OMV 中的安装和使用 Docker 设置国内镜像服务器
-第一步 创建 docker 配置文件目录 sudo mkdir /etc/docker 第二步 创建 daemon.json 配置文件 sudo touch /etc/docker/daemon.json 第三步 编辑配置文件 sudo nano /etc/docker/daemon.json 在编辑器中粘贴以下内容: { &amp;#34;registry-mirrors&amp;#34;: [ &amp;#34;https://hub-mirror.c.163.com&amp;#34;, &amp;#34;https://mirror.baidubce.com&amp;#34; ] } 第四步 重启 docker 服务 sudo systemctl daemon-reload sudo systemctl restart docker 检查设置是否生效</description>
+安装 omv-extras 启用 OMV 5 社区插件支持 3. 安装依赖的工具 sudo apt --yes --no-install-recommends install dirmngr gnupg 4. 下载最新的omv-extras 安装包 地址：https://mirrors.tuna.tsinghua.edu.cn/OpenMediaVault/openmediavault-plugin-developers/pool/main/o/openmediavault-omvextrasorg/openmediavault-omvextrasorg_5.6.2_all.deb 下载命令：sudo wget https://mirrors.tuna.tsinghua.edu.cn/OpenMediaVault/openmediavault-plugin-developers/pool/main/o/openmediavault-omvextrasorg/openmediavault-omvextrasorg_5.6.2_all.deb 5. 安装 sudo dpkg -i openmediavault-omvextrasorg_5.6.2_all.deb 6. 安装完开启docker扩展源 OpenMediaVault2021-05-05 214136.png 软件源2021-05-05 214306.png 7. Docker修改镜像源并在OMV 中的安装和使用 Docker 设置国内镜像服务器
+第一步 创建 docker 配置文件目录 sudo mkdir /etc/docker 第二步 创建 daemon.json 配置文件 sudo touch /etc/docker/daemon.json 第三步 编辑配置文件 sudo nano /etc/docker/daemon.json 在编辑器中粘贴以下内容: { &amp;#34;registry-mirrors&amp;#34;: [ &amp;#34;https://hub-mirror.</description>
     </item>
     
   </channel>

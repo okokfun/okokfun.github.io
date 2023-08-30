@@ -137,8 +137,7 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;string&gt;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;regex&gt;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span> 
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
-</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>string s <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Some people, when confronted with a problem, think &#34;</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">I know, I&#39;ll use regular expressions.</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74"> &#34;</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;Now they have two problems.&#34;</span>;
@@ -182,8 +181,7 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;string&gt;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;regex&gt;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span> 
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
-</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 简单正则表达式匹配
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    std<span style="color:#f92672">::</span>string fnames[] <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#34;foo.txt&#34;</span>, <span style="color:#e6db74">&#34;bar.txt&#34;</span>, <span style="color:#e6db74">&#34;baz.dat&#34;</span>, <span style="color:#e6db74">&#34;zoidberg&#34;</span>};
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>regex txt_regex(<span style="color:#e6db74">&#34;[a-z]+</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">.txt&#34;</span>);
@@ -232,8 +230,7 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;string&gt;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;regex&gt;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span> 
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
-</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>string lines[] <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#34;Roses are #ff0000&#34;</span>,
 </span></span><span style="display:flex;"><span>                           <span style="color:#e6db74">&#34;violets are #0000ff&#34;</span>,
 </span></span><span style="display:flex;"><span>                           <span style="color:#e6db74">&#34;all of my base are belong to you&#34;</span>};
@@ -271,8 +268,7 @@
 </span></span><span style="display:flex;"><span>	Mass:	<span style="color:#ae81ff">30</span>)<span style="color:#e6db74">&#34;);</span>
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>regex r(R<span style="color:#e6db74">&#34;(Speed:</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">\d*)&#34;</span>);
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>smatch sm;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span>(regex_search(log, sm, r))
-</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span>(regex_search(log, sm, r)) {
 </span></span><span style="display:flex;"><span>        std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> sm.str() <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#39;\n&#39;</span>;
 </span></span><span style="display:flex;"><span>        log <span style="color:#f92672">=</span> sm.suffix();
 </span></span><span style="display:flex;"><span>    }
@@ -292,8 +288,7 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;regex&gt;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;string&gt;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span> 
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
-</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
 </span></span><span style="display:flex;"><span>   std<span style="color:#f92672">::</span>string text <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Quick brown fox&#34;</span>;
 </span></span><span style="display:flex;"><span>   std<span style="color:#f92672">::</span>regex vowel_re(<span style="color:#e6db74">&#34;a|e|i|o|u&#34;</span>);
 </span></span><span style="display:flex;"><span> 
@@ -318,8 +313,7 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;string&gt;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span> 
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
-</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> std<span style="color:#f92672">::</span>string s <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Quick brown fox.&#34;</span>;
 </span></span><span style="display:flex;"><span> 
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>regex words_regex(<span style="color:#e6db74">&#34;[^</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">s]+&#34;</span>);
@@ -348,8 +342,7 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iterator&gt;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;regex&gt;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span> 
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
-</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
 </span></span><span style="display:flex;"><span>   std<span style="color:#f92672">::</span>string text <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Quick brown fox.&#34;</span>;
 </span></span><span style="display:flex;"><span>   <span style="color:#75715e">// 记号化（非匹配碎片）
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>   <span style="color:#75715e">// 注意仅匹配二次 regex ：在获得第三值时迭代器为后缀迭代器。

@@ -14,9 +14,9 @@
       
       <guid>https://okokfun.github.io/post/visual-studio-2022-pre%E6%B7%BB%E5%8A%A0opencv%E5%BA%93/</guid>
       <description>此篇是VS添加OpenCV库教程
-1. 创建一个新工程 img img 2. 创建完工程后切到属性管理器 img 3. 添加新项目属性列表 然后切到Debug | x64添加新项目属性列表(P) img 然后双击新建的文件。
-4. 添加库头文件路径和库文件路径 添加库头文件路径 img img 添加库文件路径
-img 5. 填写要使用的库文件名 img 这里使用debug版
+1. 创建一个新工程 visual_studio_opencv_1.jpg visual_studio_opencv_2.jpg 2. 创建完工程后切到属性管理器 visual_studio_opencv_3.jpg 3. 添加新项目属性列表 然后切到Debug | x64添加新项目属性列表(P) visual_studio_opencv_4.jpg 然后双击新建的文件。
+4. 添加库头文件路径和库文件路径 添加库头文件路径 visual_studio_opencv_5.jpg visual_studio_opencv_6.jpg 添加库文件路径
+visual_studio_opencv_7.jpg 5. 填写要使用的库文件名 visual_studio_opencv_8.jpg 这里使用debug版
 End.</description>
     </item>
     
@@ -28,9 +28,9 @@ End.</description>
       <guid>https://okokfun.github.io/post/visual-studio-2022%E5%9F%BA%E6%9C%AC%E8%AE%BE%E7%BD%AE/</guid>
       <description>用微软家的Visual Studio 2022创建项目，为了避免文件混乱，可以采用下边的设置方法,当然也可以使用默认的设置。
 点击解决方案下的项目名，例如sendbox👇
-在弹出的对话窗中点击属性👇
-然后在弹出的对话框中👇，选择所有配置,平台选择所有平台
-上图有一个错误去掉bin前面的\.
+vs-setting-1 在弹出的对话窗中点击属性👇
+vs-setting-2 然后在弹出的对话框中👇，选择所有配置,平台选择所有平台
+vs-setting-3 上图有一个错误去掉bin前面的\.
 配置属性-&amp;gt;常规，
 在常规属性-&amp;gt;输出目录填写$(SolutionDir)bin\$(Platform)\$(Configuration)\
 在常规属性-&amp;gt;中间目录填写$(SolutionDir)bin\intermediates\$(Platform)\$(Configuration)\
@@ -38,8 +38,8 @@ End.</description>
 设置完点击项目，选择清理，然后重新生成
 编译器语言标准
 配置属性-&amp;gt;常规-&amp;gt;C++语言标准
-C++标准 配置属性-&amp;gt;常规-&amp;gt;C语言标准
-C标准 End.</description>
+ISO_C++_STD.jpg 配置属性-&amp;gt;常规-&amp;gt;C语言标准
+ISO_C_STD End.</description>
     </item>
     
   </channel>

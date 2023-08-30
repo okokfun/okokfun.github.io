@@ -32,7 +32,7 @@ c. 建立连接.	MYSQL *mysql_real_connect(MYSQL *mysql, const char *host, const
     <item>
       <title>Mysql数据库</title>
       <link>https://okokfun.github.io/post/mysql%E6%95%B0%E6%8D%AE%E5%BA%93/</link>
-      <pubDate>Wed, 05 Jan 2022 12:57:29 +0000</pubDate>
+      <pubDate>Wed, 05 Jan 2022 12:57:29 +0800</pubDate>
       
       <guid>https://okokfun.github.io/post/mysql%E6%95%B0%E6%8D%AE%E5%BA%93/</guid>
       <description>1 MySQL基础知识 瑞典MySQL AB公司开发，由SUN收购，而后SUN被甲骨文并购，目前属于Oracle公司。

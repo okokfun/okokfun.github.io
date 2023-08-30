@@ -6,7 +6,34 @@
     <description>Recent content in Tags on My Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 21 Jul 2023 22:33:48 +0000</lastBuildDate><atom:link href="https://okokfun.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 29 Aug 2023 17:08:35 +0800</lastBuildDate><atom:link href="https://okokfun.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>automatic control system</title>
+      <link>https://okokfun.github.io/tags/automatic-control-system/</link>
+      <pubDate>Tue, 29 Aug 2023 17:08:35 +0800</pubDate>
+      
+      <guid>https://okokfun.github.io/tags/automatic-control-system/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>WORD ORIGINS</title>
+      <link>https://okokfun.github.io/tags/word-origins/</link>
+      <pubDate>Sun, 13 Aug 2023 19:12:26 +0800</pubDate>
+      
+      <guid>https://okokfun.github.io/tags/word-origins/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>STM32</title>
+      <link>https://okokfun.github.io/tags/stm32/</link>
+      <pubDate>Sun, 30 Jul 2023 17:35:07 +0800</pubDate>
+      
+      <guid>https://okokfun.github.io/tags/stm32/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Digital</title>
       <link>https://okokfun.github.io/tags/digital/</link>
@@ -22,6 +49,15 @@
       <pubDate>Fri, 14 Jul 2023 18:30:27 +0000</pubDate>
       
       <guid>https://okokfun.github.io/tags/analog/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Analog原子</title>
+      <link>https://okokfun.github.io/tags/analog%E5%8E%9F%E5%AD%90/</link>
+      <pubDate>Fri, 14 Jul 2023 15:01:04 +0800</pubDate>
+      
+      <guid>https://okokfun.github.io/tags/analog%E5%8E%9F%E5%AD%90/</guid>
       <description></description>
     </item>
     
@@ -109,7 +145,7 @@
     <item>
       <title>Clion</title>
       <link>https://okokfun.github.io/tags/clion/</link>
-      <pubDate>Tue, 15 Feb 2022 19:21:35 +0000</pubDate>
+      <pubDate>Tue, 15 Feb 2022 19:21:35 +0800</pubDate>
       
       <guid>https://okokfun.github.io/tags/clion/</guid>
       <description></description>

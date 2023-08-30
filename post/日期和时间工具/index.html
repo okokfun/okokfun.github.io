@@ -499,8 +499,7 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;chrono&gt;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span> 
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">volatile</span> <span style="color:#66d9ef">int</span> sink;
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
-</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">auto</span> size <span style="color:#f92672">=</span> <span style="color:#ae81ff">1ull</span>; size <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">1000000000ull</span>; size <span style="color:#f92672">*=</span> <span style="color:#ae81ff">100</span>) {
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 记录开始时间
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">auto</span> start <span style="color:#f92672">=</span> std<span style="color:#f92672">::</span>chrono<span style="color:#f92672">::</span>system_clock<span style="color:#f92672">::</span>now();
@@ -524,8 +523,7 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;chrono&gt;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span> 
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">volatile</span> <span style="color:#66d9ef">int</span> sink;
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
-</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">auto</span> size <span style="color:#f92672">=</span> <span style="color:#ae81ff">1ull</span>; size <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">1000000000ull</span>; size <span style="color:#f92672">*=</span> <span style="color:#ae81ff">100</span>) {
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 记录开始时间
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">auto</span> start <span style="color:#f92672">=</span> std<span style="color:#f92672">::</span>chrono<span style="color:#f92672">::</span>steady_clock<span style="color:#f92672">::</span>now();
@@ -573,15 +571,13 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;ctime&gt;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;chrono&gt;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span> 
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">slow_motion</span>()
-</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">slow_motion</span>() {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> a[] {<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">6</span>,<span style="color:#ae81ff">7</span>,<span style="color:#ae81ff">8</span>,<span style="color:#ae81ff">9</span>,<span style="color:#ae81ff">10</span>,<span style="color:#ae81ff">11</span>,<span style="color:#ae81ff">12</span>};
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> (std<span style="color:#f92672">::</span>ranges<span style="color:#f92672">::</span>next_permutation(a).found)
 </span></span><span style="display:flex;"><span>    { } <span style="color:#75715e">// 生成 12! 个排列
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
 </span></span><span style="display:flex;"><span> 
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
-</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std<span style="color:#f92672">::</span>literals; <span style="color:#75715e">// 允许用 24h 、 1ms 、 1s 代替对应的
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                                   <span style="color:#75715e">// std::chrono::hours(24) 等待
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span> 
@@ -665,8 +661,7 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span> 
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">constexpr</span> <span style="color:#66d9ef">auto</span> year <span style="color:#f92672">=</span> <span style="color:#ae81ff">31556952ll</span>; <span style="color:#75715e">// 格里高利历年的平均秒数
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span> 
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
-</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">using</span> shakes <span style="color:#f92672">=</span> std<span style="color:#f92672">::</span>chrono<span style="color:#f92672">::</span>duration<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span>, std<span style="color:#f92672">::</span>ratio<span style="color:#f92672">&lt;</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">100000000</span><span style="color:#f92672">&gt;&gt;</span>;
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">using</span> jiffies <span style="color:#f92672">=</span> std<span style="color:#f92672">::</span>chrono<span style="color:#f92672">::</span>duration<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span>, std<span style="color:#f92672">::</span>centi<span style="color:#f92672">&gt;</span>;
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">using</span> microfortnights <span style="color:#f92672">=</span> std<span style="color:#f92672">::</span>chrono<span style="color:#f92672">::</span>duration<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">float</span>, std<span style="color:#f92672">::</span>ratio<span style="color:#f92672">&lt;</span><span style="color:#ae81ff">14</span><span style="color:#f92672">*</span><span style="color:#ae81ff">24</span><span style="color:#f92672">*</span><span style="color:#ae81ff">60</span><span style="color:#f92672">*</span><span style="color:#ae81ff">60</span>, <span style="color:#ae81ff">1000000</span><span style="color:#f92672">&gt;&gt;</span>;

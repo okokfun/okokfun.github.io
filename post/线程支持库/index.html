@@ -710,8 +710,7 @@
 </span></span><span style="display:flex;"><span>std<span style="color:#f92672">::</span>mutex cout_mutex; <span style="color:#75715e">// 控制到 std::cout 的访问
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>std<span style="color:#f92672">::</span>timed_mutex mutex;
 </span></span><span style="display:flex;"><span> 
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">job</span>(<span style="color:#66d9ef">int</span> id) 
-</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">job</span>(<span style="color:#66d9ef">int</span> id) {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">using</span> Ms <span style="color:#f92672">=</span> std<span style="color:#f92672">::</span>chrono<span style="color:#f92672">::</span>milliseconds;
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>ostringstream stream;
 </span></span><span style="display:flex;"><span> 
@@ -730,8 +729,7 @@
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;[&#34;</span> <span style="color:#f92672">&lt;&lt;</span> id <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;] &#34;</span> <span style="color:#f92672">&lt;&lt;</span> stream.str() <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>;
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span> 
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() 
-</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>vector<span style="color:#f92672">&lt;</span>std<span style="color:#f92672">::</span><span style="color:#66d9ef">thread</span><span style="color:#f92672">&gt;</span> threads;
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">4</span>; <span style="color:#f92672">++</span>i) {
 </span></span><span style="display:flex;"><span>        threads.emplace_back(job, i);
@@ -755,15 +753,13 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span> 
 </span></span><span style="display:flex;"><span>std<span style="color:#f92672">::</span>timed_mutex test_mutex;
 </span></span><span style="display:flex;"><span> 
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">f</span>()
-</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">f</span>() {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">auto</span> now<span style="color:#f92672">=</span>std<span style="color:#f92672">::</span>chrono<span style="color:#f92672">::</span>steady_clock<span style="color:#f92672">::</span>now();
 </span></span><span style="display:flex;"><span>    test_mutex.try_lock_until(now <span style="color:#f92672">+</span> std<span style="color:#f92672">::</span>chrono<span style="color:#f92672">::</span>seconds(<span style="color:#ae81ff">10</span>));
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;hello world</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>;
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span> 
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
-</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>lock_guard<span style="color:#f92672">&lt;</span>std<span style="color:#f92672">::</span>timed_mutex<span style="color:#f92672">&gt;</span> l(test_mutex);
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span><span style="color:#66d9ef">thread</span> t(f);
 </span></span><span style="display:flex;"><span>    t.join();
@@ -783,8 +779,7 @@
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> g_i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
 </span></span><span style="display:flex;"><span>std<span style="color:#f92672">::</span>mutex g_i_mutex;  <span style="color:#75715e">// 保护 g_i
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span> 
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">safe_increment</span>()
-</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">safe_increment</span>() {
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>lock_guard<span style="color:#f92672">&lt;</span>std<span style="color:#f92672">::</span>mutex<span style="color:#f92672">&gt;</span> lock(g_i_mutex);
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">++</span>g_i;
 </span></span><span style="display:flex;"><span> 
@@ -793,8 +788,7 @@
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// g_i_mutex 在锁离开作用域时自动释放
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
 </span></span><span style="display:flex;"><span> 
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
-</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;main: &#34;</span> <span style="color:#f92672">&lt;&lt;</span> g_i <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#39;\n&#39;</span>;
 </span></span><span style="display:flex;"><span> 
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span><span style="color:#66d9ef">thread</span> t1(safe_increment);
@@ -817,8 +811,7 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;vector&gt;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;chrono&gt;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span> 
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
-</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> counter <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>mutex counter_mutex;
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>vector<span style="color:#f92672">&lt;</span>std<span style="color:#f92672">::</span><span style="color:#66d9ef">thread</span><span style="color:#f92672">&gt;</span> threads;
@@ -859,8 +852,7 @@
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>mutex m;
 </span></span><span style="display:flex;"><span>};
 </span></span><span style="display:flex;"><span> 
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">transfer</span>(Box <span style="color:#f92672">&amp;</span>from, Box <span style="color:#f92672">&amp;</span>to, <span style="color:#66d9ef">int</span> num)
-</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">transfer</span>(Box <span style="color:#f92672">&amp;</span>from, Box <span style="color:#f92672">&amp;</span>to, <span style="color:#66d9ef">int</span> num) {
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 仍未实际取锁
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    std<span style="color:#f92672">::</span>unique_lock<span style="color:#f92672">&lt;</span>std<span style="color:#f92672">::</span>mutex<span style="color:#f92672">&gt;</span> lock1(from.m, std<span style="color:#f92672">::</span>defer_lock);
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>unique_lock<span style="color:#f92672">&lt;</span>std<span style="color:#f92672">::</span>mutex<span style="color:#f92672">&gt;</span> lock2(to.m, std<span style="color:#f92672">::</span>defer_lock);
@@ -874,8 +866,7 @@
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// &#39;from.m&#39; 与 &#39;to.m&#39; 互斥解锁于 &#39;unique_lock&#39; 析构函数
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
 </span></span><span style="display:flex;"><span> 
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
-</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
 </span></span><span style="display:flex;"><span>    Box acc1(<span style="color:#ae81ff">100</span>);
 </span></span><span style="display:flex;"><span>    Box acc2(<span style="color:#ae81ff">50</span>);
 </span></span><span style="display:flex;"><span> 
@@ -906,8 +897,7 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// 不需要保护
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span> 
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// 此线程能修改 &#39;job_shared&#39; 和 &#39;job_exclusive&#39;
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">job_1</span>() 
-</span></span><span style="display:flex;"><span>{
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">job_1</span>() {
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>this_thread<span style="color:#f92672">::</span>sleep_for(interval); <span style="color:#75715e">// 令 &#39;job_2&#39; 持锁
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span> 
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> (true) {
@@ -927,16 +917,14 @@
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span> 
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// 此线程只能修改 &#39;job_shared&#39;
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">job_2</span>() 
-</span></span><span style="display:flex;"><span>{
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">job_2</span>() {
 </span></span><span style="display:flex;"><span>    mutex.lock();
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>this_thread<span style="color:#f92672">::</span>sleep_for(<span style="color:#ae81ff">5</span> <span style="color:#f92672">*</span> interval);
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">++</span>job_shared;
 </span></span><span style="display:flex;"><span>    mutex.unlock();
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span> 
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() 
-</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span><span style="color:#66d9ef">thread</span> thread_1(job_1);
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span><span style="color:#66d9ef">thread</span> thread_2(job_2);
 </span></span><span style="display:flex;"><span> 
@@ -966,8 +954,7 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// 不需要保护
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span> 
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// 此线程能修改 &#39;job_shared&#39; 和 &#39;job_exclusive&#39;
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">job_1</span>() 
-</span></span><span style="display:flex;"><span>{
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">job_1</span>() {
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>this_thread<span style="color:#f92672">::</span>sleep_for(interval); <span style="color:#75715e">// 令 &#39;job_2&#39; 持锁
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span> 
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> (true) {
@@ -987,16 +974,14 @@
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span> 
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// 此线程只能修改 &#39;job_shared&#39;
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">job_2</span>() 
-</span></span><span style="display:flex;"><span>{
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">job_2</span>() {
 </span></span><span style="display:flex;"><span>    mutex.lock();
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>this_thread<span style="color:#f92672">::</span>sleep_for(<span style="color:#ae81ff">5</span> <span style="color:#f92672">*</span> interval);
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">++</span>job_shared;
 </span></span><span style="display:flex;"><span>    mutex.unlock();
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span> 
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() 
-</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span><span style="color:#66d9ef">thread</span> thread_1(job_1);
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span><span style="color:#66d9ef">thread</span> thread_2(job_2);
 </span></span><span style="display:flex;"><span> 
@@ -1013,13 +998,11 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
 </span></span><span style="display:flex;"><span>std<span style="color:#f92672">::</span>once_flag flag1, flag2;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">simple_do_once</span>()
-</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">simple_do_once</span>() {
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>call_once(flag1, [](){ std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Simple example: called once</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>; });
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">may_throw_function</span>(<span style="color:#66d9ef">bool</span> do_throw)
-</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">may_throw_function</span>(<span style="color:#66d9ef">bool</span> do_throw) {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (do_throw) {
 </span></span><span style="display:flex;"><span>        std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;throw: call_once will retry</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>; <span style="color:#75715e">// 这会出现多于一次
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">throw</span> std<span style="color:#f92672">::</span>exception();
@@ -1027,8 +1010,7 @@
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Didn&#39;t throw, call_once will not attempt again</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>; <span style="color:#75715e">// 保证一次
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">do_once</span>(<span style="color:#66d9ef">bool</span> do_throw)
-</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">do_once</span>(<span style="color:#66d9ef">bool</span> do_throw) {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span> {
 </span></span><span style="display:flex;"><span>        std<span style="color:#f92672">::</span>call_once(flag2, may_throw_function, do_throw);
 </span></span><span style="display:flex;"><span>    }
@@ -1036,8 +1018,7 @@
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
-</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span><span style="color:#66d9ef">thread</span> st1(simple_do_once);
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span><span style="color:#66d9ef">thread</span> st2(simple_do_once);
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span><span style="color:#66d9ef">thread</span> st3(simple_do_once);
@@ -1084,8 +1065,7 @@
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">bool</span> ready <span style="color:#f92672">=</span> false;
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">bool</span> processed <span style="color:#f92672">=</span> false;
 </span></span><span style="display:flex;"><span> 
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">worker_thread</span>()
-</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">worker_thread</span>() {
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 等待直至 main() 发送数据
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    std<span style="color:#f92672">::</span>unique_lock<span style="color:#f92672">&lt;</span>std<span style="color:#f92672">::</span>mutex<span style="color:#f92672">&gt;</span> lk(m);
 </span></span><span style="display:flex;"><span>    cv.wait(lk, []{<span style="color:#66d9ef">return</span> ready;});
@@ -1103,8 +1083,7 @@
 </span></span><span style="display:flex;"><span>    cv.notify_one();
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span> 
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
-</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span><span style="color:#66d9ef">thread</span> worker(worker_thread);
 </span></span><span style="display:flex;"><span> 
 </span></span><span style="display:flex;"><span>    data <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Example data&#34;</span>;
@@ -1141,16 +1120,14 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                 <span style="color:#75715e">// 3) 为条件变量 cv
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
 </span></span><span style="display:flex;"><span> 
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">waits</span>()
-</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">waits</span>() {
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>unique_lock<span style="color:#f92672">&lt;</span>std<span style="color:#f92672">::</span>mutex<span style="color:#f92672">&gt;</span> lk(cv_m);
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cerr <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Waiting... </span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>;
 </span></span><span style="display:flex;"><span>    cv.wait(lk, []{<span style="color:#66d9ef">return</span> i <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>;});
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cerr <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;...finished waiting. i == 1</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>;
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span> 
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">signals</span>()
-</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">signals</span>() {
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>this_thread<span style="color:#f92672">::</span>sleep_for(std<span style="color:#f92672">::</span>chrono<span style="color:#f92672">::</span>seconds(<span style="color:#ae81ff">1</span>));
 </span></span><span style="display:flex;"><span>    {
 </span></span><span style="display:flex;"><span>        std<span style="color:#f92672">::</span>lock_guard<span style="color:#f92672">&lt;</span>std<span style="color:#f92672">::</span>mutex<span style="color:#f92672">&gt;</span> lk(cv_m);
@@ -1168,8 +1145,7 @@
 </span></span><span style="display:flex;"><span>    cv.notify_all();
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span> 
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
-</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span><span style="color:#66d9ef">thread</span> t1(waits), t2(waits), t3(waits), t4(signals);
 </span></span><span style="display:flex;"><span>    t1.join(); 
 </span></span><span style="display:flex;"><span>    t2.join(); 
@@ -1190,8 +1166,7 @@
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">bool</span> done <span style="color:#f92672">=</span> false;
 </span></span><span style="display:flex;"><span> 
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">waits</span>()
-</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">waits</span>() {
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>unique_lock<span style="color:#f92672">&lt;</span>std<span style="color:#f92672">::</span>mutex<span style="color:#f92672">&gt;</span> lk(cv_m);
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Waiting... </span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>;
 </span></span><span style="display:flex;"><span>    cv.wait(lk, []{<span style="color:#66d9ef">return</span> i <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>;});
@@ -1199,8 +1174,7 @@
 </span></span><span style="display:flex;"><span>    done <span style="color:#f92672">=</span> true;
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span> 
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">signals</span>()
-</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">signals</span>() {
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>this_thread<span style="color:#f92672">::</span>sleep_for(std<span style="color:#f92672">::</span>chrono<span style="color:#f92672">::</span>seconds(<span style="color:#ae81ff">1</span>));
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Notifying falsely...</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>;
 </span></span><span style="display:flex;"><span>    cv.notify_one(); <span style="color:#75715e">// 等待线程被通知 i == 0.
@@ -1218,8 +1192,7 @@
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span> 
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
-</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span><span style="color:#66d9ef">thread</span> t1(waits), t2(signals);
 </span></span><span style="display:flex;"><span>    t1.join(); 
 </span></span><span style="display:flex;"><span>    t2.join();
@@ -1240,16 +1213,14 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                 <span style="color:#75715e">// 3) 为条件变量 cv
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
 </span></span><span style="display:flex;"><span> 
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">waits</span>()
-</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">waits</span>() {
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>unique_lock<span style="color:#f92672">&lt;</span>std<span style="color:#f92672">::</span>mutex<span style="color:#f92672">&gt;</span> lk(cv_m);
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cerr <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Waiting... </span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>;
 </span></span><span style="display:flex;"><span>    cv.wait(lk, []{<span style="color:#66d9ef">return</span> i <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>;});
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cerr <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;...finished waiting. i == 1</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>;
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span> 
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">signals</span>()
-</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">signals</span>() {
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>this_thread<span style="color:#f92672">::</span>sleep_for(std<span style="color:#f92672">::</span>chrono<span style="color:#f92672">::</span>seconds(<span style="color:#ae81ff">1</span>));
 </span></span><span style="display:flex;"><span>    {
 </span></span><span style="display:flex;"><span>        std<span style="color:#f92672">::</span>lock_guard<span style="color:#f92672">&lt;</span>std<span style="color:#f92672">::</span>mutex<span style="color:#f92672">&gt;</span> lk(cv_m);
@@ -1267,8 +1238,7 @@
 </span></span><span style="display:flex;"><span>    cv.notify_all();
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span> 
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
-</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span><span style="color:#66d9ef">thread</span> t1(waits), t2(waits), t3(waits), t4(signals);
 </span></span><span style="display:flex;"><span>    t1.join(); 
 </span></span><span style="display:flex;"><span>    t2.join(); 
@@ -1290,8 +1260,7 @@
 </span></span><span style="display:flex;"><span>std<span style="color:#f92672">::</span>mutex cv_m;
 </span></span><span style="display:flex;"><span>std<span style="color:#f92672">::</span>atomic<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> i{<span style="color:#ae81ff">0</span>};
 </span></span><span style="display:flex;"><span> 
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">waits</span>(<span style="color:#66d9ef">int</span> idx)
-</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">waits</span>(<span style="color:#66d9ef">int</span> idx) {
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>unique_lock<span style="color:#f92672">&lt;</span>std<span style="color:#f92672">::</span>mutex<span style="color:#f92672">&gt;</span> lk(cv_m);
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">auto</span> now <span style="color:#f92672">=</span> std<span style="color:#f92672">::</span>chrono<span style="color:#f92672">::</span>system_clock<span style="color:#f92672">::</span>now();
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span>(cv.wait_until(lk, now <span style="color:#f92672">+</span> idx<span style="color:#f92672">*</span><span style="color:#ae81ff">100</span>ms, [](){<span style="color:#66d9ef">return</span> i <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>;}))
@@ -1300,8 +1269,7 @@
 </span></span><span style="display:flex;"><span>        std<span style="color:#f92672">::</span>cerr <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Thread &#34;</span> <span style="color:#f92672">&lt;&lt;</span> idx <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; timed out. i == &#34;</span> <span style="color:#f92672">&lt;&lt;</span> i <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#39;\n&#39;</span>;
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span> 
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">signals</span>()
-</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">signals</span>() {
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>this_thread<span style="color:#f92672">::</span>sleep_for(<span style="color:#ae81ff">120</span>ms);
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cerr <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Notifying...</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>;
 </span></span><span style="display:flex;"><span>    cv.notify_all();
@@ -1311,8 +1279,7 @@
 </span></span><span style="display:flex;"><span>    cv.notify_all();
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span> 
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
-</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span><span style="color:#66d9ef">thread</span> t1(waits, <span style="color:#ae81ff">1</span>), t2(waits, <span style="color:#ae81ff">2</span>), t3(waits, <span style="color:#ae81ff">3</span>), t4(signals);
 </span></span><span style="display:flex;"><span>    t1.join(); 
 </span></span><span style="display:flex;"><span>    t2.join();
@@ -1341,8 +1308,7 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 对象在未被发信状态
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>std<span style="color:#f92672">::</span>binary_semaphore smphSignal(<span style="color:#ae81ff">0</span>);
 </span></span><span style="display:flex;"><span> 
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">ThreadProc</span>()
-</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">ThreadProc</span>() {
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 通过尝试减少信号量的计数等待来自主程序的信号
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    smphSignal.acquire();
 </span></span><span style="display:flex;"><span> 
@@ -1359,8 +1325,7 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    smphSignal.release();
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span> 
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
-</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 创建某个背景工作线程，它将长期存在
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    std<span style="color:#f92672">::</span>jthread thrWorker(ThreadProc);
 </span></span><span style="display:flex;"><span> 
@@ -1389,8 +1354,7 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 对象在未被发信状态
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>std<span style="color:#f92672">::</span>binary_semaphore smphSignal(<span style="color:#ae81ff">0</span>);
 </span></span><span style="display:flex;"><span> 
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">ThreadProc</span>()
-</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">ThreadProc</span>() {
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 通过尝试减少信号量的计数等待来自主程序的信号
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    smphSignal.acquire();
 </span></span><span style="display:flex;"><span> 
@@ -1407,8 +1371,7 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    smphSignal.release();
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span> 
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
-</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 创建某个背景工作线程，它将长期存在
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    std<span style="color:#f92672">::</span>jthread thrWorker(ThreadProc);
 </span></span><span style="display:flex;"><span> 
@@ -1449,20 +1412,17 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span> 
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">accumulate</span>(std<span style="color:#f92672">::</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;::</span>iterator first,
 </span></span><span style="display:flex;"><span>                std<span style="color:#f92672">::</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;::</span>iterator last,
-</span></span><span style="display:flex;"><span>                std<span style="color:#f92672">::</span>promise<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> accumulate_promise)
-</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>                std<span style="color:#f92672">::</span>promise<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> accumulate_promise) {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> sum <span style="color:#f92672">=</span> std<span style="color:#f92672">::</span>accumulate(first, last, <span style="color:#ae81ff">0</span>);
 </span></span><span style="display:flex;"><span>    accumulate_promise.set_value(sum);  <span style="color:#75715e">// Notify future
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
 </span></span><span style="display:flex;"><span> 
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">do_work</span>(std<span style="color:#f92672">::</span>promise<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">void</span><span style="color:#f92672">&gt;</span> barrier)
-</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">do_work</span>(std<span style="color:#f92672">::</span>promise<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">void</span><span style="color:#f92672">&gt;</span> barrier) {
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>this_thread<span style="color:#f92672">::</span>sleep_for(std<span style="color:#f92672">::</span>chrono<span style="color:#f92672">::</span>seconds(<span style="color:#ae81ff">1</span>));
 </span></span><span style="display:flex;"><span>    barrier.set_value();
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span> 
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
-</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Demonstrate using promise&lt;int&gt; to transmit a result between threads.
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    std<span style="color:#f92672">::</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> numbers <span style="color:#f92672">=</span> { <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">6</span> };
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>promise<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> accumulate_promise;
@@ -1497,8 +1457,7 @@
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// unique function to avoid disambiguating the std::pow overload set
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">f</span>(<span style="color:#66d9ef">int</span> x, <span style="color:#66d9ef">int</span> y) { <span style="color:#66d9ef">return</span> std<span style="color:#f92672">::</span>pow(x,y); }
 </span></span><span style="display:flex;"><span> 
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">task_lambda</span>()
-</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">task_lambda</span>() {
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>packaged_task<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span>(<span style="color:#66d9ef">int</span>,<span style="color:#66d9ef">int</span>)<span style="color:#f92672">&gt;</span> task([](<span style="color:#66d9ef">int</span> a, <span style="color:#66d9ef">int</span> b) {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> std<span style="color:#f92672">::</span>pow(a, b); 
 </span></span><span style="display:flex;"><span>    });
@@ -1509,8 +1468,7 @@
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;task_lambda:</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;&lt;</span> result.get() <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#39;\n&#39;</span>;
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span> 
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">task_bind</span>()
-</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">task_bind</span>() {
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>packaged_task<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span>()<span style="color:#f92672">&gt;</span> task(std<span style="color:#f92672">::</span>bind(f, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">11</span>));
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>future<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> result <span style="color:#f92672">=</span> task.get_future();
 </span></span><span style="display:flex;"><span> 
@@ -1519,8 +1477,7 @@
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;task_bind:</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;&lt;</span> result.get() <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#39;\n&#39;</span>;
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span> 
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">task_thread</span>()
-</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">task_thread</span>() {
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>packaged_task<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span>(<span style="color:#66d9ef">int</span>,<span style="color:#66d9ef">int</span>)<span style="color:#f92672">&gt;</span> task(f);
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>future<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> result <span style="color:#f92672">=</span> task.get_future();
 </span></span><span style="display:flex;"><span> 
@@ -1530,8 +1487,7 @@
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;task_thread:</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;&lt;</span> result.get() <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#39;\n&#39;</span>;
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span> 
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
-</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
 </span></span><span style="display:flex;"><span>    task_lambda();
 </span></span><span style="display:flex;"><span>    task_bind();
 </span></span><span style="display:flex;"><span>    task_thread();
@@ -1546,8 +1502,7 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;future&gt;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;thread&gt;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span> 
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
-</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// future from a packaged_task
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    std<span style="color:#f92672">::</span>packaged_task<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span>()<span style="color:#f92672">&gt;</span> task([]{ <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">7</span>; }); <span style="color:#75715e">// wrap the function
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    std<span style="color:#f92672">::</span>future<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> f1 <span style="color:#f92672">=</span> task.get_future();  <span style="color:#75715e">// get a future
@@ -1577,8 +1532,7 @@
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;future&gt;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span> 
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
-</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>future<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> empty;
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span> {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> n <span style="color:#f92672">=</span> empty.get(); <span style="color:#75715e">// The behavior is undefined, but
@@ -1597,8 +1551,7 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;future&gt;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;chrono&gt;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span> 
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
-</span></span><span style="display:flex;"><span>{   
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {   
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>promise<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">void</span><span style="color:#f92672">&gt;</span> ready_promise, t1_ready_promise, t2_ready_promise;
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>shared_future<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">void</span><span style="color:#f92672">&gt;</span> ready_future(ready_promise.get_future());
 </span></span><span style="display:flex;"><span> 
@@ -1671,8 +1624,7 @@
 </span></span><span style="display:flex;"><span>};
 </span></span><span style="display:flex;"><span> 
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> RandomIt<span style="color:#f92672">&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> parallel_sum(RandomIt beg, RandomIt end)
-</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> parallel_sum(RandomIt beg, RandomIt end) {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">auto</span> len <span style="color:#f92672">=</span> end <span style="color:#f92672">-</span> beg;
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (len <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">1000</span>)
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> std<span style="color:#f92672">::</span>accumulate(beg, end, <span style="color:#ae81ff">0</span>);
@@ -1684,8 +1636,7 @@
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> sum <span style="color:#f92672">+</span> handle.get();
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span> 
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
-</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> v(<span style="color:#ae81ff">10000</span>, <span style="color:#ae81ff">1</span>);
 </span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;The sum is &#34;</span> <span style="color:#f92672">&lt;&lt;</span> parallel_sum(v.begin(), v.end()) <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#39;\n&#39;</span>;
 </span></span><span style="display:flex;"><span> 

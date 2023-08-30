@@ -1,17 +1,74 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content=''><title>1.4放大器</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='信号在之前，大多数都需要放大。放大器简单地增加了信号的幅度(电压、电流)。
+1.4.1 线性放大器 线性放大器对输入信号进行幅度上的放大。
+理想放大器指对信号的放大不产生噪声和失真，随着时间变化而变化，并且对输入的精确再现。
+主要用于放大电压和功率。
+电压放大器：$V_{out}$(t)正比于$V_{in}$(t),其比值为电压增益，公式： $$ A_v = \frac{V_{out}}{V_{in}} $$
+$A_{v}$=电压增益；$V_{out}$=输出信号电压；$V_{in}$=输入信号电压
+理想的放大器的传输曲线应该是一条固定斜率无限延伸的直线，但实际没有这样的器件，在$V_{in}$达到一定的时会达到饱和(斜率不变)，最后$V_{in}$怎么变大$V_{out}$都不会变，在达到$V_{out}$ = $V_{max}$ 时曲线会平行于$X$轴。在达到$V_{out}$ = $V_{max}$之前，饱和之后存在一段非线性曲线。
+1.4.2 非线性放大器 放大曲线也可能不是直线，而是曲线。
+有两类放大器：波形整形和开关。
+波形整形放大器：用于改变波形的形状。
+开关放大器：从其他波形产生一个矩形输出。
+功率增益$V_p$,信号的输出·比上输入功率。用电压或电流的有效值来求功率。公式： $$ A_p = \frac{P_{out}}{P_{in}} $$ $A_p$=功率增益，$P_{out}$=输出功率， $P_{in}$=输入功率 $$ A_p = \frac{I_{out}V_{out}}{I_{in}V_{in}} $$
+$$ A_p = (\frac{V^2_{out}/R_L}{V^2_{in}/R_{in}}) $$
+1.4.3 放大器模型 放大器是负载用来放大信号幅度的器件。可以认为放大器是源和负载之间的一个接口。
+1.4.4 级联 多个放大器可以结合成一个更大放大能力的放大器的。
+1.4.5 对数 对数就是幂，方程： $$ y = b^x $$ y值取决于底为b的幂指数，而幂x则是y的对数值。
+有两个常用的对数底：10和e
+log以底为10的对数
+ln以底为e的对数
+以10为底的对数用来描述分贝，对于以10位底，有： $$ y = 10^x $$ 得 $$ x = log_{10}y $$ 把10省掉，简写成$log$。'><title>1.4放大器</title>
 
 <link rel='canonical' href='https://okokfun.github.io/post/1-4%E6%94%BE%E5%A4%A7%E5%99%A8/'>
 
 <link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='1.4放大器'>
-<meta property='og:description' content=''>
+<meta property='og:description' content='信号在之前，大多数都需要放大。放大器简单地增加了信号的幅度(电压、电流)。
+1.4.1 线性放大器 线性放大器对输入信号进行幅度上的放大。
+理想放大器指对信号的放大不产生噪声和失真，随着时间变化而变化，并且对输入的精确再现。
+主要用于放大电压和功率。
+电压放大器：$V_{out}$(t)正比于$V_{in}$(t),其比值为电压增益，公式： $$ A_v = \frac{V_{out}}{V_{in}} $$
+$A_{v}$=电压增益；$V_{out}$=输出信号电压；$V_{in}$=输入信号电压
+理想的放大器的传输曲线应该是一条固定斜率无限延伸的直线，但实际没有这样的器件，在$V_{in}$达到一定的时会达到饱和(斜率不变)，最后$V_{in}$怎么变大$V_{out}$都不会变，在达到$V_{out}$ = $V_{max}$ 时曲线会平行于$X$轴。在达到$V_{out}$ = $V_{max}$之前，饱和之后存在一段非线性曲线。
+1.4.2 非线性放大器 放大曲线也可能不是直线，而是曲线。
+有两类放大器：波形整形和开关。
+波形整形放大器：用于改变波形的形状。
+开关放大器：从其他波形产生一个矩形输出。
+功率增益$V_p$,信号的输出·比上输入功率。用电压或电流的有效值来求功率。公式： $$ A_p = \frac{P_{out}}{P_{in}} $$ $A_p$=功率增益，$P_{out}$=输出功率， $P_{in}$=输入功率 $$ A_p = \frac{I_{out}V_{out}}{I_{in}V_{in}} $$
+$$ A_p = (\frac{V^2_{out}/R_L}{V^2_{in}/R_{in}}) $$
+1.4.3 放大器模型 放大器是负载用来放大信号幅度的器件。可以认为放大器是源和负载之间的一个接口。
+1.4.4 级联 多个放大器可以结合成一个更大放大能力的放大器的。
+1.4.5 对数 对数就是幂，方程： $$ y = b^x $$ y值取决于底为b的幂指数，而幂x则是y的对数值。
+有两个常用的对数底：10和e
+log以底为10的对数
+ln以底为e的对数
+以10为底的对数用来描述分贝，对于以10位底，有： $$ y = 10^x $$ 得 $$ x = log_{10}y $$ 把10省掉，简写成$log$。'>
 <meta property='og:url' content='https://okokfun.github.io/post/1-4%E6%94%BE%E5%A4%A7%E5%99%A8/'>
 <meta property='og:site_name' content='My Blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Analog' /><meta property='article:published_time' content='2023-07-14T14:58:40&#43;00:00'/><meta property='article:modified_time' content='2023-07-14T14:58:40&#43;00:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Analog' /><meta property='article:published_time' content='2023-07-14T14:58:40&#43;08:00'/><meta property='article:modified_time' content='2023-07-14T14:58:40&#43;08:00'/>
 <meta name="twitter:title" content="1.4放大器">
-<meta name="twitter:description" content=""><script>
+<meta name="twitter:description" content="信号在之前，大多数都需要放大。放大器简单地增加了信号的幅度(电压、电流)。
+1.4.1 线性放大器 线性放大器对输入信号进行幅度上的放大。
+理想放大器指对信号的放大不产生噪声和失真，随着时间变化而变化，并且对输入的精确再现。
+主要用于放大电压和功率。
+电压放大器：$V_{out}$(t)正比于$V_{in}$(t),其比值为电压增益，公式： $$ A_v = \frac{V_{out}}{V_{in}} $$
+$A_{v}$=电压增益；$V_{out}$=输出信号电压；$V_{in}$=输入信号电压
+理想的放大器的传输曲线应该是一条固定斜率无限延伸的直线，但实际没有这样的器件，在$V_{in}$达到一定的时会达到饱和(斜率不变)，最后$V_{in}$怎么变大$V_{out}$都不会变，在达到$V_{out}$ = $V_{max}$ 时曲线会平行于$X$轴。在达到$V_{out}$ = $V_{max}$之前，饱和之后存在一段非线性曲线。
+1.4.2 非线性放大器 放大曲线也可能不是直线，而是曲线。
+有两类放大器：波形整形和开关。
+波形整形放大器：用于改变波形的形状。
+开关放大器：从其他波形产生一个矩形输出。
+功率增益$V_p$,信号的输出·比上输入功率。用电压或电流的有效值来求功率。公式： $$ A_p = \frac{P_{out}}{P_{in}} $$ $A_p$=功率增益，$P_{out}$=输出功率， $P_{in}$=输入功率 $$ A_p = \frac{I_{out}V_{out}}{I_{in}V_{in}} $$
+$$ A_p = (\frac{V^2_{out}/R_L}{V^2_{in}/R_{in}}) $$
+1.4.3 放大器模型 放大器是负载用来放大信号幅度的器件。可以认为放大器是源和负载之间的一个接口。
+1.4.4 级联 多个放大器可以结合成一个更大放大能力的放大器的。
+1.4.5 对数 对数就是幂，方程： $$ y = b^x $$ y值取决于底为b的幂指数，而幂x则是y的对数值。
+有两个常用的对数底：10和e
+log以底为10的对数
+ln以底为e的对数
+以10为底的对数用来描述分贝，对于以10位底，有： $$ y = 10^x $$ 得 $$ x = log_{10}y $$ 把10省掉，简写成$log$。"><script>
     (function(){
         if(''){
             if (prompt('请输入文章密码') !== ''){
@@ -25,7 +82,7 @@
 
     </head>
     <body class="
-    article-page 
+    article-page has-toc
 ">
     <script>
         (function() {
@@ -51,128 +108,22 @@
 </script>
 <div class="container main-container flex 
     
-        on-phone--column extended
+        extended
     
 ">
     
-        <aside class="sidebar left-sidebar sticky">
-    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
-        <span class="hamburger-box">
-            <span class="hamburger-inner"></span>
-        </span>
-    </button>
-
-    <header class="site-info">
-        
-            
-            <figure class="site-avatar">
-                
-                    
-                    
-                    
-                        
-                        <img src="/img/avatar_hu71fc3898bde3464d50a00f65e63c7ec2_517570_300x0_resize_box_3.png" width="300"
-                            height="354" class="site-logo" loading="lazy" alt="Avatar">
-                    
-                
-
-                
-            </figure>
-            
-        
-        
-        <h1 class="site-name"><a href="/">My Blog</a></h1>
-        <h2 class="site-description"></h2></header>
-
-    <ol class="menu" id="main-menu">
-        
-        
-        
-
-        <li >
-            <a href='/page/about/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <div id="article-toolbar">
+            <a href="/" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="7" r="4" />
-  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+  <polyline points="15 6 9 12 15 18" />
 </svg>
 
 
 
-                
-                <span>About</span>
+                <span>Back</span>
             </a>
-        </li>
-        
-        
-
-        <li >
-            <a href='/page/archives/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <rect x="3" y="4" width="18" height="4" rx="2" />
-  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
-  <line x1="10" y1="12" x2="14" y2="12" />
-</svg>
-
-
-
-                
-                <span>Archives</span>
-            </a>
-        </li>
-        
-        
-
-        <li >
-            <a href='/page/search/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="10" cy="10" r="7" />
-  <line x1="21" y1="21" x2="15" y2="15" />
-</svg>
-
-
-
-                
-                <span>Search</span>
-            </a>
-        </li>
-        
-
-        
-            <li id="dark-mode-toggle">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="8" cy="12" r="2" />
-  <rect x="2" y="6" width="20" height="12" rx="6" />
-</svg>
-
-
-
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="16" cy="12" r="2" />
-  <rect x="2" y="6" width="20" height="12" rx="6" />
-</svg>
-
-
-
-                <span>Dark Mode</span>
-            </li>
-        
-    </ol>
-</aside>
-
+        </div>
     
 <main class="main full-width">
     <article class="main-article">
@@ -215,7 +166,7 @@
 
 
                 <time class="article-time--reading">
-                    0 minute read
+                    1 minute read
                 </time>
             </div>
         
@@ -225,7 +176,128 @@
 </header>
 
     <section class="article-content">
-    
+    <p>信号在之前，大多数都需要放大。放大器简单地增加了信号的幅度(电压、电流)。</p>
+<h3 id="141-线性放大器">1.4.1 线性放大器</h3>
+<p>线性放大器对输入信号进行<strong>幅度</strong>上的放大。</p>
+<p><strong>理想放大器</strong>指对信号的放大不产生噪声和失真，随着时间变化而变化，并且对输入的精确再现。</p>
+<blockquote>
+<p>主要用于放大电压和功率。</p>
+</blockquote>
+<p><strong>电压放大器</strong>：$V_{out}$(t)正比于$V_{in}$(t),其比值为电压增益，公式：
+$$
+A_v = \frac{V_{out}}{V_{in}}
+$$</p>
+<p>$A_{v}$=电压增益；$V_{out}$=输出信号电压；$V_{in}$=输入信号电压</p>
+<p>理想的放大器的传输曲线应该是一条<strong>固定斜率</strong>无限延伸的<strong>直线</strong>，但实际没有这样的器件，在$V_{in}$达到一定的时会达到饱和(斜率不变)，最后$V_{in}$怎么变大$V_{out}$都不会变，在达到$V_{out}$ = $V_{max}$ 时曲线会平行于$X$轴。在达到$V_{out}$ = $V_{max}$之前，饱和之后存在一段非线性曲线。</p>
+<h3 id="142-非线性放大器">1.4.2 非线性放大器</h3>
+<p>放大曲线也可能不是直线，而是曲线。</p>
+<p>有两类放大器：波形整形和开关。</p>
+<p>波形整形放大器：用于改变波形的形状。</p>
+<p>开关放大器：从其他波形产生一个矩形输出。</p>
+<p>功率增益$V_p$,信号的输出·比上输入功率。用电压或电流的有效值来求功率。公式：
+$$
+A_p = \frac{P_{out}}{P_{in}}
+$$
+$A_p$=功率增益，$P_{out}$=输出功率， $P_{in}$=输入功率
+$$
+A_p = \frac{I_{out}V_{out}}{I_{in}V_{in}}
+$$</p>
+<p>$$
+A_p = (\frac{V^2_{out}/R_L}{V^2_{in}/R_{in}})
+$$</p>
+<h3 id="143-放大器模型">1.4.3 放大器模型</h3>
+<p>放大器是负载用来放大信号幅度的器件。可以认为放大器是源和负载之间的一个接口。</p>
+<h3 id="144-级联">1.4.4 级联</h3>
+<p>多个放大器可以结合成一个更大放大能力的放大器的。</p>
+<h3 id="145-对数">1.4.5 对数</h3>
+<p>对数就是幂，方程：
+$$
+y = b^x
+$$
+y值取决于底为b的幂指数，而幂<code>x</code>则是<code>y</code>的对数值。</p>
+<p>有两个常用的对数底：<code>10</code>和<code>e</code></p>
+<blockquote>
+<p>log以底为10的对数</p>
+<p>ln以底为e的对数</p>
+</blockquote>
+<p>以10为底的对数用来描述分贝，对于以10位底，有：
+$$
+y = 10^x
+$$
+得
+$$
+x = log_{10}y
+$$
+把10省掉，简写成$log$。</p>
+<p>当乘与或除以很大或很小数值时，对数很有用。两个指数相乘，可写成他们的幂相加：
+$$
+10^x×10^y = 10^{x+y}
+$$
+等于
+$$
+log^{xy} = log^x+log^y
+$$
+此概念用于解决级联放大器的放大或衰减。</p>
+<h3 id="146-分贝功率比">1.4.6 分贝功率比</h3>
+<p>功率比的数值比较大。工程师用<code>分贝比</code>来描述大的增益或衰减。分贝(dB)被定义为功率增益对数的10倍：
+$$
+dB = 10log(\frac{P_2}{P_1})
+$$
+式中，P1、P2是两个相互比较的功率。</p>
+<p>用分贝来表示功率增益$A_p$,公式:</p>
+<p>$$
+A&rsquo;<em>p = 10log(\frac{P</em>{out}}{P_{in}})$
+$$</p>
+<p>式中， $A&rsquo;$ =分贝值表示功率比，$P_{out}$ = 负载端的功率, $P_{in}$ = 提供给放大器的功率。</p>
+<p>500W和1W的比值是500 : 1，分贝值27dB。100mW : 0.2mW比值27dB,比值小于1存在功率衰耗或衰减。功率增加，分贝值是整数；对于功率衰减，分贝值是负值。</p>
+<p>功率比2 : 1很重要，用来表示仪器、放大器、滤波器等的频率截止频率，代入公式：</p>
+<p>$$
+dB = 10log(\frac{P_2}{P_1}) = 10log(\frac{2}{1}) = 3.01dB
+$$</p>
+<p>约3dB。</p>
+<p>3dB表示功率是两倍，6dB表示功率是原功率的$2^2$倍(功率比是4 : 1), 9dB表示功率比是$2^3$倍。如果比值一样，而$P_2$比$P_1$小，那么对数值除了符号外是一样的，式子：</p>
+<p>$$
+dB = 10log(\frac{P_2}{P_1}) = 10log(\frac{1}{2}) = -3.01dB
+$$</p>
+<p>负数表示$P_2$比$P_1$小。</p>
+<p>另一个有用的比值是10 : 1,因为以10为底的对数是1,10dB表示功率比是10  : 1.</p>
+<p>比如信号衰减了23dB，它可以有两个10dB的衰减器和一个3dB的衰减器表示。两个衰减器衰减了100倍，3dB衰减器衰减了2倍，因此总衰减了1 : 200;</p>
+<p>如果多级级联的增益或衰减是常见的，比如总电压是各级增益绝对值的乘积：</p>
+<p>$$
+A_{v(tot)} = A_{v1}×A_{v2}×···A_{vn}
+$$</p>
+<p>分贝值的<code>代数相加</code>等于<code>绝对值增益的乘积</code>：</p>
+<p>$$
+A&rsquo;<em>{v(tot)} = A&rsquo;</em>{v1} + A&rsquo;<em>{v2}+···A&rsquo;</em>{vn}
+$$</p>
+<p>dBm是指在某个假定的负载阻抗上消耗 1mW 的功率作为参考功率时测得的功率。对于射频系统，负载阻值为 50Ω；对于音频系统，一般为600Ω，其定义为：
+$$
+dBm = 10log(\frac{P_2}{1mW})
+$$
+dBm通常用来表示信号发生器的输出功率，或用来简化通信系统中功率的计算。</p>
+<h3 id="147-分贝电压比">1.4.7 分贝电压比</h3>
+<p>$P = V^2/R$,分贝功率可写成：
+$$
+dB = 10log(\frac{V^2_2/R_2}{V^2_1/R_1})
+$$
+$R_1$、$R_2$ = $P_1$、$P_2$对应的电阻；$V_1$、$V_2$ = 电阻$R_1$、$R_2$上的电压</p>
+<p>如果电阻相等，$R_1$、$R_2$可以约掉：
+$$
+dB = 10log(\frac{V^2_2}{V^2_1})
+$$</p>
+<p>对数：
+$$
+logx^2 = 2logx
+$$
+分贝电压比:
+$$
+dB = 20log(\frac{V_2}{V_1})
+$$
+放大器电压增益用分贝表示:
+$$
+A_v = 20log(\frac{V_{out}}{V_{in}})
+$$</p>
+
 </section>
 
 
@@ -241,6 +313,29 @@
     </footer>
 
 
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css"integrity="sha384-RZU/ijkSsFbcmivfdRBQDtwuwVqK7GMOw6IMvKyeWL2K5UAlyp6WonmB8m7Jd0Hn"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js"integrity="sha384-pK1WpvzWVBQiP0/GjnvRxV4mOb0oxFuyRxJlk6vVw146n3egcN5C925NCP7a7BY8"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js"integrity="sha384-vZTG03m&#43;2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ]
+        });})
+</script>
     
 </article>
 
@@ -277,24 +372,24 @@
                 
                     
 <article class="">
-    <a href="/post/1-1%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E5%AD%A6/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">1.1模拟电子学</h2>
-        </div>
-    </a>
-</article>
-                
-                    
-<article class="">
     <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/">
         
         
 
         <div class="article-details">
             <h2 class="article-title">模拟电子技术基础</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/1-1%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E5%AD%A6/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">1.1模拟电子学</h2>
         </div>
     </a>
 </article>
@@ -424,6 +519,42 @@
             >
 
             </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">Table of contents</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#141-线性放大器">1.4.1 线性放大器</a></li>
+        <li><a href="#142-非线性放大器">1.4.2 非线性放大器</a></li>
+        <li><a href="#143-放大器模型">1.4.3 放大器模型</a></li>
+        <li><a href="#144-级联">1.4.4 级联</a></li>
+        <li><a href="#145-对数">1.4.5 对数</a></li>
+        <li><a href="#146-分贝功率比">1.4.6 分贝功率比</a></li>
+        <li><a href="#147-分贝电压比">1.4.7 分贝电压比</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                </div>
+            </section>
+        </aside>
     
 
         </div>
