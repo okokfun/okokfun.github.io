@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='前面关于二极管的讨论主要集中在利用二极管单向导电性的应用上。有些二极管是为其他一些应用而设计的。本节将学习许多特殊用途的二极管，如齐纳二极管、变容二极管、光敏二极管和发光二极管。
+学完本节后,你应该掌握以下内容:
+阐述四种特殊用途二极管的特性 描述齐纳二极管的特性曲线 说明齐纳二极管在一个基本的稳压器中是如何起作用的 解释变容二极管是如何成为可变电容器的 讨论发光二极管(LED)和光敏二极管的基本原理 2.8.1齐纳二极管 图2-44给出了齐纳二极管的图示符号。齐纳二极管是一个硅的 $pn$ 结器件，与整流二极管不同的地方在于它的反向击穿区的设计。市场上常见的齐纳二极管的反向击穿电压在1.8～200V之间。在制造时是通过精细地控制掺杂浓度来设置其击穿电压的。从2.4节讨论的二极管特性曲线可知，当二极管反向击穿时，即使电流在急剧变化，但电压仍几乎保持常量。图2-45再次显示了二极管的伏安特性曲线。
+齐纳二极管最重要的应用是用作参考电压和小电流应用时的稳压器。作为稳压器时，齐纳二极管存在着局限:它没有集成电路稳压器(在2.6节中讨论)那么高的波动抑制能力，并且也不能应付大负载电流的变化。通过把齐纳二极管和晶体管或运算放大器相结合，就能构造出性能更好的稳压器。
+图2-46给出了齐纳二极管反向特性曲线部分。注意，随着反向电压($V_R$)的增加，反向电流($I_R$)始终保持非常小，直到曲线到达拐点处。在这一点,开始出现击穿效应;随着反向电流的快速增大，内部的齐纳交流电阻开始减小。通常这个电阻在参数表中表示为阻抗$Z_Z$。在拐点的底部，齐纳击穿电压($V_Z$)基本保持不变，尽管齐纳击穿电压会随着$I_Z$的增大而稍微增大。特性曲线的恒定电压区表明齐纳二极管的稳压能力。
+要使齐纳二极管工作在稳压状态，必须不能低于其反向电流$I_{ZK}$。从图2-46中的曲线可以看到，当反向电流减小到低于拐点处时，电压将急剧减小，稳压功能也就失去了。同样，也存在最大电流$I_{ZM}$，超过这个电流值二极管可能会损坏。因而，基本情况上，当通过齐纳二极管中的反向电流在$I_{ZK} $~$ I_{ZM}$范围内变化时,其端电压几乎保持恒定。数据手册中的额定齐纳电压$V_{ZT}$是指反向电流处于$I_{ZT}$(称为齐纳测试电流)时所对应的电压值。
+齐纳等效电路 图2-47a给出了齐纳二极管反向击穿时的理想近似。它被简化成了一个电池，其电压值就是额定齐纳电压。图2-47b表示齐纳二极管的实际等效电路，其中包含齐纳阻抗($Z_Z$)。因为实际的电压曲线并不是理想垂直的，所以齐纳电流的变化($△I_Z$)会引起齐纳电压有微小的变化($△V_Z$)，如图2-47c所示。
+$$ a)理想模型 $$ $$ b)实际模型 $$ $$ c)特性曲线 $$ $$ 图2-47齐纳二极管等效电路和Z_Z的图示化特性曲线 $$ 根据欧姆定理，$△V_Z$ 和 $△I_Z$ 的比等于齐纳阻抗，公式如下: $$ Z_Z = \frac{△V_Z}{△I_Z}~~~~~~(式子2-5) $$ 通常，$Z_Z$ 指定为在齐纳测试电流 $I_Z$ 处的值。大多数情况下，在齐纳电流值的整个线性范围内，可以假定 $Z_Z$ 是个常量。
+齐纳稳压器 如前所述，齐纳二极管在一些简单的应用中可以作为稳压器。图2-48图示了一个齐纳二极管是如何把变化的直流输人电压稳定在一个恒定值上的。前面学过，这个过程称为线路调整率(见2.6节)。 $$ a）在输入电压增大时,输出电压几乎保持恒定(I_{ZK} &amp;lt; I_Z &amp;lt; I_{ZM}) $$ $$ b)在输入电压减小时，输出电压几乎保持恒定(I_{ZK} &amp;lt; I_Z &amp;lt; I_{ZM}) $$ $$ 2-48 输入电压改变时的齐纳稳压 $$
+当输入电压变化时(在满足条件的范围内)，齐纳二极管的输出端电压几乎保持恒定。然而，随着 $V_{IN}$ 变化，$I_Z$ 将相应地变化。因此在满足$V_{IN}&amp;gt;V_Z$的条件下，齐纳二极管能起稳压作用的前提就是输人电压变化引起的二极管电流Iz须在最小和最大电流值($I_{ZK}$和$I_{ZM}$)之间。$R$是串联限流电阻。数字万用表(DMM)上的显示条会显示出相应的值和变化趋势。除了数字读数外，许多数字万用表还有模拟显示。
+2.8.2变容二极管 因为结电容会随着反向偏置电压的大小而发生变化，变容二极管故又称为可变电容二极管。变容器是专门为利用可变电容特性而设计的。可以通过改变反向电压来改变电容。这些器件主要用于通信系统中的电子调谐电路。 变容器本质上是一个反向偏置的pn结，它利用耗尽层固有的电容特性。由于反向偏置时所产生的耗尽层不导电，因此它充当了电容器中的电介质。而 $p$ 区和 $n$ 区是导电的，充当了电容器的极板，如图2-51所示。 $$ 图2-51反向偏置时变容二极管用作变容器 $$ 回想一下，电容是由极板面积( A )、介电常数( $\epsilon$ )和电解质厚度( $d$ )决定的，公式如下: $$ C=\frac{A\epsilon}{d} $$ 当反向偏置电压增大时，耗尽层变宽，等效于增加了电解质的厚度，所以减小了电容。当反向偏置电压减小，耗尽层变窄，所以增大了电容。图2-52a和 b 反映了这种作用。通常的电容-电压曲线如图2-52c所示。'><title>2.8特殊用途二极管</title>
+
+<link rel='canonical' href='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/2-8%E7%89%B9%E6%AE%8A%E7%94%A8%E9%80%94%E4%BA%8C%E6%9E%81%E7%AE%A1/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='2.8特殊用途二极管'>
+<meta property='og:description' content='前面关于二极管的讨论主要集中在利用二极管单向导电性的应用上。有些二极管是为其他一些应用而设计的。本节将学习许多特殊用途的二极管，如齐纳二极管、变容二极管、光敏二极管和发光二极管。
+学完本节后,你应该掌握以下内容:
+阐述四种特殊用途二极管的特性 描述齐纳二极管的特性曲线 说明齐纳二极管在一个基本的稳压器中是如何起作用的 解释变容二极管是如何成为可变电容器的 讨论发光二极管(LED)和光敏二极管的基本原理 2.8.1齐纳二极管 图2-44给出了齐纳二极管的图示符号。齐纳二极管是一个硅的 $pn$ 结器件，与整流二极管不同的地方在于它的反向击穿区的设计。市场上常见的齐纳二极管的反向击穿电压在1.8～200V之间。在制造时是通过精细地控制掺杂浓度来设置其击穿电压的。从2.4节讨论的二极管特性曲线可知，当二极管反向击穿时，即使电流在急剧变化，但电压仍几乎保持常量。图2-45再次显示了二极管的伏安特性曲线。
+齐纳二极管最重要的应用是用作参考电压和小电流应用时的稳压器。作为稳压器时，齐纳二极管存在着局限:它没有集成电路稳压器(在2.6节中讨论)那么高的波动抑制能力，并且也不能应付大负载电流的变化。通过把齐纳二极管和晶体管或运算放大器相结合，就能构造出性能更好的稳压器。
+图2-46给出了齐纳二极管反向特性曲线部分。注意，随着反向电压($V_R$)的增加，反向电流($I_R$)始终保持非常小，直到曲线到达拐点处。在这一点,开始出现击穿效应;随着反向电流的快速增大，内部的齐纳交流电阻开始减小。通常这个电阻在参数表中表示为阻抗$Z_Z$。在拐点的底部，齐纳击穿电压($V_Z$)基本保持不变，尽管齐纳击穿电压会随着$I_Z$的增大而稍微增大。特性曲线的恒定电压区表明齐纳二极管的稳压能力。
+要使齐纳二极管工作在稳压状态，必须不能低于其反向电流$I_{ZK}$。从图2-46中的曲线可以看到，当反向电流减小到低于拐点处时，电压将急剧减小，稳压功能也就失去了。同样，也存在最大电流$I_{ZM}$，超过这个电流值二极管可能会损坏。因而，基本情况上，当通过齐纳二极管中的反向电流在$I_{ZK} $~$ I_{ZM}$范围内变化时,其端电压几乎保持恒定。数据手册中的额定齐纳电压$V_{ZT}$是指反向电流处于$I_{ZT}$(称为齐纳测试电流)时所对应的电压值。
+齐纳等效电路 图2-47a给出了齐纳二极管反向击穿时的理想近似。它被简化成了一个电池，其电压值就是额定齐纳电压。图2-47b表示齐纳二极管的实际等效电路，其中包含齐纳阻抗($Z_Z$)。因为实际的电压曲线并不是理想垂直的，所以齐纳电流的变化($△I_Z$)会引起齐纳电压有微小的变化($△V_Z$)，如图2-47c所示。
+$$ a)理想模型 $$ $$ b)实际模型 $$ $$ c)特性曲线 $$ $$ 图2-47齐纳二极管等效电路和Z_Z的图示化特性曲线 $$ 根据欧姆定理，$△V_Z$ 和 $△I_Z$ 的比等于齐纳阻抗，公式如下: $$ Z_Z = \frac{△V_Z}{△I_Z}~~~~~~(式子2-5) $$ 通常，$Z_Z$ 指定为在齐纳测试电流 $I_Z$ 处的值。大多数情况下，在齐纳电流值的整个线性范围内，可以假定 $Z_Z$ 是个常量。
+齐纳稳压器 如前所述，齐纳二极管在一些简单的应用中可以作为稳压器。图2-48图示了一个齐纳二极管是如何把变化的直流输人电压稳定在一个恒定值上的。前面学过，这个过程称为线路调整率(见2.6节)。 $$ a）在输入电压增大时,输出电压几乎保持恒定(I_{ZK} &amp;lt; I_Z &amp;lt; I_{ZM}) $$ $$ b)在输入电压减小时，输出电压几乎保持恒定(I_{ZK} &amp;lt; I_Z &amp;lt; I_{ZM}) $$ $$ 2-48 输入电压改变时的齐纳稳压 $$
+当输入电压变化时(在满足条件的范围内)，齐纳二极管的输出端电压几乎保持恒定。然而，随着 $V_{IN}$ 变化，$I_Z$ 将相应地变化。因此在满足$V_{IN}&amp;gt;V_Z$的条件下，齐纳二极管能起稳压作用的前提就是输人电压变化引起的二极管电流Iz须在最小和最大电流值($I_{ZK}$和$I_{ZM}$)之间。$R$是串联限流电阻。数字万用表(DMM)上的显示条会显示出相应的值和变化趋势。除了数字读数外，许多数字万用表还有模拟显示。
+2.8.2变容二极管 因为结电容会随着反向偏置电压的大小而发生变化，变容二极管故又称为可变电容二极管。变容器是专门为利用可变电容特性而设计的。可以通过改变反向电压来改变电容。这些器件主要用于通信系统中的电子调谐电路。 变容器本质上是一个反向偏置的pn结，它利用耗尽层固有的电容特性。由于反向偏置时所产生的耗尽层不导电，因此它充当了电容器中的电介质。而 $p$ 区和 $n$ 区是导电的，充当了电容器的极板，如图2-51所示。 $$ 图2-51反向偏置时变容二极管用作变容器 $$ 回想一下，电容是由极板面积( A )、介电常数( $\epsilon$ )和电解质厚度( $d$ )决定的，公式如下: $$ C=\frac{A\epsilon}{d} $$ 当反向偏置电压增大时，耗尽层变宽，等效于增加了电解质的厚度，所以减小了电容。当反向偏置电压减小，耗尽层变窄，所以增大了电容。图2-52a和 b 反映了这种作用。通常的电容-电压曲线如图2-52c所示。'>
+<meta property='og:url' content='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/2-8%E7%89%B9%E6%AE%8A%E7%94%A8%E9%80%94%E4%BA%8C%E6%9E%81%E7%AE%A1/'>
+<meta property='og:site_name' content='My Blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Analog' /><meta property='article:published_time' content='2023-07-14T15:06:29&#43;00:00'/><meta property='article:modified_time' content='2023-07-14T15:06:29&#43;00:00'/>
+<meta name="twitter:title" content="2.8特殊用途二极管">
+<meta name="twitter:description" content="前面关于二极管的讨论主要集中在利用二极管单向导电性的应用上。有些二极管是为其他一些应用而设计的。本节将学习许多特殊用途的二极管，如齐纳二极管、变容二极管、光敏二极管和发光二极管。
+学完本节后,你应该掌握以下内容:
+阐述四种特殊用途二极管的特性 描述齐纳二极管的特性曲线 说明齐纳二极管在一个基本的稳压器中是如何起作用的 解释变容二极管是如何成为可变电容器的 讨论发光二极管(LED)和光敏二极管的基本原理 2.8.1齐纳二极管 图2-44给出了齐纳二极管的图示符号。齐纳二极管是一个硅的 $pn$ 结器件，与整流二极管不同的地方在于它的反向击穿区的设计。市场上常见的齐纳二极管的反向击穿电压在1.8～200V之间。在制造时是通过精细地控制掺杂浓度来设置其击穿电压的。从2.4节讨论的二极管特性曲线可知，当二极管反向击穿时，即使电流在急剧变化，但电压仍几乎保持常量。图2-45再次显示了二极管的伏安特性曲线。
+齐纳二极管最重要的应用是用作参考电压和小电流应用时的稳压器。作为稳压器时，齐纳二极管存在着局限:它没有集成电路稳压器(在2.6节中讨论)那么高的波动抑制能力，并且也不能应付大负载电流的变化。通过把齐纳二极管和晶体管或运算放大器相结合，就能构造出性能更好的稳压器。
+图2-46给出了齐纳二极管反向特性曲线部分。注意，随着反向电压($V_R$)的增加，反向电流($I_R$)始终保持非常小，直到曲线到达拐点处。在这一点,开始出现击穿效应;随着反向电流的快速增大，内部的齐纳交流电阻开始减小。通常这个电阻在参数表中表示为阻抗$Z_Z$。在拐点的底部，齐纳击穿电压($V_Z$)基本保持不变，尽管齐纳击穿电压会随着$I_Z$的增大而稍微增大。特性曲线的恒定电压区表明齐纳二极管的稳压能力。
+要使齐纳二极管工作在稳压状态，必须不能低于其反向电流$I_{ZK}$。从图2-46中的曲线可以看到，当反向电流减小到低于拐点处时，电压将急剧减小，稳压功能也就失去了。同样，也存在最大电流$I_{ZM}$，超过这个电流值二极管可能会损坏。因而，基本情况上，当通过齐纳二极管中的反向电流在$I_{ZK} $~$ I_{ZM}$范围内变化时,其端电压几乎保持恒定。数据手册中的额定齐纳电压$V_{ZT}$是指反向电流处于$I_{ZT}$(称为齐纳测试电流)时所对应的电压值。
+齐纳等效电路 图2-47a给出了齐纳二极管反向击穿时的理想近似。它被简化成了一个电池，其电压值就是额定齐纳电压。图2-47b表示齐纳二极管的实际等效电路，其中包含齐纳阻抗($Z_Z$)。因为实际的电压曲线并不是理想垂直的，所以齐纳电流的变化($△I_Z$)会引起齐纳电压有微小的变化($△V_Z$)，如图2-47c所示。
+$$ a)理想模型 $$ $$ b)实际模型 $$ $$ c)特性曲线 $$ $$ 图2-47齐纳二极管等效电路和Z_Z的图示化特性曲线 $$ 根据欧姆定理，$△V_Z$ 和 $△I_Z$ 的比等于齐纳阻抗，公式如下: $$ Z_Z = \frac{△V_Z}{△I_Z}~~~~~~(式子2-5) $$ 通常，$Z_Z$ 指定为在齐纳测试电流 $I_Z$ 处的值。大多数情况下，在齐纳电流值的整个线性范围内，可以假定 $Z_Z$ 是个常量。
+齐纳稳压器 如前所述，齐纳二极管在一些简单的应用中可以作为稳压器。图2-48图示了一个齐纳二极管是如何把变化的直流输人电压稳定在一个恒定值上的。前面学过，这个过程称为线路调整率(见2.6节)。 $$ a）在输入电压增大时,输出电压几乎保持恒定(I_{ZK} &amp;lt; I_Z &amp;lt; I_{ZM}) $$ $$ b)在输入电压减小时，输出电压几乎保持恒定(I_{ZK} &amp;lt; I_Z &amp;lt; I_{ZM}) $$ $$ 2-48 输入电压改变时的齐纳稳压 $$
+当输入电压变化时(在满足条件的范围内)，齐纳二极管的输出端电压几乎保持恒定。然而，随着 $V_{IN}$ 变化，$I_Z$ 将相应地变化。因此在满足$V_{IN}&amp;gt;V_Z$的条件下，齐纳二极管能起稳压作用的前提就是输人电压变化引起的二极管电流Iz须在最小和最大电流值($I_{ZK}$和$I_{ZM}$)之间。$R$是串联限流电阻。数字万用表(DMM)上的显示条会显示出相应的值和变化趋势。除了数字读数外，许多数字万用表还有模拟显示。
+2.8.2变容二极管 因为结电容会随着反向偏置电压的大小而发生变化，变容二极管故又称为可变电容二极管。变容器是专门为利用可变电容特性而设计的。可以通过改变反向电压来改变电容。这些器件主要用于通信系统中的电子调谐电路。 变容器本质上是一个反向偏置的pn结，它利用耗尽层固有的电容特性。由于反向偏置时所产生的耗尽层不导电，因此它充当了电容器中的电介质。而 $p$ 区和 $n$ 区是导电的，充当了电容器的极板，如图2-51所示。 $$ 图2-51反向偏置时变容二极管用作变容器 $$ 回想一下，电容是由极板面积( A )、介电常数( $\epsilon$ )和电解质厚度( $d$ )决定的，公式如下: $$ C=\frac{A\epsilon}{d} $$ 当反向偏置电压增大时，耗尽层变宽，等效于增加了电解质的厚度，所以减小了电容。当反向偏置电压减小，耗尽层变窄，所以增大了电容。图2-52a和 b 反映了这种作用。通常的电容-电压曲线如图2-52c所示。"><script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+    </head>
+    <body class="
+    article-page has-toc
+">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex 
+    
+        extended
+    
+">
+    
+        <div id="article-toolbar">
+            <a href="/" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+                <span>Back</span>
+            </a>
+        </div>
+    
+<main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+
+    <h2 class="article-title">
+        <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/2-8%E7%89%B9%E6%AE%8A%E7%94%A8%E9%80%94%E4%BA%8C%E6%9E%81%E7%AE%A1/">2.8特殊用途二极管</a>
+    </h2>
+
+    
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jul 14, 2023</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+</div>
+</header>
+
+    <section class="article-content">
+    <p>前面关于二极管的讨论主要集中在利用二极管单向导电性的应用上。有些二极管是为其他一些应用而设计的。本节将学习许多特殊用途的二极管，如齐纳二极管、变容二极管、光敏二极管和发光二极管。</p>
+<p>学完本节后,你应该掌握以下内容:</p>
+<ul>
+<li>阐述四种特殊用途二极管的特性
+<ul>
+<li>描述齐纳二极管的特性曲线</li>
+<li>说明齐纳二极管在一个基本的稳压器中是如何起作用的</li>
+<li>解释变容二极管是如何成为可变电容器的</li>
+<li>讨论发光二极管(LED)和光敏二极管的基本原理</li>
+</ul>
+</li>
+</ul>
+<h3 id="281齐纳二极管">2.8.1齐纳二极管</h3>
+<p>图2-44给出了<code>齐纳二极管</code>的图示符号。齐纳二极管是一个硅的 $pn$ 结器件，与整流二极管不同的地方在于它的反向击穿区的设计。市场上常见的齐纳二极管的反向击穿电压在1.8～200V之间。在制造时是通过精细地控制掺杂浓度来设置其击穿电压的。从2.4节讨论的二极管特性曲线可知，当二极管反向击穿时，即使电流在急剧变化，但电压仍几乎保持常量。图2-45再次显示了二极管的伏安特性曲线。</p>
+<p>齐纳二极管最重要的应用是用作参考电压和小电流应用时的稳压器。作为稳压器时，齐纳二极管存在着局限:它没有集成电路稳压器(在2.6节中讨论)那么高的波动抑制能力，并且也不能应付大负载电流的变化。通过把齐纳二极管和晶体管或运算放大器相结合，就能构造出性能更好的稳压器。</p>
+<p>图2-46给出了齐纳二极管反向特性曲线部分。注意，随着反向电压($V_R$)的增加，反向电流($I_R$)始终保持非常小，直到曲线到达拐点处。在这一点,开始出现击穿效应;随着反向电流的快速增大，内部的齐纳交流电阻开始减小。通常这个电阻在参数表中表示为阻抗$Z_Z$。在拐点的底部，齐纳击穿电压($V_Z$)基本保持不变，尽管齐纳击穿电压会随着$I_Z$的增大而稍微增大。特性曲线的恒定电压区表明齐纳二极管的稳压能力。</p>
+<p>要使齐纳二极管工作在稳压状态，必须不能低于其反向电流$I_{ZK}$。从图2-46中的曲线可以看到，当反向电流减小到低于拐点处时，电压将急剧减小，稳压功能也就失去了。同样，也存在最大电流$I_{ZM}$，超过这个电流值二极管可能会损坏。因而，基本情况上，当通过齐纳二极管中的反向电流在$I_{ZK} $~$ I_{ZM}$范围内变化时,其端电压几乎保持恒定。数据手册中的额定齐纳电压$V_{ZT}$是指反向电流处于$I_{ZT}$(称为齐纳测试电流)时所对应的电压值。</p>
+<p><strong>齐纳等效电路</strong> 图2-47a给出了齐纳二极管反向击穿时的理想近似。它被简化成了一个电池，其电压值就是额定齐纳电压。图2-47b表示齐纳二极管的实际等效电路，其中包含齐纳阻抗($Z_Z$)。因为实际的电压曲线并不是理想垂直的，所以齐纳电流的变化($△I_Z$)会引起齐纳电压有微小的变化($△V_Z$)，如图2-47c所示。</p>
+<p><img src="https://s2.loli.net/2023/10/01/gonGsFYVIqePpaL.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog2_47a.png"
+	
+	
+>
+$$
+a)理想模型
+$$
+<img src="https://s2.loli.net/2023/10/01/OItlEdZukLoaW6m.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog2_47b.png"
+	
+	
+>
+$$
+b)实际模型
+$$
+<img src="https://s2.loli.net/2023/10/01/oCuSEsneJh3jMlc.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog2_47c.png"
+	
+	
+>
+$$
+c)特性曲线
+$$
+$$
+图2-47齐纳二极管等效电路和Z_Z的图示化特性曲线
+$$
+根据欧姆定理，$△V_Z$ 和 $△I_Z$ 的比等于齐纳阻抗，公式如下:
+$$
+Z_Z = \frac{△V_Z}{△I_Z}~~~~~~(式子2-5)
+$$
+通常，$Z_Z$ 指定为在齐纳测试电流 $I_Z$ 处的值。大多数情况下，在齐纳电流值的整个线性范围内，可以假定 $Z_Z$ 是个常量。</p>
+<p><strong>齐纳稳压器</strong> 如前所述，齐纳二极管在一些简单的应用中可以作为<code>稳压器</code>。图2-48图示了一个齐纳二极管是如何把变化的直流输人电压稳定在一个恒定值上的。前面学过，这个过程称为线路调整率(见2.6节)。
+<img src="https://s2.loli.net/2023/10/01/1LJeioCG6n2tscr.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog2_48a.png"
+	
+	
+>
+$$
+a）在输入电压增大时,输出电压几乎保持恒定(I_{ZK} &lt; I_Z &lt; I_{ZM})
+$$
+<img src="https://s2.loli.net/2023/10/01/mGEW7kXUda2bBrq.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog2_48b.png"
+	
+	
+>
+$$
+b)在输入电压减小时，输出电压几乎保持恒定(I_{ZK} &lt; I_Z &lt; I_{ZM})
+$$
+$$
+2-48 输入电压改变时的齐纳稳压
+$$</p>
+<p>当输入电压变化时(在满足条件的范围内)，齐纳二极管的输出端电压几乎保持恒定。然而，随着 $V_{IN}$ 变化，$I_Z$ 将相应地变化。因此在满足$V_{IN}&gt;V_Z$的条件下，齐纳二极管能起稳压作用的前提就是输人电压变化引起的二极管电流Iz须在最小和最大电流值($I_{ZK}$和$I_{ZM}$)之间。$R$是串联限流电阻。数字万用表(DMM)上的显示条会显示出相应的值和变化趋势。除了数字读数外，许多数字万用表还有模拟显示。</p>
+<h3 id="282变容二极管">2.8.2变容二极管</h3>
+<p>因为结电容会随着反向偏置电压的大小而发生变化，变容二极管故又称为可变电容二极管。变容器是专门为利用可变电容特性而设计的。可以通过改变反向电压来改变电容。这些器件主要用于通信系统中的电子调谐电路。
+<code>变容器</code>本质上是一个反向偏置的pn结，它利用耗尽层固有的电容特性。由于反向偏置时所产生的耗尽层不导电，因此它充当了电容器中的电介质。而 $p$ 区和 $n$ 区是导电的，充当了电容器的极板，如图2-51所示。
+<img src="https://s2.loli.net/2023/10/01/vuYC8HlyWbi5dqX.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog2_51.png"
+	
+	
+>
+$$
+图2-51反向偏置时变容二极管用作变容器
+$$
+回想一下，电容是由极板面积( A )、介电常数( $\epsilon$ )和电解质厚度( $d$ )决定的，公式如下:
+$$
+C=\frac{A\epsilon}{d}
+$$
+当反向偏置电压增大时，耗尽层变宽，等效于增加了电解质的厚度，所以减小了电容。当反向偏置电压减小，耗尽层变窄，所以增大了电容。图2-52a和 b 反映了这种作用。通常的电容-电压曲线如图2-52c所示。</p>
+<p><img src="https://s2.loli.net/2023/10/01/XApmZTDy5Hbn89j.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog2_52a.png"
+	
+	
+>
+$$
+a）反向偏置越大，电容越小
+$$
+<img src="https://s2.loli.net/2023/10/01/ZM59EC63gxnt2so.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog2_52b.png"
+	
+	
+>
+$$
+b)反向偏置越小，电容越大
+$$
+<img src="https://s2.loli.net/2023/10/01/gDFnP4yAdL2lif6.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog2_52c.png"
+	
+	
+>
+$$
+c）二极管电容与反向电压关系图
+$$
+$$
+图2-52变容二极管的容量随反向偏置电压变化
+$$
+变容二极管的电容参数可以通过耗尽层中掺杂的方法、二极管构造的大小和形状进行控制。变容器电容的范围通常从几皮法到几百皮法。</p>
+<p>图2-53a给出了变容二极管的通用符号，图2-53b是其简化的等效电路。内部反向串联电阻记为$r_s$,可变电容标记为 $C_V$。</p>
+<h3 id="283发光二极管">2.8.3发光二极管</h3>
+<p>顾名思义，发光二极管(LED)就是一个光发射器;LED可用作指示器(例如在逻辑探头中)，用于显示，例如许多数字时钟中常见的七段显示器,也用作光纤通信系统中的源。红外发光二极管是LED中的一种，用于光耦合应用(如将病人身上的心电图传感器与测量仪器隔离)和一些远程控制应用中。
+<img src="https://s2.loli.net/2023/10/01/QebFOs34rMHfVKd.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog2_55.png"
+	
+	
+>
+$$
+图2-55LED的电致发光
+$$
+LED的基本工作原理是这样的:当器件正向偏置时，$n$区电子穿过$pn$结并和$p$区的空穴复合。这些自由电子处于导带并且比价带中的空穴处于更高的能级。<code>当复合发生时,复合电子以光和热的方式释放出能量</code>。这样的半导体材料如果表层有较大一块露出在外，就能允许光子以可见光的形式释放。图2-55图示了这个称为电致发光的过程。</p>
+<p>LED中的半导体材料是砷化家(GaAs)、砷化家磷化物(GaAsP)和磷化家(GaP)。并没有使用硅和锗，因为它们是会发热的材料，发光性能会很差。GaAsLED能释放红外(IR)辐射，它是不可见的。GaAsP要么释放红色要么释放黄色的可见光，而GaP能释放红色或绿色的可见光，释放蓝色光的发光二极管也是有的。LED的图示符号如图2-56所示。
+<img src="https://s2.loli.net/2023/10/01/lzwxykED4aNL3FZ.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog2_56.png"
+	
+	
+>
+$$
+图2-56LED的图示符号
+$$
+如图2-57a所示，当正向电流( $I_F$ )足够大时LED发光。转换成光的输出功率直接与正向电流大小成正比，如图2-57b所示。典型的LED特性如图2-57c和d所示。
+<img src="https://s2.loli.net/2023/10/01/vIxk5LRjtr9QoUD.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog2_57a.png"
+	
+	
+>
+$$
+a)正向偏置操作
+$$
+<img src="https://s2.loli.net/2023/10/01/smrUtQgiP4y3N8d.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog2_57b.png"
+	
+	
+>
+$$
+b)光输出与正向电流的关系
+$$
+$$
+图2-57LED的使用
+$$</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/analog/">Analog</a>
+        
+    </section>
+
+
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css"integrity="sha384-RZU/ijkSsFbcmivfdRBQDtwuwVqK7GMOw6IMvKyeWL2K5UAlyp6WonmB8m7Jd0Hn"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js"integrity="sha384-pK1WpvzWVBQiP0/GjnvRxV4mOb0oxFuyRxJlk6vVw146n3egcN5C925NCP7a7BY8"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js"integrity="sha384-vZTG03m&#43;2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ]
+        });})
+</script>
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">Related contents</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/2-7%E4%BA%8C%E6%9E%81%E7%AE%A1%E9%99%90%E5%B9%85%E7%94%B5%E8%B7%AF%E5%92%8C%E9%92%B3%E4%BD%8D%E7%94%B5%E8%B7%AF/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">2.7二极管限幅电路和钳位电路</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/2-6%E6%95%B4%E6%B5%81%E6%BB%A4%E6%B3%A2%E5%99%A8%E5%92%8Cic%E7%A8%B3%E5%8E%8B%E5%99%A8/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">2.6整流滤波器和IC稳压器</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/2-5%E6%95%B4%E6%B5%81%E5%99%A8/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">2.5整流器</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/6-5%E8%B4%9F%E5%8F%8D%E9%A6%88%E8%BF%90%E6%94%BE%E7%BB%84%E6%80%81/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">6.5负反馈运放组态</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/2-3%E5%8D%8A%E5%AF%BC%E4%BD%93%E4%BA%8C%E6%9E%81%E7%AE%A1%E7%9A%84%E5%81%8F%E7%BD%AE/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">2.3半导体二极管的偏置</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+     
+    
+        
+    <div id="cusdis_thread"
+    data-host="https://cusdis.com"
+    data-app-id="d44db3f9-a0ff-4551-a44d-316afd2e5835"
+    data-page-id="b17166fe837d6be863e06cde851f3b60"
+    data-page-url="https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/2-8%E7%89%B9%E6%AE%8A%E7%94%A8%E9%80%94%E4%BA%8C%E6%9E%81%E7%AE%A1/"
+    data-page-title="2.8特殊用途二极管"></div>
+<script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
+
+<script>
+    function setCusdisTheme(theme) {
+        let cusdis = document.querySelector('#cusdis_thread iframe');
+        if (cusdis) {
+            window.CUSDIS.setTheme(theme)
+        }
+    }
+
+    window.addEventListener('onColorSchemeChange', (e) => {
+        setCusdisTheme(e.detail)
+    })
+</script>
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2023 My Blog
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.5.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+
+            </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">Table of contents</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#281齐纳二极管">2.8.1齐纳二极管</a></li>
+        <li><a href="#282变容二极管">2.8.2变容二极管</a></li>
+        <li><a href="#283发光二极管">2.8.3发光二极管</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                </div>
+            </section>
+        </aside>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

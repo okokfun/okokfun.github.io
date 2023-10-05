@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='2.4.1二级管管符号 通用二极管的标准电路符号： 二极管的两极是 A 和 K ，A 是阳极，K 是阴极。箭头符号总是指向阴极。
+$$ a)二极管符号 $$
+$$ b)正向偏置 $$ $$ c)反向偏置 $$
+$$ 图2-8二极管电路符号和偏置电路。 V_{BB} 是偏置电池电压，V_B是势垒电压。电阻将正向电流限制在一个安全值 $$ 图2-8a给出了通用二极管的标准电路符号。如图2-8a所示，二极管的两极是A和K,A是阳极，K是阴极。箭头符号总是指向阴极。
+图2-8b给出了正向偏置二极管通过一个电流限制电阻连接到电源时的情况。二极管的阳极相对于阴极电位是正的，使得二极管导通，如电流表指示的那样。记住，当二极管正向偏置时，势垒电压 $V_B$ 一直存在于阳极和阴极之间，如图2-8b所示。电阻两端的电压$V_R$等于 $V_{BB}$ 减去$V_B$
+二极管的反向偏置如图2-8c所示。二极管的阳极相对于阴极电位是负的，二极管不导通，如电流表所指示那样。偏置电压$V_{BB}$全部加在二极管上。因为没有电压降在电阻上，所以电路中没有电流。注意，偏置电压$V_{BB}$与势垒电压$V_B$不相等。
+图2-9给出了一些典型的二极管封装。字母A表示阳极;K表示阴极。
+2.4.2二极管特性曲线 $$ 图2-10是二极管的伏安特性曲线 $$ $$ 正向偏置的 V-I 特性曲线 $$ $$ 反向偏置的 V-I 特性曲线 $$ 图2-10是二极管的伏安特性曲线。图2-10的右上部分表示二极管正向偏置时的情况。如图2-10所示，当正向偏置电压($V_F$)低于势垒电势时，没有正向电流($I_F$)。当正向偏置电压接近势垒电势的值时(通常硅是0.7V,锗是0.3V)，流过二极管的电流开始增大。一旦正向偏置电压大于势垒电势，正向电流随着偏置电压增大而急剧增大，必须靠限流电阻来限制电流。正向偏置二极管的端电压几乎等于势垒电势的值，但是会随着正向电流的增大而略微增大。对正向偏置的二二极管，通常将势垒电势就作为二极管的管压降。
+图2-10的左下部分表示二极管反向偏置时的情况。当反向偏置电压小于击穿电压时，随着反向偏置电压朝着左边增大，电流的值接近于零。当二极管被反向击穿时，二极管中会有较大的反向电流产生，如果不对这个反向电流进行限制，二极管将会被损坏。日通常，大多数整流二极管的击穿电压都大于50V，普通二极管的大多数应用都不会运行在反向击穿区域内。
+在示波器上显示二极管的伏安特性曲线 按照图 2-11所示的电路连接方法，可以在示波器上显示二极管的正向特性曲线。信号是峰峰值为5V的三角波信号，用来产生一系列过零电压。这使得二极管在正向偏置和反向偏置之间交替。通道1探测二极管上的管压降，通道2显示与电流成正比的信号。示波器处于 X-Y 模式。信号发生器的公共端绝对不能与示波器共地。通道2需要反转来显示正确方向的信号。 2.4.3用欧姆计或万用表测试二极管 2.4.4二极管的模型 理想模型:
+模拟二极管原理最简单的方法就是把二极管看成一个开关。理想情况下，当二极管正向偏置时，相当于开关闭合﹔当二极管反向偏置时，相当于开关断开，特性曲线如图2-12所示。注意，在理想情况下，正向管压降和反向电流始终零。当然，`这是二极管的理想模型，忽略了势垒电势、内部阻抗和其他的一些影响``,然而，在大多数情况下，这种模型已足够精确，尤其是当偏置电压是势垒电势的十倍或者更高倍时。
+偏移模型:
+精度更高一点的模型是偏移模型。偏移模型考虑了二极管的势垒电势。在这个模型中，正向偏置的二极管等效于一个闭合的开关串联一个小“电池”，这个电池的电压值等于势垒电势 $V_B$ 的值(硅是0.7V)，如图2-13a所示。等效电池的正极向着电源的阳极。记住，势垒电势并不是一个电压源，不能用电压表去测量﹔当二极管正向偏置时，等效电池仅仅具有偏移电源的效果，因为二极管的正向偏置电压 $V_{BB}$ 只有克服了势垒电势的作用才能使二极管导电。和理想模型一样，二极管反向偏置时等效于一-个断开的开关，如图2-13b所示，因为势垒电势并不影响反向偏置的情况。偏移模型的特性曲线如图2-13c所示。在本书中，如不特别说明，都使用偏移模型进行分析。
+偏移-电阻模型:
+图2-14a给出了正向偏置二极管的等效电路，它由势垒电势和一-个较小的正向电阻构成。正向电阻实际上是一个交流电阻(见1.1节)。正向电阻的值是变化的(取决于在哪点测试)，但是在这个模型中用直线来近似表示。 偏移-电阻模型图2-14a给出了正向偏置二极管的等效电路，它由势垒电势和一-个较小的正向电阻构成.正向电阻实际上是一个交流电阻(见1.1节)。正向电阻的值是变化的(取决于在哪点测试)，但是在这个模型中用直线来近似表示.
+在偏移-电阻模型中，反向偏置情况用一个非常大的并联电阻来表示，结果就是产生的反向电流非常小。图2-14b表示很大的反向电阻作用在反向偏置模型中，特性曲线如图2-14c所示。还有其他的一些较小的影响(如结电容)并没有包括在此模型中，对于这些影响，在计算机建模时通常会考虑。'><title>2.4二极管特性</title>
+
+<link rel='canonical' href='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/2-4%E4%BA%8C%E6%9E%81%E7%AE%A1%E7%89%B9%E6%80%A7/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='2.4二极管特性'>
+<meta property='og:description' content='2.4.1二级管管符号 通用二极管的标准电路符号： 二极管的两极是 A 和 K ，A 是阳极，K 是阴极。箭头符号总是指向阴极。
+$$ a)二极管符号 $$
+$$ b)正向偏置 $$ $$ c)反向偏置 $$
+$$ 图2-8二极管电路符号和偏置电路。 V_{BB} 是偏置电池电压，V_B是势垒电压。电阻将正向电流限制在一个安全值 $$ 图2-8a给出了通用二极管的标准电路符号。如图2-8a所示，二极管的两极是A和K,A是阳极，K是阴极。箭头符号总是指向阴极。
+图2-8b给出了正向偏置二极管通过一个电流限制电阻连接到电源时的情况。二极管的阳极相对于阴极电位是正的，使得二极管导通，如电流表指示的那样。记住，当二极管正向偏置时，势垒电压 $V_B$ 一直存在于阳极和阴极之间，如图2-8b所示。电阻两端的电压$V_R$等于 $V_{BB}$ 减去$V_B$
+二极管的反向偏置如图2-8c所示。二极管的阳极相对于阴极电位是负的，二极管不导通，如电流表所指示那样。偏置电压$V_{BB}$全部加在二极管上。因为没有电压降在电阻上，所以电路中没有电流。注意，偏置电压$V_{BB}$与势垒电压$V_B$不相等。
+图2-9给出了一些典型的二极管封装。字母A表示阳极;K表示阴极。
+2.4.2二极管特性曲线 $$ 图2-10是二极管的伏安特性曲线 $$ $$ 正向偏置的 V-I 特性曲线 $$ $$ 反向偏置的 V-I 特性曲线 $$ 图2-10是二极管的伏安特性曲线。图2-10的右上部分表示二极管正向偏置时的情况。如图2-10所示，当正向偏置电压($V_F$)低于势垒电势时，没有正向电流($I_F$)。当正向偏置电压接近势垒电势的值时(通常硅是0.7V,锗是0.3V)，流过二极管的电流开始增大。一旦正向偏置电压大于势垒电势，正向电流随着偏置电压增大而急剧增大，必须靠限流电阻来限制电流。正向偏置二极管的端电压几乎等于势垒电势的值，但是会随着正向电流的增大而略微增大。对正向偏置的二二极管，通常将势垒电势就作为二极管的管压降。
+图2-10的左下部分表示二极管反向偏置时的情况。当反向偏置电压小于击穿电压时，随着反向偏置电压朝着左边增大，电流的值接近于零。当二极管被反向击穿时，二极管中会有较大的反向电流产生，如果不对这个反向电流进行限制，二极管将会被损坏。日通常，大多数整流二极管的击穿电压都大于50V，普通二极管的大多数应用都不会运行在反向击穿区域内。
+在示波器上显示二极管的伏安特性曲线 按照图 2-11所示的电路连接方法，可以在示波器上显示二极管的正向特性曲线。信号是峰峰值为5V的三角波信号，用来产生一系列过零电压。这使得二极管在正向偏置和反向偏置之间交替。通道1探测二极管上的管压降，通道2显示与电流成正比的信号。示波器处于 X-Y 模式。信号发生器的公共端绝对不能与示波器共地。通道2需要反转来显示正确方向的信号。 2.4.3用欧姆计或万用表测试二极管 2.4.4二极管的模型 理想模型:
+模拟二极管原理最简单的方法就是把二极管看成一个开关。理想情况下，当二极管正向偏置时，相当于开关闭合﹔当二极管反向偏置时，相当于开关断开，特性曲线如图2-12所示。注意，在理想情况下，正向管压降和反向电流始终零。当然，`这是二极管的理想模型，忽略了势垒电势、内部阻抗和其他的一些影响``,然而，在大多数情况下，这种模型已足够精确，尤其是当偏置电压是势垒电势的十倍或者更高倍时。
+偏移模型:
+精度更高一点的模型是偏移模型。偏移模型考虑了二极管的势垒电势。在这个模型中，正向偏置的二极管等效于一个闭合的开关串联一个小“电池”，这个电池的电压值等于势垒电势 $V_B$ 的值(硅是0.7V)，如图2-13a所示。等效电池的正极向着电源的阳极。记住，势垒电势并不是一个电压源，不能用电压表去测量﹔当二极管正向偏置时，等效电池仅仅具有偏移电源的效果，因为二极管的正向偏置电压 $V_{BB}$ 只有克服了势垒电势的作用才能使二极管导电。和理想模型一样，二极管反向偏置时等效于一-个断开的开关，如图2-13b所示，因为势垒电势并不影响反向偏置的情况。偏移模型的特性曲线如图2-13c所示。在本书中，如不特别说明，都使用偏移模型进行分析。
+偏移-电阻模型:
+图2-14a给出了正向偏置二极管的等效电路，它由势垒电势和一-个较小的正向电阻构成。正向电阻实际上是一个交流电阻(见1.1节)。正向电阻的值是变化的(取决于在哪点测试)，但是在这个模型中用直线来近似表示。 偏移-电阻模型图2-14a给出了正向偏置二极管的等效电路，它由势垒电势和一-个较小的正向电阻构成.正向电阻实际上是一个交流电阻(见1.1节)。正向电阻的值是变化的(取决于在哪点测试)，但是在这个模型中用直线来近似表示.
+在偏移-电阻模型中，反向偏置情况用一个非常大的并联电阻来表示，结果就是产生的反向电流非常小。图2-14b表示很大的反向电阻作用在反向偏置模型中，特性曲线如图2-14c所示。还有其他的一些较小的影响(如结电容)并没有包括在此模型中，对于这些影响，在计算机建模时通常会考虑。'>
+<meta property='og:url' content='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/2-4%E4%BA%8C%E6%9E%81%E7%AE%A1%E7%89%B9%E6%80%A7/'>
+<meta property='og:site_name' content='My Blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='图' /><meta property='article:published_time' content='2023-07-14T15:05:04&#43;00:00'/><meta property='article:modified_time' content='2023-07-14T15:05:04&#43;00:00'/>
+<meta name="twitter:title" content="2.4二极管特性">
+<meta name="twitter:description" content="2.4.1二级管管符号 通用二极管的标准电路符号： 二极管的两极是 A 和 K ，A 是阳极，K 是阴极。箭头符号总是指向阴极。
+$$ a)二极管符号 $$
+$$ b)正向偏置 $$ $$ c)反向偏置 $$
+$$ 图2-8二极管电路符号和偏置电路。 V_{BB} 是偏置电池电压，V_B是势垒电压。电阻将正向电流限制在一个安全值 $$ 图2-8a给出了通用二极管的标准电路符号。如图2-8a所示，二极管的两极是A和K,A是阳极，K是阴极。箭头符号总是指向阴极。
+图2-8b给出了正向偏置二极管通过一个电流限制电阻连接到电源时的情况。二极管的阳极相对于阴极电位是正的，使得二极管导通，如电流表指示的那样。记住，当二极管正向偏置时，势垒电压 $V_B$ 一直存在于阳极和阴极之间，如图2-8b所示。电阻两端的电压$V_R$等于 $V_{BB}$ 减去$V_B$
+二极管的反向偏置如图2-8c所示。二极管的阳极相对于阴极电位是负的，二极管不导通，如电流表所指示那样。偏置电压$V_{BB}$全部加在二极管上。因为没有电压降在电阻上，所以电路中没有电流。注意，偏置电压$V_{BB}$与势垒电压$V_B$不相等。
+图2-9给出了一些典型的二极管封装。字母A表示阳极;K表示阴极。
+2.4.2二极管特性曲线 $$ 图2-10是二极管的伏安特性曲线 $$ $$ 正向偏置的 V-I 特性曲线 $$ $$ 反向偏置的 V-I 特性曲线 $$ 图2-10是二极管的伏安特性曲线。图2-10的右上部分表示二极管正向偏置时的情况。如图2-10所示，当正向偏置电压($V_F$)低于势垒电势时，没有正向电流($I_F$)。当正向偏置电压接近势垒电势的值时(通常硅是0.7V,锗是0.3V)，流过二极管的电流开始增大。一旦正向偏置电压大于势垒电势，正向电流随着偏置电压增大而急剧增大，必须靠限流电阻来限制电流。正向偏置二极管的端电压几乎等于势垒电势的值，但是会随着正向电流的增大而略微增大。对正向偏置的二二极管，通常将势垒电势就作为二极管的管压降。
+图2-10的左下部分表示二极管反向偏置时的情况。当反向偏置电压小于击穿电压时，随着反向偏置电压朝着左边增大，电流的值接近于零。当二极管被反向击穿时，二极管中会有较大的反向电流产生，如果不对这个反向电流进行限制，二极管将会被损坏。日通常，大多数整流二极管的击穿电压都大于50V，普通二极管的大多数应用都不会运行在反向击穿区域内。
+在示波器上显示二极管的伏安特性曲线 按照图 2-11所示的电路连接方法，可以在示波器上显示二极管的正向特性曲线。信号是峰峰值为5V的三角波信号，用来产生一系列过零电压。这使得二极管在正向偏置和反向偏置之间交替。通道1探测二极管上的管压降，通道2显示与电流成正比的信号。示波器处于 X-Y 模式。信号发生器的公共端绝对不能与示波器共地。通道2需要反转来显示正确方向的信号。 2.4.3用欧姆计或万用表测试二极管 2.4.4二极管的模型 理想模型:
+模拟二极管原理最简单的方法就是把二极管看成一个开关。理想情况下，当二极管正向偏置时，相当于开关闭合﹔当二极管反向偏置时，相当于开关断开，特性曲线如图2-12所示。注意，在理想情况下，正向管压降和反向电流始终零。当然，`这是二极管的理想模型，忽略了势垒电势、内部阻抗和其他的一些影响``,然而，在大多数情况下，这种模型已足够精确，尤其是当偏置电压是势垒电势的十倍或者更高倍时。
+偏移模型:
+精度更高一点的模型是偏移模型。偏移模型考虑了二极管的势垒电势。在这个模型中，正向偏置的二极管等效于一个闭合的开关串联一个小“电池”，这个电池的电压值等于势垒电势 $V_B$ 的值(硅是0.7V)，如图2-13a所示。等效电池的正极向着电源的阳极。记住，势垒电势并不是一个电压源，不能用电压表去测量﹔当二极管正向偏置时，等效电池仅仅具有偏移电源的效果，因为二极管的正向偏置电压 $V_{BB}$ 只有克服了势垒电势的作用才能使二极管导电。和理想模型一样，二极管反向偏置时等效于一-个断开的开关，如图2-13b所示，因为势垒电势并不影响反向偏置的情况。偏移模型的特性曲线如图2-13c所示。在本书中，如不特别说明，都使用偏移模型进行分析。
+偏移-电阻模型:
+图2-14a给出了正向偏置二极管的等效电路，它由势垒电势和一-个较小的正向电阻构成。正向电阻实际上是一个交流电阻(见1.1节)。正向电阻的值是变化的(取决于在哪点测试)，但是在这个模型中用直线来近似表示。 偏移-电阻模型图2-14a给出了正向偏置二极管的等效电路，它由势垒电势和一-个较小的正向电阻构成.正向电阻实际上是一个交流电阻(见1.1节)。正向电阻的值是变化的(取决于在哪点测试)，但是在这个模型中用直线来近似表示.
+在偏移-电阻模型中，反向偏置情况用一个非常大的并联电阻来表示，结果就是产生的反向电流非常小。图2-14b表示很大的反向电阻作用在反向偏置模型中，特性曲线如图2-14c所示。还有其他的一些较小的影响(如结电容)并没有包括在此模型中，对于这些影响，在计算机建模时通常会考虑。"><script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+    </head>
+    <body class="
+    article-page has-toc
+">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex 
+    
+        extended
+    
+">
+    
+        <div id="article-toolbar">
+            <a href="/" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+                <span>Back</span>
+            </a>
+        </div>
+    
+<main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+
+    <h2 class="article-title">
+        <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/2-4%E4%BA%8C%E6%9E%81%E7%AE%A1%E7%89%B9%E6%80%A7/">2.4二极管特性</a>
+    </h2>
+
+    
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jul 14, 2023</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+</div>
+</header>
+
+    <section class="article-content">
+    <h3 id="241二级管管符号">2.4.1二级管管符号</h3>
+<p>通用二极管的标准电路符号：
+二极管的两极是 <code>A</code> 和 <code>K</code> ，A 是<code>阳极</code>，K 是<code>阴极</code>。箭头符号总是指向阴极。</p>
+<p><img src="https://s2.loli.net/2023/09/12/9uDMUFf6rG1JwnX.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="图2_8a1"
+	
+	
+>
+$$
+a)二极管符号
+$$</p>
+<p><img src="https://s2.loli.net/2023/09/29/JeS2VITjqrWc53n.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="图2_8-1.png"
+	
+	
+>
+$$
+b)正向偏置
+$$
+<img src="https://s2.loli.net/2023/09/29/KxL5SCbt3YUydJj.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="图2_8-2.png"
+	
+	
+>
+$$
+c)反向偏置
+$$</p>
+<p>$$
+图2-8二极管电路符号和偏置电路。 V_{BB} 是偏置电池电压，V_B是势垒电压。电阻将正向电流限制在一个安全值
+$$
+图2-8a给出了通用二极管的标准电路符号。如图2-8a所示，二极管的两极是A和K,A是阳极，K是阴极。箭头符号总是指向阴极。</p>
+<p>图2-8b给出了<code>正向偏置</code>二极管通过一个电流限制电阻连接到电源时的情况。二极管的阳极相对于阴极电位是正的，使得二极管导通，如电流表指示的那样。记住，当二极管正向偏置时，势垒电压 $V_B$ 一直存在于阳极和阴极之间，如图2-8b所示。电阻两端的电压$V_R$等于 $V_{BB}$ 减去$V_B$</p>
+<p><code>二极管的反向偏置</code>如图2-8c所示。二极管的阳极相对于阴极电位是负的，二极管不导通，如电流表所指示那样。<strong>偏置电压$V_{BB}$全部加在二极管上。因为没有电压降在电阻上</strong>，所以电路中没有电流。注意，偏置电压$V_{BB}$与势垒电压$V_B$不相等。</p>
+<p>图2-9给出了一些典型的二极管封装。<code>字母A表示阳极;K表示阴极</code>。</p>
+<h3 id="242二极管特性曲线">2.4.2二极管特性曲线</h3>
+<p><img src="https://s2.loli.net/2023/09/12/PfRpd6MycGVOXbs.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="图2_10"
+	
+	
+>
+$$
+图2-10是二极管的伏安特性曲线
+$$
+<img src="https://s2.loli.net/2023/09/12/bHAaJpCKnlQUj2S.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="图2_10a"
+	
+	
+>
+$$
+正向偏置的 V-I 特性曲线
+$$
+<img src="https://s2.loli.net/2023/09/12/F5iYzWX4qeMj9ca.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="图2_10b"
+	
+	
+>
+$$
+反向偏置的 V-I 特性曲线
+$$
+图2-10是二极管的伏安特性曲线。图2-10的右上部分表示二极管正向偏置时的情况。如图2-10所示，当正向偏置电压($V_F$)低于势垒电势时，没有正向电流($I_F$)。当正向偏置电压接近势垒电势的值时(通常硅是0.7V,锗是0.3V)，流过二极管的电流开始增大。一旦正向偏置电压大于势垒电势，正向电流随着偏置电压增大而急剧增大，必须靠限流电阻来限制电流。正向偏置二极管的端电压几乎等于势垒电势的值，但是会随着正向电流的增大而略微增大。对正向偏置的二二极管，通常将势垒电势就作为二极管的管压降。</p>
+<p>图2-10的左下部分表示二极管反向偏置时的情况。当反向偏置电压小于击穿电压时，随着反向偏置电压朝着左边增大，电流的值接近于零。当二极管被反向击穿时，二极管中会有较大的反向电流产生，如果不对这个反向电流进行限制，二极管将会被损坏。日通常，大多数整流二极管的击穿电压都大于50V，普通二极管的大多数应用都不会运行在反向击穿区域内。</p>
+<p><strong>在示波器上显示二极管的伏安特性曲线</strong> 按照图 2-11所示的电路连接方法，可以在示波器上显示二极管的正向特性曲线。信号是峰峰值为5V的三角波信号，用来产生一系列过零电压。这使得二极管在正向偏置和反向偏置之间交替。通道1探测二极管上的管压降，通道2显示与电流成正比的信号。示波器处于 X-Y 模式。信号发生器的公共端绝对不能与示波器共地。通道2需要反转来显示正确方向的信号。
+<img src="https://s2.loli.net/2023/09/29/NUnVzKgB2afWTo4.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="图2_11.png"
+	
+	
+></p>
+<h3 id="243用欧姆计或万用表测试二极管">2.4.3用欧姆计或万用表测试二极管</h3>
+<h3 id="244二极管的模型">2.4.4二极管的模型</h3>
+<p>理想模型:</p>
+<blockquote>
+<p>模拟二极管原理最简单的方法就是把二极管看成一个开关。理想情况下，当二极管正向偏置时，相当于开关闭合﹔当二极管反向偏置时，相当于开关断开，特性曲线如图2-12所示。注意，在理想情况下，正向管压降和反向电流始终零。当然，`这是二极管的理想模型，忽略了势垒电势、内部阻抗和其他的一些影响``,然而，在大多数情况下，这种模型已足够精确，尤其是当偏置电压是势垒电势的十倍或者更高倍时。</p>
+</blockquote>
+<p><img src="https://s2.loli.net/2023/09/14/MdbjA6iWCUuYtrZ.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="图2_12a.png"
+	
+	
+>
+<img src="https://s2.loli.net/2023/09/14/NU1ybOWEF2LuYMa.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="图2_12b.png"
+	
+	
+>
+<img src="https://s2.loli.net/2023/09/14/3QROXNHdPqTKWLS.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="图2_12c.png"
+	
+	
+>
+偏移模型:</p>
+<blockquote>
+<p>精度更高一点的模型是偏移模型。<code>偏移模型考虑了二极管的势垒电势</code>。在这个模型中，正向偏置的二极管等效于一个闭合的开关串联一个小“电池”，这个电池的电压值等于势垒电势 $V_B$ 的值(硅是0.7V)，如图2-13a所示。等效电池的正极向着电源的阳极。记住，势垒电势并不是一个电压源，不能用电压表去测量﹔当二极管正向偏置时，等效电池仅仅具有偏移电源的效果，因为二极管的正向偏置电压 $V_{BB}$ 只有克服了势垒电势的作用才能使二极管导电。和理想模型一样，二极管反向偏置时等效于一-个断开的开关，如图2-13b所示，因为势垒电势并不影响反向偏置的情况。偏移模型的特性曲线如图2-13c所示。在本书中，如不特别说明，都使用偏移模型进行分析。</p>
+</blockquote>
+<p><img src="https://s2.loli.net/2023/09/14/glcviORor4Hsp7C.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="图2_13a.png"
+	
+	
+>
+<img src="https://s2.loli.net/2023/09/14/lhdqOFG439UHrv2.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="图2_13b.png"
+	
+	
+>
+<img src="https://s2.loli.net/2023/09/14/SmnHefXWdRbtgBZ.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="图2_13c.png"
+	
+	
+>
+偏移-电阻模型:</p>
+<blockquote>
+<p>图2-14a给出了正向偏置二极管的等效电路，<code>它由势垒电势和一-个较小的正向电阻构成</code>。正向电阻实际上是一个交流电阻(见1.1节)。正向电阻的值是变化的(取决于在哪点测试)，但是在这个模型中用直线来近似表示。
+偏移-电阻模型图2-14a给出了正向偏置二极管的等效电路，它由势垒电势和一-个较小的正向电阻构成.正向电阻实际上是一个交流电阻(见1.1节)。正向电阻的值是变化的(取决于在哪点测试)，但是在这个模型中用直线来近似表示.</p>
+</blockquote>
+<p><img src="https://s2.loli.net/2023/09/14/oaIrGBdYWfqxFLm.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="图2-14"
+	
+	
+>
+在偏移-电阻模型中，反向偏置情况用一个非常大的并联电阻来表示，结果就是产生的反向电流非常小。图2-14b表示很大的反向电阻作用在反向偏置模型中，特性曲线如图2-14c所示。还有其他的一些较小的影响(如结电容)并没有包括在此模型中，对于这些影响，在计算机建模时通常会考虑。</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/%E5%9B%BE/">图</a>
+        
+    </section>
+
+
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css"integrity="sha384-RZU/ijkSsFbcmivfdRBQDtwuwVqK7GMOw6IMvKyeWL2K5UAlyp6WonmB8m7Jd0Hn"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js"integrity="sha384-pK1WpvzWVBQiP0/GjnvRxV4mOb0oxFuyRxJlk6vVw146n3egcN5C925NCP7a7BY8"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js"integrity="sha384-vZTG03m&#43;2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ]
+        });})
+</script>
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+</aside>
+
+     
+    
+        
+    <div id="cusdis_thread"
+    data-host="https://cusdis.com"
+    data-app-id="d44db3f9-a0ff-4551-a44d-316afd2e5835"
+    data-page-id="bfe877096c1438c7268fbd51e54fcd0c"
+    data-page-url="https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/2-4%E4%BA%8C%E6%9E%81%E7%AE%A1%E7%89%B9%E6%80%A7/"
+    data-page-title="2.4二极管特性"></div>
+<script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
+
+<script>
+    function setCusdisTheme(theme) {
+        let cusdis = document.querySelector('#cusdis_thread iframe');
+        if (cusdis) {
+            window.CUSDIS.setTheme(theme)
+        }
+    }
+
+    window.addEventListener('onColorSchemeChange', (e) => {
+        setCusdisTheme(e.detail)
+    })
+</script>
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2023 My Blog
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.5.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+
+            </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">Table of contents</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#241二级管管符号">2.4.1二级管管符号</a></li>
+        <li><a href="#242二极管特性曲线">2.4.2二极管特性曲线</a></li>
+        <li><a href="#243用欧姆计或万用表测试二极管">2.4.3用欧姆计或万用表测试二极管</a></li>
+        <li><a href="#244二极管的模型">2.4.4二极管的模型</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                </div>
+            </section>
+        </aside>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

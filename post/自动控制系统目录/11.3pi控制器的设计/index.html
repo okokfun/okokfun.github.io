@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='从11.2节中，我们得知PD控制器可以改进控制系统的阻尼和上升时间，但其代价是更高的带宽和谐振频率，且PD控制不影响稳态误差，除非稳态误差是随时间变化的，而对阶跃输入而言，PD控制下系统的稳态误差通常是不变的。因此，PD控制器在许多情况下不能满足系统的校正要求。 $$ 图11-19具有PI控制器的控制系统控制框图 $$ PID控制器的积分部分产生一个与控制器输人的时间积分成比例的信号。串联一个PI控制器的二阶系统结构控制框图如图11-19所示。PI控制器的传递函数为 $$ G_c(S) = K_P&#43;\frac{K_I}{S}\(11-34) $$ $$ 图11-20a两运算放大器电路 $$ 使用表6-1中给出的电子元件来实现式( 11-34)的两个运算放大器电路，如图11-20所示。图11-20a中的两运算放大器的传递函数为 $$ G_c(S) = \frac{E_o(S)}{E_{in}(S)}=\frac{R_2}{R_1}&#43;\frac{R_2}{R_1C_2S}\(11-35) $$ 比较式(11-34)和式(11-35)得: $$ K_P = \frac{R_2}{R_1}\\ \K_I = \frac{R_2}{R_1C_2}\(11-36) $$ 图11-20b中的三运算放大器的传递函数为 $$ G_c(s) = \frac{E_o(s)}{E_{in}(s)}=\frac{R_2}{R_1}&#43;\frac{1}{R_iC_is}\(11-37) $$ 因此PI控制器的参数与电路元件参数的关系为: $$ K_P=\frac{R_2}{R_1}\ K_I = \frac{1}{R_iC_i}\(11-38) $$ $$ 图11-20b三运算放大器电路 $$ $$ 图11-20 \G_c(s)=K_p &#43;\frac{K_I}{s}的PI控制器的运算放大器电路 $$ 图11-20b所示电路的优点在于 $K_p$ 和 $K_I$ 的值是相互独立的，但不论是那种电路，$K_I$的值都与电容值成倒数关系，有效的PI控制器设计一.般要求有小的 $K_I$ 值，因此必须注意避免出现不符合实际的大电容值。
+校正系统的前向通道传递函数为 $$ G_(s) = G_c(s)G_p(s) = \frac{ω^2_n(K_PS&#43;K_I)}{S^2(S&#43;2ξω_n)} \(11-39) $$ 通过以上分析，PI 控制器的作用如下:
+在前向通道传递函数 $s=-K_I/K_p$ 处增加了一个零点。 在前向通道传递函数 $s=0$ 处增加了一个极点，这说明控制系统从I型变为I型。 因此，原始系统的稳态误差可以得到改善，即，如果响应的稳态误差为常数，PI 控制会 将误差减小到0 (要保证校正系统仍稳定)。'><title>11.3PI控制器的设计</title>
+
+<link rel='canonical' href='https://okokfun.github.io/post/%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E7%B3%BB%E7%BB%9F%E7%9B%AE%E5%BD%95/11.3pi%E6%8E%A7%E5%88%B6%E5%99%A8%E7%9A%84%E8%AE%BE%E8%AE%A1/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='11.3PI控制器的设计'>
+<meta property='og:description' content='从11.2节中，我们得知PD控制器可以改进控制系统的阻尼和上升时间，但其代价是更高的带宽和谐振频率，且PD控制不影响稳态误差，除非稳态误差是随时间变化的，而对阶跃输入而言，PD控制下系统的稳态误差通常是不变的。因此，PD控制器在许多情况下不能满足系统的校正要求。 $$ 图11-19具有PI控制器的控制系统控制框图 $$ PID控制器的积分部分产生一个与控制器输人的时间积分成比例的信号。串联一个PI控制器的二阶系统结构控制框图如图11-19所示。PI控制器的传递函数为 $$ G_c(S) = K_P&#43;\frac{K_I}{S}\(11-34) $$ $$ 图11-20a两运算放大器电路 $$ 使用表6-1中给出的电子元件来实现式( 11-34)的两个运算放大器电路，如图11-20所示。图11-20a中的两运算放大器的传递函数为 $$ G_c(S) = \frac{E_o(S)}{E_{in}(S)}=\frac{R_2}{R_1}&#43;\frac{R_2}{R_1C_2S}\(11-35) $$ 比较式(11-34)和式(11-35)得: $$ K_P = \frac{R_2}{R_1}\\ \K_I = \frac{R_2}{R_1C_2}\(11-36) $$ 图11-20b中的三运算放大器的传递函数为 $$ G_c(s) = \frac{E_o(s)}{E_{in}(s)}=\frac{R_2}{R_1}&#43;\frac{1}{R_iC_is}\(11-37) $$ 因此PI控制器的参数与电路元件参数的关系为: $$ K_P=\frac{R_2}{R_1}\ K_I = \frac{1}{R_iC_i}\(11-38) $$ $$ 图11-20b三运算放大器电路 $$ $$ 图11-20 \G_c(s)=K_p &#43;\frac{K_I}{s}的PI控制器的运算放大器电路 $$ 图11-20b所示电路的优点在于 $K_p$ 和 $K_I$ 的值是相互独立的，但不论是那种电路，$K_I$的值都与电容值成倒数关系，有效的PI控制器设计一.般要求有小的 $K_I$ 值，因此必须注意避免出现不符合实际的大电容值。
+校正系统的前向通道传递函数为 $$ G_(s) = G_c(s)G_p(s) = \frac{ω^2_n(K_PS&#43;K_I)}{S^2(S&#43;2ξω_n)} \(11-39) $$ 通过以上分析，PI 控制器的作用如下:
+在前向通道传递函数 $s=-K_I/K_p$ 处增加了一个零点。 在前向通道传递函数 $s=0$ 处增加了一个极点，这说明控制系统从I型变为I型。 因此，原始系统的稳态误差可以得到改善，即，如果响应的稳态误差为常数，PI 控制会 将误差减小到0 (要保证校正系统仍稳定)。'>
+<meta property='og:url' content='https://okokfun.github.io/post/%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E7%B3%BB%E7%BB%9F%E7%9B%AE%E5%BD%95/11.3pi%E6%8E%A7%E5%88%B6%E5%99%A8%E7%9A%84%E8%AE%BE%E8%AE%A1/'>
+<meta property='og:site_name' content='My Blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Automatic' /><meta property='article:published_time' content='2023-08-30T18:35:47&#43;08:00'/><meta property='article:modified_time' content='2023-08-30T18:35:47&#43;08:00'/>
+<meta name="twitter:title" content="11.3PI控制器的设计">
+<meta name="twitter:description" content="从11.2节中，我们得知PD控制器可以改进控制系统的阻尼和上升时间，但其代价是更高的带宽和谐振频率，且PD控制不影响稳态误差，除非稳态误差是随时间变化的，而对阶跃输入而言，PD控制下系统的稳态误差通常是不变的。因此，PD控制器在许多情况下不能满足系统的校正要求。 $$ 图11-19具有PI控制器的控制系统控制框图 $$ PID控制器的积分部分产生一个与控制器输人的时间积分成比例的信号。串联一个PI控制器的二阶系统结构控制框图如图11-19所示。PI控制器的传递函数为 $$ G_c(S) = K_P&#43;\frac{K_I}{S}\(11-34) $$ $$ 图11-20a两运算放大器电路 $$ 使用表6-1中给出的电子元件来实现式( 11-34)的两个运算放大器电路，如图11-20所示。图11-20a中的两运算放大器的传递函数为 $$ G_c(S) = \frac{E_o(S)}{E_{in}(S)}=\frac{R_2}{R_1}&#43;\frac{R_2}{R_1C_2S}\(11-35) $$ 比较式(11-34)和式(11-35)得: $$ K_P = \frac{R_2}{R_1}\\ \K_I = \frac{R_2}{R_1C_2}\(11-36) $$ 图11-20b中的三运算放大器的传递函数为 $$ G_c(s) = \frac{E_o(s)}{E_{in}(s)}=\frac{R_2}{R_1}&#43;\frac{1}{R_iC_is}\(11-37) $$ 因此PI控制器的参数与电路元件参数的关系为: $$ K_P=\frac{R_2}{R_1}\ K_I = \frac{1}{R_iC_i}\(11-38) $$ $$ 图11-20b三运算放大器电路 $$ $$ 图11-20 \G_c(s)=K_p &#43;\frac{K_I}{s}的PI控制器的运算放大器电路 $$ 图11-20b所示电路的优点在于 $K_p$ 和 $K_I$ 的值是相互独立的，但不论是那种电路，$K_I$的值都与电容值成倒数关系，有效的PI控制器设计一.般要求有小的 $K_I$ 值，因此必须注意避免出现不符合实际的大电容值。
+校正系统的前向通道传递函数为 $$ G_(s) = G_c(s)G_p(s) = \frac{ω^2_n(K_PS&#43;K_I)}{S^2(S&#43;2ξω_n)} \(11-39) $$ 通过以上分析，PI 控制器的作用如下:
+在前向通道传递函数 $s=-K_I/K_p$ 处增加了一个零点。 在前向通道传递函数 $s=0$ 处增加了一个极点，这说明控制系统从I型变为I型。 因此，原始系统的稳态误差可以得到改善，即，如果响应的稳态误差为常数，PI 控制会 将误差减小到0 (要保证校正系统仍稳定)。"><script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+    </head>
+    <body class="
+    article-page has-toc
+">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex 
+    
+        extended
+    
+">
+    
+        <div id="article-toolbar">
+            <a href="/" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+                <span>Back</span>
+            </a>
+        </div>
+    
+<main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+
+    <h2 class="article-title">
+        <a href="/post/%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E7%B3%BB%E7%BB%9F%E7%9B%AE%E5%BD%95/11.3pi%E6%8E%A7%E5%88%B6%E5%99%A8%E7%9A%84%E8%AE%BE%E8%AE%A1/">11.3PI控制器的设计</a>
+    </h2>
+
+    
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Aug 30, 2023</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+</div>
+</header>
+
+    <section class="article-content">
+    <p>从11.2节中，我们得知PD控制器可以改进控制系统的阻尼和上升时间，但其代价是更高的带宽和谐振频率，且PD控制不影响稳态误差，除非稳态误差是随时间变化的，而对阶跃输入而言，PD控制下系统的稳态误差通常是不变的。因此，PD控制器在许多情况下不能满足系统的校正要求。
+<img src="https://s2.loli.net/2023/09/28/OcIjNRhAm3GYitQ.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Automatic图11-19.png"
+	
+	
+>
+$$
+图11-19具有PI控制器的控制系统控制框图
+$$
+PID控制器的积分部分产生一个与控制器输人的时间积分成比例的信号。串联一个PI控制器的二阶系统结构控制框图如图11-19所示。PI控制器的传递函数为
+$$
+G_c(S) = K_P+\frac{K_I}{S}\(11-34)
+$$
+<img src="https://s2.loli.net/2023/09/28/MVU4SDoeY5Tkzx9.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Automatic图11-20a.png"
+	
+	
+>
+$$
+图11-20a两运算放大器电路
+$$
+使用表6-1中给出的电子元件来实现式( 11-34)的两个运算放大器电路，如图11-20所示。图11-20a中的两运算放大器的传递函数为
+$$
+G_c(S) = \frac{E_o(S)}{E_{in}(S)}=\frac{R_2}{R_1}+\frac{R_2}{R_1C_2S}\(11-35)
+$$
+比较式(11-34)和式(11-35)得:
+$$
+K_P = \frac{R_2}{R_1}\\
+\K_I = \frac{R_2}{R_1C_2}\(11-36)
+$$
+图11-20b中的三运算放大器的传递函数为
+$$
+G_c(s) = \frac{E_o(s)}{E_{in}(s)}=\frac{R_2}{R_1}+\frac{1}{R_iC_is}\(11-37)
+$$
+因此PI控制器的参数与电路元件参数的关系为:
+$$
+K_P=\frac{R_2}{R_1}\
+K_I = \frac{1}{R_iC_i}\(11-38)
+$$
+<img src="https://s2.loli.net/2023/09/28/lCWM96aw1XkuNdm.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Automatic图11-20b.png"
+	
+	
+>
+$$
+图11-20b三运算放大器电路
+$$
+$$
+图11-20 \G_c(s)=K_p +\frac{K_I}{s}的PI控制器的运算放大器电路
+$$
+图11-20b所示电路的优点在于 $K_p$ 和 $K_I$ 的值是相互独立的，但不论是那种电路，$K_I$的值都与电容值成倒数关系，有效的PI控制器设计一.般要求有小的 $K_I$ 值，因此必须注意避免出现不符合实际的大电容值。</p>
+<p>校正系统的前向通道传递函数为
+$$
+G_(s) = G_c(s)G_p(s) = \frac{ω^2_n(K_PS+K_I)}{S^2(S+2ξω_n)}
+\(11-39)
+$$
+通过以上分析，PI 控制器的作用如下:</p>
+<ol>
+<li>在前向通道传递函数 $s=-K_I/K_p$ 处增加了一个零点。</li>
+<li>在前向通道传递函数 $s=0$ 处增加了一个极点，这说明控制系统从I型变为I型。</li>
+</ol>
+<p>因此，原始系统的稳态误差可以得到改善，即，如果响应的稳态误差为常数，PI 控制会
+将误差减小到0 (要保证校正系统仍稳定)。</p>
+<p>如果参考输入是斜坡函数，前向通道传递函数为式(11-39)的控制系统(系统控制
+框图见图11-19)会产生零稳态误差。但是，此时系统是三阶的，所以它可能比原始的
+二阶系统具有更差的稳定性，甚至如果K。和K,的值选择不当，系统会变得不稳定。</p>
+<p>对于具有PD控制的I型系统来说，由于斜坡误差系数$K_v$与$K_p$成正比，当输人为斜坡信号时，稳态误差的幅值和$K_p$成反比，所以$K_p$值就非常重要。如果$K_p$太大，系统会变得不稳定。同样，对0型系统，阶跃输入产生的稳态误差与$K_p$呈反比。</p>
+<p>系统加人PI控制器后，从I型系统转化为II型系统，对于稳定的I型系统，在输人斜坡信号时输出稳态误差一直为0， $K_p$不再对控制系统的稳态误差有影响。现在的问题就是如何适当选择$K_p$和$K_I$的值才能够得到满意的瞬态响应。</p>
+<h3 id="1131-pi-控制的时域分析与设计">11.3.1 PI 控制的时域分析与设计</h3>
+<p><img src="https://s2.loli.net/2023/09/28/V5E1ptNRCmUD7j4.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Automatic图11-21.png"
+	
+	
+>
+$$
+图11-21 PI控制器的零极点配置
+$$
+由式(11-34)表示的PI控制器的零极点配置如图11-21所示。初看起来，PI控制在改善系统的稳态误差时会牺牲系统的稳定性。但如果 $G_c(s)$ 零点选择适当，系统的阻尼和稳态误差性能都会得到改善。由于PI控制器本质上是一个低通滤波器，校正系统一般会有一个较慢的上升时间和较长的调节时间。<strong>PI控制器的另&ndash;种可行设计就是将 $s=-K_I/K_P$ 处的零点设置得离原点比较近，离主导极点比较远，这样$K_p$和$K_I$的值应当相当得小</strong>。</p>
+<h3 id="1132-pi控制的频域分析与设计">11.3.2 PI控制的频域分析与设计</h3>
+<p>在频域设计中，PI控制器的传递函数为
+$$
+G_c(s) = K_P+\frac{K_I}{s}=\frac{K_I(1+\frac{K_P}{K_I}s)}{s}\(11-40)
+$$
+<img src="https://s2.loli.net/2023/09/28/CwPqaVjDYy2BsM3.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Automatic图11-22.png"
+	
+	
+>
+<img src="https://s2.loli.net/2023/09/28/LTprd3ajvCEwFVh.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Automatic图11-22a.png"
+	
+	
+>
+$$
+图11-22
+$$
+$G_c(jω)$的Bode图如图11-22所示。当$ω=∞$时，$G_c(jω)$的幅值为20lg $K_p$ dB,说明
+如果$K_p$的值小于1就存在衰减，由此来改善系统的稳定性。$G_c(jω)$的相位一直为负，这样不利于稳定。因此我们置控制器的交接频率 $ω=K_I/K_p$, 使其在带宽要求允许的范围内尽可能地向左，这样$G_c(jω)$的相位滞后特性不会降低系统的期望相位裕量。</p>
+<p>在频域中，设计用来满足期望相位裕量的PI控制器大体有以下几步:</p>
+<ol>
+<li>
+<p>根据稳态性能要求，由控制系统的回路增益作出待校正系统的前向通道传递函数$Gp(s)$的Bode图。</p>
+</li>
+<li>
+<p>由Bode图得到控制系统的相位裕量和增益裕度。对于特殊的相位裕量要求，在Bode图中找到新增益穿越频率 $ω&rsquo;_g$ 对应的相位裕量。为了能实现期望的相位裕量，校正系统传递函数的幅值曲线必须在新增益穿越频率处穿过 0dB 轴。</p>
+</li>
+<li>
+<p>为了使待校正系统传递函数的幅值曲线在新的增益穿越频率 $ω&rsquo;_g$ 处降为 0dB,PI控制器所产生的衰减量一定要等于幅值曲线在新增益穿越频率处的增益。换句话说，令
+$$
+|G_P(jω&rsquo;<em>g)|</em>{dB} = -20lgK_PdB,K_P&lt;1\(11-41)
+$$
+我们有
+$$
+K_P = 10^{-{|G_P(jω&rsquo;<em>g)|</em>{dB}/20}},K_P&lt;1\(11-42)&gt;
+$$
+一旦$K_p$的值确定下来，就只需选择适当的$K_I$值。到目前为止，我们假设加入PI控制器后只是通过减小$G_c(jω)$的幅值改变了$ω&rsquo;_g$处的增益穿越频率，但原始相位并没有因此而改变。然而这种假设并不成立，从图11-22可见，与PI控制器的衰减特性相对应的是对相位裕量有害的相位滞后。显然，如果交接频率 $ω=K_I/K_p$远小于$ω&rsquo;_g$，PI控制器的相位滞后对校正系统在接近 $ω&rsquo;_g$ 处的相位影响很小。另一方面,$K_I/K_p$ 的值不应太小，否则系统的带宽将太低，因为这样会造成上升时间和调节时间太长。一般来说，$K_I/K_p$ 对应的频率至少是$ω&rsquo;_g$。的十分之一(有时可高达二十分之一),即取
+$$
+\frac{K_I}{K_P}=\frac{ω&rsquo;_g}{10}(rad/s)\(11-43)
+$$
+根据这个基本原则，设计者选择 $K_I/K_p$ 值时要非常慎重，要考虑到它对 BW 的影响以及运算放大电路实现中的实际问题。</p>
+</li>
+<li>
+<p>由校正系统的Bode图检查性能指标是否全都满足要求。</p>
+</li>
+<li>
+<p>把Kp和K,的值代人式( 11-40)，得到PI控制器的期望传递函数。</p>
+</li>
+</ol>
+<p>如果受控系统G,(s)为0型系统，可以根据斜坡误差系数的要求来选择K,,这样可能只有K,一个参数需要确定。通过计算闭环系统中一组K,值对应的相位裕量、增益裕量、M,和BW,很容易选出最佳Kp值。</p>
+<p>基于上述讨论，我们总结一下有关设计PI控制器的优缺点:</p>
+<ol>
+<li>改善阻尼，减小最大超调。</li>
+<li>增加上升时间。</li>
+<li>降低BW。</li>
+<li>改善增益裕量、相位裕量和$M_r$。</li>
+<li>过滤掉高频噪声。</li>
+</ol>
+<p>需要注意的是，在PI控制器的设计过程中，相比于PD控制器，适当选择 $K_p$和$K_I$ 使在实现控制器电路时电容不太大变得更为困难。</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/automatic/">Automatic</a>
+        
+    </section>
+
+
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css"integrity="sha384-RZU/ijkSsFbcmivfdRBQDtwuwVqK7GMOw6IMvKyeWL2K5UAlyp6WonmB8m7Jd0Hn"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js"integrity="sha384-pK1WpvzWVBQiP0/GjnvRxV4mOb0oxFuyRxJlk6vVw146n3egcN5C925NCP7a7BY8"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js"integrity="sha384-vZTG03m&#43;2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ]
+        });})
+</script>
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">Related contents</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="">
+    <a href="/post/%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E7%B3%BB%E7%BB%9F%E7%9B%AE%E5%BD%95/11.2pd%E6%8E%A7%E5%88%B6%E5%99%A8%E7%9A%84%E8%AE%BE%E8%AE%A1/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">11.2PD控制器的设计</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E7%B3%BB%E7%BB%9F%E7%9B%AE%E5%BD%95/11.1%E5%BC%95%E8%A8%80/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">11.1引言</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E7%B3%BB%E7%BB%9F%E7%9B%AE%E5%BD%95/10.16matlab%E5%B7%A5%E5%85%B7%E5%92%8C%E6%A1%88%E4%BE%8B%E7%A0%94%E7%A9%B6/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">10.16MATLAB工具和案例研究</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E7%B3%BB%E7%BB%9F%E7%9B%AE%E5%BD%95/10.15%E9%A2%91%E5%9F%9F%E4%B8%AD%E7%9A%84%E7%81%B5%E6%95%8F%E5%BA%A6%E7%A0%94%E7%A9%B6/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">10.15频域中的灵敏度研究</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E7%B3%BB%E7%BB%9F%E7%9B%AE%E5%BD%95/10.14nichols%E5%9B%BE%E5%BA%94%E7%94%A8%E4%BA%8E%E9%9D%9E%E5%8D%95%E4%BD%8D%E5%8F%8D%E9%A6%88%E7%B3%BB%E7%BB%9F/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">10.14Nichols图应用于非单位反馈系统</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+     
+    
+        
+    <div id="cusdis_thread"
+    data-host="https://cusdis.com"
+    data-app-id="d44db3f9-a0ff-4551-a44d-316afd2e5835"
+    data-page-id="8a2c364b4b6d55d502c5c14a0de97ce3"
+    data-page-url="https://okokfun.github.io/post/%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E7%B3%BB%E7%BB%9F%E7%9B%AE%E5%BD%95/11.3pi%E6%8E%A7%E5%88%B6%E5%99%A8%E7%9A%84%E8%AE%BE%E8%AE%A1/"
+    data-page-title="11.3PI控制器的设计"></div>
+<script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
+
+<script>
+    function setCusdisTheme(theme) {
+        let cusdis = document.querySelector('#cusdis_thread iframe');
+        if (cusdis) {
+            window.CUSDIS.setTheme(theme)
+        }
+    }
+
+    window.addEventListener('onColorSchemeChange', (e) => {
+        setCusdisTheme(e.detail)
+    })
+</script>
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2023 My Blog
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.5.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+
+            </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">Table of contents</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#1131-pi-控制的时域分析与设计">11.3.1 PI 控制的时域分析与设计</a></li>
+        <li><a href="#1132-pi控制的频域分析与设计">11.3.2 PI控制的频域分析与设计</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                </div>
+            </section>
+        </aside>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

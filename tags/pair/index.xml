@@ -9,10 +9,10 @@
     <lastBuildDate>Sat, 29 Jan 2022 17:41:10 +0000</lastBuildDate><atom:link href="https://okokfun.github.io/tags/pair/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>C&#43;&#43;元组与对组</title>
-      <link>https://okokfun.github.io/post/c-%E5%85%83%E7%BB%84%E4%B8%8E%E5%AF%B9%E7%BB%84/</link>
+      <link>https://okokfun.github.io/post/c&#43;&#43;/c-%E5%85%83%E7%BB%84%E4%B8%8E%E5%AF%B9%E7%BB%84/</link>
       <pubDate>Sat, 29 Jan 2022 17:41:10 +0000</pubDate>
       
-      <guid>https://okokfun.github.io/post/c-%E5%85%83%E7%BB%84%E4%B8%8E%E5%AF%B9%E7%BB%84/</guid>
+      <guid>https://okokfun.github.io/post/c&#43;&#43;/c-%E5%85%83%E7%BB%84%E4%B8%8E%E5%AF%B9%E7%BB%84/</guid>
       <description>来自于👉 tuple - C++ Reference (cplusplus.com) 并整理
 一个元组std::tuple是一个能够容纳 元素集合 的对象。每个元素都可以是 不同的类型。
 std::make_pair()可以构建一个配对对象，其第一个元素设置为x，第二个元素设置为y，并返回。

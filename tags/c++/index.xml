@@ -9,10 +9,10 @@
     <lastBuildDate>Sun, 20 Feb 2022 16:30:47 +0000</lastBuildDate><atom:link href="https://okokfun.github.io/tags/c++/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>左值和右值</title>
-      <link>https://okokfun.github.io/post/%E5%B7%A6%E5%80%BC%E5%92%8C%E5%8F%B3%E5%80%BC/</link>
+      <link>https://okokfun.github.io/post/c&#43;&#43;/%E5%B7%A6%E5%80%BC%E5%92%8C%E5%8F%B3%E5%80%BC/</link>
       <pubDate>Sun, 20 Feb 2022 16:30:47 +0000</pubDate>
       
-      <guid>https://okokfun.github.io/post/%E5%B7%A6%E5%80%BC%E5%92%8C%E5%8F%B3%E5%80%BC/</guid>
+      <guid>https://okokfun.github.io/post/c&#43;&#43;/%E5%B7%A6%E5%80%BC%E5%92%8C%E5%8F%B3%E5%80%BC/</guid>
       <description>左值有地址和值，可以出现在赋值运算符左边或者右边。
 右值只有值，只能出现在赋值运算符右边。
 右值只有值，没有地址， 右值是一个优化技巧（C++)，因为右值往往是临时变量的。
@@ -21,10 +21,10 @@
     
     <item>
       <title>并发_并行_同步_异步</title>
-      <link>https://okokfun.github.io/post/%E5%B9%B6%E5%8F%91-%E5%B9%B6%E8%A1%8C-%E5%90%8C%E6%AD%A5-%E5%BC%82%E6%AD%A5/</link>
+      <link>https://okokfun.github.io/post/c&#43;&#43;/%E5%B9%B6%E5%8F%91-%E5%B9%B6%E8%A1%8C-%E5%90%8C%E6%AD%A5-%E5%BC%82%E6%AD%A5/</link>
       <pubDate>Sun, 20 Feb 2022 16:23:26 +0000</pubDate>
       
-      <guid>https://okokfun.github.io/post/%E5%B9%B6%E5%8F%91-%E5%B9%B6%E8%A1%8C-%E5%90%8C%E6%AD%A5-%E5%BC%82%E6%AD%A5/</guid>
+      <guid>https://okokfun.github.io/post/c&#43;&#43;/%E5%B9%B6%E5%8F%91-%E5%B9%B6%E8%A1%8C-%E5%90%8C%E6%AD%A5-%E5%BC%82%E6%AD%A5/</guid>
       <description> 并发：
 ​	计算机可以同时执行多个任务；单核处理器可以通过分配时间片的方式 单线程 并行：
 针对多核处理器，不用用过分配时间片方式执行任务，少了线程的上下文切换 同步：
@@ -35,28 +35,28 @@
     
     <item>
       <title>cmake编译opencv及Clion使用</title>
-      <link>https://okokfun.github.io/post/cmake%E7%BC%96%E8%AF%91opencv%E5%8F%8Aclion%E4%BD%BF%E7%94%A8/</link>
+      <link>https://okokfun.github.io/post/c&#43;&#43;/cmake%E7%BC%96%E8%AF%91opencv%E5%8F%8Aclion%E4%BD%BF%E7%94%A8/</link>
       <pubDate>Tue, 15 Feb 2022 19:21:35 +0800</pubDate>
       
-      <guid>https://okokfun.github.io/post/cmake%E7%BC%96%E8%AF%91opencv%E5%8F%8Aclion%E4%BD%BF%E7%94%A8/</guid>
-      <description>采用了linux下编译OpenCV, Visual Studio 2022, QT6.2.3都不成功。
+      <guid>https://okokfun.github.io/post/c&#43;&#43;/cmake%E7%BC%96%E8%AF%91opencv%E5%8F%8Aclion%E4%BD%BF%E7%94%A8/</guid>
+      <description> 采用了linux下编译OpenCV, Visual Studio 2022, QT6.2.3都不成功。
 最终采用在win下编译OpenCV + Clion成功，此文记录踩下的坑。
 1. 下载OpenCV源码 源码地址👇
 Github:
 https://github.com/opencv/opencv/archive/4.5.5.zip
-2. 编译OpenCV源码 解压文件夹 opencv_1.jpg 解压win下exe文件解压后由两个文件夹，source为源码目录 opencv_2.jpg build为已经建好的库文件目录
-opencv_3.jpg CMake-gui工具构建
-opencv_4.jpg source code选择带有源码的目录，binaries选择一个新创建一个mingw-build目录，然后点击Configure，弹出的窗口选择MinGW Makefiles,第一次可能会失败，失败后再点击Configure，还不行的百度吧。 配置成功后点击Generate cd到mingw-bulid目录执行mingw32-make -j8,根据自己机器性能设置线程数，这里设置8个线程，编译时间较久，等待完成。 然后执行mingw32-make install生成库，在mingw-build生成install保存了生成库库文件和头文件。 3. 后续配置 把C:\\Users\\用户名\\Downloads\\opencv\\mingw-build\\install\\x64\\mingw\\bin路径添加到win的环境变量
+2. 编译OpenCV源码 解压文件夹 解压win下exe文件解压后由两个文件夹，source为源码目录 build为已经建好的库文件目录
+CMake-gui工具构建
+source code选择带有源码的目录，binaries选择一个新创建一个mingw-build目录，然后点击Configure，弹出的窗口选择MinGW Makefiles,第一次可能会失败，失败后再点击Configure，还不行的百度吧。 配置成功后点击Generate cd到mingw-bulid目录执行mingw32-make -j8,根据自己机器性能设置线程数，这里设置8个线程，编译时间较久，等待完成。 然后执行mingw32-make install生成库，在mingw-build生成install保存了生成库库文件和头文件。 3. 后续配置 把C:\\Users\\用户名\\Downloads\\opencv\\mingw-build\\install\\x64\\mingw\\bin路径添加到win的环境变量
 👇此为一个CMakeLists.txt
-cmake_minimum_required(VERSION 3.19) project(opencv_learn) set(CMAKE_CXX_STANDARD 20) include_directories($ENV{CMAKE_INCLUDE_PATH}) set(OpenCV_DIR C:\\Users\\用户名\\Downloads\\opencv\\mingw-build\\install\\x64\\mingw\\bin) #需要的openCV库 FIND_PACKAGE(OpenCV REQUIRED) #显示OpenCV的版本号 MESSAGE(&amp;#34;OpenCV version : ${OpenCV_VERSION}&amp;#34;) MESSAGE(&amp;#34;OpenCV include : ${OpenCV_INCLUDE_DIRS}&amp;#34;) MESSAGE(&amp;#34;OpenCV libs11 : ${OpenCV_LIBS}&amp;#34;) MESSAGE(&amp;#34;OpenCV DIR : ${OpenCV_DIR}&amp;#34;) include_directories(${OpenCV_INCLUDE_DIRS}) link_directories(${OpenCV_LIBS}) MESSAGE(&amp;#34;OpenCV libs : ${OpenCV_LIBS}&amp;#34;) include_directories(${OpenCV_INCLUDE_DIRS}) link_directories(${OpenCV_LIBS}) set(SOURCE main.</description>
+cmake_minimum_required(VERSION 3.19) project(opencv_learn) set(CMAKE_CXX_STANDARD 20) include_directories($ENV{CMAKE_INCLUDE_PATH}) set(OpenCV_DIR C:\\Users\\用户名\\Downloads\\opencv\\mingw-build\\install\\x64\\mingw\\bin) #需要的openCV库 FIND_PACKAGE(OpenCV REQUIRED) #显示OpenCV的版本号 MESSAGE(&amp;#34;OpenCV version : ${OpenCV_VERSION}&amp;#34;) MESSAGE(&amp;#34;OpenCV include : ${OpenCV_INCLUDE_DIRS}&amp;#34;) MESSAGE(&amp;#34;OpenCV libs11 : ${OpenCV_LIBS}&amp;#34;) MESSAGE(&amp;#34;OpenCV DIR : ${OpenCV_DIR}&amp;#34;) include_directories(${OpenCV_INCLUDE_DIRS}) link_directories(${OpenCV_LIBS}) MESSAGE(&amp;#34;OpenCV libs : ${OpenCV_LIBS}&amp;#34;) include_directories(${OpenCV_INCLUDE_DIRS}) link_directories(${OpenCV_LIBS}) set(SOURCE main.cpp) # 将源代码添加到此项目的可执行文件。 add_executable (${PROJECT_NAME} ${SOURCE}) TARGET_LINK_LIBRARIES(${PROJECT_NAME} ${OpenCV_LIBS}) </description>
     </item>
     
     <item>
       <title>C&#43;&#43;计时器</title>
-      <link>https://okokfun.github.io/post/c&#43;&#43;%E8%AE%A1%E6%97%B6%E5%99%A8/</link>
+      <link>https://okokfun.github.io/post/c&#43;&#43;/c&#43;&#43;%E8%AE%A1%E6%97%B6%E5%99%A8/</link>
       <pubDate>Thu, 10 Feb 2022 17:01:05 +0000</pubDate>
       
-      <guid>https://okokfun.github.io/post/c&#43;&#43;%E8%AE%A1%E6%97%B6%E5%99%A8/</guid>
+      <guid>https://okokfun.github.io/post/c&#43;&#43;/c&#43;&#43;%E8%AE%A1%E6%97%B6%E5%99%A8/</guid>
       <description>此文来自于👉由UP主神经元猫 神经元猫的个人空间_哔哩哔哩_bilibili 翻译 【63】【Cherno C++】【中字】C++的计时_哔哩哔哩_bilibili ，并由我整理。
 C++计时器
 std::chrono::high_resolution_clock高分辨率时钟在不同标准库有所区别，尽量不要使用。
@@ -67,10 +67,10 @@ struct Timer { std::chrono::time_point&amp;lt;std::chrono::steady_clock&amp;gt; 
     
     <item>
       <title>Qt概述</title>
-      <link>https://okokfun.github.io/post/qt%E6%A6%82%E8%BF%B0/</link>
+      <link>https://okokfun.github.io/post/c&#43;&#43;/qt%E6%A6%82%E8%BF%B0/</link>
       <pubDate>Tue, 01 Feb 2022 17:40:05 +0000</pubDate>
       
-      <guid>https://okokfun.github.io/post/qt%E6%A6%82%E8%BF%B0/</guid>
+      <guid>https://okokfun.github.io/post/c&#43;&#43;/qt%E6%A6%82%E8%BF%B0/</guid>
       <description>1. Qt概述 1.1 什么是Qt Qt是一个跨平台的C++图形用户界面应用程序框架。它为应用程序开发者提供建立艺术级图形界面所需的所有功能。它是完全面向对象的，很容易扩展，并且允许真正的组件编程。
 1.2 Qt的发展史 1991年 Qt最早由奇趣科技开发
 1996年 进入商业领域，它也是目前流行的Linux桌面环境KDE的基础
@@ -96,25 +96,25 @@ OS X Host 下载链接👉Qt 5.</description>
     
     <item>
       <title>for和while的几种用法</title>
-      <link>https://okokfun.github.io/post/for%E5%92%8Cwhile%E7%9A%84%E5%87%A0%E7%A7%8D%E7%94%A8%E6%B3%95/</link>
+      <link>https://okokfun.github.io/post/c&#43;&#43;/for%E5%92%8Cwhile%E7%9A%84%E5%87%A0%E7%A7%8D%E7%94%A8%E6%B3%95/</link>
       <pubDate>Sun, 30 Jan 2022 21:10:45 +0000</pubDate>
       
-      <guid>https://okokfun.github.io/post/for%E5%92%8Cwhile%E7%9A%84%E5%87%A0%E7%A7%8D%E7%94%A8%E6%B3%95/</guid>
+      <guid>https://okokfun.github.io/post/c&#43;&#43;/for%E5%92%8Cwhile%E7%9A%84%E5%87%A0%E7%A7%8D%E7%94%A8%E6%B3%95/</guid>
       <description>三段式for循环 // 变量声明在for里面，自增在里面 for (int i = 0; i &amp;lt; 10; ++i) { //... } // 变量声明在外面,自增在里面 int i = 0; for (; i &amp;lt; 10; ) { //... ++i; } bool condition = true; int i = 0; for (; condition; ) { //... ++i; if (!(i &amp;lt; 5)) condition = false; } 无限循环版本
 bool condition = true; int i = 0; for (; ; ) { //... ++i; if (!</description>
     </item>
     
     <item>
       <title>Visual-Studio-2022基本设置</title>
-      <link>https://okokfun.github.io/post/visual-studio-2022%E5%9F%BA%E6%9C%AC%E8%AE%BE%E7%BD%AE/</link>
+      <link>https://okokfun.github.io/post/c&#43;&#43;/visual-studio-2022%E5%9F%BA%E6%9C%AC%E8%AE%BE%E7%BD%AE/</link>
       <pubDate>Sun, 30 Jan 2022 19:14:50 +0000</pubDate>
       
-      <guid>https://okokfun.github.io/post/visual-studio-2022%E5%9F%BA%E6%9C%AC%E8%AE%BE%E7%BD%AE/</guid>
+      <guid>https://okokfun.github.io/post/c&#43;&#43;/visual-studio-2022%E5%9F%BA%E6%9C%AC%E8%AE%BE%E7%BD%AE/</guid>
       <description>用微软家的Visual Studio 2022创建项目，为了避免文件混乱，可以采用下边的设置方法,当然也可以使用默认的设置。
 点击解决方案下的项目名，例如sendbox👇
-vs-setting-1 在弹出的对话窗中点击属性👇
-vs-setting-2 然后在弹出的对话框中👇，选择所有配置,平台选择所有平台
-vs-setting-3 上图有一个错误去掉bin前面的\.
+在弹出的对话窗中点击属性👇
+然后在弹出的对话框中👇，选择所有配置,平台选择所有平台
+上图有一个错误去掉bin前面的\.
 配置属性-&amp;gt;常规，
 在常规属性-&amp;gt;输出目录填写$(SolutionDir)bin\$(Platform)\$(Configuration)\
 在常规属性-&amp;gt;中间目录填写$(SolutionDir)bin\intermediates\$(Platform)\$(Configuration)\
@@ -122,16 +122,16 @@ vs-setting-3 上图有一个错误去掉bin前面的\.
 设置完点击项目，选择清理，然后重新生成
 编译器语言标准
 配置属性-&amp;gt;常规-&amp;gt;C++语言标准
-ISO_C++_STD.jpg 配置属性-&amp;gt;常规-&amp;gt;C语言标准
-ISO_C_STD End.</description>
+配置属性-&amp;gt;常规-&amp;gt;C语言标准
+End.</description>
     </item>
     
     <item>
       <title>获取C&#43;&#43;中数据的类型的方法</title>
-      <link>https://okokfun.github.io/post/%E8%8E%B7%E5%8F%96c-%E4%B8%AD%E6%95%B0%E6%8D%AE%E7%9A%84%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%96%B9%E6%B3%95/</link>
+      <link>https://okokfun.github.io/post/c&#43;&#43;/%E8%8E%B7%E5%8F%96c-%E4%B8%AD%E6%95%B0%E6%8D%AE%E7%9A%84%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%96%B9%E6%B3%95/</link>
       <pubDate>Fri, 28 Jan 2022 17:51:19 +0000</pubDate>
       
-      <guid>https://okokfun.github.io/post/%E8%8E%B7%E5%8F%96c-%E4%B8%AD%E6%95%B0%E6%8D%AE%E7%9A%84%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%96%B9%E6%B3%95/</guid>
+      <guid>https://okokfun.github.io/post/c&#43;&#43;/%E8%8E%B7%E5%8F%96c-%E4%B8%AD%E6%95%B0%E6%8D%AE%E7%9A%84%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%96%B9%E6%B3%95/</guid>
       <description>此文来自于👉 C++ / typeinfo — DevDocs ，并整理
 判断数据是哪种数据类型 头文件&amp;lt;typeinfo&amp;gt;
 std::type_info::name() 例子：
@@ -140,10 +140,10 @@ std::type_info::name() 例子：
     
     <item>
       <title>QT_UI组件库</title>
-      <link>https://okokfun.github.io/post/qt-ui%E7%BB%84%E4%BB%B6%E5%BA%93/</link>
+      <link>https://okokfun.github.io/post/c&#43;&#43;/qt-ui%E7%BB%84%E4%BB%B6%E5%BA%93/</link>
       <pubDate>Mon, 24 Jan 2022 14:33:42 +0000</pubDate>
       
-      <guid>https://okokfun.github.io/post/qt-ui%E7%BB%84%E4%BB%B6%E5%BA%93/</guid>
+      <guid>https://okokfun.github.io/post/c&#43;&#43;/qt-ui%E7%BB%84%E4%BB%B6%E5%BA%93/</guid>
       <description>QT组件库第1-31 QT组件库第32-56 Layouts 布局组件库 1号 Vertical Layout 垂直布局
 2号 Horizontal Layout 水平布局
 3号 Grid Layout 网格布局
@@ -158,10 +158,10 @@ Buttons 按钮 7号 Push Button 8号 Tool Button 9号 Radio Button 10号 Check B
     
     <item>
       <title>C&#43;&#43;无序容器</title>
-      <link>https://okokfun.github.io/post/c-%E6%97%A0%E5%BA%8F%E5%AE%B9%E5%99%A8/</link>
+      <link>https://okokfun.github.io/post/c&#43;&#43;/c-%E6%97%A0%E5%BA%8F%E5%AE%B9%E5%99%A8/</link>
       <pubDate>Tue, 18 Jan 2022 16:54:33 +0000</pubDate>
       
-      <guid>https://okokfun.github.io/post/c-%E6%97%A0%E5%BA%8F%E5%AE%B9%E5%99%A8/</guid>
+      <guid>https://okokfun.github.io/post/c&#43;&#43;/c-%E6%97%A0%E5%BA%8F%E5%AE%B9%E5%99%A8/</guid>
       <description>此文来自👉容器库 - cppreference.com
 容器库是类模板与算法的汇集，允许程序员简单地访问常见数据结构，例如队列、链表和栈。有三类容器——顺序容器、关联容器和无序关联容器——每种都被设计为支持不同组的操作
 无序关联容器提供能快速查找（均摊 O(1) ，最坏情况 O(n) 的复杂度）的无序（哈希）数据结构。
@@ -174,20 +174,20 @@ unordered_set 是含有 Key 类型唯一对象集合的关联容器。搜索、�
     
     <item>
       <title>C&#43;&#43;文件系统库</title>
-      <link>https://okokfun.github.io/post/c-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%BA%93/</link>
+      <link>https://okokfun.github.io/post/c&#43;&#43;/c-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%BA%93/</link>
       <pubDate>Sun, 16 Jan 2022 15:16:11 +0000</pubDate>
       
-      <guid>https://okokfun.github.io/post/c-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%BA%93/</guid>
+      <guid>https://okokfun.github.io/post/c&#43;&#43;/c-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%BA%93/</guid>
       <description> 此文来源于👉文件系统库 - cppreference.com，并整理。
 库范畴定义 文件：持有数据的文件系统对象，能被写入或读取，或二者皆可。文件拥有名称及属性，属性之一是文件类型： 目录：表现为目录条目的容器的文件，目录条目标识其他文件（其中一些可以是另外的嵌套的目录）。讨论到具体文件时，包含该文件目录条目的目录是其父目录。父目录能以相对路径名 &amp;ldquo;..&amp;rdquo; 表示。 硬链接：关联一个名字到一个既存文件的目录条目。若支持多重硬链接，则文件在最后一个到它的硬链接被移除后才被移除。 符号链接：关联一个名词到一个路径的目录条目，路径可以存在亦可不存在。 常规文件：不是其他文件类型的文件。 文件名：命名一个文件的字符串。容许字符、大小写区别、最大长度以及被禁止名称是实现定义的。名称 &amp;ldquo;.&amp;rdquo; （点）与 &amp;ldquo;..&amp;rdquo; （双点）在库层次拥有特殊含义。 路径：标识一个文件的元素序列。它以可选的 根名 （例如 Windows 上的 &amp;ldquo;C:&amp;rdquo; 或 &amp;ldquo;//server&amp;rdquo; ）开始，后随可选的 根目录 （例如 Unix 上的 &amp;ldquo;/&amp;rdquo; ），后随零或更多个文件名（除了最后一个都必须是目录或到目录的链接）的序列。表示路径的字符串（路径名）的原生格式（如哪些字符被用作分隔符）与字符编码是实现定义的，库提供路径的可移植表示。 绝对路径：无歧义地标识一个文件位置的路径。 规范路径：不包含符号链接、 &amp;ldquo;.&amp;rdquo; 或 &amp;ldquo;..&amp;rdquo; 元素的绝对路径。 相对路径：标识相对于文件系统中某位置的文件位置的路径。特殊路径名 &amp;ldquo;.&amp;rdquo; （点，“当前目录”）和 &amp;ldquo;..&amp;rdquo; （双点、“父目录”）是相对路径。 类 定义于头文件 &amp;lt;filesystem&amp;gt; 定义于命名空间 std::filesystem path(C++17) 表示路径 (类) filesystem_error(C++17) 文件系统错误时抛出的异常 (类) directory_entry(C++17) 目录条目 (类) directory_iterator(C++17) 指向目录内容的迭代器 (类) recursive_directory_iterator(C++17) 指向一个目录及其子目录的内容的迭代器 (类) file_status(C++17) 表示文件类型及权限 (类) space_info(C++17) 关于文件系统上空闲及可用空间的信息 (类) file_type(C++17) 文件的类型 (枚举) perms(C++17) 标识文件系统权限 (枚举) perm_options(C++17) 指定权限操作的语义 (枚举) copy_options(C++17) 指定复制操作的语义 (枚举) directory_options(C++17) 用于迭代目录内容的选项 (枚举) file_time_type(C++17) 表示文件时间值 (typedef) 非成员函数 定义于头文件 &amp;lt;filesystem&amp;gt; 定义于命名空间 std::filesystem absolute(C++17) 组成一个绝对路径 (函数) canonicalweakly_canonical(C++17) 组成一个规范路径 (函数) relativeproximate(C++17) 组成一个相对路径 (函数) copy(C++17) 复制文件或目录 (函数) copy_file(C++17) 复制文件内容 (函数) copy_symlink(C++17) 复制一个符号链接 (函数) create_directory create_directories(C++17)(C++17) 创建新目录 (函数) create_hard_link(C++17) 创建一个硬链接 (函数) create_symlink create_directory_symlink(C++17)(C++17) 创建一个符号链接 (函数) current_path(C++17) 返回或设置当前工作目录 (函数) exists(C++17) 检查路径是否指代既存的文件系统对象 (函数) equivalent(C++17) 检查两个路径是否指代同一文件系统对象 (函数) file_size(C++17) 返回文件的大小 (函数) hard_link_count(C++17) 返回指代特定文件的硬链接数 (函数) last_write_time(C++17) 获取或设置最近一次数据修改的时间 (函数) permissions(C++17) 修改文件访问权限 (函数) read_symlink(C++17) 获得符号链接的目标 (函数) remove remove_all(C++17)(C++17) 移除一个文件或空目录 移除一个文件或递归地移除一个目录及其所有内容 (函数) rename(C++17) 移动或重命名一个文件或目录 (函数) resize_file(C++17) 以截断或填充零更改一个常规文件的大小 (函数) space(C++17) 确定文件系统上的可用空闲空间 (函数) status symlink_status(C++17)(C++17) 确定文件属性 确定文件属性，检查符号链接目标 (函数) temp_directory_path(C++17) 返回一个适用于临时文件的目录 (函数) 文件类型 is_block_file(C++17) 检查给定的路径是否表示块设备 (函数) is_character_file(C++17) 检查给定的路径是否表示字符设备 (函数) is_directory(C++17) 检查给定的路径是否表示一个目录 (函数) is_empty(C++17) 检查给定的路径是否表示一个空文件或空目录 (函数) is_fifo(C++17) 检查给定的路径是否表示一个命名管道 (函数) is_other(C++17) 检查参数是否表示一个其他文件 (函数) is_regular_file(C++17) 检查参数是否表示一个常规文件 (函数) is_socket(C++17) 检查参数是否表示一个具名 IPC 套接字 (函数) is_symlink(C++17) 检查参数是否表示一个符号链接 (函数) status_known(C++17) 检查参数是否表示一个符号链接 (函数) </description>
     </item>
     
     <item>
       <title>C&#43;&#43;正则表达式</title>
-      <link>https://okokfun.github.io/post/c-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</link>
+      <link>https://okokfun.github.io/post/c&#43;&#43;/c-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</link>
       <pubDate>Sun, 16 Jan 2022 14:45:25 +0000</pubDate>
       
-      <guid>https://okokfun.github.io/post/c-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</guid>
+      <guid>https://okokfun.github.io/post/c&#43;&#43;/c-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</guid>
       <description>此文章来源于👉正则表达式库 - cppreference.com,并整理
 正则表达式库提供表示正则表达式的类，正则表达式是一种用于在字符串中匹配模式的微型语言。
 定义于头文件 #include &amp;lt;iostream&amp;gt; #include &amp;lt;iterator&amp;gt; #include &amp;lt;string&amp;gt; #include &amp;lt;regex&amp;gt; int main() { std::string s = &amp;#34;Some people, when confronted with a problem, think &amp;#34; &amp;#34;\&amp;#34;I know, I&amp;#39;ll use regular expressions.\&amp;#34; &amp;#34; &amp;#34;Now they have two problems.&amp;#34;; std::regex self_regex(&amp;#34;REGULAR EXPRESSIONS&amp;#34;, std::regex_constants::ECMAScript | std::regex_constants::icase); if (std::regex_search(s, self_regex)) { std::cout &amp;lt;&amp;lt; &amp;#34;Text contains the phrase &amp;#39;regular expressions&amp;#39;\n&amp;#34;; } std::regex word_regex(&amp;#34;(\\w+)&amp;#34;); auto words_begin = std::sregex_iterator(s.begin(), s.end(), word_regex); auto words_end = std::sregex_iterator(); std::cout &amp;lt;&amp;lt; &amp;#34;Found &amp;#34; &amp;lt;&amp;lt; std::distance(words_begin, words_end) &amp;lt;&amp;lt; &amp;#34; words\n&amp;#34;; const int N = 6; std::cout &amp;lt;&amp;lt; &amp;#34;Words longer than &amp;#34; &amp;lt;&amp;lt; N &amp;lt;&amp;lt; &amp;#34; characters:\n&amp;#34;; for (std::sregex_iterator i = words_begin; i !</description>
@@ -195,10 +195,10 @@ unordered_set 是含有 Key 类型唯一对象集合的关联容器。搜索、�
     
     <item>
       <title>线程支持库</title>
-      <link>https://okokfun.github.io/post/%E7%BA%BF%E7%A8%8B%E6%94%AF%E6%8C%81%E5%BA%93/</link>
+      <link>https://okokfun.github.io/post/c&#43;&#43;/%E7%BA%BF%E7%A8%8B%E6%94%AF%E6%8C%81%E5%BA%93/</link>
       <pubDate>Sat, 15 Jan 2022 17:13:05 +0000</pubDate>
       
-      <guid>https://okokfun.github.io/post/%E7%BA%BF%E7%A8%8B%E6%94%AF%E6%8C%81%E5%BA%93/</guid>
+      <guid>https://okokfun.github.io/post/c&#43;&#43;/%E7%BA%BF%E7%A8%8B%E6%94%AF%E6%8C%81%E5%BA%93/</guid>
       <description>此文来自于👉线程支持库 - cppreference.com
 线程支持库 thread(C++11) std::thread 类与支持函数 stop_token(C++20) std::jthread 的停止记号 mutex(C++11) 互斥元件 shared_mutex(C++14) 共享互斥元件 future(C++11) 异步计算元件 condition_variable(C++11) 线程等待条件 semaphore(C++20) 信号量 latch(C++20) 闩 barrier(C++20) 屏障 #include &amp;lt;thread&amp;gt; std::thread thread类 表示单个执行线程。
 #include &amp;lt;iostream&amp;gt; #include &amp;lt;thread&amp;gt; int main() { std::thread th1; } std:🧵:id thread::id类 是轻量的可频繁复制类，它作为 std::thread 对象的唯一标识符工作。
@@ -207,34 +207,35 @@ unordered_set 是含有 Key 类型唯一对象集合的关联容器。搜索、�
     
     <item>
       <title>cpr请求库</title>
-      <link>https://okokfun.github.io/post/cpr-http%E8%AF%B7%E6%B1%82%E5%BA%93/</link>
+      <link>https://okokfun.github.io/post/c&#43;&#43;/cpr-http%E8%AF%B7%E6%B1%82%E5%BA%93/</link>
       <pubDate>Thu, 13 Jan 2022 20:43:31 +0000</pubDate>
       
-      <guid>https://okokfun.github.io/post/cpr-http%E8%AF%B7%E6%B1%82%E5%BA%93/</guid>
+      <guid>https://okokfun.github.io/post/c&#43;&#43;/cpr-http%E8%AF%B7%E6%B1%82%E5%BA%93/</guid>
       <description>本文介绍的HTTP库👉libcpr/cpr: C++ Requests: Curl for People, a spiritual port of Python Requests. (github.com)
 HttpServer Url Url url{server-&amp;gt;GetBaseUrl() + &amp;#34;/hello.html&amp;#34;}; Url url{server-&amp;gt;GetBaseUrl() + &amp;#34;/basic.json&amp;#34;}; Url url{server-&amp;gt;GetBaseUrl() + &amp;#34;/error.html&amp;#34;}; Url url{&amp;#34;http://bad_host/&amp;#34;}; Url url{server-&amp;gt;GetBaseUrl() + &amp;#34;/basic_cookies.html&amp;#34;}; Url url{server-&amp;gt;GetBaseUrl() + &amp;#34;/empty_cookies.html&amp;#34;}; Url url{server-&amp;gt;GetBaseUrl() + &amp;#34;/check_cookies.html&amp;#34;}; Url url{server-&amp;gt;GetBaseUrl() + &amp;#34;/v1_cookies.html&amp;#34;}; Url url{server-&amp;gt;GetBaseUrl() + &amp;#34;/check_v1_cookies.html&amp;#34;}; Url url{server-&amp;gt;GetBaseUrl() + &amp;#34;/basic_auth.html&amp;#34;}; Url url{server-&amp;gt;GetBaseUrl() + &amp;#34;/bearer_token.html&amp;#34;}; Url url{server-&amp;gt;GetBaseUrl() + &amp;#34;/digest_auth.html&amp;#34;}; Url url{server-&amp;gt;GetBaseUrl() + &amp;#34;/header_reflect.html&amp;#34;}; Url url{server-&amp;gt;GetBaseUrl() + &amp;#34;/temporary_redirect.html&amp;#34;}; Url url{server-&amp;gt;GetBaseUrl() + &amp;#34;/permanent_redirect.</description>
     </item>
     
     <item>
       <title>Socket_Cpp库的使用</title>
-      <link>https://okokfun.github.io/post/socket_cpp%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
+      <link>https://okokfun.github.io/post/c&#43;&#43;/socket_cpp%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
       <pubDate>Thu, 13 Jan 2022 20:28:16 +0000</pubDate>
       
-      <guid>https://okokfun.github.io/post/socket_cpp%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
+      <guid>https://okokfun.github.io/post/c&#43;&#43;/socket_cpp%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
       <description>传输控制协议（TCP，Transmission Control Protocol）是一种面向连接的、可靠的、基于字节流的传输层通信协议。
-20190623_tcp_termination.png (925×613) (linuxblogs.cn) 此库是一个简单的TCP库👉sockpp
+此库是一个简单的TCP库👉sockpp
 TCP TCP Clien IPV4:tcp_clien sockpp::socket_initializer sockpp环境初始化 sockpp::tcp_connector conn({host, port}) // 初始化一个连接器，并尝试连接到{host, port} !conn.read_timeout(seconds(5)) // 读超时 conn.address() // 连接成功打印地址 conn.connect(sockpp::inet_address(&amp;#34;localhost&amp;#34;, port)) // 链接{localhost, port} sockpp::inet_address(host, port) // 返回一个默认的端口号和地址 conn.clone() // clone一个sockpp::tcp_socket conn.last_error_str() // 返回根据平台各自的错误字符串 conn.last_error() conn.write(s) // 通过coon把字符串s写过去 conn.write_n(buf, n) // 从buf中取n个字节的数据并通过tcp写过去 conn.read(buf, sizeof(buf))) // 读sizeof(buf)个字节到buf中，并返回读到的字节数 conn.read_n() // conn.address() // 服务器的地址 conn.peer_address() conn.shutdown(SHUT_WR) 例子- 单线程
 #include &amp;lt;iostream&amp;gt; #include &amp;lt;string&amp;gt; #include &amp;#34;sockpp/tcp_connector.h&amp;#34; #include &amp;#34;sockpp/version.h&amp;#34; using namespace std; using namespace std::chrono; int main(int argc, char* argv[]) { cout &amp;lt;&amp;lt; &amp;#34;Sample TCP echo client for &amp;#39;sockpp&amp;#39; &amp;#34; &amp;lt;&amp;lt; sockpp::SOCKPP_VERSION &amp;lt;&amp;lt; &amp;#39;\n&amp;#39; &amp;lt;&amp;lt; endl; string host = (argc &amp;gt; 1) ?</description>
     </item>
     
     <item>
       <title>Json的使用</title>
-      <link>https://okokfun.github.io/post/json%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
+      <link>https://okokfun.github.io/post/c&#43;&#43;/json%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
       <pubDate>Tue, 04 Jan 2022 17:38:16 +0000</pubDate>
       
-      <guid>https://okokfun.github.io/post/json%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
+      <guid>https://okokfun.github.io/post/c&#43;&#43;/json%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
       <description>百度百科 JSON(JavaScript Object Notation, JS 对象简谱) 是一种轻量级的数据交换格式。它基于 ECMAScript (欧洲计算机协会制定的js规范)的一个子集，采用完全独立于编程语言的文本格式来存储和表示数据。简洁和清晰的层次结构使得 JSON 成为理想的数据交换语言。 易于人阅读和编写，同时也易于机器解析和生成，并有效地提升网络传输效率。
-本文采用 @MistEO MistEO哥哥写的项目。
+本文采用
+MistEO哥哥写的项目。
 他写两个很棒的项目
 Json:MistEO/meojson: A fast and easy-to-use JSON parser/generator for C++ (github.com)
 明日方舟助手：MistEO/MeoAssistantArknights: 明日方舟助手，自动刷图、智能基建换班，全日常一键长草！ (github.com)
@@ -247,18 +248,18 @@ git clone https://github.com.cnpmjs.org/MistEO/meojson.git 编译 json静态库 
     
     <item>
       <title>Visual_Studio_2022添加第三方库</title>
-      <link>https://okokfun.github.io/post/visual-studio-2022%E6%B7%BB%E5%8A%A0%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93/</link>
+      <link>https://okokfun.github.io/post/c&#43;&#43;/visual-studio-2022%E6%B7%BB%E5%8A%A0%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93/</link>
       <pubDate>Tue, 04 Jan 2022 17:36:44 +0000</pubDate>
       
-      <guid>https://okokfun.github.io/post/visual-studio-2022%E6%B7%BB%E5%8A%A0%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93/</guid>
-      <description>文件夹创建 在项目根目录创建Dependencies,然后在Dependencies创建include目录 explorer_dZv7Sj1zKv.png 在Dependencies中创建Libs explorer_OfVTAKdKwG.png 把头文件和库文件放到对目录
-项目头文件添加 然后用Visual Studio打开项目，找到 devenv_m2Hpr9hqkF.png 红色圈中的功能条
+      <guid>https://okokfun.github.io/post/c&#43;&#43;/visual-studio-2022%E6%B7%BB%E5%8A%A0%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93/</guid>
+      <description>文件夹创建 在项目根目录创建Dependencies,然后在Dependencies创建include目录 在Dependencies中创建Libs 把头文件和库文件放到对目录
+项目头文件添加 然后用Visual Studio打开项目，找到 红色圈中的功能条
 再点击最下边的属性
-mia3Eg3WRZ.png 定位到常规，然后再编辑附加包含目录，添加一条新item为$(SolutionDir)Dependencies\include\
-devenv_4dDWoNrKwt.png 其中 $(SolutionDir)为项目根目录，Dependencies\include\为头文件目录
+定位到常规，然后再编辑附加包含目录，添加一条新item为$(SolutionDir)Dependencies\include\
+其中 $(SolutionDir)为项目根目录，Dependencies\include\为头文件目录
 至此第三方库的头文件已经添加完成
-项目库文件添加 devenv_dX8CZIf3KK.png 点击链接器，常规，附加库目录，添加一条$(SolutionDir)Dependencies\Libs\GLFW,
-devenv_R78BVre94f.png 然后点击输入，附加依赖项，写入要使用的库文件名，点击确定，第三方库已被添加到项目中
+项目库文件添加 点击链接器，常规，附加库目录，添加一条$(SolutionDir)Dependencies\Libs\GLFW,
+然后点击输入，附加依赖项，写入要使用的库文件名，点击确定，第三方库已被添加到项目中
 End.</description>
     </item>
     

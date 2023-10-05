@@ -9,10 +9,10 @@
     <lastBuildDate>Wed, 19 Jan 2022 23:46:32 +0000</lastBuildDate><atom:link href="https://okokfun.github.io/tags/github/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>github资源资源下载加速</title>
-      <link>https://okokfun.github.io/post/github%E8%B5%84%E6%BA%90%E8%B5%84%E6%BA%90%E4%B8%8B%E8%BD%BD%E5%8A%A0%E9%80%9F/</link>
+      <link>https://okokfun.github.io/post/c&#43;&#43;/github%E8%B5%84%E6%BA%90%E8%B5%84%E6%BA%90%E4%B8%8B%E8%BD%BD%E5%8A%A0%E9%80%9F/</link>
       <pubDate>Wed, 19 Jan 2022 23:46:32 +0000</pubDate>
       
-      <guid>https://okokfun.github.io/post/github%E8%B5%84%E6%BA%90%E8%B5%84%E6%BA%90%E4%B8%8B%E8%BD%BD%E5%8A%A0%E9%80%9F/</guid>
+      <guid>https://okokfun.github.io/post/c&#43;&#43;/github%E8%B5%84%E6%BA%90%E8%B5%84%E6%BA%90%E4%B8%8B%E8%BD%BD%E5%8A%A0%E9%80%9F/</guid>
       <description> 由于大家都知道原因，国内使用github下载源码和Releases文件时都慢如龟速 下边根据我所使用的方法介绍几种方法
 1. 通过命令行克隆源码 通过添加.cnpmjs.org 在
 git clone https://github.com/MistEO/MeoAssistantArknights.git 的.com后边添加.cnpmjs.org

@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='利用前几节学习的 JFET 的相关特性，现在我们将会看到如何对 JFET 进行直流偏置。偏置的目的是选择合适的栅源电压来获得期望的漏源电流。由于栅极反向偏置，因此 BJT 的偏置方式并不适用于 JFET。
+学完本节后，你应该掌握以下内容:
+描述 JFET 的三种偏置方法并解释它们的工作原理 利用`跨导曲线来选择自给偏置电阻的合理值`` 解释分压式偏置或电流源偏置如何产生更稳定的 Q 点 4.3.1JFET的自给偏置 FET 的偏置相对简单。接下来以 n 沟道 JFET 为例。记住，p 沟道 JFET 只需要改变极性。对于 n 沟道 JFET，建立反向偏置需要负的 $V_{GS}$。这可以利用如图4-11所示的自给偏置电路来实现。注意，通过电阻 $R_G$ 接地，将栅极偏置在 0V。虽然反向泄漏电流 $I_{GSS}$ 在 $R_G$ 两端产生一个非常小的电压，但在大多数情况下都可忽略它。可以假设 $R_G$ 上面没有电流流过，两端也没有压降。 $R_G$ 的作用是使得栅极电压稳定在 0V，且不影响之后施加的任何交流信号。由于栅极电流可以忽略， $R_G$ 可以非常大(通常取 1.0M$\Omega$ 甚至更大)，从而对低频交流信号会呈现非常高的输入电阻。
+$$ 图4-11~~~ n沟道JFET的自给偏置 $$ 如果栅极电压为 0，如何获取所需的栅源结的反向偏置? 答案是使源极相对于栅极为正，以达到需要的反向偏置。对于图4-11中的 n 沟道 JFET 而言，$I_D$ 在 $R_S$ 两端产生一个压降(极性如图4-11所示)，使得源极相对于栅极为正。因为 $V_G=0V，V_S=I_DR_S$，所以栅源电压为: $$ V_{GS}=V_G-V_S-I_DR_S $$ 因此有: $$ V_{GS}=-I_DR_S $$ 该结果表明栅源电压为负，得到了所需的反向偏置。在本分析过程中，以 n 沟道 JFET 为例来说明。同样 p 沟道 JFET 也需要反向偏置，但所有电压的极性都和 n 沟道 JFET 中的相反。'><title>4.3JFET偏置</title>
+
+<link rel='canonical' href='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/4-3jfet%E5%81%8F%E7%BD%AE/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='4.3JFET偏置'>
+<meta property='og:description' content='利用前几节学习的 JFET 的相关特性，现在我们将会看到如何对 JFET 进行直流偏置。偏置的目的是选择合适的栅源电压来获得期望的漏源电流。由于栅极反向偏置，因此 BJT 的偏置方式并不适用于 JFET。
+学完本节后，你应该掌握以下内容:
+描述 JFET 的三种偏置方法并解释它们的工作原理 利用`跨导曲线来选择自给偏置电阻的合理值`` 解释分压式偏置或电流源偏置如何产生更稳定的 Q 点 4.3.1JFET的自给偏置 FET 的偏置相对简单。接下来以 n 沟道 JFET 为例。记住，p 沟道 JFET 只需要改变极性。对于 n 沟道 JFET，建立反向偏置需要负的 $V_{GS}$。这可以利用如图4-11所示的自给偏置电路来实现。注意，通过电阻 $R_G$ 接地，将栅极偏置在 0V。虽然反向泄漏电流 $I_{GSS}$ 在 $R_G$ 两端产生一个非常小的电压，但在大多数情况下都可忽略它。可以假设 $R_G$ 上面没有电流流过，两端也没有压降。 $R_G$ 的作用是使得栅极电压稳定在 0V，且不影响之后施加的任何交流信号。由于栅极电流可以忽略， $R_G$ 可以非常大(通常取 1.0M$\Omega$ 甚至更大)，从而对低频交流信号会呈现非常高的输入电阻。
+$$ 图4-11~~~ n沟道JFET的自给偏置 $$ 如果栅极电压为 0，如何获取所需的栅源结的反向偏置? 答案是使源极相对于栅极为正，以达到需要的反向偏置。对于图4-11中的 n 沟道 JFET 而言，$I_D$ 在 $R_S$ 两端产生一个压降(极性如图4-11所示)，使得源极相对于栅极为正。因为 $V_G=0V，V_S=I_DR_S$，所以栅源电压为: $$ V_{GS}=V_G-V_S-I_DR_S $$ 因此有: $$ V_{GS}=-I_DR_S $$ 该结果表明栅源电压为负，得到了所需的反向偏置。在本分析过程中，以 n 沟道 JFET 为例来说明。同样 p 沟道 JFET 也需要反向偏置，但所有电压的极性都和 n 沟道 JFET 中的相反。'>
+<meta property='og:url' content='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/4-3jfet%E5%81%8F%E7%BD%AE/'>
+<meta property='og:site_name' content='My Blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Analog' /><meta property='article:published_time' content='2023-07-14T17:37:37&#43;00:00'/><meta property='article:modified_time' content='2023-07-14T17:37:37&#43;00:00'/>
+<meta name="twitter:title" content="4.3JFET偏置">
+<meta name="twitter:description" content="利用前几节学习的 JFET 的相关特性，现在我们将会看到如何对 JFET 进行直流偏置。偏置的目的是选择合适的栅源电压来获得期望的漏源电流。由于栅极反向偏置，因此 BJT 的偏置方式并不适用于 JFET。
+学完本节后，你应该掌握以下内容:
+描述 JFET 的三种偏置方法并解释它们的工作原理 利用`跨导曲线来选择自给偏置电阻的合理值`` 解释分压式偏置或电流源偏置如何产生更稳定的 Q 点 4.3.1JFET的自给偏置 FET 的偏置相对简单。接下来以 n 沟道 JFET 为例。记住，p 沟道 JFET 只需要改变极性。对于 n 沟道 JFET，建立反向偏置需要负的 $V_{GS}$。这可以利用如图4-11所示的自给偏置电路来实现。注意，通过电阻 $R_G$ 接地，将栅极偏置在 0V。虽然反向泄漏电流 $I_{GSS}$ 在 $R_G$ 两端产生一个非常小的电压，但在大多数情况下都可忽略它。可以假设 $R_G$ 上面没有电流流过，两端也没有压降。 $R_G$ 的作用是使得栅极电压稳定在 0V，且不影响之后施加的任何交流信号。由于栅极电流可以忽略， $R_G$ 可以非常大(通常取 1.0M$\Omega$ 甚至更大)，从而对低频交流信号会呈现非常高的输入电阻。
+$$ 图4-11~~~ n沟道JFET的自给偏置 $$ 如果栅极电压为 0，如何获取所需的栅源结的反向偏置? 答案是使源极相对于栅极为正，以达到需要的反向偏置。对于图4-11中的 n 沟道 JFET 而言，$I_D$ 在 $R_S$ 两端产生一个压降(极性如图4-11所示)，使得源极相对于栅极为正。因为 $V_G=0V，V_S=I_DR_S$，所以栅源电压为: $$ V_{GS}=V_G-V_S-I_DR_S $$ 因此有: $$ V_{GS}=-I_DR_S $$ 该结果表明栅源电压为负，得到了所需的反向偏置。在本分析过程中，以 n 沟道 JFET 为例来说明。同样 p 沟道 JFET 也需要反向偏置，但所有电压的极性都和 n 沟道 JFET 中的相反。"><script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+    </head>
+    <body class="
+    article-page has-toc
+">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex 
+    
+        extended
+    
+">
+    
+        <div id="article-toolbar">
+            <a href="/" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+                <span>Back</span>
+            </a>
+        </div>
+    
+<main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+
+    <h2 class="article-title">
+        <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/4-3jfet%E5%81%8F%E7%BD%AE/">4.3JFET偏置</a>
+    </h2>
+
+    
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jul 14, 2023</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+</div>
+</header>
+
+    <section class="article-content">
+    <p>利用前几节学习的 JFET 的相关特性，现在我们将会看到如何对 JFET 进行直流偏置。<code>偏置的目的是选择合适的栅源电压来获得期望的漏源电流</code>。由于栅极反向偏置，因此 BJT 的偏置方式并不适用于 JFET。</p>
+<p>学完本节后，你应该掌握以下内容:</p>
+<ul>
+<li>描述 JFET 的<code>三种偏置方法</code>并解释它们的工作原理
+<ul>
+<li>利用`跨导曲线来选择自给偏置电阻的合理值``</li>
+<li>解释分压式偏置或电流源偏置如何产生更稳定的 Q 点</li>
+</ul>
+</li>
+</ul>
+<h3 id="431jfet的自给偏置">4.3.1JFET的自给偏置</h3>
+<p>FET 的偏置相对简单。接下来以 n 沟道 JFET 为例。记住，p 沟道 JFET 只需要改变极性。对于 n 沟道 JFET，建立反向偏置需要负的 $V_{GS}$。这可以利用如图4-11所示的自给偏置电路来实现。注意，通过电阻 $R_G$ 接地，将栅极偏置在 0V。虽然反向泄漏电流 $I_{GSS}$ 在 $R_G$ 两端产生一个非常小的电压，但在大多数情况下都可忽略它。可以假设 $R_G$ 上面没有电流流过，两端也没有压降。 <strong>$R_G$ 的作用是使得栅极电压稳定在 0V，且不影响之后施加的任何交流信号</strong>。由于栅极电流可以忽略， $R_G$ 可以非常大(通常取 1.0M$\Omega$ 甚至更大)，从而对低频交流信号会呈现非常高的输入电阻。</p>
+<p><img src="https://s2.loli.net/2023/10/05/4GoPvJpqx1X2QVS.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog4_11.png"
+	
+	
+>
+$$
+图4-11~~~ n沟道JFET的自给偏置
+$$
+如果栅极电压为 0，如何获取所需的栅源结的反向偏置? 答案是使源极相对于栅极为正，以达到需要的反向偏置。对于图4-11中的 n 沟道 JFET 而言，$I_D$ 在 $R_S$ 两端产生一个压降(极性如图4-11所示)，使得源极相对于栅极为正。因为 $V_G=0V，V_S=I_DR_S$，所以栅源电压为:
+$$
+V_{GS}=V_G-V_S-I_DR_S
+$$
+因此有:
+$$
+V_{GS}=-I_DR_S
+$$
+该结果表明栅源电压为负，得到了所需的反向偏置。在本分析过程中，以 n 沟道 JFET 为例来说明。同样 p 沟道 JFET 也需要反向偏置，但所有电压的极性都和 n 沟道 JFET 中的相反。</p>
+<p>漏极相对于地的电压为:
+$$
+V_D=V_{DD}-I_DR_D~~~(4-3)
+$$
+由于 $V_S=I_DR_S$，因此漏源电压为:
+$$
+V_{DS}=V_D-V_S
+\\
+V_{DS}=V_{DD}-I_D(R_D+R_S)~~~(4-4)
+$$</p>
+<h3 id="432图解法">4.3.2图解法</h3>
+<p>已经知道电阻 $R$ 的 $Ⅰ-V$ 曲线是斜率为 $1/R$ 的直线。为了比较自给偏置电阻曲线和跨导曲线，将两条曲线都画在第二象限中，其中电阻曲线的斜率为 $-1/R$。</p>
+<p>本节利用 MPF3821 的跨导特性曲线来说明如何选择合适的自给偏置电阻($R_S$)的阻值。假设 MPF3821 的跨导曲线如图4-13所示。从原点到 $V_{GS(off)}(-4V)$ 与 $I_{DSS}(2.5mA)$ 的交点画一条直线。这条直线的斜率的倒数就是 $R_S$ 的合适取值。</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/analog/">Analog</a>
+        
+    </section>
+
+
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css"integrity="sha384-RZU/ijkSsFbcmivfdRBQDtwuwVqK7GMOw6IMvKyeWL2K5UAlyp6WonmB8m7Jd0Hn"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js"integrity="sha384-pK1WpvzWVBQiP0/GjnvRxV4mOb0oxFuyRxJlk6vVw146n3egcN5C925NCP7a7BY8"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js"integrity="sha384-vZTG03m&#43;2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ]
+        });})
+</script>
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">Related contents</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/4-2jfet%E7%89%B9%E6%80%A7/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">4.2JFET特性</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/4-1fet%E7%9A%84%E7%BB%93%E6%9E%84/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">4.1FET的结构</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/3-7%E5%BC%80%E5%85%B3%E5%9E%8B%E5%8F%8C%E6%9E%81%E5%9E%8B%E6%99%B6%E4%BD%93%E7%AE%A1/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">3.7开关型双极型晶体管</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/3-6%E5%85%B1%E5%9F%BA%E6%9E%81%E6%94%BE%E5%A4%A7%E5%99%A8/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">3.6共基极放大器</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/3-5%E5%85%B1%E9%9B%86%E7%94%B5%E6%9E%81%E6%94%BE%E5%A4%A7%E5%99%A8/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">3.5共集电极放大器</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+     
+    
+        
+    <div id="cusdis_thread"
+    data-host="https://cusdis.com"
+    data-app-id="d44db3f9-a0ff-4551-a44d-316afd2e5835"
+    data-page-id="f23ca4d546480d577371cd48e07ddf4e"
+    data-page-url="https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/4-3jfet%E5%81%8F%E7%BD%AE/"
+    data-page-title="4.3JFET偏置"></div>
+<script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
+
+<script>
+    function setCusdisTheme(theme) {
+        let cusdis = document.querySelector('#cusdis_thread iframe');
+        if (cusdis) {
+            window.CUSDIS.setTheme(theme)
+        }
+    }
+
+    window.addEventListener('onColorSchemeChange', (e) => {
+        setCusdisTheme(e.detail)
+    })
+</script>
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2023 My Blog
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.5.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+
+            </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">Table of contents</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#431jfet的自给偏置">4.3.1JFET的自给偏置</a></li>
+        <li><a href="#432图解法">4.3.2图解法</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                </div>
+            </section>
+        </aside>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

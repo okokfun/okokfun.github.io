@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='有时用称为限幅器或削波器的二极管电路来对信号电压高于或低于某值的部分进行限幅。另一种称为钳位器的二极管电路常用来将直流电平还原成电信号。
+学完本节后，你应该掌握以下内容:
+分析二极管限幅器和钳位器的工作原理 解释二极管限幅器是如何工作的，对给定电路决定其限幅电平 解释二极管钳位电路是如何工作的 举出二极管限幅和钳位电路的应用例子 2.7.1二极管限幅器 $$ a)正半周期的限幅;二极管在正半周期导通 $$ $$ b)负半周期的限幅;二极管在负半周期导通 $$ $$ 图2-30二极管限幅电路(削波电路) $$ 图2-30a给出了称作限幅器(也称作削波器)的二极管电路，它用来限制或削掉输人信号的正部分。当信号变为正的时候，二极管正向偏置。因为阴极接地(OV)，所以阳极不能超过 0.7V(假设是硅二极管)。因此，当输入电压超过该值时，$A$ 点的值就被钳位在 &#43;0.7V。
+当输入低于 0.7V 时，二级管反向偏置，可以看作开路。输出电压的波形与输入电压的负半部分一样，但是幅值由 $R_1$ 和 $R_L$ 构成的分压器决定，如下: $$ V_{out} = (\frac{R_L}{R_1&#43;R_L})V_{in} $$ 如果 $R_1$ 远小于 $R_L$ ，则 $V_{out}$ $\approx$ $V_{in}$。
+把二极管反转，如图2-30b所示，则输入的负半部分被钳位在接近 0 电位。当输人为负时二极管正向偏置，A点处的电压恒定在 -0.7V，即二极管的压降。当输人大于 -0.7V时，二极管不再正向偏置; $R_L$ 的端电压与输入成正比。
+$$ 图2-31对输入计算机的信号进行限幅 $$ 限幅器的应用 图2-31给出了一个限幅器的应用。假设你想使用电源线将计算机操作与交流线路同步。如图2-31所示，一个半波整流器连接到变压器的 6.3V 输出端，整流器的峰值信号大约为 9V，对计算机输入来说太大了。计算机和其他逻辑电路在设计时均不能超过规定电压的最大值(典型值＋5.0V)，这样不会有严重损坏计算机的风险。图2-31所示的限幅器防止输入到计算机的信号超过 4.7V。
+限幅电平的调节 为了调节对信号电压进行限幅的电平大小，可以将一个偏置电压与二极管串联，如图2-34所示。在二极管变为正向偏置和导通前，A点电压应等于 $V_{BIAS}&#43;0.7V$。一旦二极管开始导通，A点电压就限幅在 $V_{BIAS}&#43;0.7V$，于是所有高于这个值的输人电压都将被限幅，如图2-34所示。 $$ 图2-34带正偏置的正限幅器 $$ $$ 图2-35有可变正向偏置的正限幅器 $$ 如果偏置电压增大或减小，则限幅电平会相应地进行变化，如图2-35所示。如果偏置电压的极性反向，如图2-36所示，高于 $-V_{BB}&#43;0.7V$ 的电压被限幅，输出波形如图2-35所示。只有当A点电压小于 $-V_{BB}&#43;0.7V$ 时，二极管才反向偏置。 $$ 图2-36带负偏置的正限幅器，注意，波形的正侧被限幅在 -V_{BIAS}＋0.'><title>2.7二极管限幅电路和钳位电路</title>
+
+<link rel='canonical' href='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/2-7%E4%BA%8C%E6%9E%81%E7%AE%A1%E9%99%90%E5%B9%85%E7%94%B5%E8%B7%AF%E5%92%8C%E9%92%B3%E4%BD%8D%E7%94%B5%E8%B7%AF/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='2.7二极管限幅电路和钳位电路'>
+<meta property='og:description' content='有时用称为限幅器或削波器的二极管电路来对信号电压高于或低于某值的部分进行限幅。另一种称为钳位器的二极管电路常用来将直流电平还原成电信号。
+学完本节后，你应该掌握以下内容:
+分析二极管限幅器和钳位器的工作原理 解释二极管限幅器是如何工作的，对给定电路决定其限幅电平 解释二极管钳位电路是如何工作的 举出二极管限幅和钳位电路的应用例子 2.7.1二极管限幅器 $$ a)正半周期的限幅;二极管在正半周期导通 $$ $$ b)负半周期的限幅;二极管在负半周期导通 $$ $$ 图2-30二极管限幅电路(削波电路) $$ 图2-30a给出了称作限幅器(也称作削波器)的二极管电路，它用来限制或削掉输人信号的正部分。当信号变为正的时候，二极管正向偏置。因为阴极接地(OV)，所以阳极不能超过 0.7V(假设是硅二极管)。因此，当输入电压超过该值时，$A$ 点的值就被钳位在 &#43;0.7V。
+当输入低于 0.7V 时，二级管反向偏置，可以看作开路。输出电压的波形与输入电压的负半部分一样，但是幅值由 $R_1$ 和 $R_L$ 构成的分压器决定，如下: $$ V_{out} = (\frac{R_L}{R_1&#43;R_L})V_{in} $$ 如果 $R_1$ 远小于 $R_L$ ，则 $V_{out}$ $\approx$ $V_{in}$。
+把二极管反转，如图2-30b所示，则输入的负半部分被钳位在接近 0 电位。当输人为负时二极管正向偏置，A点处的电压恒定在 -0.7V，即二极管的压降。当输人大于 -0.7V时，二极管不再正向偏置; $R_L$ 的端电压与输入成正比。
+$$ 图2-31对输入计算机的信号进行限幅 $$ 限幅器的应用 图2-31给出了一个限幅器的应用。假设你想使用电源线将计算机操作与交流线路同步。如图2-31所示，一个半波整流器连接到变压器的 6.3V 输出端，整流器的峰值信号大约为 9V，对计算机输入来说太大了。计算机和其他逻辑电路在设计时均不能超过规定电压的最大值(典型值＋5.0V)，这样不会有严重损坏计算机的风险。图2-31所示的限幅器防止输入到计算机的信号超过 4.7V。
+限幅电平的调节 为了调节对信号电压进行限幅的电平大小，可以将一个偏置电压与二极管串联，如图2-34所示。在二极管变为正向偏置和导通前，A点电压应等于 $V_{BIAS}&#43;0.7V$。一旦二极管开始导通，A点电压就限幅在 $V_{BIAS}&#43;0.7V$，于是所有高于这个值的输人电压都将被限幅，如图2-34所示。 $$ 图2-34带正偏置的正限幅器 $$ $$ 图2-35有可变正向偏置的正限幅器 $$ 如果偏置电压增大或减小，则限幅电平会相应地进行变化，如图2-35所示。如果偏置电压的极性反向，如图2-36所示，高于 $-V_{BB}&#43;0.7V$ 的电压被限幅，输出波形如图2-35所示。只有当A点电压小于 $-V_{BB}&#43;0.7V$ 时，二极管才反向偏置。 $$ 图2-36带负偏置的正限幅器，注意，波形的正侧被限幅在 -V_{BIAS}＋0.'>
+<meta property='og:url' content='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/2-7%E4%BA%8C%E6%9E%81%E7%AE%A1%E9%99%90%E5%B9%85%E7%94%B5%E8%B7%AF%E5%92%8C%E9%92%B3%E4%BD%8D%E7%94%B5%E8%B7%AF/'>
+<meta property='og:site_name' content='My Blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Analog' /><meta property='article:published_time' content='2023-07-14T15:06:10&#43;00:00'/><meta property='article:modified_time' content='2023-07-14T15:06:10&#43;00:00'/>
+<meta name="twitter:title" content="2.7二极管限幅电路和钳位电路">
+<meta name="twitter:description" content="有时用称为限幅器或削波器的二极管电路来对信号电压高于或低于某值的部分进行限幅。另一种称为钳位器的二极管电路常用来将直流电平还原成电信号。
+学完本节后，你应该掌握以下内容:
+分析二极管限幅器和钳位器的工作原理 解释二极管限幅器是如何工作的，对给定电路决定其限幅电平 解释二极管钳位电路是如何工作的 举出二极管限幅和钳位电路的应用例子 2.7.1二极管限幅器 $$ a)正半周期的限幅;二极管在正半周期导通 $$ $$ b)负半周期的限幅;二极管在负半周期导通 $$ $$ 图2-30二极管限幅电路(削波电路) $$ 图2-30a给出了称作限幅器(也称作削波器)的二极管电路，它用来限制或削掉输人信号的正部分。当信号变为正的时候，二极管正向偏置。因为阴极接地(OV)，所以阳极不能超过 0.7V(假设是硅二极管)。因此，当输入电压超过该值时，$A$ 点的值就被钳位在 &#43;0.7V。
+当输入低于 0.7V 时，二级管反向偏置，可以看作开路。输出电压的波形与输入电压的负半部分一样，但是幅值由 $R_1$ 和 $R_L$ 构成的分压器决定，如下: $$ V_{out} = (\frac{R_L}{R_1&#43;R_L})V_{in} $$ 如果 $R_1$ 远小于 $R_L$ ，则 $V_{out}$ $\approx$ $V_{in}$。
+把二极管反转，如图2-30b所示，则输入的负半部分被钳位在接近 0 电位。当输人为负时二极管正向偏置，A点处的电压恒定在 -0.7V，即二极管的压降。当输人大于 -0.7V时，二极管不再正向偏置; $R_L$ 的端电压与输入成正比。
+$$ 图2-31对输入计算机的信号进行限幅 $$ 限幅器的应用 图2-31给出了一个限幅器的应用。假设你想使用电源线将计算机操作与交流线路同步。如图2-31所示，一个半波整流器连接到变压器的 6.3V 输出端，整流器的峰值信号大约为 9V，对计算机输入来说太大了。计算机和其他逻辑电路在设计时均不能超过规定电压的最大值(典型值＋5.0V)，这样不会有严重损坏计算机的风险。图2-31所示的限幅器防止输入到计算机的信号超过 4.7V。
+限幅电平的调节 为了调节对信号电压进行限幅的电平大小，可以将一个偏置电压与二极管串联，如图2-34所示。在二极管变为正向偏置和导通前，A点电压应等于 $V_{BIAS}&#43;0.7V$。一旦二极管开始导通，A点电压就限幅在 $V_{BIAS}&#43;0.7V$，于是所有高于这个值的输人电压都将被限幅，如图2-34所示。 $$ 图2-34带正偏置的正限幅器 $$ $$ 图2-35有可变正向偏置的正限幅器 $$ 如果偏置电压增大或减小，则限幅电平会相应地进行变化，如图2-35所示。如果偏置电压的极性反向，如图2-36所示，高于 $-V_{BB}&#43;0.7V$ 的电压被限幅，输出波形如图2-35所示。只有当A点电压小于 $-V_{BB}&#43;0.7V$ 时，二极管才反向偏置。 $$ 图2-36带负偏置的正限幅器，注意，波形的正侧被限幅在 -V_{BIAS}＋0."><script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+    </head>
+    <body class="
+    article-page has-toc
+">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex 
+    
+        extended
+    
+">
+    
+        <div id="article-toolbar">
+            <a href="/" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+                <span>Back</span>
+            </a>
+        </div>
+    
+<main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+
+    <h2 class="article-title">
+        <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/2-7%E4%BA%8C%E6%9E%81%E7%AE%A1%E9%99%90%E5%B9%85%E7%94%B5%E8%B7%AF%E5%92%8C%E9%92%B3%E4%BD%8D%E7%94%B5%E8%B7%AF/">2.7二极管限幅电路和钳位电路</a>
+    </h2>
+
+    
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jul 14, 2023</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+</div>
+</header>
+
+    <section class="article-content">
+    <p>有时用称为限幅器或削波器的二极管电路来对信号电压高于或低于某值的部分进行限幅。另一种称为钳位器的二极管电路常用来将直流电平还原成电信号。</p>
+<p>学完本节后，你应该掌握以下内容:</p>
+<ul>
+<li>分析二极管限幅器和钳位器的工作原理
+<ul>
+<li>解释二极管限幅器是如何工作的，对给定电路决定其限幅电平</li>
+<li>解释二极管钳位电路是如何工作的</li>
+<li>举出二极管限幅和钳位电路的应用例子</li>
+</ul>
+</li>
+</ul>
+<h3 id="271二极管限幅器">2.7.1二极管限幅器</h3>
+<p><img src="https://s2.loli.net/2023/10/01/wIn4pyfLHSPet2d.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog2_30a.png"
+	
+	
+>
+$$
+a)正半周期的限幅;二极管在正半周期导通
+$$
+<img src="https://s2.loli.net/2023/10/01/v2tTRFge7rLCMSI.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog2_30b.png"
+	
+	
+>
+$$
+b)负半周期的限幅;二极管在负半周期导通
+$$
+$$
+图2-30二极管限幅电路(削波电路)
+$$
+图2-30a给出了称作限幅器(也称作削波器)的二极管电路，<code>它用来限制或削掉输人信号的正部分</code>。当信号变为正的时候，二极管正向偏置。因为阴极接地(OV)，所以阳极不能超过 0.7V(假设是硅二极管)。因此，当输入电压超过该值时，$A$ 点的值就被钳位在 +0.7V。</p>
+<p>当输入低于 0.7V 时，二级管反向偏置，可以看作开路。输出电压的波形与输入电压的负半部分一样，但是幅值由 $R_1$ 和 $R_L$ 构成的分压器决定，如下:
+$$
+V_{out} = (\frac{R_L}{R_1+R_L})V_{in}
+$$
+如果 $R_1$ 远小于 $R_L$ ，则 $V_{out}$ $\approx$ $V_{in}$。</p>
+<p>把二极管反转，如图2-30b所示，则输入的负半部分被钳位在接近 0 电位。当输人为负时二极管正向偏置，A点处的电压恒定在 -0.7V，即二极管的压降。当输人大于 -0.7V时，二极管不再正向偏置; $R_L$ 的端电压与输入成正比。</p>
+<p><img src="https://s2.loli.net/2023/10/01/F1LE3Vo8acY7xOg.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog2_31.png"
+	
+	
+>
+$$
+图2-31对输入计算机的信号进行限幅
+$$
+<strong>限幅器的应用</strong> 图2-31给出了一个限幅器的应用。<code>假设你想使用电源线将计算机操作与交流线路同步</code>。如图2-31所示，一个半波整流器连接到变压器的 6.3V 输出端，整流器的峰值信号大约为 9V，对计算机输入来说太大了。计算机和其他逻辑电路在设计时均不能超过规定电压的最大值(典型值＋5.0V)，这样不会有严重损坏计算机的风险。图2-31所示的限幅器防止输入到计算机的信号超过 4.7V。</p>
+<p><strong>限幅电平的调节</strong> <code>为了调节对信号电压进行限幅的电平大小，可以将一个偏置电压与二极管串联</code>，如图2-34所示。在二极管变为正向偏置和导通前，A点电压应等于 $V_{BIAS}+0.7V$。一旦二极管开始导通，A点电压就限幅在 $V_{BIAS}+0.7V$，于是所有高于这个值的输人电压都将被限幅，如图2-34所示。
+<img src="https://s2.loli.net/2023/10/01/T7AjYe3Fa1IriPV.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog2_34.png"
+	
+	
+>
+$$
+图2-34带正偏置的正限幅器
+$$
+<img src="https://s2.loli.net/2023/10/01/L3ndc45XyDORehf.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog2_35.png"
+	
+	
+>
+$$
+图2-35有可变正向偏置的正限幅器
+$$
+如果偏置电压增大或减小，则限幅电平会相应地进行变化，如图2-35所示。如果偏置电压的极性反向，如图2-36所示，高于 $-V_{BB}+0.7V$ 的电压被限幅，输出波形如图2-35所示。只有当A点电压小于 $-V_{BB}+0.7V$ 时，二极管才反向偏置。
+<img src="https://s2.loli.net/2023/10/01/Ir9x7pcnjlDuWJM.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog2_36a.png"
+	
+	
+>
+<img src="https://s2.loli.net/2023/10/01/QOM2ZL98Pc5XSdY.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog2_36.png"
+	
+	
+>
+$$
+图2-36带负偏置的正限幅器，注意，波形的正侧被限幅在 -V_{BIAS}＋0.7V 以上
+$$
+如果需要剪去低于某个指定负值的电平，那么二极管和偏置电压应该像 图2-37 那样连接。在这种情况下，A点电压必须要低于 $-V_{BB}-0.7V$，使得二极管正向偏置并开始限幅工作，如图2-37所示。
+<img src="https://s2.loli.net/2023/10/01/oFGwdDCvOlyb5Pr.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog2_37.png"
+	
+	
+>
+$$
+图2-37带负偏置的负限幅器
+$$</p>
+<h3 id="272二极管钳位器">2.7.2二极管钳位器</h3>
+<p><img src="https://s2.loli.net/2023/10/01/EXraws2j4ypoW9H.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog2_40a.png"
+	
+	
+>
+$$
+a)二极管导通并向电容 C 充电
+$$
+<img src="https://s2.loli.net/2023/10/01/7rlLcVSAuEaUb85.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog2_40b.png"
+	
+	
+>
+$$
+b)电容 C 充电后，它相当于电源
+$$
+<img src="https://s2.loli.net/2023/10/01/XCJYpIaQ69gPyN7.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog2_40c.png"
+	
+	
+>
+$$
+c）电容器电压加到交流输入电压上
+$$
+$$
+图2-40正钳位，二极管允许电容器快速充电，电容只能通过 R_L 放电
+$$
+<code>二极管钳位器在交流信号上加了一个直流电平。钳位器有时也称作直流分量还原器</code>。图2-40是一个二极管钳位器，它在输出波形插入了一个正直流电平。为了理解这种电路的工作原理，先考虑输人电压的负半周期。当输入开始为负时，二极管正向偏置，允许电容器充电到接近输人峰值($V_{p(in)}-0.7V$)，如 图2-40a 所示。一旦越过了负峰值，二极管变成反向偏置，这是因为电容器通过充电将阴极维持在$V_{p(in)}$.</p>
+<p>钳位的实际效果是电容电量大约维持在输入峰值减去二极管压降。电容电压本质上相当于一个与输入信号串联的电源，如图2-40b所示。电容器的直流电压通过叠加的方式加到交流输入电压上，如图2-40c所示。</p>
+<p><img src="https://s2.loli.net/2023/10/01/2Se61WgxiywVLCv.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog2_41.png"
+	
+	
+>
+$$
+图2-41
+负钳位
+$$</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/analog/">Analog</a>
+        
+    </section>
+
+
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css"integrity="sha384-RZU/ijkSsFbcmivfdRBQDtwuwVqK7GMOw6IMvKyeWL2K5UAlyp6WonmB8m7Jd0Hn"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js"integrity="sha384-pK1WpvzWVBQiP0/GjnvRxV4mOb0oxFuyRxJlk6vVw146n3egcN5C925NCP7a7BY8"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js"integrity="sha384-vZTG03m&#43;2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ]
+        });})
+</script>
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">Related contents</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/2-6%E6%95%B4%E6%B5%81%E6%BB%A4%E6%B3%A2%E5%99%A8%E5%92%8Cic%E7%A8%B3%E5%8E%8B%E5%99%A8/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">2.6整流滤波器和IC稳压器</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/2-5%E6%95%B4%E6%B5%81%E5%99%A8/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">2.5整流器</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/6-5%E8%B4%9F%E5%8F%8D%E9%A6%88%E8%BF%90%E6%94%BE%E7%BB%84%E6%80%81/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">6.5负反馈运放组态</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/2-3%E5%8D%8A%E5%AF%BC%E4%BD%93%E4%BA%8C%E6%9E%81%E7%AE%A1%E7%9A%84%E5%81%8F%E7%BD%AE/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">2.3半导体二极管的偏置</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/2-2pn%E7%BB%93/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">2.2pn结</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+     
+    
+        
+    <div id="cusdis_thread"
+    data-host="https://cusdis.com"
+    data-app-id="d44db3f9-a0ff-4551-a44d-316afd2e5835"
+    data-page-id="c03d579feb10747d0725cb024d9175a2"
+    data-page-url="https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/2-7%E4%BA%8C%E6%9E%81%E7%AE%A1%E9%99%90%E5%B9%85%E7%94%B5%E8%B7%AF%E5%92%8C%E9%92%B3%E4%BD%8D%E7%94%B5%E8%B7%AF/"
+    data-page-title="2.7二极管限幅电路和钳位电路"></div>
+<script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
+
+<script>
+    function setCusdisTheme(theme) {
+        let cusdis = document.querySelector('#cusdis_thread iframe');
+        if (cusdis) {
+            window.CUSDIS.setTheme(theme)
+        }
+    }
+
+    window.addEventListener('onColorSchemeChange', (e) => {
+        setCusdisTheme(e.detail)
+    })
+</script>
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2023 My Blog
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.5.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+
+            </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">Table of contents</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#271二极管限幅器">2.7.1二极管限幅器</a></li>
+        <li><a href="#272二极管钳位器">2.7.2二极管钳位器</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                </div>
+            </section>
+        </aside>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

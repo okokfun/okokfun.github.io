@@ -9,10 +9,10 @@
     <lastBuildDate>Sat, 19 Mar 2022 00:01:15 +0000</lastBuildDate><atom:link href="https://okokfun.github.io/tags/c++17/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>第三部分-新的标准库组件</title>
-      <link>https://okokfun.github.io/post/%E7%AC%AC%E4%B8%89%E9%83%A8%E5%88%86-%E6%96%B0%E7%9A%84%E6%A0%87%E5%87%86%E5%BA%93%E7%BB%84%E4%BB%B6/</link>
+      <link>https://okokfun.github.io/post/c&#43;&#43;/%E7%AC%AC%E4%B8%89%E9%83%A8%E5%88%86-%E6%96%B0%E7%9A%84%E6%A0%87%E5%87%86%E5%BA%93%E7%BB%84%E4%BB%B6/</link>
       <pubDate>Sat, 19 Mar 2022 00:01:15 +0000</pubDate>
       
-      <guid>https://okokfun.github.io/post/%E7%AC%AC%E4%B8%89%E9%83%A8%E5%88%86-%E6%96%B0%E7%9A%84%E6%A0%87%E5%87%86%E5%BA%93%E7%BB%84%E4%BB%B6/</guid>
+      <guid>https://okokfun.github.io/post/c&#43;&#43;/%E7%AC%AC%E4%B8%89%E9%83%A8%E5%88%86-%E6%96%B0%E7%9A%84%E6%A0%87%E5%87%86%E5%BA%93%E7%BB%84%E4%BB%B6/</guid>
       <description>第三部分 新的标准库组件 本部分介绍了 C++17 的新库组件。
 15 std::optional&amp;lt;&amp;gt; 在编程中，我们经常遇到可能返回/传递/使用某种类型的对象的情况。也就是说，我们可以有一个特定类型的值，或者我们可能根本没有任何值。因此，我们需要一种模拟类似于指针的语义的方法，我们可以通过使用 nullptr 来表示没有值。处理这个问题的方法是定义一个特定类型的对象，带有一个额外的布尔成员/标志，表明一个值是否存在。 std::optional&amp;lt;&amp;gt; 以类型安全的方式提供此类对象。
 可选对象仅具有包含对象的内部存储器以及布尔标志。因此，大小通常比包含的对象大一个字节。对于某些包含的类型，甚至可能根本没有大小开销，前提是可以将附加信息放置在包含的对象中。没有分配堆内存。对象使用与包含类型相同的对齐方式。
@@ -25,10 +25,10 @@
     
     <item>
       <title>第五部分-专业工具</title>
-      <link>https://okokfun.github.io/post/%E7%AC%AC%E4%BA%94%E9%83%A8%E5%88%86-%E4%B8%93%E4%B8%9A%E5%B7%A5%E5%85%B7-/</link>
+      <link>https://okokfun.github.io/post/c&#43;&#43;/%E7%AC%AC%E4%BA%94%E9%83%A8%E5%88%86-%E4%B8%93%E4%B8%9A%E5%B7%A5%E5%85%B7-/</link>
       <pubDate>Sat, 19 Mar 2022 00:01:15 +0000</pubDate>
       
-      <guid>https://okokfun.github.io/post/%E7%AC%AC%E4%BA%94%E9%83%A8%E5%88%86-%E4%B8%93%E4%B8%9A%E5%B7%A5%E5%85%B7-/</guid>
+      <guid>https://okokfun.github.io/post/c&#43;&#43;/%E7%AC%AC%E4%BA%94%E9%83%A8%E5%88%86-%E4%B8%93%E4%B8%9A%E5%B7%A5%E5%85%B7-/</guid>
       <description>第五部分 专业工具 这部分介绍了普通应用程序程序员通常不必知道的新语言和库特性。 它可能涵盖基础库、特定模式或特殊环境中的程序员的工具。
 27 多态的内存资源 (PMR) 自C++98以来，标准库就支持配置类分配其内部（堆）内存的方式的能力。由于这个原因，标准库中几乎所有分配内存的类型都有一个分配器参数。因此，你可以配置容器、字符串和其他类型分配其内部内存的方式，如果它们需要比堆栈上分配的空间更多的话。 分配这种内存的默认方式是从堆中分配。但是有不同的理由来修改这个默认行为：
 你可以使用你自己的方式分配内存，以减少系统调用的数量。 你可以确保分配的内存位于彼此的旁边，以从CPU缓存中获益。 你可以把容器和它们的元素放在可供多进程使用的共享内存中。 你甚至可以重定向这些堆内存调用，以使用早期在堆栈上分配的内存。因此，可以有性能和功能方面的原因。 然而，在C++17之前，使用分配器（右）在很多方面都是既棘手又笨拙的（由于一些缺陷，太过复杂，以及与后向兼容的修改）。 现在，C++17为预定义和用户定义的内存分配方式提供了一个相当容易使用的方法，它可以用于标准类型和用户定义的类型。 基于这个原因，本章将讨论：
@@ -41,10 +41,10 @@ pmr/pmr0.cpp #include &amp;lt;iostream&amp;gt; #include &amp;lt;string&amp;gt; #
     
     <item>
       <title>第四部分-标准库扩展和修改</title>
-      <link>https://okokfun.github.io/post/%E7%AC%AC%E5%9B%9B%E9%83%A8%E5%88%86-%E6%A0%87%E5%87%86%E5%BA%93%E6%89%A9%E5%B1%95%E5%92%8C%E4%BF%AE%E6%94%B9/</link>
+      <link>https://okokfun.github.io/post/c&#43;&#43;/%E7%AC%AC%E5%9B%9B%E9%83%A8%E5%88%86-%E6%A0%87%E5%87%86%E5%BA%93%E6%89%A9%E5%B1%95%E5%92%8C%E4%BF%AE%E6%94%B9/</link>
       <pubDate>Sat, 19 Mar 2022 00:01:15 +0000</pubDate>
       
-      <guid>https://okokfun.github.io/post/%E7%AC%AC%E5%9B%9B%E9%83%A8%E5%88%86-%E6%A0%87%E5%87%86%E5%BA%93%E6%89%A9%E5%B1%95%E5%92%8C%E4%BF%AE%E6%94%B9/</guid>
+      <guid>https://okokfun.github.io/post/c&#43;&#43;/%E7%AC%AC%E5%9B%9B%E9%83%A8%E5%88%86-%E6%A0%87%E5%87%86%E5%BA%93%E6%89%A9%E5%B1%95%E5%92%8C%E4%BF%AE%E6%94%B9/</guid>
       <description>第四部分 标准库扩展和修改 这一部分介绍了用C++17对现有库组件的扩展和修改。
 21类型特征扩展 关于类型特征（标准类型函数），C++17扩展了使用它们的一般能力，并且 引入了一些新的类型特征。
 21.1 类型特征的Suffix _v 从C++17开始，你可以对所有产生数值的类型特征使用后缀_v（因为你可以对所有产生类型的类型特征使用后缀_t）。例如，对于任何类型的T，而不是
@@ -59,10 +59,10 @@ int a[5][7]; std::cout &amp;lt;&amp;lt; std::extent_v&amp;lt;decltype(a)&amp;gt;
     
     <item>
       <title>第二部分-模板特性</title>
-      <link>https://okokfun.github.io/post/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86-%E6%A8%A1%E6%9D%BF%E7%89%B9%E6%80%A7/</link>
+      <link>https://okokfun.github.io/post/c&#43;&#43;/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86-%E6%A8%A1%E6%9D%BF%E7%89%B9%E6%80%A7/</link>
       <pubDate>Sat, 19 Mar 2022 00:01:14 +0000</pubDate>
       
-      <guid>https://okokfun.github.io/post/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86-%E6%A8%A1%E6%9D%BF%E7%89%B9%E6%80%A7/</guid>
+      <guid>https://okokfun.github.io/post/c&#43;&#43;/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86-%E6%A8%A1%E6%9D%BF%E7%89%B9%E6%80%A7/</guid>
       <description>第二部分: 模板特性 9 类模板参数推导 C++17之前，你必须显式指定类模板的所有模板参数类型。比如，你不能忽略这里的double：
 std::complex&amp;lt;double&amp;gt; c{5.1,3.3}; 也不能忽略第二次的std::mutex：
 std::mutex mx; std::lock_guard&amp;lt;std::mutex&amp;gt; lg(mx); C++17开始，必须显式指定类模板的所有模板参数类型这个限制变得宽松了。有了类模板参数推导（class template argument deduction，CTAD）技术，如果构造函数可以推导出所有模板参数，那么你可以跳过显式指定模板实参。
@@ -73,10 +73,10 @@ std::complex c1{1.1, 2.2}; // 推断出 std::complex&amp;lt;double&amp;gt; std::
     
     <item>
       <title>让字符串及字符操作更加快速</title>
-      <link>https://okokfun.github.io/post/%E8%AE%A9%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8F%8A%E5%AD%97%E7%AC%A6%E6%93%8D%E4%BD%9C%E6%9B%B4%E5%8A%A0%E5%BF%AB%E9%80%9F/</link>
+      <link>https://okokfun.github.io/post/c&#43;&#43;/%E8%AE%A9%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8F%8A%E5%AD%97%E7%AC%A6%E6%93%8D%E4%BD%9C%E6%9B%B4%E5%8A%A0%E5%BF%AB%E9%80%9F/</link>
       <pubDate>Mon, 07 Feb 2022 17:25:55 +0000</pubDate>
       
-      <guid>https://okokfun.github.io/post/%E8%AE%A9%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8F%8A%E5%AD%97%E7%AC%A6%E6%93%8D%E4%BD%9C%E6%9B%B4%E5%8A%A0%E5%BF%AB%E9%80%9F/</guid>
+      <guid>https://okokfun.github.io/post/c&#43;&#43;/%E8%AE%A9%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8F%8A%E5%AD%97%E7%AC%A6%E6%93%8D%E4%BD%9C%E6%9B%B4%E5%8A%A0%E5%BF%AB%E9%80%9F/</guid>
       <description>视频由up神经元猫 神经元猫的个人空间_哔哩哔哩_bilibili 翻译自 youtube.com/cherno 并发布到👉 【80】【Cherno C++】【中字】如何让C++字符串更快_哔哩哔哩_bilibili 并由我整理。
 此本不会讲解为什么std::string会很慢和其背后的细节，只有些例子。
 std::string的主要问题之一是 字符串格式化及字符串操作 时需要分配内存
@@ -86,10 +86,10 @@ bad例子：
     
     <item>
       <title>C&#43;&#43;单一变量存放多种类型的数据</title>
-      <link>https://okokfun.github.io/post/c-%E5%8D%95%E4%B8%80%E5%8F%98%E9%87%8F%E5%AD%98%E6%94%BE%E5%A4%9A%E7%A7%8D%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%95%B0%E6%8D%AE/</link>
+      <link>https://okokfun.github.io/post/c&#43;&#43;/c-%E5%8D%95%E4%B8%80%E5%8F%98%E9%87%8F%E5%AD%98%E6%94%BE%E5%A4%9A%E7%A7%8D%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%95%B0%E6%8D%AE/</link>
       <pubDate>Sat, 29 Jan 2022 22:33:43 +0000</pubDate>
       
-      <guid>https://okokfun.github.io/post/c-%E5%8D%95%E4%B8%80%E5%8F%98%E9%87%8F%E5%AD%98%E6%94%BE%E5%A4%9A%E7%A7%8D%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%95%B0%E6%8D%AE/</guid>
+      <guid>https://okokfun.github.io/post/c&#43;&#43;/c-%E5%8D%95%E4%B8%80%E5%8F%98%E9%87%8F%E5%AD%98%E6%94%BE%E5%A4%9A%E7%A7%8D%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%95%B0%E6%8D%AE/</guid>
       <description> 此文来源于👉 【77】【Cherno C++】【中字】单一变量存放多种类型的数据_哔哩哔哩_bilibili
 用来处理可能存在也可能不存在的数据，也可能是与我们预期不同的类型。当然也不一定，而是让我们存储不同的数据。 std::variant的作用是让我们不用担心处理的确切类型，指定一个std::variant的东西，然后列出他可能的数据类型。 例子：
 #include &amp;lt;iostream&amp;gt; #include &amp;lt;variant&amp;gt; int main(void) { std::variant&amp;lt;std::string, int&amp;gt; data; data = &amp;#34;Cherno&amp;#34;; std::cout &amp;lt;&amp;lt; std::get&amp;lt;std::string&amp;gt;(data) &amp;lt;&amp;lt; &amp;#39;\n&amp;#39;; data = 2;// data被重新赋值为2 std::cout &amp;lt;&amp;lt; std::get&amp;lt;int&amp;gt;(data) &amp;lt;&amp;lt; &amp;#39;\n&amp;#39;; data.index();// index函数会告诉你类型的索引， 此时会打印1。 if (auto value = std::get_if&amp;lt;int&amp;gt;(&amp;amp;data)) { std::string&amp;amp;v = *value; } else { //... } /* std::cout &amp;lt;&amp;lt; std::get&amp;lt;std::string&amp;gt;(data) &amp;lt;&amp;lt; &amp;#39;\n&amp;#39;; 错误的访问方法，在data被置为int后依旧按照std::string访问，会抛出一个 bad variant access异常 */ std::cin.get(); return 0; } </description>
@@ -97,10 +97,10 @@ bad例子：
     
     <item>
       <title>C&#43;&#43;数据存在或不存在处理方法</title>
-      <link>https://okokfun.github.io/post/c-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%9C%A8%E6%88%96%E4%B8%8D%E5%AD%98%E5%9C%A8%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95/</link>
+      <link>https://okokfun.github.io/post/c&#43;&#43;/c-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%9C%A8%E6%88%96%E4%B8%8D%E5%AD%98%E5%9C%A8%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95/</link>
       <pubDate>Sat, 29 Jan 2022 21:22:58 +0000</pubDate>
       
-      <guid>https://okokfun.github.io/post/c-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%9C%A8%E6%88%96%E4%B8%8D%E5%AD%98%E5%9C%A8%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95/</guid>
+      <guid>https://okokfun.github.io/post/c&#43;&#43;/c-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%9C%A8%E6%88%96%E4%B8%8D%E5%AD%98%E5%9C%A8%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95/</guid>
       <description>此文来源于👉 【76】【Cherno C++】【中字】如何处理OPTIONAL数据_哔哩哔哩_bilibili
 有一个返回的函数， 比如正在读取一个文件，但是如果这个文件不能被读取，会发生什么，虽然读取失败，但我们仍然需要从函数中返回一些东西，返回一个空字符串没有意义。
 如果文件是空的，应有办法看到数据存在或不存在，而std::optional可以给我们一些帮助，此特性在C++17加入。
@@ -112,10 +112,10 @@ bad例子：
     
     <item>
       <title>C&#43;&#43;结构化绑定</title>
-      <link>https://okokfun.github.io/post/c-%E7%BB%93%E6%9E%84%E5%8C%96%E7%BB%91%E5%AE%9A/</link>
+      <link>https://okokfun.github.io/post/c&#43;&#43;/c-%E7%BB%93%E6%9E%84%E5%8C%96%E7%BB%91%E5%AE%9A/</link>
       <pubDate>Sat, 29 Jan 2022 17:40:33 +0000</pubDate>
       
-      <guid>https://okokfun.github.io/post/c-%E7%BB%93%E6%9E%84%E5%8C%96%E7%BB%91%E5%AE%9A/</guid>
+      <guid>https://okokfun.github.io/post/c&#43;&#43;/c-%E7%BB%93%E6%9E%84%E5%8C%96%E7%BB%91%E5%AE%9A/</guid>
       <description> 此文总结与👉 神经元猫的个人空间_哔哩哔哩_bilibili 的 【75】【Cherno C++】【中字】C++的结构化绑定_哔哩哔哩_bilibili
 在如何处理C++多返回值得问题，返回的数据可以是结构体实例，也可以是元组或对组 从C++17引入的结构化绑定可以改善此项，
 以前忒麻烦的版本
@@ -125,10 +125,10 @@ bad例子：
     
     <item>
       <title>C&#43;&#43;新特性</title>
-      <link>https://okokfun.github.io/post/c-%E6%96%B0%E7%89%B9%E6%80%A7/</link>
+      <link>https://okokfun.github.io/post/c&#43;&#43;/c-%E6%96%B0%E7%89%B9%E6%80%A7/</link>
       <pubDate>Mon, 24 Jan 2022 17:02:47 +0000</pubDate>
       
-      <guid>https://okokfun.github.io/post/c-%E6%96%B0%E7%89%B9%E6%80%A7/</guid>
+      <guid>https://okokfun.github.io/post/c&#43;&#43;/c-%E6%96%B0%E7%89%B9%E6%80%A7/</guid>
       <description>1. Variadic Templates 数量不定的模板参数
 ...代表任意个数据
 void print(){} template &amp;lt;typename T, typename... Types&amp;gt; void print(const T&amp;amp; firstArg, const Types&amp;amp;...args) { std::cout &amp;lt;&amp;lt; firstArg &amp;lt;&amp;lt; &amp;#39;\n&amp;#39;; print(args...); } void print(const T&amp;amp; firstArg, const Types&amp;amp;...args){}中...代表任意个数据，Types任意类型的数据,

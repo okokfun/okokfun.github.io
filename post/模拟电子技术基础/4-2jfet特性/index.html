@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='本节将介绍 JFET 是如何作为电压控制、恒流器件工作的，也将讨论漏极特性曲线和跨导曲线，以及 JFET 的截止、夹断与 JFET 的输入电阻和电容等内容。
+学完本节后，你应该掌握以下内容:
+描述结型场效应管(JFET)的结构和工作原理 画出 n 沟道或 p 沟道 JFET 的符号 解释 JFET 的漏极特性曲线，包括可变电阻区和恒流区 解释参数 $g_m、I_{DSS} 、I_{GSS} 、C_{iss} 、V_{GS(off)}和 V_P$ 描述 JFET 的跨导曲线并且解释它与漏极特性曲线的关系 4.2.1 JFET 工作原理 $$ a) n沟道~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~b)p沟道 $$
+$$ 图4-2~~~~~两种JFET的基本结构 $$ 图4-2a给出了 n 沟道结型场效应管(JFET)的基本结构。电线连接到 n 沟道的两端，在图4-2中漏极位于上端，源极位于下端。沟道是一个导体: 对 n 沟道 JFET 而言,电子是载流子;对 p 沟道 JFET 而言，空穴是载流子。在没有外加电压的情况下，沟道在两个方向都能导通电流。
+在 n 沟道器件中，将 p 型材料掺杂到 n 沟道中来形成 pn 结，并连接到栅极。图 4-2a 显示的是将 p 型材料掺杂进两个区域，这两个区域一般由制造商在内部进行连接形成单个栅极。(一种专用JFET，也称为双栅 JFET，有独立的电极连接到两个区域。)在结构图中，为了简单起见，两个 p 型区域之间的连接被省略掉，只给出到其中一个区域的连接。图4-2b给出了力沟道 JFET。
+如前所述，JFET 中的沟道是栅极和源极之间的一个窄导电通路。沟道的宽度, 也就是沟道的导电能力，是由栅极电压控制的。当没有栅极电压时，沟道能通过最大的电流。当栅极施加反向偏置时，沟道宽度变窄，导电能力下降。'><title>4.2JFET特性</title>
+
+<link rel='canonical' href='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/4-2jfet%E7%89%B9%E6%80%A7/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='4.2JFET特性'>
+<meta property='og:description' content='本节将介绍 JFET 是如何作为电压控制、恒流器件工作的，也将讨论漏极特性曲线和跨导曲线，以及 JFET 的截止、夹断与 JFET 的输入电阻和电容等内容。
+学完本节后，你应该掌握以下内容:
+描述结型场效应管(JFET)的结构和工作原理 画出 n 沟道或 p 沟道 JFET 的符号 解释 JFET 的漏极特性曲线，包括可变电阻区和恒流区 解释参数 $g_m、I_{DSS} 、I_{GSS} 、C_{iss} 、V_{GS(off)}和 V_P$ 描述 JFET 的跨导曲线并且解释它与漏极特性曲线的关系 4.2.1 JFET 工作原理 $$ a) n沟道~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~b)p沟道 $$
+$$ 图4-2~~~~~两种JFET的基本结构 $$ 图4-2a给出了 n 沟道结型场效应管(JFET)的基本结构。电线连接到 n 沟道的两端，在图4-2中漏极位于上端，源极位于下端。沟道是一个导体: 对 n 沟道 JFET 而言,电子是载流子;对 p 沟道 JFET 而言，空穴是载流子。在没有外加电压的情况下，沟道在两个方向都能导通电流。
+在 n 沟道器件中，将 p 型材料掺杂到 n 沟道中来形成 pn 结，并连接到栅极。图 4-2a 显示的是将 p 型材料掺杂进两个区域，这两个区域一般由制造商在内部进行连接形成单个栅极。(一种专用JFET，也称为双栅 JFET，有独立的电极连接到两个区域。)在结构图中，为了简单起见，两个 p 型区域之间的连接被省略掉，只给出到其中一个区域的连接。图4-2b给出了力沟道 JFET。
+如前所述，JFET 中的沟道是栅极和源极之间的一个窄导电通路。沟道的宽度, 也就是沟道的导电能力，是由栅极电压控制的。当没有栅极电压时，沟道能通过最大的电流。当栅极施加反向偏置时，沟道宽度变窄，导电能力下降。'>
+<meta property='og:url' content='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/4-2jfet%E7%89%B9%E6%80%A7/'>
+<meta property='og:site_name' content='My Blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Analog' /><meta property='article:published_time' content='2023-07-14T17:37:26&#43;00:00'/><meta property='article:modified_time' content='2023-07-14T17:37:26&#43;00:00'/>
+<meta name="twitter:title" content="4.2JFET特性">
+<meta name="twitter:description" content="本节将介绍 JFET 是如何作为电压控制、恒流器件工作的，也将讨论漏极特性曲线和跨导曲线，以及 JFET 的截止、夹断与 JFET 的输入电阻和电容等内容。
+学完本节后，你应该掌握以下内容:
+描述结型场效应管(JFET)的结构和工作原理 画出 n 沟道或 p 沟道 JFET 的符号 解释 JFET 的漏极特性曲线，包括可变电阻区和恒流区 解释参数 $g_m、I_{DSS} 、I_{GSS} 、C_{iss} 、V_{GS(off)}和 V_P$ 描述 JFET 的跨导曲线并且解释它与漏极特性曲线的关系 4.2.1 JFET 工作原理 $$ a) n沟道~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~b)p沟道 $$
+$$ 图4-2~~~~~两种JFET的基本结构 $$ 图4-2a给出了 n 沟道结型场效应管(JFET)的基本结构。电线连接到 n 沟道的两端，在图4-2中漏极位于上端，源极位于下端。沟道是一个导体: 对 n 沟道 JFET 而言,电子是载流子;对 p 沟道 JFET 而言，空穴是载流子。在没有外加电压的情况下，沟道在两个方向都能导通电流。
+在 n 沟道器件中，将 p 型材料掺杂到 n 沟道中来形成 pn 结，并连接到栅极。图 4-2a 显示的是将 p 型材料掺杂进两个区域，这两个区域一般由制造商在内部进行连接形成单个栅极。(一种专用JFET，也称为双栅 JFET，有独立的电极连接到两个区域。)在结构图中，为了简单起见，两个 p 型区域之间的连接被省略掉，只给出到其中一个区域的连接。图4-2b给出了力沟道 JFET。
+如前所述，JFET 中的沟道是栅极和源极之间的一个窄导电通路。沟道的宽度, 也就是沟道的导电能力，是由栅极电压控制的。当没有栅极电压时，沟道能通过最大的电流。当栅极施加反向偏置时，沟道宽度变窄，导电能力下降。"><script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+    </head>
+    <body class="
+    article-page has-toc
+">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex 
+    
+        extended
+    
+">
+    
+        <div id="article-toolbar">
+            <a href="/" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+                <span>Back</span>
+            </a>
+        </div>
+    
+<main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+
+    <h2 class="article-title">
+        <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/4-2jfet%E7%89%B9%E6%80%A7/">4.2JFET特性</a>
+    </h2>
+
+    
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jul 14, 2023</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    3 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+</div>
+</header>
+
+    <section class="article-content">
+    <p>本节将介绍 JFET 是如何作为<code>电压控制</code>、<code>恒流</code>器件工作的，也将讨论漏极特性曲线和跨导曲线，以及 JFET 的<code>截止</code>、<code>夹断</code>与 JFET 的<code>输入电阻</code>和<code>电容</code>等内容。</p>
+<p>学完本节后，你应该掌握以下内容:</p>
+<ul>
+<li>描述结型场效应管(JFET)的结构和工作原理
+<ul>
+<li>画出 n 沟道或 p 沟道 JFET 的符号</li>
+<li>解释 JFET 的漏极特性曲线，包括可变电阻区和恒流区</li>
+<li>解释参数 $g_m、I_{DSS} 、I_{GSS} 、C_{iss} 、V_{GS(off)}和 V_P$</li>
+<li>描述 JFET 的跨导曲线并且解释它与漏极特性曲线的关系</li>
+</ul>
+</li>
+</ul>
+<h3 id="421-jfet-工作原理">4.2.1 JFET 工作原理</h3>
+<p><img src="https://s2.loli.net/2023/10/05/vQMYA8hcFCbU7kx.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog4_2.png"
+	
+	
+>
+$$
+a) n沟道~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~b)p沟道
+$$</p>
+<p>$$
+图4-2~~~~~两种JFET的基本结构
+$$
+图4-2a给出了 n 沟道结型场效应管(JFET)的基本结构。电线连接到 n 沟道的两端，在图4-2中<code>漏极位于上端</code>，<code>源极位于下端</code>。<code>沟道是一个导体: 对 n 沟道 JFET 而言,电子是载流子;对 p 沟道 JFET 而言，空穴是载流子</code>。在没有外加电压的情况下，沟道在两个方向都能导通电流。</p>
+<p>在 n 沟道器件中，将 p 型材料掺杂到 n 沟道中来形成 pn 结，并连接到栅极。图 4-2a 显示的是将 p 型材料掺杂进两个区域，这两个区域一般由制造商在内部进行连接形成单个栅极。(一种专用JFET，也称为双栅 JFET，有独立的电极连接到两个区域。)在结构图中，<code>为了简单起见，两个 p 型区域之间的连接被省略掉，只给出到其中一个区域的连接</code>。图4-2b给出了力沟道 JFET。</p>
+<p>如前所述，JFET 中的沟道是栅极和源极之间的一个窄导电通路。<code>沟道的宽度, 也就是沟道的导电能力，是由栅极电压控制的。当没有栅极电压时，沟道能通过最大的电流。当栅极施加反向偏置时，沟道宽度变窄，导电能力下降</code>。</p>
+<p><img src="https://s2.loli.net/2023/10/05/8rgsMdwqBNZclYe.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog4_3a.png"
+	
+	
+>
+$$
+a)~~~JFET的导通偏置
+$$
+为了说明上述过程，在一个 n 沟道器件上加上一个一般的工作电压，如图4-3a所示。<strong>$V_{DD}$ 提供了一个正的漏源电压，使电子由源极向漏极流动</strong>。对 N 沟道 JFET 而言，栅源结的反向偏置由<code>负的栅极电压</code>实现。如图4-3所示，<strong>$V_{GG}$ 设置了栅极与源极之间的反向偏置电压</strong>。注意，FET 中没有任何正向偏置的 pn 结; 这也是 FET 和 BJT 的主要区别之一。</p>
+<p><img src="https://s2.loli.net/2023/10/05/eZ3WK5cpORTQ2JX.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog4_3b.png"
+	
+	
+>
+$$
+b)~~V_{GG}增大将使沟道（白色区域之间)变窄，从而使沟道电阻增大，I_D 减小
+$$</p>
+<p><img src="https://s2.loli.net/2023/10/05/vJERLMhfjbiYraF.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog4_3c.png"
+	
+	
+>
+$$
+c)~~V_{GG} 减小将使沟道（白色区域之间)变宽，从而使沟道电阻减小，I_D 增大
+$$</p>
+<p>$$
+图4-3~~V_{GG}对沟道宽度、电阻和漏极电流的影响(V_{GG}=V_{GS})
+$$</p>
+<p><strong>通过改变栅极电压，可以控制沟道宽度和沟道电阻，从而控制漏极电流 $I_D$</strong>，这个概念在图 4-3b 和 c 中说明。其中，白色区域表示的是由反向偏置产生的耗尽区。在沟道的漏极一端，该区域更宽，因为栅极和漏极之间的反向偏置电压比栅极和源极之间的反向偏置电压更大。</p>
+<h3 id="422-jfet符号">4.2.2 JFET符号</h3>
+<p><img src="https://s2.loli.net/2023/10/05/yOKAhdT1fHzjgNB.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog4_4.png"
+	
+	
+></p>
+<p>$$
+a)n沟道 b) p沟道
+$$</p>
+<p>$$
+图4-4~~JFET电路符号
+$$
+n 沟道和 p 沟道 JFET 的电路符号如图 4-4 所示。可以看到漏极上的箭头方向，对 n  沟道而言是“指向里”，对 p 沟道而肓是“指向外”。</p>
+<h3 id="423漏极特性曲线">4.2.3漏极特性曲线</h3>
+<p>FET 的漏极特性曲线是漏极电流 $I_D$ 对漏源电压 $V_{DS}$ 之间的关系曲线，和 BJT 的集电极电流 $I_C$ 对集电极发射极间电压 $V_{CE}$ 曲线相对应。但是 BJT 特性曲线和 FET 特性曲线之间有很多重要差别。由于 FET 是一个电压控制器件，因此 FET 特性曲线上的第三个变量($V_{GS}$)的单位是电压，而 BJT 中是电流($I_B$)。本节介绍 n 沟道器件的漏极特性。p 沟道器件工作原理相同，但是极性相反。通常来说，n 沟道 JFET 比对应的 p 沟道 JFET 具有更好的指标，因此前者更为流行。
+<img src="https://s2.loli.net/2023/10/05/CsSwQPdnBDeztpc.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog4_5.png"
+	
+	
+>
+$$
+a)在V_{GS}=0V，V_{DS} (V_{DD})变化的情况下JFET的工作~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+b)漏极特性
+$$
+$$
+图4-5~~V_{GS}=0V时JFET的漏极特性曲线(其中给出了夹断电压)
+$$
+考虑 n 沟道 JFET 栅源电压为0($V_{GS} =0V$)的情况。0电压通过短接栅极和源极来实现，在图4-5a中，将栅极和源极都接地。随着 $V_{DD}$(此情况下也就是 $V_{DS}$)从 0V 开始增大，$I_D$ 也会相应增大，如图4-5b中 A 点和 B 点之间的曲线所示。在该区域中，沟道电阻基本是常数，因为耗尽区不大，不会产生较大的影响。该区域称为可变电阻区，因为 $V_{DS}$ 和 $I_D$ 之间的关系遵循欧姆定律。通过栅极电压可以改变电阻值的大小，因此可以将 JFET 作为电压控制的电阻使用。在后面的图 10-11(文氏桥)中给出了一个应用。更多应用可以参考配套实验练习手册中的实验14、15和27。</p>
+<p>在图 4-5b 中的 B 点处，曲线变为水平，$I_D$ 开始基本保持不变。随着 $V_{DS}$ 从 B 点增大到 C 点，栅极到漏极之间的反向偏置电压($V_{GD}$)使得耗尽区变大到足以抵消 $V_{DS}$ 增大的影响，因此使 $I_D$ 基本不变。这一区域称为恒流区。</p>
+<h3 id="424夹断电压">4.2.4夹断电压</h3>
+<p>当 $V_{GS} =0V$ 时，$I_D$变为几乎恒定(图4-5b中曲线上的 B 点)时，对应的 $V_{DS}$ 的值称为夹断电压，$V_P$. 注意，对于 n 沟道 JFET 而言，夹断电压为正值。对于给定的 JFET，$V_P$ 为确定的值。可以看出，当 $V_{DS}$ 超过夹断电压并继续增大时，对应的漏极电流几乎为常数。该漏极电流值为 $I_{DSS}$(栅极短路时漏极到源极电流)，通常会在 JFET 的数据手册中给出。$I_{DSS}$ 是给定的 JFET 能够产生的最大漏极电流，与外部电路无关，并始终在 $V_{GS}=0V$ 的条件下确定。</p>
+<p>继续分析图4-5b，在 C 点会发生击穿，此时对于 $V_{DS}$ 的任何进一步增加，$I_D$ 开始快速增大。因为击穿可能会造成器件不可逆的损坏，所以 JFET 通常工作在击穿以下区域，并通常在恒流区内(图4-5b中的 B 点和 C 点之间)工作。因此恒流区也被称为<code>工作区</code>。</p>
+<h3 id="425-v_gs控制-i_d">4.2.5 $V_{GS}$控制 I_D</h3>
+<p><img src="https://s2.loli.net/2023/10/05/v4NcbpyD52nJ7xu.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog4_6.png"
+	
+	
+>
+$$
+a)JFET偏置在 V_{GS}=-1V~~~~~~~~~~~~~~~~~~~~~~~~
+b)漏极特性曲线族
+$$
+在栅极与源极之间连接上一个偏置电压 $V_{GG}$，如图 4-6a 所示。通过调整 $V_{GG}$，使 $V_{GS}$ 往负值增大，可以得到如图 4-6b 所示的一族漏极特性曲线。注意，随着 $V_{GS}$ 变为更大的负值，$I_D$减小，因为沟道变窄。也可以看到对于每一组 $V_{GS}$ ，JFET 在小于 $V_P$ 的 $V_{DS}$ 值下达到夹断状态(恒流开始的位置)。由此可见，$V_{GS}$可以控制漏极电流的大小。</p>
+<h3 id="426截止电压">4.2.6截止电压</h3>
+<p>使得 $I_D$ 的值接近于 0 的 $V_{GS}$ 称为截止电压，记为 $V_{GS(off)}$, JFET 必须工作在$V_{GS}=0V$ 和 $V_{GS(off)}$ 之间.随着栅源电压在此范围内变化， $I_D$ 最大可达到 $I_{DSS}$ ，最小达到接近于零.</p>
+<p>如前所述，对 n 沟道 JFET 而言，$V_{GS}$ 越往负值变大，恒流区中的 $I_D$ 值就越小。当 $V_{GS}$ 是一个足够大的负值时， $I_D$ 减小到 0。这一截止效应的产生是由于耗尽区不断变宽，最终完全关闭沟道，如图 4-7 所示。</p>
+<p><img src="https://s2.loli.net/2023/10/05/5iF4InouKQ3cdBm.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog4_7.png"
+	
+	
+>
+$$
+图4-7~~~截止的 ~JFET
+$$</p>
+<h3 id="427夹断和截止的比较">4.2.7夹断和截止的比较</h3>
+<p>夹断电压在漏极特性中测量得到。对 n 沟道器件而言，夹断电压为正，是当 $V_{GS}=0V$ 时漏极电流变为恒定时的 $V_{DS}$。截止电压也可以在漏极特性中测量得到，是使得漏极电流变为零时的栅源电压，为负值。</p>
+<p>$V_{GS(off)}$ 和 $V_P$ 始终大小相等，但符号相反。数据手册通常会给出 $V_{GS(off)}$ 或 $V_P$ 的值，但不会同时给出。但是，一旦知道其中一个，就能得到另一个。例如，如果 $V_{GS(off)}=-5V$，则$V_P=+5V$。</p>
+<h3 id="428-jfet-跨导曲线">4.2.8 JFET 跨导曲线</h3>
+<p>描述电路的一种有用方式是给出输出和输人之间的关系，如1.4节中对放大器所做的一样。这一特性称为<code>传输曲线</code>。</p>
+<p>因为 JFET 由输人端(栅极)的负电压控制，并且输出是漏极电流，所以传输曲线是 $I_D$ 关于 $V_{GS}$ 的函数，其中 $I_D$ 对应 y 轴， $V_{GS}$ 对应 x 轴。<code>当输出单位(mA)除以输人单位(V)时，结果是电导单位(mS)</code>。可以将输入端传输到输出端的电压看成电沉，囚此在电导前面加上前缀“跨”形成跨导这个词语。跨导曲线是 FET 的输出特性( $I_D$ 对 $V_{GS}$ )曲线。在数据手册中一般以 $g_m$ 或者 $y_{fs}$ 来给出跨导。</p>
+<p><img src="https://s2.loli.net/2023/10/05/GQTBothE4HNYikF.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog4_9.png"
+	
+	
+>
+$$
+a）跨导曲线 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~b）漏极曲线
+$$</p>
+<p>$$
+图4-9~~MPF102 n沟道JFET的典型特性曲线
+$$</p>
+<p>n 沟道 JFET 的典型跨导曲线如图 4-9a 所示。一般来讲，所有类型的 FET 都有相同形状的跨导曲线。其中，曲线是 MPF102的典型曲线，这是一种通用的 n 沟道 JFET。</p>
+<p>跨导特性与图 4-9b 所示的漏极特性直接相关。注意，这两条曲线都有相同的纵坐标 $I_D$。跨导是一个交流参数，其值可在曲线的任何点上通过漏极电流的变化除以栅源电压的变化得到。
+$$
+g_m=\frac{△I_D}{△V_{GS}}
+$$
+此式可写成交流形式为:
+$$
+g_m=\frac{I_d}{V_{gs}}~~~(4-1)
+$$
+<code>跨导特性曲线并不是一条直线，这表明输出电流和输入电压间的关系是非线性的。这非常重要: FET 具有非线性的跨导曲线</code>。这意味着 FET 可能会造成输入信号的失真。失真并不总是负面的，例如，在射频混频器中，JFET 因为失真特性反而较 BJT 有优势。然而，也有一些 JFET(例如 2N4339)通过几何设计使得失真最小，以便用于音频处理。此外，设计者也能通过保持较小的信号幅度(小于约 100mV)来减小失真。还有其他设计方法(如系统例子4-2中所使用的偏置方法)也用来减小失真。</p>
+<h3 id="429-jfet-输入电阻和电容">4.2.9 JFET 输入电阻和电容</h3>
+<p>已经知道，pn 结在反向偏置时具有很高的电阻, 而 JFET 工作时栅源结反向偏置，因此栅极的输入电阻很大。这是 JFET 与 BJT 相比的一个主要优势，因为后者的发射结正向偏置。</p>
+<p>JFET 的数据手册通常会通过给出特定栅源电压下的栅极反向电流 $I_{GSS}$ 来指明输入电阻。输入电阻可由下面的公式计算，其中竖线表示绝对值。
+$$
+R_{IN}=|\frac{V_{GS}}{I_{GSS}}|~~~~(4-2)
+$$
+例如，2N5457 的数据手册给出在 25℃，$V_{GS}=-15V$ 时，$I_{GSS}$ 最大值为 -1nA。用上述值可以计算得到输入电阻为
+$$
+R_{IN}=|\frac{V_{GS}}{I_{GSS}}|=\frac{15V}{1nA}=15G\Omega
+$$
+从结果可以看出，该 JFET 的输入电阻非常高。但是，随着温度升高，$R_{IN}$ 会明显下降(如例子4-3所示)。</p>
+<p>输入端反向偏置的 pn 结的高电阻与反向偏置的二极管相关，但这也意味着 JFET 通常会有比 BJT 更大的输人电容值。<code>已经知道反向偏置的 pn 结相当于一个电容，其电容值取决于反偏电压的大小</code>(见2.8节)。JFET 的输入电容 $C_{iss}$ 比 BJT 的要高，因为其 pn 结反向偏置。例如，在 $V_{GS}=0V$ 时 2N5457 的 $C_{iss}$ 最大为 7pF。</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/analog/">Analog</a>
+        
+    </section>
+
+
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css"integrity="sha384-RZU/ijkSsFbcmivfdRBQDtwuwVqK7GMOw6IMvKyeWL2K5UAlyp6WonmB8m7Jd0Hn"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js"integrity="sha384-pK1WpvzWVBQiP0/GjnvRxV4mOb0oxFuyRxJlk6vVw146n3egcN5C925NCP7a7BY8"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js"integrity="sha384-vZTG03m&#43;2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ]
+        });})
+</script>
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">Related contents</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/4-1fet%E7%9A%84%E7%BB%93%E6%9E%84/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">4.1FET的结构</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/3-7%E5%BC%80%E5%85%B3%E5%9E%8B%E5%8F%8C%E6%9E%81%E5%9E%8B%E6%99%B6%E4%BD%93%E7%AE%A1/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">3.7开关型双极型晶体管</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/3-6%E5%85%B1%E5%9F%BA%E6%9E%81%E6%94%BE%E5%A4%A7%E5%99%A8/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">3.6共基极放大器</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/3-5%E5%85%B1%E9%9B%86%E7%94%B5%E6%9E%81%E6%94%BE%E5%A4%A7%E5%99%A8/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">3.5共集电极放大器</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/3-4%E5%85%B1%E5%8F%91%E5%B0%84%E6%9E%81%E6%94%BE%E5%A4%A7%E5%99%A8/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">3.4共发射极放大器</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+     
+    
+        
+    <div id="cusdis_thread"
+    data-host="https://cusdis.com"
+    data-app-id="d44db3f9-a0ff-4551-a44d-316afd2e5835"
+    data-page-id="343b0fe7ddcc0a563939b7867f7336b5"
+    data-page-url="https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/4-2jfet%E7%89%B9%E6%80%A7/"
+    data-page-title="4.2JFET特性"></div>
+<script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
+
+<script>
+    function setCusdisTheme(theme) {
+        let cusdis = document.querySelector('#cusdis_thread iframe');
+        if (cusdis) {
+            window.CUSDIS.setTheme(theme)
+        }
+    }
+
+    window.addEventListener('onColorSchemeChange', (e) => {
+        setCusdisTheme(e.detail)
+    })
+</script>
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2023 My Blog
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.5.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+
+            </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">Table of contents</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#421-jfet-工作原理">4.2.1 JFET 工作原理</a></li>
+        <li><a href="#422-jfet符号">4.2.2 JFET符号</a></li>
+        <li><a href="#423漏极特性曲线">4.2.3漏极特性曲线</a></li>
+        <li><a href="#424夹断电压">4.2.4夹断电压</a></li>
+        <li><a href="#425-v_gs控制-i_d">4.2.5 $V_{GS}$控制 I_D</a></li>
+        <li><a href="#426截止电压">4.2.6截止电压</a></li>
+        <li><a href="#427夹断和截止的比较">4.2.7夹断和截止的比较</a></li>
+        <li><a href="#428-jfet-跨导曲线">4.2.8 JFET 跨导曲线</a></li>
+        <li><a href="#429-jfet-输入电阻和电容">4.2.9 JFET 输入电阻和电容</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                </div>
+            </section>
+        </aside>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='共集电极(CC)放大器通常也称为射极跟随器，是三种基本放大器组态中的第二种。输入加在基极，而输出端为发射极。CC放大器提供电流增益，电压增益近似等于1。由于其输入电阻较高，因此常常用作缓冲器或驱动器。
+学完本节后，你应该掌握以下内容:
+理解和分析CC放大器的工作原理 画出CC放大器的交流等效电路 解释为什么CC放大器的电压增益近似等于1 计算CC放大器的电流增益、输入电阻和输出电阻 解释为什么达林顿管有非常高的 $\beta$ 值 $$ a）典型的CC放大器或射极跟随器 $$ $$ b)交流等效电路 $$ $$ 图3-37~~~ CC放大器及其交流等效电路 $$ 图3-37a给出一个分压式偏置的共集电极(CC)电路。集电极直接接在直流电源上，它是一个交流地。注意，输入加在基极，输出从发射极取出。输出信号与输入信号相位相同。从输入耦合电容往基极看，交流等效电路包含偏置电阻和发射极电路中的电阻，如图3-37b所示。
+3.5.1电压增益 将并联发射极和负载电阻合并为一个等效电阻($R_E||R_L$)可以简化图3-37b中的交流电路，如图3-38所示。该电路图用来分析CC极放大器的电压增益。 $$ 图3-38 ~~~ CC放大器的交流输入等效电路 $$ 如同所有线性放大器一样，CC 放大器的电压增益为 $A_v=V_{out}/V_{in}$。分析该增益时，偏置电阻并没有包含在其中，因为它们不会直接影响输入信号(但是它们会对电源产生负载效应)。注意，图3-38中输入电压作用在 r&amp;rsquo;$_e$ 和 $R_E||R_L$ 的串联电路上，而输出电压只作用在 $R_E||R_L$ 两端。只要 r&amp;rsquo;$_e$ 与 $R_E||R_L$ 相比非常小，就可以忽略 r&amp;rsquo;$_e$ 两端很小的电压降。这意味着输入电压和输出电压几乎相同。因此有: $$ A_v\approx1~~~(3-12) $$ 因为 r&amp;rsquo;$_e$ 两端有一个小的压降，所以实际增益要稍小于1。在实际电路中，这点差别并不重要。如果你用示波器查看一个 CC 放大器的输入和输出端，可以看到几乎一样的信号。因为发射极输出电压跟随输入电压变化，所以 CC 放大器通常也称为射极跟随器。共集电极放大器不会进行信号反相。
+你可能想知道，如果 CC 放大器具有单位电压增益，那么它的价值何在?答案在于它有电流增益。当需要驱动低阻抗负载(如扬声器)时，就要用到 CC 放大器。为了求得电流增益，首先需要分析输入和输出交流电阻。
+3.5.2输入电阻 射极跟随器的特点是有很高的输入电阻，这使其成为非常有用的电路。由于输人电阻很高，当一个电路驱动另一个电路的时候，射极跟随器可以用作缓冲器来减小负载效应。从基极看进去，输人电阻的推导与 CE 放大器的推导相同。从电源看过去，CC 放大器与具有分压式偏置的 CE 放大器有相同的并联通路，如图3-38的等效电路所示。但是，在本例中，发射极电路没有旁路电容。总的输人电阻公式与 CE 相似但有一个不同的发射极交流电阻( $R_E||R_L$ )。 $$ R_{in(tot)}=R_1||R_2[\beta(r&amp;rsquo;_e&#43;R_E||R_L)]~~~~(3-13) $$'><title>3.5共集电极放大器</title>
+
+<link rel='canonical' href='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/3-5%E5%85%B1%E9%9B%86%E7%94%B5%E6%9E%81%E6%94%BE%E5%A4%A7%E5%99%A8/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='3.5共集电极放大器'>
+<meta property='og:description' content='共集电极(CC)放大器通常也称为射极跟随器，是三种基本放大器组态中的第二种。输入加在基极，而输出端为发射极。CC放大器提供电流增益，电压增益近似等于1。由于其输入电阻较高，因此常常用作缓冲器或驱动器。
+学完本节后，你应该掌握以下内容:
+理解和分析CC放大器的工作原理 画出CC放大器的交流等效电路 解释为什么CC放大器的电压增益近似等于1 计算CC放大器的电流增益、输入电阻和输出电阻 解释为什么达林顿管有非常高的 $\beta$ 值 $$ a）典型的CC放大器或射极跟随器 $$ $$ b)交流等效电路 $$ $$ 图3-37~~~ CC放大器及其交流等效电路 $$ 图3-37a给出一个分压式偏置的共集电极(CC)电路。集电极直接接在直流电源上，它是一个交流地。注意，输入加在基极，输出从发射极取出。输出信号与输入信号相位相同。从输入耦合电容往基极看，交流等效电路包含偏置电阻和发射极电路中的电阻，如图3-37b所示。
+3.5.1电压增益 将并联发射极和负载电阻合并为一个等效电阻($R_E||R_L$)可以简化图3-37b中的交流电路，如图3-38所示。该电路图用来分析CC极放大器的电压增益。 $$ 图3-38 ~~~ CC放大器的交流输入等效电路 $$ 如同所有线性放大器一样，CC 放大器的电压增益为 $A_v=V_{out}/V_{in}$。分析该增益时，偏置电阻并没有包含在其中，因为它们不会直接影响输入信号(但是它们会对电源产生负载效应)。注意，图3-38中输入电压作用在 r&amp;rsquo;$_e$ 和 $R_E||R_L$ 的串联电路上，而输出电压只作用在 $R_E||R_L$ 两端。只要 r&amp;rsquo;$_e$ 与 $R_E||R_L$ 相比非常小，就可以忽略 r&amp;rsquo;$_e$ 两端很小的电压降。这意味着输入电压和输出电压几乎相同。因此有: $$ A_v\approx1~~~(3-12) $$ 因为 r&amp;rsquo;$_e$ 两端有一个小的压降，所以实际增益要稍小于1。在实际电路中，这点差别并不重要。如果你用示波器查看一个 CC 放大器的输入和输出端，可以看到几乎一样的信号。因为发射极输出电压跟随输入电压变化，所以 CC 放大器通常也称为射极跟随器。共集电极放大器不会进行信号反相。
+你可能想知道，如果 CC 放大器具有单位电压增益，那么它的价值何在?答案在于它有电流增益。当需要驱动低阻抗负载(如扬声器)时，就要用到 CC 放大器。为了求得电流增益，首先需要分析输入和输出交流电阻。
+3.5.2输入电阻 射极跟随器的特点是有很高的输入电阻，这使其成为非常有用的电路。由于输人电阻很高，当一个电路驱动另一个电路的时候，射极跟随器可以用作缓冲器来减小负载效应。从基极看进去，输人电阻的推导与 CE 放大器的推导相同。从电源看过去，CC 放大器与具有分压式偏置的 CE 放大器有相同的并联通路，如图3-38的等效电路所示。但是，在本例中，发射极电路没有旁路电容。总的输人电阻公式与 CE 相似但有一个不同的发射极交流电阻( $R_E||R_L$ )。 $$ R_{in(tot)}=R_1||R_2[\beta(r&amp;rsquo;_e&#43;R_E||R_L)]~~~~(3-13) $$'>
+<meta property='og:url' content='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/3-5%E5%85%B1%E9%9B%86%E7%94%B5%E6%9E%81%E6%94%BE%E5%A4%A7%E5%99%A8/'>
+<meta property='og:site_name' content='My Blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Analog' /><meta property='article:published_time' content='2023-07-14T17:35:56&#43;00:00'/><meta property='article:modified_time' content='2023-07-14T17:35:56&#43;00:00'/>
+<meta name="twitter:title" content="3.5共集电极放大器">
+<meta name="twitter:description" content="共集电极(CC)放大器通常也称为射极跟随器，是三种基本放大器组态中的第二种。输入加在基极，而输出端为发射极。CC放大器提供电流增益，电压增益近似等于1。由于其输入电阻较高，因此常常用作缓冲器或驱动器。
+学完本节后，你应该掌握以下内容:
+理解和分析CC放大器的工作原理 画出CC放大器的交流等效电路 解释为什么CC放大器的电压增益近似等于1 计算CC放大器的电流增益、输入电阻和输出电阻 解释为什么达林顿管有非常高的 $\beta$ 值 $$ a）典型的CC放大器或射极跟随器 $$ $$ b)交流等效电路 $$ $$ 图3-37~~~ CC放大器及其交流等效电路 $$ 图3-37a给出一个分压式偏置的共集电极(CC)电路。集电极直接接在直流电源上，它是一个交流地。注意，输入加在基极，输出从发射极取出。输出信号与输入信号相位相同。从输入耦合电容往基极看，交流等效电路包含偏置电阻和发射极电路中的电阻，如图3-37b所示。
+3.5.1电压增益 将并联发射极和负载电阻合并为一个等效电阻($R_E||R_L$)可以简化图3-37b中的交流电路，如图3-38所示。该电路图用来分析CC极放大器的电压增益。 $$ 图3-38 ~~~ CC放大器的交流输入等效电路 $$ 如同所有线性放大器一样，CC 放大器的电压增益为 $A_v=V_{out}/V_{in}$。分析该增益时，偏置电阻并没有包含在其中，因为它们不会直接影响输入信号(但是它们会对电源产生负载效应)。注意，图3-38中输入电压作用在 r&amp;rsquo;$_e$ 和 $R_E||R_L$ 的串联电路上，而输出电压只作用在 $R_E||R_L$ 两端。只要 r&amp;rsquo;$_e$ 与 $R_E||R_L$ 相比非常小，就可以忽略 r&amp;rsquo;$_e$ 两端很小的电压降。这意味着输入电压和输出电压几乎相同。因此有: $$ A_v\approx1~~~(3-12) $$ 因为 r&amp;rsquo;$_e$ 两端有一个小的压降，所以实际增益要稍小于1。在实际电路中，这点差别并不重要。如果你用示波器查看一个 CC 放大器的输入和输出端，可以看到几乎一样的信号。因为发射极输出电压跟随输入电压变化，所以 CC 放大器通常也称为射极跟随器。共集电极放大器不会进行信号反相。
+你可能想知道，如果 CC 放大器具有单位电压增益，那么它的价值何在?答案在于它有电流增益。当需要驱动低阻抗负载(如扬声器)时，就要用到 CC 放大器。为了求得电流增益，首先需要分析输入和输出交流电阻。
+3.5.2输入电阻 射极跟随器的特点是有很高的输入电阻，这使其成为非常有用的电路。由于输人电阻很高，当一个电路驱动另一个电路的时候，射极跟随器可以用作缓冲器来减小负载效应。从基极看进去，输人电阻的推导与 CE 放大器的推导相同。从电源看过去，CC 放大器与具有分压式偏置的 CE 放大器有相同的并联通路，如图3-38的等效电路所示。但是，在本例中，发射极电路没有旁路电容。总的输人电阻公式与 CE 相似但有一个不同的发射极交流电阻( $R_E||R_L$ )。 $$ R_{in(tot)}=R_1||R_2[\beta(r&amp;rsquo;_e&#43;R_E||R_L)]~~~~(3-13) $$"><script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+    </head>
+    <body class="
+    article-page has-toc
+">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex 
+    
+        extended
+    
+">
+    
+        <div id="article-toolbar">
+            <a href="/" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+                <span>Back</span>
+            </a>
+        </div>
+    
+<main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+
+    <h2 class="article-title">
+        <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/3-5%E5%85%B1%E9%9B%86%E7%94%B5%E6%9E%81%E6%94%BE%E5%A4%A7%E5%99%A8/">3.5共集电极放大器</a>
+    </h2>
+
+    
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jul 14, 2023</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+</div>
+</header>
+
+    <section class="article-content">
+    <p><code>共集电极(CC)放大器通常也称为射极跟随器</code>，是三种基本放大器组态中的第二种。输入加在基极，而输出端为发射极。CC放大器提供电流增益，电压增益近似等于1。由于其输入电阻较高，因此常常用作缓冲器或驱动器。</p>
+<p>学完本节后，你应该掌握以下内容:</p>
+<ul>
+<li>理解和分析CC放大器的工作原理
+<ul>
+<li>画出CC放大器的交流等效电路</li>
+<li>解释为什么CC放大器的电压增益近似等于1</li>
+<li>计算CC放大器的电流增益、输入电阻和输出电阻</li>
+<li>解释为什么达林顿管有非常高的 $\beta$ 值</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://s2.loli.net/2023/10/04/lpFBaHKRt6CE51h.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog3_37a.png"
+	
+	
+>
+$$
+a）典型的CC放大器或射极跟随器
+$$
+<img src="https://s2.loli.net/2023/10/04/SdWTfo1P2vZptlU.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog3_37b.png"
+	
+	
+>
+$$
+b)交流等效电路
+$$
+$$
+图3-37~~~ CC放大器及其交流等效电路
+$$
+图3-37a给出一个分压式偏置的<code>共集电极(CC)</code>电路。集电极直接接在直流电源上，它是一个交流地。注意，<code>输入加在基极，输出从发射极取出</code>。输出信号与输入信号相位相同。从输入耦合电容往基极看，交流等效电路包含<code>偏置电阻</code>和<code>发射极电路中的电阻</code>，如图3-37b所示。</p>
+<h3 id="351电压增益">3.5.1电压增益</h3>
+<p>将并联发射极和负载电阻合并为一个等效电阻($R_E||R_L$)可以简化图3-37b中的交流电路，如图3-38所示。该电路图用来分析CC极放大器的电压增益。
+<img src="https://s2.loli.net/2023/10/04/Kij9H3RLmQOxbaN.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog3_38.png"
+	
+	
+>
+$$
+图3-38 ~~~ CC放大器的交流输入等效电路
+$$
+如同所有线性放大器一样，CC 放大器的电压增益为 $A_v=V_{out}/V_{in}$。分析该增益时，偏置电阻并没有包含在其中，因为它们不会直接影响输入信号(但是它们会对电源产生负载效应)。注意，图3-38中输入电压作用在 r&rsquo;$_e$ 和 $R_E||R_L$ 的串联电路上，而输出电压只作用在 $R_E||R_L$ 两端。只要 r&rsquo;$_e$ 与 $R_E||R_L$ 相比非常小，就可以忽略 r&rsquo;$_e$ 两端很小的电压降。这意味着输入电压和输出电压几乎相同。因此有:
+$$
+A_v\approx1~~~(3-12)
+$$
+因为 r&rsquo;$_e$ 两端有一个小的压降，所以实际增益要稍小于1。在实际电路中，这点差别并不重要。如果你用示波器查看一个 CC 放大器的输入和输出端，可以看到几乎一样的信号。因为发射极输出电压跟随输入电压变化，所以 CC 放大器通常也称为<code>射极跟随器</code>。共集电极放大器不会进行信号反相。</p>
+<p>你可能想知道，如果 CC 放大器具有单位电压增益，那么它的价值何在?答案在于它有电流增益。当需要驱动低阻抗负载(如扬声器)时，就要用到 CC 放大器。为了求得电流增益，首先需要分析输入和输出交流电阻。</p>
+<h3 id="352输入电阻">3.5.2输入电阻</h3>
+<p><code>射极跟随器的特点是有很高的输入电阻</code>，这使其成为非常有用的电路。由于输人电阻很高，当一个电路驱动另一个电路的时候，射极跟随器可以用作缓冲器来减小负载效应。从基极看进去，输人电阻的推导与 CE 放大器的推导相同。从电源看过去，CC 放大器与具有分压式偏置的 CE 放大器有相同的并联通路，如图3-38的等效电路所示。但是，在本例中，发射极电路没有旁路电容。总的输人电阻公式与 CE 相似但有一个不同的发射极交流电阻( $R_E||R_L$ )。
+$$
+R_{in(tot)}=R_1||R_2[\beta(r&rsquo;_e+R_E||R_L)]~~~~(3-13)
+$$</p>
+<h3 id="353-输出电阻">3.5.3 输出电阻</h3>
+<p><img src="https://s2.loli.net/2023/10/04/bXCawx5BSksATgd.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog3_39.png"
+	
+	
+>
+$$
+图3-39~~~CC放大器的交流等效输出电路
+$$
+图3-39中给出了从输出耦合电容往回看过去的 CC 放大器交流等效输出电路。$R_{base}$ 代表基极电路中的电源和偏置电阻。从发射极电路看，其值非常小(其值要除以 $\beta_{ac}$ )。在实际电路中，可以忽略它们; 从发射极角度来看，基极近似于交流地。最后只留下 r&rsquo;$_e$ 与 $R_E$ 并联。由于 $R_E$ 远大于 r&rsquo;$_e$，故 r&rsquo;$_e$ 也可以忽略掉。对于基本分析而言，<strong>CC 放大器的输出电阻非常简单——即为 r&rsquo;$_e$!</strong></p>
+<h3 id="354电流增益">3.5.4电流增益</h3>
+<p>射极跟随器的信号电流增益为 $Ⅰ_{load}/I_s$,其中，$Ⅰ_{load}$ 为负载电阻中的交流电流，$I_s$ 为来自电源的交流信号电流。$I_s$ 由欧姆定律计算得到，为 $V_{in}/R_{in(tot)}$。因为电压增益近似为 1，所以负载上的电压即输入电压. 于是, 负载电流为 $V_{in}/R_L$。计算电流比例就得到电流增益:
+$$
+A_i=\frac{Ⅰ_{load}}{I_s}=\frac{V_{in}/R_L}{V_{in}/R_{in(tot)}}
+\\
+A_i=\frac{R_{in(tot)}}{R_L}~~~~(3-14)
+$$
+这是非常有用的结果，可见对于有负载的 CC 放大器而言,<strong>电流增益 $A_i$ 即为总输人电阻与负载电阻之比</strong>。如同之前学习的电压增益公式，电流增益也可以写作电阻的比值。</p>
+<h3 id="355达林顿管">3.5.5达林顿管</h3>
+<p>使用 CC 放大器的一个原因是它能够提供很高的输入电阻。CC 放大器的输入电阻受到偏置电阻大小和晶体管 $\beta_{ac}$ 值的限制。如果 $\beta_{ac}$ 可以更高，则更大值的偏置电阻仍然可以提供必需的基极电流，并且晶体管的输入电阻也将更高。</p>
+<p><img src="https://s2.loli.net/2023/10/04/MU1kmWl4hYFos7T.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog3_41.png"
+	
+	
+>
+$$
+图3-41~~~达林顿管
+$$
+一种增大输人电阻的方法是使用<code>达林顿管</code>，如图3-41所示。达林顿管<code>由两个晶体管级联而成</code>，它们的集电极端连接在一起，第一个晶体管的发射极驱动第二个晶体管的基极。这种组态实现了 $\beta_{ac}$ 的成倍增加。实际上，达林顿管是一个 “超级 $\beta$” 晶体管，它看起来就像单个晶体管，但其 $\beta$ 值等于两个晶体管的 $\beta$ 值相乘。
+$$
+\beta_{ac}=\beta_{ac1}\beta_{ac2}
+$$
+<code>达林顿管的主要优势是其电路可以获得很高的输入电阻和很高的电流增益</code>。达林顿管可以用在任何需要很高β值的电路中。与其他晶体管类似，达林顿晶体管可以以单个封装形式得到。例如，2N6426 是一个具有 $\beta$ 最小值为 30 000 的小信号达林顿晶体管。</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/analog/">Analog</a>
+        
+    </section>
+
+
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css"integrity="sha384-RZU/ijkSsFbcmivfdRBQDtwuwVqK7GMOw6IMvKyeWL2K5UAlyp6WonmB8m7Jd0Hn"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js"integrity="sha384-pK1WpvzWVBQiP0/GjnvRxV4mOb0oxFuyRxJlk6vVw146n3egcN5C925NCP7a7BY8"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js"integrity="sha384-vZTG03m&#43;2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ]
+        });})
+</script>
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">Related contents</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/3-4%E5%85%B1%E5%8F%91%E5%B0%84%E6%9E%81%E6%94%BE%E5%A4%A7%E5%99%A8/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">3.4共发射极放大器</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/3-3%E6%95%B0%E6%8D%AE%E6%89%8B%E5%86%8C%E4%B8%AD%E7%9A%84%E5%8F%82%E6%95%B0%E5%8F%8A%E4%BA%A4%E6%B5%81%E5%88%86%E6%9E%90/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">3.3数据手册中的参数及交流分析</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/3-2bjt%E5%81%8F%E7%BD%AE%E7%94%B5%E8%B7%AF/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">3.2BJT偏置电路</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/3-1bjt%E7%9A%84%E7%BB%93%E6%9E%84/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">3.1BJT的结构</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/2-8%E7%89%B9%E6%AE%8A%E7%94%A8%E9%80%94%E4%BA%8C%E6%9E%81%E7%AE%A1/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">2.8特殊用途二极管</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+     
+    
+        
+    <div id="cusdis_thread"
+    data-host="https://cusdis.com"
+    data-app-id="d44db3f9-a0ff-4551-a44d-316afd2e5835"
+    data-page-id="c925cc31cb3f94d59a37e9a35f97365a"
+    data-page-url="https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/3-5%E5%85%B1%E9%9B%86%E7%94%B5%E6%9E%81%E6%94%BE%E5%A4%A7%E5%99%A8/"
+    data-page-title="3.5共集电极放大器"></div>
+<script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
+
+<script>
+    function setCusdisTheme(theme) {
+        let cusdis = document.querySelector('#cusdis_thread iframe');
+        if (cusdis) {
+            window.CUSDIS.setTheme(theme)
+        }
+    }
+
+    window.addEventListener('onColorSchemeChange', (e) => {
+        setCusdisTheme(e.detail)
+    })
+</script>
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2023 My Blog
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.5.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+
+            </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">Table of contents</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#351电压增益">3.5.1电压增益</a></li>
+        <li><a href="#352输入电阻">3.5.2输入电阻</a></li>
+        <li><a href="#353-输出电阻">3.5.3 输出电阻</a></li>
+        <li><a href="#354电流增益">3.5.4电流增益</a></li>
+        <li><a href="#355达林顿管">3.5.5达林顿管</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                </div>
+            </section>
+        </aside>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

@@ -9,10 +9,10 @@
     <lastBuildDate>Wed, 19 Jan 2022 16:53:19 +0000</lastBuildDate><atom:link href="https://okokfun.github.io/tags/adaptors/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>容器适配器</title>
-      <link>https://okokfun.github.io/post/%E5%AE%B9%E5%99%A8%E9%80%82%E9%85%8D%E5%99%A8/</link>
+      <link>https://okokfun.github.io/post/c&#43;&#43;/%E5%AE%B9%E5%99%A8%E9%80%82%E9%85%8D%E5%99%A8/</link>
       <pubDate>Wed, 19 Jan 2022 16:53:19 +0000</pubDate>
       
-      <guid>https://okokfun.github.io/post/%E5%AE%B9%E5%99%A8%E9%80%82%E9%85%8D%E5%99%A8/</guid>
+      <guid>https://okokfun.github.io/post/c&#43;&#43;/%E5%AE%B9%E5%99%A8%E9%80%82%E9%85%8D%E5%99%A8/</guid>
       <description>容器适配器提供顺序容器的不同接口
 std::stack 定义于头文件 &amp;lt;stack&amp;gt; std::stack 类是容器适配器，它给予程序员栈的功能——特别是 FILO （先进后出）数据结构。
 该类模板表现为底层容器的包装器——只提供特定函数集合。栈从被称作栈顶的容器尾部推弹元素。

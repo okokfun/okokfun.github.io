@@ -9,10 +9,10 @@
     <lastBuildDate>Mon, 03 Jan 2022 16:24:52 +0000</lastBuildDate><atom:link href="https://okokfun.github.io/tags/cmake/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Cmake的安装与CMakeLists.txt的编写</title>
-      <link>https://okokfun.github.io/post/cmake%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8Ecmakelists-txt%E7%9A%84%E7%BC%96%E5%86%99/</link>
+      <link>https://okokfun.github.io/post/c&#43;&#43;/cmake%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8Ecmakelists-txt%E7%9A%84%E7%BC%96%E5%86%99/</link>
       <pubDate>Mon, 03 Jan 2022 16:24:52 +0000</pubDate>
       
-      <guid>https://okokfun.github.io/post/cmake%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8Ecmakelists-txt%E7%9A%84%E7%BC%96%E5%86%99/</guid>
+      <guid>https://okokfun.github.io/post/c&#43;&#43;/cmake%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8Ecmakelists-txt%E7%9A%84%E7%BC%96%E5%86%99/</guid>
       <description>安装 cmake是自动化项目编译工具，可以编译源代码、制作程序库、产生适配器（wrapper）、还可以用任意的顺序建构执行档。CMake 支持 in-place 建构（二进档和源代码在同一个目录树中）和 out-of-place 建构（二进档在别的目录里），因此可以很容易从同一个源代码目录树中建构出多个二进档。CMake 也支持静态与动态程式库的建构。
 下载地址👉Download | CMake， 建议二进制安装。
 win:

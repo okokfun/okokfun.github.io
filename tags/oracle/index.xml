@@ -42,10 +42,10 @@ MongoDB数据库
 Mariadb数据库 (由MySQL的创始人Michael Widenius（英语：Michael Widenius）主导开发,MariaDB名称来自Michael Widenius的女儿Maria的名字)
 SQLite (设计目标是嵌入式)
 1 Oracle的体系结构 Oracle服务器：是一个数据管理系统(RDBMS)，它提供开放的, 全面的, 近乎完整的信息管理。由1个数据库和一个（或多个）实例组成。数据库位于硬盘上，实例位于内存中。
-wps1 1.1 表空间和数据文件 逻辑概念：表空间是由数据文件组成，位于实例上，在内存中。
+1.1 表空间和数据文件 逻辑概念：表空间是由数据文件组成，位于实例上，在内存中。
 物理概念：数据文件，在磁盘上（/home/oracle_11/app/oradata/orcl目录中的.DBF文件）；
 ​ 一个表空间包含一个或者多个数据文件。
-1.2 段、区、块 wps2 段存在于表空间中，段是区的集合，区是数据块的集合，数据块会被映射到磁盘块。</description>
+1.2 段、区、块 段存在于表空间中，段是区的集合，区是数据块的集合，数据块会被映射到磁盘块。</description>
     </item>
     
   </channel>

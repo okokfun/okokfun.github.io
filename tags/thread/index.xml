@@ -9,10 +9,10 @@
     <lastBuildDate>Sun, 06 Feb 2022 21:27:50 +0000</lastBuildDate><atom:link href="https://okokfun.github.io/tags/thread/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>让C&#43;&#43;程序更快的运行</title>
-      <link>https://okokfun.github.io/post/%E8%AE%A9c-%E7%A8%8B%E5%BA%8F%E6%9B%B4%E5%BF%AB%E7%9A%84%E8%BF%90%E8%A1%8C/</link>
+      <link>https://okokfun.github.io/post/c&#43;&#43;/%E8%AE%A9c-%E7%A8%8B%E5%BA%8F%E6%9B%B4%E5%BF%AB%E7%9A%84%E8%BF%90%E8%A1%8C/</link>
       <pubDate>Sun, 06 Feb 2022 21:27:50 +0000</pubDate>
       
-      <guid>https://okokfun.github.io/post/%E8%AE%A9c-%E7%A8%8B%E5%BA%8F%E6%9B%B4%E5%BF%AB%E7%9A%84%E8%BF%90%E8%A1%8C/</guid>
+      <guid>https://okokfun.github.io/post/c&#43;&#43;/%E8%AE%A9c-%E7%A8%8B%E5%BA%8F%E6%9B%B4%E5%BF%AB%E7%9A%84%E8%BF%90%E8%A1%8C/</guid>
       <description>视频由up神经元猫 神经元猫的个人空间_哔哩哔哩_bilibili 翻译自 youtube.com/cherno 并发布到👉 【79】【Cherno C++】【中字】如何让C++运行得更快_哔哩哔哩_bilibili 并由我整理。
 通过编码方式利用多核或多处理器 ,利用这些线程，不只是让你的程序顺序执行一条条指令，而是把一些东西，推迟到不同的线程，甚至不是推迟，二十把东西分派到不同的线程，让计算机更快地处理这些东西。
 每一个资源，每一个纹理模型，他们通常独立于彼此，意味着这是良好的多线程候选场景。
@@ -21,10 +21,10 @@ static std::mutex s_MeshesMutex; static void LoadMesh(std::vector&amp;lt;Ref&amp
     
     <item>
       <title>线程支持库</title>
-      <link>https://okokfun.github.io/post/%E7%BA%BF%E7%A8%8B%E6%94%AF%E6%8C%81%E5%BA%93/</link>
+      <link>https://okokfun.github.io/post/c&#43;&#43;/%E7%BA%BF%E7%A8%8B%E6%94%AF%E6%8C%81%E5%BA%93/</link>
       <pubDate>Sat, 15 Jan 2022 17:13:05 +0000</pubDate>
       
-      <guid>https://okokfun.github.io/post/%E7%BA%BF%E7%A8%8B%E6%94%AF%E6%8C%81%E5%BA%93/</guid>
+      <guid>https://okokfun.github.io/post/c&#43;&#43;/%E7%BA%BF%E7%A8%8B%E6%94%AF%E6%8C%81%E5%BA%93/</guid>
       <description>此文来自于👉线程支持库 - cppreference.com
 线程支持库 thread(C++11) std::thread 类与支持函数 stop_token(C++20) std::jthread 的停止记号 mutex(C++11) 互斥元件 shared_mutex(C++14) 共享互斥元件 future(C++11) 异步计算元件 condition_variable(C++11) 线程等待条件 semaphore(C++20) 信号量 latch(C++20) 闩 barrier(C++20) 屏障 #include &amp;lt;thread&amp;gt; std::thread thread类 表示单个执行线程。
 #include &amp;lt;iostream&amp;gt; #include &amp;lt;thread&amp;gt; int main() { std::thread th1; } std:🧵:id thread::id类 是轻量的可频繁复制类，它作为 std::thread 对象的唯一标识符工作。

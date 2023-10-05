@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='由于二极管在一个方向上允许电流通过，而在另一个方向上阻止电流通过，因此二极管通常用在电路(整流器)中，把交流电压转换成直流电压。由交流电压源变成直流电压源中都需要整流器，从最简单的电子系统到最复杂的电子系统，电源是它们基本的部分。本节将学习三种基本的整流器——半波整流器、中间抽头全波整流器、全波桥式整流器。
+2.5.1半波整流器 整流器是一个可以把交流转换成脉动直流的电子电路。图2-15阐述了半波整流过程。如图2-15a所示，在一个半波整流器中，一个交流源与一个二极管和一个负载电阻串联。 $$ a)半波整流器 $$ 当正弦波输入电压为正时，二极管是正向偏置的，流过的电流送到负载电阻上，如图2-15b所示。输出电压等于峰值电压减去管压降。 $$ b)当输入电压处于正半周期时，二极管导通 $$ $$ V_{p(out)}=V_{p(in)}-0.7V (式子2-1) $$ $$ c)当输入电压处于负半周期时，二极管截止;所以，输出电压为0 $$ 电流在负载两端产生电压,这个电压与输入电压的正半周期具有相同的形状。当输入电压进入负半周期时变为负值,二极管反向偏置。因为电路中没有电流,所以负载电阻两端的电压为0，如图2-15c所示。最终结果是仅在交流输入电压的正半周期，负载电阻的电压是输入电压减去二极管管压降，使输出成为一个脉动直流电压，如图2-15d所示。注意,在负半周期，二极管需要承受住电源的负峰值电压而不被击穿。
+$$ d)三个输入周期的半波输出电压 $$
+$$ 图2-15半波整流 器的工作原理，二极管是理想二极管 $$ 在二极管电路中，当所加电压的峰值远远大于势垒电势时,通常可忽略二极管的管压降。这相当于使用二极管的理想模型。
+2.5.2全波整流器 全波整流器和半波整流器的区别就是: 全波整流器在整个输入周期允许单向电流流过负载，而半波整流器只在半个周期内允许电流流过负载。全波整流后的结果是一个按照输入电压半个周期的节拍重复输出的直流电压，如图2-18所示。 $$ 图2-18全波整流器 $$
+中间抽头全波整流器 中间抽头(CT)全波整流器使用两个二极管连接到一个中间抽头变压器的二次侧，如图2-19所示。输人信号通过变压器耦合到二次侧，整个二次电压的一半出现在中间抽头和每个二次绕组端之间。 $$ 图2-19中 间抽头(CT)全波整流器 $$ 对输人电压的正半周期，二次电压的极性如图2-20a所示。在这种情况下，上面的二极管$D_1$ 正向偏置，下面的二极管 $D_2$ 反向偏置。电流流过的路径是经过 $D_1$ 和负载电阻，在图2-20a中用灰色线标出。 $$ a)在正半周期，D_1正向偏置，D_22反向偏置 $$ 对输入电压的负半周期，次级电压的极性如图2-20b所示。在这种情况下，二极管 $D_1$ 反向偏置，二极管 $D_2$ 正向偏置。电流流过的路径是经过 $D_2$ 和负载电阻，在图2-20b中用灰色线标出。 $$ b)在负半周期，D_2正向偏置，D_1反向偏置 $$ $$ 图2-20二次侧中的导通路径用灰色标出 $$
+因为在输人周期的正半周部分和负半周部分，流过负载的电流具有相同的方向，所以在负载两端产生的输出电压是全波整流直流电压。
+匝数比对全波输出电压的影响 如果变压器的匝数比是1,整流输出电压的峰值等于一次输人电压峰值的一半减去二极管压降。这是因为在二次绕组端的一半处输出的电压是输人电压的一半。 为了使峰值输出电压等于峰值输入电压(减去势垒电势)，应该使用匝数比为2(1 : 2)的升压变压器。在这种情况下，因为整个二次电压是一-次电压的2倍，所以二次电压在一半处输出的电压等于输人电压。 $$ V_{out} = \frac{V_{sec}}{2}-0.7V $$ 峰值反向电压(PIV) 全波整流器中的每个二极管都交替地处于正向偏置和反向偏置状态。每个二极管需要承受的最大反向电压是整个二次电压的峰值( $V_{sec}$ )。中间抽头全波整流器中每个二极管的峰值反向电压是 $$ PIV=V_{p(out)} $$'><title>2.5整流器</title>
+
+<link rel='canonical' href='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/2-5%E6%95%B4%E6%B5%81%E5%99%A8/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='2.5整流器'>
+<meta property='og:description' content='由于二极管在一个方向上允许电流通过，而在另一个方向上阻止电流通过，因此二极管通常用在电路(整流器)中，把交流电压转换成直流电压。由交流电压源变成直流电压源中都需要整流器，从最简单的电子系统到最复杂的电子系统，电源是它们基本的部分。本节将学习三种基本的整流器——半波整流器、中间抽头全波整流器、全波桥式整流器。
+2.5.1半波整流器 整流器是一个可以把交流转换成脉动直流的电子电路。图2-15阐述了半波整流过程。如图2-15a所示，在一个半波整流器中，一个交流源与一个二极管和一个负载电阻串联。 $$ a)半波整流器 $$ 当正弦波输入电压为正时，二极管是正向偏置的，流过的电流送到负载电阻上，如图2-15b所示。输出电压等于峰值电压减去管压降。 $$ b)当输入电压处于正半周期时，二极管导通 $$ $$ V_{p(out)}=V_{p(in)}-0.7V (式子2-1) $$ $$ c)当输入电压处于负半周期时，二极管截止;所以，输出电压为0 $$ 电流在负载两端产生电压,这个电压与输入电压的正半周期具有相同的形状。当输入电压进入负半周期时变为负值,二极管反向偏置。因为电路中没有电流,所以负载电阻两端的电压为0，如图2-15c所示。最终结果是仅在交流输入电压的正半周期，负载电阻的电压是输入电压减去二极管管压降，使输出成为一个脉动直流电压，如图2-15d所示。注意,在负半周期，二极管需要承受住电源的负峰值电压而不被击穿。
+$$ d)三个输入周期的半波输出电压 $$
+$$ 图2-15半波整流 器的工作原理，二极管是理想二极管 $$ 在二极管电路中，当所加电压的峰值远远大于势垒电势时,通常可忽略二极管的管压降。这相当于使用二极管的理想模型。
+2.5.2全波整流器 全波整流器和半波整流器的区别就是: 全波整流器在整个输入周期允许单向电流流过负载，而半波整流器只在半个周期内允许电流流过负载。全波整流后的结果是一个按照输入电压半个周期的节拍重复输出的直流电压，如图2-18所示。 $$ 图2-18全波整流器 $$
+中间抽头全波整流器 中间抽头(CT)全波整流器使用两个二极管连接到一个中间抽头变压器的二次侧，如图2-19所示。输人信号通过变压器耦合到二次侧，整个二次电压的一半出现在中间抽头和每个二次绕组端之间。 $$ 图2-19中 间抽头(CT)全波整流器 $$ 对输人电压的正半周期，二次电压的极性如图2-20a所示。在这种情况下，上面的二极管$D_1$ 正向偏置，下面的二极管 $D_2$ 反向偏置。电流流过的路径是经过 $D_1$ 和负载电阻，在图2-20a中用灰色线标出。 $$ a)在正半周期，D_1正向偏置，D_22反向偏置 $$ 对输入电压的负半周期，次级电压的极性如图2-20b所示。在这种情况下，二极管 $D_1$ 反向偏置，二极管 $D_2$ 正向偏置。电流流过的路径是经过 $D_2$ 和负载电阻，在图2-20b中用灰色线标出。 $$ b)在负半周期，D_2正向偏置，D_1反向偏置 $$ $$ 图2-20二次侧中的导通路径用灰色标出 $$
+因为在输人周期的正半周部分和负半周部分，流过负载的电流具有相同的方向，所以在负载两端产生的输出电压是全波整流直流电压。
+匝数比对全波输出电压的影响 如果变压器的匝数比是1,整流输出电压的峰值等于一次输人电压峰值的一半减去二极管压降。这是因为在二次绕组端的一半处输出的电压是输人电压的一半。 为了使峰值输出电压等于峰值输入电压(减去势垒电势)，应该使用匝数比为2(1 : 2)的升压变压器。在这种情况下，因为整个二次电压是一-次电压的2倍，所以二次电压在一半处输出的电压等于输人电压。 $$ V_{out} = \frac{V_{sec}}{2}-0.7V $$ 峰值反向电压(PIV) 全波整流器中的每个二极管都交替地处于正向偏置和反向偏置状态。每个二极管需要承受的最大反向电压是整个二次电压的峰值( $V_{sec}$ )。中间抽头全波整流器中每个二极管的峰值反向电压是 $$ PIV=V_{p(out)} $$'>
+<meta property='og:url' content='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/2-5%E6%95%B4%E6%B5%81%E5%99%A8/'>
+<meta property='og:site_name' content='My Blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Analog' /><meta property='article:published_time' content='2023-07-14T15:05:29&#43;00:00'/><meta property='article:modified_time' content='2023-07-14T15:05:29&#43;00:00'/>
+<meta name="twitter:title" content="2.5整流器">
+<meta name="twitter:description" content="由于二极管在一个方向上允许电流通过，而在另一个方向上阻止电流通过，因此二极管通常用在电路(整流器)中，把交流电压转换成直流电压。由交流电压源变成直流电压源中都需要整流器，从最简单的电子系统到最复杂的电子系统，电源是它们基本的部分。本节将学习三种基本的整流器——半波整流器、中间抽头全波整流器、全波桥式整流器。
+2.5.1半波整流器 整流器是一个可以把交流转换成脉动直流的电子电路。图2-15阐述了半波整流过程。如图2-15a所示，在一个半波整流器中，一个交流源与一个二极管和一个负载电阻串联。 $$ a)半波整流器 $$ 当正弦波输入电压为正时，二极管是正向偏置的，流过的电流送到负载电阻上，如图2-15b所示。输出电压等于峰值电压减去管压降。 $$ b)当输入电压处于正半周期时，二极管导通 $$ $$ V_{p(out)}=V_{p(in)}-0.7V (式子2-1) $$ $$ c)当输入电压处于负半周期时，二极管截止;所以，输出电压为0 $$ 电流在负载两端产生电压,这个电压与输入电压的正半周期具有相同的形状。当输入电压进入负半周期时变为负值,二极管反向偏置。因为电路中没有电流,所以负载电阻两端的电压为0，如图2-15c所示。最终结果是仅在交流输入电压的正半周期，负载电阻的电压是输入电压减去二极管管压降，使输出成为一个脉动直流电压，如图2-15d所示。注意,在负半周期，二极管需要承受住电源的负峰值电压而不被击穿。
+$$ d)三个输入周期的半波输出电压 $$
+$$ 图2-15半波整流 器的工作原理，二极管是理想二极管 $$ 在二极管电路中，当所加电压的峰值远远大于势垒电势时,通常可忽略二极管的管压降。这相当于使用二极管的理想模型。
+2.5.2全波整流器 全波整流器和半波整流器的区别就是: 全波整流器在整个输入周期允许单向电流流过负载，而半波整流器只在半个周期内允许电流流过负载。全波整流后的结果是一个按照输入电压半个周期的节拍重复输出的直流电压，如图2-18所示。 $$ 图2-18全波整流器 $$
+中间抽头全波整流器 中间抽头(CT)全波整流器使用两个二极管连接到一个中间抽头变压器的二次侧，如图2-19所示。输人信号通过变压器耦合到二次侧，整个二次电压的一半出现在中间抽头和每个二次绕组端之间。 $$ 图2-19中 间抽头(CT)全波整流器 $$ 对输人电压的正半周期，二次电压的极性如图2-20a所示。在这种情况下，上面的二极管$D_1$ 正向偏置，下面的二极管 $D_2$ 反向偏置。电流流过的路径是经过 $D_1$ 和负载电阻，在图2-20a中用灰色线标出。 $$ a)在正半周期，D_1正向偏置，D_22反向偏置 $$ 对输入电压的负半周期，次级电压的极性如图2-20b所示。在这种情况下，二极管 $D_1$ 反向偏置，二极管 $D_2$ 正向偏置。电流流过的路径是经过 $D_2$ 和负载电阻，在图2-20b中用灰色线标出。 $$ b)在负半周期，D_2正向偏置，D_1反向偏置 $$ $$ 图2-20二次侧中的导通路径用灰色标出 $$
+因为在输人周期的正半周部分和负半周部分，流过负载的电流具有相同的方向，所以在负载两端产生的输出电压是全波整流直流电压。
+匝数比对全波输出电压的影响 如果变压器的匝数比是1,整流输出电压的峰值等于一次输人电压峰值的一半减去二极管压降。这是因为在二次绕组端的一半处输出的电压是输人电压的一半。 为了使峰值输出电压等于峰值输入电压(减去势垒电势)，应该使用匝数比为2(1 : 2)的升压变压器。在这种情况下，因为整个二次电压是一-次电压的2倍，所以二次电压在一半处输出的电压等于输人电压。 $$ V_{out} = \frac{V_{sec}}{2}-0.7V $$ 峰值反向电压(PIV) 全波整流器中的每个二极管都交替地处于正向偏置和反向偏置状态。每个二极管需要承受的最大反向电压是整个二次电压的峰值( $V_{sec}$ )。中间抽头全波整流器中每个二极管的峰值反向电压是 $$ PIV=V_{p(out)} $$"><script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+    </head>
+    <body class="
+    article-page has-toc
+">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex 
+    
+        extended
+    
+">
+    
+        <div id="article-toolbar">
+            <a href="/" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+                <span>Back</span>
+            </a>
+        </div>
+    
+<main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+
+    <h2 class="article-title">
+        <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/2-5%E6%95%B4%E6%B5%81%E5%99%A8/">2.5整流器</a>
+    </h2>
+
+    
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jul 14, 2023</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+</div>
+</header>
+
+    <section class="article-content">
+    <p>由于二极管在一个方向上允许电流通过，而在另一个方向上阻止电流通过，因此二极管通常用在电路(整流器)中，把交流电压转换成直流电压。由交流电压源变成直流电压源中都需要整流器，从最简单的电子系统到最复杂的电子系统，电源是它们基本的部分。本节将学习三种基本的整流器——<code>半波整流器</code>、<code>中间抽头全波整流器</code>、<code>全波桥式整流器</code>。</p>
+<h3 id="251半波整流器">2.5.1半波整流器</h3>
+<p>整流器是一个可以把交流转换成脉动直流的电子电路。图2-15阐述了半波整流过程。如图2-15a所示，在一个半波整流器中，一个交流源与一个二极管和一个负载电阻串联。
+<img src="https://s2.loli.net/2023/09/30/GpVLOMPB4ZN81Ez.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog2_15a.png"
+	
+	
+>
+$$
+a)半波整流器
+$$
+当正弦波输入电压为正时，二极管是正向偏置的，流过的电流送到负载电阻上，如图2-15b所示。输出电压等于峰值电压减去管压降。
+<img src="https://s2.loli.net/2023/09/30/RsKdplEOhIGDUPL.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog2_15b.png"
+	
+	
+>
+$$
+b)当输入电压处于正半周期时，二极管导通
+$$
+$$
+V_{p(out)}=V_{p(in)}-0.7V (式子2-1)
+$$
+<img src="https://s2.loli.net/2023/09/30/oSNWjmiVTDX65cR.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog2_15c.png"
+	
+	
+>
+$$
+c)当输入电压处于负半周期时，二极管截止;所以，输出电压为0
+$$
+电流在负载两端产生电压,这个电压与输入电压的正半周期具有相同的形状。当输入电压进入负半周期时变为负值,二极管反向偏置。因为电路中没有电流,所以负载电阻两端的电压为0，如图2-15c所示。最终结果是仅在交流输入电压的正半周期，负载电阻的电压是输入电压减去二极管管压降，使输出成为一个脉动直流电压，如图2-15d所示。注意,在负半周期，二极管需要承受住电源的负峰值电压而不被击穿。</p>
+<p><img src="https://s2.loli.net/2023/09/30/kPzY8XQjVv6bsIW.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog2_15d.png"
+	
+	
+>
+$$
+d)三个输入周期的半波输出电压
+$$</p>
+<p>$$
+图2-15半波整流 器的工作原理，二极管是理想二极管
+$$
+在二极管电路中，当所加电压的峰值远远大于势垒电势时,通常可忽略二极管的管压降。这相当于使用二极管的理想模型。</p>
+<h3 id="252全波整流器">2.5.2全波整流器</h3>
+<p>全波整流器和半波整流器的区别就是: 全波整流器在整个输入周期允许单向电流流过负载，而半波整流器只在半个周期内允许电流流过负载。全波整流后的结果是一个按照输入电压半个周期的节拍重复输出的直流电压，如图2-18所示。
+<img src="https://s2.loli.net/2023/09/30/mSfwICxZWl7831K.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog2_18.png"
+	
+	
+>
+$$
+图2-18全波整流器
+$$</p>
+<p><strong>中间抽头全波整流器</strong> 中间抽头(CT)全波整流器使用两个二极管连接到一个中间抽头变压器的二次侧，如图2-19所示。输人信号通过变压器耦合到二次侧，整个二次电压的一半出现在中间抽头和每个二次绕组端之间。
+<img src="https://s2.loli.net/2023/09/30/kaDzSo4gJGTHt3f.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog2_19.png"
+	
+	
+>
+$$
+图2-19中 间抽头(CT)全波整流器
+$$
+对输人电压的正半周期，二次电压的极性如图2-20a所示。在这种情况下，上面的二极管$D_1$ 正向偏置，下面的二极管 $D_2$ 反向偏置。电流流过的路径是经过 $D_1$ 和负载电阻，在图2-20a中用灰色线标出。
+<img src="https://s2.loli.net/2023/09/30/Vm4iSFbUKf6Hp3t.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog2_20a.png"
+	
+	
+>
+$$
+a)在正半周期，D_1正向偏置，D_22反向偏置
+$$
+对输入电压的负半周期，次级电压的极性如图2-20b所示。在这种情况下，二极管 $D_1$ 反向偏置，二极管 $D_2$ 正向偏置。电流流过的路径是经过 $D_2$ 和负载电阻，在图2-20b中用灰色线标出。
+<img src="https://s2.loli.net/2023/09/30/UpzmDZkJYqySTol.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog2_20b.png"
+	
+	
+>
+$$
+b)在负半周期，D_2正向偏置，D_1反向偏置
+$$
+$$
+图2-20二次侧中的导通路径用灰色标出
+$$</p>
+<p>因为在输人周期的正半周部分和负半周部分，流过负载的电流具有相同的方向，所以在负载两端产生的输出电压是全波整流直流电压。</p>
+<p><strong>匝数比对全波输出电压的影响</strong> 如果变压器的匝数比是1,整流输出电压的峰值等于一次输人电压峰值的一半减去二极管压降。这是因为在二次绕组端的一半处输出的电压是输人电压的一半。
+<img src="https://s2.loli.net/2023/09/30/OcIZzxLlSbpVC5q.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog2_20c.png"
+	
+	
+></p>
+<p>为了使峰值输出电压等于峰值输入电压(减去势垒电势)，应该使用匝数比为2(1 : 2)的升压变压器。在这种情况下，因为整个二次电压是一-次电压的2倍，所以二次电压在一半处输出的电压等于输人电压。
+<img src="https://s2.loli.net/2023/09/30/BRA3bPqDdfS46Na.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog2_20d.png"
+	
+	
+>
+$$
+V_{out} = \frac{V_{sec}}{2}-0.7V
+$$
+<strong>峰值反向电压(PIV)</strong> 全波整流器中的每个二极管都交替地处于正向偏置和反向偏置状态。每个二极管需要承受的最大反向电压是整个二次电压的峰值( $V_{sec}$ )。中间抽头全波整流器中每个二极管的峰值反向电压是
+$$
+PIV=V_{p(out)}
+$$</p>
+<h3 id="253桥式整流器">2.5.3桥式整流器</h3>
+<p><code>桥式整流器使用4个二极管</code>，如图2-23所示，这种排列方式不再需要中间抽头变压器，是电源中最普遍的结构方式。4个二极管安放在一-起，之间用导线连接成桥式结构。<code>桥式整流器是全波整流器的一种,它每次把正弦波的-半传送到输出负载上</code>。</p>
+<p><img src="https://s2.loli.net/2023/09/30/SqQ4WzH68TvRu5h.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog2_23a.png"
+	
+	
+>
+$$
+a)输入的正半周期，D_1和D_2正向偏置并导通。D_3和D_4反向偏置
+$$</p>
+<p><img src="https://s2.loli.net/2023/09/30/zHrwCB9fS5N71RW.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog2_23b.png"
+	
+	
+>
+$$
+b)输入的负半周期，D_3和D_4正向偏置并导通。D_1和D_2反向偏置
+$$
+$$
+图2-23全波整流器的工作原理，二次侧的导通路径用灰色标出
+$$
+桥式整流器是这样工作的: 当输人处于正半周期时，如图2-23a所示，二极管 $D_1$ 和 $D_2$ 正向偏置并且导通，电流的流经路径用灰色的线标出。$R_L$ 两端产生电压，电压波形和输人的正半周期相同。这时，二极管 $D_3$ 和 $D_4$ 反向偏置。当输人处于负半周期时，如图2-23b所示，二极管 $D_3$ 和 $D_4$ 正向偏置并导通，电流的流经路径在图2-23b中用灰色的线标出。$R_L$ 两端又产生电压，电压的方向和正半周期时的相同。在负半周期，二极管 $D_1$ 和 $D_2$ 反向偏置。全波整流器的输出电压是 $R_L$ 的端电压。</p>
+<p><strong>桥式输出电压</strong> 忽略二极管压降， 整个二次电压 $V_{sec}$，都落在了负载电阻上，因而，
+$$
+V_{out} = V_{sec}
+$$
+如图2-23所示，不管在正半周期还是负半周期，两个二极管始终和负载电阻相串联。如果考虑二极管的管压降，输出电压(假设是硅二极管)是
+$$
+V_{out} = V_{sec}-1.4V
+(式子2-2)
+$$</p>
+<p>峰值反向电压 当$D_1$ 和 $D_2$ 正向偏置时，反向电压加在 $D_3$ 和 $D_4$ 之上。 $D_1$ 和 $D_2$ 相当于短路(理想情况下)，峰值反向电压等于二次峰值电压。
+$$
+PIV = V_{p(out)}
+$$</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/analog/">Analog</a>
+        
+    </section>
+
+
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css"integrity="sha384-RZU/ijkSsFbcmivfdRBQDtwuwVqK7GMOw6IMvKyeWL2K5UAlyp6WonmB8m7Jd0Hn"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js"integrity="sha384-pK1WpvzWVBQiP0/GjnvRxV4mOb0oxFuyRxJlk6vVw146n3egcN5C925NCP7a7BY8"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js"integrity="sha384-vZTG03m&#43;2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ]
+        });})
+</script>
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">Related contents</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/6-5%E8%B4%9F%E5%8F%8D%E9%A6%88%E8%BF%90%E6%94%BE%E7%BB%84%E6%80%81/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">6.5负反馈运放组态</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/2-3%E5%8D%8A%E5%AF%BC%E4%BD%93%E4%BA%8C%E6%9E%81%E7%AE%A1%E7%9A%84%E5%81%8F%E7%BD%AE/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">2.3半导体二极管的偏置</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/2-2pn%E7%BB%93/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">2.2pn结</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/2-1%E5%8D%8A%E5%AF%BC%E4%BD%93%E5%8E%9F%E5%AD%90%E7%BB%93%E6%9E%84/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">2.1半导体原子结构</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/1-4%E6%94%BE%E5%A4%A7%E5%99%A8/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">1.4放大器</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+     
+    
+        
+    <div id="cusdis_thread"
+    data-host="https://cusdis.com"
+    data-app-id="d44db3f9-a0ff-4551-a44d-316afd2e5835"
+    data-page-id="ce7723461456e6a38458da0c79be4c90"
+    data-page-url="https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/2-5%E6%95%B4%E6%B5%81%E5%99%A8/"
+    data-page-title="2.5整流器"></div>
+<script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
+
+<script>
+    function setCusdisTheme(theme) {
+        let cusdis = document.querySelector('#cusdis_thread iframe');
+        if (cusdis) {
+            window.CUSDIS.setTheme(theme)
+        }
+    }
+
+    window.addEventListener('onColorSchemeChange', (e) => {
+        setCusdisTheme(e.detail)
+    })
+</script>
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2023 My Blog
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.5.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+
+            </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">Table of contents</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#251半波整流器">2.5.1半波整流器</a></li>
+        <li><a href="#252全波整流器">2.5.2全波整流器</a></li>
+        <li><a href="#253桥式整流器">2.5.3桥式整流器</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                </div>
+            </section>
+        </aside>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

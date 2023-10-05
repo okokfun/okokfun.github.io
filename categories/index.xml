@@ -6,7 +6,16 @@
     <description>Recent content in Categories on My Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 30 Jul 2023 17:35:07 +0800</lastBuildDate><atom:link href="https://okokfun.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 30 Aug 2023 17:31:07 +0800</lastBuildDate><atom:link href="https://okokfun.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Incomplete</title>
+      <link>https://okokfun.github.io/categories/incomplete/</link>
+      <pubDate>Wed, 30 Aug 2023 17:31:07 +0800</pubDate>
+      
+      <guid>https://okokfun.github.io/categories/incomplete/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>STM32</title>
       <link>https://okokfun.github.io/categories/stm32/</link>

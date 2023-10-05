@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='第1章 基本概念 1.1 数字量与模拟量 1.2 二进制数、逻辑电平和数字波形 1.3 固定功能的集成电路 关键词 判断题 自测题 习题 答案
+第2章 数字系统、运算和编码 2.1 十进制数 2.2 二进制数 2.3 十进制数到二进制数的转换 2.4 二进制算术 2.5 二进制数的反码和补码 2.6 带符号数 2.7 带符号数的算术运算 2.8 十六进制数 2.9 八进制数 2.10 二—十进制编码(BCD) 2.11 数字编码 2.12 错误检测码 关键词 判断题 自测题 习题 答案
+第3章 逻辑门 3.1 反相器 3.2 与门 3.3 或门 3.4 与非门 3.5 或非门 3.6 异或门和同或门 3.7 固定功能逻辑 关键词 判断题 自测题 习题 答案
+第4章 布尔代数和逻辑化简 4.1 布尔运算和表达式 4.'><title>数字电子技术</title>
+
+<link rel='canonical' href='https://okokfun.github.io/post/%E6%95%B0%E5%AD%97%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF/%E6%95%B0%E5%AD%97%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='数字电子技术'>
+<meta property='og:description' content='第1章 基本概念 1.1 数字量与模拟量 1.2 二进制数、逻辑电平和数字波形 1.3 固定功能的集成电路 关键词 判断题 自测题 习题 答案
+第2章 数字系统、运算和编码 2.1 十进制数 2.2 二进制数 2.3 十进制数到二进制数的转换 2.4 二进制算术 2.5 二进制数的反码和补码 2.6 带符号数 2.7 带符号数的算术运算 2.8 十六进制数 2.9 八进制数 2.10 二—十进制编码(BCD) 2.11 数字编码 2.12 错误检测码 关键词 判断题 自测题 习题 答案
+第3章 逻辑门 3.1 反相器 3.2 与门 3.3 或门 3.4 与非门 3.5 或非门 3.6 异或门和同或门 3.7 固定功能逻辑 关键词 判断题 自测题 习题 答案
+第4章 布尔代数和逻辑化简 4.1 布尔运算和表达式 4.'>
+<meta property='og:url' content='https://okokfun.github.io/post/%E6%95%B0%E5%AD%97%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF/%E6%95%B0%E5%AD%97%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF/'>
+<meta property='og:site_name' content='My Blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Digital' /><meta property='article:published_time' content='2023-07-12T21:20:25&#43;00:00'/><meta property='article:modified_time' content='2023-07-12T21:20:25&#43;00:00'/>
+<meta name="twitter:title" content="数字电子技术">
+<meta name="twitter:description" content="第1章 基本概念 1.1 数字量与模拟量 1.2 二进制数、逻辑电平和数字波形 1.3 固定功能的集成电路 关键词 判断题 自测题 习题 答案
+第2章 数字系统、运算和编码 2.1 十进制数 2.2 二进制数 2.3 十进制数到二进制数的转换 2.4 二进制算术 2.5 二进制数的反码和补码 2.6 带符号数 2.7 带符号数的算术运算 2.8 十六进制数 2.9 八进制数 2.10 二—十进制编码(BCD) 2.11 数字编码 2.12 错误检测码 关键词 判断题 自测题 习题 答案
+第3章 逻辑门 3.1 反相器 3.2 与门 3.3 或门 3.4 与非门 3.5 或非门 3.6 异或门和同或门 3.7 固定功能逻辑 关键词 判断题 自测题 习题 答案
+第4章 布尔代数和逻辑化简 4.1 布尔运算和表达式 4."><script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+    </head>
+    <body class="
+    article-page has-toc
+">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex 
+    
+        extended
+    
+">
+    
+        <div id="article-toolbar">
+            <a href="/" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+                <span>Back</span>
+            </a>
+        </div>
+    
+<main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+
+    <h2 class="article-title">
+        <a href="/post/%E6%95%B0%E5%AD%97%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF/%E6%95%B0%E5%AD%97%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF/">数字电子技术</a>
+    </h2>
+
+    
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jul 12, 2023</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    2 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+</div>
+</header>
+
+    <section class="article-content">
+    <!-- raw HTML omitted -->
+<h4 id="第1章-基本概念">第1章 基本概念</h4>
+<h5 id="11-数字量与模拟量">1.1 数字量与模拟量</h5>
+<h5 id="12-二进制数逻辑电平和数字波形">1.2 二进制数、逻辑电平和数字波形</h5>
+<h5 id="13-固定功能的集成电路">1.3 固定功能的集成电路</h5>
+<p>关键词
+判断题
+自测题
+习题
+答案</p>
+<h4 id="第2章-数字系统运算和编码">第2章 数字系统、运算和编码</h4>
+<h5 id="21-十进制数">2.1 十进制数</h5>
+<h5 id="22-二进制数">2.2 二进制数</h5>
+<h5 id="23-十进制数到二进制数的转换">2.3 十进制数到二进制数的转换</h5>
+<h5 id="24-二进制算术">2.4 二进制算术</h5>
+<h5 id="25-二进制数的反码和补码">2.5 二进制数的反码和补码</h5>
+<h5 id="26-带符号数">2.6 带符号数</h5>
+<h5 id="27-带符号数的算术运算">2.7 带符号数的算术运算</h5>
+<h5 id="28-十六进制数">2.8 十六进制数</h5>
+<h5 id="29-八进制数">2.9 八进制数</h5>
+<h5 id="210-二十进制编码bcd">2.10 二—十进制编码(BCD)</h5>
+<h5 id="211-数字编码">2.11 数字编码</h5>
+<h5 id="212-错误检测码">2.12 错误检测码</h5>
+<p>关键词
+判断题
+自测题
+习题
+答案</p>
+<h4 id="第3章-逻辑门">第3章 逻辑门</h4>
+<h5 id="31-反相器">3.1 反相器</h5>
+<h5 id="32-与门">3.2 与门</h5>
+<h5 id="33-或门">3.3 或门</h5>
+<h5 id="34-与非门">3.4 与非门</h5>
+<h5 id="35-或非门">3.5 或非门</h5>
+<h5 id="36-异或门和同或门">3.6 异或门和同或门</h5>
+<h5 id="37-固定功能逻辑">3.7 固定功能逻辑</h5>
+<p>关键词
+判断题
+自测题
+习题
+答案</p>
+<h4 id="第4章-布尔代数和逻辑化简">第4章 布尔代数和逻辑化简</h4>
+<h5 id="41-布尔运算和表达式">4.1 布尔运算和表达式</h5>
+<h5 id="42-布尔代数的定律和法则">4.2 布尔代数的定律和法则</h5>
+<h5 id="43-狄摩根定理">4.3 狄摩根定理</h5>
+<h5 id="44-逻辑电路的布尔分析">4.4 逻辑电路的布尔分析</h5>
+<h5 id="45-使用布尔代数进行化简">4.5 使用布尔代数进行化简</h5>
+<h5 id="46-布尔表达式的标准形式">4.6 布尔表达式的标准形式</h5>
+<h5 id="47-布尔表达式和真值表">4.7 布尔表达式和真值表</h5>
+<h5 id="48-卡诺图">4.8 卡诺图</h5>
+<h5 id="49-卡诺图乘积项之和的最小化">4.9 卡诺图乘积项之和的最小化</h5>
+<h5 id="410-5变量的卡诺图">4.10 5变量的卡诺图</h5>
+<p>数字系统应用
+关键词
+判断题
+自测题
+习题
+答案</p>
+<h4 id="第5章-组合逻辑分析">第5章 组合逻辑分析</h4>
+<h5 id="51-基本组合逻辑电路">5.1 基本组合逻辑电路</h5>
+<h5 id="52-组合逻辑电路的实现">5.2 组合逻辑电路的实现</h5>
+<h5 id="53-与非门和或非门的通用特性">5.3 与非门和或非门的通用特性</h5>
+<h5 id="54-使用与非门和或非门的组合逻辑">5.4 使用与非门和或非门的组合逻辑</h5>
+<h5 id="55-具有脉冲波形输入的逻辑电路运算">5.5 具有脉冲波形输入的逻辑电路运算</h5>
+<p>数字系统应用
+关键词
+判断题
+自测题
+习题
+答案</p>
+<h4 id="第6章-组合逻辑电路函数">第6章 组合逻辑电路函数</h4>
+<h5 id="61-基本加法器">6.1 基本加法器</h5>
+<h5 id="62-并行二进制加法器">6.2 并行二进制加法器</h5>
+<h5 id="63-异步进位与超前进位加法器">6.3 异步进位与超前进位加法器</h5>
+<h5 id="64-比较器">6.4 比较器</h5>
+<h5 id="65-译码器">6.5 译码器</h5>
+<h5 id="66-编码器">6.6 编码器</h5>
+<h5 id="67-代码转换器">6.7 代码转换器</h5>
+<h5 id="68-多路复用器数据选择器">6.8 多路复用器(数据选择器)</h5>
+<h5 id="69-多路分配器">6.9 多路分配器</h5>
+<h5 id="610-奇偶发生器校验器">6.10 奇偶发生器/校验器</h5>
+<p>数字系统应用
+关键词
+判断题
+自测题
+习题
+答案</p>
+<h4 id="第7章-锁存器-触发器和定时器">第7章 锁存器、 触发器和定时器</h4>
+<h5 id="71-锁存器">7.1 锁存器</h5>
+<h5 id="72-边沿触发器">7.2 边沿触发器</h5>
+<h5 id="73-触发器运算特性">7.3 触发器运算特性</h5>
+<h5 id="74-触发器应用">7.4 触发器应用</h5>
+<h5 id="75-稳态触发器">7.5 *稳态触发器</h5>
+<h5 id="76-非稳态多谐振荡器">7.6 非稳态多谐振荡器</h5>
+<p>数字系统应用
+关键词
+判断题
+自测题
+习题
+答案</p>
+<h4 id="第8章-计数器">第8章 计数器</h4>
+<h5 id="81-异步计数器运算">8.1 异步计数器运算</h5>
+<h5 id="82-同步计数器运算">8.2 同步计数器运算</h5>
+<h5 id="83-加减同步计数器">8.3 加/减同步计数器</h5>
+<h5 id="84-同步计数器的设计">8.4 同步计数器的设计</h5>
+<h5 id="85-联计数器">8.5 *联计数器</h5>
+<h5 id="86-计数器译码">8.6 计数器译码</h5>
+<h5 id="87-计数器应用">8.7 计数器应用</h5>
+<h5 id="88-关联标注的逻辑符号">8.8 关联标注的逻辑符号</h5>
+<p>数字系统应用
+关键词
+判断题
+自测题
+习题
+答案</p>
+<h4 id="第9章-移位寄存器">第9章 移位寄存器</h4>
+<h5 id="91-基本移位寄存器的功能">9.1 基本移位寄存器的功能</h5>
+<h5 id="92-串行输入串行输出移位寄存器">9.2 串行输入/串行输出移位寄存器</h5>
+<h5 id="93-串行输入并行输出移位寄存器">9.3 串行输入/并行输出移位寄存器</h5>
+<h5 id="94-并行输入串行输出移位寄存器">9.4 并行输入/串行输出移位寄存器</h5>
+<h5 id="95-并行输入并行输出移位寄存器">9.5 并行输入/并行输出移位寄存器</h5>
+<h5 id="96-双向移位寄存器">9.6 双向移位寄存器</h5>
+<h5 id="97-移位寄存器计数器">9.7 移位寄存器计数器</h5>
+<h5 id="98-移位寄存器应用">9.8 移位寄存器应用</h5>
+<h5 id="99-关联标注的逻辑符号">9.9 关联标注的逻辑符号</h5>
+<p>数字系统应用
+总结
+关键词
+判断题
+自测题
+习题
+答案</p>
+<h4 id="第10章-内存和外存">第10章 内存和外存</h4>
+<h5 id="101-半导体存储器基础">10.1 半导体存储器基础</h5>
+<h5 id="102-随机存储器ram">10.2 随机存储器(RAM)</h5>
+<h5 id="103-只读存储器rom">10.3 只读存储器(ROM)</h5>
+<h5 id="104-可编程romprom和eprom">10.4 可编程ROM(PROM和EPROM)</h5>
+<h5 id="105-闪存">10.5 闪存</h5>
+<h5 id="106-存储器扩展">10.6 存储器扩展</h5>
+<h5 id="107-特殊类型的存储器">10.7 特殊类型的存储器</h5>
+<h5 id="108-磁和光存储">10.8 磁和光存储</h5>
+<p>数字系统应用
+关键词
+判断题
+自测题
+习题
+答案</p>
+<h4 id="第11章-数字信号处理">第11章 数字信号处理</h4>
+<h5 id="111-模拟信号转换为数字信号">11.1 模拟信号转换为数字信号</h5>
+<h5 id="112-模数转换方法">11.2 模—数转换方法</h5>
+<h5 id="113-数模转换方法">11.3 数—模转换方法</h5>
+<h5 id="114-数字信号处理基础">11.4 数字信号处理基础</h5>
+<p>关键词
+判断题
+自测题
+习题
+答案</p>
+<h4 id="第12章-集成电路技术">第12章 集成电路技术</h4>
+<h5 id="121-基本操作特性和参数">12.1 基本操作特性和参数</h5>
+<h5 id="122-cmos电路">12.2 CMOS电路</h5>
+<h5 id="123-ttl电路">12.3 TTL电路</h5>
+<h5 id="124-ttl在实际使用中的注意事项">12.4 TTL在实际使用中的注意事项</h5>
+<h5 id="125-cmos和ttl性能的比较">12.5 CMOS和TTL性能的比较</h5>
+<h5 id="126-发射极耦合逻辑ecl电路">12.6 发射极耦合逻辑(ECL)电路</h5>
+<h5 id="127-pmos-nmos和e2cmos">12.7 PMOS、 NMOS和E2CMOS</h5>
+<p>关键词
+判断题
+自测题
+习题
+答案
+附录A 卡诺图或与项(POS)的<em>小化
+附录B Q—M方法(奎恩—麦克拉斯基化简法)
+附录C 数字电路NI Multisim仿真——仿真、 样机、 测试电路理论、 设计与画图
+奇数编号</em>题*</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/digital/">Digital</a>
+        
+    </section>
+
+
+    </footer>
+
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+</aside>
+
+     
+    
+        
+    <div id="cusdis_thread"
+    data-host="https://cusdis.com"
+    data-app-id="d44db3f9-a0ff-4551-a44d-316afd2e5835"
+    data-page-id="af0a742ddaf810d7f188249407f0cdc9"
+    data-page-url="https://okokfun.github.io/post/%E6%95%B0%E5%AD%97%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF/%E6%95%B0%E5%AD%97%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF/"
+    data-page-title="数字电子技术"></div>
+<script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
+
+<script>
+    function setCusdisTheme(theme) {
+        let cusdis = document.querySelector('#cusdis_thread iframe');
+        if (cusdis) {
+            window.CUSDIS.setTheme(theme)
+        }
+    }
+
+    window.addEventListener('onColorSchemeChange', (e) => {
+        setCusdisTheme(e.detail)
+    })
+</script>
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2023 My Blog
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.5.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+
+            </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">Table of contents</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                </div>
+            </section>
+        </aside>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

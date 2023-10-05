@@ -9,18 +9,15 @@
     <lastBuildDate>Fri, 14 Jul 2023 14:57:45 +0800</lastBuildDate><atom:link href="https://okokfun.github.io/categories/analog/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>1.2模拟信号</title>
-      <link>https://okokfun.github.io/post/1-2%E6%A8%A1%E6%8B%9F%E4%BF%A1%E5%8F%B7/</link>
+      <link>https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/1-2%E6%A8%A1%E6%8B%9F%E4%BF%A1%E5%8F%B7/</link>
       <pubDate>Fri, 14 Jul 2023 14:57:45 +0800</pubDate>
       
-      <guid>https://okokfun.github.io/post/1-2%E6%A8%A1%E6%8B%9F%E4%BF%A1%E5%8F%B7/</guid>
+      <guid>https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/1-2%E6%A8%A1%E6%8B%9F%E4%BF%A1%E5%8F%B7/</guid>
       <description>是指任何携带信息的物理量，力、热、声、光、电等。
-1.2.1 模拟信号和数字信号 信号分为：离散信号和连续信号。离散信号可以只有几个值，连续信号可以无限细分下去。
-离散和连续指信号
-的幅度，也可以指时间。
+1.2.1 模拟信号和数字信号 信号分为：离散信号和连续信号。离散信号可以只有几个值，连续信号可以无限细分下去。 离散和连续指信号的幅度，也可以指时间。
 采样和量化：
 ​	采样：将模拟波形在时间域上进行切分，每个切片大小大致等于原来波形的值，会丢失一些信息。
-​	量化：给每个时间片分配一个数字，量化后的数字可以交给计算机或其它素质电路处理
-1.2.2 周期信号 重复的波形称为周期性的，此周期信号有变化。
+​	量化：给每个时间片分配一个数字，量化后的数字可以交给计算机或其它素质电路处理 1.2.2 周期信号 重复的波形称为周期性的，此周期信号有变化。
 周期(period, $T$)表示一个周期信号完成一个循环所需要的时间。周期(cycle)是指在波形呈现出另一个完全相同的图案之前波形的完整序列值。可以是在逐次循环的波形上任意两个相应点来测出周期。
 向量：既有大小又有方向的量。
 频率和周期：

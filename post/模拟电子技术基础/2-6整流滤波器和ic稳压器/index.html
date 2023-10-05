@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='电源滤波器大大地减小了整流器输出电压的波动，形成了幅度接近恒定的直流电压。滤波的原因是电子电路需要恒定的直流电压源和直流电流源来提供电功率与偏置，使得电路能正常工作。通常使用大电容器来进行滤波，为了改善滤波效果，电容(输入滤波器)后紧跟着稳压器。如今由于集成电路(IC)的发展，有了便宜而有效的稳压器。本节介绍集成稳压器，更详细的内容将会在第11章中介绍。
+学完本节后，你应该掌握以下内容:
+描述整流滤波器和集成稳压器的工作原理 给出IC稳压器的例子，并知道它们是如何连接到整流器的输出端 对一个给定纹波抑制和输人纹波的 IC 稳压器，能计算其输出的纹波 对一个给定的有负载或无负载的电压，计算其负载变动范围 对给定的输人电压变化所引起的输出电压的变化，计算其线性调整率 在大多数电源供电的应用中，标准的 60Hz 交流线性电压源都应转换成幅度接近恒定，值的直流电压。半波整流器的 60Hz 脉动直流输出或全波桥式整流器的 120Hz 脉动输出应该经过滤波来减小较大的电压变化。滤波可以通过一一个电容器、一个电感器或者它们的组合来完成。迄今为止，电容输人滤波器是最便宜并且广泛应用的类型。
+2.6.1电容输入滤波器 图2-24给出了一个带有电容输人滤波器的半波整流器。我们将用半波整流器来阐述滤波的原理，然后推广到全波整流器。 $$ a)当电源刚开启时，电容开始充电(二极管正向偏置) $$ b) 在正周期的峰值电压过后，电容通过R_L开始放电，此时二极管处于反向偏置。放电过程占据的时间段在输入电压中用灰色实线标出
+c) 电容又开始充电，达到了输入电压的峰值，此时二极管又处于正向偏置状态。充电过程持续时间段在输入电压中用灰色实线标出。注意，在第二个充电周期电容电压在超过它原来的电压前，二极管一直反向偏置
+$$ 图2-24具有电容输人滤波器的半波整流器工作原理 $$
+在输入正向的前四分之一周期，二极管正向偏置，在二极管到达输人峰值后开始下降前的这段时间，允许电容进行充电，如图2-24a所示。当输入下降到低于其峰值时，如图2-24b所示，电容继续充电，二极管开始反向偏置。在这个周期的剩下部分到下一个周期的开始，电容只能通过负载电阻以一定的速率放电，放电速度取决 $RC$ 时间常数。时间常数越大，电容放电速率就越小。
+在下一个周期到达峰值前，如图2-24c所示，当输入电压超过电容器电压大约一个二极管管压降时，二极管又重新正向偏置。
+纹波电压 正如你看到的一样，电容在一个周期的开始快速地充电，在正峰值以后通过 $R_L$ 慢慢地放电(当二极管反向偏置时)。由于充电和放电会引起电容电压的变化，这种变化会形成纹波电压。纹波电压越小，滤波效果越好。
+对给定的输人频率，全波整流器的输出频率是半波整流器输出频率的两倍。所以，对全波整流器进行滤波更容易，因为两个峰值之间的间隔时间更短。当进行滤波时，对于相同的负载电阻和滤波电容器，全波整流电压的纹波要小于半波整流电压。因为两个全波脉冲间的间隔越短，电容放电越少，所以电压纹波也越小，如图2-25所示。 $$ 图2-25当电路的滤波电容器和正弦波输人相同时，半波和全波整流器输出的纹波电压的比较 $$
+$$ 图2-26电容输人滤波器中的浪涌电流沿着灰色的路径流动 $$ 电容输入滤波器的浪涌电流 当电源刚开始接通时，滤波电容器是未充电的。当开关合上的瞬间，电压像短路一样直接加到整流器和未充电的电容器上。图2-26a中用桥式电路来阐述这种情况。初始浪涌电流(有时称作浪涌电流)通过正向偏置的二极管产生。最坏的情况发生在二二次电压达到峰值时开关闭合，会产生最大的浪涌电流。
+浪涌电流很可能损坏二极管，因此通常会连接一个浪涌限制电阻器$R_{surge}$, 如图2-26b所示。为了避免在电阻器上产生很大的压降，电阻器的值必须要小。同样，二极管必须具有正向额定电流从而使它能够承受瞬间的浪涌电流。
+2.6.2 IC稳压器 当滤波器可以将电源的纹波降低到很小时，最有效的滤波器是将电容输人滤波器和 IC稳压器组合起来运用。通常，IC(集成电路)是在一个小的硅芯片，上构建的功能完整的电路。IC稳压器是一块连接到整流器输出端的IC，即使输入、负载电流或温度发生变化，它也能始终保持输出电压(或电流)的恒定。电容滤波器使得稳压器的输人纹波降低到了一个合适的值。一个大电容和一个IC稳压器的组合价格不贵，但能有助于产生一个很好的小电源。
+最流行的IC稳压器具有三个端一输人端、 输出端和参考端(或调节端)。电容器首先对稳压器的输人进行滤波，使纹波减小到 $&amp;lt;$ 10%,然后稳压器可以将纹波减少到可以忽略的水平。此外，大多数稳压器具有内部参考电压、短路保护和热切断电路。它们可以用在各种正、负极性输出的电压中，并且可以用最少的外部元件设计成可变输出。典型地，IC稳压器可以提供具有很强纹波抑制能力的1至数安培电流的输出。超过5A负载电流的IC稳压器也可用。
+$$ 图2-27三端稳压器 $$ 为了稳定输出电压而设计的三端稳压器只需要连接外部电容器就可以完成对电源的稳压调整，如图2-27所示。滤波是通过在输人电压和地之间的大容量电容器来完成的。有时，为了防止振荡，当滤波电容器与IC稳压器并不是很靠近的时候，再并联-一个较小的输人电容器，这个电容器需要靠近IC稳压器。最后，为了改善暂态响应，将一个输出电容器(典型值为0.1 ~ lμF)并联在其输出端。
+$$ 图2-28 基本的十5.0V电源 $$ 固定三端稳压器的例子有 78XX 和 79XX 系列稳压器，这些系列具有各种输出电压并且能够提供达到1A的负载电流(散热充分)。型号的最后两个数字表示输出电压，因此，7812具有 &#43;12V 的输出。相同稳压器的负输出电压版本记为79XX系列，因此 7912 具有 -12V 的输出。这些稳压电路的输出电压在正常值的 1.'><title>2.6整流滤波器和IC稳压器</title>
+
+<link rel='canonical' href='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/2-6%E6%95%B4%E6%B5%81%E6%BB%A4%E6%B3%A2%E5%99%A8%E5%92%8Cic%E7%A8%B3%E5%8E%8B%E5%99%A8/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='2.6整流滤波器和IC稳压器'>
+<meta property='og:description' content='电源滤波器大大地减小了整流器输出电压的波动，形成了幅度接近恒定的直流电压。滤波的原因是电子电路需要恒定的直流电压源和直流电流源来提供电功率与偏置，使得电路能正常工作。通常使用大电容器来进行滤波，为了改善滤波效果，电容(输入滤波器)后紧跟着稳压器。如今由于集成电路(IC)的发展，有了便宜而有效的稳压器。本节介绍集成稳压器，更详细的内容将会在第11章中介绍。
+学完本节后，你应该掌握以下内容:
+描述整流滤波器和集成稳压器的工作原理 给出IC稳压器的例子，并知道它们是如何连接到整流器的输出端 对一个给定纹波抑制和输人纹波的 IC 稳压器，能计算其输出的纹波 对一个给定的有负载或无负载的电压，计算其负载变动范围 对给定的输人电压变化所引起的输出电压的变化，计算其线性调整率 在大多数电源供电的应用中，标准的 60Hz 交流线性电压源都应转换成幅度接近恒定，值的直流电压。半波整流器的 60Hz 脉动直流输出或全波桥式整流器的 120Hz 脉动输出应该经过滤波来减小较大的电压变化。滤波可以通过一一个电容器、一个电感器或者它们的组合来完成。迄今为止，电容输人滤波器是最便宜并且广泛应用的类型。
+2.6.1电容输入滤波器 图2-24给出了一个带有电容输人滤波器的半波整流器。我们将用半波整流器来阐述滤波的原理，然后推广到全波整流器。 $$ a)当电源刚开启时，电容开始充电(二极管正向偏置) $$ b) 在正周期的峰值电压过后，电容通过R_L开始放电，此时二极管处于反向偏置。放电过程占据的时间段在输入电压中用灰色实线标出
+c) 电容又开始充电，达到了输入电压的峰值，此时二极管又处于正向偏置状态。充电过程持续时间段在输入电压中用灰色实线标出。注意，在第二个充电周期电容电压在超过它原来的电压前，二极管一直反向偏置
+$$ 图2-24具有电容输人滤波器的半波整流器工作原理 $$
+在输入正向的前四分之一周期，二极管正向偏置，在二极管到达输人峰值后开始下降前的这段时间，允许电容进行充电，如图2-24a所示。当输入下降到低于其峰值时，如图2-24b所示，电容继续充电，二极管开始反向偏置。在这个周期的剩下部分到下一个周期的开始，电容只能通过负载电阻以一定的速率放电，放电速度取决 $RC$ 时间常数。时间常数越大，电容放电速率就越小。
+在下一个周期到达峰值前，如图2-24c所示，当输入电压超过电容器电压大约一个二极管管压降时，二极管又重新正向偏置。
+纹波电压 正如你看到的一样，电容在一个周期的开始快速地充电，在正峰值以后通过 $R_L$ 慢慢地放电(当二极管反向偏置时)。由于充电和放电会引起电容电压的变化，这种变化会形成纹波电压。纹波电压越小，滤波效果越好。
+对给定的输人频率，全波整流器的输出频率是半波整流器输出频率的两倍。所以，对全波整流器进行滤波更容易，因为两个峰值之间的间隔时间更短。当进行滤波时，对于相同的负载电阻和滤波电容器，全波整流电压的纹波要小于半波整流电压。因为两个全波脉冲间的间隔越短，电容放电越少，所以电压纹波也越小，如图2-25所示。 $$ 图2-25当电路的滤波电容器和正弦波输人相同时，半波和全波整流器输出的纹波电压的比较 $$
+$$ 图2-26电容输人滤波器中的浪涌电流沿着灰色的路径流动 $$ 电容输入滤波器的浪涌电流 当电源刚开始接通时，滤波电容器是未充电的。当开关合上的瞬间，电压像短路一样直接加到整流器和未充电的电容器上。图2-26a中用桥式电路来阐述这种情况。初始浪涌电流(有时称作浪涌电流)通过正向偏置的二极管产生。最坏的情况发生在二二次电压达到峰值时开关闭合，会产生最大的浪涌电流。
+浪涌电流很可能损坏二极管，因此通常会连接一个浪涌限制电阻器$R_{surge}$, 如图2-26b所示。为了避免在电阻器上产生很大的压降，电阻器的值必须要小。同样，二极管必须具有正向额定电流从而使它能够承受瞬间的浪涌电流。
+2.6.2 IC稳压器 当滤波器可以将电源的纹波降低到很小时，最有效的滤波器是将电容输人滤波器和 IC稳压器组合起来运用。通常，IC(集成电路)是在一个小的硅芯片，上构建的功能完整的电路。IC稳压器是一块连接到整流器输出端的IC，即使输入、负载电流或温度发生变化，它也能始终保持输出电压(或电流)的恒定。电容滤波器使得稳压器的输人纹波降低到了一个合适的值。一个大电容和一个IC稳压器的组合价格不贵，但能有助于产生一个很好的小电源。
+最流行的IC稳压器具有三个端一输人端、 输出端和参考端(或调节端)。电容器首先对稳压器的输人进行滤波，使纹波减小到 $&amp;lt;$ 10%,然后稳压器可以将纹波减少到可以忽略的水平。此外，大多数稳压器具有内部参考电压、短路保护和热切断电路。它们可以用在各种正、负极性输出的电压中，并且可以用最少的外部元件设计成可变输出。典型地，IC稳压器可以提供具有很强纹波抑制能力的1至数安培电流的输出。超过5A负载电流的IC稳压器也可用。
+$$ 图2-27三端稳压器 $$ 为了稳定输出电压而设计的三端稳压器只需要连接外部电容器就可以完成对电源的稳压调整，如图2-27所示。滤波是通过在输人电压和地之间的大容量电容器来完成的。有时，为了防止振荡，当滤波电容器与IC稳压器并不是很靠近的时候，再并联-一个较小的输人电容器，这个电容器需要靠近IC稳压器。最后，为了改善暂态响应，将一个输出电容器(典型值为0.1 ~ lμF)并联在其输出端。
+$$ 图2-28 基本的十5.0V电源 $$ 固定三端稳压器的例子有 78XX 和 79XX 系列稳压器，这些系列具有各种输出电压并且能够提供达到1A的负载电流(散热充分)。型号的最后两个数字表示输出电压，因此，7812具有 &#43;12V 的输出。相同稳压器的负输出电压版本记为79XX系列，因此 7912 具有 -12V 的输出。这些稳压电路的输出电压在正常值的 1.'>
+<meta property='og:url' content='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/2-6%E6%95%B4%E6%B5%81%E6%BB%A4%E6%B3%A2%E5%99%A8%E5%92%8Cic%E7%A8%B3%E5%8E%8B%E5%99%A8/'>
+<meta property='og:site_name' content='My Blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Analog' /><meta property='article:published_time' content='2023-07-14T15:05:51&#43;00:00'/><meta property='article:modified_time' content='2023-07-14T15:05:51&#43;00:00'/>
+<meta name="twitter:title" content="2.6整流滤波器和IC稳压器">
+<meta name="twitter:description" content="电源滤波器大大地减小了整流器输出电压的波动，形成了幅度接近恒定的直流电压。滤波的原因是电子电路需要恒定的直流电压源和直流电流源来提供电功率与偏置，使得电路能正常工作。通常使用大电容器来进行滤波，为了改善滤波效果，电容(输入滤波器)后紧跟着稳压器。如今由于集成电路(IC)的发展，有了便宜而有效的稳压器。本节介绍集成稳压器，更详细的内容将会在第11章中介绍。
+学完本节后，你应该掌握以下内容:
+描述整流滤波器和集成稳压器的工作原理 给出IC稳压器的例子，并知道它们是如何连接到整流器的输出端 对一个给定纹波抑制和输人纹波的 IC 稳压器，能计算其输出的纹波 对一个给定的有负载或无负载的电压，计算其负载变动范围 对给定的输人电压变化所引起的输出电压的变化，计算其线性调整率 在大多数电源供电的应用中，标准的 60Hz 交流线性电压源都应转换成幅度接近恒定，值的直流电压。半波整流器的 60Hz 脉动直流输出或全波桥式整流器的 120Hz 脉动输出应该经过滤波来减小较大的电压变化。滤波可以通过一一个电容器、一个电感器或者它们的组合来完成。迄今为止，电容输人滤波器是最便宜并且广泛应用的类型。
+2.6.1电容输入滤波器 图2-24给出了一个带有电容输人滤波器的半波整流器。我们将用半波整流器来阐述滤波的原理，然后推广到全波整流器。 $$ a)当电源刚开启时，电容开始充电(二极管正向偏置) $$ b) 在正周期的峰值电压过后，电容通过R_L开始放电，此时二极管处于反向偏置。放电过程占据的时间段在输入电压中用灰色实线标出
+c) 电容又开始充电，达到了输入电压的峰值，此时二极管又处于正向偏置状态。充电过程持续时间段在输入电压中用灰色实线标出。注意，在第二个充电周期电容电压在超过它原来的电压前，二极管一直反向偏置
+$$ 图2-24具有电容输人滤波器的半波整流器工作原理 $$
+在输入正向的前四分之一周期，二极管正向偏置，在二极管到达输人峰值后开始下降前的这段时间，允许电容进行充电，如图2-24a所示。当输入下降到低于其峰值时，如图2-24b所示，电容继续充电，二极管开始反向偏置。在这个周期的剩下部分到下一个周期的开始，电容只能通过负载电阻以一定的速率放电，放电速度取决 $RC$ 时间常数。时间常数越大，电容放电速率就越小。
+在下一个周期到达峰值前，如图2-24c所示，当输入电压超过电容器电压大约一个二极管管压降时，二极管又重新正向偏置。
+纹波电压 正如你看到的一样，电容在一个周期的开始快速地充电，在正峰值以后通过 $R_L$ 慢慢地放电(当二极管反向偏置时)。由于充电和放电会引起电容电压的变化，这种变化会形成纹波电压。纹波电压越小，滤波效果越好。
+对给定的输人频率，全波整流器的输出频率是半波整流器输出频率的两倍。所以，对全波整流器进行滤波更容易，因为两个峰值之间的间隔时间更短。当进行滤波时，对于相同的负载电阻和滤波电容器，全波整流电压的纹波要小于半波整流电压。因为两个全波脉冲间的间隔越短，电容放电越少，所以电压纹波也越小，如图2-25所示。 $$ 图2-25当电路的滤波电容器和正弦波输人相同时，半波和全波整流器输出的纹波电压的比较 $$
+$$ 图2-26电容输人滤波器中的浪涌电流沿着灰色的路径流动 $$ 电容输入滤波器的浪涌电流 当电源刚开始接通时，滤波电容器是未充电的。当开关合上的瞬间，电压像短路一样直接加到整流器和未充电的电容器上。图2-26a中用桥式电路来阐述这种情况。初始浪涌电流(有时称作浪涌电流)通过正向偏置的二极管产生。最坏的情况发生在二二次电压达到峰值时开关闭合，会产生最大的浪涌电流。
+浪涌电流很可能损坏二极管，因此通常会连接一个浪涌限制电阻器$R_{surge}$, 如图2-26b所示。为了避免在电阻器上产生很大的压降，电阻器的值必须要小。同样，二极管必须具有正向额定电流从而使它能够承受瞬间的浪涌电流。
+2.6.2 IC稳压器 当滤波器可以将电源的纹波降低到很小时，最有效的滤波器是将电容输人滤波器和 IC稳压器组合起来运用。通常，IC(集成电路)是在一个小的硅芯片，上构建的功能完整的电路。IC稳压器是一块连接到整流器输出端的IC，即使输入、负载电流或温度发生变化，它也能始终保持输出电压(或电流)的恒定。电容滤波器使得稳压器的输人纹波降低到了一个合适的值。一个大电容和一个IC稳压器的组合价格不贵，但能有助于产生一个很好的小电源。
+最流行的IC稳压器具有三个端一输人端、 输出端和参考端(或调节端)。电容器首先对稳压器的输人进行滤波，使纹波减小到 $&amp;lt;$ 10%,然后稳压器可以将纹波减少到可以忽略的水平。此外，大多数稳压器具有内部参考电压、短路保护和热切断电路。它们可以用在各种正、负极性输出的电压中，并且可以用最少的外部元件设计成可变输出。典型地，IC稳压器可以提供具有很强纹波抑制能力的1至数安培电流的输出。超过5A负载电流的IC稳压器也可用。
+$$ 图2-27三端稳压器 $$ 为了稳定输出电压而设计的三端稳压器只需要连接外部电容器就可以完成对电源的稳压调整，如图2-27所示。滤波是通过在输人电压和地之间的大容量电容器来完成的。有时，为了防止振荡，当滤波电容器与IC稳压器并不是很靠近的时候，再并联-一个较小的输人电容器，这个电容器需要靠近IC稳压器。最后，为了改善暂态响应，将一个输出电容器(典型值为0.1 ~ lμF)并联在其输出端。
+$$ 图2-28 基本的十5.0V电源 $$ 固定三端稳压器的例子有 78XX 和 79XX 系列稳压器，这些系列具有各种输出电压并且能够提供达到1A的负载电流(散热充分)。型号的最后两个数字表示输出电压，因此，7812具有 &#43;12V 的输出。相同稳压器的负输出电压版本记为79XX系列，因此 7912 具有 -12V 的输出。这些稳压电路的输出电压在正常值的 1."><script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+    </head>
+    <body class="
+    article-page has-toc
+">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex 
+    
+        extended
+    
+">
+    
+        <div id="article-toolbar">
+            <a href="/" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+                <span>Back</span>
+            </a>
+        </div>
+    
+<main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+
+    <h2 class="article-title">
+        <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/2-6%E6%95%B4%E6%B5%81%E6%BB%A4%E6%B3%A2%E5%99%A8%E5%92%8Cic%E7%A8%B3%E5%8E%8B%E5%99%A8/">2.6整流滤波器和IC稳压器</a>
+    </h2>
+
+    
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jul 14, 2023</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+</div>
+</header>
+
+    <section class="article-content">
+    <p>电源滤波器大大地减小了整流器输出电压的波动，形成了幅度接近恒定的直流电压。滤波的原因是电子电路需要恒定的直流电压源和直流电流源来提供电功率与偏置，使得电路能正常工作。通常使用大电容器来进行滤波，为了改善滤波效果，电容(输入滤波器)后紧跟着稳压器。如今由于集成电路(IC)的发展，有了便宜而有效的稳压器。本节介绍集成稳压器，更详细的内容将会在第11章中介绍。</p>
+<p>学完本节后，你应该掌握以下内容:</p>
+<ul>
+<li>描述整流滤波器和集成稳压器的工作原理
+<ul>
+<li>给出IC稳压器的例子，并知道它们是如何连接到整流器的输出端</li>
+<li>对一个给定纹波抑制和输人纹波的 IC 稳压器，能计算其输出的纹波</li>
+<li>对一个给定的有负载或无负载的电压，计算其负载变动范围</li>
+<li>对给定的输人电压变化所引起的输出电压的变化，计算其线性调整率</li>
+</ul>
+</li>
+</ul>
+<p>在大多数电源供电的应用中，标准的 60Hz 交流线性电压源都应转换成幅度接近恒定，值的直流电压。半波整流器的 60Hz 脉动直流输出或全波桥式整流器的 120Hz 脉动输出应该经过滤波来减小较大的电压变化。滤波可以通过一一个电容器、一个电感器或者它们的组合来完成。迄今为止，电容输人滤波器是最便宜并且广泛应用的类型。</p>
+<h3 id="261电容输入滤波器">2.6.1电容输入滤波器</h3>
+<p>图2-24给出了一个带有电容输人滤波器的半波整流器。我们将用半波整流器来阐述滤波的原理，然后推广到全波整流器。
+<img src="https://s2.loli.net/2023/09/30/8bPvacTO5n9oJC2.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog2_24a.png"
+	
+	
+>
+$$
+a)当电源刚开启时，电容开始充电(二极管正向偏置)
+$$
+<img src="https://s2.loli.net/2023/09/30/McX8bHnJtAUDQjC.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog2_24b.png"
+	
+	
+></p>
+<blockquote>
+<p>b) 在正周期的峰值电压过后，电容通过R_L开始放电，此时二极管处于反向偏置。放电过程占据的时间段在输入电压中用灰色实线标出</p>
+</blockquote>
+<p><img src="https://s2.loli.net/2023/09/30/6mSNA5lXLzEw8RI.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog2_24c.png"
+	
+	
+></p>
+<blockquote>
+<p>c) 电容又开始充电，达到了输入电压的峰值，此时二极管又处于正向偏置状态。充电过程持续时间段在输入电压中用灰色实线标出。注意，在第二个充电周期电容电压在超过它原来的电压前，二极管一直反向偏置</p>
+</blockquote>
+<p>$$
+图2-24具有电容输人滤波器的半波整流器工作原理
+$$</p>
+<p>在输入正向的前四分之一周期，二极管正向偏置，在二极管到达输人峰值后开始下降前的这段时间，允许电容进行充电，如图2-24a所示。当输入下降到低于其峰值时，如图2-24b所示，电容继续充电，二极管开始反向偏置。在这个周期的剩下部分到下一个周期的开始，电容只能通过负载电阻以一定的速率放电，放电速度取决 $RC$ 时间常数。时间常数越大，电容放电速率就越小。</p>
+<p>在下一个周期到达峰值前，如图2-24c所示，当输入电压超过电容器电压大约一个二极管管压降时，二极管又重新正向偏置。</p>
+<p><strong>纹波电压</strong> 正如你看到的一样，电容在一个周期的开始快速地充电，在正峰值以后通过 $R_L$ 慢慢地放电(当二极管反向偏置时)。<code>由于充电和放电会引起电容电压的变化，这种变化会形成纹波电压。纹波电压越小，滤波效果越好</code>。</p>
+<p><strong>对给定的输人频率，全波整流器的输出频率是半波整流器输出频率的两倍</strong>。所以，对全波整流器进行滤波更容易，因为两个峰值之间的间隔时间更短。当进行滤波时，对于相同的负载电阻和滤波电容器，全波整流电压的纹波要小于半波整流电压。因为两个全波脉冲间的间隔越短，电容放电越少，所以电压纹波也越小，如图2-25所示。
+<img src="https://s2.loli.net/2023/09/30/j3X6KCbRGz5VMmE.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog2_25.png"
+	
+	
+>
+$$
+图2-25当电路的滤波电容器和正弦波输人相同时，半波和全波整流器输出的纹波电压的比较
+$$</p>
+<p><img src="https://s2.loli.net/2023/09/30/UMR4F3iySfqp2a9.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog2_26.png"
+	
+	
+>
+$$
+图2-26电容输人滤波器中的浪涌电流沿着灰色的路径流动
+$$
+<strong>电容输入滤波器的浪涌电流</strong> <code>当电源刚开始接通时，滤波电容器是未充电的。当开关合上的瞬间，电压像短路一样直接加到整流器和未充电的电容器上</code>。图2-26a中用桥式电路来阐述这种情况。初始浪涌电流(有时称作浪涌电流)通过正向偏置的二极管产生。最坏的情况发生在二二次电压达到峰值时开关闭合，会产生最大的浪涌电流。</p>
+<p>浪涌电流很可能损坏二极管，因此通常会连接一个浪涌限制电阻器$R_{surge}$, 如图2-26b所示。为了避免在电阻器上产生很大的压降，电阻器的值必须要小。同样，二极管必须具有正向额定电流从而使它能够承受瞬间的浪涌电流。</p>
+<h3 id="262-ic稳压器">2.6.2 IC稳压器</h3>
+<p><code>当滤波器可以将电源的纹波降低到很小时，最有效的滤波器是将电容输人滤波器和 IC稳压器组合起来运用</code>。通常，IC(集成电路)是在一个小的硅芯片，上构建的功能完整的电路。IC稳压器是一块连接到整流器输出端的IC，即使输入、负载电流或温度发生变化，它也能始终保持输出电压(或电流)的恒定。电容滤波器使得稳压器的输人纹波降低到了一个合适的值。一个大电容和一个IC稳压器的组合价格不贵，但能有助于产生一个很好的小电源。</p>
+<p>最流行的IC稳压器具有三个端一输人端、 输出端和参考端(或调节端)。电容器首先对稳压器的输人进行滤波，使纹波减小到 $&lt;$ 10%,然后稳压器可以将纹波减少到可以忽略的水平。此外，大多数稳压器具有内部参考电压、短路保护和热切断电路。它们可以用在各种正、负极性输出的电压中，并且可以用最少的外部元件设计成可变输出。典型地，IC稳压器可以提供具有很强纹波抑制能力的1至数安培电流的输出。超过5A负载电流的IC稳压器也可用。</p>
+<p><img src="https://s2.loli.net/2023/09/30/r4eTAocWCdxPbV6.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog2_27.png"
+	
+	
+>
+$$
+图2-27三端稳压器
+$$
+<code>为了稳定输出电压而设计的三端稳压器只需要连接外部电容器就可以完成对电源的稳压调整</code>，如图2-27所示。滤波是通过在输人电压和地之间的大容量电容器来完成的。有时，为了<code>防止振荡</code>，当滤波电容器与IC稳压器并不是很靠近的时候，再并联-一个较小的输人电容器，这个电容器需要靠近IC稳压器。最后，<code>为了改善暂态响应，将一个输出电容器(典型值为0.1 ~ lμF)并联在其输出端</code>。</p>
+<p><img src="https://s2.loli.net/2023/09/30/uFML172Rri8onm4.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog2_28.png"
+	
+	
+>
+$$
+图2-28 基本的十5.0V电源
+$$
+固定三端稳压器的例子有 78XX 和 79XX 系列稳压器，这些系列具有各种输出电压并且能够提供达到1A的负载电流(散热充分)。型号的最后两个数字表示输出电压，因此，7812具有 +12V 的输出。相同稳压器的负输出电压版本记为79XX系列，因此 7912 具有 -12V 的输出。这些稳压电路的输出电压在正常值的 1.5%~4% 之间，不管输人电压或输出负载如何变化，它们能保持几乎接近恒定的电压输出。图2-28是一个通过7805稳压器输出恒定 +5V 的基本电源。78XX和79XX系列稳压器的数据手册参见www. onsemi. com。</p>
+<p>作为一个例子，用 7812 稳压器来减小纹波。注意，数据手册中的纹波抑制参数是$RR$。7812 的典型纹波抑制参数是 60dB(分贝请参阅1.4节)，这就意味着输出纹波比输人纹波要小 60dB，这是一个非常大的降低，在下一个例题中将会详细阐述。</p>
+<p><img src="https://s2.loli.net/2023/10/01/Gq34f1oegVx8Wnr.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog2_29a.png"
+	
+	
+>
+$$
+图2-29具有可变输出(1.25～6.5V)的基本电源
+$$
+另一种类型的三端稳压电路是一种可调的稳压电路，图2-29给出了具有可调输出的电源电路，输出可以通过可变电阻 $R_2$ 控制。注意， $R_2$ 的取值可以在 0~1.0 $kΩ$ 之间变化。LM317 稳压器在输出和调节端之间保持1.25V的恒定电压，这使得在 $R_1$ 中产生-一个恒定电流，电流大小为1.25V/240 $Ω$=52mA。如果我们忽略调节端的微小电流，则流过 $R_2$ 的电流和流过 $R_1$ 的电流相等，在 $R_2$ 和 $R_1$ 所产生的输出可以从下式获得，
+$$
+V_{out} = 1.25V(\frac{R_1+R_2}{R_1})
+$$
+注意，电源的输出电压等于稳压器的 1.25V 乘以电阻的比率。在图2-29中，当 $R_2$ 的值设置为最小(零)电阻时，输出是 1.25V。当 $R_2$ 的值设置为最大电阻时，输出近似为6.5V。</p>
+<h3 id="263百分比调整率">2.6.3百分比调整率</h3>
+<p>用表示成百分比的度量数值来描述稳压器的性能好坏。百分比调整率可以用输人(线路)调整率负载调整率来表示。<strong>线路调整率规定为给定的输人电压变化引起多少输出电压变化</strong>。它通常定义为输出电压变化和相应输入电压变化的百分比。
+$$
+线路调整率=(△V_{OUT}/△V_{IN})\times100%\(2-3)
+$$
+<strong>负载调整率</strong> 规定为负载电流在一定范围内变化时，输出电压的变化有多大。负载电流变化范围通常从最小电流(空载，NL)到最大电流(满载，FL)。它通常表示成百分比，一般可以用下面的公式可以计算:
+$$
+负载调整率=(\frac{V_{NL}-V_{FL}}{V_{FL}})\times100%\(2-4)
+$$
+式中，$V_{NL}$是空载时输出电压，$V_{FL}$ 是满载(最大负载)时输出电压。线性调整率 和 负载调整率 将在11.1节进一步讨论。</p>
+<p>前面的讨论主要集中在广泛使用的三端稳压器上。三端稳压器可以用于各种特殊的应用或需求，如电流源或自动关机、电流限定等。对其他的一些应用(大电流、高效率、高电压)，可用集成电路和分立式晶体管构成更复杂的稳压电路。第11章将更详细地讨论这些应用。</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/analog/">Analog</a>
+        
+    </section>
+
+
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css"integrity="sha384-RZU/ijkSsFbcmivfdRBQDtwuwVqK7GMOw6IMvKyeWL2K5UAlyp6WonmB8m7Jd0Hn"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js"integrity="sha384-pK1WpvzWVBQiP0/GjnvRxV4mOb0oxFuyRxJlk6vVw146n3egcN5C925NCP7a7BY8"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js"integrity="sha384-vZTG03m&#43;2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ]
+        });})
+</script>
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">Related contents</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/2-5%E6%95%B4%E6%B5%81%E5%99%A8/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">2.5整流器</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/6-5%E8%B4%9F%E5%8F%8D%E9%A6%88%E8%BF%90%E6%94%BE%E7%BB%84%E6%80%81/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">6.5负反馈运放组态</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/2-3%E5%8D%8A%E5%AF%BC%E4%BD%93%E4%BA%8C%E6%9E%81%E7%AE%A1%E7%9A%84%E5%81%8F%E7%BD%AE/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">2.3半导体二极管的偏置</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/2-2pn%E7%BB%93/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">2.2pn结</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/2-1%E5%8D%8A%E5%AF%BC%E4%BD%93%E5%8E%9F%E5%AD%90%E7%BB%93%E6%9E%84/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">2.1半导体原子结构</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+     
+    
+        
+    <div id="cusdis_thread"
+    data-host="https://cusdis.com"
+    data-app-id="d44db3f9-a0ff-4551-a44d-316afd2e5835"
+    data-page-id="02e29fecca0ad14f18e020d86ffb6bb9"
+    data-page-url="https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/2-6%E6%95%B4%E6%B5%81%E6%BB%A4%E6%B3%A2%E5%99%A8%E5%92%8Cic%E7%A8%B3%E5%8E%8B%E5%99%A8/"
+    data-page-title="2.6整流滤波器和IC稳压器"></div>
+<script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
+
+<script>
+    function setCusdisTheme(theme) {
+        let cusdis = document.querySelector('#cusdis_thread iframe');
+        if (cusdis) {
+            window.CUSDIS.setTheme(theme)
+        }
+    }
+
+    window.addEventListener('onColorSchemeChange', (e) => {
+        setCusdisTheme(e.detail)
+    })
+</script>
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2023 My Blog
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.5.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+
+            </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">Table of contents</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#261电容输入滤波器">2.6.1电容输入滤波器</a></li>
+        <li><a href="#262-ic稳压器">2.6.2 IC稳压器</a></li>
+        <li><a href="#263百分比调整率">2.6.3百分比调整率</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                </div>
+            </section>
+        </aside>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

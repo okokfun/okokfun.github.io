@@ -9,32 +9,32 @@
     <lastBuildDate>Wed, 23 Feb 2022 23:08:02 +0000</lastBuildDate><atom:link href="https://okokfun.github.io/tags/qt/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>QT文档翻译</title>
-      <link>https://okokfun.github.io/post/qt%E6%96%87%E6%A1%A3%E7%BF%BB%E8%AF%91/</link>
+      <link>https://okokfun.github.io/post/c&#43;&#43;/qt%E6%96%87%E6%A1%A3%E7%BF%BB%E8%AF%91/</link>
       <pubDate>Wed, 23 Feb 2022 23:08:02 +0000</pubDate>
       
-      <guid>https://okokfun.github.io/post/qt%E6%96%87%E6%A1%A3%E7%BF%BB%E8%AF%91/</guid>
+      <guid>https://okokfun.github.io/post/c&#43;&#43;/qt%E6%96%87%E6%A1%A3%E7%BF%BB%E8%AF%91/</guid>
       <description>此文档来自于👉 QtDocumentCN/QtDocumentCN: Qt中文文档翻译 (github.com)
 并由本人补充了一些文档</description>
     </item>
     
     <item>
       <title>qt添加第三方库方法</title>
-      <link>https://okokfun.github.io/post/qt%E6%B7%BB%E5%8A%A0%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93%E6%96%B9%E6%B3%95/</link>
+      <link>https://okokfun.github.io/post/c&#43;&#43;/qt%E6%B7%BB%E5%8A%A0%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93%E6%96%B9%E6%B3%95/</link>
       <pubDate>Thu, 03 Feb 2022 14:14:29 +0000</pubDate>
       
-      <guid>https://okokfun.github.io/post/qt%E6%B7%BB%E5%8A%A0%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93%E6%96%B9%E6%B3%95/</guid>
+      <guid>https://okokfun.github.io/post/c&#43;&#43;/qt%E6%B7%BB%E5%8A%A0%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93%E6%96%B9%E6%B3%95/</guid>
       <description> qt添加第三方库方法
 添加库 选择项目名右击
 选择添加库
-libs_1.jpg 选择外部库，下一步 libs_2.jpg 库文件填写库文件路径和库名字，包含路径是库头文件路径，平台选择一个或全部选择，链接选择动态，点击下一步 libs_3.jpg 汇总将会显示添加到.pro文件中，在项目中可以添加头文件使用此库了 libs_4.jpg </description>
+选择外部库，下一步 库文件填写库文件路径和库名字，包含路径是库头文件路径，平台选择一个或全部选择，链接选择动态，点击下一步 汇总将会显示添加到.pro文件中，在项目中可以添加头文件使用此库了 </description>
     </item>
     
     <item>
       <title>Qt概述</title>
-      <link>https://okokfun.github.io/post/qt%E6%A6%82%E8%BF%B0/</link>
+      <link>https://okokfun.github.io/post/c&#43;&#43;/qt%E6%A6%82%E8%BF%B0/</link>
       <pubDate>Tue, 01 Feb 2022 17:40:05 +0000</pubDate>
       
-      <guid>https://okokfun.github.io/post/qt%E6%A6%82%E8%BF%B0/</guid>
+      <guid>https://okokfun.github.io/post/c&#43;&#43;/qt%E6%A6%82%E8%BF%B0/</guid>
       <description>1. Qt概述 1.1 什么是Qt Qt是一个跨平台的C++图形用户界面应用程序框架。它为应用程序开发者提供建立艺术级图形界面所需的所有功能。它是完全面向对象的，很容易扩展，并且允许真正的组件编程。
 1.2 Qt的发展史 1991年 Qt最早由奇趣科技开发
 1996年 进入商业领域，它也是目前流行的Linux桌面环境KDE的基础
@@ -60,10 +60,10 @@ OS X Host 下载链接👉Qt 5.</description>
     
     <item>
       <title>QT_UI组件库</title>
-      <link>https://okokfun.github.io/post/qt-ui%E7%BB%84%E4%BB%B6%E5%BA%93/</link>
+      <link>https://okokfun.github.io/post/c&#43;&#43;/qt-ui%E7%BB%84%E4%BB%B6%E5%BA%93/</link>
       <pubDate>Mon, 24 Jan 2022 14:33:42 +0000</pubDate>
       
-      <guid>https://okokfun.github.io/post/qt-ui%E7%BB%84%E4%BB%B6%E5%BA%93/</guid>
+      <guid>https://okokfun.github.io/post/c&#43;&#43;/qt-ui%E7%BB%84%E4%BB%B6%E5%BA%93/</guid>
       <description>QT组件库第1-31 QT组件库第32-56 Layouts 布局组件库 1号 Vertical Layout 垂直布局
 2号 Horizontal Layout 水平布局
 3号 Grid Layout 网格布局

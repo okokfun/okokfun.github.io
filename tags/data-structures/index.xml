@@ -9,10 +9,10 @@
     <lastBuildDate>Sat, 01 Jan 2022 19:32:29 +0000</lastBuildDate><atom:link href="https://okokfun.github.io/tags/data-structures/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>数据结构</title>
-      <link>https://okokfun.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</link>
+      <link>https://okokfun.github.io/post/c&#43;&#43;/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</link>
       <pubDate>Sat, 01 Jan 2022 19:32:29 +0000</pubDate>
       
-      <guid>https://okokfun.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</guid>
+      <guid>https://okokfun.github.io/post/c&#43;&#43;/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</guid>
       <description>推荐看👉 OI Wiki
 数据结构：数据结构是为算法服务而设计的。 算法：充分且合理利用计算机资源处理数据而诞生。
 数据结构部分 一. 数据结构的存储方式有两种 1.顺序存储(数组,内存连续) 2.链式存储(链表,内存不连续,依靠节点的指针指向下一个节点) 常见的数据结构有：

@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='本节将讨论三种利用负反馈稳定增益并增强频率响应的运放连接方式。如前所述，运放的极高开环增益会造成不稳定的情况，因为输入端的小噪声信号能被放大到使运放超出线性区工作。也可能发生不希望的振荡。此外，不同运放器件的开环增益参数可能会相差很大。负反馈将输出的一部分以与输入信号反相的方式返回输入端，能有效减小增益。闭环增益通常远小于开环增益，并与它无关。 学完本节后，你应该掌握以下内容:
+分析三种运放电路组态
+认识同相放大器组态
+确定同相放大器的电压增益
+认识电压跟随器
+认识反相放大器组态
+确定反相放大器的电压增益
+6.5.1 闭环电压增益 $A_{cl}$ 闭环电压增益是带有负反馈的运放的电压增益。放大器电路包括运放和一个外部反馈网络，它将输出与反相输人端相连。那么闭环电压增益由反馈网络的元器件值决定，并能由它们精确控制。
+6.5.2 同相放大器 图6-20所示是运放的一种闭环连接，称为同相放大器。输入信号加到同相(＋)输入端。输出的一部分通过反馈网络加到反相(一)输人端。这构成了负反馈。反馈系数B是返回反相输入端的输出电压的比例，它决定了放大器的增益，正如你将要看到的。反馈电压 $V_f$，可以写为
+$$ V_f = BV_{out} $$
+运放输入端之间的差分电压 $V_{diff}$ 如图6-21所示，可表示成 $$ V_{diff} = V_{in} - V_f $$
+因为负反馈和高开环增益 $A_{cl}$,输入差分电压非常小。所以，有 $$ V_{in} ≈ V_f $$
+代入可得： $$ V_{in} ≈ BV_{out} $$ 重整理得： $$ \frac{V_{out}}{V_{in}} ≈ \frac{1}{B} $$ 反馈系数由分压网络中的 $R_i$ 与 $R_f$ 决定。对反馈网络使用分压定律，可以从输出电压 $V_{out}$ 中计算得到返回到输入端的部分电压。 $$ V_{in} ≈ BV_{out} ≈ (\frac{R_i}{R_i &#43; R_f})V_{out} $$ 重整理得： $$ \frac{V_{out}}{V_{in}} ≈ (\frac{R_i &#43; R_f}{R_i}) $$ 可表示成： $$ A_{cl(NI)} = \frac{R_f}{R_i} &#43; 1 $$ $$ (式子6-6) $$ 上式子表明同相(NI)放大器的闭环电压增益 $A_{cl(NI)}$ 与运放的开环增益无关，但可通过选择 $R_i$ 与 $R_f$ 的值来设置。此公式基于一个假设，即开环增益与反馈电阻比值相比非常大，使得输人差分电压 $V_{diff}$ 很小。在几乎所有的实际电路中，这都是极好的假设。'><title>6.5负反馈运放组态</title>
+
+<link rel='canonical' href='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/6-5%E8%B4%9F%E5%8F%8D%E9%A6%88%E8%BF%90%E6%94%BE%E7%BB%84%E6%80%81/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='6.5负反馈运放组态'>
+<meta property='og:description' content='本节将讨论三种利用负反馈稳定增益并增强频率响应的运放连接方式。如前所述，运放的极高开环增益会造成不稳定的情况，因为输入端的小噪声信号能被放大到使运放超出线性区工作。也可能发生不希望的振荡。此外，不同运放器件的开环增益参数可能会相差很大。负反馈将输出的一部分以与输入信号反相的方式返回输入端，能有效减小增益。闭环增益通常远小于开环增益，并与它无关。 学完本节后，你应该掌握以下内容:
+分析三种运放电路组态
+认识同相放大器组态
+确定同相放大器的电压增益
+认识电压跟随器
+认识反相放大器组态
+确定反相放大器的电压增益
+6.5.1 闭环电压增益 $A_{cl}$ 闭环电压增益是带有负反馈的运放的电压增益。放大器电路包括运放和一个外部反馈网络，它将输出与反相输人端相连。那么闭环电压增益由反馈网络的元器件值决定，并能由它们精确控制。
+6.5.2 同相放大器 图6-20所示是运放的一种闭环连接，称为同相放大器。输入信号加到同相(＋)输入端。输出的一部分通过反馈网络加到反相(一)输人端。这构成了负反馈。反馈系数B是返回反相输入端的输出电压的比例，它决定了放大器的增益，正如你将要看到的。反馈电压 $V_f$，可以写为
+$$ V_f = BV_{out} $$
+运放输入端之间的差分电压 $V_{diff}$ 如图6-21所示，可表示成 $$ V_{diff} = V_{in} - V_f $$
+因为负反馈和高开环增益 $A_{cl}$,输入差分电压非常小。所以，有 $$ V_{in} ≈ V_f $$
+代入可得： $$ V_{in} ≈ BV_{out} $$ 重整理得： $$ \frac{V_{out}}{V_{in}} ≈ \frac{1}{B} $$ 反馈系数由分压网络中的 $R_i$ 与 $R_f$ 决定。对反馈网络使用分压定律，可以从输出电压 $V_{out}$ 中计算得到返回到输入端的部分电压。 $$ V_{in} ≈ BV_{out} ≈ (\frac{R_i}{R_i &#43; R_f})V_{out} $$ 重整理得： $$ \frac{V_{out}}{V_{in}} ≈ (\frac{R_i &#43; R_f}{R_i}) $$ 可表示成： $$ A_{cl(NI)} = \frac{R_f}{R_i} &#43; 1 $$ $$ (式子6-6) $$ 上式子表明同相(NI)放大器的闭环电压增益 $A_{cl(NI)}$ 与运放的开环增益无关，但可通过选择 $R_i$ 与 $R_f$ 的值来设置。此公式基于一个假设，即开环增益与反馈电阻比值相比非常大，使得输人差分电压 $V_{diff}$ 很小。在几乎所有的实际电路中，这都是极好的假设。'>
+<meta property='og:url' content='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/6-5%E8%B4%9F%E5%8F%8D%E9%A6%88%E8%BF%90%E6%94%BE%E7%BB%84%E6%80%81/'>
+<meta property='og:site_name' content='My Blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Analog' /><meta property='article:published_time' content='2023-07-14T18:15:27&#43;08:00'/><meta property='article:modified_time' content='2023-07-14T18:15:27&#43;08:00'/>
+<meta name="twitter:title" content="6.5负反馈运放组态">
+<meta name="twitter:description" content="本节将讨论三种利用负反馈稳定增益并增强频率响应的运放连接方式。如前所述，运放的极高开环增益会造成不稳定的情况，因为输入端的小噪声信号能被放大到使运放超出线性区工作。也可能发生不希望的振荡。此外，不同运放器件的开环增益参数可能会相差很大。负反馈将输出的一部分以与输入信号反相的方式返回输入端，能有效减小增益。闭环增益通常远小于开环增益，并与它无关。 学完本节后，你应该掌握以下内容:
+分析三种运放电路组态
+认识同相放大器组态
+确定同相放大器的电压增益
+认识电压跟随器
+认识反相放大器组态
+确定反相放大器的电压增益
+6.5.1 闭环电压增益 $A_{cl}$ 闭环电压增益是带有负反馈的运放的电压增益。放大器电路包括运放和一个外部反馈网络，它将输出与反相输人端相连。那么闭环电压增益由反馈网络的元器件值决定，并能由它们精确控制。
+6.5.2 同相放大器 图6-20所示是运放的一种闭环连接，称为同相放大器。输入信号加到同相(＋)输入端。输出的一部分通过反馈网络加到反相(一)输人端。这构成了负反馈。反馈系数B是返回反相输入端的输出电压的比例，它决定了放大器的增益，正如你将要看到的。反馈电压 $V_f$，可以写为
+$$ V_f = BV_{out} $$
+运放输入端之间的差分电压 $V_{diff}$ 如图6-21所示，可表示成 $$ V_{diff} = V_{in} - V_f $$
+因为负反馈和高开环增益 $A_{cl}$,输入差分电压非常小。所以，有 $$ V_{in} ≈ V_f $$
+代入可得： $$ V_{in} ≈ BV_{out} $$ 重整理得： $$ \frac{V_{out}}{V_{in}} ≈ \frac{1}{B} $$ 反馈系数由分压网络中的 $R_i$ 与 $R_f$ 决定。对反馈网络使用分压定律，可以从输出电压 $V_{out}$ 中计算得到返回到输入端的部分电压。 $$ V_{in} ≈ BV_{out} ≈ (\frac{R_i}{R_i &#43; R_f})V_{out} $$ 重整理得： $$ \frac{V_{out}}{V_{in}} ≈ (\frac{R_i &#43; R_f}{R_i}) $$ 可表示成： $$ A_{cl(NI)} = \frac{R_f}{R_i} &#43; 1 $$ $$ (式子6-6) $$ 上式子表明同相(NI)放大器的闭环电压增益 $A_{cl(NI)}$ 与运放的开环增益无关，但可通过选择 $R_i$ 与 $R_f$ 的值来设置。此公式基于一个假设，即开环增益与反馈电阻比值相比非常大，使得输人差分电压 $V_{diff}$ 很小。在几乎所有的实际电路中，这都是极好的假设。"><script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+    </head>
+    <body class="
+    article-page has-toc
+">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex 
+    
+        extended
+    
+">
+    
+        <div id="article-toolbar">
+            <a href="/" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+                <span>Back</span>
+            </a>
+        </div>
+    
+<main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+
+    <h2 class="article-title">
+        <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/6-5%E8%B4%9F%E5%8F%8D%E9%A6%88%E8%BF%90%E6%94%BE%E7%BB%84%E6%80%81/">6.5负反馈运放组态</a>
+    </h2>
+
+    
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jul 14, 2023</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+</div>
+</header>
+
+    <section class="article-content">
+    <p>本节将讨论三种利用负反馈稳定增益并增强频率响应的运放连接方式。如前所述，<code>运放的极高开环增益会造成不稳定的情况，因为输入端的小噪声信号能被放大到使运放超出线性区工作</code>。也可能发生不希望的振荡。此外，不同运放器件的开环增益参数可能会相差很大。负反馈将输出的一部分以与输入信号反相的方式返回输入端，能有效减小增益。闭环增益通常远小于开环增益，并与它无关。
+学完本节后，你应该掌握以下内容:</p>
+<ul>
+<li>
+<p>分析三种运放电路组态</p>
+<ul>
+<li>
+<p>认识同相放大器组态</p>
+</li>
+<li>
+<p>确定同相放大器的电压增益</p>
+</li>
+<li>
+<p>认识电压跟随器</p>
+</li>
+<li>
+<p>认识反相放大器组态</p>
+</li>
+<li>
+<p>确定反相放大器的电压增益</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="651-闭环电压增益-a_cl">6.5.1 闭环电压增益 $A_{cl}$</h3>
+<p>闭环电压增益是带有负反馈的运放的电压增益。放大器电路包括运放和一个外部反馈网络，它将输出与反相输人端相连。那么闭环电压增益由反馈网络的元器件值决定，并能由它们精确控制。</p>
+<h3 id="652-同相放大器">6.5.2 同相放大器</h3>
+<p>图6-20所示是运放的一种闭环连接，称为同相放大器。输入信号加到同相(＋)输入端。输出的一部分通过反馈网络加到反相(一)输人端。这构成了负反馈。反馈系数B是返回反相输入端的输出电压的比例，它决定了放大器的增益，正如你将要看到的。反馈电压 $V_f$，可以写为</p>
+<p>$$
+V_f = BV_{out}
+$$</p>
+<p><img src="https://s2.loli.net/2023/09/02/B8Mpr63eSoRPA7W.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="图6-20"
+	
+	
+></p>
+<p>运放输入端之间的差分电压 $V_{diff}$ 如图6-21所示，可表示成
+$$
+V_{diff} = V_{in} - V_f
+$$</p>
+<p><img src="https://s2.loli.net/2023/09/02/9vMzDVSCgNPTRBG.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="图6-21"
+	
+	
+></p>
+<p>因为负反馈和高开环增益 $A_{cl}$,输入差分电压非常小。所以，有
+$$
+V_{in} ≈ V_f
+$$</p>
+<p>代入可得：
+$$
+V_{in} ≈ BV_{out}
+$$
+重整理得：
+$$
+\frac{V_{out}}{V_{in}} ≈ \frac{1}{B}
+$$
+反馈系数由分压网络中的 $R_i$ 与 $R_f$ 决定。对反馈网络使用分压定律，可以从输出电压 $V_{out}$ 中计算得到返回到输入端的部分电压。
+$$
+V_{in} ≈ BV_{out} ≈ (\frac{R_i}{R_i + R_f})V_{out}
+$$
+重整理得：
+$$
+\frac{V_{out}}{V_{in}} ≈ (\frac{R_i + R_f}{R_i})
+$$
+可表示成：
+$$
+A_{cl(NI)} = \frac{R_f}{R_i} + 1
+$$
+$$
+(式子6-6)
+$$
+上式子表明同相(NI)放大器的闭环电压增益 $A_{cl(NI)}$ 与运放的开环增益无关，但可通过选择 $R_i$ 与 $R_f$ 的值来设置。此公式基于一个假设，即开环增益与反馈电阻比值相比非常大，使得输人差分电压 $V_{diff}$ 很小。在几乎所有的实际电路中，这都是极好的假设。</p>
+<p>在极少情况下需要更精确的方程，输出电压可表示为
+$$
+V_{out} = V_{in}(\frac{A_{cl}}{1 + A_{cl}B})
+$$</p>
+<p>下式给出了闭环增益的精确值:
+$$
+A_{cl(NI)} = \frac{V_{out}}{V_{in}} = (\frac{A_{cl}}{1 + A_{cl}B})
+$$</p>
+<p><strong>电压跟随器</strong> 电压跟随器电路是一种特殊的同相放大器，其中输出电压直接连接到反相输人端，如<code>图6-23</code>所示。可以看到，直接反馈连接的电压增益接近于1。之前已经推导出，同相放大器的闭环电压增益为 1/B 。因为 B=1，所以电压跟随器的闭环增益为:
+$$
+A_{cl(VF)} = 1
+$$
+$$
+(式子6-7)
+$$
+电压跟随器最重要的特性是输入阻抗非常高，输出阻抗非常低。这样的特性使得它是一个近乎理想的缓冲放大器，能连接高阻抗源与低阻抗负载。这将在6.6节进一步讨论。</p>
+<p><img src="https://s2.loli.net/2023/09/02/gkKbeNJsElUVBqT.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="图6-23"
+	
+	
+></p>
+<h3 id="653-反向放大器">6.5.3 反向放大器</h3>
+<p><img src="https://s2.loli.net/2023/09/02/Nu2U5GObnEzJiZ8.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="图6-24"
+	
+	
+>
+图6-24所示为一个运放连接成的电压增益可控的反相放大器。输入信号通过串联输入电阻($R_i$)加到反相输人端。同时，输出通过 $R_f$反馈回到反相输入端。同相输人端接地。</p>
+<p>此时，之前学习的理想运放参数可用于简化电路分析。特别是无穷大输入阻抗的概念很重要。无穷大输入阻抗说明反相输入端没有电流输出。如果没有电流流过输入阻抗，那么同相与反相输入端之间就没有压降。这意味着反相(一)输入端的电压为0，因为同相(＋)输人端接地。反相输人端的零电压称为虚地。此情况如图6-25a所示。
+<img src="https://s2.loli.net/2023/09/02/Dyj8g2TaOAMPHkt.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="图6-25a"
+	
+	
+></p>
+<p>由于<code>反相输入端(-)</code>没有电流，因此流过$R_i$与$R_f$的电流相等，如图6-25b所示。
+<img src="https://s2.loli.net/2023/09/02/5KvRibsAqVwkMTO.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="图6-25b"
+	
+	
+></p>
+<p>$R_i$ 两端的电压等于 $V_{in}$，因为电阻的另一端为虚地。因此，
+$$
+I_{in} = \frac{V_{in}}{R_i}
+$$
+同时，因为虚地，$R_f$两端电压等于 $-V_{out}$，因而,
+$$
+I_f = \frac{-V_{out}}{R_f}
+$$
+因为 $I_f = I_{in}$,所以
+$$
+\frac{-V_{out}}{R_f} = \frac{V_{in}}{R_i}
+$$
+整理的
+$$
+\frac{V_{out}}{V_{in}} = -\frac{V_f}{R_i}
+$$
+$V_{out}/V_{in}$ 就是反相放大器的总增益。</p>
+<p>$$
+A_{cl(I)} = -\frac{R_f}{R_i}
+$$</p>
+<p>$$
+(式子6-8)
+$$
+式(6-8)表明反相放大器的闭环电压增益 $A_{cl}$ 是反馈电阻 $R_f$ 与输人电阻 $R_i$ 的比值。<code>闭环增益与运放的内部开环增益无关</code>。因此，负反馈稳定了电压增益。负号表明反相。</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/analog/">Analog</a>
+        
+    </section>
+
+
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css"integrity="sha384-RZU/ijkSsFbcmivfdRBQDtwuwVqK7GMOw6IMvKyeWL2K5UAlyp6WonmB8m7Jd0Hn"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js"integrity="sha384-pK1WpvzWVBQiP0/GjnvRxV4mOb0oxFuyRxJlk6vVw146n3egcN5C925NCP7a7BY8"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js"integrity="sha384-vZTG03m&#43;2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ]
+        });})
+</script>
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">Related contents</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/2-3%E5%8D%8A%E5%AF%BC%E4%BD%93%E4%BA%8C%E6%9E%81%E7%AE%A1%E7%9A%84%E5%81%8F%E7%BD%AE/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">2.3半导体二极管的偏置</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/2-2pn%E7%BB%93/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">2.2pn结</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/2-1%E5%8D%8A%E5%AF%BC%E4%BD%93%E5%8E%9F%E5%AD%90%E7%BB%93%E6%9E%84/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">2.1半导体原子结构</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/1-4%E6%94%BE%E5%A4%A7%E5%99%A8/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">1.4放大器</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/1-3%E4%BF%A1%E5%8F%B7%E6%BA%90/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">1.3信号源</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+     
+    
+        
+    <div id="cusdis_thread"
+    data-host="https://cusdis.com"
+    data-app-id="d44db3f9-a0ff-4551-a44d-316afd2e5835"
+    data-page-id="d8b288ff4f734b7a27f2281cff15aa2c"
+    data-page-url="https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/6-5%E8%B4%9F%E5%8F%8D%E9%A6%88%E8%BF%90%E6%94%BE%E7%BB%84%E6%80%81/"
+    data-page-title="6.5负反馈运放组态"></div>
+<script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
+
+<script>
+    function setCusdisTheme(theme) {
+        let cusdis = document.querySelector('#cusdis_thread iframe');
+        if (cusdis) {
+            window.CUSDIS.setTheme(theme)
+        }
+    }
+
+    window.addEventListener('onColorSchemeChange', (e) => {
+        setCusdisTheme(e.detail)
+    })
+</script>
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2023 My Blog
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.5.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+
+            </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">Table of contents</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#651-闭环电压增益-a_cl">6.5.1 闭环电压增益 $A_{cl}$</a></li>
+        <li><a href="#652-同相放大器">6.5.2 同相放大器</a></li>
+        <li><a href="#653-反向放大器">6.5.3 反向放大器</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                </div>
+            </section>
+        </aside>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

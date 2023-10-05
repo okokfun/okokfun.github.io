@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='之前的章节讨论了晶体管作为线性放大器的应用，其另一个主要应用是在数字系统中作为开关。最初数字电路的大规模应用是在电话系统中。现在，计算机成为使用集成电路(IC)的开关电路的最重要应用领域。当需要提供比从 IC 上能够获得的更高的电流或者需要在不同的电压下工作时，会使用分立晶体管开关电路。
+学完本节后，你应该掌握以下内容:
+解释怎样将晶体管用作开关 计算晶体管开关的饱和电流 解释一个具有迟滞的晶体管开关电路如何改变状态 $$ a)截止&amp;mdash;-打开的开关 $$ $$ b)饱和——闭合的开关 $$ $$ 图3-45~~~~晶体管的理想开关特性 $$ 图3-45说明了晶体管用作开关的基本工作原理。开关是具有打开或关闭两种状态的设备。在图3-45a中，晶体管处于截止状态，因为发射结没有正向偏置。在该状态下，集电极和发射极之间理想情况下为开路，可以用一个打开的开关来等效。在3-45b中，晶体管处于饱和状态，因为发射结正向偏置，并且基极电流大到足以使集电极电流达到其饱和值。在该状态下，集电极和发射极之间理想情况下为短路，可以等效为闭合的开关。实际上，当处于饱和状态时，晶体管上一般会有一个几十分之一伏大小的压降。
+3.7.1截止状态 如前所述，当发射结没有正向偏置时，晶体管处于截止状态。忽略泄漏电流，总电流为零，$V_{CE}$等于 $V_{CC}$. $$ V_{CE(cutoff)}=V_{CC} $$
+3.7.2饱和状态 当发射结正向偏置且有足够的基极电流来产生最大集电极电流时，晶体管处于饱和状态。因为 $V_{CE}$ 在饱和状态下非常小，所以整个电源电压都作用在集电极电阻上。集电极电流近似为 $$ I_{C(sat)}\approx \frac{V_{CC}}{R_C} $$ 能够产生饱和的最小基极电流为 $$ I_{B(min)}\approx \frac{I_{C(sat)}}{\beta_{DC}} $$ $I_B$ 应该远大于 $I_{B(min)}$ 才能使晶体管较好地保持在饱和状态，而且满足不同晶体管的不同 $\beta$ 值。
+3.7.3单晶体管开关电路的改进 $$ 图3-47~~~具有陡门限的两晶体管开关电路 $$ 图3-45所示的基本开关电路通过门限电压控制其工作状态从开到关或从关到开变化。遗憾的是，该门限并不是一个绝对点﹐因为晶体管能够在截止和饱和之间的状态工作,这种状态在开关电路中是不希望出现的。加入第二个晶体管可以显著改善开关动作，提供一个更陡的门限电压。该电路如图 3-47 所示，其中用发光二极管(LED)作为输出显示，这样就可以观察开关行为了。该电路工作状况如下。当 $V_{IN}$ 很小时，因为电路并不能提供足够的基极电流，所以 $Q_1$ 截止。 $Q_2$ 处于饱和状态，因为它能够通过 $R_2$ 获得足够的基极电流，并且LED会发光。随着 $Q_1$ 基极电压增大， $Q_1$ 开始导通。当 $Q_1$ 接近饱和时， $Q_2$ 基极电压突然下降，导致它迅速从饱和状态切换到截止状态。 $Q_2$ 的输出电压降低，LED灭掉。
+$$ 图3-48~~~迟滞导致电路在C点和E点发生变换，在其他各点不发生变换 $$ 基本切换电路的另一个改进是增加迟滞。对开关电路而言,迟滞意味着有两个门限电压值,这取决于输出电压是高还是低。图3-48说明了这种情况。当输入电压增大时，它必须跨过上门限值才能使开关发生切换动作。它不会在 A 点或 B 点发生切换，因为下门限不起作用。当信号在 C 点跨过上门限时，输出发生切换，门限也瞬间变为小的阈值。输出并没有在 D 点切换回来，而是必须跨过 E 点的下门限才能返回最初的状态。再一次，因为门限值切换到上门限值，所以在 F 点并不会发生开关动作。开关电路中迟滞的主要优点在于其抗噪能力。从本例中可以看出，尽管输入噪声很强，但是输出仅改变了两次。'><title>3.7开关型双极型晶体管</title>
+
+<link rel='canonical' href='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/3-7%E5%BC%80%E5%85%B3%E5%9E%8B%E5%8F%8C%E6%9E%81%E5%9E%8B%E6%99%B6%E4%BD%93%E7%AE%A1/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='3.7开关型双极型晶体管'>
+<meta property='og:description' content='之前的章节讨论了晶体管作为线性放大器的应用，其另一个主要应用是在数字系统中作为开关。最初数字电路的大规模应用是在电话系统中。现在，计算机成为使用集成电路(IC)的开关电路的最重要应用领域。当需要提供比从 IC 上能够获得的更高的电流或者需要在不同的电压下工作时，会使用分立晶体管开关电路。
+学完本节后，你应该掌握以下内容:
+解释怎样将晶体管用作开关 计算晶体管开关的饱和电流 解释一个具有迟滞的晶体管开关电路如何改变状态 $$ a)截止&amp;mdash;-打开的开关 $$ $$ b)饱和——闭合的开关 $$ $$ 图3-45~~~~晶体管的理想开关特性 $$ 图3-45说明了晶体管用作开关的基本工作原理。开关是具有打开或关闭两种状态的设备。在图3-45a中，晶体管处于截止状态，因为发射结没有正向偏置。在该状态下，集电极和发射极之间理想情况下为开路，可以用一个打开的开关来等效。在3-45b中，晶体管处于饱和状态，因为发射结正向偏置，并且基极电流大到足以使集电极电流达到其饱和值。在该状态下，集电极和发射极之间理想情况下为短路，可以等效为闭合的开关。实际上，当处于饱和状态时，晶体管上一般会有一个几十分之一伏大小的压降。
+3.7.1截止状态 如前所述，当发射结没有正向偏置时，晶体管处于截止状态。忽略泄漏电流，总电流为零，$V_{CE}$等于 $V_{CC}$. $$ V_{CE(cutoff)}=V_{CC} $$
+3.7.2饱和状态 当发射结正向偏置且有足够的基极电流来产生最大集电极电流时，晶体管处于饱和状态。因为 $V_{CE}$ 在饱和状态下非常小，所以整个电源电压都作用在集电极电阻上。集电极电流近似为 $$ I_{C(sat)}\approx \frac{V_{CC}}{R_C} $$ 能够产生饱和的最小基极电流为 $$ I_{B(min)}\approx \frac{I_{C(sat)}}{\beta_{DC}} $$ $I_B$ 应该远大于 $I_{B(min)}$ 才能使晶体管较好地保持在饱和状态，而且满足不同晶体管的不同 $\beta$ 值。
+3.7.3单晶体管开关电路的改进 $$ 图3-47~~~具有陡门限的两晶体管开关电路 $$ 图3-45所示的基本开关电路通过门限电压控制其工作状态从开到关或从关到开变化。遗憾的是，该门限并不是一个绝对点﹐因为晶体管能够在截止和饱和之间的状态工作,这种状态在开关电路中是不希望出现的。加入第二个晶体管可以显著改善开关动作，提供一个更陡的门限电压。该电路如图 3-47 所示，其中用发光二极管(LED)作为输出显示，这样就可以观察开关行为了。该电路工作状况如下。当 $V_{IN}$ 很小时，因为电路并不能提供足够的基极电流，所以 $Q_1$ 截止。 $Q_2$ 处于饱和状态，因为它能够通过 $R_2$ 获得足够的基极电流，并且LED会发光。随着 $Q_1$ 基极电压增大， $Q_1$ 开始导通。当 $Q_1$ 接近饱和时， $Q_2$ 基极电压突然下降，导致它迅速从饱和状态切换到截止状态。 $Q_2$ 的输出电压降低，LED灭掉。
+$$ 图3-48~~~迟滞导致电路在C点和E点发生变换，在其他各点不发生变换 $$ 基本切换电路的另一个改进是增加迟滞。对开关电路而言,迟滞意味着有两个门限电压值,这取决于输出电压是高还是低。图3-48说明了这种情况。当输入电压增大时，它必须跨过上门限值才能使开关发生切换动作。它不会在 A 点或 B 点发生切换，因为下门限不起作用。当信号在 C 点跨过上门限时，输出发生切换，门限也瞬间变为小的阈值。输出并没有在 D 点切换回来，而是必须跨过 E 点的下门限才能返回最初的状态。再一次，因为门限值切换到上门限值，所以在 F 点并不会发生开关动作。开关电路中迟滞的主要优点在于其抗噪能力。从本例中可以看出，尽管输入噪声很强，但是输出仅改变了两次。'>
+<meta property='og:url' content='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/3-7%E5%BC%80%E5%85%B3%E5%9E%8B%E5%8F%8C%E6%9E%81%E5%9E%8B%E6%99%B6%E4%BD%93%E7%AE%A1/'>
+<meta property='og:site_name' content='My Blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Analog' /><meta property='article:published_time' content='2023-07-14T17:36:19&#43;00:00'/><meta property='article:modified_time' content='2023-07-14T17:36:19&#43;00:00'/>
+<meta name="twitter:title" content="3.7开关型双极型晶体管">
+<meta name="twitter:description" content="之前的章节讨论了晶体管作为线性放大器的应用，其另一个主要应用是在数字系统中作为开关。最初数字电路的大规模应用是在电话系统中。现在，计算机成为使用集成电路(IC)的开关电路的最重要应用领域。当需要提供比从 IC 上能够获得的更高的电流或者需要在不同的电压下工作时，会使用分立晶体管开关电路。
+学完本节后，你应该掌握以下内容:
+解释怎样将晶体管用作开关 计算晶体管开关的饱和电流 解释一个具有迟滞的晶体管开关电路如何改变状态 $$ a)截止&amp;mdash;-打开的开关 $$ $$ b)饱和——闭合的开关 $$ $$ 图3-45~~~~晶体管的理想开关特性 $$ 图3-45说明了晶体管用作开关的基本工作原理。开关是具有打开或关闭两种状态的设备。在图3-45a中，晶体管处于截止状态，因为发射结没有正向偏置。在该状态下，集电极和发射极之间理想情况下为开路，可以用一个打开的开关来等效。在3-45b中，晶体管处于饱和状态，因为发射结正向偏置，并且基极电流大到足以使集电极电流达到其饱和值。在该状态下，集电极和发射极之间理想情况下为短路，可以等效为闭合的开关。实际上，当处于饱和状态时，晶体管上一般会有一个几十分之一伏大小的压降。
+3.7.1截止状态 如前所述，当发射结没有正向偏置时，晶体管处于截止状态。忽略泄漏电流，总电流为零，$V_{CE}$等于 $V_{CC}$. $$ V_{CE(cutoff)}=V_{CC} $$
+3.7.2饱和状态 当发射结正向偏置且有足够的基极电流来产生最大集电极电流时，晶体管处于饱和状态。因为 $V_{CE}$ 在饱和状态下非常小，所以整个电源电压都作用在集电极电阻上。集电极电流近似为 $$ I_{C(sat)}\approx \frac{V_{CC}}{R_C} $$ 能够产生饱和的最小基极电流为 $$ I_{B(min)}\approx \frac{I_{C(sat)}}{\beta_{DC}} $$ $I_B$ 应该远大于 $I_{B(min)}$ 才能使晶体管较好地保持在饱和状态，而且满足不同晶体管的不同 $\beta$ 值。
+3.7.3单晶体管开关电路的改进 $$ 图3-47~~~具有陡门限的两晶体管开关电路 $$ 图3-45所示的基本开关电路通过门限电压控制其工作状态从开到关或从关到开变化。遗憾的是，该门限并不是一个绝对点﹐因为晶体管能够在截止和饱和之间的状态工作,这种状态在开关电路中是不希望出现的。加入第二个晶体管可以显著改善开关动作，提供一个更陡的门限电压。该电路如图 3-47 所示，其中用发光二极管(LED)作为输出显示，这样就可以观察开关行为了。该电路工作状况如下。当 $V_{IN}$ 很小时，因为电路并不能提供足够的基极电流，所以 $Q_1$ 截止。 $Q_2$ 处于饱和状态，因为它能够通过 $R_2$ 获得足够的基极电流，并且LED会发光。随着 $Q_1$ 基极电压增大， $Q_1$ 开始导通。当 $Q_1$ 接近饱和时， $Q_2$ 基极电压突然下降，导致它迅速从饱和状态切换到截止状态。 $Q_2$ 的输出电压降低，LED灭掉。
+$$ 图3-48~~~迟滞导致电路在C点和E点发生变换，在其他各点不发生变换 $$ 基本切换电路的另一个改进是增加迟滞。对开关电路而言,迟滞意味着有两个门限电压值,这取决于输出电压是高还是低。图3-48说明了这种情况。当输入电压增大时，它必须跨过上门限值才能使开关发生切换动作。它不会在 A 点或 B 点发生切换，因为下门限不起作用。当信号在 C 点跨过上门限时，输出发生切换，门限也瞬间变为小的阈值。输出并没有在 D 点切换回来，而是必须跨过 E 点的下门限才能返回最初的状态。再一次，因为门限值切换到上门限值，所以在 F 点并不会发生开关动作。开关电路中迟滞的主要优点在于其抗噪能力。从本例中可以看出，尽管输入噪声很强，但是输出仅改变了两次。"><script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+    </head>
+    <body class="
+    article-page has-toc
+">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex 
+    
+        extended
+    
+">
+    
+        <div id="article-toolbar">
+            <a href="/" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+                <span>Back</span>
+            </a>
+        </div>
+    
+<main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+
+    <h2 class="article-title">
+        <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/3-7%E5%BC%80%E5%85%B3%E5%9E%8B%E5%8F%8C%E6%9E%81%E5%9E%8B%E6%99%B6%E4%BD%93%E7%AE%A1/">3.7开关型双极型晶体管</a>
+    </h2>
+
+    
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jul 14, 2023</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+</div>
+</header>
+
+    <section class="article-content">
+    <p>之前的章节讨论了<code>晶体管作为线性放大器的应用</code>，其<code>另一个主要应用是在数字系统中作为开关</code>。最初数字电路的大规模应用是在电话系统中。现在，计算机成为使用<code>集成电路(IC)</code>的开关电路的最重要应用领域。<code>当需要提供比从 IC 上能够获得的更高的电流或者需要在不同的电压下工作时，会使用分立晶体管开关电路</code>。</p>
+<p>学完本节后，你应该掌握以下内容:</p>
+<ul>
+<li>解释怎样将晶体管用作开关
+<ul>
+<li>计算晶体管开关的饱和电流</li>
+<li>解释一个具有<code>迟滞的晶体管开关电路</code>如何改变状态</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://s2.loli.net/2023/10/05/cuShEKnqe7Xw6zW.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog3_44a.png"
+	
+	
+>
+$$
+a)截止&mdash;-打开的开关
+$$
+<img src="https://s2.loli.net/2023/10/05/bsYrSLe7hy9wujN.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog3_44b.png"
+	
+	
+>
+$$
+b)饱和——闭合的开关
+$$
+$$
+图3-45~~~~晶体管的理想开关特性
+$$
+图3-45说明了晶体管用作开关的基本工作原理。开关是具有打开或关闭两种状态的设备。在图3-45a中，晶体管处于截止状态，因为发射结没有正向偏置。在该状态下，集电极和发射极之间理想情况下为开路，可以用一个打开的开关来等效。在3-45b中，晶体管处于饱和状态，因为发射结正向偏置，并且基极电流大到足以使集电极电流达到其饱和值。在该状态下，集电极和发射极之间理想情况下为短路，可以等效为闭合的开关。实际上，当处于饱和状态时，晶体管上一般会有一个几十分之一伏大小的压降。</p>
+<h3 id="371截止状态">3.7.1截止状态</h3>
+<p>如前所述，当发射结没有正向偏置时，晶体管处于截止状态。<strong>忽略泄漏电流，总电流为零，$V_{CE}$等于 $V_{CC}$</strong>.
+$$
+V_{CE(cutoff)}=V_{CC}
+$$</p>
+<h3 id="372饱和状态">3.7.2饱和状态</h3>
+<p>当发射结正向偏置且有足够的基极电流来产生最大集电极电流时，晶体管处于饱和状态。<strong>因为 $V_{CE}$ 在饱和状态下非常小，所以整个电源电压都作用在集电极电阻上</strong>。集电极电流近似为
+$$
+I_{C(sat)}\approx \frac{V_{CC}}{R_C}
+$$
+能够产生饱和的最小基极电流为
+$$
+I_{B(min)}\approx \frac{I_{C(sat)}}{\beta_{DC}}
+$$
+$I_B$ 应该远大于 $I_{B(min)}$ 才能使晶体管较好地保持在饱和状态，而且满足不同晶体管的不同 $\beta$ 值。</p>
+<h3 id="373单晶体管开关电路的改进">3.7.3单晶体管开关电路的改进</h3>
+<p><img src="https://s2.loli.net/2023/10/05/o1iKf9gCDF7Pekj.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog3_47.png"
+	
+	
+>
+$$
+图3-47~~~具有陡门限的两晶体管开关电路
+$$
+图3-45所示的基本开关电路通过门限电压控制其工作状态从开到关或从关到开变化。遗憾的是，该门限并不是一个绝对点﹐<code>因为晶体管能够在截止和饱和之间的状态工作,这种状态在开关电路中是不希望出现的</code>。加入第二个晶体管可以显著改善开关动作，提供一个更陡的门限电压。该电路如图 3-47 所示，其中用发光二极管(LED)作为输出显示，这样就可以观察开关行为了。该电路工作状况如下。当 $V_{IN}$ 很小时，因为电路并不能提供足够的基极电流，所以 $Q_1$ 截止。 $Q_2$ 处于饱和状态，因为它能够通过 $R_2$ 获得足够的基极电流，并且LED会发光。随着 $Q_1$ 基极电压增大， $Q_1$ 开始导通。当 $Q_1$ 接近饱和时， $Q_2$ 基极电压突然下降，导致它迅速从饱和状态切换到截止状态。 $Q_2$ 的输出电压降低，LED灭掉。</p>
+<p><img src="https://s2.loli.net/2023/10/05/jRWfiAnXIreBacu.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog3_48.png"
+	
+	
+>
+$$
+图3-48~~~迟滞导致电路在C点和E点发生变换，在其他各点不发生变换
+$$
+<code>基本切换电路的另一个改进是增加迟滞。对开关电路而言,迟滞意味着有两个门限电压值,这取决于输出电压是高还是低</code>。图3-48说明了这种情况。当输入<code>电压增大</code>时，它必须跨过上门限值才能使开关发生切换动作。它不会在 A 点或 B 点发生切换，因为下门限不起作用。当信号在 C 点跨过上门限时，输出发生切换，门限也瞬间变为小的阈值。输出并没有在 D 点切换回来，而是必须跨过 E 点的下门限才能返回最初的状态。再一次，因为门限值切换到上门限值，所以在 F 点并不会发生开关动作。开关电路中迟滞的主要优点在于其抗噪能力。从本例中可以看出，尽管输入噪声很强，但是输出仅改变了两次。</p>
+<p><img src="https://s2.loli.net/2023/10/05/4IAdrB37GpzZXDa.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog3_49.png"
+	
+	
+>
+$$
+图3-49~~~具有迟滞的分立晶体管开关电路
+$$
+图3-49给出了具有迟滞的晶体管电路图。随着电位计往一个方向调整，输出会切换一次，即使电位计具有噪声。当输出切换时，共发射极电阻 $R_E$ 使门限电压发生改变。这由两个晶体管不同的饱和电流所引起。当输出处于截止和饱和状态时，会有不同的门限值。</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/analog/">Analog</a>
+        
+    </section>
+
+
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css"integrity="sha384-RZU/ijkSsFbcmivfdRBQDtwuwVqK7GMOw6IMvKyeWL2K5UAlyp6WonmB8m7Jd0Hn"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js"integrity="sha384-pK1WpvzWVBQiP0/GjnvRxV4mOb0oxFuyRxJlk6vVw146n3egcN5C925NCP7a7BY8"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js"integrity="sha384-vZTG03m&#43;2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ]
+        });})
+</script>
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">Related contents</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/3-6%E5%85%B1%E5%9F%BA%E6%9E%81%E6%94%BE%E5%A4%A7%E5%99%A8/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">3.6共基极放大器</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/3-5%E5%85%B1%E9%9B%86%E7%94%B5%E6%9E%81%E6%94%BE%E5%A4%A7%E5%99%A8/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">3.5共集电极放大器</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/3-4%E5%85%B1%E5%8F%91%E5%B0%84%E6%9E%81%E6%94%BE%E5%A4%A7%E5%99%A8/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">3.4共发射极放大器</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/3-3%E6%95%B0%E6%8D%AE%E6%89%8B%E5%86%8C%E4%B8%AD%E7%9A%84%E5%8F%82%E6%95%B0%E5%8F%8A%E4%BA%A4%E6%B5%81%E5%88%86%E6%9E%90/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">3.3数据手册中的参数及交流分析</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/3-2bjt%E5%81%8F%E7%BD%AE%E7%94%B5%E8%B7%AF/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">3.2BJT偏置电路</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+     
+    
+        
+    <div id="cusdis_thread"
+    data-host="https://cusdis.com"
+    data-app-id="d44db3f9-a0ff-4551-a44d-316afd2e5835"
+    data-page-id="5d825e8b62728fb1d46cae6584eae99a"
+    data-page-url="https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/3-7%E5%BC%80%E5%85%B3%E5%9E%8B%E5%8F%8C%E6%9E%81%E5%9E%8B%E6%99%B6%E4%BD%93%E7%AE%A1/"
+    data-page-title="3.7开关型双极型晶体管"></div>
+<script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
+
+<script>
+    function setCusdisTheme(theme) {
+        let cusdis = document.querySelector('#cusdis_thread iframe');
+        if (cusdis) {
+            window.CUSDIS.setTheme(theme)
+        }
+    }
+
+    window.addEventListener('onColorSchemeChange', (e) => {
+        setCusdisTheme(e.detail)
+    })
+</script>
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2023 My Blog
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.5.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+
+            </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">Table of contents</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#371截止状态">3.7.1截止状态</a></li>
+        <li><a href="#372饱和状态">3.7.2饱和状态</a></li>
+        <li><a href="#373单晶体管开关电路的改进">3.7.3单晶体管开关电路的改进</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                </div>
+            </section>
+        </aside>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

@@ -9,10 +9,10 @@
     <lastBuildDate>Mon, 31 Jan 2022 18:56:20 +0000</lastBuildDate><atom:link href="https://okokfun.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>设计模式准则</title>
-      <link>https://okokfun.github.io/post/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%87%86%E5%88%99/</link>
+      <link>https://okokfun.github.io/post/c&#43;&#43;/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%87%86%E5%88%99/</link>
       <pubDate>Mon, 31 Jan 2022 18:56:20 +0000</pubDate>
       
-      <guid>https://okokfun.github.io/post/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%87%86%E5%88%99/</guid>
+      <guid>https://okokfun.github.io/post/c&#43;&#43;/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%87%86%E5%88%99/</guid>
       <description>最终目的：高内聚，低耦合 1. 开放封闭原则 (OCP,Open For Extension, Closed For Modification Principle) 😎类的改动是通过增加代码进行的，而不是修改源代码。
 2. 单一职责原则 (SRP,Single Responsibility Principle) 类的职责要单一，对外只提供一种功能，而引起类变化的原因都应该只有一个。
 3. 依赖倒置原则 (DIP,Dependence Inversion Principle) 😎依赖于抽象(接口),不要依赖具体的实现(类)，也就是针对接口编程。
@@ -24,10 +24,10 @@
     
     <item>
       <title>C&#43;&#43;设计模式-行为模式</title>
-      <link>https://okokfun.github.io/post/c-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%A1%8C%E4%B8%BA%E6%A8%A1%E5%BC%8F/</link>
+      <link>https://okokfun.github.io/post/c&#43;&#43;/c-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%A1%8C%E4%B8%BA%E6%A8%A1%E5%BC%8F/</link>
       <pubDate>Mon, 03 Jan 2022 15:48:22 +0000</pubDate>
       
-      <guid>https://okokfun.github.io/post/c-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%A1%8C%E4%B8%BA%E6%A8%A1%E5%BC%8F/</guid>
+      <guid>https://okokfun.github.io/post/c&#43;&#43;/c-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%A1%8C%E4%B8%BA%E6%A8%A1%E5%BC%8F/</guid>
       <description>推荐看👉常用设计模式有哪些？ (refactoringguru.cn)
 观察者模式 观察者模式是一种行为设计模式， 允许你定义一种订阅机制， 可在对象事件发生时通知多个 “观察” 该对象的其他对象。
 适用场景:
@@ -41,10 +41,10 @@
     
     <item>
       <title>C&#43;&#43;设计模式-结构型模式</title>
-      <link>https://okokfun.github.io/post/c-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F/</link>
+      <link>https://okokfun.github.io/post/c&#43;&#43;/c-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F/</link>
       <pubDate>Mon, 03 Jan 2022 15:07:58 +0000</pubDate>
       
-      <guid>https://okokfun.github.io/post/c-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F/</guid>
+      <guid>https://okokfun.github.io/post/c&#43;&#43;/c-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F/</guid>
       <description>推荐看👉常用设计模式有哪些？ (refactoringguru.cn)
 代理模式 解释
 对真正要被访问的产品或类加以控制，并可以进行一些控制，把访问产品与代理进行映射，访问代理就相当于访问产品
@@ -67,10 +67,10 @@ class Subject { public: virtual void Request() const = 0; }; /** * The RealSubje
     
     <item>
       <title>C&#43;&#43;设计模式-创建型模式</title>
-      <link>https://okokfun.github.io/post/c-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%88%9B%E5%BB%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/</link>
+      <link>https://okokfun.github.io/post/c&#43;&#43;/c-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%88%9B%E5%BB%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/</link>
       <pubDate>Mon, 27 Dec 2021 13:48:06 +0000</pubDate>
       
-      <guid>https://okokfun.github.io/post/c-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%88%9B%E5%BB%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/</guid>
+      <guid>https://okokfun.github.io/post/c&#43;&#43;/c-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%88%9B%E5%BB%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/</guid>
       <description>推荐看👉常用设计模式有哪些？ (refactoringguru.cn)
 设计模式描述：
 用特定的套路解决现实问题，每一个设计模式对应一个法子

@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='是指任何携带信息的物理量，力、热、声、光、电等。
+1.2.1 模拟信号和数字信号 信号分为：离散信号和连续信号。离散信号可以只有几个值，连续信号可以无限细分下去。 离散和连续指信号的幅度，也可以指时间。
+采样和量化：
+​	采样：将模拟波形在时间域上进行切分，每个切片大小大致等于原来波形的值，会丢失一些信息。
+​	量化：给每个时间片分配一个数字，量化后的数字可以交给计算机或其它素质电路处理 1.2.2 周期信号 重复的波形称为周期性的，此周期信号有变化。
+周期(period, $T$)表示一个周期信号完成一个循环所需要的时间。周期(cycle)是指在波形呈现出另一个完全相同的图案之前波形的完整序列值。可以是在逐次循环的波形上任意两个相应点来测出周期。
+向量：既有大小又有方向的量。
+频率和周期：
+频率：每1s内完成的完整周期的个数，单位Hz
+周期：一个循环所经历的时间，单位s，所以周期的倒数就是频率，频率的倒数是周期
+$$ T = \frac{1}{f} $$
+和 $$ f = \frac{1}{T} $$ 正弦曲线的瞬时值： $$ v(t) = V_Psin(wt &#43; ⌀) $$ $V_p$
+正弦曲线的平均值： $$ V_{avg} = \frac{2V_P}{π} $$ 化简得： $$ V_{avg} = 0.637V_P $$ 电流平均值： $$ I_{avg} = 0.637I_p $$ 正弦曲线的有效值： $$ P = IV $$ 计算与直流电压电流产生相同的热效应时的交流电压、电流，通过积分可以求出等效的热量，称为方均根电压(rms)或者电流。
+方均根电压和峰值电压的关系： $$ V_{rms} = 0.707V_p $$ 方均根电流与有效电流的关系是： $$ I_{rms} = 0.'><title>1.2模拟信号</title>
+
+<link rel='canonical' href='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/1-2%E6%A8%A1%E6%8B%9F%E4%BF%A1%E5%8F%B7/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='1.2模拟信号'>
+<meta property='og:description' content='是指任何携带信息的物理量，力、热、声、光、电等。
+1.2.1 模拟信号和数字信号 信号分为：离散信号和连续信号。离散信号可以只有几个值，连续信号可以无限细分下去。 离散和连续指信号的幅度，也可以指时间。
+采样和量化：
+​	采样：将模拟波形在时间域上进行切分，每个切片大小大致等于原来波形的值，会丢失一些信息。
+​	量化：给每个时间片分配一个数字，量化后的数字可以交给计算机或其它素质电路处理 1.2.2 周期信号 重复的波形称为周期性的，此周期信号有变化。
+周期(period, $T$)表示一个周期信号完成一个循环所需要的时间。周期(cycle)是指在波形呈现出另一个完全相同的图案之前波形的完整序列值。可以是在逐次循环的波形上任意两个相应点来测出周期。
+向量：既有大小又有方向的量。
+频率和周期：
+频率：每1s内完成的完整周期的个数，单位Hz
+周期：一个循环所经历的时间，单位s，所以周期的倒数就是频率，频率的倒数是周期
+$$ T = \frac{1}{f} $$
+和 $$ f = \frac{1}{T} $$ 正弦曲线的瞬时值： $$ v(t) = V_Psin(wt &#43; ⌀) $$ $V_p$
+正弦曲线的平均值： $$ V_{avg} = \frac{2V_P}{π} $$ 化简得： $$ V_{avg} = 0.637V_P $$ 电流平均值： $$ I_{avg} = 0.637I_p $$ 正弦曲线的有效值： $$ P = IV $$ 计算与直流电压电流产生相同的热效应时的交流电压、电流，通过积分可以求出等效的热量，称为方均根电压(rms)或者电流。
+方均根电压和峰值电压的关系： $$ V_{rms} = 0.707V_p $$ 方均根电流与有效电流的关系是： $$ I_{rms} = 0.'>
+<meta property='og:url' content='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/1-2%E6%A8%A1%E6%8B%9F%E4%BF%A1%E5%8F%B7/'>
+<meta property='og:site_name' content='My Blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Analog' /><meta property='article:published_time' content='2023-07-14T14:57:45&#43;08:00'/><meta property='article:modified_time' content='2023-07-14T14:57:45&#43;08:00'/>
+<meta name="twitter:title" content="1.2模拟信号">
+<meta name="twitter:description" content="是指任何携带信息的物理量，力、热、声、光、电等。
+1.2.1 模拟信号和数字信号 信号分为：离散信号和连续信号。离散信号可以只有几个值，连续信号可以无限细分下去。 离散和连续指信号的幅度，也可以指时间。
+采样和量化：
+​	采样：将模拟波形在时间域上进行切分，每个切片大小大致等于原来波形的值，会丢失一些信息。
+​	量化：给每个时间片分配一个数字，量化后的数字可以交给计算机或其它素质电路处理 1.2.2 周期信号 重复的波形称为周期性的，此周期信号有变化。
+周期(period, $T$)表示一个周期信号完成一个循环所需要的时间。周期(cycle)是指在波形呈现出另一个完全相同的图案之前波形的完整序列值。可以是在逐次循环的波形上任意两个相应点来测出周期。
+向量：既有大小又有方向的量。
+频率和周期：
+频率：每1s内完成的完整周期的个数，单位Hz
+周期：一个循环所经历的时间，单位s，所以周期的倒数就是频率，频率的倒数是周期
+$$ T = \frac{1}{f} $$
+和 $$ f = \frac{1}{T} $$ 正弦曲线的瞬时值： $$ v(t) = V_Psin(wt &#43; ⌀) $$ $V_p$
+正弦曲线的平均值： $$ V_{avg} = \frac{2V_P}{π} $$ 化简得： $$ V_{avg} = 0.637V_P $$ 电流平均值： $$ I_{avg} = 0.637I_p $$ 正弦曲线的有效值： $$ P = IV $$ 计算与直流电压电流产生相同的热效应时的交流电压、电流，通过积分可以求出等效的热量，称为方均根电压(rms)或者电流。
+方均根电压和峰值电压的关系： $$ V_{rms} = 0.707V_p $$ 方均根电流与有效电流的关系是： $$ I_{rms} = 0."><script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+    </head>
+    <body class="
+    article-page has-toc
+">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex 
+    
+        extended
+    
+">
+    
+        <div id="article-toolbar">
+            <a href="/" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+                <span>Back</span>
+            </a>
+        </div>
+    
+<main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/analog/" >
+                Analog
+            </a>
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/1-2%E6%A8%A1%E6%8B%9F%E4%BF%A1%E5%8F%B7/">1.2模拟信号</a>
+    </h2>
+
+    
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jul 14, 2023</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+</div>
+</header>
+
+    <section class="article-content">
+    <p>是指任何携带信息的物理量，力、热、声、光、电等。</p>
+<h3 id="121-模拟信号和数字信号">1.2.1 模拟信号和数字信号</h3>
+<p>信号分为：离散信号和连续信号。离散信号可以只有几个值，连续信号可以无限细分下去。
+离散和连续指信号的幅度，也可以指时间。</p>
+<p><strong>采样和量化</strong>：</p>
+<p>​	采样：将模拟波形在时间域上进行切分，每个切片大小大致等于原来波形的值，会丢失一些信息。</p>
+<p>​	量化：给每个时间片分配一个数字，量化后的数字可以交给计算机或其它素质电路处理
+<img src="https://s2.loli.net/2023/09/03/oldr8UzHm3Bh9kb.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="图1_4"
+	
+	
+></p>
+<h3 id="122-周期信号">1.2.2 周期信号</h3>
+<p>重复的波形称为周期性的，此周期信号有变化。</p>
+<p>周期(period, $T$)表示一个周期信号完成一个循环所需要的时间。周期(cycle)是指在波形呈现出另一个完全相同的图案之前波形的完整序列值。可以是在逐次循环的波形上任意两个相应点来测出周期。</p>
+<p>向量：既有大小又有方向的量。</p>
+<p><strong>频率和周期</strong>：</p>
+<blockquote>
+<p><code>频率</code>：每1s内完成的完整周期的个数，单位Hz</p>
+<p><code>周期</code>：一个循环所经历的时间，单位s，所以周期的倒数就是频率，频率的倒数是周期</p>
+</blockquote>
+<p>$$
+T = \frac{1}{f}
+$$</p>
+<p>和
+$$
+f = \frac{1}{T}
+$$
+<strong>正弦曲线的瞬时值</strong>：
+$$
+v(t) = V_Psin(wt + ⌀)
+$$
+$V_p$</p>
+<p>正弦曲线的平均值：
+$$
+V_{avg} = \frac{2V_P}{π}
+$$
+化简得：
+$$
+V_{avg} = 0.637V_P
+$$
+电流平均值：
+$$
+I_{avg} = 0.637I_p
+$$
+正弦曲线的有效值：
+$$
+P = IV
+$$
+计算与直流电压电流产生相同的热效应时的交流电压、电流，通过积分可以求出等效的热量，称为方均根电压(rms)或者电流。</p>
+<p>方均根电压和峰值电压的关系：
+$$
+V_{rms} = 0.707V_p
+$$
+方均根电流与有效电流的关系是：
+$$
+I_{rms} = 0.707I_p
+$$</p>
+<h3 id="123-时域信号">1.2.3 时域信号</h3>
+<p>信号随时间变化而变化</p>
+<p>X轴为<strong>时间单位</strong></p>
+<p>Y轴为<strong>电压、电流、电阻</strong>或其他信号</p>
+<h3 id="124-频域信号">1.2.4 频域信号</h3>
+<p>信号随频率变化而变化</p>
+<p>X轴为<strong>频率</strong></p>
+<p>Y轴为<strong>幅度</strong>(通常为对数)的信号。</p>
+<p><strong>频谱图</strong>：幅度随频率变化而变化的图</p>
+<p><strong>谐波</strong>：一个非正弦周期波形由一个基频和几个谐频组成。</p>
+<ul>
+<li><strong>基频</strong>是这个非正弦周期波形的重复频率。</li>
+<li><strong>谐频</strong>是更高频率的正弦波，其频率是基频的数倍，都是整数倍。</li>
+<li><strong>奇次谐波</strong>的频率是波形基频的奇数倍。比如一个1KHz的方波，包含基频1Khz,奇次谐波3kHz</li>
+<li><strong>偶次谐波</strong>的频率是基波的偶数倍。一个非正弦波是基波和多次谐波的组合，有些仅有奇次谐波，有写仅有偶次谐波，也有皆有。</li>
+</ul>
+<p>一般来说，只有基波和奇次谐波对波形的形状影响比较重要。</p>
+<p>傅里叶级数：用三角级数表示周期信号，这个三角级数称为傅里叶级数，可以通过它求出符合波形的每个正弦波的幅度值。</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/analog/">Analog</a>
+        
+    </section>
+
+
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css"integrity="sha384-RZU/ijkSsFbcmivfdRBQDtwuwVqK7GMOw6IMvKyeWL2K5UAlyp6WonmB8m7Jd0Hn"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js"integrity="sha384-pK1WpvzWVBQiP0/GjnvRxV4mOb0oxFuyRxJlk6vVw146n3egcN5C925NCP7a7BY8"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js"integrity="sha384-vZTG03m&#43;2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ]
+        });})
+</script>
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">Related contents</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">模拟电子技术基础</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/1-1%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E5%AD%A6/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">1.1模拟电子学</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+     
+    
+        
+    <div id="cusdis_thread"
+    data-host="https://cusdis.com"
+    data-app-id="d44db3f9-a0ff-4551-a44d-316afd2e5835"
+    data-page-id="f80ebdd29dca52dba7d440cc5b009a90"
+    data-page-url="https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/1-2%E6%A8%A1%E6%8B%9F%E4%BF%A1%E5%8F%B7/"
+    data-page-title="1.2模拟信号"></div>
+<script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
+
+<script>
+    function setCusdisTheme(theme) {
+        let cusdis = document.querySelector('#cusdis_thread iframe');
+        if (cusdis) {
+            window.CUSDIS.setTheme(theme)
+        }
+    }
+
+    window.addEventListener('onColorSchemeChange', (e) => {
+        setCusdisTheme(e.detail)
+    })
+</script>
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2023 My Blog
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.5.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+
+            </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">Table of contents</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#121-模拟信号和数字信号">1.2.1 模拟信号和数字信号</a></li>
+        <li><a href="#122-周期信号">1.2.2 周期信号</a></li>
+        <li><a href="#123-时域信号">1.2.3 时域信号</a></li>
+        <li><a href="#124-频域信号">1.2.4 频域信号</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                </div>
+            </section>
+        </aside>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
