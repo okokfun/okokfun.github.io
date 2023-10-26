@@ -1,17 +1,41 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content=''><title>4.6FET线性放大器</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='虽然 MOSFET 主要用于开关电路，但 JFET 和MOSFET 都能在类似于之前学习的 BJT 的CE、CC 和CB 放大器的三种电路组态中用作线性放大器。FET 组态有共源(CS)、共漏(CD)和共栅(CG)。CS 与CD 放大器具有高输人阻抗和低噪声的特性，是第一级放大器的最佳选择。共栅放大器的应用不多，因此本书只对其进行简要介绍。
+学完本节后，你应该掌握以下内容:
+描述FET线性放大器的工作原理 描述三种 FET 线性放大器的组态:共源(CS)、共漏(CD)和共栅(CG) 在给定跨导的情况下计算任何 FET 放大器的增益 解释为什么具有电流源偏置的 CD 放大器比单级 CD 放大器更好 4.6.1 FET的跨导: FET的传输特性，即跨导曲线，如图4-9a所示。FET 和 BJT 有本质区别，因为 FET 是电压控制器件。输出的漏极电流由输入的栅极电压控制。跨导为交流参数，定义为:
+$$ g_m=\frac{I_d}{V_{gs}} $$
+考虑到上式是输出电流($I_d$)除以输人电压($V_{gs}$)，因此跨导本质上是 FET 自身的增益。但和 $\beta_{ac}$ 是纯数字不同，跨导有单位，为西门子(电阻的倒数)。许多数据手册会继续沿用旧单位姆欧(mho，将ohm反向拼写)。如图4-37a所示，一个特定 FET 的跨导可以直接测量得到。可以看到跨导是传输曲线的斜率，它不是一个常数，但取决于漏极电流。
+图4-37b给出了 BJT 输入的类似情况。基极电压加在发射结 pn 结上，它会看到一个取决于发射极直流电流的交流电阻。这个小的交流电阻对 BJT 放大器的增益发挥着重要影响，如3.4节所述。
+$g_m$ 的倒数与 BJT 的$r&amp;rsquo;_e$。类似。大多数 FET 的交流模型都将 $g_m$ 作为一个重要参数。但是，要从 BJT 放大器转变到FET 放大器，定义一个表示 FET 交流源电阻的参数还是很有用的.
+$$ r&amp;rsquo;_s=\frac{1}{g_m} $$
+$$ a) n沟道FET传输曲线~~~~~~~~~~~~b) BJT传输曲线 $$'><title>4.6 FET线性放大器</title>
 
 <link rel='canonical' href='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/4-6fet%E7%BA%BF%E6%80%A7%E6%94%BE%E5%A4%A7%E5%99%A8/'>
 
-<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='4.6FET线性放大器'>
-<meta property='og:description' content=''>
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='4.6 FET线性放大器'>
+<meta property='og:description' content='虽然 MOSFET 主要用于开关电路，但 JFET 和MOSFET 都能在类似于之前学习的 BJT 的CE、CC 和CB 放大器的三种电路组态中用作线性放大器。FET 组态有共源(CS)、共漏(CD)和共栅(CG)。CS 与CD 放大器具有高输人阻抗和低噪声的特性，是第一级放大器的最佳选择。共栅放大器的应用不多，因此本书只对其进行简要介绍。
+学完本节后，你应该掌握以下内容:
+描述FET线性放大器的工作原理 描述三种 FET 线性放大器的组态:共源(CS)、共漏(CD)和共栅(CG) 在给定跨导的情况下计算任何 FET 放大器的增益 解释为什么具有电流源偏置的 CD 放大器比单级 CD 放大器更好 4.6.1 FET的跨导: FET的传输特性，即跨导曲线，如图4-9a所示。FET 和 BJT 有本质区别，因为 FET 是电压控制器件。输出的漏极电流由输入的栅极电压控制。跨导为交流参数，定义为:
+$$ g_m=\frac{I_d}{V_{gs}} $$
+考虑到上式是输出电流($I_d$)除以输人电压($V_{gs}$)，因此跨导本质上是 FET 自身的增益。但和 $\beta_{ac}$ 是纯数字不同，跨导有单位，为西门子(电阻的倒数)。许多数据手册会继续沿用旧单位姆欧(mho，将ohm反向拼写)。如图4-37a所示，一个特定 FET 的跨导可以直接测量得到。可以看到跨导是传输曲线的斜率，它不是一个常数，但取决于漏极电流。
+图4-37b给出了 BJT 输入的类似情况。基极电压加在发射结 pn 结上，它会看到一个取决于发射极直流电流的交流电阻。这个小的交流电阻对 BJT 放大器的增益发挥着重要影响，如3.4节所述。
+$g_m$ 的倒数与 BJT 的$r&amp;rsquo;_e$。类似。大多数 FET 的交流模型都将 $g_m$ 作为一个重要参数。但是，要从 BJT 放大器转变到FET 放大器，定义一个表示 FET 交流源电阻的参数还是很有用的.
+$$ r&amp;rsquo;_s=\frac{1}{g_m} $$
+$$ a) n沟道FET传输曲线~~~~~~~~~~~~b) BJT传输曲线 $$'>
 <meta property='og:url' content='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/4-6fet%E7%BA%BF%E6%80%A7%E6%94%BE%E5%A4%A7%E5%99%A8/'>
 <meta property='og:site_name' content='My Blog'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Analog' /><meta property='article:published_time' content='2023-07-14T17:38:15&#43;00:00'/><meta property='article:modified_time' content='2023-07-14T17:38:15&#43;00:00'/>
-<meta name="twitter:title" content="4.6FET线性放大器">
-<meta name="twitter:description" content=""><script>
+<meta name="twitter:title" content="4.6 FET线性放大器">
+<meta name="twitter:description" content="虽然 MOSFET 主要用于开关电路，但 JFET 和MOSFET 都能在类似于之前学习的 BJT 的CE、CC 和CB 放大器的三种电路组态中用作线性放大器。FET 组态有共源(CS)、共漏(CD)和共栅(CG)。CS 与CD 放大器具有高输人阻抗和低噪声的特性，是第一级放大器的最佳选择。共栅放大器的应用不多，因此本书只对其进行简要介绍。
+学完本节后，你应该掌握以下内容:
+描述FET线性放大器的工作原理 描述三种 FET 线性放大器的组态:共源(CS)、共漏(CD)和共栅(CG) 在给定跨导的情况下计算任何 FET 放大器的增益 解释为什么具有电流源偏置的 CD 放大器比单级 CD 放大器更好 4.6.1 FET的跨导: FET的传输特性，即跨导曲线，如图4-9a所示。FET 和 BJT 有本质区别，因为 FET 是电压控制器件。输出的漏极电流由输入的栅极电压控制。跨导为交流参数，定义为:
+$$ g_m=\frac{I_d}{V_{gs}} $$
+考虑到上式是输出电流($I_d$)除以输人电压($V_{gs}$)，因此跨导本质上是 FET 自身的增益。但和 $\beta_{ac}$ 是纯数字不同，跨导有单位，为西门子(电阻的倒数)。许多数据手册会继续沿用旧单位姆欧(mho，将ohm反向拼写)。如图4-37a所示，一个特定 FET 的跨导可以直接测量得到。可以看到跨导是传输曲线的斜率，它不是一个常数，但取决于漏极电流。
+图4-37b给出了 BJT 输入的类似情况。基极电压加在发射结 pn 结上，它会看到一个取决于发射极直流电流的交流电阻。这个小的交流电阻对 BJT 放大器的增益发挥着重要影响，如3.4节所述。
+$g_m$ 的倒数与 BJT 的$r&amp;rsquo;_e$。类似。大多数 FET 的交流模型都将 $g_m$ 作为一个重要参数。但是，要从 BJT 放大器转变到FET 放大器，定义一个表示 FET 交流源电阻的参数还是很有用的.
+$$ r&amp;rsquo;_s=\frac{1}{g_m} $$
+$$ a) n沟道FET传输曲线~~~~~~~~~~~~b) BJT传输曲线 $$"><script>
     (function(){
         if(''){
             if (prompt('请输入文章密码') !== ''){
@@ -25,7 +49,7 @@
 
     </head>
     <body class="
-    article-page 
+    article-page has-toc
 ">
     <script>
         (function() {
@@ -51,128 +75,22 @@
 </script>
 <div class="container main-container flex 
     
-        on-phone--column extended
+        extended
     
 ">
     
-        <aside class="sidebar left-sidebar sticky">
-    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
-        <span class="hamburger-box">
-            <span class="hamburger-inner"></span>
-        </span>
-    </button>
-
-    <header class="site-info">
-        
-            
-            <figure class="site-avatar">
-                
-                    
-                    
-                    
-                        
-                        <img src="/img/avatar_hu71fc3898bde3464d50a00f65e63c7ec2_517570_300x0_resize_box_3.png" width="300"
-                            height="354" class="site-logo" loading="lazy" alt="Avatar">
-                    
-                
-
-                
-            </figure>
-            
-        
-        
-        <h1 class="site-name"><a href="/">My Blog</a></h1>
-        <h2 class="site-description"></h2></header>
-
-    <ol class="menu" id="main-menu">
-        
-        
-        
-
-        <li >
-            <a href='/page/about/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <div id="article-toolbar">
+            <a href="/" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="7" r="4" />
-  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+  <polyline points="15 6 9 12 15 18" />
 </svg>
 
 
 
-                
-                <span>About</span>
+                <span>Back</span>
             </a>
-        </li>
-        
-        
-
-        <li >
-            <a href='/page/archives/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <rect x="3" y="4" width="18" height="4" rx="2" />
-  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
-  <line x1="10" y1="12" x2="14" y2="12" />
-</svg>
-
-
-
-                
-                <span>Archives</span>
-            </a>
-        </li>
-        
-        
-
-        <li >
-            <a href='/page/search/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="10" cy="10" r="7" />
-  <line x1="21" y1="21" x2="15" y2="15" />
-</svg>
-
-
-
-                
-                <span>Search</span>
-            </a>
-        </li>
-        
-
-        
-            <li id="dark-mode-toggle">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="8" cy="12" r="2" />
-  <rect x="2" y="6" width="20" height="12" rx="6" />
-</svg>
-
-
-
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="16" cy="12" r="2" />
-  <rect x="2" y="6" width="20" height="12" rx="6" />
-</svg>
-
-
-
-                <span>Dark Mode</span>
-            </li>
-        
-    </ol>
-</aside>
-
+        </div>
     
 <main class="main full-width">
     <article class="main-article">
@@ -182,7 +100,7 @@
     
 
     <h2 class="article-title">
-        <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/4-6fet%E7%BA%BF%E6%80%A7%E6%94%BE%E5%A4%A7%E5%99%A8/">4.6FET线性放大器</a>
+        <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/4-6fet%E7%BA%BF%E6%80%A7%E6%94%BE%E5%A4%A7%E5%99%A8/">4.6 FET线性放大器</a>
     </h2>
 
     
@@ -215,7 +133,7 @@
 
 
                 <time class="article-time--reading">
-                    0 minute read
+                    2 minute read
                 </time>
             </div>
         
@@ -225,7 +143,243 @@
 </header>
 
     <section class="article-content">
-    
+    <p>虽然 MOSFET 主要用于开关电路，但 JFET 和MOSFET 都能在类似于之前学习的 BJT 的CE、CC 和CB 放大器的三种电路组态中用作线性放大器。FET 组态有共源(CS)、共漏(CD)和共栅(CG)。CS 与CD 放大器具有高输人阻抗和低噪声的特性，是第一级放大器的最佳选择。共栅放大器的应用不多，因此本书只对其进行简要介绍。</p>
+<p>学完本节后，你应该掌握以下内容:</p>
+<ul>
+<li>描述FET线性放大器的工作原理
+<ul>
+<li>描述三种 FET 线性放大器的组态:共源(CS)、共漏(CD)和共栅(CG)</li>
+<li>在给定跨导的情况下计算任何 FET 放大器的增益</li>
+<li>解释为什么具有电流源偏置的 CD 放大器比单级 CD 放大器更好</li>
+</ul>
+</li>
+</ul>
+<h3 id="461-fet的跨导">4.6.1 FET的跨导:</h3>
+<p><code>FET的传输特性，即跨导曲线</code>，如图4-9a所示。FET 和 BJT 有本质区别，因为 FET 是电压控制器件。输出的漏极电流由输入的栅极电压控制。跨导为交流参数，定义为:</p>
+<p>$$
+g_m=\frac{I_d}{V_{gs}}
+$$</p>
+<p><strong>考虑到上式是输出电流($I_d$)除以输人电压($V_{gs}$)，因此跨导本质上是 FET 自身的增益</strong>。但和 $\beta_{ac}$ 是纯数字不同，跨导有单位，为西门子(电阻的倒数)。许多数据手册会继续沿用旧单位姆欧(mho，将ohm反向拼写)。如图4-37a所示，一个特定 FET 的跨导可以直接测量得到。可以看到跨导是传输曲线的斜率，它不是一个常数，但取决于漏极电流。</p>
+<p>图4-37b给出了 BJT 输入的类似情况。基极电压加在发射结 pn 结上，它会看到一个取决于发射极直流电流的交流电阻。这个小的交流电阻对 BJT 放大器的增益发挥着重要影响，如3.4节所述。</p>
+<p>$g_m$ 的倒数与 BJT 的$r&rsquo;_e$。类似。大多数 FET 的交流模型都将 $g_m$ 作为一个重要参数。但是，要从 BJT 放大器转变到FET 放大器，定义一个表示 FET 交流源电阻的参数还是很有用的.</p>
+<p>$$
+r&rsquo;_s=\frac{1}{g_m}
+$$</p>
+<p><img src="https://s2.loli.net/2023/10/08/IJMjUKzOCXseEPx.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog4-38.png"
+	
+	
+></p>
+<p>$$
+a) n沟道FET传输曲线~~~~~~~~~~~~b) BJT传输曲线
+$$</p>
+<p>$$
+图4-37~~~n沟道FET和BJT传输曲线的比较
+$$</p>
+<p>$r&rsquo;_s$ 的概念可以引出类似于第 3 章中推导得到的 BJT 的电压增益方程。JFET 的 $r&rsquo;_s$ 的概念图如图4-38所示。栅极以虚线表示，用来表明从栅极来看，输人电阻接近无穷大(因为输人是反向偏置的二极管)。虽然栅极电压控制漏极电流，但利用的是可以忽略的栅极电流。遗憾的是，FET 的 $r&rsquo;_s$ 并不像 BJT 的 $r&rsquo;_e$ 那样容易预测，而且它通常比 $r&rsquo;_e$</p>
+<p>大。数据手册并不会给出这一参数，但会给出 $g_m$ 的取值范围(有时也以 $y_{fs}$ 给出)，因此可以通过求典型 $g_m$ 值的倒数来获得 $r&rsquo;_s$</p>
+<p>的近似值。例如，如果数据手册中的 $y_{fs}$ 为2 000μS，那么$r&rsquo;_s= 500\Omega$.</p>
+<h3 id="462-共源放大器">4.6.2 共源放大器</h3>
+<p><strong>JFET</strong> 图4-39为具有自给偏置的 n 沟道 JFET 的共源(CS)放大器。交流源通过电容耦合到栅极。<strong>电阻 $R_G$ 有两个作用: (a)保持栅极电压约为 0V 直流(因为 $I_{GSS}$ 非常小)，(b)它的值很大(通常几兆欧)，阻止对交流信号源产生负载作用</strong>。偏置电压通过 $R_S$ 上的压降来获得。<strong>旁路电容 $C_2$</strong> 使 FET 源极为有效的交流地。</p>
+<p>信号电压使栅源电压在 Q 点附近上下波动，并造成漏极电流的波动。漏极电流增大时，$R_D$ 两端的压降也增大，从而造成漏极电压(对地)减小。</p>
+<p>漏极电流在 Q 点值附近上下波动，与栅源电压同相。漏源电压在 Q 点值附近上下波动，与栅源电压相位差180°，如图4-39所示。</p>
+<p><strong>D-MOSFET</strong> 图 4-40为一个零偏置 n 沟道 D-MOSFET,交流源通过电容耦合到栅极。栅极电压约为直流 0V，源极接地，因此有$V_{GS}=0V$。</p>
+<p><img src="https://s2.loli.net/2023/10/08/OGfWYv41q6TtCil.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog4_39.png"
+	
+	
+></p>
+<p>$$
+图4-39~~~ JFET 共源放大器
+$$</p>
+<p><img src="https://s2.loli.net/2023/10/08/5FQBhbwGa2s9LDq.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog4_40.png"
+	
+	
+></p>
+<p>$$
+图4-40~~~ 零偏置D-MOSFET共源放大器
+$$</p>
+<p>信号电压使得 $V_{gs}$ 在 0 值附近上下波动，并引起 $I_d$ 的波动。$V_{gs}$ 往负方向的波动使得器件进入耗尽模式，并且使得 $I_d$ 减小。 $V_{gs}$ 往正方向的波动使得器件进人增强模式，并使得 $I_d$增大。</p>
+<p><img src="https://s2.loli.net/2023/10/09/BQWuFpH1Ej7YsSf.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog4_41.png"
+	
+	
+></p>
+<p>$$
+图4-41~~~分压式偏置的E-MOSFET共源放大器
+$$</p>
+<p><strong>E-MOSFET</strong> 图 4-41为一个分压式偏置的 n 沟道 E-MOSFET，交流源通过电容耦合到栅极。栅极以正电压偏置，使得 $V_{GS}&gt; V_{GS(th)}$。与 JFET 和 D-MOSFET 情况相同，信号电压使得 $V_{gs}$ 在 Q 点值附近上下波动。这一波动又引起 $I_d$ 的波动。器件完全工作在增强模式。</p>
+<p><strong>电压增益</strong> 放大器的电压增益 $A_v$ 始终等于 $V_{out}/V_{in}$.  对 CS 放大器而言，$V_{in}$ 等于 $V_{gs}$(因为旁路电容的作用)，$V_{out}$ 等于交流漏极电阻 $R_d$ 两端产生的信号电压。对于空载的 CS 放大器来说，交流和直流漏极电阻相等，$R_d=R_D$。因此，$V_{out}= I_dR_d$.</p>
+<p>$$
+V_v=\frac{V_{out}}{V_{in}}=\frac{I_dR_d}{V_{gs}}
+$$</p>
+<p>因为 $g_m=I_d/V_{gs}$，所以共源电压增益为:</p>
+<p>$$
+V_v=-g_mR_d~~~(4-7)
+$$</p>
+<p>这是 CS 放大器传统的电压增益方程。式(4-7)中的负号表示 CS 放大器为反相放大器。CS 放大器的增益可以以与共射(CE)放大器类似的形式表示为交流电阻的比值。用$1/r&rsquo;_s$代替$g_m$，电压增益可以写为:</p>
+<p>$$
+V_v=-\frac{R_d}{r&rsquo;_s}~~~(4-8)
+$$</p>
+<p>与给出CE放大器的电压增益的式(3-10)进行比较: $A_v=-R_c/R_e$。两式中电压增益均为交流电阻的比值。</p>
+<p><strong>输入电阻</strong> 因为 CS 放大器从栅极输人，所以晶体管的输人电阻非常高。已经知道在JFET中由于反向偏置 pn 结导致输入电阻很高，而在 MOSFET 中是由于绝缘栅结构产生。在实际中，通常可以将晶体管的输人电路看成开路。</p>
+<p>当忽略晶体管的内阻时，由信号源看到的输人电阻仅由偏置电阻决定。在自给偏置情况下，它就是栅极电阻 $R_G$，如图4-42中从栅极看进去的交流等效电路所示。</p>
+<p><img src="https://s2.loli.net/2023/10/09/9OGu2VolLU3RB5T.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog4_42.PNG"
+	
+	
+></p>
+<p>$$
+a)自给偏置~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~b)分压式偏置
+$$</p>
+<p>在分压式偏置情况下，电源为交流接地，栅极仍然为开路。从交流源看过去，两个分压电阻为并联。所以输入电阻是$R_1$和 $R_2$ 的并联组合。</p>
+<p>$$
+R_{in}\approx R_1||R_2
+$$</p>
+<h3 id="463共漏放大器">4.6.3共漏放大器</h3>
+<p>共漏(CD)JFET 放大器如图4-44所示，其中标明了电压。电路中使用了自给偏置。输入信号通过耦合电容加到栅极，在源极端输出信号。<code>电路中没有漏极电阻。此电路与 BJT 的射极跟随器类似，有时也称为源极跟随器</code>. 这是一种广泛使用的 FET 电路，因为其具有很高的输入阻抗。</p>
+<p><img src="https://s2.loli.net/2023/10/09/ts4hMZOA7SDqzE8.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog4_44.png"
+	
+	
+>
+$$
+图4-44~~~ JFET共漏放大器(漏极跟随器)
+$$</p>
+<p><strong>电压增益</strong> <strong>如同所有放大器中一样，电压增益为 $A_v=V_{out}/V_{in}$. 类似于射极跟随器,源极跟随器的理想电压增益为 1</strong>，但实际中会更小(通常介于0.5～1之间)。为了计算电压增益，可对如图4-45a所示的电路应用分压原理。首先，将电路简化为如图4-45b所示的交流等效电路。栅极电阻并不影响交流信号，所以并未画出。<code>负载和源极电阻并联</code>，并可合并为一个等效交流源极电阻 $R_s$，它与内阻 $r&rsquo;_s(1/g_m)$ 串联。<strong>输人信号加在 $R_s$ 与 $r&rsquo;_s$ 两端，但输出只从 $R_s$ 两端取出。因此，输出电压为</strong></p>
+<p>$$
+V_{out}=V_{in}(\frac{R_s}{r&rsquo;_s+R_s})
+$$
+<img src="https://s2.loli.net/2023/10/09/lXB8AfJqdOvCgbS.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog4_45.png"
+	
+	
+></p>
+<p>$$
+a)基本的自给偏置CD放大器~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~b)计算增益的简化交流电路
+$$</p>
+<p>$$
+图4-45~~~电压增益的计算
+$$
+除以 $V_{in}$ 就可以得到电压增益公式。</p>
+<p>$$
+A_v=\frac{R_s}{r&rsquo;_s+R_s}~~~(4-9)
+$$
+同样，可以看到增益可以写成交流电阻比值的形式。如果你记住它基于分压定律，那么很容易记住这个式子。</p>
+<p>附录中推导得到的另一个电压增益公式为:
+$$
+A_v=\frac{g_mR_s}{1+g_mR_s}~~~(4-10)
+$$
+此式与式(4-9)有相同的结果。</p>
+<p><strong>输入电阻</strong> 因为输人信号加在栅极，所以由输入信号源看到的输入电阻与之前讨论的 CS 放大器情况下的输人电阻相同。实际中，可以忽略晶体管输人的高电阻。输入电阻由偏置电阻决定，和 CS 放大器情况一样。对自给偏置而言，输入电阻等于栅极电阻 $R_G$。
+$$
+R_{in}\approx R_G
+$$
+<code>对于分压式偏置来说，由电源看到的分压电阻并联接地</code>。因此对分压偏置而言，输入电阻为
+$$
+R_{in}\approx R_1||R_2
+$$
+<img src="https://s2.loli.net/2023/10/09/3tiexOlqHjachJn.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog4_47.png"
+	
+	
+>
+$$
+图4-47~~~电流源偏置的CD放大器
+$$
+<strong>电流源偏置的CD放大器</strong> 通过加入电流源，CD放大器性能可显著提高，如图4-47所示。电流源不仅提供偏置(参见4.3节有关叙述)，还是CD放大器的负载。已经知道，电流源对交流信号而言相当于一个高阻值电阻，因此电压增益非常接近于理想值1.0。</p>
+<p>电流源负载带来的显著优势还包括有更高的输人电阻，更低的失真，以及在输人和输出端(没有耦合电容)直接耦合信号。常规的源极跟随器(在之前的例子中已给出)的输出电压叠加在一个与 $V_{GS}$(栅极电压为0V)大小相等的直流电平上。对于 p 沟道器件，直流偏移为负; 对 n 沟道器件，直流偏移为正。理想情况下，电流源偏置不会在输出上加上任何直流偏移。这一特性在一些场合非常有用，例如，示波器的前置放大器，它需要让信号的所有直流分量都能通过并传输到后面的垂直扫描放大器。</p>
+<p>为了获得最优结果，图4-47中的两个 FET 和两个电阻应该互相匹配。这意味着两个晶体管应该具有相同的传输和输出特性。两个晶体管具有相同的 $V_{GS}$(因为具有相同的漏极电流)。该漏极电流在两个电阻上产生相同的压降( $V_{GS}$ )，这就对偏置进行了补偿。这确保了当输入为 0V 时，输出接近于 0V。确保晶体管匹配的一种方法是使用双器件(在一个封装中有两个匹配晶体管)。</p>
+<h3 id="464共栅放大器">4.6.4共栅放大器</h3>
+<p><img src="https://s2.loli.net/2023/10/09/GCEdzcxuJKft83k.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog4_50.png"
+	
+	
+>
+$$
+图4-50~~~JFET共栅放大器
+$$
+在本章引言中已经提到，共栅(CG)放大器因自身原因应用有限，但可以用于 FET 差分放大器的第二级(在第 6 章讨论)。CG 放大器在高频中也有应用。虽然其电压增益与 CS 放大器相当，但其输入电阻很低，失去了 FET 的主要优势之一。图4-50为一个基本的 CG 放大器。输入信号通过 $C_1$ 被加到源极，输出信号通过 $C_2$ 从漏极端取出。电压增益和 CS 放大器相同，但没有反相。
+$$
+A_v=\frac{R_d}{r&rsquo;_s}
+$$
+另一增益公式为:
+$$
+A_v=g_mR_d
+$$
+FET 的线性应用的主要优势是其高输入电阻。观察 CG 放大器，可以看到源极电阻与 $r&rsquo;_s$ 并联。通常源极电阻非常大，可以忽略。因此输人电阻约为:</p>
+<p>$$
+R_{in}\approx r&rsquo;<em>s
+$$
+另外，输入电阻也可以表示为:
+$$
+R</em>{in}\approx \frac{1}{g_m}
+$$
+从此结果可以看出为何CG放大器的输入电阻很小。
+<img src="https://s2.loli.net/2023/10/09/hkCKqDAijc5tv4W.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog4-51.png"
+	
+	
+></p>
+<p>$$
+a) ~JFET共源共栅放大器~~~~~~~~~~~~~~~~~~~~~~~~~~~~b) ~MOSFET共源共栅放大器
+$$</p>
+<p>$$
+图4-51~~~共源共栅放大器
+$$
+共栅放大器的一个应用是共源共栅放大器。一个共源共栅放大器由共源和共栅放大器串联而成。JFET 共源共栅放大器如图4-51a所示。由两个匹配 D-MOSFET 构成的低电压共源共栅放大器如图4-51b所示。共源共栅放大器主要用于射频(RF)应用。</p>
+
 </section>
 
 
@@ -238,9 +392,44 @@
     </section>
 
 
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
     </footer>
 
 
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css"integrity="sha384-RZU/ijkSsFbcmivfdRBQDtwuwVqK7GMOw6IMvKyeWL2K5UAlyp6WonmB8m7Jd0Hn"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js"integrity="sha384-pK1WpvzWVBQiP0/GjnvRxV4mOb0oxFuyRxJlk6vVw146n3egcN5C925NCP7a7BY8"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js"integrity="sha384-vZTG03m&#43;2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ]
+        });})
+</script>
     
 </article>
 
@@ -258,7 +447,7 @@
         
 
         <div class="article-details">
-            <h2 class="article-title">4.5MOSFET偏置</h2>
+            <h2 class="article-title">4.5 MOSFET偏置</h2>
         </div>
     </a>
 </article>
@@ -270,7 +459,7 @@
         
 
         <div class="article-details">
-            <h2 class="article-title">4.4MOSFET特性</h2>
+            <h2 class="article-title">4.4 MOSFET 特性</h2>
         </div>
     </a>
 </article>
@@ -282,7 +471,7 @@
         
 
         <div class="article-details">
-            <h2 class="article-title">4.3JFET偏置</h2>
+            <h2 class="article-title">4.3 JFET偏置</h2>
         </div>
     </a>
 </article>
@@ -294,7 +483,7 @@
         
 
         <div class="article-details">
-            <h2 class="article-title">4.2JFET特性</h2>
+            <h2 class="article-title">4.2 JFET特性</h2>
         </div>
     </a>
 </article>
@@ -306,7 +495,7 @@
         
 
         <div class="article-details">
-            <h2 class="article-title">4.1FET的结构</h2>
+            <h2 class="article-title">4.1 FET的结构</h2>
         </div>
     </a>
 </article>
@@ -324,7 +513,7 @@
     data-app-id="d44db3f9-a0ff-4551-a44d-316afd2e5835"
     data-page-id="07e1493a71ff37848b41bcca230ef4c0"
     data-page-url="https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/4-6fet%E7%BA%BF%E6%80%A7%E6%94%BE%E5%A4%A7%E5%99%A8/"
-    data-page-title="4.6FET线性放大器"></div>
+    data-page-title="4.6 FET线性放大器"></div>
 <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
 
 <script>
@@ -436,6 +625,39 @@
             >
 
             </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">Table of contents</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#461-fet的跨导">4.6.1 FET的跨导:</a></li>
+        <li><a href="#462-共源放大器">4.6.2 共源放大器</a></li>
+        <li><a href="#463共漏放大器">4.6.3共漏放大器</a></li>
+        <li><a href="#464共栅放大器">4.6.4共栅放大器</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                </div>
+            </section>
+        </aside>
     
 
         </div>

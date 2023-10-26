@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Motor on My Blog</title>
+    <link>https://okokfun.github.io/categories/motor/</link>
+    <description>Recent content in Motor on My Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sat, 14 Oct 2023 14:04:19 +0800</lastBuildDate><atom:link href="https://okokfun.github.io/categories/motor/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>第31章 PLC</title>
+      <link>https://okokfun.github.io/post/%E7%94%B5%E6%9C%BA%E4%B8%8E%E6%8B%96%E5%8A%A8%E5%8F%8A%E7%94%B5%E5%8A%9B%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E5%9B%9B%E9%83%A8%E5%88%86-%E7%94%B5%E5%8A%9B%E7%B3%BB%E7%BB%9F/%E7%AC%AC31%E7%AB%A0plc/</link>
+      <pubDate>Sat, 14 Oct 2023 14:04:19 +0800</pubDate>
+      
+      <guid>https://okokfun.github.io/post/%E7%94%B5%E6%9C%BA%E4%B8%8E%E6%8B%96%E5%8A%A8%E5%8F%8A%E7%94%B5%E5%8A%9B%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E5%9B%9B%E9%83%A8%E5%88%86-%E7%94%B5%E5%8A%9B%E7%B3%BB%E7%BB%9F/%E7%AC%AC31%E7%AB%A0plc/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>第30章 谐波</title>
+      <link>https://okokfun.github.io/post/%E7%94%B5%E6%9C%BA%E4%B8%8E%E6%8B%96%E5%8A%A8%E5%8F%8A%E7%94%B5%E5%8A%9B%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E5%9B%9B%E9%83%A8%E5%88%86-%E7%94%B5%E5%8A%9B%E7%B3%BB%E7%BB%9F/%E7%AC%AC30%E7%AB%A0%E8%B0%90%E6%B3%A2/</link>
+      <pubDate>Sat, 14 Oct 2023 14:03:19 +0800</pubDate>
+      
+      <guid>https://okokfun.github.io/post/%E7%94%B5%E6%9C%BA%E4%B8%8E%E6%8B%96%E5%8A%A8%E5%8F%8A%E7%94%B5%E5%8A%9B%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E5%9B%9B%E9%83%A8%E5%88%86-%E7%94%B5%E5%8A%9B%E7%B3%BB%E7%BB%9F/%E7%AC%AC30%E7%AB%A0%E8%B0%90%E6%B3%A2/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>第29章 基于固态控制器的输配电技术</title>
+      <link>https://okokfun.github.io/post/%E7%94%B5%E6%9C%BA%E4%B8%8E%E6%8B%96%E5%8A%A8%E5%8F%8A%E7%94%B5%E5%8A%9B%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E5%9B%9B%E9%83%A8%E5%88%86-%E7%94%B5%E5%8A%9B%E7%B3%BB%E7%BB%9F/%E7%AC%AC29%E7%AB%A0%E5%9F%BA%E4%BA%8E%E5%9B%BA%E6%80%81%E6%8E%A7%E5%88%B6%E5%99%A8%E7%9A%84%E8%BE%93%E9%85%8D%E7%94%B5%E6%8A%80%E6%9C%AF/</link>
+      <pubDate>Sat, 14 Oct 2023 14:02:19 +0800</pubDate>
+      
+      <guid>https://okokfun.github.io/post/%E7%94%B5%E6%9C%BA%E4%B8%8E%E6%8B%96%E5%8A%A8%E5%8F%8A%E7%94%B5%E5%8A%9B%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E5%9B%9B%E9%83%A8%E5%88%86-%E7%94%B5%E5%8A%9B%E7%B3%BB%E7%BB%9F/%E7%AC%AC29%E7%AB%A0%E5%9F%BA%E4%BA%8E%E5%9B%BA%E6%80%81%E6%8E%A7%E5%88%B6%E5%99%A8%E7%9A%84%E8%BE%93%E9%85%8D%E7%94%B5%E6%8A%80%E6%9C%AF/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>第27章 电力成本</title>
+      <link>https://okokfun.github.io/post/%E7%94%B5%E6%9C%BA%E4%B8%8E%E6%8B%96%E5%8A%A8%E5%8F%8A%E7%94%B5%E5%8A%9B%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E5%9B%9B%E9%83%A8%E5%88%86-%E7%94%B5%E5%8A%9B%E7%B3%BB%E7%BB%9F/%E7%AC%AC27%E7%AB%A0%E7%94%B5%E5%8A%9B%E6%88%90%E6%9C%AC/</link>
+      <pubDate>Sat, 14 Oct 2023 13:58:19 +0800</pubDate>
+      
+      <guid>https://okokfun.github.io/post/%E7%94%B5%E6%9C%BA%E4%B8%8E%E6%8B%96%E5%8A%A8%E5%8F%8A%E7%94%B5%E5%8A%9B%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E5%9B%9B%E9%83%A8%E5%88%86-%E7%94%B5%E5%8A%9B%E7%B3%BB%E7%BB%9F/%E7%AC%AC27%E7%AB%A0%E7%94%B5%E5%8A%9B%E6%88%90%E6%9C%AC/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>第28章 直流输电</title>
+      <link>https://okokfun.github.io/post/%E7%94%B5%E6%9C%BA%E4%B8%8E%E6%8B%96%E5%8A%A8%E5%8F%8A%E7%94%B5%E5%8A%9B%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E5%9B%9B%E9%83%A8%E5%88%86-%E7%94%B5%E5%8A%9B%E7%B3%BB%E7%BB%9F/%E7%AC%AC28%E7%AB%A0%E7%9B%B4%E6%B5%81%E8%BE%93%E7%94%B5/</link>
+      <pubDate>Sat, 14 Oct 2023 13:58:19 +0800</pubDate>
+      
+      <guid>https://okokfun.github.io/post/%E7%94%B5%E6%9C%BA%E4%B8%8E%E6%8B%96%E5%8A%A8%E5%8F%8A%E7%94%B5%E5%8A%9B%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E5%9B%9B%E9%83%A8%E5%88%86-%E7%94%B5%E5%8A%9B%E7%B3%BB%E7%BB%9F/%E7%AC%AC28%E7%AB%A0%E7%9B%B4%E6%B5%81%E8%BE%93%E7%94%B5/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>第26章 电能分配</title>
+      <link>https://okokfun.github.io/post/%E7%94%B5%E6%9C%BA%E4%B8%8E%E6%8B%96%E5%8A%A8%E5%8F%8A%E7%94%B5%E5%8A%9B%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E5%9B%9B%E9%83%A8%E5%88%86-%E7%94%B5%E5%8A%9B%E7%B3%BB%E7%BB%9F/%E7%AC%AC26%E7%AB%A0%E7%94%B5%E8%83%BD%E5%88%86%E9%85%8D/</link>
+      <pubDate>Sat, 14 Oct 2023 13:55:19 +0800</pubDate>
+      
+      <guid>https://okokfun.github.io/post/%E7%94%B5%E6%9C%BA%E4%B8%8E%E6%8B%96%E5%8A%A8%E5%8F%8A%E7%94%B5%E5%8A%9B%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E5%9B%9B%E9%83%A8%E5%88%86-%E7%94%B5%E5%8A%9B%E7%B3%BB%E7%BB%9F/%E7%AC%AC26%E7%AB%A0%E7%94%B5%E8%83%BD%E5%88%86%E9%85%8D/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>第24章 发电</title>
+      <link>https://okokfun.github.io/post/%E7%94%B5%E6%9C%BA%E4%B8%8E%E6%8B%96%E5%8A%A8%E5%8F%8A%E7%94%B5%E5%8A%9B%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E5%9B%9B%E9%83%A8%E5%88%86-%E7%94%B5%E5%8A%9B%E7%B3%BB%E7%BB%9F/%E7%AC%AC24%E7%AB%A0%E5%8F%91%E7%94%B5/</link>
+      <pubDate>Sat, 14 Oct 2023 13:53:19 +0800</pubDate>
+      
+      <guid>https://okokfun.github.io/post/%E7%94%B5%E6%9C%BA%E4%B8%8E%E6%8B%96%E5%8A%A8%E5%8F%8A%E7%94%B5%E5%8A%9B%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E5%9B%9B%E9%83%A8%E5%88%86-%E7%94%B5%E5%8A%9B%E7%B3%BB%E7%BB%9F/%E7%AC%AC24%E7%AB%A0%E5%8F%91%E7%94%B5/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>第25章 输电</title>
+      <link>https://okokfun.github.io/post/%E7%94%B5%E6%9C%BA%E4%B8%8E%E6%8B%96%E5%8A%A8%E5%8F%8A%E7%94%B5%E5%8A%9B%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E5%9B%9B%E9%83%A8%E5%88%86-%E7%94%B5%E5%8A%9B%E7%B3%BB%E7%BB%9F/%E7%AC%AC25%E7%AB%A0%E8%BE%93%E7%94%B5/</link>
+      <pubDate>Sat, 14 Oct 2023 13:53:19 +0800</pubDate>
+      
+      <guid>https://okokfun.github.io/post/%E7%94%B5%E6%9C%BA%E4%B8%8E%E6%8B%96%E5%8A%A8%E5%8F%8A%E7%94%B5%E5%8A%9B%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E5%9B%9B%E9%83%A8%E5%88%86-%E7%94%B5%E5%8A%9B%E7%B3%BB%E7%BB%9F/%E7%AC%AC25%E7%AB%A0%E8%BE%93%E7%94%B5/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>第23章 交流电机的电子控制</title>
+      <link>https://okokfun.github.io/post/%E7%94%B5%E6%9C%BA%E4%B8%8E%E6%8B%96%E5%8A%A8%E5%8F%8A%E7%94%B5%E5%8A%9B%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%B8%89%E9%83%A8%E5%88%86-%E7%94%B5%E6%B0%94%E4%BC%A0%E5%8A%A8/%E7%AC%AC23%E7%AB%A0%E4%BA%A4%E6%B5%81%E7%94%B5%E6%9C%BA%E7%9A%84%E7%94%B5%E5%AD%90%E6%8E%A7%E5%88%B6/</link>
+      <pubDate>Sat, 14 Oct 2023 13:44:19 +0800</pubDate>
+      
+      <guid>https://okokfun.github.io/post/%E7%94%B5%E6%9C%BA%E4%B8%8E%E6%8B%96%E5%8A%A8%E5%8F%8A%E7%94%B5%E5%8A%9B%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%B8%89%E9%83%A8%E5%88%86-%E7%94%B5%E6%B0%94%E4%BC%A0%E5%8A%A8/%E7%AC%AC23%E7%AB%A0%E4%BA%A4%E6%B5%81%E7%94%B5%E6%9C%BA%E7%9A%84%E7%94%B5%E5%AD%90%E6%8E%A7%E5%88%B6/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>第22章 直流电动机的电子控制</title>
+      <link>https://okokfun.github.io/post/%E7%94%B5%E6%9C%BA%E4%B8%8E%E6%8B%96%E5%8A%A8%E5%8F%8A%E7%94%B5%E5%8A%9B%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%B8%89%E9%83%A8%E5%88%86-%E7%94%B5%E6%B0%94%E4%BC%A0%E5%8A%A8/%E7%AC%AC22%E7%AB%A0%E7%9B%B4%E6%B5%81%E7%94%B5%E5%8A%A8%E6%9C%BA%E7%9A%84%E7%94%B5%E5%AD%90%E6%8E%A7%E5%88%B6/</link>
+      <pubDate>Sat, 14 Oct 2023 13:43:19 +0800</pubDate>
+      
+      <guid>https://okokfun.github.io/post/%E7%94%B5%E6%9C%BA%E4%B8%8E%E6%8B%96%E5%8A%A8%E5%8F%8A%E7%94%B5%E5%8A%9B%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%B8%89%E9%83%A8%E5%88%86-%E7%94%B5%E6%B0%94%E4%BC%A0%E5%8A%A8/%E7%AC%AC22%E7%AB%A0%E7%9B%B4%E6%B5%81%E7%94%B5%E5%8A%A8%E6%9C%BA%E7%9A%84%E7%94%B5%E5%AD%90%E6%8E%A7%E5%88%B6/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>第21章 电力电子技术基础</title>
+      <link>https://okokfun.github.io/post/%E7%94%B5%E6%9C%BA%E4%B8%8E%E6%8B%96%E5%8A%A8%E5%8F%8A%E7%94%B5%E5%8A%9B%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%B8%89%E9%83%A8%E5%88%86-%E7%94%B5%E6%B0%94%E4%BC%A0%E5%8A%A8/%E7%AC%AC21%E7%AB%A0%E7%94%B5%E5%8A%9B%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/</link>
+      <pubDate>Sat, 14 Oct 2023 13:41:19 +0800</pubDate>
+      
+      <guid>https://okokfun.github.io/post/%E7%94%B5%E6%9C%BA%E4%B8%8E%E6%8B%96%E5%8A%A8%E5%8F%8A%E7%94%B5%E5%8A%9B%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%B8%89%E9%83%A8%E5%88%86-%E7%94%B5%E6%B0%94%E4%BC%A0%E5%8A%A8/%E7%AC%AC21%E7%AB%A0%E7%94%B5%E5%8A%9B%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>第20章 电动机控制基础</title>
+      <link>https://okokfun.github.io/post/%E7%94%B5%E6%9C%BA%E4%B8%8E%E6%8B%96%E5%8A%A8%E5%8F%8A%E7%94%B5%E5%8A%9B%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%B8%89%E9%83%A8%E5%88%86-%E7%94%B5%E6%B0%94%E4%BC%A0%E5%8A%A8/%E7%AC%AC20%E7%AB%A0%E7%94%B5%E5%8A%A8%E6%9C%BA%E6%8E%A7%E5%88%B6%E5%9F%BA%E7%A1%80/</link>
+      <pubDate>Sat, 14 Oct 2023 13:40:19 +0800</pubDate>
+      
+      <guid>https://okokfun.github.io/post/%E7%94%B5%E6%9C%BA%E4%B8%8E%E6%8B%96%E5%8A%A8%E5%8F%8A%E7%94%B5%E5%8A%9B%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%B8%89%E9%83%A8%E5%88%86-%E7%94%B5%E6%B0%94%E4%BC%A0%E5%8A%A8/%E7%AC%AC20%E7%AB%A0%E7%94%B5%E5%8A%A8%E6%9C%BA%E6%8E%A7%E5%88%B6%E5%9F%BA%E7%A1%80/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>第19章 步进电动机</title>
+      <link>https://okokfun.github.io/post/%E7%94%B5%E6%9C%BA%E4%B8%8E%E6%8B%96%E5%8A%A8%E5%8F%8A%E7%94%B5%E5%8A%9B%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86-%E7%94%B5%E6%9C%BA%E4%B8%8E%E5%8F%98%E5%8E%8B%E5%99%A8/%E7%AC%AC19%E7%AB%A0%E6%AD%A5%E8%BF%9B%E7%94%B5%E5%8A%A8%E6%9C%BA/</link>
+      <pubDate>Sat, 14 Oct 2023 13:35:19 +0800</pubDate>
+      
+      <guid>https://okokfun.github.io/post/%E7%94%B5%E6%9C%BA%E4%B8%8E%E6%8B%96%E5%8A%A8%E5%8F%8A%E7%94%B5%E5%8A%9B%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86-%E7%94%B5%E6%9C%BA%E4%B8%8E%E5%8F%98%E5%8E%8B%E5%99%A8/%E7%AC%AC19%E7%AB%A0%E6%AD%A5%E8%BF%9B%E7%94%B5%E5%8A%A8%E6%9C%BA/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>第18章 单相电动机</title>
+      <link>https://okokfun.github.io/post/%E7%94%B5%E6%9C%BA%E4%B8%8E%E6%8B%96%E5%8A%A8%E5%8F%8A%E7%94%B5%E5%8A%9B%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86-%E7%94%B5%E6%9C%BA%E4%B8%8E%E5%8F%98%E5%8E%8B%E5%99%A8/%E7%AC%AC18%E7%AB%A0%E5%8D%95%E7%9B%B8%E7%94%B5%E5%8A%A8%E6%9C%BA/</link>
+      <pubDate>Sat, 14 Oct 2023 13:31:19 +0800</pubDate>
+      
+      <guid>https://okokfun.github.io/post/%E7%94%B5%E6%9C%BA%E4%B8%8E%E6%8B%96%E5%8A%A8%E5%8F%8A%E7%94%B5%E5%8A%9B%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86-%E7%94%B5%E6%9C%BA%E4%B8%8E%E5%8F%98%E5%8E%8B%E5%99%A8/%E7%AC%AC18%E7%AB%A0%E5%8D%95%E7%9B%B8%E7%94%B5%E5%8A%A8%E6%9C%BA/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>第17章 同步电动机</title>
+      <link>https://okokfun.github.io/post/%E7%94%B5%E6%9C%BA%E4%B8%8E%E6%8B%96%E5%8A%A8%E5%8F%8A%E7%94%B5%E5%8A%9B%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86-%E7%94%B5%E6%9C%BA%E4%B8%8E%E5%8F%98%E5%8E%8B%E5%99%A8/%E7%AC%AC17%E7%AB%A0%E5%90%8C%E6%AD%A5%E7%94%B5%E5%8A%A8%E6%9C%BA/</link>
+      <pubDate>Sat, 14 Oct 2023 13:29:19 +0800</pubDate>
+      
+      <guid>https://okokfun.github.io/post/%E7%94%B5%E6%9C%BA%E4%B8%8E%E6%8B%96%E5%8A%A8%E5%8F%8A%E7%94%B5%E5%8A%9B%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86-%E7%94%B5%E6%9C%BA%E4%B8%8E%E5%8F%98%E5%8E%8B%E5%99%A8/%E7%AC%AC17%E7%AB%A0%E5%90%8C%E6%AD%A5%E7%94%B5%E5%8A%A8%E6%9C%BA/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>第16章 同步发电机</title>
+      <link>https://okokfun.github.io/post/%E7%94%B5%E6%9C%BA%E4%B8%8E%E6%8B%96%E5%8A%A8%E5%8F%8A%E7%94%B5%E5%8A%9B%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86-%E7%94%B5%E6%9C%BA%E4%B8%8E%E5%8F%98%E5%8E%8B%E5%99%A8/%E7%AC%AC16%E7%AB%A0%E5%90%8C%E6%AD%A5%E5%8F%91%E7%94%B5%E6%9C%BA/</link>
+      <pubDate>Sat, 14 Oct 2023 13:11:19 +0800</pubDate>
+      
+      <guid>https://okokfun.github.io/post/%E7%94%B5%E6%9C%BA%E4%B8%8E%E6%8B%96%E5%8A%A8%E5%8F%8A%E7%94%B5%E5%8A%9B%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86-%E7%94%B5%E6%9C%BA%E4%B8%8E%E5%8F%98%E5%8E%8B%E5%99%A8/%E7%AC%AC16%E7%AB%A0%E5%90%8C%E6%AD%A5%E5%8F%91%E7%94%B5%E6%9C%BA/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>第15章 感应电动机的等效电路</title>
+      <link>https://okokfun.github.io/post/%E7%94%B5%E6%9C%BA%E4%B8%8E%E6%8B%96%E5%8A%A8%E5%8F%8A%E7%94%B5%E5%8A%9B%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86-%E7%94%B5%E6%9C%BA%E4%B8%8E%E5%8F%98%E5%8E%8B%E5%99%A8/%E7%AC%AC15%E7%AB%A0%E6%84%9F%E5%BA%94%E7%94%B5%E5%8A%A8%E6%9C%BA%E7%9A%84%E7%AD%89%E6%95%88%E7%94%B5%E8%B7%AF/</link>
+      <pubDate>Sat, 14 Oct 2023 13:09:19 +0800</pubDate>
+      
+      <guid>https://okokfun.github.io/post/%E7%94%B5%E6%9C%BA%E4%B8%8E%E6%8B%96%E5%8A%A8%E5%8F%8A%E7%94%B5%E5%8A%9B%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86-%E7%94%B5%E6%9C%BA%E4%B8%8E%E5%8F%98%E5%8E%8B%E5%99%A8/%E7%AC%AC15%E7%AB%A0%E6%84%9F%E5%BA%94%E7%94%B5%E5%8A%A8%E6%9C%BA%E7%9A%84%E7%AD%89%E6%95%88%E7%94%B5%E8%B7%AF/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>第14章 三相感应电机的选择和应用</title>
+      <link>https://okokfun.github.io/post/%E7%94%B5%E6%9C%BA%E4%B8%8E%E6%8B%96%E5%8A%A8%E5%8F%8A%E7%94%B5%E5%8A%9B%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86-%E7%94%B5%E6%9C%BA%E4%B8%8E%E5%8F%98%E5%8E%8B%E5%99%A8/%E7%AC%AC14%E7%AB%A0%E4%B8%89%E7%9B%B8%E6%84%9F%E5%BA%94%E7%94%B5%E6%9C%BA%E7%9A%84%E9%80%89%E6%8B%A9%E5%92%8C%E5%BA%94%E7%94%A8/</link>
+      <pubDate>Sat, 14 Oct 2023 13:05:19 +0800</pubDate>
+      
+      <guid>https://okokfun.github.io/post/%E7%94%B5%E6%9C%BA%E4%B8%8E%E6%8B%96%E5%8A%A8%E5%8F%8A%E7%94%B5%E5%8A%9B%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86-%E7%94%B5%E6%9C%BA%E4%B8%8E%E5%8F%98%E5%8E%8B%E5%99%A8/%E7%AC%AC14%E7%AB%A0%E4%B8%89%E7%9B%B8%E6%84%9F%E5%BA%94%E7%94%B5%E6%9C%BA%E7%9A%84%E9%80%89%E6%8B%A9%E5%92%8C%E5%BA%94%E7%94%A8/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>第13章 三相感应电机</title>
+      <link>https://okokfun.github.io/post/%E7%94%B5%E6%9C%BA%E4%B8%8E%E6%8B%96%E5%8A%A8%E5%8F%8A%E7%94%B5%E5%8A%9B%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86-%E7%94%B5%E6%9C%BA%E4%B8%8E%E5%8F%98%E5%8E%8B%E5%99%A8/%E7%AC%AC13%E7%AB%A0%E4%B8%89%E7%9B%B8%E6%84%9F%E5%BA%94%E7%94%B5%E6%9C%BA/</link>
+      <pubDate>Sat, 14 Oct 2023 12:46:19 +0800</pubDate>
+      
+      <guid>https://okokfun.github.io/post/%E7%94%B5%E6%9C%BA%E4%B8%8E%E6%8B%96%E5%8A%A8%E5%8F%8A%E7%94%B5%E5%8A%9B%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86-%E7%94%B5%E6%9C%BA%E4%B8%8E%E5%8F%98%E5%8E%8B%E5%99%A8/%E7%AC%AC13%E7%AB%A0%E4%B8%89%E7%9B%B8%E6%84%9F%E5%BA%94%E7%94%B5%E6%9C%BA/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>第11章 特殊变压器</title>
+      <link>https://okokfun.github.io/post/%E7%94%B5%E6%9C%BA%E4%B8%8E%E6%8B%96%E5%8A%A8%E5%8F%8A%E7%94%B5%E5%8A%9B%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86-%E7%94%B5%E6%9C%BA%E4%B8%8E%E5%8F%98%E5%8E%8B%E5%99%A8/%E7%AC%AC11%E7%AB%A0%E7%89%B9%E6%AE%8A%E5%8F%98%E5%8E%8B%E5%99%A8/</link>
+      <pubDate>Sat, 14 Oct 2023 12:42:19 +0800</pubDate>
+      
+      <guid>https://okokfun.github.io/post/%E7%94%B5%E6%9C%BA%E4%B8%8E%E6%8B%96%E5%8A%A8%E5%8F%8A%E7%94%B5%E5%8A%9B%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86-%E7%94%B5%E6%9C%BA%E4%B8%8E%E5%8F%98%E5%8E%8B%E5%99%A8/%E7%AC%AC11%E7%AB%A0%E7%89%B9%E6%AE%8A%E5%8F%98%E5%8E%8B%E5%99%A8/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>第10章 实际变压器</title>
+      <link>https://okokfun.github.io/post/%E7%94%B5%E6%9C%BA%E4%B8%8E%E6%8B%96%E5%8A%A8%E5%8F%8A%E7%94%B5%E5%8A%9B%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86-%E7%94%B5%E6%9C%BA%E4%B8%8E%E5%8F%98%E5%8E%8B%E5%99%A8/%E7%AC%AC10%E7%AB%A0%E5%AE%9E%E9%99%85%E5%8F%98%E5%8E%8B%E5%99%A8/</link>
+      <pubDate>Sat, 14 Oct 2023 12:39:19 +0800</pubDate>
+      
+      <guid>https://okokfun.github.io/post/%E7%94%B5%E6%9C%BA%E4%B8%8E%E6%8B%96%E5%8A%A8%E5%8F%8A%E7%94%B5%E5%8A%9B%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86-%E7%94%B5%E6%9C%BA%E4%B8%8E%E5%8F%98%E5%8E%8B%E5%99%A8/%E7%AC%AC10%E7%AB%A0%E5%AE%9E%E9%99%85%E5%8F%98%E5%8E%8B%E5%99%A8/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>第12章 三相变压器</title>
+      <link>https://okokfun.github.io/post/%E7%94%B5%E6%9C%BA%E4%B8%8E%E6%8B%96%E5%8A%A8%E5%8F%8A%E7%94%B5%E5%8A%9B%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86-%E7%94%B5%E6%9C%BA%E4%B8%8E%E5%8F%98%E5%8E%8B%E5%99%A8/%E7%AC%AC12%E7%AB%A0%E4%B8%89%E7%9B%B8%E5%8F%98%E5%8E%8B%E5%99%A8/</link>
+      <pubDate>Sat, 14 Oct 2023 12:39:19 +0800</pubDate>
+      
+      <guid>https://okokfun.github.io/post/%E7%94%B5%E6%9C%BA%E4%B8%8E%E6%8B%96%E5%8A%A8%E5%8F%8A%E7%94%B5%E5%8A%9B%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86-%E7%94%B5%E6%9C%BA%E4%B8%8E%E5%8F%98%E5%8E%8B%E5%99%A8/%E7%AC%AC12%E7%AB%A0%E4%B8%89%E7%9B%B8%E5%8F%98%E5%8E%8B%E5%99%A8/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>第9章　理想变压器</title>
+      <link>https://okokfun.github.io/post/%E7%94%B5%E6%9C%BA%E4%B8%8E%E6%8B%96%E5%8A%A8%E5%8F%8A%E7%94%B5%E5%8A%9B%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86-%E7%94%B5%E6%9C%BA%E4%B8%8E%E5%8F%98%E5%8E%8B%E5%99%A8/%E7%AC%AC9%E7%AB%A0%E7%90%86%E6%83%B3%E5%8F%98%E5%8E%8B%E5%99%A8/</link>
+      <pubDate>Sat, 14 Oct 2023 12:36:19 +0800</pubDate>
+      
+      <guid>https://okokfun.github.io/post/%E7%94%B5%E6%9C%BA%E4%B8%8E%E6%8B%96%E5%8A%A8%E5%8F%8A%E7%94%B5%E5%8A%9B%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86-%E7%94%B5%E6%9C%BA%E4%B8%8E%E5%8F%98%E5%8E%8B%E5%99%A8/%E7%AC%AC9%E7%AB%A0%E7%90%86%E6%83%B3%E5%8F%98%E5%8E%8B%E5%99%A8/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>第7章 有功功率、无功功率和视在功率</title>
+      <link>https://okokfun.github.io/post/%E7%94%B5%E6%9C%BA%E4%B8%8E%E6%8B%96%E5%8A%A8%E5%8F%8A%E7%94%B5%E5%8A%9B%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86-%E7%94%B5%E6%9C%BA%E4%B8%8E%E5%8F%98%E5%8E%8B%E5%99%A8/%E7%AC%AC7%E7%AB%A0%E6%9C%89%E5%8A%9F%E5%8A%9F%E7%8E%87%E6%97%A0%E5%8A%9F%E5%8A%9F%E7%8E%87%E5%92%8C%E8%A7%86%E5%9C%A8%E5%8A%9F%E7%8E%87/</link>
+      <pubDate>Sat, 14 Oct 2023 12:29:19 +0800</pubDate>
+      
+      <guid>https://okokfun.github.io/post/%E7%94%B5%E6%9C%BA%E4%B8%8E%E6%8B%96%E5%8A%A8%E5%8F%8A%E7%94%B5%E5%8A%9B%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86-%E7%94%B5%E6%9C%BA%E4%B8%8E%E5%8F%98%E5%8E%8B%E5%99%A8/%E7%AC%AC7%E7%AB%A0%E6%9C%89%E5%8A%9F%E5%8A%9F%E7%8E%87%E6%97%A0%E5%8A%9F%E5%8A%9F%E7%8E%87%E5%92%8C%E8%A7%86%E5%9C%A8%E5%8A%9F%E7%8E%87/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>第6章 电机的效率和散热</title>
+      <link>https://okokfun.github.io/post/%E7%94%B5%E6%9C%BA%E4%B8%8E%E6%8B%96%E5%8A%A8%E5%8F%8A%E7%94%B5%E5%8A%9B%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86-%E7%94%B5%E6%9C%BA%E4%B8%8E%E5%8F%98%E5%8E%8B%E5%99%A8/%E7%AC%AC6%E7%AB%A0%E7%94%B5%E6%9C%BA%E7%9A%84%E6%95%88%E7%8E%87%E5%92%8C%E6%95%A3%E7%83%AD/</link>
+      <pubDate>Sat, 14 Oct 2023 12:28:19 +0800</pubDate>
+      
+      <guid>https://okokfun.github.io/post/%E7%94%B5%E6%9C%BA%E4%B8%8E%E6%8B%96%E5%8A%A8%E5%8F%8A%E7%94%B5%E5%8A%9B%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86-%E7%94%B5%E6%9C%BA%E4%B8%8E%E5%8F%98%E5%8E%8B%E5%99%A8/%E7%AC%AC6%E7%AB%A0%E7%94%B5%E6%9C%BA%E7%9A%84%E6%95%88%E7%8E%87%E5%92%8C%E6%95%A3%E7%83%AD/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>第4章 直流发电机</title>
+      <link>https://okokfun.github.io/post/%E7%94%B5%E6%9C%BA%E4%B8%8E%E6%8B%96%E5%8A%A8%E5%8F%8A%E7%94%B5%E5%8A%9B%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86-%E7%94%B5%E6%9C%BA%E4%B8%8E%E5%8F%98%E5%8E%8B%E5%99%A8/%E7%AC%AC4%E7%AB%A0%E7%9B%B4%E6%B5%81%E5%8F%91%E7%94%B5%E6%9C%BA/</link>
+      <pubDate>Sat, 14 Oct 2023 12:14:19 +0800</pubDate>
+      
+      <guid>https://okokfun.github.io/post/%E7%94%B5%E6%9C%BA%E4%B8%8E%E6%8B%96%E5%8A%A8%E5%8F%8A%E7%94%B5%E5%8A%9B%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86-%E7%94%B5%E6%9C%BA%E4%B8%8E%E5%8F%98%E5%8E%8B%E5%99%A8/%E7%AC%AC4%E7%AB%A0%E7%9B%B4%E6%B5%81%E5%8F%91%E7%94%B5%E6%9C%BA/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>第5章 直流电动机</title>
+      <link>https://okokfun.github.io/post/%E7%94%B5%E6%9C%BA%E4%B8%8E%E6%8B%96%E5%8A%A8%E5%8F%8A%E7%94%B5%E5%8A%9B%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86-%E7%94%B5%E6%9C%BA%E4%B8%8E%E5%8F%98%E5%8E%8B%E5%99%A8/%E7%AC%AC5%E7%AB%A0%E7%9B%B4%E6%B5%81%E7%94%B5%E5%8A%A8%E6%9C%BA/</link>
+      <pubDate>Sat, 14 Oct 2023 12:14:19 +0800</pubDate>
+      
+      <guid>https://okokfun.github.io/post/%E7%94%B5%E6%9C%BA%E4%B8%8E%E6%8B%96%E5%8A%A8%E5%8F%8A%E7%94%B5%E5%8A%9B%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86-%E7%94%B5%E6%9C%BA%E4%B8%8E%E5%8F%98%E5%8E%8B%E5%99%A8/%E7%AC%AC5%E7%AB%A0%E7%9B%B4%E6%B5%81%E7%94%B5%E5%8A%A8%E6%9C%BA/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>第8章 三相电路</title>
+      <link>https://okokfun.github.io/post/%E7%94%B5%E6%9C%BA%E4%B8%8E%E6%8B%96%E5%8A%A8%E5%8F%8A%E7%94%B5%E5%8A%9B%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86-%E7%94%B5%E6%9C%BA%E4%B8%8E%E5%8F%98%E5%8E%8B%E5%99%A8/%E7%AC%AC8%E7%AB%A0%E4%B8%89%E7%9B%B8%E7%94%B5%E8%B7%AF/</link>
+      <pubDate>Sat, 14 Oct 2023 12:14:19 +0800</pubDate>
+      
+      <guid>https://okokfun.github.io/post/%E7%94%B5%E6%9C%BA%E4%B8%8E%E6%8B%96%E5%8A%A8%E5%8F%8A%E7%94%B5%E5%8A%9B%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86-%E7%94%B5%E6%9C%BA%E4%B8%8E%E5%8F%98%E5%8E%8B%E5%99%A8/%E7%AC%AC8%E7%AB%A0%E4%B8%89%E7%9B%B8%E7%94%B5%E8%B7%AF/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>第3章 力学和热学的基本知识</title>
+      <link>https://okokfun.github.io/post/%E7%94%B5%E6%9C%BA%E4%B8%8E%E6%8B%96%E5%8A%A8%E5%8F%8A%E7%94%B5%E5%8A%9B%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/%E7%AC%AC3%E7%AB%A0%E5%8A%9B%E5%AD%A6%E5%92%8C%E7%83%AD%E5%AD%A6%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/</link>
+      <pubDate>Sat, 14 Oct 2023 12:10:14 +0800</pubDate>
+      
+      <guid>https://okokfun.github.io/post/%E7%94%B5%E6%9C%BA%E4%B8%8E%E6%8B%96%E5%8A%A8%E5%8F%8A%E7%94%B5%E5%8A%9B%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/%E7%AC%AC3%E7%AB%A0%E5%8A%9B%E5%AD%A6%E5%92%8C%E7%83%AD%E5%AD%A6%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>第2章 电学、磁学及电路基本原理</title>
+      <link>https://okokfun.github.io/post/%E7%94%B5%E6%9C%BA%E4%B8%8E%E6%8B%96%E5%8A%A8%E5%8F%8A%E7%94%B5%E5%8A%9B%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/%E7%AC%AC2%E7%AB%A0%E7%94%B5%E5%AD%A6%E7%A3%81%E5%AD%A6%E5%8F%8A%E7%94%B5%E8%B7%AF%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/</link>
+      <pubDate>Sat, 14 Oct 2023 11:31:14 +0800</pubDate>
+      
+      <guid>https://okokfun.github.io/post/%E7%94%B5%E6%9C%BA%E4%B8%8E%E6%8B%96%E5%8A%A8%E5%8F%8A%E7%94%B5%E5%8A%9B%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/%E7%AC%AC2%E7%AB%A0%E7%94%B5%E5%AD%A6%E7%A3%81%E5%AD%A6%E5%8F%8A%E7%94%B5%E8%B7%AF%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>第1章 单位</title>
+      <link>https://okokfun.github.io/post/%E7%94%B5%E6%9C%BA%E4%B8%8E%E6%8B%96%E5%8A%A8%E5%8F%8A%E7%94%B5%E5%8A%9B%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/%E7%AC%AC1%E7%AB%A0%E5%8D%95%E4%BD%8D/</link>
+      <pubDate>Sat, 14 Oct 2023 11:14:14 +0800</pubDate>
+      
+      <guid>https://okokfun.github.io/post/%E7%94%B5%E6%9C%BA%E4%B8%8E%E6%8B%96%E5%8A%A8%E5%8F%8A%E7%94%B5%E5%8A%9B%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/%E7%AC%AC1%E7%AB%A0%E5%8D%95%E4%BD%8D/</guid>
+      <description>1.0 引言 单位在日常生活中起着重要作用。实际上，任何看到、感受到的事物，任何买卖的东西都是用单位来衡量和比较的。我们对于这些单位量是那么熟悉，以至于觉得它们很自然，很少会去想它们是怎么得来的，为什么给它们指定这个单位值。
+几百年前用36个大麦粒首尾相连排列的长度来定义一英尺，而用国王埃德加的鼻子到他伸展的手端的长度来定义一码。
+从那以后，我们在定义出更精确的单位的过程中走了很长的一段路。现在的大部分单位都是基于大自然的物理规律而设定的，由于其有不变性和可重现性的优点。因此，尺和码是用通过光速来计算定义的，时间是通过原子振动的持续时间来定义的。测量标准的提高和科技的进步是息息相关的，它们也是互相依存的。
+虽然基本标准各国是统-一的，但单位的日常应用远未统一。例如，在测量长度时有些人使用英尺和码，而有些人使用毫米和米。天文学家运用秒差距，物理学家用埃，另外一些人员仍在使用杆和测链。但是这些长度单位可以达到很高的精确度，因为现在长度的标准是用光速来衡量的。
+这些基准使同一个测量单位在不同国家或不同专业得以互相比较。长度、质量、时间等标准单位将当今使用的各种单位联系起来。
+1.1单位制 多年来已制定各种单位制以满足商业、工业以及科学的需求。一个单位制可表述为其各单位之间有数值联系，而且常常是整数关系。如在英制中，英寸、英尺、码都是彼此相关的，由12、3、36这几个数联系起来。.
+在公制中也存在类似的相关性，只不过那些单位是由10的倍数联系起来的。因此，厘米、米、千米是由100、1000、100 000这几个数联系起来的。所以从米换算到厘米比从码换算到英尺方便，这也是公制的优点之一.
+公制在当今被认定为国际单位制，SI 是它的缩写。SI 是在1960年召开的第11届度量衡大会上被正式确定的，那届大会的主题是“国际单位制”。
+1.2国际单位制 国际单位制 (SI) 被大多数国家所采用，但它并没有消除其他先前被使用的单位。就像建立了良好的生活习惯一样，那些单位变成我们生活的一部分，不能马上改变它。一夜之间从码到米，以及从盎司到克的转换并不是容易的。这是很自然的，因为长期使用一种单位使我们对事物的质量、规模以及它们怎样与物质世界联系有了自已的认识和理解。
+然而，SI 变得越来越重要 (尤其是在电气和机械领域) ，使得我们应该了解单位制基本内容，从而，能用简单的方法从一个单位系统换算到另一个单位系统。在这方面，附录列出的转换图表是非常有用的。
+SI具有很多其他单位系统没有的明显的优点:
+这是一个十进制系统; 它包含了工业和商业中很多常用的单位，例如伏特、安培、千克以及瓦特; 这是一个连贯系统，在电、机以及热之间有着非常简洁明了的联系; 它可以被科学研究者、技术员、工程师以及外行者使用，能把理论与实践联系起来。 尽管有这些优点，但 SI 并不是万能的。在特殊领域如原子物理学，以及甚至在每天的工作中，其他单位制可能会更方便些。所以我们测量平面角时用度这个单位，尽管在 SI 中角的单位是弧度。而且，我们将继续使用天和小时来计算时间，尽管在 SI 中是用秒计时。
+1.3 基本单位和导出单位 国际单位制由7个基本单位组成 (如表1-1所示) 。 $$ 表1-1~~~基本单位 $$
+量 单位 符号 长度 米 m 质量 千克 kg 时间 秒 s 电流 安培 A 热力学温度 开尔文 K 发光强度 坎德拉 cd 物质的量 摩尔 mol 从这些基本单位我们可以导出其他一-些诸如面积、功率、力、磁通量等单位。能导出的单位在数量上没有限制，有些单位使用频繁从而给它们取了特殊的名字。因此，对于压强单位用更简单的帕斯卡取代原来的牛顿/平方米。一些有特殊名字的导出单位量列在表1-2中。 $$ 表1-2~~~导出单位 $$</description>
+    </item>
+    
+  </channel>
+</rss>

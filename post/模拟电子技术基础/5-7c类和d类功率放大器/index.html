@@ -1,17 +1,38 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content=''><title>5.7C类和D类功率放大器</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='本章将要讨论的最后两类放大器在很多方面性能会有很大差别，但是它们都有很高的效率。C 类放大器主要应用于射频电路，比如 FM 发射器。它们一般都是围绕 BJT 和 JEFT 来搭建。D 类放大器是非线性开关放大器，主要利用 MOSFET 来搭建电路。在过去某一段时间，D 类放大器主要用于开关应用，例如电机控制。但是现在市场上已经出现了各种高质量的 D 类音频放大器。我们将首先介绍 C 类放大器。
+学完本节后，你应该掌握以下内容:
+解释 C 类和 D 类放大器的工作原理 解释基本的 C 类工作原理 描述 C 类偏置 解释 C 类放大器的调谐工作原理 求 C 类放大器的最大功率输出 讨论 D 类放大器的工作原理 解释脉冲宽度调制(PWM) 讨论 D 类放大器中的谐波和频谱 解释 D 类放大器中低通滤波器的作用 5.7.1 C类放大器的基本工作原理 $$ 图5-40~~~基本的C类放大器工作原理(同相) $$
+$$ 图5-41~~~基本C类放大器工作原理 $$
+C 类放大器工作原理的基本概念如图5-40所示。图5-4la给出了一个具有电阻性负载的共发射极C类放大器。C类放大器一般和谐振电路负载一起工作，因此使用的电阻性负载只为了来说明概念。利用负的 $V_{BB}$ 电源使放大器偏置在截止电压以下。交流源电压的峰值略大于 $|V_{BB}|&#43;V_{BE}$，这样只有在每个周期接近正峰值的那一小段时间内，基极电压会超过发射结的势垒电势，如图5-41b所示。在这个短暂的间隔内，晶体管导通。当使用整个交流负载线时，如 图5-41c 所示，理想的最大集电极电流为 $I_{c(sat)}$，理想的最小集电极电压为 $V_{ce(sat)}$.
+5.7.2功耗 $$ a）集电极电流脉冲~~~~~~~~~~~~~~~~~~~~~~~~~~~~~b）理想C类放大器的波形 $$
+$$ 图5-42~~~C类放大器的波形 $$
+C 类放大器中晶体管的功耗很低，因为在整个输人周期中，晶体管只在一个很小的时间段内导通。图5-42a 给出了集电极电流脉冲。两个脉冲之间的时间为交流输入电压的周期(T)。在晶体管导通期间，集电极电流和集电极电压如 图5-42b 所示。为了避免复杂的数学运算，假设了理想的脉冲近似。通过这个简化，如果输出在整个负载线上波动，那么在晶体管导通期间，最大电流幅值为 $I_{c(sat)}$，最小电压幅值为 $V_{ce(sat)}$。因此，导通期间的功耗为'><title>5.7 C类和D类功率放大器</title>
 
 <link rel='canonical' href='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/5-7c%E7%B1%BB%E5%92%8Cd%E7%B1%BB%E5%8A%9F%E7%8E%87%E6%94%BE%E5%A4%A7%E5%99%A8/'>
 
-<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='5.7C类和D类功率放大器'>
-<meta property='og:description' content=''>
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='5.7 C类和D类功率放大器'>
+<meta property='og:description' content='本章将要讨论的最后两类放大器在很多方面性能会有很大差别，但是它们都有很高的效率。C 类放大器主要应用于射频电路，比如 FM 发射器。它们一般都是围绕 BJT 和 JEFT 来搭建。D 类放大器是非线性开关放大器，主要利用 MOSFET 来搭建电路。在过去某一段时间，D 类放大器主要用于开关应用，例如电机控制。但是现在市场上已经出现了各种高质量的 D 类音频放大器。我们将首先介绍 C 类放大器。
+学完本节后，你应该掌握以下内容:
+解释 C 类和 D 类放大器的工作原理 解释基本的 C 类工作原理 描述 C 类偏置 解释 C 类放大器的调谐工作原理 求 C 类放大器的最大功率输出 讨论 D 类放大器的工作原理 解释脉冲宽度调制(PWM) 讨论 D 类放大器中的谐波和频谱 解释 D 类放大器中低通滤波器的作用 5.7.1 C类放大器的基本工作原理 $$ 图5-40~~~基本的C类放大器工作原理(同相) $$
+$$ 图5-41~~~基本C类放大器工作原理 $$
+C 类放大器工作原理的基本概念如图5-40所示。图5-4la给出了一个具有电阻性负载的共发射极C类放大器。C类放大器一般和谐振电路负载一起工作，因此使用的电阻性负载只为了来说明概念。利用负的 $V_{BB}$ 电源使放大器偏置在截止电压以下。交流源电压的峰值略大于 $|V_{BB}|&#43;V_{BE}$，这样只有在每个周期接近正峰值的那一小段时间内，基极电压会超过发射结的势垒电势，如图5-41b所示。在这个短暂的间隔内，晶体管导通。当使用整个交流负载线时，如 图5-41c 所示，理想的最大集电极电流为 $I_{c(sat)}$，理想的最小集电极电压为 $V_{ce(sat)}$.
+5.7.2功耗 $$ a）集电极电流脉冲~~~~~~~~~~~~~~~~~~~~~~~~~~~~~b）理想C类放大器的波形 $$
+$$ 图5-42~~~C类放大器的波形 $$
+C 类放大器中晶体管的功耗很低，因为在整个输人周期中，晶体管只在一个很小的时间段内导通。图5-42a 给出了集电极电流脉冲。两个脉冲之间的时间为交流输入电压的周期(T)。在晶体管导通期间，集电极电流和集电极电压如 图5-42b 所示。为了避免复杂的数学运算，假设了理想的脉冲近似。通过这个简化，如果输出在整个负载线上波动，那么在晶体管导通期间，最大电流幅值为 $I_{c(sat)}$，最小电压幅值为 $V_{ce(sat)}$。因此，导通期间的功耗为'>
 <meta property='og:url' content='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/5-7c%E7%B1%BB%E5%92%8Cd%E7%B1%BB%E5%8A%9F%E7%8E%87%E6%94%BE%E5%A4%A7%E5%99%A8/'>
 <meta property='og:site_name' content='My Blog'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Analog' /><meta property='article:published_time' content='2023-07-14T17:40:12&#43;00:00'/><meta property='article:modified_time' content='2023-07-14T17:40:12&#43;00:00'/>
-<meta name="twitter:title" content="5.7C类和D类功率放大器">
-<meta name="twitter:description" content=""><script>
+<meta name="twitter:title" content="5.7 C类和D类功率放大器">
+<meta name="twitter:description" content="本章将要讨论的最后两类放大器在很多方面性能会有很大差别，但是它们都有很高的效率。C 类放大器主要应用于射频电路，比如 FM 发射器。它们一般都是围绕 BJT 和 JEFT 来搭建。D 类放大器是非线性开关放大器，主要利用 MOSFET 来搭建电路。在过去某一段时间，D 类放大器主要用于开关应用，例如电机控制。但是现在市场上已经出现了各种高质量的 D 类音频放大器。我们将首先介绍 C 类放大器。
+学完本节后，你应该掌握以下内容:
+解释 C 类和 D 类放大器的工作原理 解释基本的 C 类工作原理 描述 C 类偏置 解释 C 类放大器的调谐工作原理 求 C 类放大器的最大功率输出 讨论 D 类放大器的工作原理 解释脉冲宽度调制(PWM) 讨论 D 类放大器中的谐波和频谱 解释 D 类放大器中低通滤波器的作用 5.7.1 C类放大器的基本工作原理 $$ 图5-40~~~基本的C类放大器工作原理(同相) $$
+$$ 图5-41~~~基本C类放大器工作原理 $$
+C 类放大器工作原理的基本概念如图5-40所示。图5-4la给出了一个具有电阻性负载的共发射极C类放大器。C类放大器一般和谐振电路负载一起工作，因此使用的电阻性负载只为了来说明概念。利用负的 $V_{BB}$ 电源使放大器偏置在截止电压以下。交流源电压的峰值略大于 $|V_{BB}|&#43;V_{BE}$，这样只有在每个周期接近正峰值的那一小段时间内，基极电压会超过发射结的势垒电势，如图5-41b所示。在这个短暂的间隔内，晶体管导通。当使用整个交流负载线时，如 图5-41c 所示，理想的最大集电极电流为 $I_{c(sat)}$，理想的最小集电极电压为 $V_{ce(sat)}$.
+5.7.2功耗 $$ a）集电极电流脉冲~~~~~~~~~~~~~~~~~~~~~~~~~~~~~b）理想C类放大器的波形 $$
+$$ 图5-42~~~C类放大器的波形 $$
+C 类放大器中晶体管的功耗很低，因为在整个输人周期中，晶体管只在一个很小的时间段内导通。图5-42a 给出了集电极电流脉冲。两个脉冲之间的时间为交流输入电压的周期(T)。在晶体管导通期间，集电极电流和集电极电压如 图5-42b 所示。为了避免复杂的数学运算，假设了理想的脉冲近似。通过这个简化，如果输出在整个负载线上波动，那么在晶体管导通期间，最大电流幅值为 $I_{c(sat)}$，最小电压幅值为 $V_{ce(sat)}$。因此，导通期间的功耗为"><script>
     (function(){
         if(''){
             if (prompt('请输入文章密码') !== ''){
@@ -25,7 +46,7 @@
 
     </head>
     <body class="
-    article-page 
+    article-page has-toc
 ">
     <script>
         (function() {
@@ -51,128 +72,22 @@
 </script>
 <div class="container main-container flex 
     
-        on-phone--column extended
+        extended
     
 ">
     
-        <aside class="sidebar left-sidebar sticky">
-    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
-        <span class="hamburger-box">
-            <span class="hamburger-inner"></span>
-        </span>
-    </button>
-
-    <header class="site-info">
-        
-            
-            <figure class="site-avatar">
-                
-                    
-                    
-                    
-                        
-                        <img src="/img/avatar_hu71fc3898bde3464d50a00f65e63c7ec2_517570_300x0_resize_box_3.png" width="300"
-                            height="354" class="site-logo" loading="lazy" alt="Avatar">
-                    
-                
-
-                
-            </figure>
-            
-        
-        
-        <h1 class="site-name"><a href="/">My Blog</a></h1>
-        <h2 class="site-description"></h2></header>
-
-    <ol class="menu" id="main-menu">
-        
-        
-        
-
-        <li >
-            <a href='/page/about/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <div id="article-toolbar">
+            <a href="/" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="7" r="4" />
-  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+  <polyline points="15 6 9 12 15 18" />
 </svg>
 
 
 
-                
-                <span>About</span>
+                <span>Back</span>
             </a>
-        </li>
-        
-        
-
-        <li >
-            <a href='/page/archives/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <rect x="3" y="4" width="18" height="4" rx="2" />
-  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
-  <line x1="10" y1="12" x2="14" y2="12" />
-</svg>
-
-
-
-                
-                <span>Archives</span>
-            </a>
-        </li>
-        
-        
-
-        <li >
-            <a href='/page/search/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="10" cy="10" r="7" />
-  <line x1="21" y1="21" x2="15" y2="15" />
-</svg>
-
-
-
-                
-                <span>Search</span>
-            </a>
-        </li>
-        
-
-        
-            <li id="dark-mode-toggle">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="8" cy="12" r="2" />
-  <rect x="2" y="6" width="20" height="12" rx="6" />
-</svg>
-
-
-
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="16" cy="12" r="2" />
-  <rect x="2" y="6" width="20" height="12" rx="6" />
-</svg>
-
-
-
-                <span>Dark Mode</span>
-            </li>
-        
-    </ol>
-</aside>
-
+        </div>
     
 <main class="main full-width">
     <article class="main-article">
@@ -182,7 +97,7 @@
     
 
     <h2 class="article-title">
-        <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/5-7c%E7%B1%BB%E5%92%8Cd%E7%B1%BB%E5%8A%9F%E7%8E%87%E6%94%BE%E5%A4%A7%E5%99%A8/">5.7C类和D类功率放大器</a>
+        <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/5-7c%E7%B1%BB%E5%92%8Cd%E7%B1%BB%E5%8A%9F%E7%8E%87%E6%94%BE%E5%A4%A7%E5%99%A8/">5.7 C类和D类功率放大器</a>
     </h2>
 
     
@@ -215,7 +130,7 @@
 
 
                 <time class="article-time--reading">
-                    0 minute read
+                    2 minute read
                 </time>
             </div>
         
@@ -225,7 +140,292 @@
 </header>
 
     <section class="article-content">
-    
+    <p>本章将要讨论的最后两类放大器在很多方面性能会有很大差别，但是它们都有很高的效率。C 类放大器主要应用于射频电路，比如 FM 发射器。它们一般都是围绕 BJT 和 JEFT 来搭建。D 类放大器是非线性开关放大器，主要利用 MOSFET 来搭建电路。在过去某一段时间，D 类放大器主要用于开关应用，例如电机控制。但是现在市场上已经出现了各种高质量的 D 类音频放大器。我们将首先介绍 C 类放大器。</p>
+<p>学完本节后，你应该掌握以下内容:</p>
+<ul>
+<li>解释 C 类和 D 类放大器的工作原理
+<ul>
+<li>解释基本的 C 类工作原理</li>
+<li>描述 C 类偏置</li>
+<li>解释 C 类放大器的调谐工作原理</li>
+<li>求 C 类放大器的最大功率输出</li>
+<li>讨论 D 类放大器的工作原理</li>
+<li>解释脉冲宽度调制(PWM)</li>
+<li>讨论 D 类放大器中的谐波和频谱</li>
+<li>解释 D 类放大器中低通滤波器的作用</li>
+</ul>
+</li>
+</ul>
+<h3 id="571-c类放大器的基本工作原理">5.7.1 C类放大器的基本工作原理</h3>
+<p><img src="https://s2.loli.net/2023/10/11/Ulu96f8GWJEMBVN.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog5_40.png"
+	
+	
+>
+$$
+图5-40~~~基本的C类放大器工作原理(同相)
+$$</p>
+<p><img src="https://s2.loli.net/2023/10/11/KfdbqCnXveNAOiH.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog5_41.png"
+	
+	
+>
+$$
+图5-41~~~基本C类放大器工作原理
+$$</p>
+<p>C 类放大器工作原理的基本概念如图5-40所示。图5-4la给出了一个具有电阻性负载的共发射极C类放大器。C类放大器一般和谐振电路负载一起工作，因此使用的电阻性负载只为了来说明概念。利用负的 $V_{BB}$ 电源使放大器偏置在截止电压以下。交流源电压的峰值略大于 $|V_{BB}|+V_{BE}$，这样只有在每个周期接近正峰值的那一小段时间内，基极电压会超过发射结的势垒电势，如图5-41b所示。在这个短暂的间隔内，晶体管导通。当使用整个交流负载线时，如 图5-41c 所示，理想的最大集电极电流为 $I_{c(sat)}$，理想的最小集电极电压为 $V_{ce(sat)}$.</p>
+<h3 id="572功耗">5.7.2功耗</h3>
+<p><img src="https://s2.loli.net/2023/10/11/elj61YQmC8xwKoE.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog5_42.png"
+	
+	
+></p>
+<p>$$
+a）集电极电流脉冲~~~~~~~~~~~~~~~~~~~~~~~~~~~~~b）理想C类放大器的波形
+$$</p>
+<p>$$
+图5-42~~~C类放大器的波形
+$$</p>
+<p>C 类放大器中晶体管的功耗很低，因为在整个输人周期中，晶体管只在一个很小的时间段内导通。图5-42a 给出了集电极电流脉冲。两个脉冲之间的时间为交流输入电压的周期(T)。在晶体管导通期间，集电极电流和集电极电压如 图5-42b 所示。为了避免复杂的数学运算，假设了理想的脉冲近似。通过这个简化，如果输出在整个负载线上波动，那么在晶体管导通期间，最大电流幅值为 $I_{c(sat)}$，最小电压幅值为 $V_{ce(sat)}$。因此，导通期间的功耗为</p>
+<p>$$
+P_{D(avg)}=(\frac{t_{on}}{T})P_{D(on)}=(\frac{t_{on}}{T})I_{c(sat)}V_{ce(sat)}
+$$</p>
+<h3 id="573-调谐工作原理">5.7.3 调谐工作原理</h3>
+<p><img src="https://s2.loli.net/2023/10/11/dCXcWQxibE3hPFg.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog5_43.png"
+	
+	
+></p>
+<p>$$
+a）基本电路~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~b）输出波形
+$$</p>
+<p>$$
+图5-43~~~调谐C类放大器
+$$</p>
+<p>因为集电极电压(输出)不是输人的复制，所以电阻性负载 C 类放大器本身在线性应用中是没有价值的。因此必须采用一个具有并联谐振电路(储能电路)的 C 类放大器，如图5-43a所示。储能电路的谐振频率由公式 $f_r= l/(2\pi r\sqrt[]{LC})$ 来给出。输入信号每个周期的集电极电流短脉冲产生和维持谐振电路的振荡，因此产生正弦电压的输出，如图5-43b所示。储能电路只有在谐振频率附近有很高的阻抗，因此只有在谐振频率处的增益很高。</p>
+<p><img src="https://s2.loli.net/2023/10/15/c3EC6KXnHQ75Lpq.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog5_44.png"
+	
+	
+>
+$$
+图5-44~~~共振电路
+$$</p>
+<p>最初电容充电至约为 $+V_{CC}$，如图5-44a所示。红色箭头表示电荷的流动。脉冲过后，电容快速放电，电感充电。然后，当电容完全放电后，电感的磁场消失，然后快速对电容充电至接近 $V_{CC}$，但是与之前的充电有相反的极性。这样就完成了半个周期的振荡，如图5-44b和c所示。接下来，电容再次放电，增大了电感的磁场。电感然后再次对电容充电，充电至正的峰值，该峰值略小于前一次的峰值，因为有部分能量消耗在线圈电阻上。如此完成了整个周期，如图5-44d和e所示。因此输出电压的峰峰值约为 $2V_{CC}$。</p>
+<p>每个周期的振荡幅度会比上一个周期的振荡幅度小，因此能量会在储能电路的阻抗上损耗，如图5-45a所示，振荡最终会停止。但是，集电极电流脉冲周期性地再现会重新激励谐振电路并使振荡维持在一个固定不变的幅度。</p>
+<p><img src="https://s2.loli.net/2023/10/15/yXrLkTeJVaniuCP.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog5_45.PNG"
+	
+	
+>
+$$
+图5-45~~~储能电路振荡。V_r是储能电路两端的电压
+$$
+当储能电路调谐到输人信号的频率(基频)时，在储能电路电压 $V_r$ 的每个周期都会发生重新激励，如图5-45b所示。当储能电路调谐到输入信号的第二谐波时，则会间隔一个周期发生重新激励，如图5-45c所示。在这种情况下，C 类放大器作为倍频器工作($\times 2$)。通过将储能电路调谐到更高的谐波，可以实现更高的倍频系数。</p>
+<h3 id="574最大输出功率">5.7.4最大输出功率</h3>
+<p>因为储能电路两端的电压峰峰值约为 $2V_{CC}$，所以最大输出功率可以表示为:
+$$
+P_{out}=\frac{V^2_{rms}}{R_c}=\frac{(0.707V_{CC})^2}{R_c}
+\\
+P_{out}=\frac{0.5V^2_{CC}}{R_c}
+$$
+式中，$R_c$ 是集电极储能电路在谐振时的等效并联电阻，它代表绕圈电阻和负载电阻的并联组合，它的值往往比较小。因为晶体管只在输人信号周期的一小部分内导通，并且没有偏置电流，所以 C 类放大器效率非常高。实际的 C 类放大器的效率可达到 90% 以上。</p>
+<h3 id="575类放大器的钳位偏置">5.7.5类放大器的钳位偏置</h3>
+<p>图5-46所示电路是一个带有基极偏置钳位电路的 C 类放大器。发射结相当于二极管。</p>
+<p><img src="https://s2.loli.net/2023/10/15/KSsmzXbFTgWf6Pa.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog5_47ab.png"
+	
+	
+>
+$$
+a)~~~~~~~~~~~~~~~~~~~~~~~~b)
+$$</p>
+<p><img src="https://s2.loli.net/2023/10/15/YPdvw76QRCIDat8.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog5_47cd.png"
+	
+	
+>
+$$
+c)~~~~~~~~~~~~~~~~~~~~~~~~d)
+$$</p>
+<p><img src="https://s2.loli.net/2023/10/15/EzMQKtFVG6uCYTc.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog5_47ef.png"
+	
+	
+>
+$$
+e)~~~~~~~~~~~~~~~~~~~~~~~~f)
+$$</p>
+<p>$$
+图5-47~~~钳位偏置过程
+$$</p>
+<p>当输入信号为正时，电容 $C_1$ 充电至峰值，极性如图5-47a所示。这个过程在基极产生一个平均值约为$-V_p$的电压。当晶体管只在很短的时间间隔内导通时，前面产生的基极电压使晶体管处于截止状态，除了在正峰值之外。为了得到更好的钳位效果，钳位电路的 $R_1C_1$ 时间常数必须远大于输入信号的周期。图5-47b～f更详细地解释了钳位偏置过程。在输入信号到达正峰值的时间里($t_0～t_1$)，电容通过发射结二极管充电到$V_p-0.7V$，如图5-47b所示。在图5-47c所示的$t_1～t_2$时间段，电容缓慢放电，因为$RC$时间常数很大。因此，电容保持了一个平均电压，该电压略小于$V_p-0.7V$。</p>
+<p>因为输人信号的直流量为0($C_1$的正端)，所以基极的直流电压($C_1$的负端)比$一(V_p-0.7V)$往正的方向略大，如图5-47d所示。如图5-47e所示，电容将交流输入信号耦合到基极，因此晶体管基极电压是交流信号加上一个比一($V_p-0.7V$)往正方向略大的直流电平。在接近输人电压的正峰值时，基极电压略为大于0.7V，并导致晶体管在短暂的时间内导通，如图5-47f所示。</p>
+<h3 id="576-d类放大器的基本工作原理">5.7.6 D类放大器的基本工作原理</h3>
+<p>在 D 类放大器中，输出晶体管作为开关工作，而不是像 A、B、AB 中那样线性工作。D类放大器在音频应用中一个优势是它的工作效率可以达到理论上的 100%，而 A 类放大器只有 25%，B/AB 类放大器只有 79%。实际中，D 类放大器可以实现大于 90% 的效率。</p>
+<p><img src="https://s2.loli.net/2023/10/15/xskGQlrqf4ach8J.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog5_49.png"
+	
+	
+>
+$$
+图5-49~~~D类基本音频放大器
+$$
+图5-49是一个 D 类放大器驱动扬声器的基本框图。它包括一个脉冲宽度调制器，用来驱动作为开关工作的互补 MOSFET 输出晶体管，还包括一个低通滤波器。大部分 D 类放大器由双极性电源供电。MOSFET 基本上是推挽放大器，它作为开关器件工作，而不是作为类似于 B 类放大器中的线性器件工作。</p>
+<h3 id="577-pwm">5.7.7 PWM</h3>
+<p><img src="https://s2.loli.net/2023/10/15/rVKkf54pwxD2Xzy.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog5_50.png"
+	
+	
+>
+$$
+图5-50~~~脉宽调制正弦波
+$$</p>
+<p>脉宽调制(PWM)是将输人信号转换为一系列脉冲的过程，脉冲宽度与输入信号的幅度成比例变化。图5-50以一个周期的正弦波为例给出了解释。注意，当幅度为正时，脉冲宽度较宽;而幅度为负时，脉冲宽度较窄。如果输入为 0，则输出是一个方波。</p>
+<p><img src="https://s2.loli.net/2023/10/15/aNhE6Jrulz1ntIs.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog5_51.png"
+	
+	
+>
+$$
+图5-51~~~基本的脉冲宽度调制器
+$$
+PWM 信号一般利用比较器电路来产生。比较器会在第8章中详细讨论，在这里简单介绍一下比较器最基本的工作原理。比较器有两个输入端，一个输出端，如图5-51所示。标有 “+” 的输人端称为同相输人端，标有 “-” 的输人端为反相输入端。当反相输人端电压大于同相输人端电压时，比较器切换到负饱和输出状态。如果同相输人端电压大于反相输人端电压，则比较器切换至正饱和输出状态。图5-51 说明了这个概念，其中同相端加上了一个周期的正弦波电压，反相端加上了一个更高频率的三角波。</p>
+<p>比较器的输入一般来讲都比较小(mV量级)，比较器的输出为“轨到轨”的，即正的最大值接近于正的直流电源电压，负的最大值接近于负的直流电源电压。±12V 或 24V 峰峰值是比较常见的输出。从中可以看出增益非常高。例如，如果输入信号为 10mV pp，则电压的增益为: 24V pp/10mV pp=2400。因为比较器输出幅度针对一个特定范围内的输人电压是常数，所以增益取决于输入信号电压。如果输入信号为 100mV pp，则输出仍为 24v pp，则增益是 240，而不是 2 400。</p>
+<p><strong>频谱</strong> 所有非正弦波形都可以由谐波频率组成。一个特定波形包含的频率称为频谱。当三角波调制输人正弦波的时候，得到的频谱包含正弦波频率 $f_{input}$，加上三角调制信号的基波频率 $f_m$ 以及在基波频率上下的谐波频率。这些谐波频率是由于 PWM 信号的快速上升下降时间以及脉冲之间的平坦区域造成的。一个 PWM 信号的简化频谱如图5-52所示。三角波的频率必须大大高于输入信号的最高频率，这样最低谐波频率会高于输入信号频率的范围。</p>
+<p><img src="https://s2.loli.net/2023/10/15/ajOySZ3puimNCQl.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog5_52.png"
+	
+	
+>
+$$
+图5-52~~~一个PWM信号的频谱
+$$</p>
+<h3 id="578-互补mosfet">5.7.8 互补MOSFET</h3>
+<p><img src="https://s2.loli.net/2023/10/15/HxMyUmLd5WE123a.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog5_53.png"
+	
+	
+>
+$$
+图5-53~~~互补MOSFET作为开关电路来放大功率
+$$
+将 MOSFET 设置成在一个共源互补组态来提供功率增益。每个晶体管在导通和截止状态之间切换，并且当一个晶体管导通时，另一个截止，如图5-53所示。当一个晶体管导通时，它两端的电压非常小，因此它的功耗也很小，即使它上面流过很大的电流。记住，MOSFET 的导通电阻非常小。当晶体管处于截止状态时，没有电流通过，因此就没有功率损耗。晶体管里功耗只发生在很短的切换时间里。传输给负载的功率可以非常高，因为负载两端的电压几乎等于电源电压，并且有一个高的电流流过它。</p>
+<p><strong>效率</strong> 当 $Q_1$ 导通时，它提供电流给负载。但是，理想情况下，负载两端的电压为 0，所以 $Q_1$ 的内部功耗为
+$$
+P_{DQ}=V_{Q1}I_L=0V\times I_L=0W
+$$
+与此同时，$Q_2$ 截止，通过的电流为 0，因此内部功率为
+$$
+P_{DQ}=V_{Q2}I_L=V_{Q2} \times 0A=0W
+$$
+理想情况下，到负载的输出功率为 $2V_QI_L$。因此，理想最大效率为
+$$
+eff_{max}=\frac{P_{out}}{P_{tot}}=\frac{P_{out}}{P_{out}+P_{DQ}}=\frac{2V_QI_L}{2V_QI_L+0W}=1
+$$
+以百分比表示为 $eff_{max}=100$%。</p>
+<p>实际情况中，每一个 MOSFET 在导通状态会有十分之几伏的电压。在比较器和三角波发生器中也会有一个小的内部功率损耗。此外，在有限的开关切换时间里也会有功率损耗，因此理想的 100% 的效率在实际中永远也达不到。</p>
+<h3 id="579-低通滤波器">5.7.9 低通滤波器</h3>
+<p><img src="https://s2.loli.net/2023/10/15/GRjzSUI7bN1OHpg.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog5_54.png"
+	
+	
+>
+$$
+图5-54~~~低通滤波器去除PWM信号中除了输入信号频率以外的所有频率
+$$
+低通滤波器除去调制频率和谐波，只传递原始信号到输出端。<code>滤波器具有仅允许通过输入信号频率的带宽，如图5-54所示。</code></p>
+<h3 id="5710-信号流">5.7.10 信号流</h3>
+<p><img src="https://s2.loli.net/2023/10/15/HgK71IXfYQnMtbo.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog5_55.png"
+	
+	
+>
+$$
+图5-55~~~D类放大器中的信号流
+$$
+图5-55给出了 D 类放大器中每个点的信号。一个小的音频信号被加入到系统中并进行脉宽调制后在调制器输出端生成一个 PWM 信号。其中调制器也实现了电压增益。PWM 驱动互补 MOSFET 级实现功率放大。PWM 信号经过滤波，在输出端产生一个放大的音频信号，它拥有足够的功率来驱动扬声器。</p>
+
 </section>
 
 
@@ -238,9 +438,44 @@
     </section>
 
 
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
     </footer>
 
 
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css"integrity="sha384-RZU/ijkSsFbcmivfdRBQDtwuwVqK7GMOw6IMvKyeWL2K5UAlyp6WonmB8m7Jd0Hn"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js"integrity="sha384-pK1WpvzWVBQiP0/GjnvRxV4mOb0oxFuyRxJlk6vVw146n3egcN5C925NCP7a7BY8"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js"integrity="sha384-vZTG03m&#43;2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ]
+        });})
+</script>
     
 </article>
 
@@ -258,7 +493,7 @@
         
 
         <div class="article-details">
-            <h2 class="article-title">5.6B类功率放大器</h2>
+            <h2 class="article-title">5.6 B类功率放大器</h2>
         </div>
     </a>
 </article>
@@ -270,7 +505,7 @@
         
 
         <div class="article-details">
-            <h2 class="article-title">5.5A类功率放大器</h2>
+            <h2 class="article-title">5.5 A类功率放大器</h2>
         </div>
     </a>
 </article>
@@ -282,7 +517,7 @@
         
 
         <div class="article-details">
-            <h2 class="article-title">5.4直接耦合放大器</h2>
+            <h2 class="article-title">5.4 直接耦合放大器</h2>
         </div>
     </a>
 </article>
@@ -294,7 +529,7 @@
         
 
         <div class="article-details">
-            <h2 class="article-title">5.3变压器耦合放大器</h2>
+            <h2 class="article-title">5.3 变压器耦合放大器</h2>
         </div>
     </a>
 </article>
@@ -306,7 +541,7 @@
         
 
         <div class="article-details">
-            <h2 class="article-title">5.2RF放大器</h2>
+            <h2 class="article-title">5.2 RF放大器</h2>
         </div>
     </a>
 </article>
@@ -324,7 +559,7 @@
     data-app-id="d44db3f9-a0ff-4551-a44d-316afd2e5835"
     data-page-id="c126e47ead48c3154f3e0015901f142a"
     data-page-url="https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/5-7c%E7%B1%BB%E5%92%8Cd%E7%B1%BB%E5%8A%9F%E7%8E%87%E6%94%BE%E5%A4%A7%E5%99%A8/"
-    data-page-title="5.7C类和D类功率放大器"></div>
+    data-page-title="5.7 C类和D类功率放大器"></div>
 <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
 
 <script>
@@ -436,6 +671,45 @@
             >
 
             </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">Table of contents</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#571-c类放大器的基本工作原理">5.7.1 C类放大器的基本工作原理</a></li>
+        <li><a href="#572功耗">5.7.2功耗</a></li>
+        <li><a href="#573-调谐工作原理">5.7.3 调谐工作原理</a></li>
+        <li><a href="#574最大输出功率">5.7.4最大输出功率</a></li>
+        <li><a href="#575类放大器的钳位偏置">5.7.5类放大器的钳位偏置</a></li>
+        <li><a href="#576-d类放大器的基本工作原理">5.7.6 D类放大器的基本工作原理</a></li>
+        <li><a href="#577-pwm">5.7.7 PWM</a></li>
+        <li><a href="#578-互补mosfet">5.7.8 互补MOSFET</a></li>
+        <li><a href="#579-低通滤波器">5.7.9 低通滤波器</a></li>
+        <li><a href="#5710-信号流">5.7.10 信号流</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                </div>
+            </section>
+        </aside>
     
 
         </div>

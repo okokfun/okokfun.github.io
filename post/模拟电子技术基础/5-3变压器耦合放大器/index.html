@@ -1,17 +1,62 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content=''><title>5.3变压器耦合放大器</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='变压器可以用来将信号从一级耦合到另一极。虽然主要用于高频设计中，但它也可用于低频功率放大器中。当信号频率位于RF范围内(&amp;gt;100kHz)时，放大器的各级之间常用调谐变压器来进行耦合，该变压器形成一个谐振电路。在本节中，将会看到变压器耦 合放大器的例子，包括低频和高频调谐放大器。
+学完本节后，你应该掌握以下内容:
+描述变压器耦合放大器、调谐放大器和混频器的特性 描述变压器耦合放大器一般如何工作 确定变压器耦合放大器的交流和直流负载 线解释如何利用混频器将高频转换成低频 给出在高频应用中使用IF放大器的优势 5.3.1 低频应用 大多数放大器要求直流信号应该与交流信号隔离。5.1节已经提及电容具有隔直流通交流的作用。变压器也具有隔直流(没有提供直接的通路)通交流的性能。 此外，变压器提供了电路中阻抗匹配的方法。在基本直流/交流课程中已经知道从变压器一次侧来看，二次侧的负载会被变压器改变。降压变压器会使负载在一次侧看起来变得更大，可以表示为:
+$$ R&amp;rsquo;_L~~(a) $$
+$$ (a)=(\frac{N_{pri}}{M_{sec}})^2R_L~~~(5-4) $$ 式中，(a)是一次侧等效电阻，$N_{pri}/N_{sec}$是一次绕组对二次绕组的匝数比，$R_L$为二次侧的负载电阻。
+变压器可以用在输人端、输出端，或者各级之间来耦合电路中各部分之间的交流信号。在功率变压器中，通过阻抗匹配可以进行最大功率传输(将在5.4节中讨论)。变压器也能用来进行信号源和传输线之间的阻抗匹配。线匹配变压器主要用于低阻抗电路($&amp;lt;200\Omega$)。对于电压放大器，变压器也可以用来实现升压以传输给下一级(但功率永远不会变化)。
+$$ 图5-11~~~一个变压器耦合的基本放大器，给出了输人变压器、耦合变压器和输出变压器 $$ 图5-11给出了一个变压器耦合的两级放大器。小的低频变压器偶尔也会用在某些传声器或其他传感器中来将信号耦合到放大器。
+虽然变压器耦合比 RC 耦合具有更高的效率，但由于存在两个缺点，变压器耦合不能广泛应用于低频电路。首先，与电容相比，变压器价格比较昂贵，并且比较笨重;其次，由于绕组电抗的作用而使其高频响应变差。由于上述原因，低频变压器耦合并不常用，但在某些 A 类功率放大器中会有使用。
+5.3.2高频应用 在高频段，变压器会比较小，并且也相对便宜。对于在一定带宽范围内耦合信号而言具有重要的优势。正如在上一节中所看到的，在高频段，变压器初级可以接上一个并联电容来形成一个高 Q 值的谐振电路。接有合适电容的二次绕组也经常连接成一个谐振电路。
+从基本交流和直流知识已经知道，并联谐振电路是一个LC电路，它在谐振频率处有最大的阻抗。谐振频率处的高阻抗意味着放大器增益在谐振频率附近可以非常高，而直流时增益却很低。这就形成了一个增益可高达1000(甚至更高)的窄带(典型为10kHz)放大器。此外，放大器可以选择只放大包含有用信号的非常窄范围内的频率信号，而不放大其他频率的信号。
+在信号处理中，通常要通过将 RF 和振荡器混合来将无线频率转换成较低的频率。得到的这个新低频称为中频(IF)。调谐变压器耦合在RF和IF放大器中都很重要。
+使用 IF 的主要优点是它是一个固定频率，并且对于任何给定的RF信号(在设计范围内)，调谐电路无需改变。这可以通过让振荡器跟踪RF信号来完成。因为IF固定，所以用固定的调谐电路来进行放大就很简单，无须用户进行任何调整。这一思想首先由MajorEdwin Armstrong在第一次世界大战期间提出，并在大多数的通信设备中使用，此外也用于频谱分析仪，它是高频测试设备的重要部分。
+$$ 图5-13~~~一个调谐放大器，包括一个RF放大器和一个混频器 $$ 图5-13是一个两级调谐放大器的例子，它在第一级的输人端和第二级的输出端都使用谐振电路。两级之间采用变压器耦合。与此类似的电路是大多数通信设备的组成部分，由一个RF放大器和一个混频器组成。RF放大器用于调谐并放大来自信号站的高频信号。混频器是非线性电路，它将信号与振荡器产生的正弦波混合在一起。
+振荡器的频率设置与 RF 之间有一个固定差值。当 RF 与振荡器信号中在非线性电路中混合时，会产生两个新频率: 两个输入信号的和以及两个输人信号的差。第二个谐振电路调谐到差值频率，同时对其他频率进行抑制。这个差值频率就是IF信号，会在IF放大器中进一步放大。IF 放大器的优点在于它是专门用来处理单一频率的放大器。
+进一步来看图5-13中的电路。第一个调谐电路包括变压器 $T_1$ 的一次侧，它与 $C_1$ 构成谐振回路来接收信号。非谐振频率的信号被谐振回路抑制。注意，$Q_1$ 的偏置方式是分压式偏置，它没有集电极电阻，而是信号将变压器 $T_2$ 的一次侧看成负载。这一级的增益由集电极电路的电阻除以由 $R_3$和 $r&amp;rsquo;_e$ 组成的发射极电阻确定。
+RF 信号通过变压器 $T_2$ 送到 $Q_2$ 的栅极，并与来自振荡器(图5-13中未给出)的信号进行混合。注意， $Q_2$ 对 RF 信号来说是 CS 放大器，但对振荡信号来说是CG放大器。 $Q_2$ 输出端的谐振电路调谐到设定的差值频率，因此 $Q_2$ 的输出是中频(IF)，被送到下一级作进一步放大。为了产生中频，$Q_2$ 必须在非线性放大状态下工作。FET 可以很好地实现这个功能。经常利用两级 MOSFET 将混频器和 RF 放大器结合在一起，如前所述。'><title>5.3 变压器耦合放大器</title>
 
 <link rel='canonical' href='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/5-3%E5%8F%98%E5%8E%8B%E5%99%A8%E8%80%A6%E5%90%88%E6%94%BE%E5%A4%A7%E5%99%A8/'>
 
-<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='5.3变压器耦合放大器'>
-<meta property='og:description' content=''>
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='5.3 变压器耦合放大器'>
+<meta property='og:description' content='变压器可以用来将信号从一级耦合到另一极。虽然主要用于高频设计中，但它也可用于低频功率放大器中。当信号频率位于RF范围内(&amp;gt;100kHz)时，放大器的各级之间常用调谐变压器来进行耦合，该变压器形成一个谐振电路。在本节中，将会看到变压器耦 合放大器的例子，包括低频和高频调谐放大器。
+学完本节后，你应该掌握以下内容:
+描述变压器耦合放大器、调谐放大器和混频器的特性 描述变压器耦合放大器一般如何工作 确定变压器耦合放大器的交流和直流负载 线解释如何利用混频器将高频转换成低频 给出在高频应用中使用IF放大器的优势 5.3.1 低频应用 大多数放大器要求直流信号应该与交流信号隔离。5.1节已经提及电容具有隔直流通交流的作用。变压器也具有隔直流(没有提供直接的通路)通交流的性能。 此外，变压器提供了电路中阻抗匹配的方法。在基本直流/交流课程中已经知道从变压器一次侧来看，二次侧的负载会被变压器改变。降压变压器会使负载在一次侧看起来变得更大，可以表示为:
+$$ R&amp;rsquo;_L~~(a) $$
+$$ (a)=(\frac{N_{pri}}{M_{sec}})^2R_L~~~(5-4) $$ 式中，(a)是一次侧等效电阻，$N_{pri}/N_{sec}$是一次绕组对二次绕组的匝数比，$R_L$为二次侧的负载电阻。
+变压器可以用在输人端、输出端，或者各级之间来耦合电路中各部分之间的交流信号。在功率变压器中，通过阻抗匹配可以进行最大功率传输(将在5.4节中讨论)。变压器也能用来进行信号源和传输线之间的阻抗匹配。线匹配变压器主要用于低阻抗电路($&amp;lt;200\Omega$)。对于电压放大器，变压器也可以用来实现升压以传输给下一级(但功率永远不会变化)。
+$$ 图5-11~~~一个变压器耦合的基本放大器，给出了输人变压器、耦合变压器和输出变压器 $$ 图5-11给出了一个变压器耦合的两级放大器。小的低频变压器偶尔也会用在某些传声器或其他传感器中来将信号耦合到放大器。
+虽然变压器耦合比 RC 耦合具有更高的效率，但由于存在两个缺点，变压器耦合不能广泛应用于低频电路。首先，与电容相比，变压器价格比较昂贵，并且比较笨重;其次，由于绕组电抗的作用而使其高频响应变差。由于上述原因，低频变压器耦合并不常用，但在某些 A 类功率放大器中会有使用。
+5.3.2高频应用 在高频段，变压器会比较小，并且也相对便宜。对于在一定带宽范围内耦合信号而言具有重要的优势。正如在上一节中所看到的，在高频段，变压器初级可以接上一个并联电容来形成一个高 Q 值的谐振电路。接有合适电容的二次绕组也经常连接成一个谐振电路。
+从基本交流和直流知识已经知道，并联谐振电路是一个LC电路，它在谐振频率处有最大的阻抗。谐振频率处的高阻抗意味着放大器增益在谐振频率附近可以非常高，而直流时增益却很低。这就形成了一个增益可高达1000(甚至更高)的窄带(典型为10kHz)放大器。此外，放大器可以选择只放大包含有用信号的非常窄范围内的频率信号，而不放大其他频率的信号。
+在信号处理中，通常要通过将 RF 和振荡器混合来将无线频率转换成较低的频率。得到的这个新低频称为中频(IF)。调谐变压器耦合在RF和IF放大器中都很重要。
+使用 IF 的主要优点是它是一个固定频率，并且对于任何给定的RF信号(在设计范围内)，调谐电路无需改变。这可以通过让振荡器跟踪RF信号来完成。因为IF固定，所以用固定的调谐电路来进行放大就很简单，无须用户进行任何调整。这一思想首先由MajorEdwin Armstrong在第一次世界大战期间提出，并在大多数的通信设备中使用，此外也用于频谱分析仪，它是高频测试设备的重要部分。
+$$ 图5-13~~~一个调谐放大器，包括一个RF放大器和一个混频器 $$ 图5-13是一个两级调谐放大器的例子，它在第一级的输人端和第二级的输出端都使用谐振电路。两级之间采用变压器耦合。与此类似的电路是大多数通信设备的组成部分，由一个RF放大器和一个混频器组成。RF放大器用于调谐并放大来自信号站的高频信号。混频器是非线性电路，它将信号与振荡器产生的正弦波混合在一起。
+振荡器的频率设置与 RF 之间有一个固定差值。当 RF 与振荡器信号中在非线性电路中混合时，会产生两个新频率: 两个输入信号的和以及两个输人信号的差。第二个谐振电路调谐到差值频率，同时对其他频率进行抑制。这个差值频率就是IF信号，会在IF放大器中进一步放大。IF 放大器的优点在于它是专门用来处理单一频率的放大器。
+进一步来看图5-13中的电路。第一个调谐电路包括变压器 $T_1$ 的一次侧，它与 $C_1$ 构成谐振回路来接收信号。非谐振频率的信号被谐振回路抑制。注意，$Q_1$ 的偏置方式是分压式偏置，它没有集电极电阻，而是信号将变压器 $T_2$ 的一次侧看成负载。这一级的增益由集电极电路的电阻除以由 $R_3$和 $r&amp;rsquo;_e$ 组成的发射极电阻确定。
+RF 信号通过变压器 $T_2$ 送到 $Q_2$ 的栅极，并与来自振荡器(图5-13中未给出)的信号进行混合。注意， $Q_2$ 对 RF 信号来说是 CS 放大器，但对振荡信号来说是CG放大器。 $Q_2$ 输出端的谐振电路调谐到设定的差值频率，因此 $Q_2$ 的输出是中频(IF)，被送到下一级作进一步放大。为了产生中频，$Q_2$ 必须在非线性放大状态下工作。FET 可以很好地实现这个功能。经常利用两级 MOSFET 将混频器和 RF 放大器结合在一起，如前所述。'>
 <meta property='og:url' content='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/5-3%E5%8F%98%E5%8E%8B%E5%99%A8%E8%80%A6%E5%90%88%E6%94%BE%E5%A4%A7%E5%99%A8/'>
 <meta property='og:site_name' content='My Blog'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Analog' /><meta property='article:published_time' content='2023-07-14T17:39:11&#43;00:00'/><meta property='article:modified_time' content='2023-07-14T17:39:11&#43;00:00'/>
-<meta name="twitter:title" content="5.3变压器耦合放大器">
-<meta name="twitter:description" content=""><script>
+<meta name="twitter:title" content="5.3 变压器耦合放大器">
+<meta name="twitter:description" content="变压器可以用来将信号从一级耦合到另一极。虽然主要用于高频设计中，但它也可用于低频功率放大器中。当信号频率位于RF范围内(&amp;gt;100kHz)时，放大器的各级之间常用调谐变压器来进行耦合，该变压器形成一个谐振电路。在本节中，将会看到变压器耦 合放大器的例子，包括低频和高频调谐放大器。
+学完本节后，你应该掌握以下内容:
+描述变压器耦合放大器、调谐放大器和混频器的特性 描述变压器耦合放大器一般如何工作 确定变压器耦合放大器的交流和直流负载 线解释如何利用混频器将高频转换成低频 给出在高频应用中使用IF放大器的优势 5.3.1 低频应用 大多数放大器要求直流信号应该与交流信号隔离。5.1节已经提及电容具有隔直流通交流的作用。变压器也具有隔直流(没有提供直接的通路)通交流的性能。 此外，变压器提供了电路中阻抗匹配的方法。在基本直流/交流课程中已经知道从变压器一次侧来看，二次侧的负载会被变压器改变。降压变压器会使负载在一次侧看起来变得更大，可以表示为:
+$$ R&amp;rsquo;_L~~(a) $$
+$$ (a)=(\frac{N_{pri}}{M_{sec}})^2R_L~~~(5-4) $$ 式中，(a)是一次侧等效电阻，$N_{pri}/N_{sec}$是一次绕组对二次绕组的匝数比，$R_L$为二次侧的负载电阻。
+变压器可以用在输人端、输出端，或者各级之间来耦合电路中各部分之间的交流信号。在功率变压器中，通过阻抗匹配可以进行最大功率传输(将在5.4节中讨论)。变压器也能用来进行信号源和传输线之间的阻抗匹配。线匹配变压器主要用于低阻抗电路($&amp;lt;200\Omega$)。对于电压放大器，变压器也可以用来实现升压以传输给下一级(但功率永远不会变化)。
+$$ 图5-11~~~一个变压器耦合的基本放大器，给出了输人变压器、耦合变压器和输出变压器 $$ 图5-11给出了一个变压器耦合的两级放大器。小的低频变压器偶尔也会用在某些传声器或其他传感器中来将信号耦合到放大器。
+虽然变压器耦合比 RC 耦合具有更高的效率，但由于存在两个缺点，变压器耦合不能广泛应用于低频电路。首先，与电容相比，变压器价格比较昂贵，并且比较笨重;其次，由于绕组电抗的作用而使其高频响应变差。由于上述原因，低频变压器耦合并不常用，但在某些 A 类功率放大器中会有使用。
+5.3.2高频应用 在高频段，变压器会比较小，并且也相对便宜。对于在一定带宽范围内耦合信号而言具有重要的优势。正如在上一节中所看到的，在高频段，变压器初级可以接上一个并联电容来形成一个高 Q 值的谐振电路。接有合适电容的二次绕组也经常连接成一个谐振电路。
+从基本交流和直流知识已经知道，并联谐振电路是一个LC电路，它在谐振频率处有最大的阻抗。谐振频率处的高阻抗意味着放大器增益在谐振频率附近可以非常高，而直流时增益却很低。这就形成了一个增益可高达1000(甚至更高)的窄带(典型为10kHz)放大器。此外，放大器可以选择只放大包含有用信号的非常窄范围内的频率信号，而不放大其他频率的信号。
+在信号处理中，通常要通过将 RF 和振荡器混合来将无线频率转换成较低的频率。得到的这个新低频称为中频(IF)。调谐变压器耦合在RF和IF放大器中都很重要。
+使用 IF 的主要优点是它是一个固定频率，并且对于任何给定的RF信号(在设计范围内)，调谐电路无需改变。这可以通过让振荡器跟踪RF信号来完成。因为IF固定，所以用固定的调谐电路来进行放大就很简单，无须用户进行任何调整。这一思想首先由MajorEdwin Armstrong在第一次世界大战期间提出，并在大多数的通信设备中使用，此外也用于频谱分析仪，它是高频测试设备的重要部分。
+$$ 图5-13~~~一个调谐放大器，包括一个RF放大器和一个混频器 $$ 图5-13是一个两级调谐放大器的例子，它在第一级的输人端和第二级的输出端都使用谐振电路。两级之间采用变压器耦合。与此类似的电路是大多数通信设备的组成部分，由一个RF放大器和一个混频器组成。RF放大器用于调谐并放大来自信号站的高频信号。混频器是非线性电路，它将信号与振荡器产生的正弦波混合在一起。
+振荡器的频率设置与 RF 之间有一个固定差值。当 RF 与振荡器信号中在非线性电路中混合时，会产生两个新频率: 两个输入信号的和以及两个输人信号的差。第二个谐振电路调谐到差值频率，同时对其他频率进行抑制。这个差值频率就是IF信号，会在IF放大器中进一步放大。IF 放大器的优点在于它是专门用来处理单一频率的放大器。
+进一步来看图5-13中的电路。第一个调谐电路包括变压器 $T_1$ 的一次侧，它与 $C_1$ 构成谐振回路来接收信号。非谐振频率的信号被谐振回路抑制。注意，$Q_1$ 的偏置方式是分压式偏置，它没有集电极电阻，而是信号将变压器 $T_2$ 的一次侧看成负载。这一级的增益由集电极电路的电阻除以由 $R_3$和 $r&amp;rsquo;_e$ 组成的发射极电阻确定。
+RF 信号通过变压器 $T_2$ 送到 $Q_2$ 的栅极，并与来自振荡器(图5-13中未给出)的信号进行混合。注意， $Q_2$ 对 RF 信号来说是 CS 放大器，但对振荡信号来说是CG放大器。 $Q_2$ 输出端的谐振电路调谐到设定的差值频率，因此 $Q_2$ 的输出是中频(IF)，被送到下一级作进一步放大。为了产生中频，$Q_2$ 必须在非线性放大状态下工作。FET 可以很好地实现这个功能。经常利用两级 MOSFET 将混频器和 RF 放大器结合在一起，如前所述。"><script>
     (function(){
         if(''){
             if (prompt('请输入文章密码') !== ''){
@@ -25,7 +70,7 @@
 
     </head>
     <body class="
-    article-page 
+    article-page has-toc
 ">
     <script>
         (function() {
@@ -51,128 +96,22 @@
 </script>
 <div class="container main-container flex 
     
-        on-phone--column extended
+        extended
     
 ">
     
-        <aside class="sidebar left-sidebar sticky">
-    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
-        <span class="hamburger-box">
-            <span class="hamburger-inner"></span>
-        </span>
-    </button>
-
-    <header class="site-info">
-        
-            
-            <figure class="site-avatar">
-                
-                    
-                    
-                    
-                        
-                        <img src="/img/avatar_hu71fc3898bde3464d50a00f65e63c7ec2_517570_300x0_resize_box_3.png" width="300"
-                            height="354" class="site-logo" loading="lazy" alt="Avatar">
-                    
-                
-
-                
-            </figure>
-            
-        
-        
-        <h1 class="site-name"><a href="/">My Blog</a></h1>
-        <h2 class="site-description"></h2></header>
-
-    <ol class="menu" id="main-menu">
-        
-        
-        
-
-        <li >
-            <a href='/page/about/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <div id="article-toolbar">
+            <a href="/" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="7" r="4" />
-  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+  <polyline points="15 6 9 12 15 18" />
 </svg>
 
 
 
-                
-                <span>About</span>
+                <span>Back</span>
             </a>
-        </li>
-        
-        
-
-        <li >
-            <a href='/page/archives/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <rect x="3" y="4" width="18" height="4" rx="2" />
-  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
-  <line x1="10" y1="12" x2="14" y2="12" />
-</svg>
-
-
-
-                
-                <span>Archives</span>
-            </a>
-        </li>
-        
-        
-
-        <li >
-            <a href='/page/search/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="10" cy="10" r="7" />
-  <line x1="21" y1="21" x2="15" y2="15" />
-</svg>
-
-
-
-                
-                <span>Search</span>
-            </a>
-        </li>
-        
-
-        
-            <li id="dark-mode-toggle">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="8" cy="12" r="2" />
-  <rect x="2" y="6" width="20" height="12" rx="6" />
-</svg>
-
-
-
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="16" cy="12" r="2" />
-  <rect x="2" y="6" width="20" height="12" rx="6" />
-</svg>
-
-
-
-                <span>Dark Mode</span>
-            </li>
-        
-    </ol>
-</aside>
-
+        </div>
     
 <main class="main full-width">
     <article class="main-article">
@@ -182,7 +121,7 @@
     
 
     <h2 class="article-title">
-        <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/5-3%E5%8F%98%E5%8E%8B%E5%99%A8%E8%80%A6%E5%90%88%E6%94%BE%E5%A4%A7%E5%99%A8/">5.3变压器耦合放大器</a>
+        <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/5-3%E5%8F%98%E5%8E%8B%E5%99%A8%E8%80%A6%E5%90%88%E6%94%BE%E5%A4%A7%E5%99%A8/">5.3 变压器耦合放大器</a>
     </h2>
 
     
@@ -215,7 +154,7 @@
 
 
                 <time class="article-time--reading">
-                    0 minute read
+                    1 minute read
                 </time>
             </div>
         
@@ -225,7 +164,107 @@
 </header>
 
     <section class="article-content">
-    
+    <p>变压器可以用来将信号从一级耦合到另一极。虽然主要用于高频设计中，但它也可用于低频功率放大器中。当信号频率位于RF范围内(&gt;100kHz)时，放大器的各级之间常用调谐变压器来进行耦合，该变压器形成一个谐振电路。在本节中，将会看到变压器耦
+合放大器的例子，包括低频和高频调谐放大器。</p>
+<p>学完本节后，你应该掌握以下内容:</p>
+<ul>
+<li>描述变压器耦合放大器、调谐放大器和混频器的特性
+<ul>
+<li>描述变压器耦合放大器一般如何工作</li>
+<li>确定变压器耦合放大器的交流和直流负载</li>
+<li>线解释如何利用混频器将高频转换成低频</li>
+<li>给出在高频应用中使用IF放大器的优势</li>
+</ul>
+</li>
+</ul>
+<h3 id="531-低频应用">5.3.1 低频应用</h3>
+<p>大多数放大器要求直流信号应该与交流信号隔离。5.1节已经提及电容具有隔直流通交流的作用。变压器也具有隔直流(没有提供直接的通路)通交流的性能。
+此外，变压器提供了电路中阻抗匹配的方法。在基本直流/交流课程中已经知道从变压器一次侧来看，二次侧的负载会被变压器改变。降压变压器会使负载在一次侧看起来变得更大，可以表示为:</p>
+<p>$$
+R&rsquo;_L~~(a)
+$$</p>
+<p>$$
+(a)=(\frac{N_{pri}}{M_{sec}})^2R_L~~~(5-4)
+$$
+式中，(a)是一次侧等效电阻，$N_{pri}/N_{sec}$是一次绕组对二次绕组的匝数比，$R_L$为二次侧的负载电阻。</p>
+<p>变压器可以用在输人端、输出端，或者各级之间来耦合电路中各部分之间的交流信号。在功率变压器中，通过阻抗匹配可以进行最大功率传输(将在5.4节中讨论)。变压器也能用来进行信号源和传输线之间的阻抗匹配。线匹配变压器主要用于低阻抗电路($&lt;200\Omega$)。对于电压放大器，变压器也可以用来实现升压以传输给下一级(但功率永远不会变化)。</p>
+<p><img src="https://s2.loli.net/2023/10/10/G7u8rMmLFZERYCT.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog5_11.png"
+	
+	
+>
+$$
+图5-11~~~一个变压器耦合的基本放大器，给出了输人变压器、耦合变压器和输出变压器
+$$
+图5-11给出了一个变压器耦合的两级放大器。小的低频变压器偶尔也会用在某些传声器或其他传感器中来将信号耦合到放大器。</p>
+<p>虽然变压器耦合比 RC 耦合具有更高的效率，但由于存在两个缺点，变压器耦合不能广泛应用于低频电路。首先，与电容相比，变压器价格比较昂贵，并且比较笨重;其次，由于绕组电抗的作用而使其高频响应变差。由于上述原因，低频变压器耦合并不常用，但在某些 A 类功率放大器中会有使用。</p>
+<h3 id="532高频应用">5.3.2高频应用</h3>
+<p>在高频段，变压器会比较小，并且也相对便宜。对于在一定带宽范围内耦合信号而言具有重要的优势。正如在上一节中所看到的，在高频段，变压器初级可以接上一个并联电容来形成一个高 Q 值的谐振电路。接有合适电容的二次绕组也经常连接成一个谐振电路。</p>
+<p>从基本交流和直流知识已经知道，<code>并联谐振电路是一个LC电路，它在谐振频率处有最大的阻抗</code>。谐振频率处的高阻抗意味着放大器增益在谐振频率附近可以非常高，而直流时增益却很低。这就形成了一个增益可高达1000(甚至更高)的窄带(典型为10kHz)放大器。此外，放大器可以选择只放大包含有用信号的非常窄范围内的频率信号，而不放大其他频率的信号。</p>
+<p>在信号处理中，通常要通过将 RF 和振荡器混合来将无线频率转换成较低的频率。得到的这个新低频称为中频(IF)。调谐变压器耦合在RF和IF放大器中都很重要。</p>
+<p>使用 IF 的主要优点是它是一个固定频率，并且对于任何给定的RF信号(在设计范围内)，调谐电路无需改变。这可以通过让振荡器跟踪RF信号来完成。因为IF固定，所以用固定的调谐电路来进行放大就很简单，无须用户进行任何调整。这一思想首先由MajorEdwin Armstrong在第一次世界大战期间提出，并在大多数的通信设备中使用，此外也用于频谱分析仪，它是高频测试设备的重要部分。</p>
+<p><img src="https://s2.loli.net/2023/10/10/H98YysZBQmdnMF7.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog5_13.png"
+	
+	
+>
+$$
+图5-13~~~一个调谐放大器，包括一个RF放大器和一个混频器
+$$
+图5-13是一个两级调谐放大器的例子，它在第一级的输人端和第二级的输出端都使用谐振电路。两级之间采用变压器耦合。与此类似的电路是大多数通信设备的组成部分，由一个RF放大器和一个混频器组成。RF放大器用于调谐并放大来自信号站的高频信号。混频器是非线性电路，它将信号与振荡器产生的正弦波混合在一起。</p>
+<p>振荡器的频率设置与 RF 之间有一个固定差值。当 RF 与振荡器信号中在非线性电路中混合时，会产生两个新频率: 两个输入信号的和以及两个输人信号的差。第二个谐振电路调谐到差值频率，同时对其他频率进行抑制。这个差值频率就是IF信号，会在IF放大器中进一步放大。IF 放大器的优点在于它是专门用来处理单一频率的放大器。</p>
+<p>进一步来看图5-13中的电路。第一个调谐电路包括变压器 $T_1$ 的一次侧，它与 $C_1$ 构成谐振回路来接收信号。非谐振频率的信号被谐振回路抑制。注意，$Q_1$ 的偏置方式是分压式偏置，它没有集电极电阻，而是信号将变压器 $T_2$ 的一次侧看成负载。这一级的增益由集电极电路的电阻除以由 $R_3$和 $r&rsquo;_e$ 组成的发射极电阻确定。</p>
+<p>RF 信号通过变压器 $T_2$ 送到 $Q_2$ 的栅极，并与来自振荡器(图5-13中未给出)的信号进行混合。注意， $Q_2$ 对 RF 信号来说是 CS 放大器，但对振荡信号来说是CG放大器。 $Q_2$ 输出端的谐振电路调谐到设定的差值频率，因此 $Q_2$ 的输出是中频(IF)，被送到下一级作进一步放大。为了产生中频，$Q_2$ 必须在非线性放大状态下工作。FET 可以很好地实现这个功能。经常利用两级 MOSFET 将混频器和 RF 放大器结合在一起，如前所述。</p>
+<p>可以看到在图5-13中电阻 $R_6$ 与直流电源相串联，与 $C_5$ 形成一个称为<code>去耦网络</code>的低通滤波器。它有助于将电路与其他放大器相隔离并有助于避免有害振荡的产生。这个电阻值很小(典型值为100Ω)，电容的选择原则是使其在工作频率时电抗&lt;10%的电阻值(例如，100Ω电阻可以用电抗近似为10Ω的电容旁路)。</p>
+<p><img src="https://s2.loli.net/2023/10/10/7XxGIJfN5BK4WCt.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog5_14.png"
+	
+	
+>
+$$
+图5-14~~~一个双栅极MOSFET混频器
+$$
+图5-14是图5-13中的 JFET 混频器电路的 MOSFET 实现。该混频器由4.5节中讨论的双栅极 MOSFET 实现。来自 RF 放大器的输出被加到其中一个栅极，来自振荡器的信号被加到另一个栅极。类似于 JFET，MOSFET 组成非线性器件来产生中频。</p>
+<p><img src="https://s2.loli.net/2023/10/10/CWeUXSLuxEKHAPY.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog5_15.png"
+	
+	
+>
+$$
+图5-15~~~一个IF放大器
+$$
+图5-15为一个 IF 放大器。IF 变压器专门针对所选择的中频进行设计。IF 放大器与 RF 放大器几乎完全相同，唯一的差别是它在给定电路中所发挥的作用。IF 放大器使用一个调谐输人电路和调谐输出电路来选择性地放大中频信号。组成一次谐振电路的电容和变压器位于一个提供屏蔽的金属保护盒内。精确的中频可以用调谐条在铁心内外移动来进行调整。此外，电路中还包含去耦网络($R_3$和$C_3$)。在对IF电路进行调谐时，利用高阻抗、低电容的测试仪器以避免由于仪器的负载效应改变电路的响应，这一点很重要。</p>
+<p>图5-14中电路的直流参数的计算和任何共射放大器的计算方法一样。但是，调谐电路对电路交流参数的影响与一个仅含有集电极电阻的电路不同。由于集电极上并联的谐振电路，放大器的电压增益是谐振电路的阻抗与发射极电路的交流电阻之比。
+$$
+A_v=\frac{Z_c}{R_e}
+$$
+式中，$Z_c=$ 集电极电路的阻抗; $R_e=$ 发射极电路的电阻。</p>
+<p>调谐电路的阻抗取决于调谐电路的频率和 Q 值。如果已知 $X_L$ 和 Q 值，则可以求得谐振处的阻抗$Z_c$。
+$$
+Z_c=QX_L
+$$
+由于变压器的缘故，负载电阻也是一次等效电路的一部分，并影响调谐电路的频率响应;负载电阻越小，Q 值越小，响应的频率范围更宽。例5-4说明了这一点。</p>
+
 </section>
 
 
@@ -238,9 +277,44 @@
     </section>
 
 
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
     </footer>
 
 
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css"integrity="sha384-RZU/ijkSsFbcmivfdRBQDtwuwVqK7GMOw6IMvKyeWL2K5UAlyp6WonmB8m7Jd0Hn"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js"integrity="sha384-pK1WpvzWVBQiP0/GjnvRxV4mOb0oxFuyRxJlk6vVw146n3egcN5C925NCP7a7BY8"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js"integrity="sha384-vZTG03m&#43;2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ]
+        });})
+</script>
     
 </article>
 
@@ -258,7 +332,7 @@
         
 
         <div class="article-details">
-            <h2 class="article-title">5.2RF放大器</h2>
+            <h2 class="article-title">5.2 RF放大器</h2>
         </div>
     </a>
 </article>
@@ -270,19 +344,7 @@
         
 
         <div class="article-details">
-            <h2 class="article-title">5.1电容耦合放大器</h2>
-        </div>
-    </a>
-</article>
-                
-                    
-<article class="">
-    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/4-8%E7%B3%BB%E7%BB%9F/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">4.8系统</h2>
+            <h2 class="article-title">5.1 电容耦合放大器</h2>
         </div>
     </a>
 </article>
@@ -294,7 +356,7 @@
         
 
         <div class="article-details">
-            <h2 class="article-title">4.7MOSFET开关电路</h2>
+            <h2 class="article-title">4.7 MOSFET开关电路</h2>
         </div>
     </a>
 </article>
@@ -306,7 +368,19 @@
         
 
         <div class="article-details">
-            <h2 class="article-title">4.6FET线性放大器</h2>
+            <h2 class="article-title">4.6 FET线性放大器</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/4-5mosfet%E5%81%8F%E7%BD%AE/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">4.5 MOSFET偏置</h2>
         </div>
     </a>
 </article>
@@ -324,7 +398,7 @@
     data-app-id="d44db3f9-a0ff-4551-a44d-316afd2e5835"
     data-page-id="fc0f5bf9a2616432256261dc89b213e7"
     data-page-url="https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/5-3%E5%8F%98%E5%8E%8B%E5%99%A8%E8%80%A6%E5%90%88%E6%94%BE%E5%A4%A7%E5%99%A8/"
-    data-page-title="5.3变压器耦合放大器"></div>
+    data-page-title="5.3 变压器耦合放大器"></div>
 <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
 
 <script>
@@ -436,6 +510,37 @@
             >
 
             </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">Table of contents</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#531-低频应用">5.3.1 低频应用</a></li>
+        <li><a href="#532高频应用">5.3.2高频应用</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                </div>
+            </section>
+        </aside>
     
 
         </div>

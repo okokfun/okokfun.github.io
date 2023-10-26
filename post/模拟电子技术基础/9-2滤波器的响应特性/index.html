@@ -1,17 +1,56 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content=''><title>9.2滤波器的响应特性</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='每种滤波器(低通、高通、带通、带阻)可以通过电路元件值定制而具有巴特沃斯、切比雪夫或贝赛尔特性。每一种特性都是由响应曲线的形状来识别的，每种特性在特定的应用中具有各自的优势。
+学完本节后，你应该掌握以下内容:
+描述三类基本滤波器响应特性和其他滤波器参数 描述巴特沃斯特性 描述切比雪夫特性 描述贝赛尔特性 定义阻尼系数并讨论它的重要性 计算滤波器的阻尼系数 讨论滤波器的阶数和它对下降率的影响 巴特沃斯、切比雪夫或贝赛尔响应特性可以通过恰当地选择有源滤波器电路的元件值来实现，对低通滤波器响应曲线的三个响应特性的一般比较如图9-5所示。同样可以设计具有其中任何一种特性的高通、带通和带阻滤波器。 $$ 图9-5~~~三类滤波器响应特性的比较图 $$
+巴特沃斯特性 巴特沃斯特性在通带内提供非常平坦的幅值响应，并且下降率为一20dB/十倍频程/每极点。相位响应是非线性的，然而，通过滤波器的信号相移(因此有时延)会随着频率而非线性变化。因此，加到具有巴特沃斯响应的滤波器上的脉冲将在输出端引起超调，因为脉冲上升沿和下降沿中的每个频率分量经历了不同的时延。具有巴特沃斯响应的滤波器通常用于当通带内的所有频率必须具有相同的增益时。巴特沃斯响应通常指最平坦响应。
+切比雪夫特性 当要求下降率非常快时，具有切比雪夫响应特性的滤波器非常有用，因为切比雪夫滤波器可以提供大于一20dB/十倍频程/每极点的下降率。因为这个下降率比具有巴特沃斯特性响应特性的滤波器的下降率要大，所以对给定的下降率，滤波器可以用较少极点和较简单的电路来实现切比雪夫响应。这种类型的滤波器响应在通带内超调或波动(取决于极点的数量)，产生的线性相移比巴特沃斯产生的少。
+贝赛尔特性 贝塞尔响应呈现线性相位特性,意味着相移随着频率线性增加。结果就是当输入是脉冲信号时，输出几乎没有超调。由于这个原因，具有贝塞尔响应的滤波器常用于过滤脉冲波形，而不会产生波形失真。
+9.2.1 阻尼系数 如前所述，不论滤波器是低通、高通、带通还是带阻类型，有源滤波器都可以设计为具有巴特沃斯、切比雪夫或贝赛尔响应特性。有源滤波器电路的阻尼系数(DF)决定这个滤波器呈现哪种响应特性。为了解释这个基本概念，图9-6给出了一个广义的有源滤波器。它包含一个放大器、一个负反馈网络和一个滤波器部分。在一个同相放大器中，放大器和反馈网络相连接阻尼系数由负反馈网络决定，并且定义为: $$ 图9-6~~~有源滤波器的一般框图，注意，如同在第6章中的定义，R_1对应R_f，R_2对应于R_i; $$
+$$ DF=2-\frac{R_1}{R_2}~~~(9-5) $$
+基本上，阻尼系数通过负反馈的作用影响滤波器响应。任何试图增加或减小输出端电压的行为都将被负反馈的相反作用抵消。如果阻尼系数的值准确设置，这使得响应曲线在滤波器的通带内趋于平坦。通过高等数学，可以推导出不同阶数滤波器的阻尼系数(不在本书中介绍)，以获得巴特沃斯特性的最大平坦响应。
+产生所需响应特性的阻尼系数值取决于滤波器的阶数(极点的数量)。回顾一下，滤波器的极点数越多，滤波器的下降率越快。例如，为了获得一个二阶巴特沃斯响应，阻尼系数必须为1.414。为了实现这个阻尼系数，反馈电阻率应为: $$ \frac{R_1}{R_2}=2-DF=2-1.414=0.586 $$ 这个比率给出了一个同相滤波器放大器的闭环增益 $A_{cl(NI)}$ 为1.586，推导如 $$ A_{cl(NI)}=\frac{1}{B}=\frac{1}{R_2/(R_1&#43;R_2)}=\frac{R_1&#43;R_2}{R_2}=\frac{R_1}{R_2}&#43;1=0.586&#43;1=1.586 $$
+9.2.2 截止频率和下降率 截止频率由 RC 网络中的电阻和电容值决定，如图9-6所示。对一个单极点(一阶)滤波器，如图9-7所示，截止频率为 $$ 图9-7~~~一阶(单极点)低通滤波器 $$
+$$ f_c=\frac{1}{2\pi RC} $$ 尽管给出的是低通配置，对一个单极点高通滤波器, $f_c$ 的计算公式是相同的。极点数量决定滤波器的下降率。一个巴特沃斯响应的下降率为一20dB/十倍频程/每极点。所以一个一阶(单极点)滤波器的下降率为一20dB/十倍频程，二阶(二极点)滤波器的下降率为一40dB/十倍频程，三阶(三极点)滤波器的下降率为一60dB/十倍频程，以此类推。
+通常，为了获得三阶及以上的滤波器，采用单级或两级滤波器级联组成，如图9-8所示。例如，为了得到三阶滤波器，将一个二阶滤波器和一个一阶滤波器级联起来。为了得到一个四阶滤波器，将两个二阶滤波器级联，等等。在级联结构中，每个滤波器称为一级或一节。 $$ 图9-8~~~通过级联可以增加滤波器阶数 $$
+由于巴特沃斯特性的最平坦响应，它使用最为广泛。因此，我们将主要通过巴特沃斯响应来阐述基本滤波器的概念。表9-1列出了1～6阶巴特沃斯滤波器的下降率、阻尼系数和反馈电阻比值。 $$ 表9-1~~~巴特沃斯响应的值 $$ '><title>9.2 滤波器的响应特性</title>
 
 <link rel='canonical' href='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/9-2%E6%BB%A4%E6%B3%A2%E5%99%A8%E7%9A%84%E5%93%8D%E5%BA%94%E7%89%B9%E6%80%A7/'>
 
-<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='9.2滤波器的响应特性'>
-<meta property='og:description' content=''>
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='9.2 滤波器的响应特性'>
+<meta property='og:description' content='每种滤波器(低通、高通、带通、带阻)可以通过电路元件值定制而具有巴特沃斯、切比雪夫或贝赛尔特性。每一种特性都是由响应曲线的形状来识别的，每种特性在特定的应用中具有各自的优势。
+学完本节后，你应该掌握以下内容:
+描述三类基本滤波器响应特性和其他滤波器参数 描述巴特沃斯特性 描述切比雪夫特性 描述贝赛尔特性 定义阻尼系数并讨论它的重要性 计算滤波器的阻尼系数 讨论滤波器的阶数和它对下降率的影响 巴特沃斯、切比雪夫或贝赛尔响应特性可以通过恰当地选择有源滤波器电路的元件值来实现，对低通滤波器响应曲线的三个响应特性的一般比较如图9-5所示。同样可以设计具有其中任何一种特性的高通、带通和带阻滤波器。 $$ 图9-5~~~三类滤波器响应特性的比较图 $$
+巴特沃斯特性 巴特沃斯特性在通带内提供非常平坦的幅值响应，并且下降率为一20dB/十倍频程/每极点。相位响应是非线性的，然而，通过滤波器的信号相移(因此有时延)会随着频率而非线性变化。因此，加到具有巴特沃斯响应的滤波器上的脉冲将在输出端引起超调，因为脉冲上升沿和下降沿中的每个频率分量经历了不同的时延。具有巴特沃斯响应的滤波器通常用于当通带内的所有频率必须具有相同的增益时。巴特沃斯响应通常指最平坦响应。
+切比雪夫特性 当要求下降率非常快时，具有切比雪夫响应特性的滤波器非常有用，因为切比雪夫滤波器可以提供大于一20dB/十倍频程/每极点的下降率。因为这个下降率比具有巴特沃斯特性响应特性的滤波器的下降率要大，所以对给定的下降率，滤波器可以用较少极点和较简单的电路来实现切比雪夫响应。这种类型的滤波器响应在通带内超调或波动(取决于极点的数量)，产生的线性相移比巴特沃斯产生的少。
+贝赛尔特性 贝塞尔响应呈现线性相位特性,意味着相移随着频率线性增加。结果就是当输入是脉冲信号时，输出几乎没有超调。由于这个原因，具有贝塞尔响应的滤波器常用于过滤脉冲波形，而不会产生波形失真。
+9.2.1 阻尼系数 如前所述，不论滤波器是低通、高通、带通还是带阻类型，有源滤波器都可以设计为具有巴特沃斯、切比雪夫或贝赛尔响应特性。有源滤波器电路的阻尼系数(DF)决定这个滤波器呈现哪种响应特性。为了解释这个基本概念，图9-6给出了一个广义的有源滤波器。它包含一个放大器、一个负反馈网络和一个滤波器部分。在一个同相放大器中，放大器和反馈网络相连接阻尼系数由负反馈网络决定，并且定义为: $$ 图9-6~~~有源滤波器的一般框图，注意，如同在第6章中的定义，R_1对应R_f，R_2对应于R_i; $$
+$$ DF=2-\frac{R_1}{R_2}~~~(9-5) $$
+基本上，阻尼系数通过负反馈的作用影响滤波器响应。任何试图增加或减小输出端电压的行为都将被负反馈的相反作用抵消。如果阻尼系数的值准确设置，这使得响应曲线在滤波器的通带内趋于平坦。通过高等数学，可以推导出不同阶数滤波器的阻尼系数(不在本书中介绍)，以获得巴特沃斯特性的最大平坦响应。
+产生所需响应特性的阻尼系数值取决于滤波器的阶数(极点的数量)。回顾一下，滤波器的极点数越多，滤波器的下降率越快。例如，为了获得一个二阶巴特沃斯响应，阻尼系数必须为1.414。为了实现这个阻尼系数，反馈电阻率应为: $$ \frac{R_1}{R_2}=2-DF=2-1.414=0.586 $$ 这个比率给出了一个同相滤波器放大器的闭环增益 $A_{cl(NI)}$ 为1.586，推导如 $$ A_{cl(NI)}=\frac{1}{B}=\frac{1}{R_2/(R_1&#43;R_2)}=\frac{R_1&#43;R_2}{R_2}=\frac{R_1}{R_2}&#43;1=0.586&#43;1=1.586 $$
+9.2.2 截止频率和下降率 截止频率由 RC 网络中的电阻和电容值决定，如图9-6所示。对一个单极点(一阶)滤波器，如图9-7所示，截止频率为 $$ 图9-7~~~一阶(单极点)低通滤波器 $$
+$$ f_c=\frac{1}{2\pi RC} $$ 尽管给出的是低通配置，对一个单极点高通滤波器, $f_c$ 的计算公式是相同的。极点数量决定滤波器的下降率。一个巴特沃斯响应的下降率为一20dB/十倍频程/每极点。所以一个一阶(单极点)滤波器的下降率为一20dB/十倍频程，二阶(二极点)滤波器的下降率为一40dB/十倍频程，三阶(三极点)滤波器的下降率为一60dB/十倍频程，以此类推。
+通常，为了获得三阶及以上的滤波器，采用单级或两级滤波器级联组成，如图9-8所示。例如，为了得到三阶滤波器，将一个二阶滤波器和一个一阶滤波器级联起来。为了得到一个四阶滤波器，将两个二阶滤波器级联，等等。在级联结构中，每个滤波器称为一级或一节。 $$ 图9-8~~~通过级联可以增加滤波器阶数 $$
+由于巴特沃斯特性的最平坦响应，它使用最为广泛。因此，我们将主要通过巴特沃斯响应来阐述基本滤波器的概念。表9-1列出了1～6阶巴特沃斯滤波器的下降率、阻尼系数和反馈电阻比值。 $$ 表9-1~~~巴特沃斯响应的值 $$ '>
 <meta property='og:url' content='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/9-2%E6%BB%A4%E6%B3%A2%E5%99%A8%E7%9A%84%E5%93%8D%E5%BA%94%E7%89%B9%E6%80%A7/'>
 <meta property='og:site_name' content='My Blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Analog' /><meta property='article:published_time' content='2023-07-14T18:18:30&#43;00:00'/><meta property='article:modified_time' content='2023-07-14T18:18:30&#43;00:00'/>
-<meta name="twitter:title" content="9.2滤波器的响应特性">
-<meta name="twitter:description" content=""><script>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Analog' /><meta property='article:published_time' content='2023-07-14T18:18:30&#43;08:00'/><meta property='article:modified_time' content='2023-07-14T18:18:30&#43;08:00'/>
+<meta name="twitter:title" content="9.2 滤波器的响应特性">
+<meta name="twitter:description" content="每种滤波器(低通、高通、带通、带阻)可以通过电路元件值定制而具有巴特沃斯、切比雪夫或贝赛尔特性。每一种特性都是由响应曲线的形状来识别的，每种特性在特定的应用中具有各自的优势。
+学完本节后，你应该掌握以下内容:
+描述三类基本滤波器响应特性和其他滤波器参数 描述巴特沃斯特性 描述切比雪夫特性 描述贝赛尔特性 定义阻尼系数并讨论它的重要性 计算滤波器的阻尼系数 讨论滤波器的阶数和它对下降率的影响 巴特沃斯、切比雪夫或贝赛尔响应特性可以通过恰当地选择有源滤波器电路的元件值来实现，对低通滤波器响应曲线的三个响应特性的一般比较如图9-5所示。同样可以设计具有其中任何一种特性的高通、带通和带阻滤波器。 $$ 图9-5~~~三类滤波器响应特性的比较图 $$
+巴特沃斯特性 巴特沃斯特性在通带内提供非常平坦的幅值响应，并且下降率为一20dB/十倍频程/每极点。相位响应是非线性的，然而，通过滤波器的信号相移(因此有时延)会随着频率而非线性变化。因此，加到具有巴特沃斯响应的滤波器上的脉冲将在输出端引起超调，因为脉冲上升沿和下降沿中的每个频率分量经历了不同的时延。具有巴特沃斯响应的滤波器通常用于当通带内的所有频率必须具有相同的增益时。巴特沃斯响应通常指最平坦响应。
+切比雪夫特性 当要求下降率非常快时，具有切比雪夫响应特性的滤波器非常有用，因为切比雪夫滤波器可以提供大于一20dB/十倍频程/每极点的下降率。因为这个下降率比具有巴特沃斯特性响应特性的滤波器的下降率要大，所以对给定的下降率，滤波器可以用较少极点和较简单的电路来实现切比雪夫响应。这种类型的滤波器响应在通带内超调或波动(取决于极点的数量)，产生的线性相移比巴特沃斯产生的少。
+贝赛尔特性 贝塞尔响应呈现线性相位特性,意味着相移随着频率线性增加。结果就是当输入是脉冲信号时，输出几乎没有超调。由于这个原因，具有贝塞尔响应的滤波器常用于过滤脉冲波形，而不会产生波形失真。
+9.2.1 阻尼系数 如前所述，不论滤波器是低通、高通、带通还是带阻类型，有源滤波器都可以设计为具有巴特沃斯、切比雪夫或贝赛尔响应特性。有源滤波器电路的阻尼系数(DF)决定这个滤波器呈现哪种响应特性。为了解释这个基本概念，图9-6给出了一个广义的有源滤波器。它包含一个放大器、一个负反馈网络和一个滤波器部分。在一个同相放大器中，放大器和反馈网络相连接阻尼系数由负反馈网络决定，并且定义为: $$ 图9-6~~~有源滤波器的一般框图，注意，如同在第6章中的定义，R_1对应R_f，R_2对应于R_i; $$
+$$ DF=2-\frac{R_1}{R_2}~~~(9-5) $$
+基本上，阻尼系数通过负反馈的作用影响滤波器响应。任何试图增加或减小输出端电压的行为都将被负反馈的相反作用抵消。如果阻尼系数的值准确设置，这使得响应曲线在滤波器的通带内趋于平坦。通过高等数学，可以推导出不同阶数滤波器的阻尼系数(不在本书中介绍)，以获得巴特沃斯特性的最大平坦响应。
+产生所需响应特性的阻尼系数值取决于滤波器的阶数(极点的数量)。回顾一下，滤波器的极点数越多，滤波器的下降率越快。例如，为了获得一个二阶巴特沃斯响应，阻尼系数必须为1.414。为了实现这个阻尼系数，反馈电阻率应为: $$ \frac{R_1}{R_2}=2-DF=2-1.414=0.586 $$ 这个比率给出了一个同相滤波器放大器的闭环增益 $A_{cl(NI)}$ 为1.586，推导如 $$ A_{cl(NI)}=\frac{1}{B}=\frac{1}{R_2/(R_1&#43;R_2)}=\frac{R_1&#43;R_2}{R_2}=\frac{R_1}{R_2}&#43;1=0.586&#43;1=1.586 $$
+9.2.2 截止频率和下降率 截止频率由 RC 网络中的电阻和电容值决定，如图9-6所示。对一个单极点(一阶)滤波器，如图9-7所示，截止频率为 $$ 图9-7~~~一阶(单极点)低通滤波器 $$
+$$ f_c=\frac{1}{2\pi RC} $$ 尽管给出的是低通配置，对一个单极点高通滤波器, $f_c$ 的计算公式是相同的。极点数量决定滤波器的下降率。一个巴特沃斯响应的下降率为一20dB/十倍频程/每极点。所以一个一阶(单极点)滤波器的下降率为一20dB/十倍频程，二阶(二极点)滤波器的下降率为一40dB/十倍频程，三阶(三极点)滤波器的下降率为一60dB/十倍频程，以此类推。
+通常，为了获得三阶及以上的滤波器，采用单级或两级滤波器级联组成，如图9-8所示。例如，为了得到三阶滤波器，将一个二阶滤波器和一个一阶滤波器级联起来。为了得到一个四阶滤波器，将两个二阶滤波器级联，等等。在级联结构中，每个滤波器称为一级或一节。 $$ 图9-8~~~通过级联可以增加滤波器阶数 $$
+由于巴特沃斯特性的最平坦响应，它使用最为广泛。因此，我们将主要通过巴特沃斯响应来阐述基本滤波器的概念。表9-1列出了1～6阶巴特沃斯滤波器的下降率、阻尼系数和反馈电阻比值。 $$ 表9-1~~~巴特沃斯响应的值 $$ "><script>
     (function(){
         if(''){
             if (prompt('请输入文章密码') !== ''){
@@ -25,7 +64,7 @@
 
     </head>
     <body class="
-    article-page 
+    article-page has-toc
 ">
     <script>
         (function() {
@@ -51,128 +90,22 @@
 </script>
 <div class="container main-container flex 
     
-        on-phone--column extended
+        extended
     
 ">
     
-        <aside class="sidebar left-sidebar sticky">
-    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
-        <span class="hamburger-box">
-            <span class="hamburger-inner"></span>
-        </span>
-    </button>
-
-    <header class="site-info">
-        
-            
-            <figure class="site-avatar">
-                
-                    
-                    
-                    
-                        
-                        <img src="/img/avatar_hu71fc3898bde3464d50a00f65e63c7ec2_517570_300x0_resize_box_3.png" width="300"
-                            height="354" class="site-logo" loading="lazy" alt="Avatar">
-                    
-                
-
-                
-            </figure>
-            
-        
-        
-        <h1 class="site-name"><a href="/">My Blog</a></h1>
-        <h2 class="site-description"></h2></header>
-
-    <ol class="menu" id="main-menu">
-        
-        
-        
-
-        <li >
-            <a href='/page/about/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <div id="article-toolbar">
+            <a href="/" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="7" r="4" />
-  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+  <polyline points="15 6 9 12 15 18" />
 </svg>
 
 
 
-                
-                <span>About</span>
+                <span>Back</span>
             </a>
-        </li>
-        
-        
-
-        <li >
-            <a href='/page/archives/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <rect x="3" y="4" width="18" height="4" rx="2" />
-  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
-  <line x1="10" y1="12" x2="14" y2="12" />
-</svg>
-
-
-
-                
-                <span>Archives</span>
-            </a>
-        </li>
-        
-        
-
-        <li >
-            <a href='/page/search/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="10" cy="10" r="7" />
-  <line x1="21" y1="21" x2="15" y2="15" />
-</svg>
-
-
-
-                
-                <span>Search</span>
-            </a>
-        </li>
-        
-
-        
-            <li id="dark-mode-toggle">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="8" cy="12" r="2" />
-  <rect x="2" y="6" width="20" height="12" rx="6" />
-</svg>
-
-
-
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="16" cy="12" r="2" />
-  <rect x="2" y="6" width="20" height="12" rx="6" />
-</svg>
-
-
-
-                <span>Dark Mode</span>
-            </li>
-        
-    </ol>
-</aside>
-
+        </div>
     
 <main class="main full-width">
     <article class="main-article">
@@ -182,7 +115,7 @@
     
 
     <h2 class="article-title">
-        <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/9-2%E6%BB%A4%E6%B3%A2%E5%99%A8%E7%9A%84%E5%93%8D%E5%BA%94%E7%89%B9%E6%80%A7/">9.2滤波器的响应特性</a>
+        <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/9-2%E6%BB%A4%E6%B3%A2%E5%99%A8%E7%9A%84%E5%93%8D%E5%BA%94%E7%89%B9%E6%80%A7/">9.2 滤波器的响应特性</a>
     </h2>
 
     
@@ -215,7 +148,7 @@
 
 
                 <time class="article-time--reading">
-                    0 minute read
+                    1 minute read
                 </time>
             </div>
         
@@ -225,7 +158,112 @@
 </header>
 
     <section class="article-content">
-    
+    <p>每种滤波器(低通、高通、带通、带阻)可以通过电路元件值定制而具有巴特沃斯、切比雪夫或贝赛尔特性。每一种特性都是由响应曲线的形状来识别的，每种特性在特定的应用中具有各自的优势。</p>
+<p>学完本节后，你应该掌握以下内容:</p>
+<ul>
+<li>描述三类基本滤波器响应特性和其他滤波器参数
+<ul>
+<li>描述巴特沃斯特性</li>
+<li>描述切比雪夫特性</li>
+<li>描述贝赛尔特性</li>
+<li>定义<code>阻尼系数</code>并讨论它的重要性</li>
+<li>计算滤波器的阻尼系数</li>
+<li>讨论滤波器的阶数和它对下降率的影响</li>
+</ul>
+</li>
+</ul>
+<p>巴特沃斯、切比雪夫或贝赛尔响应特性可以通过恰当地选择有源滤波器电路的元件值来实现，对低通滤波器响应曲线的三个响应特性的一般比较如图9-5所示。同样可以设计具有其中任何一种特性的高通、带通和带阻滤波器。
+<img src="https://s2.loli.net/2023/10/20/YxeyCMF3rpoLEW9.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog9_5.png"
+	
+	
+>
+$$
+图9-5~~~三类滤波器响应特性的比较图
+$$</p>
+<p><strong>巴特沃斯特性</strong> <code>巴特沃斯</code>特性在通带内提供非常平坦的幅值响应，并且下降率为一20dB/十倍频程/每极点。相位响应是非线性的，然而，通过滤波器的信号相移(因此有时延)会随着频率而非线性变化。因此，加到具有巴特沃斯响应的滤波器上的脉冲将在输出端引起超调，因为脉冲上升沿和下降沿中的每个频率分量经历了不同的时延。具有巴特沃斯响应的滤波器通常用于当通带内的所有频率必须具有相同的增益时。巴特沃斯响应通常指最<code>平坦响应</code>。</p>
+<p><strong>切比雪夫特性</strong> 当要求下降率非常快时，具有切比雪夫响应特性的滤波器非常有用，因为切比雪夫滤波器可以提供大于一20dB/十倍频程/每极点的下降率。因为这个下降率比具有巴特沃斯特性响应特性的滤波器的下降率要大，所以对给定的下降率，滤波器可以用较少极点和较简单的电路来实现切比雪夫响应。这种类型的滤波器响应在通带内超调或波动(取决于极点的数量)，产生的线性相移比巴特沃斯产生的少。</p>
+<p><strong>贝赛尔特性</strong> <code>贝塞尔</code>响应呈现线性相位特性,意味着相移随着频率线性增加。结果就是当输入是脉冲信号时，输出几乎没有超调。由于这个原因，具有贝塞尔响应的滤波器常用于过滤脉冲波形，而不会产生波形失真。</p>
+<h3 id="921-阻尼系数">9.2.1 阻尼系数</h3>
+<p>如前所述，不论滤波器是低通、高通、带通还是带阻类型，有源滤波器都可以设计为具有巴特沃斯、切比雪夫或贝赛尔响应特性。有源滤波器电路的阻尼系数(DF)决定这个滤波器呈现哪种响应特性。为了解释这个基本概念，图9-6给出了一个广义的有源滤波器。它包含一个放大器、一个负反馈网络和一个滤波器部分。在一个同相放大器中，放大器和反馈网络相连接阻尼系数由负反馈网络决定，并且定义为:
+<img src="https://s2.loli.net/2023/10/20/Anwi5IgpLsemjQO.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog9_6.png"
+	
+	
+>
+$$
+图9-6~~~有源滤波器的一般框图，注意，如同在第6章中的定义，R_1对应R_f，R_2对应于R_i;
+$$</p>
+<p>$$
+DF=2-\frac{R_1}{R_2}~~~(9-5)
+$$</p>
+<p>基本上，阻尼系数通过负反馈的作用影响滤波器响应。任何试图增加或减小输出端电压的行为都将被负反馈的相反作用抵消。如果阻尼系数的值准确设置，这使得响应曲线在滤波器的通带内趋于平坦。通过高等数学，可以推导出不同阶数滤波器的阻尼系数(不在本书中介绍)，以获得巴特沃斯特性的最大平坦响应。</p>
+<p>产生所需响应特性的阻尼系数值取决于滤波器的阶数(极点的数量)。回顾一下，滤波器的极点数越多，滤波器的下降率越快。例如，为了获得一个二阶巴特沃斯响应，阻尼系数必须为1.414。为了实现这个阻尼系数，反馈电阻率应为:
+$$
+\frac{R_1}{R_2}=2-DF=2-1.414=0.586
+$$
+这个比率给出了一个同相滤波器放大器的闭环增益 $A_{cl(NI)}$ 为1.586，推导如
+$$
+A_{cl(NI)}=\frac{1}{B}=\frac{1}{R_2/(R_1+R_2)}=\frac{R_1+R_2}{R_2}=\frac{R_1}{R_2}+1=0.586+1=1.586
+$$</p>
+<h3 id="922-截止频率和下降率">9.2.2 截止频率和下降率</h3>
+<p>截止频率由 RC 网络中的电阻和电容值决定，如图9-6所示。对一个单极点(一阶)滤波器，如图9-7所示，截止频率为
+<img src="https://s2.loli.net/2023/10/20/q2ixCGT4XyFWhKk.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog9_7.png"
+	
+	
+>
+$$
+图9-7~~~一阶(单极点)低通滤波器
+$$</p>
+<p>$$
+f_c=\frac{1}{2\pi RC}
+$$
+尽管给出的是低通配置，对一个单极点高通滤波器, $f_c$ 的计算公式是相同的。极点数量决定滤波器的下降率。一个巴特沃斯响应的下降率为一20dB/十倍频程/每极点。所以一个一阶(单极点)滤波器的下降率为一20dB/十倍频程，二阶(二极点)滤波器的下降率为一40dB/十倍频程，三阶(三极点)滤波器的下降率为一60dB/十倍频程，以此类推。</p>
+<p>通常，为了获得三阶及以上的滤波器，采用单级或两级滤波器级联组成，如图9-8所示。例如，为了得到三阶滤波器，将一个二阶滤波器和一个一阶滤波器级联起来。为了得到一个四阶滤波器，将两个二阶滤波器级联，等等。在级联结构中，每个滤波器称为一级或一节。
+<img src="https://s2.loli.net/2023/10/20/e2dm9qgn78EyiGL.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog9_8.png"
+	
+	
+>
+$$
+图9-8~~~通过级联可以增加滤波器阶数
+$$</p>
+<p>由于巴特沃斯特性的最平坦响应，它使用最为广泛。因此，我们将主要通过巴特沃斯响应来阐述基本滤波器的概念。表9-1列出了1～6阶巴特沃斯滤波器的下降率、阻尼系数和反馈电阻比值。
+$$
+表9-1~~~巴特沃斯响应的值
+$$
+<img src="https://s2.loli.net/2023/10/20/ufQzMkyeCwNPtxm.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog表9_1.png"
+	
+	
+></p>
+
 </section>
 
 
@@ -238,9 +276,44 @@
     </section>
 
 
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
     </footer>
 
 
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css"integrity="sha384-RZU/ijkSsFbcmivfdRBQDtwuwVqK7GMOw6IMvKyeWL2K5UAlyp6WonmB8m7Jd0Hn"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js"integrity="sha384-pK1WpvzWVBQiP0/GjnvRxV4mOb0oxFuyRxJlk6vVw146n3egcN5C925NCP7a7BY8"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js"integrity="sha384-vZTG03m&#43;2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ]
+        });})
+</script>
     
 </article>
 
@@ -253,48 +326,12 @@
                 
                     
 <article class="">
-    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/9-1%E5%9F%BA%E6%9C%AC%E6%BB%A4%E6%B3%A2%E5%99%A8%E5%93%8D%E5%BA%94/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">9.1基本滤波器响应</h2>
-        </div>
-    </a>
-</article>
-                
-                    
-<article class="">
-    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/8-5%E6%95%85%E9%9A%9C%E6%A3%80%E6%B5%8B/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">8.5故障检测</h2>
-        </div>
-    </a>
-</article>
-                
-                    
-<article class="">
-    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/8-4%E8%BD%AC%E6%8D%A2%E5%99%A8%E5%92%8C%E5%85%B6%E4%BB%96%E8%BF%90%E7%AE%97%E6%94%BE%E5%A4%A7%E5%99%A8%E7%94%B5%E8%B7%AF/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">8.4转换器和其他运算放大器电路</h2>
-        </div>
-    </a>
-</article>
-                
-                    
-<article class="">
     <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/8-3%E7%A7%AF%E5%88%86%E5%99%A8%E5%92%8C%E5%BE%AE%E5%88%86%E5%99%A8/">
         
         
 
         <div class="article-details">
-            <h2 class="article-title">8.3积分器和微分器</h2>
+            <h2 class="article-title">8.3 积分器和微分器</h2>
         </div>
     </a>
 </article>
@@ -306,7 +343,43 @@
         
 
         <div class="article-details">
-            <h2 class="article-title">8.2求和放大器</h2>
+            <h2 class="article-title">8.2 求和放大器</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/7-5%E8%BF%90%E7%AE%97%E6%94%BE%E5%A4%A7%E5%99%A8%E7%9A%84%E8%A1%A5%E5%81%BF/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">7.5 运算放大器的补偿</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/7-4%E6%AD%A3%E5%8F%8D%E9%A6%88%E5%92%8C%E7%A8%B3%E5%AE%9A%E6%80%A7/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">7.4 正反馈和稳定性</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/7-3%E8%BF%90%E7%AE%97%E6%94%BE%E5%A4%A7%E5%99%A8%E9%97%AD%E7%8E%AF%E5%93%8D%E5%BA%94/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">7.3 运算放大器闭环响应</h2>
         </div>
     </a>
 </article>
@@ -324,7 +397,7 @@
     data-app-id="d44db3f9-a0ff-4551-a44d-316afd2e5835"
     data-page-id="6bbbdb9d8ba45a8f1c0a1da474dd5a56"
     data-page-url="https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/9-2%E6%BB%A4%E6%B3%A2%E5%99%A8%E7%9A%84%E5%93%8D%E5%BA%94%E7%89%B9%E6%80%A7/"
-    data-page-title="9.2滤波器的响应特性"></div>
+    data-page-title="9.2 滤波器的响应特性"></div>
 <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
 
 <script>
@@ -436,6 +509,37 @@
             >
 
             </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">Table of contents</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#921-阻尼系数">9.2.1 阻尼系数</a></li>
+        <li><a href="#922-截止频率和下降率">9.2.2 截止频率和下降率</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                </div>
+            </section>
+        </aside>
     
 
         </div>

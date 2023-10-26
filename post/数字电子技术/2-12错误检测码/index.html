@@ -1,17 +1,29 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content=''><title>2.12错误检测码</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='2.12.1错误检测的奇偶校验法 ◇ 奇偶校验位给出一个数中1的个数是奇数还是偶数. 许多系统都使用一个奇偶校验位,作为位错误检测的手段.任意的多位数组都包含奇数个 1或偶数个 1.将一个奇偶校验位附加到多位数组中,使得这组数中 1 的个数总是偶数或者总是奇数.一个偶校验位使得 1 的总数为偶数,而奇校验位使得 1 的总数为奇数.
+一个给定的系统运行于偶校验或者奇校验,而不是同时运行于两者.例如,如果某系统运行于偶校验,则对于所接收的每一个多位数组都做一个检查,以确保这个多位数组中 1 的总数是偶数.如果有奇数个 1,就有一个错误发生了.
+作为对奇偶校验位怎样附加到编码中的一个说明,表2.7列出了每个BCD码的偶校验和奇校验的奇偶校验位.每个BCD码的校验位处于P列上. $$ 表2.7~~带奇偶校验位的 ~BCD ~码 $$ $$偶校验$$
+校验位 P BCD 0 0000 1 0001 1 0010 0 0011 1 0100 0 0101 0 0110 1 0111 1 1000 0 1001 $$奇校验$$
+校验位 P BCD 1 0000 0 0001 0 0010 1 0011 0 0100 1 0101 1 0110 0 0111 0 1000 1 1001 奇偶校验位可以附加到码的开头或者结尾,这取决于系统的设计.'><title>2.12错误检测码</title>
 
 <link rel='canonical' href='https://okokfun.github.io/post/%E6%95%B0%E5%AD%97%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF/2-12%E9%94%99%E8%AF%AF%E6%A3%80%E6%B5%8B%E7%A0%81/'>
 
 <link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='2.12错误检测码'>
-<meta property='og:description' content=''>
+<meta property='og:description' content='2.12.1错误检测的奇偶校验法 ◇ 奇偶校验位给出一个数中1的个数是奇数还是偶数. 许多系统都使用一个奇偶校验位,作为位错误检测的手段.任意的多位数组都包含奇数个 1或偶数个 1.将一个奇偶校验位附加到多位数组中,使得这组数中 1 的个数总是偶数或者总是奇数.一个偶校验位使得 1 的总数为偶数,而奇校验位使得 1 的总数为奇数.
+一个给定的系统运行于偶校验或者奇校验,而不是同时运行于两者.例如,如果某系统运行于偶校验,则对于所接收的每一个多位数组都做一个检查,以确保这个多位数组中 1 的总数是偶数.如果有奇数个 1,就有一个错误发生了.
+作为对奇偶校验位怎样附加到编码中的一个说明,表2.7列出了每个BCD码的偶校验和奇校验的奇偶校验位.每个BCD码的校验位处于P列上. $$ 表2.7~~带奇偶校验位的 ~BCD ~码 $$ $$偶校验$$
+校验位 P BCD 0 0000 1 0001 1 0010 0 0011 1 0100 0 0101 0 0110 1 0111 1 1000 0 1001 $$奇校验$$
+校验位 P BCD 1 0000 0 0001 0 0010 1 0011 0 0100 1 0101 1 0110 0 0111 0 1000 1 1001 奇偶校验位可以附加到码的开头或者结尾,这取决于系统的设计.'>
 <meta property='og:url' content='https://okokfun.github.io/post/%E6%95%B0%E5%AD%97%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF/2-12%E9%94%99%E8%AF%AF%E6%A3%80%E6%B5%8B%E7%A0%81/'>
 <meta property='og:site_name' content='My Blog'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Digital' /><meta property='article:published_time' content='2023-07-14T19:03:59&#43;00:00'/><meta property='article:modified_time' content='2023-07-14T19:03:59&#43;00:00'/>
 <meta name="twitter:title" content="2.12错误检测码">
-<meta name="twitter:description" content=""><script>
+<meta name="twitter:description" content="2.12.1错误检测的奇偶校验法 ◇ 奇偶校验位给出一个数中1的个数是奇数还是偶数. 许多系统都使用一个奇偶校验位,作为位错误检测的手段.任意的多位数组都包含奇数个 1或偶数个 1.将一个奇偶校验位附加到多位数组中,使得这组数中 1 的个数总是偶数或者总是奇数.一个偶校验位使得 1 的总数为偶数,而奇校验位使得 1 的总数为奇数.
+一个给定的系统运行于偶校验或者奇校验,而不是同时运行于两者.例如,如果某系统运行于偶校验,则对于所接收的每一个多位数组都做一个检查,以确保这个多位数组中 1 的总数是偶数.如果有奇数个 1,就有一个错误发生了.
+作为对奇偶校验位怎样附加到编码中的一个说明,表2.7列出了每个BCD码的偶校验和奇校验的奇偶校验位.每个BCD码的校验位处于P列上. $$ 表2.7~~带奇偶校验位的 ~BCD ~码 $$ $$偶校验$$
+校验位 P BCD 0 0000 1 0001 1 0010 0 0011 1 0100 0 0101 0 0110 1 0111 1 1000 0 1001 $$奇校验$$
+校验位 P BCD 1 0000 0 0001 0 0010 1 0011 0 0100 1 0101 1 0110 0 0111 0 1000 1 1001 奇偶校验位可以附加到码的开头或者结尾,这取决于系统的设计."><script>
     (function(){
         if(''){
             if (prompt('请输入文章密码') !== ''){
@@ -25,7 +37,7 @@
 
     </head>
     <body class="
-    article-page 
+    article-page has-toc
 ">
     <script>
         (function() {
@@ -51,128 +63,22 @@
 </script>
 <div class="container main-container flex 
     
-        on-phone--column extended
+        extended
     
 ">
     
-        <aside class="sidebar left-sidebar sticky">
-    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
-        <span class="hamburger-box">
-            <span class="hamburger-inner"></span>
-        </span>
-    </button>
-
-    <header class="site-info">
-        
-            
-            <figure class="site-avatar">
-                
-                    
-                    
-                    
-                        
-                        <img src="/img/avatar_hu71fc3898bde3464d50a00f65e63c7ec2_517570_300x0_resize_box_3.png" width="300"
-                            height="354" class="site-logo" loading="lazy" alt="Avatar">
-                    
-                
-
-                
-            </figure>
-            
-        
-        
-        <h1 class="site-name"><a href="/">My Blog</a></h1>
-        <h2 class="site-description"></h2></header>
-
-    <ol class="menu" id="main-menu">
-        
-        
-        
-
-        <li >
-            <a href='/page/about/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <div id="article-toolbar">
+            <a href="/" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="7" r="4" />
-  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+  <polyline points="15 6 9 12 15 18" />
 </svg>
 
 
 
-                
-                <span>About</span>
+                <span>Back</span>
             </a>
-        </li>
-        
-        
-
-        <li >
-            <a href='/page/archives/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <rect x="3" y="4" width="18" height="4" rx="2" />
-  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
-  <line x1="10" y1="12" x2="14" y2="12" />
-</svg>
-
-
-
-                
-                <span>Archives</span>
-            </a>
-        </li>
-        
-        
-
-        <li >
-            <a href='/page/search/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="10" cy="10" r="7" />
-  <line x1="21" y1="21" x2="15" y2="15" />
-</svg>
-
-
-
-                
-                <span>Search</span>
-            </a>
-        </li>
-        
-
-        
-            <li id="dark-mode-toggle">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="8" cy="12" r="2" />
-  <rect x="2" y="6" width="20" height="12" rx="6" />
-</svg>
-
-
-
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="16" cy="12" r="2" />
-  <rect x="2" y="6" width="20" height="12" rx="6" />
-</svg>
-
-
-
-                <span>Dark Mode</span>
-            </li>
-        
-    </ol>
-</aside>
-
+        </div>
     
 <main class="main full-width">
     <article class="main-article">
@@ -215,7 +121,7 @@
 
 
                 <time class="article-time--reading">
-                    0 minute read
+                    1 minute read
                 </time>
             </div>
         
@@ -225,7 +131,218 @@
 </header>
 
     <section class="article-content">
-    
+    <h3 id="2121错误检测的奇偶校验法">2.12.1错误检测的奇偶校验法</h3>
+<ul>
+<li>◇ 奇偶校验位给出一个数中1的个数是奇数还是偶数.</li>
+</ul>
+<p>许多系统都使用一个奇偶校验位,作为位错误检测的手段.任意的多位数组都包含奇数个 1或偶数个 1.将一个奇偶校验位附加到多位数组中,使得这组数中 1 的个数总是偶数或者总是奇数.一个偶校验位使得 1 的总数为偶数,而奇校验位使得 1 的总数为奇数.</p>
+<p>一个给定的系统运行于偶校验或者奇校验,而不是同时运行于两者.例如,如果某系统运行于偶校验,则对于所接收的每一个多位数组都做一个检查,以确保这个多位数组中 1 的总数是偶数.如果有奇数个 1,就有一个错误发生了.</p>
+<p>作为对奇偶校验位怎样附加到编码中的一个说明,表2.7列出了每个BCD码的偶校验和奇校验的奇偶校验位.每个BCD码的校验位处于P列上.
+$$
+表2.7~~带奇偶校验位的 ~BCD ~码
+$$
+$$偶校验$$</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">校验位 P</th>
+<th style="text-align:center">BCD</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0000</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0001</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0010</td>
+</tr>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0011</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0100</td>
+</tr>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0101</td>
+</tr>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0110</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0111</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1000</td>
+</tr>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1001</td>
+</tr>
+</tbody>
+</table>
+<p>$$奇校验$$</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">校验位 P</th>
+<th style="text-align:center">BCD</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0000</td>
+</tr>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0001</td>
+</tr>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0010</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0011</td>
+</tr>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0100</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0101</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0110</td>
+</tr>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0111</td>
+</tr>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1000</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1001</td>
+</tr>
+</tbody>
+</table>
+<p>奇偶校验位可以附加到码的开头或者结尾,这取决于系统的设计.注意,1 的总数
+包括奇偶校位上的 1,对于偶校验总是偶数,对于奇校验总是奇数.</p>
+<p><strong>检测一个错误奇</strong> 偶校验位提供了单个位错误的检测(或者任何奇数个错误,这种可能性较小),但是不能检测一组数中的两个错误.例如,假设我们希望传送 BCD 码 0101.(奇校验可以应用于任何位数的码;使用 4 位作为说明.)所传送的总的码,包括偶校验位如下所示</p>
+<p><img src="https://s2.loli.net/2023/10/08/XFtDYkBSUm6sr3z.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="digtal2.12.1a.png"
+	
+	
+></p>
+<p>现在,让我们假设从左边数第3位发生了错误(1变为0),如下所示:</p>
+<p><img src="https://s2.loli.net/2023/10/08/tBxRKX46vPuFsTz.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="digtal2.12.1b.png"
+	
+	
+></p>
+<p>当该码被接收时,奇偶校验检测电路检测出只有一个 1(奇数),但是应当有偶数个 1.因为在码被接收时,偶数个 1 没有出现在码中,所以就指出了一个错误.</p>
+<p>奇校验位提供了相似的方式,用以检测给定位数的数组的单个错误.</p>
+<h3 id="2122循环冗余校验码crc">2.12.2循环冗余校验码(CRC)</h3>
+<p>在通信链路的数字数据的传送过程中,循环冗余校验码(CRC)广泛用于检测一位或两位传送错误.通信链路存在于两台通过网络相连的计算机之间,或者是一个数字存储装置(例如CD,DVD或硬盘)和一台PC之间.如果设计合理,循环冗余校验码还可以检测一组比特数中的多个连续的错误(区间误差).在循环冗余校验码中,检测位的数目有时称为校验和,它被加到传送的数据位中(加在最后).接收器使用循环冗余校验码来检测接收到的数据的错误.循环冗余校验码并不能检测出所有可能出现的错误,但是它比简单的奇偶校验要有效得多.</p>
+<p>循环冗余校验码在数学上通常描述为两个多项式相除,并产生一个余数.多项式就是一个数学表达式,这个表达式具有多个正指数项的和.如果各项系数仅为 1 和 0 时,就称为单变量多项式.单变量多项式的一个例子是 $1x^3+0x^2+1x^1+1x^0$,或简写为 $x^3+x^1+x^0$,这完全可以用 4 位二进制数 1011 来表示.大多数循环冗余校验码使用 16 位或较大的多项式,但是为了解释简单,这里使用 4 位.</p>
+<p><strong>模-2运算</strong> 可以简单地认为,循环冗余校验码就是基于两个二进制数的相除,除法就是一系列的减法和移位.进行减法操作时,使用一个称为 模-2 加法的方法.模-2加法(或减法)和不考虑进位的二进制加法相同,如表2.8的真值表所示.如同第3章将要学习的那样,真值表广泛地用于描述逻辑电路的运算.两位数位在真值表中有四种可能的组合.这个特定的表描述的模-2运算,也称为异或运算,可以由第3章将要介绍的逻辑门来实现.模-2运算的一个简单规则就是如果两个输入不同,输出就是 1,否则输出为 0.
+$$
+表2.8 ~~模-2运算
+$$</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">输入位</th>
+<th style="text-align:center">输出位</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">0  0</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:center">0  1</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">1  0</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">1  1</td>
+<td style="text-align:center">0</td>
+</tr>
+</tbody>
+</table>
+<p><strong>循环冗余校验码的处理步骤</strong> 如下所示:</p>
+<ol>
+<li>选择一个固定的生成码,它可以比校验的数据位的位数少.这个生成码要事先让发送器和接收器都能识别,并且对于发送器和接收器必须都是相同的.</li>
+<li>附加上若干个 0, 0 的个数和加到数据位的生成码的 0 的个数相同.</li>
+<li>使用模-2方法,把数据位和附加的生成位合在一起除以生成码.</li>
+<li>如果余数为 0,那么数据位和附加的位原样发送.</li>
+<li>如果余数不为 0,那么为了使发送数据前余数为 0,附加的位改为余数位.</li>
+<li>在接收端,接收器使用和发送器相同的生成数位除以接收到的附加的数据位.</li>
+<li>如果余数为 0,就没有检测到错误(多个错误的可能性很小,使用时不考虑这种情况).如果余数不为 0,就检测到在传送过程中有一个错误,接收器会发出一个重传请求.</li>
+</ol>
+<p>图2.7为循环冗余校验码的处理步骤的示意图.
+<img src="https://s2.loli.net/2023/10/08/LtRNe4PiMhfGYUC.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="digtal2.12.2a.png"
+	
+	
+>
+$$
+(a)通信链路的发送端
+$$
+<img src="https://s2.loli.net/2023/10/08/V89DA1wElu2dhsH.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="digtal2.12.2b.png"
+	
+	
+>
+$$
+(b)通信链路的接收端
+$$
+$$
+图2.7~~循环冗余校验码的处理步骤
+$$</p>
+
 </section>
 
 
@@ -238,9 +355,44 @@
     </section>
 
 
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
     </footer>
 
 
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css"integrity="sha384-RZU/ijkSsFbcmivfdRBQDtwuwVqK7GMOw6IMvKyeWL2K5UAlyp6WonmB8m7Jd0Hn"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js"integrity="sha384-pK1WpvzWVBQiP0/GjnvRxV4mOb0oxFuyRxJlk6vVw146n3egcN5C925NCP7a7BY8"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js"integrity="sha384-vZTG03m&#43;2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ]
+        });})
+</script>
     
 </article>
 
@@ -436,6 +588,37 @@
             >
 
             </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">Table of contents</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#2121错误检测的奇偶校验法">2.12.1错误检测的奇偶校验法</a></li>
+        <li><a href="#2122循环冗余校验码crc">2.12.2循环冗余校验码(CRC)</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                </div>
+            </section>
+        </aside>
     
 
         </div>

@@ -11,11 +11,11 @@
 回忆直流/交流电路课程，运用叠加原理可求得线性电路中在单个电压或电流源单独作用下任何地方的电压和电流，可以通过将其他所有电源置 0 来达到这个目标。为了计算交流参数，可以用短路来替换直流电源将它设为 0，然后计算交流参数，就如同只有交流源单独作用。用短路替换电源是指 $V_{CC}$ 实际上对于交流信号而言相当于地电势，这称为交流地。该接地点概念指的是交流信号地而不是直流地，这是个全新的概念。只要记住交流地是交流信号的公共参考点。
 3.3.4 耦合电容和旁路电容 图3-29所示为一个基本的 BJT 放大器。该电路与图3-19中的电路的差别在于加人了一个交流信号源、三个电容和一个负载电阻。另外，发射极电阻一分为二。
 交流信号通过电容( $C_1$ 和 $C_3$ )进出放大器，这些电容称为耦合电容。如前所述，电容对交流信号而言相当于短路，而对直流信号来说相当于开路。这意味着耦合电容能够通过交流信号，同时阻碍直流电压。输人耦合电容 $C_1$ 将交流信号从信号源输人到基极，同时将信号源与直流偏置电压进行隔离。输出耦合电容 $C_3$ 将信号输出到负载，同时将负载与电源电压进行隔离。注意，这些耦合电容串联连接在信号通路上。
-电容 $C_2$ 则不同，它与其中的一个发射极电阻并联。这使得交流信号从发射极电阻的旁路通过，因此称为旁路电容。旁路电容的作用是增大放大器增益，其原因稍后会讲述。因为旁路电容为交流短路，所以电容的两端都为交流接地。无论电容的哪一端接地，另一端对交流信号而言也为接地端。检测故障时一定要记住这一条，你不应该在旁路电容的任意端查找交流信号。如果你能找到，那么该电容可能是开路的。'><title>3.3数据手册中的参数及交流分析</title>
+电容 $C_2$ 则不同，它与其中的一个发射极电阻并联。这使得交流信号从发射极电阻的旁路通过，因此称为旁路电容。旁路电容的作用是增大放大器增益，其原因稍后会讲述。因为旁路电容为交流短路，所以电容的两端都为交流接地。无论电容的哪一端接地，另一端对交流信号而言也为接地端。检测故障时一定要记住这一条，你不应该在旁路电容的任意端查找交流信号。如果你能找到，那么该电容可能是开路的。'><title>3.3 数据手册中的参数及交流分析</title>
 
 <link rel='canonical' href='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/3-3%E6%95%B0%E6%8D%AE%E6%89%8B%E5%86%8C%E4%B8%AD%E7%9A%84%E5%8F%82%E6%95%B0%E5%8F%8A%E4%BA%A4%E6%B5%81%E5%88%86%E6%9E%90/'>
 
-<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='3.3数据手册中的参数及交流分析'>
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='3.3 数据手册中的参数及交流分析'>
 <meta property='og:description' content='模拟电子的主干是线性放大器，一种能够从较小信号的副本产生较大信号的电路。上一节介绍了如何利用偏置为晶体管的工作提供必要的直流条件。本节将介绍影响交流信号的因素。
 学完本节后，你应该掌握以下内容:
 讨论晶体管参数并利用这些参数对晶体管电路进行分析 比较直流量和交流量的标注 讨论厂商数据手册中给出的BJT主要特性 解释耦合电容和旁路电容的作用 解释放大器如何产生电压增益 3.3.1直流和交流量 在本章第一部分中，利用直流量来建立晶体管的工作状态。这些直流电压和电流量用标准的斜体大写字母加上正体大写字母下标来表示，如$V_E、I_E、I_C$和$V_{CE}$。小写斜体下标用来表示交流量方均根值、峰值、峰峰电压和电流，如$V_e、I_e、I_c$和$V_{ce}$。瞬态量用斜体小写字母以及斜体小写下标标注，如$v_e、 i_e、i_c$和$v_{ce}$。
@@ -30,7 +30,7 @@
 <meta property='og:url' content='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/3-3%E6%95%B0%E6%8D%AE%E6%89%8B%E5%86%8C%E4%B8%AD%E7%9A%84%E5%8F%82%E6%95%B0%E5%8F%8A%E4%BA%A4%E6%B5%81%E5%88%86%E6%9E%90/'>
 <meta property='og:site_name' content='My Blog'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Analog' /><meta property='article:published_time' content='2023-07-14T17:35:32&#43;00:00'/><meta property='article:modified_time' content='2023-07-14T17:35:32&#43;00:00'/>
-<meta name="twitter:title" content="3.3数据手册中的参数及交流分析">
+<meta name="twitter:title" content="3.3 数据手册中的参数及交流分析">
 <meta name="twitter:description" content="模拟电子的主干是线性放大器，一种能够从较小信号的副本产生较大信号的电路。上一节介绍了如何利用偏置为晶体管的工作提供必要的直流条件。本节将介绍影响交流信号的因素。
 学完本节后，你应该掌握以下内容:
 讨论晶体管参数并利用这些参数对晶体管电路进行分析 比较直流量和交流量的标注 讨论厂商数据手册中给出的BJT主要特性 解释耦合电容和旁路电容的作用 解释放大器如何产生电压增益 3.3.1直流和交流量 在本章第一部分中，利用直流量来建立晶体管的工作状态。这些直流电压和电流量用标准的斜体大写字母加上正体大写字母下标来表示，如$V_E、I_E、I_C$和$V_{CE}$。小写斜体下标用来表示交流量方均根值、峰值、峰峰电压和电流，如$V_e、I_e、I_c$和$V_{ce}$。瞬态量用斜体小写字母以及斜体小写下标标注，如$v_e、 i_e、i_c$和$v_{ce}$。
@@ -106,7 +106,7 @@
     
 
     <h2 class="article-title">
-        <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/3-3%E6%95%B0%E6%8D%AE%E6%89%8B%E5%86%8C%E4%B8%AD%E7%9A%84%E5%8F%82%E6%95%B0%E5%8F%8A%E4%BA%A4%E6%B5%81%E5%88%86%E6%9E%90/">3.3数据手册中的参数及交流分析</a>
+        <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/3-3%E6%95%B0%E6%8D%AE%E6%89%8B%E5%86%8C%E4%B8%AD%E7%9A%84%E5%8F%82%E6%95%B0%E5%8F%8A%E4%BA%A4%E6%B5%81%E5%88%86%E6%9E%90/">3.3 数据手册中的参数及交流分析</a>
     </h2>
 
     
@@ -204,6 +204,18 @@ $$
     </section>
 
 
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
     </footer>
 
 
@@ -247,7 +259,7 @@ $$
         
 
         <div class="article-details">
-            <h2 class="article-title">3.2BJT偏置电路</h2>
+            <h2 class="article-title">3.2 BJT偏置电路</h2>
         </div>
     </a>
 </article>
@@ -259,7 +271,7 @@ $$
         
 
         <div class="article-details">
-            <h2 class="article-title">3.1BJT的结构</h2>
+            <h2 class="article-title">3.1 BJT的结构</h2>
         </div>
     </a>
 </article>
@@ -271,7 +283,7 @@ $$
         
 
         <div class="article-details">
-            <h2 class="article-title">2.8特殊用途二极管</h2>
+            <h2 class="article-title">2.8 特殊用途二极管</h2>
         </div>
     </a>
 </article>
@@ -283,7 +295,7 @@ $$
         
 
         <div class="article-details">
-            <h2 class="article-title">2.7二极管限幅电路和钳位电路</h2>
+            <h2 class="article-title">2.7 二极管限幅电路和钳位电路</h2>
         </div>
     </a>
 </article>
@@ -295,7 +307,7 @@ $$
         
 
         <div class="article-details">
-            <h2 class="article-title">2.6整流滤波器和IC稳压器</h2>
+            <h2 class="article-title">2.6 整流滤波器和IC稳压器</h2>
         </div>
     </a>
 </article>
@@ -313,7 +325,7 @@ $$
     data-app-id="d44db3f9-a0ff-4551-a44d-316afd2e5835"
     data-page-id="4d6a4b2b24871621cebd2580d691351c"
     data-page-url="https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/3-3%E6%95%B0%E6%8D%AE%E6%89%8B%E5%86%8C%E4%B8%AD%E7%9A%84%E5%8F%82%E6%95%B0%E5%8F%8A%E4%BA%A4%E6%B5%81%E5%88%86%E6%9E%90/"
-    data-page-title="3.3数据手册中的参数及交流分析"></div>
+    data-page-title="3.3 数据手册中的参数及交流分析"></div>
 <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
 
 <script>

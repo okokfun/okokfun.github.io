@@ -1,17 +1,44 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content=''><title>2.4二进制算术</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='2.4.1二进制加法 ◇ 在二进制中,1&#43;1 = 10,而不是2.
+二进制数(位)加法的 4 条基本规则如下:
+0&#43;0=0 和为0. 进位是0 0&#43;1=1 和为1. 进位是0 1&#43;0=1 和为1. 进位是0 1&#43;1=10 和为10. 进位是1 注意: 前三条规则产生单个的位,而在第4条规则中,两个1相加生成二进制的2(10).二进制数在相加时,最后一种情况在低位的和为0,而在左边的高位产生了进位1,如下面的加法运算 11&#43;1 所示:
+在最右列中,1&#43;1=0,因而在此列的左侧一列,即中间一列产生进位1.在中间一列中,1&#43;1&#43;0=0,因而在此列的左侧一列中产生进位1.在最左列中,1&#43;0&#43;0 =1.
+当存在进位1时,就会遇到三个位进行加法的情况(两个数中的位和一个进位).这种情况如下所示: 2.4.2二进制减法 ◇ 在二进制中,10 - 1 =1,而不是9.
+二进制数(位)减法的4条基本规则如下:
+0-0=0 1-1=0 1-0=1 10-1=1 0-1 产生借位1 进行减法运算时,有时必须从左边一列中借位.在二进制中,仅当0减去1时才需要借位.在这种情况下﹐从左边一列借来1,被减的列就会出现10,这时必须使用上面列出的4条基本规则中的最后一条.例2.8和例2.9说明了二进制减法,同时也给出了相应的十进制减法.
+2.4.3二进制乘法 ◇ 两位的二进制乘法和十进制数О和1的乘法相同.
+位相乘的4条基本规则如下:
+0 * 0 = 0 1 * 1 = 0 1 * 0 = 1 10 * 1 = 1 ~~ 0 - 1 产生借位1 二进制乘法和十进制乘法的运算方法是一样的.'><title>2.4二进制算术</title>
 
 <link rel='canonical' href='https://okokfun.github.io/post/%E6%95%B0%E5%AD%97%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF/2-4%E4%BA%8C%E8%BF%9B%E5%88%B6%E7%AE%97%E6%9C%AF/'>
 
 <link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='2.4二进制算术'>
-<meta property='og:description' content=''>
+<meta property='og:description' content='2.4.1二进制加法 ◇ 在二进制中,1&#43;1 = 10,而不是2.
+二进制数(位)加法的 4 条基本规则如下:
+0&#43;0=0 和为0. 进位是0 0&#43;1=1 和为1. 进位是0 1&#43;0=1 和为1. 进位是0 1&#43;1=10 和为10. 进位是1 注意: 前三条规则产生单个的位,而在第4条规则中,两个1相加生成二进制的2(10).二进制数在相加时,最后一种情况在低位的和为0,而在左边的高位产生了进位1,如下面的加法运算 11&#43;1 所示:
+在最右列中,1&#43;1=0,因而在此列的左侧一列,即中间一列产生进位1.在中间一列中,1&#43;1&#43;0=0,因而在此列的左侧一列中产生进位1.在最左列中,1&#43;0&#43;0 =1.
+当存在进位1时,就会遇到三个位进行加法的情况(两个数中的位和一个进位).这种情况如下所示: 2.4.2二进制减法 ◇ 在二进制中,10 - 1 =1,而不是9.
+二进制数(位)减法的4条基本规则如下:
+0-0=0 1-1=0 1-0=1 10-1=1 0-1 产生借位1 进行减法运算时,有时必须从左边一列中借位.在二进制中,仅当0减去1时才需要借位.在这种情况下﹐从左边一列借来1,被减的列就会出现10,这时必须使用上面列出的4条基本规则中的最后一条.例2.8和例2.9说明了二进制减法,同时也给出了相应的十进制减法.
+2.4.3二进制乘法 ◇ 两位的二进制乘法和十进制数О和1的乘法相同.
+位相乘的4条基本规则如下:
+0 * 0 = 0 1 * 1 = 0 1 * 0 = 1 10 * 1 = 1 ~~ 0 - 1 产生借位1 二进制乘法和十进制乘法的运算方法是一样的.'>
 <meta property='og:url' content='https://okokfun.github.io/post/%E6%95%B0%E5%AD%97%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF/2-4%E4%BA%8C%E8%BF%9B%E5%88%B6%E7%AE%97%E6%9C%AF/'>
 <meta property='og:site_name' content='My Blog'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Digital' /><meta property='article:published_time' content='2023-07-14T19:02:06&#43;00:00'/><meta property='article:modified_time' content='2023-07-14T19:02:06&#43;00:00'/>
 <meta name="twitter:title" content="2.4二进制算术">
-<meta name="twitter:description" content=""><script>
+<meta name="twitter:description" content="2.4.1二进制加法 ◇ 在二进制中,1&#43;1 = 10,而不是2.
+二进制数(位)加法的 4 条基本规则如下:
+0&#43;0=0 和为0. 进位是0 0&#43;1=1 和为1. 进位是0 1&#43;0=1 和为1. 进位是0 1&#43;1=10 和为10. 进位是1 注意: 前三条规则产生单个的位,而在第4条规则中,两个1相加生成二进制的2(10).二进制数在相加时,最后一种情况在低位的和为0,而在左边的高位产生了进位1,如下面的加法运算 11&#43;1 所示:
+在最右列中,1&#43;1=0,因而在此列的左侧一列,即中间一列产生进位1.在中间一列中,1&#43;1&#43;0=0,因而在此列的左侧一列中产生进位1.在最左列中,1&#43;0&#43;0 =1.
+当存在进位1时,就会遇到三个位进行加法的情况(两个数中的位和一个进位).这种情况如下所示: 2.4.2二进制减法 ◇ 在二进制中,10 - 1 =1,而不是9.
+二进制数(位)减法的4条基本规则如下:
+0-0=0 1-1=0 1-0=1 10-1=1 0-1 产生借位1 进行减法运算时,有时必须从左边一列中借位.在二进制中,仅当0减去1时才需要借位.在这种情况下﹐从左边一列借来1,被减的列就会出现10,这时必须使用上面列出的4条基本规则中的最后一条.例2.8和例2.9说明了二进制减法,同时也给出了相应的十进制减法.
+2.4.3二进制乘法 ◇ 两位的二进制乘法和十进制数О和1的乘法相同.
+位相乘的4条基本规则如下:
+0 * 0 = 0 1 * 1 = 0 1 * 0 = 1 10 * 1 = 1 ~~ 0 - 1 产生借位1 二进制乘法和十进制乘法的运算方法是一样的."><script>
     (function(){
         if(''){
             if (prompt('请输入文章密码') !== ''){
@@ -25,7 +52,7 @@
 
     </head>
     <body class="
-    article-page 
+    article-page has-toc
 ">
     <script>
         (function() {
@@ -51,128 +78,22 @@
 </script>
 <div class="container main-container flex 
     
-        on-phone--column extended
+        extended
     
 ">
     
-        <aside class="sidebar left-sidebar sticky">
-    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
-        <span class="hamburger-box">
-            <span class="hamburger-inner"></span>
-        </span>
-    </button>
-
-    <header class="site-info">
-        
-            
-            <figure class="site-avatar">
-                
-                    
-                    
-                    
-                        
-                        <img src="/img/avatar_hu71fc3898bde3464d50a00f65e63c7ec2_517570_300x0_resize_box_3.png" width="300"
-                            height="354" class="site-logo" loading="lazy" alt="Avatar">
-                    
-                
-
-                
-            </figure>
-            
-        
-        
-        <h1 class="site-name"><a href="/">My Blog</a></h1>
-        <h2 class="site-description"></h2></header>
-
-    <ol class="menu" id="main-menu">
-        
-        
-        
-
-        <li >
-            <a href='/page/about/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <div id="article-toolbar">
+            <a href="/" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="7" r="4" />
-  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+  <polyline points="15 6 9 12 15 18" />
 </svg>
 
 
 
-                
-                <span>About</span>
+                <span>Back</span>
             </a>
-        </li>
-        
-        
-
-        <li >
-            <a href='/page/archives/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <rect x="3" y="4" width="18" height="4" rx="2" />
-  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
-  <line x1="10" y1="12" x2="14" y2="12" />
-</svg>
-
-
-
-                
-                <span>Archives</span>
-            </a>
-        </li>
-        
-        
-
-        <li >
-            <a href='/page/search/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="10" cy="10" r="7" />
-  <line x1="21" y1="21" x2="15" y2="15" />
-</svg>
-
-
-
-                
-                <span>Search</span>
-            </a>
-        </li>
-        
-
-        
-            <li id="dark-mode-toggle">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="8" cy="12" r="2" />
-  <rect x="2" y="6" width="20" height="12" rx="6" />
-</svg>
-
-
-
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="16" cy="12" r="2" />
-  <rect x="2" y="6" width="20" height="12" rx="6" />
-</svg>
-
-
-
-                <span>Dark Mode</span>
-            </li>
-        
-    </ol>
-</aside>
-
+        </div>
     
 <main class="main full-width">
     <article class="main-article">
@@ -215,7 +136,7 @@
 
 
                 <time class="article-time--reading">
-                    0 minute read
+                    1 minute read
                 </time>
             </div>
         
@@ -225,7 +146,110 @@
 </header>
 
     <section class="article-content">
-    
+    <h3 id="241二进制加法">2.4.1二进制加法</h3>
+<p>◇ 在二进制中,1+1 = 10,而不是2.</p>
+<p>二进制数(位)加法的 4 条基本规则如下:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">0+0=0  和为0. 进位是0</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">0+1=1  和为1. 进位是0</td>
+</tr>
+<tr>
+<td style="text-align:left">1+0=1  和为1. 进位是0</td>
+</tr>
+<tr>
+<td style="text-align:left">1+1=10  和为10. 进位是1</td>
+</tr>
+</tbody>
+</table>
+<p>注意: 前三条规则产生单个的位,而在第4条规则中,两个1相加生成二进制的2(10).二进制数在相加时,最后一种情况在低位的和为0,而在左边的高位产生了进位1,如下面的加法运算 11+1 所示:</p>
+<p><img src="https://s2.loli.net/2023/10/07/w3Kme8yDpjF12LV.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="digtal2.4.1a.png"
+	
+	
+>
+在最右列中,1+1=0,因而在此列的左侧一列,即中间一列产生进位1.在中间一列中,1+1+0=0,因而在此列的左侧一列中产生进位1.在最左列中,1+0+0 =1.</p>
+<p>当存在进位1时,就会遇到三个位进行加法的情况(两个数中的位和一个进位).这种情况如下所示:
+<img src="https://s2.loli.net/2023/10/07/3CgZzicRYp1kEB8.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="digtal2.4.1b.png.png"
+	
+	
+></p>
+<h3 id="242二进制减法">2.4.2二进制减法</h3>
+<blockquote>
+<p>◇ 在二进制中,10 - 1 =1,而不是9.</p>
+</blockquote>
+<p>二进制数(位)减法的4条基本规则如下:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">0-0=0</td>
+</tr>
+<tr>
+<td style="text-align:left">1-1=0</td>
+</tr>
+<tr>
+<td style="text-align:left">1-0=1</td>
+</tr>
+<tr>
+<td style="text-align:left">10-1=1           0-1 产生借位1</td>
+</tr>
+</tbody>
+</table>
+<p>进行减法运算时,有时必须从左边一列中借位.在二进制中,仅当0减去1时才需要借位.在这种情况下﹐从左边一列借来1,被减的列就会出现10,这时必须使用上面列出的4条基本规则中的最后一条.例2.8和例2.9说明了二进制减法,同时也给出了相应的十进制减法.</p>
+<h3 id="243二进制乘法">2.4.3二进制乘法</h3>
+<blockquote>
+<p>◇ 两位的二进制乘法和十进制数О和1的乘法相同.</p>
+</blockquote>
+<p>位相乘的4条基本规则如下:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">0 * 0 = 0</td>
+</tr>
+<tr>
+<td style="text-align:left">1 * 1 = 0</td>
+</tr>
+<tr>
+<td style="text-align:left">1 * 0 = 1</td>
+</tr>
+<tr>
+<td style="text-align:left">10 * 1 = 1          ~~ 0 - 1 产生借位1</td>
+</tr>
+</tbody>
+</table>
+<p>二进制乘法和十进制乘法的运算方法是一样的.这涉及部分积的形成,把相继的部分积向左移一位,然后把所有的部分积加起来.例2.10说明了这个过程,同时也给出了相应的十进制乘法作为参照.</p>
+<h3 id="244-二进制除法">2.4.4 二进制除法</h3>
+<blockquote>
+<p>一个计数器可以用来进行二进制的算术运算,只要不超出计数器的运算范围.</p>
+</blockquote>
+<p>二进制中的除法遵循和十进制除法一样的过程, 如例2. 11所示,其中给出了相应的十进制除法.</p>
+
 </section>
 
 
@@ -238,9 +262,44 @@
     </section>
 
 
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
     </footer>
 
 
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css"integrity="sha384-RZU/ijkSsFbcmivfdRBQDtwuwVqK7GMOw6IMvKyeWL2K5UAlyp6WonmB8m7Jd0Hn"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js"integrity="sha384-pK1WpvzWVBQiP0/GjnvRxV4mOb0oxFuyRxJlk6vVw146n3egcN5C925NCP7a7BY8"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js"integrity="sha384-vZTG03m&#43;2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ]
+        });})
+</script>
     
 </article>
 
@@ -306,7 +365,7 @@
         
 
         <div class="article-details">
-            <h2 class="article-title">1.2二进制数、逻辑电平和数字波形</h2>
+            <h2 class="article-title">1.2二进制数,逻辑电平和数字波形</h2>
         </div>
     </a>
 </article>
@@ -436,6 +495,39 @@
             >
 
             </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">Table of contents</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#241二进制加法">2.4.1二进制加法</a></li>
+        <li><a href="#242二进制减法">2.4.2二进制减法</a></li>
+        <li><a href="#243二进制乘法">2.4.3二进制乘法</a></li>
+        <li><a href="#244-二进制除法">2.4.4 二进制除法</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                </div>
+            </section>
+        </aside>
     
 
         </div>

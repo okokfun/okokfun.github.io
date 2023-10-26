@@ -11,11 +11,11 @@ I_C=\beta_{DC}(\frac{V_{CC}-V_{BE}}{R_B})~~~~~(3-3) $$ 只要晶体管不处于�
 因为只使用单一电阻来进行偏置，故基极偏置在开关应用中是很好的选择，此时晶体管始终工作在饱和或者截止状态。对开关放大器，式(3-3)并不成立。
 3.2.2集电极反馈偏置 $$ 图3-16集电极反馈偏置 $$ 对于 npn 型晶体管的另一种偏置组态为图3-16所示的集电极反馈偏置电路。(pnp 型晶体管工作原理完全相同，除了负电源电压供电以外。)基极电阻 $R_B$ 连接在集电极，而不是像在之前讨论的基极偏置电路中那样连接在 $V_{CC}$。比起基极偏置情况，该基极电阻的值更小，因为集电极电压比一般工作情况下的 $V_{CC}$ 要小。
 集电极反馈用到了电子学中很重要的一个概念——负反馈来获得稳定性。负反馈将部分输出返回到输入来抵消可能出现的变化。负反馈连接提供了相对稳定的 Q 点。
-下面来看一下负反馈是如何起作用的。在图3-16中，集电极电压为发射结提供偏置。负反馈产生补偿效果来保持 Q 点稳定。假设 $\beta_{DC}$ 由于温度增加而增加，这导致 $I_C$ 增大，反过来，$R_C$ 上的电压降就加大。随着 $R_C$ 两端的电压降增大，$V_C$ 减少，这反过来也意味着它将提供更少的偏置电流。这种补偿行为正是负反馈产生的作用。关于负反馈的其他应用接下来会一一介绍。'><title>3.2BJT偏置电路</title>
+下面来看一下负反馈是如何起作用的。在图3-16中，集电极电压为发射结提供偏置。负反馈产生补偿效果来保持 Q 点稳定。假设 $\beta_{DC}$ 由于温度增加而增加，这导致 $I_C$ 增大，反过来，$R_C$ 上的电压降就加大。随着 $R_C$ 两端的电压降增大，$V_C$ 减少，这反过来也意味着它将提供更少的偏置电流。这种补偿行为正是负反馈产生的作用。关于负反馈的其他应用接下来会一一介绍。'><title>3.2 BJT偏置电路</title>
 
 <link rel='canonical' href='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/3-2bjt%E5%81%8F%E7%BD%AE%E7%94%B5%E8%B7%AF/'>
 
-<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='3.2BJT偏置电路'>
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='3.2 BJT偏置电路'>
 <meta property='og:description' content='本节将给出BJT的偏置方法。偏置是为了使晶体管正确工作而加的合适的直流电压。这可以通过一些基本电路来实现。偏置电路的选择很大程度上取决于应用。本节将介绍4种偏置方法，以及它们的优缺点。
 学完本节后，你应该掌握以下内容:
 解释4种BJT偏置电路的工作原理 描述基极偏置电路 描述集电极反馈偏置电路 描述分压式偏置电路 描述发射极偏置电路 对于线性放大器，信号必定在正负两个方向上摆动，而晶体管工作电流只能在一个方向上摆动。为了使晶体管放大交流信号，该交流信号必须叠加在设置工作点的直流电平上。偏置电路将直流电平设置为该工作点，这样就允许交流信号在正负两个方向上变化，而不会使晶体管进人饱和与截止状态。
@@ -30,7 +30,7 @@ I_C=\beta_{DC}(\frac{V_{CC}-V_{BE}}{R_B})~~~~~(3-3) $$ 只要晶体管不处于�
 <meta property='og:url' content='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/3-2bjt%E5%81%8F%E7%BD%AE%E7%94%B5%E8%B7%AF/'>
 <meta property='og:site_name' content='My Blog'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Analog' /><meta property='article:published_time' content='2023-07-14T17:35:19&#43;00:00'/><meta property='article:modified_time' content='2023-07-14T17:35:19&#43;00:00'/>
-<meta name="twitter:title" content="3.2BJT偏置电路">
+<meta name="twitter:title" content="3.2 BJT偏置电路">
 <meta name="twitter:description" content="本节将给出BJT的偏置方法。偏置是为了使晶体管正确工作而加的合适的直流电压。这可以通过一些基本电路来实现。偏置电路的选择很大程度上取决于应用。本节将介绍4种偏置方法，以及它们的优缺点。
 学完本节后，你应该掌握以下内容:
 解释4种BJT偏置电路的工作原理 描述基极偏置电路 描述集电极反馈偏置电路 描述分压式偏置电路 描述发射极偏置电路 对于线性放大器，信号必定在正负两个方向上摆动，而晶体管工作电流只能在一个方向上摆动。为了使晶体管放大交流信号，该交流信号必须叠加在设置工作点的直流电平上。偏置电路将直流电平设置为该工作点，这样就允许交流信号在正负两个方向上变化，而不会使晶体管进人饱和与截止状态。
@@ -106,7 +106,7 @@ I_C=\beta_{DC}(\frac{V_{CC}-V_{BE}}{R_B})~~~~~(3-3) $$ 只要晶体管不处于�
     
 
     <h2 class="article-title">
-        <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/3-2bjt%E5%81%8F%E7%BD%AE%E7%94%B5%E8%B7%AF/">3.2BJT偏置电路</a>
+        <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/3-2bjt%E5%81%8F%E7%BD%AE%E7%94%B5%E8%B7%AF/">3.2 BJT偏置电路</a>
     </h2>
 
     
@@ -367,6 +367,18 @@ $$</p>
     </section>
 
 
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
     </footer>
 
 
@@ -410,7 +422,7 @@ $$</p>
         
 
         <div class="article-details">
-            <h2 class="article-title">3.1BJT的结构</h2>
+            <h2 class="article-title">3.1 BJT的结构</h2>
         </div>
     </a>
 </article>
@@ -422,7 +434,7 @@ $$</p>
         
 
         <div class="article-details">
-            <h2 class="article-title">2.8特殊用途二极管</h2>
+            <h2 class="article-title">2.8 特殊用途二极管</h2>
         </div>
     </a>
 </article>
@@ -434,7 +446,7 @@ $$</p>
         
 
         <div class="article-details">
-            <h2 class="article-title">2.7二极管限幅电路和钳位电路</h2>
+            <h2 class="article-title">2.7 二极管限幅电路和钳位电路</h2>
         </div>
     </a>
 </article>
@@ -446,7 +458,7 @@ $$</p>
         
 
         <div class="article-details">
-            <h2 class="article-title">2.6整流滤波器和IC稳压器</h2>
+            <h2 class="article-title">2.6 整流滤波器和IC稳压器</h2>
         </div>
     </a>
 </article>
@@ -458,7 +470,7 @@ $$</p>
         
 
         <div class="article-details">
-            <h2 class="article-title">2.5整流器</h2>
+            <h2 class="article-title">2.5 整流器</h2>
         </div>
     </a>
 </article>
@@ -476,7 +488,7 @@ $$</p>
     data-app-id="d44db3f9-a0ff-4551-a44d-316afd2e5835"
     data-page-id="ea3331beddcf5b1df398c986ffe8687c"
     data-page-url="https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/3-2bjt%E5%81%8F%E7%BD%AE%E7%94%B5%E8%B7%AF/"
-    data-page-title="3.2BJT偏置电路"></div>
+    data-page-title="3.2 BJT偏置电路"></div>
 <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
 
 <script>

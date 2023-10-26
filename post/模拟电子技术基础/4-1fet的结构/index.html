@@ -5,11 +5,11 @@
 在本章中，JFET 和 MOSFET 在不同的小系统中给出。每个小系统都说明了利用这些晶体管独有特性的例子。此外，每个系统例子说明了场效应管的不同应用，包括线性放大器和开关电路。本章最后介绍一个利用 MOSFET 开关电路的太阳能跟踪系统。
 4.1FET的结构 已经知道双极结型晶体管(BJT)是一种电流控制器件，即基极电流控制集电极电流。场效应管(FET)是电压控制器件，其中栅极电压来控制流经器件的电流。BJT 和 FET 均可作为放大器使用，也都可用于开关电路。
 学完本节后，你应该掌握以下内容:
-描述场效应管(FET)的基本分类 讨论 FET 和 BJT 的主要差别 4.1.1 FET系列 场效应管(FET)是以与 BJT 的原理工作完全不同的一类半导体。在 FET 中，在称为源极(Source)和漏极(Drain)的两个电极之间由一条窄导电沟道相连。该沟道要么由 n 型材料，要么由 p 型材料制成。正如名字中的“场效应”指出的那样，沟道的导通由一个电场控制，该电场由施加在第三个电极即栅极(Gate)上的电压形成。在结型场效应管(或JFET)中，栅极和沟道之间形成了一个 pn 结。另一种场效应管称为金属-氧化物半导体场效应管(MOSFET)，它利用绝缘的栅极来控制沟道的导通(绝缘栅和 MOSFET 指同一种器件)。绝缘层是一层很薄(&amp;lt;lμm)的玻璃(通常是 $SiO_2$)。图4-1是 FET 系列的一个概览，展示了目前各种种类的场效应管。本章将讨论这些所有种类的场效应管。 $$ 图4-1~~~场效应管的分类 $$ 事实上，FET 的有关构想要远远早于 BJT。早在1925年，J.E. Lilienfeld就申请了 FET 的专利(在1930年生效)，但直到20世纪60年代，FET 才得到商业化应用。今天，MOSFET用在大部分的数字集成电路中，因为 MOSFET 与 BJT 相比有几个巨大优势，特别是在制造大规模集成电路的时候。MOSFET 之所以成为数字电路中采用的主要晶体管，主要有以下原因。它们可以制造在比 BJT 更小的面积上，并且，它们非常容易制造在集成电路上。此外，它们还可以得到不含电阻和二极管的更简单电路。所有微处理器和计算机内存都采用 FET 技术。4.'><title>4.1FET的结构</title>
+描述场效应管(FET)的基本分类 讨论 FET 和 BJT 的主要差别 4.1.1 FET系列 场效应管(FET)是以与 BJT 的原理工作完全不同的一类半导体。在 FET 中，在称为源极(Source)和漏极(Drain)的两个电极之间由一条窄导电沟道相连。该沟道要么由 n 型材料，要么由 p 型材料制成。正如名字中的“场效应”指出的那样，沟道的导通由一个电场控制，该电场由施加在第三个电极即栅极(Gate)上的电压形成。在结型场效应管(或JFET)中，栅极和沟道之间形成了一个 pn 结。另一种场效应管称为金属-氧化物半导体场效应管(MOSFET)，它利用绝缘的栅极来控制沟道的导通(绝缘栅和 MOSFET 指同一种器件)。绝缘层是一层很薄(&amp;lt;lμm)的玻璃(通常是 $SiO_2$)。图4-1是 FET 系列的一个概览，展示了目前各种种类的场效应管。本章将讨论这些所有种类的场效应管。 $$ 图4-1~~~场效应管的分类 $$ 事实上，FET 的有关构想要远远早于 BJT。早在1925年，J.E. Lilienfeld就申请了 FET 的专利(在1930年生效)，但直到20世纪60年代，FET 才得到商业化应用。今天，MOSFET用在大部分的数字集成电路中，因为 MOSFET 与 BJT 相比有几个巨大优势，特别是在制造大规模集成电路的时候。MOSFET 之所以成为数字电路中采用的主要晶体管，主要有以下原因。它们可以制造在比 BJT 更小的面积上，并且，它们非常容易制造在集成电路上。此外，它们还可以得到不含电阻和二极管的更简单电路。所有微处理器和计算机内存都采用 FET 技术。4.'><title>4.1 FET的结构</title>
 
 <link rel='canonical' href='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/4-1fet%E7%9A%84%E7%BB%93%E6%9E%84/'>
 
-<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='4.1FET的结构'>
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='4.1 FET的结构'>
 <meta property='og:description' content='目标 描述场效应管(FET)的基本分类 描述结型场效应管(JFET)的结构和工作原理 描述JFET的三种偏置方法以及它们的工作原理 解释金属-氧化物半导体场效应管(MOSFET)的工作原理 讨论和分析MOSFET偏置电路 描述FET线性放大器的工作原理 讨论MOSFET模拟和数字开关电路 本章介绍场效应管(FET)，一种与双极结型晶体管(BJT)工作原理完全不一样的晶体管。虽然FET的发明要比 BJT 早数十年，但直到20世纪60年代，FET 才实现了商业生产。在某些应用中，FET 优于 BJT。在其他领域，一般混合采用两种晶体管，以获得性能最优的电路。FET主要分为两类，一类称为结型场效应管(JFET)，另一类称为金属-氧化物半导体FET(MOSFET)。尽管 MOSFET 是实际中更为常用的器件，但是 JFET 的结构更加简单，和 MOSFET 也有很多相同的基本特性，因此本书还是首先讨论 JFET 的相关内容。
 在本章中，JFET 和 MOSFET 在不同的小系统中给出。每个小系统都说明了利用这些晶体管独有特性的例子。此外，每个系统例子说明了场效应管的不同应用，包括线性放大器和开关电路。本章最后介绍一个利用 MOSFET 开关电路的太阳能跟踪系统。
 4.1FET的结构 已经知道双极结型晶体管(BJT)是一种电流控制器件，即基极电流控制集电极电流。场效应管(FET)是电压控制器件，其中栅极电压来控制流经器件的电流。BJT 和 FET 均可作为放大器使用，也都可用于开关电路。
@@ -18,7 +18,7 @@
 <meta property='og:url' content='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/4-1fet%E7%9A%84%E7%BB%93%E6%9E%84/'>
 <meta property='og:site_name' content='My Blog'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Analog' /><meta property='article:published_time' content='2023-07-14T17:37:12&#43;00:00'/><meta property='article:modified_time' content='2023-07-14T17:37:12&#43;00:00'/>
-<meta name="twitter:title" content="4.1FET的结构">
+<meta name="twitter:title" content="4.1 FET的结构">
 <meta name="twitter:description" content="目标 描述场效应管(FET)的基本分类 描述结型场效应管(JFET)的结构和工作原理 描述JFET的三种偏置方法以及它们的工作原理 解释金属-氧化物半导体场效应管(MOSFET)的工作原理 讨论和分析MOSFET偏置电路 描述FET线性放大器的工作原理 讨论MOSFET模拟和数字开关电路 本章介绍场效应管(FET)，一种与双极结型晶体管(BJT)工作原理完全不一样的晶体管。虽然FET的发明要比 BJT 早数十年，但直到20世纪60年代，FET 才实现了商业生产。在某些应用中，FET 优于 BJT。在其他领域，一般混合采用两种晶体管，以获得性能最优的电路。FET主要分为两类，一类称为结型场效应管(JFET)，另一类称为金属-氧化物半导体FET(MOSFET)。尽管 MOSFET 是实际中更为常用的器件，但是 JFET 的结构更加简单，和 MOSFET 也有很多相同的基本特性，因此本书还是首先讨论 JFET 的相关内容。
 在本章中，JFET 和 MOSFET 在不同的小系统中给出。每个小系统都说明了利用这些晶体管独有特性的例子。此外，每个系统例子说明了场效应管的不同应用，包括线性放大器和开关电路。本章最后介绍一个利用 MOSFET 开关电路的太阳能跟踪系统。
 4.1FET的结构 已经知道双极结型晶体管(BJT)是一种电流控制器件，即基极电流控制集电极电流。场效应管(FET)是电压控制器件，其中栅极电压来控制流经器件的电流。BJT 和 FET 均可作为放大器使用，也都可用于开关电路。
@@ -88,7 +88,7 @@
     
 
     <h2 class="article-title">
-        <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/4-1fet%E7%9A%84%E7%BB%93%E6%9E%84/">4.1FET的结构</a>
+        <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/4-1fet%E7%9A%84%E7%BB%93%E6%9E%84/">4.1 FET的结构</a>
     </h2>
 
     
@@ -184,6 +184,18 @@ $$
     </section>
 
 
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
     </footer>
 
 
@@ -227,7 +239,7 @@ $$
         
 
         <div class="article-details">
-            <h2 class="article-title">3.7开关型双极型晶体管</h2>
+            <h2 class="article-title">3.7 开关型双极型晶体管</h2>
         </div>
     </a>
 </article>
@@ -239,7 +251,7 @@ $$
         
 
         <div class="article-details">
-            <h2 class="article-title">3.6共基极放大器</h2>
+            <h2 class="article-title">3.6 共基极放大器</h2>
         </div>
     </a>
 </article>
@@ -251,7 +263,7 @@ $$
         
 
         <div class="article-details">
-            <h2 class="article-title">3.5共集电极放大器</h2>
+            <h2 class="article-title">3.5 共集电极放大器</h2>
         </div>
     </a>
 </article>
@@ -263,7 +275,7 @@ $$
         
 
         <div class="article-details">
-            <h2 class="article-title">3.4共发射极放大器</h2>
+            <h2 class="article-title">3.4 共发射极放大器</h2>
         </div>
     </a>
 </article>
@@ -275,7 +287,7 @@ $$
         
 
         <div class="article-details">
-            <h2 class="article-title">3.3数据手册中的参数及交流分析</h2>
+            <h2 class="article-title">3.3 数据手册中的参数及交流分析</h2>
         </div>
     </a>
 </article>
@@ -293,7 +305,7 @@ $$
     data-app-id="d44db3f9-a0ff-4551-a44d-316afd2e5835"
     data-page-id="f9f0145cdfabff94b8f68d653aa4a2e2"
     data-page-url="https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/4-1fet%E7%9A%84%E7%BB%93%E6%9E%84/"
-    data-page-title="4.1FET的结构"></div>
+    data-page-title="4.1 FET的结构"></div>
 <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
 
 <script>

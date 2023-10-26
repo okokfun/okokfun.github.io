@@ -1,17 +1,23 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content=''><title>3.7固定功能逻辑</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='3.7.1逻辑系列 数字逻辑电路的三个系列是 CMOS(互补金属氧化物半导体)、双极型和 BiCMOS(双CMOS)。这三种电路器件实现内部逻辑功能的类型不同。CMOS 是由场效应管(FET)来实现，双极型(也称为TTL，即晶体管-晶体管逻辑)逻辑使用双极型晶体管来实现，而 BiCMOS 是前面两种的组合。这些逻辑器件系列的基本逻辑功能相同，但是工作参数不同，例如开关速度(传输时间)、功率损耗和抗干扰能力。CMOS 与门和双极型或 BiCMOS 与门的逻辑功能相同。对于所有其他功能的逻辑器件也一样。
+CMOS 在这些逻辑系列中，CMOS占有主导地位，双极型显然要被淘汰，BiCMOS 具有的逻辑功能类型也有限。在 CMOS 系列中，按不同的使用电压、功率损耗、开关速度和一些其他参数分为许多种类。表3.14列出了更多的常用 CMOS 逻辑电路,按各种器件的电路运行和优化的直流工作电压进行区分。 $$ 表3.14 ~~~CMOS逻辑器件的种类 $$
+名称 描述 $V_{CC}$ AC 高级CMOS 5.0 V ACT 具有双极型兼容输入的高级CMOS 5.0 V AHC 高级高速CMOS 5.0 V AHCT 具有双极型兼容输入的高级高速CMO 5.0 V ALVC 高级低电压CMOS 3.3 V AUC 高级超低电压CMOS 1.8 V AUP 高级超低功耗CMOS 3.3 V AVC 高级甚低电压CMOS 2.5 V CD4000 标准CMOS 5.0 V FCT 快速CMOS技术 5.0 V HC 高速CMOS 5.0 V HCT 具有双极型兼容输入的高速CMOS 5.'><title>3.7固定功能逻辑</title>
 
 <link rel='canonical' href='https://okokfun.github.io/post/%E6%95%B0%E5%AD%97%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF/3-7%E5%9B%BA%E5%AE%9A%E5%8A%9F%E8%83%BD%E9%80%BB%E8%BE%91/'>
 
 <link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='3.7固定功能逻辑'>
-<meta property='og:description' content=''>
+<meta property='og:description' content='3.7.1逻辑系列 数字逻辑电路的三个系列是 CMOS(互补金属氧化物半导体)、双极型和 BiCMOS(双CMOS)。这三种电路器件实现内部逻辑功能的类型不同。CMOS 是由场效应管(FET)来实现，双极型(也称为TTL，即晶体管-晶体管逻辑)逻辑使用双极型晶体管来实现，而 BiCMOS 是前面两种的组合。这些逻辑器件系列的基本逻辑功能相同，但是工作参数不同，例如开关速度(传输时间)、功率损耗和抗干扰能力。CMOS 与门和双极型或 BiCMOS 与门的逻辑功能相同。对于所有其他功能的逻辑器件也一样。
+CMOS 在这些逻辑系列中，CMOS占有主导地位，双极型显然要被淘汰，BiCMOS 具有的逻辑功能类型也有限。在 CMOS 系列中，按不同的使用电压、功率损耗、开关速度和一些其他参数分为许多种类。表3.14列出了更多的常用 CMOS 逻辑电路,按各种器件的电路运行和优化的直流工作电压进行区分。 $$ 表3.14 ~~~CMOS逻辑器件的种类 $$
+名称 描述 $V_{CC}$ AC 高级CMOS 5.0 V ACT 具有双极型兼容输入的高级CMOS 5.0 V AHC 高级高速CMOS 5.0 V AHCT 具有双极型兼容输入的高级高速CMO 5.0 V ALVC 高级低电压CMOS 3.3 V AUC 高级超低电压CMOS 1.8 V AUP 高级超低功耗CMOS 3.3 V AVC 高级甚低电压CMOS 2.5 V CD4000 标准CMOS 5.0 V FCT 快速CMOS技术 5.0 V HC 高速CMOS 5.0 V HCT 具有双极型兼容输入的高速CMOS 5.'>
 <meta property='og:url' content='https://okokfun.github.io/post/%E6%95%B0%E5%AD%97%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF/3-7%E5%9B%BA%E5%AE%9A%E5%8A%9F%E8%83%BD%E9%80%BB%E8%BE%91/'>
 <meta property='og:site_name' content='My Blog'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Digital' /><meta property='article:published_time' content='2023-07-14T19:05:11&#43;00:00'/><meta property='article:modified_time' content='2023-07-14T19:05:11&#43;00:00'/>
 <meta name="twitter:title" content="3.7固定功能逻辑">
-<meta name="twitter:description" content=""><script>
+<meta name="twitter:description" content="3.7.1逻辑系列 数字逻辑电路的三个系列是 CMOS(互补金属氧化物半导体)、双极型和 BiCMOS(双CMOS)。这三种电路器件实现内部逻辑功能的类型不同。CMOS 是由场效应管(FET)来实现，双极型(也称为TTL，即晶体管-晶体管逻辑)逻辑使用双极型晶体管来实现，而 BiCMOS 是前面两种的组合。这些逻辑器件系列的基本逻辑功能相同，但是工作参数不同，例如开关速度(传输时间)、功率损耗和抗干扰能力。CMOS 与门和双极型或 BiCMOS 与门的逻辑功能相同。对于所有其他功能的逻辑器件也一样。
+CMOS 在这些逻辑系列中，CMOS占有主导地位，双极型显然要被淘汰，BiCMOS 具有的逻辑功能类型也有限。在 CMOS 系列中，按不同的使用电压、功率损耗、开关速度和一些其他参数分为许多种类。表3.14列出了更多的常用 CMOS 逻辑电路,按各种器件的电路运行和优化的直流工作电压进行区分。 $$ 表3.14 ~~~CMOS逻辑器件的种类 $$
+名称 描述 $V_{CC}$ AC 高级CMOS 5.0 V ACT 具有双极型兼容输入的高级CMOS 5.0 V AHC 高级高速CMOS 5.0 V AHCT 具有双极型兼容输入的高级高速CMO 5.0 V ALVC 高级低电压CMOS 3.3 V AUC 高级超低电压CMOS 1.8 V AUP 高级超低功耗CMOS 3.3 V AVC 高级甚低电压CMOS 2.5 V CD4000 标准CMOS 5.0 V FCT 快速CMOS技术 5.0 V HC 高速CMOS 5.0 V HCT 具有双极型兼容输入的高速CMOS 5."><script>
     (function(){
         if(''){
             if (prompt('请输入文章密码') !== ''){
@@ -25,7 +31,7 @@
 
     </head>
     <body class="
-    article-page 
+    article-page has-toc
 ">
     <script>
         (function() {
@@ -51,128 +57,22 @@
 </script>
 <div class="container main-container flex 
     
-        on-phone--column extended
+        extended
     
 ">
     
-        <aside class="sidebar left-sidebar sticky">
-    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
-        <span class="hamburger-box">
-            <span class="hamburger-inner"></span>
-        </span>
-    </button>
-
-    <header class="site-info">
-        
-            
-            <figure class="site-avatar">
-                
-                    
-                    
-                    
-                        
-                        <img src="/img/avatar_hu71fc3898bde3464d50a00f65e63c7ec2_517570_300x0_resize_box_3.png" width="300"
-                            height="354" class="site-logo" loading="lazy" alt="Avatar">
-                    
-                
-
-                
-            </figure>
-            
-        
-        
-        <h1 class="site-name"><a href="/">My Blog</a></h1>
-        <h2 class="site-description"></h2></header>
-
-    <ol class="menu" id="main-menu">
-        
-        
-        
-
-        <li >
-            <a href='/page/about/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <div id="article-toolbar">
+            <a href="/" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="7" r="4" />
-  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+  <polyline points="15 6 9 12 15 18" />
 </svg>
 
 
 
-                
-                <span>About</span>
+                <span>Back</span>
             </a>
-        </li>
-        
-        
-
-        <li >
-            <a href='/page/archives/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <rect x="3" y="4" width="18" height="4" rx="2" />
-  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
-  <line x1="10" y1="12" x2="14" y2="12" />
-</svg>
-
-
-
-                
-                <span>Archives</span>
-            </a>
-        </li>
-        
-        
-
-        <li >
-            <a href='/page/search/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="10" cy="10" r="7" />
-  <line x1="21" y1="21" x2="15" y2="15" />
-</svg>
-
-
-
-                
-                <span>Search</span>
-            </a>
-        </li>
-        
-
-        
-            <li id="dark-mode-toggle">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="8" cy="12" r="2" />
-  <rect x="2" y="6" width="20" height="12" rx="6" />
-</svg>
-
-
-
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="16" cy="12" r="2" />
-  <rect x="2" y="6" width="20" height="12" rx="6" />
-</svg>
-
-
-
-                <span>Dark Mode</span>
-            </li>
-        
-    </ol>
-</aside>
-
+        </div>
     
 <main class="main full-width">
     <article class="main-article">
@@ -215,7 +115,7 @@
 
 
                 <time class="article-time--reading">
-                    0 minute read
+                    2 minute read
                 </time>
             </div>
         
@@ -225,7 +125,198 @@
 </header>
 
     <section class="article-content">
-    
+    <h3 id="371逻辑系列">3.7.1逻辑系列</h3>
+<p>数字逻辑电路的三个系列是 CMOS(互补金属氧化物半导体)、双极型和 BiCMOS(双CMOS)。这三种电路器件实现内部逻辑功能的类型不同。CMOS 是由场效应管(FET)来实现，双极型(也称为TTL，即晶体管-晶体管逻辑)逻辑使用双极型晶体管来实现，而 BiCMOS 是前面两种的组合。这些逻辑器件系列的基本逻辑功能相同，但是工作参数不同，例如开关速度(传输时间)、功率损耗和抗干扰能力。CMOS 与门和双极型或 BiCMOS 与门的逻辑功能相同。对于所有其他功能的逻辑器件也一样。</p>
+<p><strong>CMOS</strong> 在这些逻辑系列中，CMOS占有主导地位，双极型显然要被淘汰，BiCMOS 具有的逻辑功能类型也有限。在 CMOS 系列中，按不同的使用电压、功率损耗、开关速度和一些其他参数分为许多种类。表3.14列出了更多的常用 CMOS 逻辑电路,按各种器件的电路运行和优化的直流工作电压进行区分。
+$$
+表3.14 ~~~CMOS逻辑器件的种类
+$$</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">描述</th>
+<th style="text-align:left">$V_{CC}$</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">AC</td>
+<td style="text-align:left">高级CMOS</td>
+<td style="text-align:left">5.0 V</td>
+</tr>
+<tr>
+<td style="text-align:left">ACT</td>
+<td style="text-align:left">具有双极型兼容输入的高级CMOS</td>
+<td style="text-align:left">5.0 V</td>
+</tr>
+<tr>
+<td style="text-align:left">AHC</td>
+<td style="text-align:left">高级高速CMOS</td>
+<td style="text-align:left">5.0 V</td>
+</tr>
+<tr>
+<td style="text-align:left">AHCT</td>
+<td style="text-align:left">具有双极型兼容输入的高级高速CMO</td>
+<td style="text-align:left">5.0 V</td>
+</tr>
+<tr>
+<td style="text-align:left">ALVC</td>
+<td style="text-align:left">高级低电压CMOS</td>
+<td style="text-align:left">3.3 V</td>
+</tr>
+<tr>
+<td style="text-align:left">AUC</td>
+<td style="text-align:left">高级超低电压CMOS</td>
+<td style="text-align:left">1.8 V</td>
+</tr>
+<tr>
+<td style="text-align:left">AUP</td>
+<td style="text-align:left">高级超低功耗CMOS</td>
+<td style="text-align:left">3.3 V</td>
+</tr>
+<tr>
+<td style="text-align:left">AVC</td>
+<td style="text-align:left">高级甚低电压CMOS</td>
+<td style="text-align:left">2.5 V</td>
+</tr>
+<tr>
+<td style="text-align:left">CD4000</td>
+<td style="text-align:left">标准CMOS</td>
+<td style="text-align:left">5.0 V</td>
+</tr>
+<tr>
+<td style="text-align:left">FCT</td>
+<td style="text-align:left">快速CMOS技术</td>
+<td style="text-align:left">5.0 V</td>
+</tr>
+<tr>
+<td style="text-align:left">HC</td>
+<td style="text-align:left">高速CMOS</td>
+<td style="text-align:left">5.0 V</td>
+</tr>
+<tr>
+<td style="text-align:left">HCT</td>
+<td style="text-align:left">具有双极型兼容输入的高速CMOS</td>
+<td style="text-align:left">5.0 V</td>
+</tr>
+<tr>
+<td style="text-align:left">LV-A</td>
+<td style="text-align:left">低电压CMOS</td>
+<td style="text-align:left">3.3 V</td>
+</tr>
+<tr>
+<td style="text-align:left">LV-AT</td>
+<td style="text-align:left">具有双极型兼容输入的低电压CMOS</td>
+<td style="text-align:left">5.0 V</td>
+</tr>
+<tr>
+<td style="text-align:left">LVC</td>
+<td style="text-align:left">低电压CMOS</td>
+<td style="text-align:left">3.3 V</td>
+</tr>
+</tbody>
+</table>
+<p><strong>双极型</strong> 如同 CMOS 那样，双极型逻辑器件系列也有不同参数的种类。这些种类列在表3.15中，所有的不同种类都运行于典型的 5 V 电压 $V_{CC}$ 下。</p>
+<p><strong>BiCMOS</strong> 表3.16给出了 BiCMOS 逻辑系列中的常用种类。工作电压 $V_{CC}$ 都是典型的5V。
+$$
+表3.15~~~双极型逻辑器件的种类
+$$</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">名称</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">ALS</td>
+<td style="text-align:center">高级低功率肖特基(Schottky)</td>
+</tr>
+<tr>
+<td style="text-align:center">AS</td>
+<td style="text-align:center">高级肖特基</td>
+</tr>
+<tr>
+<td style="text-align:center">F</td>
+<td style="text-align:center">高速</td>
+</tr>
+<tr>
+<td style="text-align:center">LS</td>
+<td style="text-align:center">低功耗肖特基</td>
+</tr>
+<tr>
+<td style="text-align:center">S</td>
+<td style="text-align:center">肖特基</td>
+</tr>
+<tr>
+<td style="text-align:center">None</td>
+<td style="text-align:center">标准TTL</td>
+</tr>
+</tbody>
+</table>
+<p>$$
+表3.16~~~BiCMOS~逻辑器件的种类
+$$</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">名称</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">ABT</td>
+<td style="text-align:center">高级BiCMOS</td>
+</tr>
+<tr>
+<td style="text-align:center">ALB</td>
+<td style="text-align:center">高级低电压BiCMOS</td>
+</tr>
+<tr>
+<td style="text-align:center">BCT</td>
+<td style="text-align:center">标准BiCMOS</td>
+</tr>
+<tr>
+<td style="text-align:center">LVT</td>
+<td style="text-align:center">低电压BiCMOS</td>
+</tr>
+</tbody>
+</table>
+<h3 id="372-逻辑门">3.7.2 逻辑门</h3>
+<p>所有的逻辑功能一一非、与、或、与非、或非、异或和同或，都可以在CMOS和双极型中找到。除此之外,需要大电流驱动负载的缓冲输出门也有相应的逻辑功能。典型的集成电路(IC)封装具有的门的配置类型在系列的定义中由最后两位或三位数字进行区别。例如，74LS04是一块低功耗肖特基十六反相器。一些常用的逻辑门的配置和它们的标准鉴别数字如下所示:</p>
+<ul>
+<li>四 2 输人与非门一00</li>
+<li>四 4 输人与非门一20</li>
+<li>四 2 输人或非门一02</li>
+<li>四 2 输人与门一21</li>
+<li>十六反相器一04</li>
+<li>三 3 输人或非门一27</li>
+<li>四 2 输人与门一08</li>
+<li>单 8 输入与非门一30</li>
+<li>三 3 输人与非门一10</li>
+<li>四 2 输人或门一32</li>
+<li>三 3 输人与门一11</li>
+<li>四异或门一86</li>
+<li>四同或门一266</li>
+</ul>
+<p><strong>IC封装</strong> 所有 74 系列的 CMOS 和相同类型的双极型器件的引脚是兼容的。这就意味着 CMOS 数字 IC 芯片和相对应的双极型芯片的输入/输出引脚相同，例如 74HC00(四2输人与非门)，即在一块 IC 芯片上有 4 个 2 输人的与非门。对于典型的 IC 封装,双引线封装(DIP)用于插塞或穿通安装，小轮廓集成电路(SOIC)封装用于表面安装，如图3.49所示。在某些情况下还有其他类型的封装, SOIC 比 DIP 明显小得多。以上列出的大多数固定功能的逻辑芯片的引脚配置如图3.50所示。</p>
+<p><strong>单个门的逻辑</strong> CMOS 单个门的封装种类很有限。对于只有一个门的封装，该系列形成有 5 个极小引脚的封装，往往用于&ndash;些特殊的场合,例如用于一些紧凑的、可用空间受到限制的地方，需要把这样的逻辑芯片挤进去以便达到最终的更改效果。</p>
+<p><strong>逻辑符号</strong> 固定功能集成电路的逻辑符号使用标准的门的符号, IC 封装给出了芯片中门的数量及与每个门相关联的引脚编号,也给出了电源 $V_{CC}$ 和地线的引脚编号。图3.51给出了一个十六反相器和四2输人与非门的例子，其中给出特殊形状符号和矩形轮廓符号两种形式的图。不考虑逻辑系列，所有的芯片都有相同的前缀，也就是它们有相同的引脚排列。例如，7400、74S00、74LS00、74ALS00、74F00、74HC00和74AHC00都是四2输人与非门芯片,它们的引脚都兼容。</p>
+<h3 id="373-工作特性和参数">3.7.3 工作特性和参数</h3>
+<ul>
+<li>高速逻辑芯片具有很小的传输延迟时间。</li>
+</ul>
+<p>定义逻辑电路的几个工作特性，它们是按照传输延迟时间测量得到的开关速度、功率损耗、扇出或驱动能力、速度-功率乘积、直流供电电压和输人输出逻辑电平。</p>
+<p><strong>传输延迟时间</strong> 此参数是在逻辑电路能够工作的最大开关速度或频率下得到的。对于逻辑电路，低速和高速是相对于传输延迟时间而言的。传输延迟时间越短，电路的速度就越高，工作频率也越高。</p>
+<p>传输延迟时间 $t_P$,即逻辑门的 $t_P$ 是输人脉冲的出现到此脉冲在输出出现的时间间隔。有两种测量与一个逻辑门有关的传输延迟时间的方法，它们适用于所有其他种类的基本门电路。</p>
+<ul>
+<li>$t_{PHL}$: 输入脉冲的特定参考点和对应传输得到的输出脉冲参考点之间的时间, 如输出从高电平变化到低电平(HL)的点。</li>
+<li>$t_{PLH}$: 输入脉冲的特定参考点和对应传输得到的输出脉冲参考点之间的时间，如输出从低电平变化到高电平(LH)的点。</li>
+</ul>
+
 </section>
 
 
@@ -238,9 +329,44 @@
     </section>
 
 
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
     </footer>
 
 
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css"integrity="sha384-RZU/ijkSsFbcmivfdRBQDtwuwVqK7GMOw6IMvKyeWL2K5UAlyp6WonmB8m7Jd0Hn"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js"integrity="sha384-pK1WpvzWVBQiP0/GjnvRxV4mOb0oxFuyRxJlk6vVw146n3egcN5C925NCP7a7BY8"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js"integrity="sha384-vZTG03m&#43;2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ]
+        });})
+</script>
     
 </article>
 
@@ -436,6 +562,38 @@
             >
 
             </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">Table of contents</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#371逻辑系列">3.7.1逻辑系列</a></li>
+        <li><a href="#372-逻辑门">3.7.2 逻辑门</a></li>
+        <li><a href="#373-工作特性和参数">3.7.3 工作特性和参数</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                </div>
+            </section>
+        </aside>
     
 
         </div>

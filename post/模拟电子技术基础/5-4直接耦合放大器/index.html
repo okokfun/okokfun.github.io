@@ -1,17 +1,38 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content=''><title>5.4直接耦合放大器</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='另一种耦合信号的重要方式是直接耦合。采用直接耦合，级间没有耦合电容和变压 器。根据输人和输出信号的耦合方式，某些放大器可以放大低至直流的任何频率的信亏。本节将介绍直接耦合放大器，然后加入负反馈来稳定偏置和增益。直接耦合也将应用在功率放大器中，这在5.5节中讨论。
+学完本节后，你应该掌握以下内容:
+确定直接耦合放大器基本的直流和交流参数，并描述负反馈如何稳定放大器的增益 描述直接耦合级如何得到偏置 计算直接耦合放大器的直流和交流参数 解释负反馈如何稳定偏置和增益 $$ 图5-17~~~无反馈的直接耦合放大器 $$ 图5-17是一个直接耦合放大器。信号从 $Q_1$ 的集电极直接耦合到 $Q_2$ 的基极。由于是直接耦合， $Q_2$ 的基极电流是由 $Q_1$ 提供，因此对于 $Q_2$ 不需要任何偏置电阻，以及级间不需要耦合电容。虽然级间是直接耦合，但在这个放大电路中，为了避免外部信号源和负载干扰直流电压，有必要在输入、输出端对交流信号进行耦合(通过电容)。
+$Q_2$ 的偏置通过 $Q_1$ 的集电极电阻 $R_{C1}$ 来提供。由于 $Q_1$ 是分压式偏置，所以与 $\beta$ 无关，但 $Q_2$ 采用的是基极偏置，这种偏置方法在线性放大器中使用不太理想，因为会随 $\beta$ 参数变化。另外，温度变化会引起电路的漂移。虽然这款放大器所用的元件少于电容耦合放大器，但存在的缺点比优点多。不过，只要对它做些简单的改动——加人负反馈就能解决随 $\beta$ 变化和漂移的问题。
+5.4.1负反馈增强偏置稳定性 $$ 图5-18~~~一个带负反馈的直接耦合放大器，能够稳定偏置 $$
+图5-18所示的电路是将图5-17中的放大器减少元件数量后修改得到的放大器，它能够大大改善偏置稳定性。为了避免对偏置电压造成干扰，输入和输出信号采用电容耦合。因为电路中有两个晶体管，所以红色显示的反馈网络利用了相对于单个晶体管产生的额外增益，使电路相对于 $\beta$ 的变化和温度的变化非常稳定。这和3.2节集电极负反馈偏置中的负反馈是类似的。
+下面来看图5-17中的反馈如何工作。从 $Q_2$ 开始，注意， $Q_2$ 的基极通过 $R_{C1}$ 正向偏置，从而产生 $Q_2$ 的集电极电流 $I_{C(Q2)}$。该电流会使 $Q_2$ 的发射极电压升高，从而使 $Q_1$ 导通。随着 $Q_1$ 导通程度越来越深， $Q_1$ 集电极电压下降，使 $Q_2$ 的偏置减少。 $Q_2$ 偏置减少的结果是将该偏置稳定在由专门设计的值确定的稳定点。
+通过对由$V_{CC}、R_{C1}、V_{BE(Q2)}、R_F、V_{BE(Q1))}$和 $R_{E1}$ 组成的回路应用基尔霍夫电压定理(KVL)求得 $Q_1$ 的集电极电流，约为: $$ I_{C(Q1)}=\frac{V_{CC}-2V_{BE}}{R_{C1}&#43;\frac{R_F}{\beta}&#43;R_{E1}} $$ 设计电路使得 $R_{C1}$ 远大于 $R_F/\beta$ 或 $R_{E1}$。这样，$I_{C(Q1)}$ 几乎完全与 $\beta$ 无关，在 $Q_1$ 集电极上产生一个稳定的电压，以及在 $Q_2$ 产生一个稳定的基极电压。因此，与基极偏置相关的 $\beta$ 依赖性不再是一个问题。'><title>5.4 直接耦合放大器</title>
 
 <link rel='canonical' href='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/5-4%E7%9B%B4%E6%8E%A5%E8%80%A6%E5%90%88%E6%94%BE%E5%A4%A7%E5%99%A8/'>
 
-<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='5.4直接耦合放大器'>
-<meta property='og:description' content=''>
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='5.4 直接耦合放大器'>
+<meta property='og:description' content='另一种耦合信号的重要方式是直接耦合。采用直接耦合，级间没有耦合电容和变压 器。根据输人和输出信号的耦合方式，某些放大器可以放大低至直流的任何频率的信亏。本节将介绍直接耦合放大器，然后加入负反馈来稳定偏置和增益。直接耦合也将应用在功率放大器中，这在5.5节中讨论。
+学完本节后，你应该掌握以下内容:
+确定直接耦合放大器基本的直流和交流参数，并描述负反馈如何稳定放大器的增益 描述直接耦合级如何得到偏置 计算直接耦合放大器的直流和交流参数 解释负反馈如何稳定偏置和增益 $$ 图5-17~~~无反馈的直接耦合放大器 $$ 图5-17是一个直接耦合放大器。信号从 $Q_1$ 的集电极直接耦合到 $Q_2$ 的基极。由于是直接耦合， $Q_2$ 的基极电流是由 $Q_1$ 提供，因此对于 $Q_2$ 不需要任何偏置电阻，以及级间不需要耦合电容。虽然级间是直接耦合，但在这个放大电路中，为了避免外部信号源和负载干扰直流电压，有必要在输入、输出端对交流信号进行耦合(通过电容)。
+$Q_2$ 的偏置通过 $Q_1$ 的集电极电阻 $R_{C1}$ 来提供。由于 $Q_1$ 是分压式偏置，所以与 $\beta$ 无关，但 $Q_2$ 采用的是基极偏置，这种偏置方法在线性放大器中使用不太理想，因为会随 $\beta$ 参数变化。另外，温度变化会引起电路的漂移。虽然这款放大器所用的元件少于电容耦合放大器，但存在的缺点比优点多。不过，只要对它做些简单的改动——加人负反馈就能解决随 $\beta$ 变化和漂移的问题。
+5.4.1负反馈增强偏置稳定性 $$ 图5-18~~~一个带负反馈的直接耦合放大器，能够稳定偏置 $$
+图5-18所示的电路是将图5-17中的放大器减少元件数量后修改得到的放大器，它能够大大改善偏置稳定性。为了避免对偏置电压造成干扰，输入和输出信号采用电容耦合。因为电路中有两个晶体管，所以红色显示的反馈网络利用了相对于单个晶体管产生的额外增益，使电路相对于 $\beta$ 的变化和温度的变化非常稳定。这和3.2节集电极负反馈偏置中的负反馈是类似的。
+下面来看图5-17中的反馈如何工作。从 $Q_2$ 开始，注意， $Q_2$ 的基极通过 $R_{C1}$ 正向偏置，从而产生 $Q_2$ 的集电极电流 $I_{C(Q2)}$。该电流会使 $Q_2$ 的发射极电压升高，从而使 $Q_1$ 导通。随着 $Q_1$ 导通程度越来越深， $Q_1$ 集电极电压下降，使 $Q_2$ 的偏置减少。 $Q_2$ 偏置减少的结果是将该偏置稳定在由专门设计的值确定的稳定点。
+通过对由$V_{CC}、R_{C1}、V_{BE(Q2)}、R_F、V_{BE(Q1))}$和 $R_{E1}$ 组成的回路应用基尔霍夫电压定理(KVL)求得 $Q_1$ 的集电极电流，约为: $$ I_{C(Q1)}=\frac{V_{CC}-2V_{BE}}{R_{C1}&#43;\frac{R_F}{\beta}&#43;R_{E1}} $$ 设计电路使得 $R_{C1}$ 远大于 $R_F/\beta$ 或 $R_{E1}$。这样，$I_{C(Q1)}$ 几乎完全与 $\beta$ 无关，在 $Q_1$ 集电极上产生一个稳定的电压，以及在 $Q_2$ 产生一个稳定的基极电压。因此，与基极偏置相关的 $\beta$ 依赖性不再是一个问题。'>
 <meta property='og:url' content='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/5-4%E7%9B%B4%E6%8E%A5%E8%80%A6%E5%90%88%E6%94%BE%E5%A4%A7%E5%99%A8/'>
 <meta property='og:site_name' content='My Blog'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Analog' /><meta property='article:published_time' content='2023-07-14T17:39:25&#43;00:00'/><meta property='article:modified_time' content='2023-07-14T17:39:25&#43;00:00'/>
-<meta name="twitter:title" content="5.4直接耦合放大器">
-<meta name="twitter:description" content=""><script>
+<meta name="twitter:title" content="5.4 直接耦合放大器">
+<meta name="twitter:description" content="另一种耦合信号的重要方式是直接耦合。采用直接耦合，级间没有耦合电容和变压 器。根据输人和输出信号的耦合方式，某些放大器可以放大低至直流的任何频率的信亏。本节将介绍直接耦合放大器，然后加入负反馈来稳定偏置和增益。直接耦合也将应用在功率放大器中，这在5.5节中讨论。
+学完本节后，你应该掌握以下内容:
+确定直接耦合放大器基本的直流和交流参数，并描述负反馈如何稳定放大器的增益 描述直接耦合级如何得到偏置 计算直接耦合放大器的直流和交流参数 解释负反馈如何稳定偏置和增益 $$ 图5-17~~~无反馈的直接耦合放大器 $$ 图5-17是一个直接耦合放大器。信号从 $Q_1$ 的集电极直接耦合到 $Q_2$ 的基极。由于是直接耦合， $Q_2$ 的基极电流是由 $Q_1$ 提供，因此对于 $Q_2$ 不需要任何偏置电阻，以及级间不需要耦合电容。虽然级间是直接耦合，但在这个放大电路中，为了避免外部信号源和负载干扰直流电压，有必要在输入、输出端对交流信号进行耦合(通过电容)。
+$Q_2$ 的偏置通过 $Q_1$ 的集电极电阻 $R_{C1}$ 来提供。由于 $Q_1$ 是分压式偏置，所以与 $\beta$ 无关，但 $Q_2$ 采用的是基极偏置，这种偏置方法在线性放大器中使用不太理想，因为会随 $\beta$ 参数变化。另外，温度变化会引起电路的漂移。虽然这款放大器所用的元件少于电容耦合放大器，但存在的缺点比优点多。不过，只要对它做些简单的改动——加人负反馈就能解决随 $\beta$ 变化和漂移的问题。
+5.4.1负反馈增强偏置稳定性 $$ 图5-18~~~一个带负反馈的直接耦合放大器，能够稳定偏置 $$
+图5-18所示的电路是将图5-17中的放大器减少元件数量后修改得到的放大器，它能够大大改善偏置稳定性。为了避免对偏置电压造成干扰，输入和输出信号采用电容耦合。因为电路中有两个晶体管，所以红色显示的反馈网络利用了相对于单个晶体管产生的额外增益，使电路相对于 $\beta$ 的变化和温度的变化非常稳定。这和3.2节集电极负反馈偏置中的负反馈是类似的。
+下面来看图5-17中的反馈如何工作。从 $Q_2$ 开始，注意， $Q_2$ 的基极通过 $R_{C1}$ 正向偏置，从而产生 $Q_2$ 的集电极电流 $I_{C(Q2)}$。该电流会使 $Q_2$ 的发射极电压升高，从而使 $Q_1$ 导通。随着 $Q_1$ 导通程度越来越深， $Q_1$ 集电极电压下降，使 $Q_2$ 的偏置减少。 $Q_2$ 偏置减少的结果是将该偏置稳定在由专门设计的值确定的稳定点。
+通过对由$V_{CC}、R_{C1}、V_{BE(Q2)}、R_F、V_{BE(Q1))}$和 $R_{E1}$ 组成的回路应用基尔霍夫电压定理(KVL)求得 $Q_1$ 的集电极电流，约为: $$ I_{C(Q1)}=\frac{V_{CC}-2V_{BE}}{R_{C1}&#43;\frac{R_F}{\beta}&#43;R_{E1}} $$ 设计电路使得 $R_{C1}$ 远大于 $R_F/\beta$ 或 $R_{E1}$。这样，$I_{C(Q1)}$ 几乎完全与 $\beta$ 无关，在 $Q_1$ 集电极上产生一个稳定的电压，以及在 $Q_2$ 产生一个稳定的基极电压。因此，与基极偏置相关的 $\beta$ 依赖性不再是一个问题。"><script>
     (function(){
         if(''){
             if (prompt('请输入文章密码') !== ''){
@@ -25,7 +46,7 @@
 
     </head>
     <body class="
-    article-page 
+    article-page has-toc
 ">
     <script>
         (function() {
@@ -51,128 +72,22 @@
 </script>
 <div class="container main-container flex 
     
-        on-phone--column extended
+        extended
     
 ">
     
-        <aside class="sidebar left-sidebar sticky">
-    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
-        <span class="hamburger-box">
-            <span class="hamburger-inner"></span>
-        </span>
-    </button>
-
-    <header class="site-info">
-        
-            
-            <figure class="site-avatar">
-                
-                    
-                    
-                    
-                        
-                        <img src="/img/avatar_hu71fc3898bde3464d50a00f65e63c7ec2_517570_300x0_resize_box_3.png" width="300"
-                            height="354" class="site-logo" loading="lazy" alt="Avatar">
-                    
-                
-
-                
-            </figure>
-            
-        
-        
-        <h1 class="site-name"><a href="/">My Blog</a></h1>
-        <h2 class="site-description"></h2></header>
-
-    <ol class="menu" id="main-menu">
-        
-        
-        
-
-        <li >
-            <a href='/page/about/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <div id="article-toolbar">
+            <a href="/" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="7" r="4" />
-  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+  <polyline points="15 6 9 12 15 18" />
 </svg>
 
 
 
-                
-                <span>About</span>
+                <span>Back</span>
             </a>
-        </li>
-        
-        
-
-        <li >
-            <a href='/page/archives/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <rect x="3" y="4" width="18" height="4" rx="2" />
-  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
-  <line x1="10" y1="12" x2="14" y2="12" />
-</svg>
-
-
-
-                
-                <span>Archives</span>
-            </a>
-        </li>
-        
-        
-
-        <li >
-            <a href='/page/search/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="10" cy="10" r="7" />
-  <line x1="21" y1="21" x2="15" y2="15" />
-</svg>
-
-
-
-                
-                <span>Search</span>
-            </a>
-        </li>
-        
-
-        
-            <li id="dark-mode-toggle">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="8" cy="12" r="2" />
-  <rect x="2" y="6" width="20" height="12" rx="6" />
-</svg>
-
-
-
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="16" cy="12" r="2" />
-  <rect x="2" y="6" width="20" height="12" rx="6" />
-</svg>
-
-
-
-                <span>Dark Mode</span>
-            </li>
-        
-    </ol>
-</aside>
-
+        </div>
     
 <main class="main full-width">
     <article class="main-article">
@@ -182,7 +97,7 @@
     
 
     <h2 class="article-title">
-        <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/5-4%E7%9B%B4%E6%8E%A5%E8%80%A6%E5%90%88%E6%94%BE%E5%A4%A7%E5%99%A8/">5.4直接耦合放大器</a>
+        <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/5-4%E7%9B%B4%E6%8E%A5%E8%80%A6%E5%90%88%E6%94%BE%E5%A4%A7%E5%99%A8/">5.4 直接耦合放大器</a>
     </h2>
 
     
@@ -215,7 +130,7 @@
 
 
                 <time class="article-time--reading">
-                    0 minute read
+                    1 minute read
                 </time>
             </div>
         
@@ -225,7 +140,107 @@
 </header>
 
     <section class="article-content">
-    
+    <p>另一种耦合信号的重要方式是直接耦合。采用直接耦合，级间没有耦合电容和变压
+器。根据输人和输出信号的耦合方式，某些放大器可以放大低至直流的任何频率的信亏。本节将介绍直接耦合放大器，然后加入负反馈来稳定偏置和增益。直接耦合也将应用在功率放大器中，这在5.5节中讨论。</p>
+<p>学完本节后，你应该掌握以下内容:</p>
+<ul>
+<li>确定直接耦合放大器基本的直流和交流参数，并描述负反馈如何稳定放大器的增益
+<ul>
+<li>描述直接耦合级如何得到偏置</li>
+<li>计算直接耦合放大器的直流和交流参数</li>
+<li>解释负反馈如何稳定偏置和增益</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://s2.loli.net/2023/10/11/kWKm4syvaQTicBU.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog5_17.png"
+	
+	
+>
+$$
+图5-17~~~无反馈的直接耦合放大器
+$$
+图5-17是一个直接耦合放大器。信号从 $Q_1$ 的集电极直接耦合到 $Q_2$ 的基极。由于是直接耦合， $Q_2$ 的基极电流是由 $Q_1$ 提供，因此对于 $Q_2$ 不需要任何偏置电阻，以及级间不需要耦合电容。虽然级间是直接耦合，但在这个放大电路中，为了避免外部信号源和负载干扰直流电压，有必要在输入、输出端对交流信号进行耦合(通过电容)。</p>
+<p>$Q_2$ 的偏置通过 $Q_1$ 的集电极电阻 $R_{C1}$ 来提供。由于 $Q_1$ 是分压式偏置，所以与 $\beta$ 无关，但 $Q_2$ 采用的是基极偏置，这种偏置方法在线性放大器中使用不太理想，因为会随 $\beta$ 参数变化。另外，温度变化会引起电路的漂移。虽然这款放大器所用的元件少于电容耦合放大器，但存在的缺点比优点多。不过，只要对它做些简单的改动——加人负反馈就能解决随 $\beta$ 变化和漂移的问题。</p>
+<h3 id="541负反馈增强偏置稳定性">5.4.1负反馈增强偏置稳定性</h3>
+<p><img src="https://s2.loli.net/2023/10/11/fowlzsTZcGS8JHW.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog5_18.png"
+	
+	
+>
+$$
+图5-18~~~一个带负反馈的直接耦合放大器，能够稳定偏置
+$$</p>
+<p>图5-18所示的电路是将图5-17中的放大器减少元件数量后修改得到的放大器，它能够大大改善偏置稳定性。为了避免对偏置电压造成干扰，输入和输出信号采用电容耦合。因为电路中有两个晶体管，所以红色显示的反馈网络利用了相对于单个晶体管产生的额外增益，使电路相对于 $\beta$ 的变化和温度的变化非常稳定。这和3.2节集电极负反馈偏置中的负反馈是类似的。</p>
+<p>下面来看图5-17中的反馈如何工作。从 $Q_2$ 开始，注意， $Q_2$ 的基极通过 $R_{C1}$ 正向偏置，从而产生 $Q_2$ 的集电极电流 $I_{C(Q2)}$。该电流会使 $Q_2$ 的发射极电压升高，从而使 $Q_1$ 导通。随着 $Q_1$ 导通程度越来越深， $Q_1$ 集电极电压下降，使 $Q_2$ 的偏置减少。 $Q_2$ 偏置减少的结果是将该偏置稳定在由专门设计的值确定的稳定点。</p>
+<p>通过对由$V_{CC}、R_{C1}、V_{BE(Q2)}、R_F、V_{BE(Q1))}$和 $R_{E1}$ 组成的回路应用基尔霍夫电压定理(KVL)求得 $Q_1$ 的集电极电流，约为:
+$$
+I_{C(Q1)}=\frac{V_{CC}-2V_{BE}}{R_{C1}+\frac{R_F}{\beta}+R_{E1}}
+$$
+设计电路使得 $R_{C1}$ 远大于 $R_F/\beta$ 或 $R_{E1}$。这样，$I_{C(Q1)}$ 几乎完全与 $\beta$ 无关，在 $Q_1$ 集电极上产生一个稳定的电压，以及在 $Q_2$ 产生一个稳定的基极电压。因此，与基极偏置相关的 $\beta$ 依赖性不再是一个问题。</p>
+<p>$Q_1$ 集电极电流产生的 $Q_1$ 集电极电压为:
+$$
+V_{C(Q1)}=V_{CC}-I_{C(Q1)}R_{C1}
+$$
+这也是 $Q_2$ 的基极电压。 $Q_2$ 发射极电压是 $V_{C(Q1)}-0.7V$。根据欧姆定理可以求出发射极电流为:
+$$
+I_{E(Q2)}=\frac{V_{C(Q1)}-0.7V}{R_{E2}}
+$$
+在计算 $I_{E(Q2)}$ 时，并没有包含反馈电阻 $R_F$，因为它远大于 $R_{E2}$。$I_C$ 和 $I_E$ 近似相同，因此可以求出 $Q_2$ 的集电极电流。$V_{CC}$ 减去 $R_{C2}$ 两端的电压就可以得到 $V_{C(Q2)}$。下面的例题说明了这种电路的一组典型参数设置。</p>
+<h3 id="542负反馈增强增益稳定性">5.4.2负反馈增强增益稳定性</h3>
+<p>例5-5中给出的放大器具有高增益，但其增益在一定程度上与 $\beta$ 相关。负反馈提高了偏置稳定性，使其与 $\beta$ 无关。那么，将负反馈用于交流信号是否也能提高增益稳定性，并且与 $\beta$ 无关?将会看到，负反馈会产生自校正行为来稳定电压增益。修改后的电路如图5-20所示，并说明如何达到稳定电压增益的目的。</p>
+<p><img src="https://s2.loli.net/2023/10/11/I3ZExVQmJkzTje5.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog5_20.png"
+	
+	
+>
+$$
+图5-20~~~例5-5中电路改进后的电路图，可以稳定增益
+$$
+首先，旁路电容 $C_2$ 和 $R_{E2}$ 并联，目的是进一步提高电压增益。加入反馈后，会使增益更加稳定。无反馈时的增益叫做<code>开环电压增益</code>，在第6章介绍运算放大器时会进一步说明这一点。对于图5-20中的放大器，发射极电容的加入会使得开环电压增益增大两倍。新加人的由 $C_3$ 和 $R_{F2}$ 组成的通路将一部分输出交流信号返回到$Q_1$。返回部分的大小由分压器决定($R_{F2}$和$R_{E1}$组成)。对于图5-20中的放大器，反馈电压 $V_f$ 等于输出电压乘以反馈系数，
+$$
+V_f=(\frac{R_{E1}}{R_{E1}+R_{F2}})V_{out}
+$$
+这个反馈电压试图减少原来的输入信号。由开环电压增益放大的信号是输人和负反馈的差值。因此，放大器的净电压增益受反馈量控制。这个带反馈的净增益称为<code>闭环电压增益</code>。如前所述，闭环电压增益由返回的输出信号的大小确定。</p>
+<p>开环电压增益非常大意味着 $Q_1$ 输入端的反馈和输入信号的差值非常小。对于图5-20所示的放大器，$Q_1$ 基极和发射极上的交流信号几乎有相同的幅度。</p>
+<p>下面介绍负反馈稳定增益的工作原理。假设由于温度升高(引起 $r&rsquo;_e$ 减少)使电压增益增大。开环增益增大使输出电压增大，反过来也增大了负反馈电压，这又减小了 $Q_1$ 上的差值电压。因此，增益的初始变化几乎完全被负反馈的自校正作用抵消。</p>
+<p>现在假设技术员用一个较低 $\beta$ 值的晶体管替换原电路中晶体管。这会引起放大器开环增益减少。现在，将有一个更小的反馈电压，它导致差值电压增大。由于差值电压增大，降低 $\beta$ 产生初始影响对输出电压产生的影响变小，从而达到稳定增益的目的。</p>
+<p>放大器的净增益近似等于反馈系数的倒数。对于图5-20的放大器，净增益为:
+$$
+A_v=(\frac{R_{E1}+R_{F2}}{R_{E1}})=(\frac{100\Omega+4.7k\Omega}{100\Omega})=48
+$$
+可以看出，改变 $R_{F2}$ 的值就能非常容易地改变增益。事实上，在 $R_{F2}$ 的位置上放置可变电阻就可以容易达到控制增益的目的。</p>
+<p><img src="https://s2.loli.net/2023/10/11/boOr2jZ6lm9eaXK.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog5_21.png"
+	
+	
+>
+$$
+图5-21~~~系统例子~4-2~中的直流耦合前置放大器
+$$
+另外一个直流耦合放大器的例子是第4章系统例子4-2中引入的电路。作为参考，再次给出，如图5-21所示。该电路的一个重要优点是能够放大所有的低频甚至直流信号。当输入电压为 0 时，调节电位计 $R_5$ 可以使输出电压也为 0。对于这个设计，在最后一级使用一个 pnp 晶体管可以使输出电压为 0。</p>
+<p>图5-21中的放大器使用未被旁路的发射极电阻($R_4$ 和 $R_8$)来实现增益稳定。这是负反馈产生增益稳定性(以降低增益为代价)的一种形式，正如你在第 3 章和第 4 章所看到的。FET 输入级增加了高输入电阻的优点。</p>
+
 </section>
 
 
@@ -238,9 +253,44 @@
     </section>
 
 
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
     </footer>
 
 
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css"integrity="sha384-RZU/ijkSsFbcmivfdRBQDtwuwVqK7GMOw6IMvKyeWL2K5UAlyp6WonmB8m7Jd0Hn"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js"integrity="sha384-pK1WpvzWVBQiP0/GjnvRxV4mOb0oxFuyRxJlk6vVw146n3egcN5C925NCP7a7BY8"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js"integrity="sha384-vZTG03m&#43;2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ]
+        });})
+</script>
     
 </article>
 
@@ -258,7 +308,7 @@
         
 
         <div class="article-details">
-            <h2 class="article-title">5.3变压器耦合放大器</h2>
+            <h2 class="article-title">5.3 变压器耦合放大器</h2>
         </div>
     </a>
 </article>
@@ -270,7 +320,7 @@
         
 
         <div class="article-details">
-            <h2 class="article-title">5.2RF放大器</h2>
+            <h2 class="article-title">5.2 RF放大器</h2>
         </div>
     </a>
 </article>
@@ -282,19 +332,7 @@
         
 
         <div class="article-details">
-            <h2 class="article-title">5.1电容耦合放大器</h2>
-        </div>
-    </a>
-</article>
-                
-                    
-<article class="">
-    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/4-8%E7%B3%BB%E7%BB%9F/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">4.8系统</h2>
+            <h2 class="article-title">5.1 电容耦合放大器</h2>
         </div>
     </a>
 </article>
@@ -306,7 +344,19 @@
         
 
         <div class="article-details">
-            <h2 class="article-title">4.7MOSFET开关电路</h2>
+            <h2 class="article-title">4.7 MOSFET开关电路</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/4-6fet%E7%BA%BF%E6%80%A7%E6%94%BE%E5%A4%A7%E5%99%A8/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">4.6 FET线性放大器</h2>
         </div>
     </a>
 </article>
@@ -324,7 +374,7 @@
     data-app-id="d44db3f9-a0ff-4551-a44d-316afd2e5835"
     data-page-id="b7c5a2cd1e56bc974814d004d52cc107"
     data-page-url="https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/5-4%E7%9B%B4%E6%8E%A5%E8%80%A6%E5%90%88%E6%94%BE%E5%A4%A7%E5%99%A8/"
-    data-page-title="5.4直接耦合放大器"></div>
+    data-page-title="5.4 直接耦合放大器"></div>
 <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
 
 <script>
@@ -436,6 +486,37 @@
             >
 
             </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">Table of contents</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#541负反馈增强偏置稳定性">5.4.1负反馈增强偏置稳定性</a></li>
+        <li><a href="#542负反馈增强增益稳定性">5.4.2负反馈增强增益稳定性</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                </div>
+            </section>
+        </aside>
     
 
         </div>

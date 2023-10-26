@@ -1,17 +1,62 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content=''><title>9.1基本滤波器响应</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='电源滤波器在第⒉章中已经介绍，本章介绍用于信号处理的有源滤波器。滤波器可以让某些特定频率的输入信号达到输出端，让其他频率的输入信号不能通过。这种特性称为选择性。
+有源滤波器使用的器件，如带无源 RC 网络、RL 网络或 RLC 网络的晶体管或运算放大器。有源器件提供电压增益，无源网络用于频率选择。一般根据响应，有源滤波器有种基本类型:低通、高通、带通和带阻。本章将学习使用运算放大器和 RC 网络实现的源滤波器。
+滤波器通常按照输出电压随输人电压频率变化的方式分类，有源滤波器的种类有低通、高通、带通和带阻。本节将学习各种滤波器的一般响应。
+学完本节后,你应该掌握以下内容:
+描述基本滤波器的增益-频率响应 解释低通响应 确定低通滤波器的截止频率和带宽 解释高通响应 确定高通滤波器的截止频率 解释带通响应 解释品质因数的重要性 确定带通滤波器的截止频率、带宽、品质因素和阻尼系数 解释带阻响应 9.1.1 低通滤波器响应 滤波器是一个允许某些频率通过，衰减或阻止所有其他频率的电路。一个滤波器的通带是滤波器允许通过的频率区域，在这些区域中信号的损耗最小(通常定义为小于一3dB)。截止频率 $f_c$(通常也称为截断频率)定义为通带的终端，通常指响应自通带下降—3dB(70.7%)。通带后的区域称为过渡区，接着是阻带。过渡区和阻带之间没有精确的分界点。
+低通滤波器允许从直流到 $f_c$ 之间的频率通过并大幅衰减所有其他的频率。理想低通滤波器的通带如图9-1a中阴影区域所示，当频率在通带以外时响应降为零。理想的响应有时如同“砖墙”，因为没有任何东西可以穿过墙。理想低通滤波器的带宽等于 $f_c$ 。 $$ BW=f_c~~~(9-1) $$
+任何实际的滤波器都不可能实现图9-1a所示的理想响应。实际滤波响应取决于极点的数量，极点是滤波器的一个术语，用于描述滤波器中所包含的旁路电路数量。大多数基本低通滤波器是一个简单的 RC 网络，它仅由一个电阻和一个电容器组成，输出在电容器上产生，如图9-1b所示。这种基本 RC 滤波器具有一个单极点，超过截止频率后增益以一20dB/十倍频程的速度衰减，实际的响应在图9-1a中用加粗的线画出。为了显示曲线增益下降的细节，滤波器的响应曲线画在标准的对数坐标中。注意，增益几乎是常量，直到频率达到截止频率为止。在此之后，增益以固定的下降率迅速下降。
+$$ 图9-1~~~低通滤波器响应 $$
+基本 RC 滤波器增益以一20dB/十倍频程下降意味着在频率 $10f_c$ 处，输出是输入的一20dB(10%)。这种相当平缓的下降并不是特别好的滤波器特性，因为太多不期望的频率(通带以外的频率)可以通过这个滤波器。
+简单低通RC滤波器的截止频率在Xc=R处，其中 $$ f_c=\frac{1}{2\pi RC} $$
+回顾一下基本的直流/交流课程，截止频率处的输出是输入的70.7%。这种响应等价于衰减了一3dB。
+图9-1c给出了几种理想低通响应曲线，包括基本单极点响应(一20dB/十倍频程)。近似的增益曲线表明，通带内的响应是平坦的直至截止频率，在截止频率后响应以常量速率下降。真实的滤波器在截止频率内没有如此好的平坦响应，但如前所述的那样，在截止频率处有一3dB的衰减。
+为了使滤波器有更陡的过渡区(因此可以形成更有效的滤波器)，在基本滤波器上增加电路是很有必要的。由于负载效应，简单地级联理想的RC电路不能使过渡区的响应比一20dB/十倍频程更陡。然而，通过将运算放大器与频率选择反馈网络组合，设计后的滤波器的下降率可以达到一40dB/十倍频程、一60dB/十倍频程甚至更大的下降率。在设计中包含一个或多个运算放大器的滤波器称为有源滤波器。通过特殊的滤波器设计，这些滤波器可以优化下降率或其他属性(如相位响应)。通常，滤波器使用的极点越多，滤波器响应的过渡区将越陡。确切的响应取决于滤波器的类型和极点的数量。
+9.1.2 高通滤波器响应 $$ 图9-2~~~高通滤波器响应 $$
+高通滤波器极大地衰减或不让低于 $f_c$ 的频率通过，并让所有高于 $f_c$ 的频率通过，如图9-2a所示。再重复一下，在截止频率处的输出为通带的70.7%(或一3dB)。理想的响应由阴影区域标出，可以看出，响应在 $f_c$ 处瞬间下降，当然，这是不可能实现的。理想情况下，高通滤波器的通带是大于截止频率的所有频率。实际电路的高频响应受到运算放大器或构成滤波器的其他元件的限制。
+由一个电阻和电容器组成的简单 RC 网络可以构成高通滤波器，输出取自电阻，如图9-2b所示。和低通滤波器的情况一样，基本的RC网络有一20dB/十倍频程的下降，如图9-2a中加粗的线所示。同样，基本高通滤波器的截止频率发生在 $X_C=R$ 处，其中 $$ f_c=\frac{1}{2\pi RC} $$ 图9-2c画出了几种理想的高通响应曲线，包括基本RC网络的单级点响应(一20dB/十倍频程)。如同低通滤波器，近似的增益曲线显示了大于截止频率时啊厘是一卫的，小丁截止频率时响应以恒定速率下降。实际高通滤波器没有如图9-2C 所小的理NB的T炽的且一精确的下降率。采用有源高通滤波器使过渡区的响应陡峭程度大于一20dB/十倍频程是可行的，特定的响应依赖于滤波器的类型和极点的数量。'><title>9.1 基本滤波器响应</title>
 
 <link rel='canonical' href='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/9-1%E5%9F%BA%E6%9C%AC%E6%BB%A4%E6%B3%A2%E5%99%A8%E5%93%8D%E5%BA%94/'>
 
-<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='9.1基本滤波器响应'>
-<meta property='og:description' content=''>
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='9.1 基本滤波器响应'>
+<meta property='og:description' content='电源滤波器在第⒉章中已经介绍，本章介绍用于信号处理的有源滤波器。滤波器可以让某些特定频率的输入信号达到输出端，让其他频率的输入信号不能通过。这种特性称为选择性。
+有源滤波器使用的器件，如带无源 RC 网络、RL 网络或 RLC 网络的晶体管或运算放大器。有源器件提供电压增益，无源网络用于频率选择。一般根据响应，有源滤波器有种基本类型:低通、高通、带通和带阻。本章将学习使用运算放大器和 RC 网络实现的源滤波器。
+滤波器通常按照输出电压随输人电压频率变化的方式分类，有源滤波器的种类有低通、高通、带通和带阻。本节将学习各种滤波器的一般响应。
+学完本节后,你应该掌握以下内容:
+描述基本滤波器的增益-频率响应 解释低通响应 确定低通滤波器的截止频率和带宽 解释高通响应 确定高通滤波器的截止频率 解释带通响应 解释品质因数的重要性 确定带通滤波器的截止频率、带宽、品质因素和阻尼系数 解释带阻响应 9.1.1 低通滤波器响应 滤波器是一个允许某些频率通过，衰减或阻止所有其他频率的电路。一个滤波器的通带是滤波器允许通过的频率区域，在这些区域中信号的损耗最小(通常定义为小于一3dB)。截止频率 $f_c$(通常也称为截断频率)定义为通带的终端，通常指响应自通带下降—3dB(70.7%)。通带后的区域称为过渡区，接着是阻带。过渡区和阻带之间没有精确的分界点。
+低通滤波器允许从直流到 $f_c$ 之间的频率通过并大幅衰减所有其他的频率。理想低通滤波器的通带如图9-1a中阴影区域所示，当频率在通带以外时响应降为零。理想的响应有时如同“砖墙”，因为没有任何东西可以穿过墙。理想低通滤波器的带宽等于 $f_c$ 。 $$ BW=f_c~~~(9-1) $$
+任何实际的滤波器都不可能实现图9-1a所示的理想响应。实际滤波响应取决于极点的数量，极点是滤波器的一个术语，用于描述滤波器中所包含的旁路电路数量。大多数基本低通滤波器是一个简单的 RC 网络，它仅由一个电阻和一个电容器组成，输出在电容器上产生，如图9-1b所示。这种基本 RC 滤波器具有一个单极点，超过截止频率后增益以一20dB/十倍频程的速度衰减，实际的响应在图9-1a中用加粗的线画出。为了显示曲线增益下降的细节，滤波器的响应曲线画在标准的对数坐标中。注意，增益几乎是常量，直到频率达到截止频率为止。在此之后，增益以固定的下降率迅速下降。
+$$ 图9-1~~~低通滤波器响应 $$
+基本 RC 滤波器增益以一20dB/十倍频程下降意味着在频率 $10f_c$ 处，输出是输入的一20dB(10%)。这种相当平缓的下降并不是特别好的滤波器特性，因为太多不期望的频率(通带以外的频率)可以通过这个滤波器。
+简单低通RC滤波器的截止频率在Xc=R处，其中 $$ f_c=\frac{1}{2\pi RC} $$
+回顾一下基本的直流/交流课程，截止频率处的输出是输入的70.7%。这种响应等价于衰减了一3dB。
+图9-1c给出了几种理想低通响应曲线，包括基本单极点响应(一20dB/十倍频程)。近似的增益曲线表明，通带内的响应是平坦的直至截止频率，在截止频率后响应以常量速率下降。真实的滤波器在截止频率内没有如此好的平坦响应，但如前所述的那样，在截止频率处有一3dB的衰减。
+为了使滤波器有更陡的过渡区(因此可以形成更有效的滤波器)，在基本滤波器上增加电路是很有必要的。由于负载效应，简单地级联理想的RC电路不能使过渡区的响应比一20dB/十倍频程更陡。然而，通过将运算放大器与频率选择反馈网络组合，设计后的滤波器的下降率可以达到一40dB/十倍频程、一60dB/十倍频程甚至更大的下降率。在设计中包含一个或多个运算放大器的滤波器称为有源滤波器。通过特殊的滤波器设计，这些滤波器可以优化下降率或其他属性(如相位响应)。通常，滤波器使用的极点越多，滤波器响应的过渡区将越陡。确切的响应取决于滤波器的类型和极点的数量。
+9.1.2 高通滤波器响应 $$ 图9-2~~~高通滤波器响应 $$
+高通滤波器极大地衰减或不让低于 $f_c$ 的频率通过，并让所有高于 $f_c$ 的频率通过，如图9-2a所示。再重复一下，在截止频率处的输出为通带的70.7%(或一3dB)。理想的响应由阴影区域标出，可以看出，响应在 $f_c$ 处瞬间下降，当然，这是不可能实现的。理想情况下，高通滤波器的通带是大于截止频率的所有频率。实际电路的高频响应受到运算放大器或构成滤波器的其他元件的限制。
+由一个电阻和电容器组成的简单 RC 网络可以构成高通滤波器，输出取自电阻，如图9-2b所示。和低通滤波器的情况一样，基本的RC网络有一20dB/十倍频程的下降，如图9-2a中加粗的线所示。同样，基本高通滤波器的截止频率发生在 $X_C=R$ 处，其中 $$ f_c=\frac{1}{2\pi RC} $$ 图9-2c画出了几种理想的高通响应曲线，包括基本RC网络的单级点响应(一20dB/十倍频程)。如同低通滤波器，近似的增益曲线显示了大于截止频率时啊厘是一卫的，小丁截止频率时响应以恒定速率下降。实际高通滤波器没有如图9-2C 所小的理NB的T炽的且一精确的下降率。采用有源高通滤波器使过渡区的响应陡峭程度大于一20dB/十倍频程是可行的，特定的响应依赖于滤波器的类型和极点的数量。'>
 <meta property='og:url' content='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/9-1%E5%9F%BA%E6%9C%AC%E6%BB%A4%E6%B3%A2%E5%99%A8%E5%93%8D%E5%BA%94/'>
 <meta property='og:site_name' content='My Blog'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Analog' /><meta property='article:published_time' content='2023-07-14T18:18:20&#43;00:00'/><meta property='article:modified_time' content='2023-07-14T18:18:20&#43;00:00'/>
-<meta name="twitter:title" content="9.1基本滤波器响应">
-<meta name="twitter:description" content=""><script>
+<meta name="twitter:title" content="9.1 基本滤波器响应">
+<meta name="twitter:description" content="电源滤波器在第⒉章中已经介绍，本章介绍用于信号处理的有源滤波器。滤波器可以让某些特定频率的输入信号达到输出端，让其他频率的输入信号不能通过。这种特性称为选择性。
+有源滤波器使用的器件，如带无源 RC 网络、RL 网络或 RLC 网络的晶体管或运算放大器。有源器件提供电压增益，无源网络用于频率选择。一般根据响应，有源滤波器有种基本类型:低通、高通、带通和带阻。本章将学习使用运算放大器和 RC 网络实现的源滤波器。
+滤波器通常按照输出电压随输人电压频率变化的方式分类，有源滤波器的种类有低通、高通、带通和带阻。本节将学习各种滤波器的一般响应。
+学完本节后,你应该掌握以下内容:
+描述基本滤波器的增益-频率响应 解释低通响应 确定低通滤波器的截止频率和带宽 解释高通响应 确定高通滤波器的截止频率 解释带通响应 解释品质因数的重要性 确定带通滤波器的截止频率、带宽、品质因素和阻尼系数 解释带阻响应 9.1.1 低通滤波器响应 滤波器是一个允许某些频率通过，衰减或阻止所有其他频率的电路。一个滤波器的通带是滤波器允许通过的频率区域，在这些区域中信号的损耗最小(通常定义为小于一3dB)。截止频率 $f_c$(通常也称为截断频率)定义为通带的终端，通常指响应自通带下降—3dB(70.7%)。通带后的区域称为过渡区，接着是阻带。过渡区和阻带之间没有精确的分界点。
+低通滤波器允许从直流到 $f_c$ 之间的频率通过并大幅衰减所有其他的频率。理想低通滤波器的通带如图9-1a中阴影区域所示，当频率在通带以外时响应降为零。理想的响应有时如同“砖墙”，因为没有任何东西可以穿过墙。理想低通滤波器的带宽等于 $f_c$ 。 $$ BW=f_c~~~(9-1) $$
+任何实际的滤波器都不可能实现图9-1a所示的理想响应。实际滤波响应取决于极点的数量，极点是滤波器的一个术语，用于描述滤波器中所包含的旁路电路数量。大多数基本低通滤波器是一个简单的 RC 网络，它仅由一个电阻和一个电容器组成，输出在电容器上产生，如图9-1b所示。这种基本 RC 滤波器具有一个单极点，超过截止频率后增益以一20dB/十倍频程的速度衰减，实际的响应在图9-1a中用加粗的线画出。为了显示曲线增益下降的细节，滤波器的响应曲线画在标准的对数坐标中。注意，增益几乎是常量，直到频率达到截止频率为止。在此之后，增益以固定的下降率迅速下降。
+$$ 图9-1~~~低通滤波器响应 $$
+基本 RC 滤波器增益以一20dB/十倍频程下降意味着在频率 $10f_c$ 处，输出是输入的一20dB(10%)。这种相当平缓的下降并不是特别好的滤波器特性，因为太多不期望的频率(通带以外的频率)可以通过这个滤波器。
+简单低通RC滤波器的截止频率在Xc=R处，其中 $$ f_c=\frac{1}{2\pi RC} $$
+回顾一下基本的直流/交流课程，截止频率处的输出是输入的70.7%。这种响应等价于衰减了一3dB。
+图9-1c给出了几种理想低通响应曲线，包括基本单极点响应(一20dB/十倍频程)。近似的增益曲线表明，通带内的响应是平坦的直至截止频率，在截止频率后响应以常量速率下降。真实的滤波器在截止频率内没有如此好的平坦响应，但如前所述的那样，在截止频率处有一3dB的衰减。
+为了使滤波器有更陡的过渡区(因此可以形成更有效的滤波器)，在基本滤波器上增加电路是很有必要的。由于负载效应，简单地级联理想的RC电路不能使过渡区的响应比一20dB/十倍频程更陡。然而，通过将运算放大器与频率选择反馈网络组合，设计后的滤波器的下降率可以达到一40dB/十倍频程、一60dB/十倍频程甚至更大的下降率。在设计中包含一个或多个运算放大器的滤波器称为有源滤波器。通过特殊的滤波器设计，这些滤波器可以优化下降率或其他属性(如相位响应)。通常，滤波器使用的极点越多，滤波器响应的过渡区将越陡。确切的响应取决于滤波器的类型和极点的数量。
+9.1.2 高通滤波器响应 $$ 图9-2~~~高通滤波器响应 $$
+高通滤波器极大地衰减或不让低于 $f_c$ 的频率通过，并让所有高于 $f_c$ 的频率通过，如图9-2a所示。再重复一下，在截止频率处的输出为通带的70.7%(或一3dB)。理想的响应由阴影区域标出，可以看出，响应在 $f_c$ 处瞬间下降，当然，这是不可能实现的。理想情况下，高通滤波器的通带是大于截止频率的所有频率。实际电路的高频响应受到运算放大器或构成滤波器的其他元件的限制。
+由一个电阻和电容器组成的简单 RC 网络可以构成高通滤波器，输出取自电阻，如图9-2b所示。和低通滤波器的情况一样，基本的RC网络有一20dB/十倍频程的下降，如图9-2a中加粗的线所示。同样，基本高通滤波器的截止频率发生在 $X_C=R$ 处，其中 $$ f_c=\frac{1}{2\pi RC} $$ 图9-2c画出了几种理想的高通响应曲线，包括基本RC网络的单级点响应(一20dB/十倍频程)。如同低通滤波器，近似的增益曲线显示了大于截止频率时啊厘是一卫的，小丁截止频率时响应以恒定速率下降。实际高通滤波器没有如图9-2C 所小的理NB的T炽的且一精确的下降率。采用有源高通滤波器使过渡区的响应陡峭程度大于一20dB/十倍频程是可行的，特定的响应依赖于滤波器的类型和极点的数量。"><script>
     (function(){
         if(''){
             if (prompt('请输入文章密码') !== ''){
@@ -25,7 +70,7 @@
 
     </head>
     <body class="
-    article-page 
+    article-page has-toc
 ">
     <script>
         (function() {
@@ -51,128 +96,22 @@
 </script>
 <div class="container main-container flex 
     
-        on-phone--column extended
+        extended
     
 ">
     
-        <aside class="sidebar left-sidebar sticky">
-    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
-        <span class="hamburger-box">
-            <span class="hamburger-inner"></span>
-        </span>
-    </button>
-
-    <header class="site-info">
-        
-            
-            <figure class="site-avatar">
-                
-                    
-                    
-                    
-                        
-                        <img src="/img/avatar_hu71fc3898bde3464d50a00f65e63c7ec2_517570_300x0_resize_box_3.png" width="300"
-                            height="354" class="site-logo" loading="lazy" alt="Avatar">
-                    
-                
-
-                
-            </figure>
-            
-        
-        
-        <h1 class="site-name"><a href="/">My Blog</a></h1>
-        <h2 class="site-description"></h2></header>
-
-    <ol class="menu" id="main-menu">
-        
-        
-        
-
-        <li >
-            <a href='/page/about/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <div id="article-toolbar">
+            <a href="/" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="7" r="4" />
-  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+  <polyline points="15 6 9 12 15 18" />
 </svg>
 
 
 
-                
-                <span>About</span>
+                <span>Back</span>
             </a>
-        </li>
-        
-        
-
-        <li >
-            <a href='/page/archives/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <rect x="3" y="4" width="18" height="4" rx="2" />
-  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
-  <line x1="10" y1="12" x2="14" y2="12" />
-</svg>
-
-
-
-                
-                <span>Archives</span>
-            </a>
-        </li>
-        
-        
-
-        <li >
-            <a href='/page/search/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="10" cy="10" r="7" />
-  <line x1="21" y1="21" x2="15" y2="15" />
-</svg>
-
-
-
-                
-                <span>Search</span>
-            </a>
-        </li>
-        
-
-        
-            <li id="dark-mode-toggle">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="8" cy="12" r="2" />
-  <rect x="2" y="6" width="20" height="12" rx="6" />
-</svg>
-
-
-
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="16" cy="12" r="2" />
-  <rect x="2" y="6" width="20" height="12" rx="6" />
-</svg>
-
-
-
-                <span>Dark Mode</span>
-            </li>
-        
-    </ol>
-</aside>
-
+        </div>
     
 <main class="main full-width">
     <article class="main-article">
@@ -182,7 +121,7 @@
     
 
     <h2 class="article-title">
-        <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/9-1%E5%9F%BA%E6%9C%AC%E6%BB%A4%E6%B3%A2%E5%99%A8%E5%93%8D%E5%BA%94/">9.1基本滤波器响应</a>
+        <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/9-1%E5%9F%BA%E6%9C%AC%E6%BB%A4%E6%B3%A2%E5%99%A8%E5%93%8D%E5%BA%94/">9.1 基本滤波器响应</a>
     </h2>
 
     
@@ -215,7 +154,7 @@
 
 
                 <time class="article-time--reading">
-                    0 minute read
+                    1 minute read
                 </time>
             </div>
         
@@ -225,7 +164,120 @@
 </header>
 
     <section class="article-content">
-    
+    <p>电源滤波器在第⒉章中已经介绍，本章介绍用于信号处理的有源滤波器。滤波器可以让某些特定频率的输入信号达到输出端，让其他频率的输入信号不能通过。这种特性称为选择性。</p>
+<p>有源滤波器使用的器件，如带无源 RC 网络、RL 网络或 RLC 网络的晶体管或运算放大器。有源器件提供电压增益，无源网络用于频率选择。一般根据响应，有源滤波器有种基本类型:低通、高通、带通和带阻。本章将学习使用运算放大器和 RC 网络实现的源滤波器。</p>
+<p>滤波器通常按照输出电压随输人电压频率变化的方式分类，有源滤波器的种类有低通、高通、带通和带阻。本节将学习各种滤波器的一般响应。</p>
+<p>学完本节后,你应该掌握以下内容:</p>
+<ul>
+<li>描述基本滤波器的增益-频率响应
+<ul>
+<li>解释低通响应</li>
+<li>确定低通滤波器的截止频率和带宽</li>
+<li>解释高通响应</li>
+<li>确定高通滤波器的截止频率</li>
+<li>解释带通响应</li>
+<li>解释品质因数的重要性</li>
+<li>确定带通滤波器的截止频率、带宽、品质因素和阻尼系数</li>
+<li>解释带阻响应</li>
+</ul>
+</li>
+</ul>
+<h3 id="911-低通滤波器响应">9.1.1 低通滤波器响应</h3>
+<p><code>滤波器</code>是一个允许某些频率通过，衰减或阻止所有其他频率的电路。一个滤波器的<code>通带</code>是滤波器允许通过的频率区域，在这些区域中信号的损耗最小(通常定义为小于一3dB)。<code>截止频率</code> $f_c$(通常也称为<code>截断频率</code>)定义为通带的终端，通常指响应自通带下降—3dB(70.7%)。通带后的区域称为<code>过渡区</code>，接着是<code>阻带</code>。过渡区和阻带之间没有精确的分界点。</p>
+<p><code>低通滤波器</code>允许从直流到 $f_c$ 之间的频率通过并大幅衰减所有其他的频率。理想低通滤波器的通带如图9-1a中阴影区域所示，当频率在通带以外时响应降为零。理想的响应有时如同“砖墙”，因为没有任何东西可以穿过墙。理想低通滤波器的带宽等于 $f_c$ 。
+$$
+BW=f_c~~~(9-1)
+$$</p>
+<p>任何实际的滤波器都不可能实现图9-1a所示的理想响应。实际滤波响应取决于极点的数量，极点是滤波器的一个术语，用于描述滤波器中所包含的旁路电路数量。大多数基本低通滤波器是一个简单的 RC 网络，它仅由一个电阻和一个电容器组成，输出在电容器上产生，如图9-1b所示。这种基本 RC 滤波器具有一个单极点，超过截止频率后增益以一20dB/十倍频程的速度衰减，实际的响应在图9-1a中用加粗的线画出。为了显示曲线增益下降的细节，滤波器的响应曲线画在标准的对数坐标中。注意，增益几乎是常量，直到频率达到截止频率为止。在此之后，增益以固定的下降率迅速下降。</p>
+<p><img src="https://s2.loli.net/2023/10/20/hsKj5Gx1PYurHWI.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog9_1.png"
+	
+	
+>
+$$
+图9-1~~~低通滤波器响应
+$$</p>
+<p>基本 RC 滤波器增益以一20dB/十倍频程下降意味着在频率 $10f_c$ 处，输出是输入的一20dB(10%)。这种相当平缓的下降并不是特别好的滤波器特性，因为太多不期望的频率(通带以外的频率)可以通过这个滤波器。</p>
+<p>简单低通RC滤波器的截止频率在Xc=R处，其中
+$$
+f_c=\frac{1}{2\pi RC}
+$$</p>
+<p>回顾一下基本的直流/交流课程，截止频率处的输出是输入的70.7%。这种响应等价于衰减了一3dB。</p>
+<p>图9-1c给出了几种理想低通响应曲线，包括基本单极点响应(一20dB/十倍频程)。近似的增益曲线表明，通带内的响应是平坦的直至截止频率，在截止频率后响应以常量速率下降。真实的滤波器在截止频率内没有如此好的平坦响应，但如前所述的那样，在截止频率处有一3dB的衰减。</p>
+<p>为了使滤波器有更陡的过渡区(因此可以形成更有效的滤波器)，在基本滤波器上增加电路是很有必要的。由于负载效应，简单地级联理想的RC电路不能使过渡区的响应比一20dB/十倍频程更陡。然而，通过将运算放大器与频率选择反馈网络组合，设计后的滤波器的下降率可以达到一40dB/十倍频程、一60dB/十倍频程甚至更大的下降率。在设计中包含一个或多个运算放大器的滤波器称为<code>有源滤波器</code>。通过特殊的滤波器设计，这些滤波器可以优化下降率或其他属性(如相位响应)。通常，滤波器使用的极点越多，滤波器响应的过渡区将越陡。确切的响应取决于滤波器的类型和极点的数量。</p>
+<h3 id="912-高通滤波器响应">9.1.2 高通滤波器响应</h3>
+<p><img src="https://s2.loli.net/2023/10/20/3Kuo1rWctHwQTym.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog9_2.png"
+	
+	
+>
+$$
+图9-2~~~高通滤波器响应
+$$</p>
+<p><code>高通滤波器</code>极大地衰减或不让低于 $f_c$ 的频率通过，并让所有高于 $f_c$ 的频率通过，如图9-2a所示。再重复一下，在截止频率处的输出为通带的70.7%(或一3dB)。理想的响应由阴影区域标出，可以看出，响应在 $f_c$ 处瞬间下降，当然，这是不可能实现的。理想情况下，高通滤波器的通带是大于截止频率的所有频率。实际电路的高频响应受到运算放大器或构成滤波器的其他元件的限制。</p>
+<p>由一个电阻和电容器组成的简单 RC 网络可以构成高通滤波器，输出取自电阻，如图9-2b所示。和低通滤波器的情况一样，基本的RC网络有一20dB/十倍频程的下降，如图9-2a中加粗的线所示。同样，基本高通滤波器的截止频率发生在 $X_C=R$ 处，其中
+$$
+f_c=\frac{1}{2\pi RC}
+$$
+图9-2c画出了几种理想的高通响应曲线，包括基本RC网络的单级点响应(一20dB/十倍频程)。如同低通滤波器，近似的增益曲线显示了大于截止频率时啊厘是一卫的，小丁截止频率时响应以恒定速率下降。实际高通滤波器没有如图9-2C 所小的理NB的T炽的且一精确的下降率。采用有源高通滤波器使过渡区的响应陡峭程度大于一20dB/十倍频程是可行的，特定的响应依赖于滤波器的类型和极点的数量。</p>
+<h3 id="913-带通滤波器响应">9.1.3 带通滤波器响应</h3>
+<p><img src="https://s2.loli.net/2023/10/20/oWbvhkMRCfqplEu.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog9_3.png"
+	
+	
+>
+$$
+图9-3~~~一般带通响应曲线
+$$</p>
+<p><code>带通</code>滤波器允许位于下限频率和上限频率之间的频率信号通过，阻止指定带宽以外的所有其他频率信号通过。5.2节介绍的高频调谐放大器使用调谐电路作为带通滤波器。图9-3给出了一般的带通滤波器响应曲线。<code>带宽</code>(BW)定义为上截止频率($f_{c2}$)和下截止频率($f_{c1}$)的差。
+$$
+BW=f_{c2}-f_{c1}~~~(9-2)
+$$</p>
+<p>截止频率是响应曲线降到它最大值的 70.7% 时的频率点，这些截止频率同样称为3dB<code>频率</code>。通带中心的频率称为<code>中心频率</code> $f_0$，它定义为两个截止频率的几何均值.
+$$
+f_0=\sqrt[]{f_{c1}f_{c2}}~~~(9-3)
+$$</p>
+<p><strong>品质因数</strong></p>
+<p>回顾一下5.2节介绍的带通滤波器的品质因数(Q)定义为中心频率与带宽之比。
+$$
+Q=\frac{f_0}{BW}~~~(9-4)
+$$</p>
+<p>$Q$ 的值是带通滤波器选择性的指标。对 $f_0$ 一个给定的值，$Q$ 的值越高，带宽越窄并且选择性越好。带通滤波器有时分为窄带($Q&gt;10$)或宽带($Q&lt;10$)，$Q$ 也可以用滤波器的阻尼系数来表示
+$$
+Q=\frac{1}{DF}
+$$
+9.2节将介绍阻尼系数。</p>
+<h3 id="914-带阻滤波器响应">9.1.4 带阻滤波器响应</h3>
+<p>还有一种有源滤波器是<code>带阻滤波器</code>，也称为<code>陷波滤波器、频带抑制滤波器</code>等。带阻滤波器的一般响应曲线如图9-4所示。注意，带宽是3dB频率点之间的宽度，和带通滤波器响应的情况一样。可以认为带阻滤波器的原理与带通滤波器相反，因为在某段带宽内的频率被拒绝，而在该带宽之外的频率能够通过。
+<img src="https://s2.loli.net/2023/10/20/uPGCXyfdsNRhIKw.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog9_4.png"
+	
+	
+>
+$$
+图9-4~~~一般带阻滤波器响应
+$$</p>
+
 </section>
 
 
@@ -238,9 +290,44 @@
     </section>
 
 
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
     </footer>
 
 
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css"integrity="sha384-RZU/ijkSsFbcmivfdRBQDtwuwVqK7GMOw6IMvKyeWL2K5UAlyp6WonmB8m7Jd0Hn"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js"integrity="sha384-pK1WpvzWVBQiP0/GjnvRxV4mOb0oxFuyRxJlk6vVw146n3egcN5C925NCP7a7BY8"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js"integrity="sha384-vZTG03m&#43;2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ]
+        });})
+</script>
     
 </article>
 
@@ -253,48 +340,12 @@
                 
                     
 <article class="">
-    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/8-5%E6%95%85%E9%9A%9C%E6%A3%80%E6%B5%8B/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">8.5故障检测</h2>
-        </div>
-    </a>
-</article>
-                
-                    
-<article class="">
     <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/8-4%E8%BD%AC%E6%8D%A2%E5%99%A8%E5%92%8C%E5%85%B6%E4%BB%96%E8%BF%90%E7%AE%97%E6%94%BE%E5%A4%A7%E5%99%A8%E7%94%B5%E8%B7%AF/">
         
         
 
         <div class="article-details">
-            <h2 class="article-title">8.4转换器和其他运算放大器电路</h2>
-        </div>
-    </a>
-</article>
-                
-                    
-<article class="">
-    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/8-3%E7%A7%AF%E5%88%86%E5%99%A8%E5%92%8C%E5%BE%AE%E5%88%86%E5%99%A8/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">8.3积分器和微分器</h2>
-        </div>
-    </a>
-</article>
-                
-                    
-<article class="">
-    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/8-2%E6%B1%82%E5%92%8C%E6%94%BE%E5%A4%A7%E5%99%A8/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">8.2求和放大器</h2>
+            <h2 class="article-title">8.4 转换器和其他运算放大器电路</h2>
         </div>
     </a>
 </article>
@@ -306,7 +357,43 @@
         
 
         <div class="article-details">
-            <h2 class="article-title">8.1比较器</h2>
+            <h2 class="article-title">8.1 比较器</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/6-7%E6%95%85%E9%9A%9C%E6%A3%80%E6%B5%8B/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">6.7 故障检测</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/6-4%E8%B4%9F%E5%8F%8D%E9%A6%88/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">6.4 负反馈</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/6-3%E8%BF%90%E6%94%BE%E6%95%B0%E6%8D%AE%E6%89%8B%E5%86%8C%E4%B8%AD%E7%9A%84%E5%8F%82%E6%95%B0/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">6.3 运放数据手册中的参数</h2>
         </div>
     </a>
 </article>
@@ -324,7 +411,7 @@
     data-app-id="d44db3f9-a0ff-4551-a44d-316afd2e5835"
     data-page-id="e10787050dcbe23d314773b22328078f"
     data-page-url="https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/9-1%E5%9F%BA%E6%9C%AC%E6%BB%A4%E6%B3%A2%E5%99%A8%E5%93%8D%E5%BA%94/"
-    data-page-title="9.1基本滤波器响应"></div>
+    data-page-title="9.1 基本滤波器响应"></div>
 <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
 
 <script>
@@ -436,6 +523,39 @@
             >
 
             </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">Table of contents</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#911-低通滤波器响应">9.1.1 低通滤波器响应</a></li>
+        <li><a href="#912-高通滤波器响应">9.1.2 高通滤波器响应</a></li>
+        <li><a href="#913-带通滤波器响应">9.1.3 带通滤波器响应</a></li>
+        <li><a href="#914-带阻滤波器响应">9.1.4 带阻滤波器响应</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                </div>
+            </section>
+        </aside>
     
 
         </div>

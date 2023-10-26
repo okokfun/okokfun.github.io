@@ -1,17 +1,59 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content=''><title>7.4正反馈和稳定性</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='使用运算放大器时，稳定性是需要考虑的。稳定运行是指运算放大器在任何情况下都不会振荡。不稳定会产生振荡，当输人端没有信号时，由于输人端的噪声和瞬态电压，输出端会有不期望的电压波动。本节可以作为选读内容。
+学完本节后，你应该掌握以下内容:
+讨论正反馈和运算放大器的稳定性 定义正反馈 定义环路增益 定义相位裕量并讨论它的重要性 判定运算放大器是否稳定 总结稳定性判据 7.4.1 正反馈 为了理解稳定性，必须先检查不稳定性及其原因。大家知道，通过负反馈，反馈到放大器输人端的信号与输人信号相抵，因此减去反馈信号可以有效地减小电压增益。只要反馈是负的，放大器就是稳定的。
+当从输出端反馈到输人端的信号的相位与输入信号的相位一致时，正反馈条件就成立了，放大器就会发生振荡。也就是说，当通过运算放大器和反馈网络的总相移是 360°(这也等价于无相移(0°))时，正反馈就会发生。
+7.4.2 环路增益 要产生不稳定: (a)必须有正反馈，(b)闭环放大器的环路增益必须大于1。闭环放大器的环路增益定义为运算放大器的开环增益乘以反馈网络的衰减因子。 $$ 环路增益=A_{ol}B~~~(7-7) $$
+7.4.3 相位裕量 $$ a)~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~b)~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~c) $$
+$$ 图7-10~~~反馈环相移 $$
+注意，对图7-10中的每个放大器配置，反馈环连接到反相输入端。由于反相，在输人端和输出端之间存在着固有的 180° 相移。此外，放大器中的 RC 滞后网络(图7-10中没画出来)会产生附加的相移($φ_{tot}$)，因此反馈环的总相移为 $180°&#43;φ_{tot}$。
+相位裕量$φ_{pm}$ 是使得反馈环的总相移为 360°(360° 等价于 0°)时的额外相移。 $$ 180°&#43;φ_{tot}&#43;φ_{pm}=360° \\ φ_{pm}=180°-|φ_{tot}|~~~(7-8) $$ 如果相位裕量是正的，则总相移小于 360°，放大器是稳定的。如果相位裕度是 0 或负的，则反馈信号是以输人信号同相反馈的，放大器有潜在的不稳定。从式(7-8)可以看出，当总的滞后网络相移($φ_{tot}$)等于或超过 180° 时，相位裕量是 0° 或负值，存在不稳定状态，这将会引起放大器振荡。
+7.4.4 稳定性分析 因为大多数运算放大器实际使用的配置是大于1的环路增益($A_{ol}B&amp;gt;1$)，所以稳定性判断准则基于内部滞后网络的相角。如前所述，运算放大器由多级电路组成，每级有一个截止频率。对补偿运算放大器，只有一个截止频率占主导地位，反馈的稳定性不是一个问题。稳定性问题一般表现为不期望的震荡，对运算放大器，在接近单位-增益频率处的反馈是稳定的。
+$$ 图7-11~~~一个三级运算放大器响应的伯德图 $$
+为了阐述反馈稳定性的概念，我们以非补偿三级运算放大器为例子，其开环响应如图7-11中的伯德图所示。在这种情况下，有三个不同的截止频率，它们分别对应于三个内部RC滞后网络。在第一个截止频率 $f_{c1}$ 处，增益开始以一20dB/十倍频程下降。当达到第二个截止频率 $f_{c2}$ 处，增益以一40dB/十倍频程开始下降。当达到第三个截止频率 $f_{c3}$ 处，增益以一60dB/十倍频程开始下降。
+为了分析非补偿闭环放大器的稳定性，需要确定相位裕量。对闭环增益的一个给定值，如果是正相位裕量表明放大器是稳定的。为了给出不稳定性的条件，下面将给出三种情况。
+$$ 图7-12~~~闭环增益和开环增益在-20dB/十倍频程线段上相交的情况(稳定工作) $$
+情况1 如图7-12所示，闭环增益和开环增益响应在-20dB/十倍频程线段上相交。中频闭环增益为 106dB，闭环截止频率为5kHz。如果我们假设放大器不会在它的中频范围以外工作，106dB 放大器的最大相移发生在中频范围的最高处(这种情况时是5kHz)。在这个频率处由三个滞后网络产生的总相移为: $$ φ_{tot}=-arctan(\frac{f}{f_{c1}})-arctan(\frac{f}{f_{c2}})-arctan(\frac{f}{f_{c3}}) $$ 式中，$f=5kHz$，$f_{c1}=1kHz$，$f_{c2}= 10kHz$, $f_{c3}= 100kHz$。因此， $$ φ_{tot}=-arctan(\frac{5kHz}{1kHz})-arctan(\frac{5kHz}{10kHz})-arctan(\frac{5kHz}{100kHz}) \\ =-78.'><title>7.4 正反馈和稳定性</title>
 
 <link rel='canonical' href='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/7-4%E6%AD%A3%E5%8F%8D%E9%A6%88%E5%92%8C%E7%A8%B3%E5%AE%9A%E6%80%A7/'>
 
-<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='7.4正反馈和稳定性'>
-<meta property='og:description' content=''>
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='7.4 正反馈和稳定性'>
+<meta property='og:description' content='使用运算放大器时，稳定性是需要考虑的。稳定运行是指运算放大器在任何情况下都不会振荡。不稳定会产生振荡，当输人端没有信号时，由于输人端的噪声和瞬态电压，输出端会有不期望的电压波动。本节可以作为选读内容。
+学完本节后，你应该掌握以下内容:
+讨论正反馈和运算放大器的稳定性 定义正反馈 定义环路增益 定义相位裕量并讨论它的重要性 判定运算放大器是否稳定 总结稳定性判据 7.4.1 正反馈 为了理解稳定性，必须先检查不稳定性及其原因。大家知道，通过负反馈，反馈到放大器输人端的信号与输人信号相抵，因此减去反馈信号可以有效地减小电压增益。只要反馈是负的，放大器就是稳定的。
+当从输出端反馈到输人端的信号的相位与输入信号的相位一致时，正反馈条件就成立了，放大器就会发生振荡。也就是说，当通过运算放大器和反馈网络的总相移是 360°(这也等价于无相移(0°))时，正反馈就会发生。
+7.4.2 环路增益 要产生不稳定: (a)必须有正反馈，(b)闭环放大器的环路增益必须大于1。闭环放大器的环路增益定义为运算放大器的开环增益乘以反馈网络的衰减因子。 $$ 环路增益=A_{ol}B~~~(7-7) $$
+7.4.3 相位裕量 $$ a)~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~b)~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~c) $$
+$$ 图7-10~~~反馈环相移 $$
+注意，对图7-10中的每个放大器配置，反馈环连接到反相输入端。由于反相，在输人端和输出端之间存在着固有的 180° 相移。此外，放大器中的 RC 滞后网络(图7-10中没画出来)会产生附加的相移($φ_{tot}$)，因此反馈环的总相移为 $180°&#43;φ_{tot}$。
+相位裕量$φ_{pm}$ 是使得反馈环的总相移为 360°(360° 等价于 0°)时的额外相移。 $$ 180°&#43;φ_{tot}&#43;φ_{pm}=360° \\ φ_{pm}=180°-|φ_{tot}|~~~(7-8) $$ 如果相位裕量是正的，则总相移小于 360°，放大器是稳定的。如果相位裕度是 0 或负的，则反馈信号是以输人信号同相反馈的，放大器有潜在的不稳定。从式(7-8)可以看出，当总的滞后网络相移($φ_{tot}$)等于或超过 180° 时，相位裕量是 0° 或负值，存在不稳定状态，这将会引起放大器振荡。
+7.4.4 稳定性分析 因为大多数运算放大器实际使用的配置是大于1的环路增益($A_{ol}B&amp;gt;1$)，所以稳定性判断准则基于内部滞后网络的相角。如前所述，运算放大器由多级电路组成，每级有一个截止频率。对补偿运算放大器，只有一个截止频率占主导地位，反馈的稳定性不是一个问题。稳定性问题一般表现为不期望的震荡，对运算放大器，在接近单位-增益频率处的反馈是稳定的。
+$$ 图7-11~~~一个三级运算放大器响应的伯德图 $$
+为了阐述反馈稳定性的概念，我们以非补偿三级运算放大器为例子，其开环响应如图7-11中的伯德图所示。在这种情况下，有三个不同的截止频率，它们分别对应于三个内部RC滞后网络。在第一个截止频率 $f_{c1}$ 处，增益开始以一20dB/十倍频程下降。当达到第二个截止频率 $f_{c2}$ 处，增益以一40dB/十倍频程开始下降。当达到第三个截止频率 $f_{c3}$ 处，增益以一60dB/十倍频程开始下降。
+为了分析非补偿闭环放大器的稳定性，需要确定相位裕量。对闭环增益的一个给定值，如果是正相位裕量表明放大器是稳定的。为了给出不稳定性的条件，下面将给出三种情况。
+$$ 图7-12~~~闭环增益和开环增益在-20dB/十倍频程线段上相交的情况(稳定工作) $$
+情况1 如图7-12所示，闭环增益和开环增益响应在-20dB/十倍频程线段上相交。中频闭环增益为 106dB，闭环截止频率为5kHz。如果我们假设放大器不会在它的中频范围以外工作，106dB 放大器的最大相移发生在中频范围的最高处(这种情况时是5kHz)。在这个频率处由三个滞后网络产生的总相移为: $$ φ_{tot}=-arctan(\frac{f}{f_{c1}})-arctan(\frac{f}{f_{c2}})-arctan(\frac{f}{f_{c3}}) $$ 式中，$f=5kHz$，$f_{c1}=1kHz$，$f_{c2}= 10kHz$, $f_{c3}= 100kHz$。因此， $$ φ_{tot}=-arctan(\frac{5kHz}{1kHz})-arctan(\frac{5kHz}{10kHz})-arctan(\frac{5kHz}{100kHz}) \\ =-78.'>
 <meta property='og:url' content='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/7-4%E6%AD%A3%E5%8F%8D%E9%A6%88%E5%92%8C%E7%A8%B3%E5%AE%9A%E6%80%A7/'>
 <meta property='og:site_name' content='My Blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Analog' /><meta property='article:published_time' content='2023-07-14T18:16:45&#43;00:00'/><meta property='article:modified_time' content='2023-07-14T18:16:45&#43;00:00'/>
-<meta name="twitter:title" content="7.4正反馈和稳定性">
-<meta name="twitter:description" content=""><script>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Analog' /><meta property='article:published_time' content='2023-07-14T18:16:45&#43;08:00'/><meta property='article:modified_time' content='2023-07-14T18:16:45&#43;08:00'/>
+<meta name="twitter:title" content="7.4 正反馈和稳定性">
+<meta name="twitter:description" content="使用运算放大器时，稳定性是需要考虑的。稳定运行是指运算放大器在任何情况下都不会振荡。不稳定会产生振荡，当输人端没有信号时，由于输人端的噪声和瞬态电压，输出端会有不期望的电压波动。本节可以作为选读内容。
+学完本节后，你应该掌握以下内容:
+讨论正反馈和运算放大器的稳定性 定义正反馈 定义环路增益 定义相位裕量并讨论它的重要性 判定运算放大器是否稳定 总结稳定性判据 7.4.1 正反馈 为了理解稳定性，必须先检查不稳定性及其原因。大家知道，通过负反馈，反馈到放大器输人端的信号与输人信号相抵，因此减去反馈信号可以有效地减小电压增益。只要反馈是负的，放大器就是稳定的。
+当从输出端反馈到输人端的信号的相位与输入信号的相位一致时，正反馈条件就成立了，放大器就会发生振荡。也就是说，当通过运算放大器和反馈网络的总相移是 360°(这也等价于无相移(0°))时，正反馈就会发生。
+7.4.2 环路增益 要产生不稳定: (a)必须有正反馈，(b)闭环放大器的环路增益必须大于1。闭环放大器的环路增益定义为运算放大器的开环增益乘以反馈网络的衰减因子。 $$ 环路增益=A_{ol}B~~~(7-7) $$
+7.4.3 相位裕量 $$ a)~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~b)~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~c) $$
+$$ 图7-10~~~反馈环相移 $$
+注意，对图7-10中的每个放大器配置，反馈环连接到反相输入端。由于反相，在输人端和输出端之间存在着固有的 180° 相移。此外，放大器中的 RC 滞后网络(图7-10中没画出来)会产生附加的相移($φ_{tot}$)，因此反馈环的总相移为 $180°&#43;φ_{tot}$。
+相位裕量$φ_{pm}$ 是使得反馈环的总相移为 360°(360° 等价于 0°)时的额外相移。 $$ 180°&#43;φ_{tot}&#43;φ_{pm}=360° \\ φ_{pm}=180°-|φ_{tot}|~~~(7-8) $$ 如果相位裕量是正的，则总相移小于 360°，放大器是稳定的。如果相位裕度是 0 或负的，则反馈信号是以输人信号同相反馈的，放大器有潜在的不稳定。从式(7-8)可以看出，当总的滞后网络相移($φ_{tot}$)等于或超过 180° 时，相位裕量是 0° 或负值，存在不稳定状态，这将会引起放大器振荡。
+7.4.4 稳定性分析 因为大多数运算放大器实际使用的配置是大于1的环路增益($A_{ol}B&amp;gt;1$)，所以稳定性判断准则基于内部滞后网络的相角。如前所述，运算放大器由多级电路组成，每级有一个截止频率。对补偿运算放大器，只有一个截止频率占主导地位，反馈的稳定性不是一个问题。稳定性问题一般表现为不期望的震荡，对运算放大器，在接近单位-增益频率处的反馈是稳定的。
+$$ 图7-11~~~一个三级运算放大器响应的伯德图 $$
+为了阐述反馈稳定性的概念，我们以非补偿三级运算放大器为例子，其开环响应如图7-11中的伯德图所示。在这种情况下，有三个不同的截止频率，它们分别对应于三个内部RC滞后网络。在第一个截止频率 $f_{c1}$ 处，增益开始以一20dB/十倍频程下降。当达到第二个截止频率 $f_{c2}$ 处，增益以一40dB/十倍频程开始下降。当达到第三个截止频率 $f_{c3}$ 处，增益以一60dB/十倍频程开始下降。
+为了分析非补偿闭环放大器的稳定性，需要确定相位裕量。对闭环增益的一个给定值，如果是正相位裕量表明放大器是稳定的。为了给出不稳定性的条件，下面将给出三种情况。
+$$ 图7-12~~~闭环增益和开环增益在-20dB/十倍频程线段上相交的情况(稳定工作) $$
+情况1 如图7-12所示，闭环增益和开环增益响应在-20dB/十倍频程线段上相交。中频闭环增益为 106dB，闭环截止频率为5kHz。如果我们假设放大器不会在它的中频范围以外工作，106dB 放大器的最大相移发生在中频范围的最高处(这种情况时是5kHz)。在这个频率处由三个滞后网络产生的总相移为: $$ φ_{tot}=-arctan(\frac{f}{f_{c1}})-arctan(\frac{f}{f_{c2}})-arctan(\frac{f}{f_{c3}}) $$ 式中，$f=5kHz$，$f_{c1}=1kHz$，$f_{c2}= 10kHz$, $f_{c3}= 100kHz$。因此， $$ φ_{tot}=-arctan(\frac{5kHz}{1kHz})-arctan(\frac{5kHz}{10kHz})-arctan(\frac{5kHz}{100kHz}) \\ =-78."><script>
     (function(){
         if(''){
             if (prompt('请输入文章密码') !== ''){
@@ -25,7 +67,7 @@
 
     </head>
     <body class="
-    article-page 
+    article-page has-toc
 ">
     <script>
         (function() {
@@ -51,128 +93,22 @@
 </script>
 <div class="container main-container flex 
     
-        on-phone--column extended
+        extended
     
 ">
     
-        <aside class="sidebar left-sidebar sticky">
-    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
-        <span class="hamburger-box">
-            <span class="hamburger-inner"></span>
-        </span>
-    </button>
-
-    <header class="site-info">
-        
-            
-            <figure class="site-avatar">
-                
-                    
-                    
-                    
-                        
-                        <img src="/img/avatar_hu71fc3898bde3464d50a00f65e63c7ec2_517570_300x0_resize_box_3.png" width="300"
-                            height="354" class="site-logo" loading="lazy" alt="Avatar">
-                    
-                
-
-                
-            </figure>
-            
-        
-        
-        <h1 class="site-name"><a href="/">My Blog</a></h1>
-        <h2 class="site-description"></h2></header>
-
-    <ol class="menu" id="main-menu">
-        
-        
-        
-
-        <li >
-            <a href='/page/about/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <div id="article-toolbar">
+            <a href="/" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="7" r="4" />
-  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+  <polyline points="15 6 9 12 15 18" />
 </svg>
 
 
 
-                
-                <span>About</span>
+                <span>Back</span>
             </a>
-        </li>
-        
-        
-
-        <li >
-            <a href='/page/archives/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <rect x="3" y="4" width="18" height="4" rx="2" />
-  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
-  <line x1="10" y1="12" x2="14" y2="12" />
-</svg>
-
-
-
-                
-                <span>Archives</span>
-            </a>
-        </li>
-        
-        
-
-        <li >
-            <a href='/page/search/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="10" cy="10" r="7" />
-  <line x1="21" y1="21" x2="15" y2="15" />
-</svg>
-
-
-
-                
-                <span>Search</span>
-            </a>
-        </li>
-        
-
-        
-            <li id="dark-mode-toggle">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="8" cy="12" r="2" />
-  <rect x="2" y="6" width="20" height="12" rx="6" />
-</svg>
-
-
-
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="16" cy="12" r="2" />
-  <rect x="2" y="6" width="20" height="12" rx="6" />
-</svg>
-
-
-
-                <span>Dark Mode</span>
-            </li>
-        
-    </ol>
-</aside>
-
+        </div>
     
 <main class="main full-width">
     <article class="main-article">
@@ -182,7 +118,7 @@
     
 
     <h2 class="article-title">
-        <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/7-4%E6%AD%A3%E5%8F%8D%E9%A6%88%E5%92%8C%E7%A8%B3%E5%AE%9A%E6%80%A7/">7.4正反馈和稳定性</a>
+        <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/7-4%E6%AD%A3%E5%8F%8D%E9%A6%88%E5%92%8C%E7%A8%B3%E5%AE%9A%E6%80%A7/">7.4 正反馈和稳定性</a>
     </h2>
 
     
@@ -215,7 +151,7 @@
 
 
                 <time class="article-time--reading">
-                    0 minute read
+                    1 minute read
                 </time>
             </div>
         
@@ -225,7 +161,153 @@
 </header>
 
     <section class="article-content">
-    
+    <p>使用运算放大器时，稳定性是需要考虑的。稳定运行是指运算放大器在任何情况下都不会振荡。不稳定会产生振荡，当输人端没有信号时，由于输人端的噪声和瞬态电压，输出端会有不期望的电压波动。本节可以作为选读内容。</p>
+<p>学完本节后，你应该掌握以下内容:</p>
+<ul>
+<li>讨论正反馈和运算放大器的稳定性
+<ul>
+<li>定义正反馈</li>
+<li>定义环路增益</li>
+<li>定义相位裕量并讨论它的重要性</li>
+<li>判定运算放大器是否稳定</li>
+<li>总结稳定性判据</li>
+</ul>
+</li>
+</ul>
+<h3 id="741-正反馈">7.4.1 正反馈</h3>
+<p>为了理解稳定性，必须先检查不稳定性及其原因。大家知道，通过负反馈，反馈到放大器输人端的信号与输人信号相抵，因此减去反馈信号可以有效地减小电压增益。只要反馈是负的，放大器就是稳定的。</p>
+<p>当从输出端反馈到输人端的信号的相位与输入信号的相位一致时，<code>正反馈</code>条件就成立了，放大器就会发生振荡。也就是说，当通过运算放大器和反馈网络的总相移是 360°(这也等价于无相移(0°))时，正反馈就会发生。</p>
+<h3 id="742-环路增益">7.4.2 环路增益</h3>
+<p>要产生不稳定: (a)必须有正反馈，(b)闭环放大器的环路增益必须大于1。闭环放大器的<code>环路增益</code>定义为运算放大器的开环增益乘以反馈网络的衰减因子。
+$$
+环路增益=A_{ol}B~~~(7-7)
+$$</p>
+<h3 id="743-相位裕量">7.4.3 相位裕量</h3>
+<p><img src="https://s2.loli.net/2023/10/16/MBuFoK5AxwDizsT.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog7_10.png"
+	
+	
+></p>
+<p>$$
+a)~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~b)~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~c)
+$$</p>
+<p>$$
+图7-10~~~反馈环相移
+$$</p>
+<p>注意，对图7-10中的每个放大器配置，反馈环连接到反相输入端。由于反相，在输人端和输出端之间存在着固有的 180° 相移。此外，放大器中的 RC 滞后网络(图7-10中没画出来)会产生附加的相移($φ_{tot}$)，因此反馈环的总相移为 $180°+φ_{tot}$。</p>
+<p><strong>相位裕量$φ_{pm}$</strong> 是使得反馈环的总相移为 360°(360° 等价于 0°)时的额外相移。
+$$
+180°+φ_{tot}+φ_{pm}=360°
+\\
+φ_{pm}=180°-|φ_{tot}|~~~(7-8)
+$$
+如果相位裕量是正的，则总相移小于 360°，放大器是稳定的。如果相位裕度是 0 或负的，则反馈信号是以输人信号同相反馈的，放大器有潜在的不稳定。从式(7-8)可以看出，当总的滞后网络相移($φ_{tot}$)等于或超过 180° 时，相位裕量是 0° 或负值，存在不稳定状态，这将会引起放大器振荡。</p>
+<h3 id="744-稳定性分析">7.4.4 稳定性分析</h3>
+<p>因为大多数运算放大器实际使用的配置是大于1的环路增益($A_{ol}B&gt;1$)，所以稳定性判断准则基于内部滞后网络的相角。如前所述，运算放大器由多级电路组成，每级有一个截止频率。对补偿运算放大器，只有一个截止频率占主导地位，反馈的稳定性不是一个问题。稳定性问题一般表现为不期望的震荡，对运算放大器，在接近单位-增益频率处的反馈是稳定的。</p>
+<p><img src="https://s2.loli.net/2023/10/16/r6F5nPkDHt7Rx4o.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog7_11.png"
+	
+	
+>
+$$
+图7-11~~~一个三级运算放大器响应的伯德图
+$$</p>
+<p>为了阐述反馈稳定性的概念，我们以非补偿三级运算放大器为例子，其开环响应如图7-11中的伯德图所示。在这种情况下，有三个不同的截止频率，它们分别对应于三个内部RC滞后网络。在第一个截止频率 $f_{c1}$ 处，增益开始以一20dB/十倍频程下降。当达到第二个截止频率 $f_{c2}$ 处，增益以一40dB/十倍频程开始下降。当达到第三个截止频率 $f_{c3}$ 处，增益以一60dB/十倍频程开始下降。</p>
+<p>为了分析非补偿闭环放大器的稳定性，需要确定相位裕量。对闭环增益的一个给定值，如果是正相位裕量表明放大器是稳定的。为了给出不稳定性的条件，下面将给出三种情况。</p>
+<p><img src="https://s2.loli.net/2023/10/16/WrwoKMAa21ODvSU.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog7_12.png"
+	
+	
+>
+$$
+图7-12~~~闭环增益和开环增益在-20dB/十倍频程线段上相交的情况(稳定工作)
+$$</p>
+<p><strong>情况1</strong> 如图7-12所示，闭环增益和开环增益响应在-20dB/十倍频程线段上相交。中频闭环增益为 106dB，闭环截止频率为5kHz。如果我们假设放大器不会在它的中频范围以外工作，106dB 放大器的最大相移发生在中频范围的最高处(这种情况时是5kHz)。在这个频率处由三个滞后网络产生的总相移为:
+$$
+φ_{tot}=-arctan(\frac{f}{f_{c1}})-arctan(\frac{f}{f_{c2}})-arctan(\frac{f}{f_{c3}})
+$$
+式中，$f=5kHz$，$f_{c1}=1kHz$，$f_{c2}= 10kHz$, $f_{c3}= 100kHz$。因此，
+$$
+φ_{tot}=-arctan(\frac{5kHz}{1kHz})-arctan(\frac{5kHz}{10kHz})-arctan(\frac{5kHz}{100kHz})
+\\
+=-78.7°-26.6°-2.9°=-108.1°
+$$
+相位裕量 $φ_{pm}$ 为
+$$
+φ_{pm}=180°-|φ_{tot}|=180°-108.1°=+71.9°
+$$
+因为相位裕量是正的，所以放大器在它的中频范围内的所有频率处都是稳定的。通常，如果闭环增益与开环响应曲线在 -20dB/十倍频程线段上相交，则在所有的中频范围放大器都是稳定的。</p>
+<p><img src="https://s2.loli.net/2023/10/16/IRcmSpHLDe7TdlF.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog7_13.png"
+	
+	
+>
+$$
+图7-13~~~闭环增益和开环增益在-40dB/十倍频程线段上相交的情况(临界稳定状态)
+$$</p>
+<p><strong>情况2</strong> 如图7-13所示，闭环增益被降低到与开环响应在-40dB/十倍频程线段上相交，这种情况下的中频闭环增益是 80dB,闭环截止频率约为 30kHz。在 $f=30kHz$ 处由三个滞后网络产生的总相移如下:
+$$
+φ_{tot}=-arctan(\frac{30kHz}{1kHz})-arctan(\frac{30kHz}{10kHz})-arctan(\frac{30kHz}{100kHz})
+\\
+=-88.1°-71.6°-16.7°=-176.4°
+$$
+相位裕量为
+$$
+φ_{pm}=180°-176.4°=+3.6°
+$$
+因为相位裕量是正的，所以放大器在这个中频范围内仍是稳定的，但是频率稍大于 $f_c$ 时就会引起放大器的振荡。因此，它处于临界稳定，并且由于其他原因很可能引起振荡。因为不稳定发生在 $φ_{pm} = 0°$，所以它非常接近于不稳定。作为一般规则，建议采用最小 45° 相位裕量，避免使放大器处于临界稳定状态。</p>
+<p><img src="https://s2.loli.net/2023/10/16/Hs4OpzQ2vlqhf1n.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog7_14.png"
+	
+	
+>
+$$
+图7-14~~~闭环增益和开环增益在 -60dB/十倍频程线段上相交的情况(不稳定状态)
+$$</p>
+<p><strong>情况3</strong> 如图 7-14 所示，闭环增益将进一步减小，直到它与开环增益在 一60dB/十倍频程线段上相交。这种情况下，中频闭环增益为 18dB，闭环截止频率为 500kHz。在 $f=500kHz$ 处由三个滯后网络引起的总相移为
+$$
+φ_{tot}=-arctan(\frac{500kHz}{1kHz})-arctan(\frac{500kHz}{10kHz})-arctan(\frac{500kHz}{100kHz})
+\\
+=-89.9°-88.9°-78.7°=-257.5°
+$$
+相位裕量为
+$$
+φ_{pm}=180°-257.5°=-77.5°
+$$
+这里的相位裕量是负的，放大器在这个中频范围的上界处是不稳定的。</p>
+<p><strong>稳定性准则小结</strong> 上面三种情况的稳定性分析已经表明放大器的闭环增益必须要与开环增益曲线在 一20dB/十倍频程线段上相交，才能保证在中频范围内所有频率处的稳定性。如果闭环增益降低到与 一40dB/十倍频程线段上相交的话，那么就会发生临界稳定或完全不稳定。在前面的情况(情况1. 2和3)，闭环增益应该大于 72dB。</p>
+<p>如果闭环增益与开环增益响应在 一60dB/十倍频程线段上相交，除非使用专门设计的反馈网络，否则在放大器中频范围内的某些频率处，一定会发生不稳定。因此，为了确保在中频范围内所有频率处的稳定性，工作时运算放大器的闭环增益必须使得从主截止频率处开始的下降率不超过 一20dB/十倍频程。</p>
+<h3 id="745-检测不期望的振荡">7.4.5 检测不期望的振荡</h3>
+<p>本节提到的稳定性问题是可以通过专门设计的反馈网络加以控制的，即使在负相位裕量的情况下(情况3)。在反馈路径上可以采用超前网络来增大相位裕量，从而提高稳定性。在一些情况下，通过加入含有放大器的复杂反馈网络或者其他有源器件来提高稳定性。</p>
+<p>并不是所有的稳定性问题都是由反馈网络引起的。如果振荡并不接近于放大器的单位增益频率，反馈回路很可能不是罪魁祸首。振荡的原因包括存在外部反馈路径、接地问题或者外来的噪声信号耦合进电源线。当振荡成为问题时，可以做个简单的测试，增加增益看看振荡是否消失(这就意味着闭环增益与开环增益相交在更高的点处)。如果振荡仍然存在，那么这个问题很可能是其他原因引起的，而不是由负相位裕量引起的。</p>
+<p>为了排除不期望的振荡，检查接地路径(尽量使用单点接地)，增加电源的旁路电容，尽量消除外部电容耦合到输人端的路径。耦合路径很可能不明显，如由于面包板引起，尤其当它没有接地线时，或者由于电路中的长导线产生(导线是有电容特性的)。电源噪声在放大器中会产生反馈，从而引起振荡。在低频处，一个简单的旁路电容(1~10μF钽电容)就可以解决这个问题。在高频处，单独一个旁路电容可能会有自谐振，因此需要再并一个旁路电容。</p>
+<p>有时，振荡来自附近源的干扰，需要加以屏蔽。低电平信号与高电平信号共享接地路径时，或者电路布线中的长导线，同样都可能会引起振荡。如果可能的话，试着用更短的导线连接电路，注意接地路径，并确保接地良好。</p>
+
 </section>
 
 
@@ -238,9 +320,44 @@
     </section>
 
 
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
     </footer>
 
 
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css"integrity="sha384-RZU/ijkSsFbcmivfdRBQDtwuwVqK7GMOw6IMvKyeWL2K5UAlyp6WonmB8m7Jd0Hn"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js"integrity="sha384-pK1WpvzWVBQiP0/GjnvRxV4mOb0oxFuyRxJlk6vVw146n3egcN5C925NCP7a7BY8"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js"integrity="sha384-vZTG03m&#43;2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ]
+        });})
+</script>
     
 </article>
 
@@ -258,7 +375,7 @@
         
 
         <div class="article-details">
-            <h2 class="article-title">7.3运算放大器闭环响应</h2>
+            <h2 class="article-title">7.3 运算放大器闭环响应</h2>
         </div>
     </a>
 </article>
@@ -270,7 +387,7 @@
         
 
         <div class="article-details">
-            <h2 class="article-title">7.2运算放大器开环响应</h2>
+            <h2 class="article-title">7.2 运算放大器开环响应</h2>
         </div>
     </a>
 </article>
@@ -282,19 +399,7 @@
         
 
         <div class="article-details">
-            <h2 class="article-title">7.1基本概念</h2>
-        </div>
-    </a>
-</article>
-                
-                    
-<article class="">
-    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/6-7%E6%95%85%E9%9A%9C%E6%A3%80%E6%B5%8B/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">6.7故障检测</h2>
+            <h2 class="article-title">7.1 基本概念</h2>
         </div>
     </a>
 </article>
@@ -306,7 +411,19 @@
         
 
         <div class="article-details">
-            <h2 class="article-title">6.6运放阻抗和噪声</h2>
+            <h2 class="article-title">6.6 运放阻抗和噪声</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/6-5%E8%B4%9F%E5%8F%8D%E9%A6%88%E8%BF%90%E6%94%BE%E7%BB%84%E6%80%81/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">6.5 负反馈运放组态</h2>
         </div>
     </a>
 </article>
@@ -324,7 +441,7 @@
     data-app-id="d44db3f9-a0ff-4551-a44d-316afd2e5835"
     data-page-id="735028147cb70cd68f4f182682315fe8"
     data-page-url="https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/7-4%E6%AD%A3%E5%8F%8D%E9%A6%88%E5%92%8C%E7%A8%B3%E5%AE%9A%E6%80%A7/"
-    data-page-title="7.4正反馈和稳定性"></div>
+    data-page-title="7.4 正反馈和稳定性"></div>
 <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
 
 <script>
@@ -436,6 +553,40 @@
             >
 
             </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">Table of contents</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#741-正反馈">7.4.1 正反馈</a></li>
+        <li><a href="#742-环路增益">7.4.2 环路增益</a></li>
+        <li><a href="#743-相位裕量">7.4.3 相位裕量</a></li>
+        <li><a href="#744-稳定性分析">7.4.4 稳定性分析</a></li>
+        <li><a href="#745-检测不期望的振荡">7.4.5 检测不期望的振荡</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                </div>
+            </section>
+        </aside>
     
 
         </div>

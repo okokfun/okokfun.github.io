@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='C&#43;&#43;线程池 任务类 #pragma once #include &amp;lt;mutex&amp;gt; #include &amp;lt;queue&amp;gt; // 定义任务结构体 using callback = void (*)(void *); struct Task { Task() { this-&amp;gt;function = nullptr; this-&amp;gt;arg = nullptr; } Task(callback f, void *arg) { this-&amp;gt;function = f; this-&amp;gt;arg = arg; } callback function; void *arg; }; class TaskQueue { public: TaskQueue(); ~TaskQueue(); // 添加任务 void addTask(Task task); void addTask(callback f, void *arg); // 取出一个任务 Task getTask(); // 判断队列任务是否为空 inline bool empty() { return m_taskQ.'><title>C&#43;&#43;线程池</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='此文介绍了C&#43;&#43;线程池,包含线程管理,线程数根据任务数动态增减.'><title>C&#43;&#43;线程池</title>
 
 <link rel='canonical' href='https://okokfun.github.io/post/c&#43;&#43;/c-%E7%BA%BF%E7%A8%8B%E6%B1%A0/'>
 
 <link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='C&#43;&#43;线程池'>
-<meta property='og:description' content='C&#43;&#43;线程池 任务类 #pragma once #include &amp;lt;mutex&amp;gt; #include &amp;lt;queue&amp;gt; // 定义任务结构体 using callback = void (*)(void *); struct Task { Task() { this-&amp;gt;function = nullptr; this-&amp;gt;arg = nullptr; } Task(callback f, void *arg) { this-&amp;gt;function = f; this-&amp;gt;arg = arg; } callback function; void *arg; }; class TaskQueue { public: TaskQueue(); ~TaskQueue(); // 添加任务 void addTask(Task task); void addTask(callback f, void *arg); // 取出一个任务 Task getTask(); // 判断队列任务是否为空 inline bool empty() { return m_taskQ.'>
+<meta property='og:description' content='此文介绍了C&#43;&#43;线程池,包含线程管理,线程数根据任务数动态增减.'>
 <meta property='og:url' content='https://okokfun.github.io/post/c&#43;&#43;/c-%E7%BA%BF%E7%A8%8B%E6%B1%A0/'>
 <meta property='og:site_name' content='My Blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='C&#43;&#43;11' /><meta property='article:published_time' content='2021-12-24T17:01:29&#43;00:00'/><meta property='article:modified_time' content='2021-12-24T17:01:29&#43;00:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='C&#43;&#43;11' /><meta property='article:published_time' content='2021-12-24T17:01:29&#43;08:00'/><meta property='article:modified_time' content='2021-12-24T17:01:29&#43;08:00'/>
 <meta name="twitter:title" content="C&#43;&#43;线程池">
-<meta name="twitter:description" content="C&#43;&#43;线程池 任务类 #pragma once #include &amp;lt;mutex&amp;gt; #include &amp;lt;queue&amp;gt; // 定义任务结构体 using callback = void (*)(void *); struct Task { Task() { this-&amp;gt;function = nullptr; this-&amp;gt;arg = nullptr; } Task(callback f, void *arg) { this-&amp;gt;function = f; this-&amp;gt;arg = arg; } callback function; void *arg; }; class TaskQueue { public: TaskQueue(); ~TaskQueue(); // 添加任务 void addTask(Task task); void addTask(callback f, void *arg); // 取出一个任务 Task getTask(); // 判断队列任务是否为空 inline bool empty() { return m_taskQ."><script>
+<meta name="twitter:description" content="此文介绍了C&#43;&#43;线程池,包含线程管理,线程数根据任务数动态增减."><script>
     (function(){
         if(''){
             if (prompt('请输入文章密码') !== ''){
@@ -74,11 +74,23 @@
 
     <div class="article-details">
     
+    <header class="article-category">
+        
+            <a href="/categories/c&#43;&#43;/" >
+                C&#43;&#43;
+            </a>
+        
+    </header>
+    
 
     <h2 class="article-title">
         <a href="/post/c&#43;&#43;/c-%E7%BA%BF%E7%A8%8B%E6%B1%A0/">C&#43;&#43;线程池</a>
     </h2>
 
+    
+    <h3 class="article-subtitle">
+        此文介绍了C&#43;&#43;线程池,包含线程管理,线程数根据任务数动态增减.
+    </h3>
     
 
     
@@ -219,7 +231,6 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">~</span>ThreadPool();
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    ThreadPool();
-</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">//////////////////////
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// 工作的线程(消费者线程)任务函数
@@ -442,7 +453,6 @@
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">void</span>) {
-</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 初始化线程池
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    ThreadPool <span style="color:#f92672">*</span>pool <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ThreadPool(<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">10</span>);
 </span></span><span style="display:flex;"><span>
@@ -474,9 +484,44 @@
     </section>
 
 
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
     </footer>
 
 
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css"integrity="sha384-RZU/ijkSsFbcmivfdRBQDtwuwVqK7GMOw6IMvKyeWL2K5UAlyp6WonmB8m7Jd0Hn"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js"integrity="sha384-pK1WpvzWVBQiP0/GjnvRxV4mOb0oxFuyRxJlk6vVw146n3egcN5C925NCP7a7BY8"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js"integrity="sha384-vZTG03m&#43;2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ]
+        });})
+</script>
     
 </article>
 

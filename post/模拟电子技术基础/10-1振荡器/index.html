@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content=''><title>10.1振荡器</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='振荡器是能在其输出端产生周期波形的电路，它仅使用直流电源作为必需的输入。重复的输入信号并不是必需的，但可以用来同步振荡输出。'><title>10.1 振荡器</title>
 
 <link rel='canonical' href='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/10-1%E6%8C%AF%E8%8D%A1%E5%99%A8/'>
 
-<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='10.1振荡器'>
-<meta property='og:description' content=''>
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='10.1 振荡器'>
+<meta property='og:description' content='振荡器是能在其输出端产生周期波形的电路，它仅使用直流电源作为必需的输入。重复的输入信号并不是必需的，但可以用来同步振荡输出。'>
 <meta property='og:url' content='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/10-1%E6%8C%AF%E8%8D%A1%E5%99%A8/'>
 <meta property='og:site_name' content='My Blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Analog' /><meta property='article:published_time' content='2023-07-14T18:19:51&#43;00:00'/><meta property='article:modified_time' content='2023-07-14T18:19:51&#43;00:00'/>
-<meta name="twitter:title" content="10.1振荡器">
-<meta name="twitter:description" content=""><script>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Analog' /><meta property='article:published_time' content='2023-07-14T18:19:51&#43;08:00'/><meta property='article:modified_time' content='2023-07-14T18:19:51&#43;08:00'/>
+<meta name="twitter:title" content="10.1 振荡器">
+<meta name="twitter:description" content="振荡器是能在其输出端产生周期波形的电路，它仅使用直流电源作为必需的输入。重复的输入信号并不是必需的，但可以用来同步振荡输出。"><script>
     (function(){
         if(''){
             if (prompt('请输入文章密码') !== ''){
@@ -25,7 +25,7 @@
 
     </head>
     <body class="
-    article-page 
+    article-page has-toc
 ">
     <script>
         (function() {
@@ -51,128 +51,22 @@
 </script>
 <div class="container main-container flex 
     
-        on-phone--column extended
+        extended
     
 ">
     
-        <aside class="sidebar left-sidebar sticky">
-    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
-        <span class="hamburger-box">
-            <span class="hamburger-inner"></span>
-        </span>
-    </button>
-
-    <header class="site-info">
-        
-            
-            <figure class="site-avatar">
-                
-                    
-                    
-                    
-                        
-                        <img src="/img/avatar_hu71fc3898bde3464d50a00f65e63c7ec2_517570_300x0_resize_box_3.png" width="300"
-                            height="354" class="site-logo" loading="lazy" alt="Avatar">
-                    
-                
-
-                
-            </figure>
-            
-        
-        
-        <h1 class="site-name"><a href="/">My Blog</a></h1>
-        <h2 class="site-description"></h2></header>
-
-    <ol class="menu" id="main-menu">
-        
-        
-        
-
-        <li >
-            <a href='/page/about/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <div id="article-toolbar">
+            <a href="/" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="7" r="4" />
-  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+  <polyline points="15 6 9 12 15 18" />
 </svg>
 
 
 
-                
-                <span>About</span>
+                <span>Back</span>
             </a>
-        </li>
-        
-        
-
-        <li >
-            <a href='/page/archives/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <rect x="3" y="4" width="18" height="4" rx="2" />
-  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
-  <line x1="10" y1="12" x2="14" y2="12" />
-</svg>
-
-
-
-                
-                <span>Archives</span>
-            </a>
-        </li>
-        
-        
-
-        <li >
-            <a href='/page/search/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="10" cy="10" r="7" />
-  <line x1="21" y1="21" x2="15" y2="15" />
-</svg>
-
-
-
-                
-                <span>Search</span>
-            </a>
-        </li>
-        
-
-        
-            <li id="dark-mode-toggle">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="8" cy="12" r="2" />
-  <rect x="2" y="6" width="20" height="12" rx="6" />
-</svg>
-
-
-
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="16" cy="12" r="2" />
-  <rect x="2" y="6" width="20" height="12" rx="6" />
-</svg>
-
-
-
-                <span>Dark Mode</span>
-            </li>
-        
-    </ol>
-</aside>
-
+        </div>
     
 <main class="main full-width">
     <article class="main-article">
@@ -182,9 +76,13 @@
     
 
     <h2 class="article-title">
-        <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/10-1%E6%8C%AF%E8%8D%A1%E5%99%A8/">10.1振荡器</a>
+        <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/10-1%E6%8C%AF%E8%8D%A1%E5%99%A8/">10.1 振荡器</a>
     </h2>
 
+    
+    <h3 class="article-subtitle">
+        振荡器是能在其输出端产生周期波形的电路，它仅使用直流电源作为必需的输入。重复的输入信号并不是必需的，但可以用来同步振荡输出。
+    </h3>
     
 
     
@@ -215,7 +113,7 @@
 
 
                 <time class="article-time--reading">
-                    0 minute read
+                    1 minute read
                 </time>
             </div>
         
@@ -225,7 +123,52 @@
 </header>
 
     <section class="article-content">
-    
+    <p>振荡器是产生周期波形来实现定时、控制或通信功能的电路。在几乎所有的电子系统中都可以找到振荡器，包括模拟和数字系统、大多数的测试仪器，如示波器和函数发生器。</p>
+<p>振荡器需要某种正反馈，将部分输出信号反馈到输人，使得输人信号加强，从而维持连续不断的输出信号。尽管外部输入不是严格必需的，但是许多振荡器使用外部信号来控制频率或使它与另一个源同步。可以用以下两种方法之一来设计振荡器产生受控制的振荡信号: 使用反馈振荡器的单位增益方法和使用弛豫振荡器的定时方法。这两种方法都将在本章讨论。</p>
+<p>不同类型的振荡器产生不同类型的输出，如正弦波、方波、三角波和锯齿波。本章介绍几种类型的基本振荡电路，它们使用运算放大器和分立晶体管作为增益元件，还会介绍一块称为 555 定时器的非常通用的集成电路。</p>
+<h2 id="101-振荡器">10.1 振荡器</h2>
+<p>振荡器是能在其输出端产生周期波形的电路，它仅使用直流电源作为必需的输人。重复的输入信号并不是必需的，但可以用来同步振荡输出。输出电压要么是正弦波，要么是非正弦波，这取决于振荡器的类型。振荡器主要分为反馈振荡器和弛豫振荡器两大类。</p>
+<p>学完本节后，你应该掌握以下内容:</p>
+<ul>
+<li>描述所有振荡器的基本工作原理
+<ul>
+<li>解释振荡器的目的</li>
+<li>讨论振荡器两种重要的分类</li>
+<li>列出反馈振荡器的基本元件</li>
+</ul>
+</li>
+</ul>
+<h3 id="1011-振荡器的类型">10.1.1 振荡器的类型</h3>
+<p><img src="https://s2.loli.net/2023/10/26/AlmMt3KJBO69Nub.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog10_1.png"
+	
+	
+>
+$$
+图10-1~~~~基本振荡器概念给出三种常见类型的输出波形
+$$
+本质上，所有振荡器都将来自直流电源的电能转换为周期波形，这些周期波形可以用于各种定时、控制或信号产生应用。一个基本的振荡器如图10-1 所示，振荡器可以根据产生信号所采用的技术进行分类。</p>
+<p><strong>反馈振荡器</strong> 有一类振荡器是反馈振荡器， 它将输出信号的一部分无净相移地反馈到输入端来加强输出信号。振荡开始后，环路增益保持在 1.0 来维持振荡。反馈振荡器由一个放大器(或者分立晶体管，或者运算放大器)和一个正反馈网络组成，其中放大器提供增益，正反馈网络产生相移并提供衰减，如图10-2所示。</p>
+<p><img src="https://s2.loli.net/2023/10/26/HoIW4ie6d859jsb.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog10_2.png"
+	
+	
+>
+$$
+图10-2~~~~反馈振荡器的基本元件
+$$
+<strong>弛豫振荡器</strong> 振荡器的第二种类型是弛豫振荡器。弛豫振荡器使用一个 RC 定时电路来产生波形，通常是方波或非正弦波。典型地，弛豫振荡器使用施密特触发器或其他器件交替地通过电阻向电容充电和放电来改变状态。弛豫振荡器将在10.5节中讨论。</p>
+
 </section>
 
 
@@ -238,9 +181,44 @@
     </section>
 
 
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
     </footer>
 
 
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css"integrity="sha384-RZU/ijkSsFbcmivfdRBQDtwuwVqK7GMOw6IMvKyeWL2K5UAlyp6WonmB8m7Jd0Hn"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js"integrity="sha384-pK1WpvzWVBQiP0/GjnvRxV4mOb0oxFuyRxJlk6vVw146n3egcN5C925NCP7a7BY8"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js"integrity="sha384-vZTG03m&#43;2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ]
+        });})
+</script>
     
 </article>
 
@@ -258,7 +236,7 @@
         
 
         <div class="article-details">
-            <h2 class="article-title">9.7测量滤波器响应</h2>
+            <h2 class="article-title">9.7 测量滤波器响应</h2>
         </div>
     </a>
 </article>
@@ -270,7 +248,7 @@
         
 
         <div class="article-details">
-            <h2 class="article-title">9.6有源带阻滤波器</h2>
+            <h2 class="article-title">9.6 有源带阻滤波器</h2>
         </div>
     </a>
 </article>
@@ -282,7 +260,7 @@
         
 
         <div class="article-details">
-            <h2 class="article-title">9.5有源带通滤波器</h2>
+            <h2 class="article-title">9.5 有源带通滤波器</h2>
         </div>
     </a>
 </article>
@@ -294,7 +272,7 @@
         
 
         <div class="article-details">
-            <h2 class="article-title">9.4有源高通滤波器</h2>
+            <h2 class="article-title">9.4 有源高通滤波器</h2>
         </div>
     </a>
 </article>
@@ -306,7 +284,7 @@
         
 
         <div class="article-details">
-            <h2 class="article-title">9.3有源低通滤波器</h2>
+            <h2 class="article-title">9.3 有源低通滤波器</h2>
         </div>
     </a>
 </article>
@@ -324,7 +302,7 @@
     data-app-id="d44db3f9-a0ff-4551-a44d-316afd2e5835"
     data-page-id="50bdd396d438f6805a00ec50e7d045b8"
     data-page-url="https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/10-1%E6%8C%AF%E8%8D%A1%E5%99%A8/"
-    data-page-title="10.1振荡器"></div>
+    data-page-title="10.1 振荡器"></div>
 <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
 
 <script>
@@ -436,6 +414,36 @@
             >
 
             </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">Table of contents</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#101-振荡器">10.1 振荡器</a>
+      <ul>
+        <li><a href="#1011-振荡器的类型">10.1.1 振荡器的类型</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                </div>
+            </section>
+        </aside>
     
 
         </div>

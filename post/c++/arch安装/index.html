@@ -1,44 +1,17 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Arch安装 一.准备工作 1.1下载镜像 地址：
-清华：https://mirrors.tuna.tsinghua.edu.cn/archlinux/iso/latest/ 163:https://mirrors.163.com/archlinux/iso/latest/ 中科大：https://mirrors.ustc.edu.cn/archlinux/iso/latest/ 上海交通：https://mirror.sjtu.edu.cn/archlinux/iso/latest/ 北大：https://mirrors.pku.edu.cn/archlinux/iso/latest/ 本文是Arch官方文档的再次梳理版
-https://wiki.archlinux.org/title/Installation_guide_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87) 安装方法有很多种比如脚本，实体机，虚拟机
-本文采用虚拟机&#43;SSH安装&#43;UEFI，SSH方便复制命令
-二.安装 1.键盘布局,默认为us，不需要更改 2.验证引导模式 ls /sys/firmware/efi/efivars 结果无错误切有目录则是UEFI，反之是BIOS引导
-3.连接网络 ip link 用 ping 检查网络连接
-ping archlinux.org 4.更新系统时间 timedatectl set-ntp true 可用 timedatectl status 检查服务状态
-5.建立硬盘分区 cfdisk比fdisk配置简单许多，因此本文采用cfdisk
-cfdisk -l cfdisk UEFI采用GPT分区，一般情况下需要创建
-挂载点 分区 分区类型 建议大小 /mnt/boot 或 /mnt/efi /dev/efi_system_partition（efi 系统分区） EFI 系统分区 至少 260 MiB [SWAP] /dev/swap_partition（交换空间分区） Linux swap (交换空间) 大于 512 MiB /mnt /dev/root_partition（根分区） Linux x86-64 根目录 (/) 剩余空间 文件系统 创建命令 工具 Archiso [1] 内核文档 [2] 说明 Btrfs mkfs.'><title>Arch安装</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='此文介绍了Arch安装与配置'><title>Arch安装</title>
 
 <link rel='canonical' href='https://okokfun.github.io/post/c&#43;&#43;/arch%E5%AE%89%E8%A3%85/'>
 
 <link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='Arch安装'>
-<meta property='og:description' content='Arch安装 一.准备工作 1.1下载镜像 地址：
-清华：https://mirrors.tuna.tsinghua.edu.cn/archlinux/iso/latest/ 163:https://mirrors.163.com/archlinux/iso/latest/ 中科大：https://mirrors.ustc.edu.cn/archlinux/iso/latest/ 上海交通：https://mirror.sjtu.edu.cn/archlinux/iso/latest/ 北大：https://mirrors.pku.edu.cn/archlinux/iso/latest/ 本文是Arch官方文档的再次梳理版
-https://wiki.archlinux.org/title/Installation_guide_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87) 安装方法有很多种比如脚本，实体机，虚拟机
-本文采用虚拟机&#43;SSH安装&#43;UEFI，SSH方便复制命令
-二.安装 1.键盘布局,默认为us，不需要更改 2.验证引导模式 ls /sys/firmware/efi/efivars 结果无错误切有目录则是UEFI，反之是BIOS引导
-3.连接网络 ip link 用 ping 检查网络连接
-ping archlinux.org 4.更新系统时间 timedatectl set-ntp true 可用 timedatectl status 检查服务状态
-5.建立硬盘分区 cfdisk比fdisk配置简单许多，因此本文采用cfdisk
-cfdisk -l cfdisk UEFI采用GPT分区，一般情况下需要创建
-挂载点 分区 分区类型 建议大小 /mnt/boot 或 /mnt/efi /dev/efi_system_partition（efi 系统分区） EFI 系统分区 至少 260 MiB [SWAP] /dev/swap_partition（交换空间分区） Linux swap (交换空间) 大于 512 MiB /mnt /dev/root_partition（根分区） Linux x86-64 根目录 (/) 剩余空间 文件系统 创建命令 工具 Archiso [1] 内核文档 [2] 说明 Btrfs mkfs.'>
+<meta property='og:description' content='此文介绍了Arch安装与配置'>
 <meta property='og:url' content='https://okokfun.github.io/post/c&#43;&#43;/arch%E5%AE%89%E8%A3%85/'>
 <meta property='og:site_name' content='My Blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Linux' /><meta property='article:published_time' content='2021-12-24T19:34:05&#43;00:00'/><meta property='article:modified_time' content='2021-12-24T19:34:05&#43;00:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2021-12-24T19:34:05&#43;08:00'/><meta property='article:modified_time' content='2021-12-24T19:34:05&#43;08:00'/>
 <meta name="twitter:title" content="Arch安装">
-<meta name="twitter:description" content="Arch安装 一.准备工作 1.1下载镜像 地址：
-清华：https://mirrors.tuna.tsinghua.edu.cn/archlinux/iso/latest/ 163:https://mirrors.163.com/archlinux/iso/latest/ 中科大：https://mirrors.ustc.edu.cn/archlinux/iso/latest/ 上海交通：https://mirror.sjtu.edu.cn/archlinux/iso/latest/ 北大：https://mirrors.pku.edu.cn/archlinux/iso/latest/ 本文是Arch官方文档的再次梳理版
-https://wiki.archlinux.org/title/Installation_guide_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87) 安装方法有很多种比如脚本，实体机，虚拟机
-本文采用虚拟机&#43;SSH安装&#43;UEFI，SSH方便复制命令
-二.安装 1.键盘布局,默认为us，不需要更改 2.验证引导模式 ls /sys/firmware/efi/efivars 结果无错误切有目录则是UEFI，反之是BIOS引导
-3.连接网络 ip link 用 ping 检查网络连接
-ping archlinux.org 4.更新系统时间 timedatectl set-ntp true 可用 timedatectl status 检查服务状态
-5.建立硬盘分区 cfdisk比fdisk配置简单许多，因此本文采用cfdisk
-cfdisk -l cfdisk UEFI采用GPT分区，一般情况下需要创建
-挂载点 分区 分区类型 建议大小 /mnt/boot 或 /mnt/efi /dev/efi_system_partition（efi 系统分区） EFI 系统分区 至少 260 MiB [SWAP] /dev/swap_partition（交换空间分区） Linux swap (交换空间) 大于 512 MiB /mnt /dev/root_partition（根分区） Linux x86-64 根目录 (/) 剩余空间 文件系统 创建命令 工具 Archiso [1] 内核文档 [2] 说明 Btrfs mkfs."><script>
+<meta name="twitter:description" content="此文介绍了Arch安装与配置"><script>
     (function(){
         if(''){
             if (prompt('请输入文章密码') !== ''){
@@ -101,11 +74,23 @@ cfdisk -l cfdisk UEFI采用GPT分区，一般情况下需要创建
 
     <div class="article-details">
     
+    <header class="article-category">
+        
+            <a href="/categories/linux/" >
+                Linux
+            </a>
+        
+    </header>
+    
 
     <h2 class="article-title">
         <a href="/post/c&#43;&#43;/arch%E5%AE%89%E8%A3%85/">Arch安装</a>
     </h2>
 
+    
+    <h3 class="article-subtitle">
+        此文介绍了Arch安装与配置
+    </h3>
     
 
     
@@ -650,16 +635,45 @@ ps：博主受过nouveau的折磨</p>
 
     <footer class="article-footer">
     
-    <section class="article-tags">
-        
-            <a href="/tags/linux/">Linux</a>
-        
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
     </section>
-
-
     </footer>
 
 
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css"integrity="sha384-RZU/ijkSsFbcmivfdRBQDtwuwVqK7GMOw6IMvKyeWL2K5UAlyp6WonmB8m7Jd0Hn"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js"integrity="sha384-pK1WpvzWVBQiP0/GjnvRxV4mOb0oxFuyRxJlk6vVw146n3egcN5C925NCP7a7BY8"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js"integrity="sha384-vZTG03m&#43;2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ]
+        });})
+</script>
     
 </article>
 

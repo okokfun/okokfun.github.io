@@ -4,11 +4,11 @@
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='利用前几节学习的 JFET 的相关特性，现在我们将会看到如何对 JFET 进行直流偏置。偏置的目的是选择合适的栅源电压来获得期望的漏源电流。由于栅极反向偏置，因此 BJT 的偏置方式并不适用于 JFET。
 学完本节后，你应该掌握以下内容:
 描述 JFET 的三种偏置方法并解释它们的工作原理 利用`跨导曲线来选择自给偏置电阻的合理值`` 解释分压式偏置或电流源偏置如何产生更稳定的 Q 点 4.3.1JFET的自给偏置 FET 的偏置相对简单。接下来以 n 沟道 JFET 为例。记住，p 沟道 JFET 只需要改变极性。对于 n 沟道 JFET，建立反向偏置需要负的 $V_{GS}$。这可以利用如图4-11所示的自给偏置电路来实现。注意，通过电阻 $R_G$ 接地，将栅极偏置在 0V。虽然反向泄漏电流 $I_{GSS}$ 在 $R_G$ 两端产生一个非常小的电压，但在大多数情况下都可忽略它。可以假设 $R_G$ 上面没有电流流过，两端也没有压降。 $R_G$ 的作用是使得栅极电压稳定在 0V，且不影响之后施加的任何交流信号。由于栅极电流可以忽略， $R_G$ 可以非常大(通常取 1.0M$\Omega$ 甚至更大)，从而对低频交流信号会呈现非常高的输入电阻。
-$$ 图4-11~~~ n沟道JFET的自给偏置 $$ 如果栅极电压为 0，如何获取所需的栅源结的反向偏置? 答案是使源极相对于栅极为正，以达到需要的反向偏置。对于图4-11中的 n 沟道 JFET 而言，$I_D$ 在 $R_S$ 两端产生一个压降(极性如图4-11所示)，使得源极相对于栅极为正。因为 $V_G=0V，V_S=I_DR_S$，所以栅源电压为: $$ V_{GS}=V_G-V_S-I_DR_S $$ 因此有: $$ V_{GS}=-I_DR_S $$ 该结果表明栅源电压为负，得到了所需的反向偏置。在本分析过程中，以 n 沟道 JFET 为例来说明。同样 p 沟道 JFET 也需要反向偏置，但所有电压的极性都和 n 沟道 JFET 中的相反。'><title>4.3JFET偏置</title>
+$$ 图4-11~~~ n沟道JFET的自给偏置 $$ 如果栅极电压为 0，如何获取所需的栅源结的反向偏置? 答案是使源极相对于栅极为正，以达到需要的反向偏置。对于图4-11中的 n 沟道 JFET 而言，$I_D$ 在 $R_S$ 两端产生一个压降(极性如图4-11所示)，使得源极相对于栅极为正。因为 $V_G=0V，V_S=I_DR_S$，所以栅源电压为: $$ V_{GS}=V_G-V_S-I_DR_S $$ 因此有: $$ V_{GS}=-I_DR_S $$ 该结果表明栅源电压为负，得到了所需的反向偏置。在本分析过程中，以 n 沟道 JFET 为例来说明。同样 p 沟道 JFET 也需要反向偏置，但所有电压的极性都和 n 沟道 JFET 中的相反。'><title>4.3 JFET偏置</title>
 
 <link rel='canonical' href='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/4-3jfet%E5%81%8F%E7%BD%AE/'>
 
-<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='4.3JFET偏置'>
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='4.3 JFET偏置'>
 <meta property='og:description' content='利用前几节学习的 JFET 的相关特性，现在我们将会看到如何对 JFET 进行直流偏置。偏置的目的是选择合适的栅源电压来获得期望的漏源电流。由于栅极反向偏置，因此 BJT 的偏置方式并不适用于 JFET。
 学完本节后，你应该掌握以下内容:
 描述 JFET 的三种偏置方法并解释它们的工作原理 利用`跨导曲线来选择自给偏置电阻的合理值`` 解释分压式偏置或电流源偏置如何产生更稳定的 Q 点 4.3.1JFET的自给偏置 FET 的偏置相对简单。接下来以 n 沟道 JFET 为例。记住，p 沟道 JFET 只需要改变极性。对于 n 沟道 JFET，建立反向偏置需要负的 $V_{GS}$。这可以利用如图4-11所示的自给偏置电路来实现。注意，通过电阻 $R_G$ 接地，将栅极偏置在 0V。虽然反向泄漏电流 $I_{GSS}$ 在 $R_G$ 两端产生一个非常小的电压，但在大多数情况下都可忽略它。可以假设 $R_G$ 上面没有电流流过，两端也没有压降。 $R_G$ 的作用是使得栅极电压稳定在 0V，且不影响之后施加的任何交流信号。由于栅极电流可以忽略， $R_G$ 可以非常大(通常取 1.0M$\Omega$ 甚至更大)，从而对低频交流信号会呈现非常高的输入电阻。
@@ -16,7 +16,7 @@ $$ 图4-11~~~ n沟道JFET的自给偏置 $$ 如果栅极电压为 0，如何获�
 <meta property='og:url' content='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/4-3jfet%E5%81%8F%E7%BD%AE/'>
 <meta property='og:site_name' content='My Blog'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Analog' /><meta property='article:published_time' content='2023-07-14T17:37:37&#43;00:00'/><meta property='article:modified_time' content='2023-07-14T17:37:37&#43;00:00'/>
-<meta name="twitter:title" content="4.3JFET偏置">
+<meta name="twitter:title" content="4.3 JFET偏置">
 <meta name="twitter:description" content="利用前几节学习的 JFET 的相关特性，现在我们将会看到如何对 JFET 进行直流偏置。偏置的目的是选择合适的栅源电压来获得期望的漏源电流。由于栅极反向偏置，因此 BJT 的偏置方式并不适用于 JFET。
 学完本节后，你应该掌握以下内容:
 描述 JFET 的三种偏置方法并解释它们的工作原理 利用`跨导曲线来选择自给偏置电阻的合理值`` 解释分压式偏置或电流源偏置如何产生更稳定的 Q 点 4.3.1JFET的自给偏置 FET 的偏置相对简单。接下来以 n 沟道 JFET 为例。记住，p 沟道 JFET 只需要改变极性。对于 n 沟道 JFET，建立反向偏置需要负的 $V_{GS}$。这可以利用如图4-11所示的自给偏置电路来实现。注意，通过电阻 $R_G$ 接地，将栅极偏置在 0V。虽然反向泄漏电流 $I_{GSS}$ 在 $R_G$ 两端产生一个非常小的电压，但在大多数情况下都可忽略它。可以假设 $R_G$ 上面没有电流流过，两端也没有压降。 $R_G$ 的作用是使得栅极电压稳定在 0V，且不影响之后施加的任何交流信号。由于栅极电流可以忽略， $R_G$ 可以非常大(通常取 1.0M$\Omega$ 甚至更大)，从而对低频交流信号会呈现非常高的输入电阻。
@@ -85,7 +85,7 @@ $$ 图4-11~~~ n沟道JFET的自给偏置 $$ 如果栅极电压为 0，如何获�
     
 
     <h2 class="article-title">
-        <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/4-3jfet%E5%81%8F%E7%BD%AE/">4.3JFET偏置</a>
+        <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/4-3jfet%E5%81%8F%E7%BD%AE/">4.3 JFET偏置</a>
     </h2>
 
     
@@ -118,7 +118,7 @@ $$ 图4-11~~~ n沟道JFET的自给偏置 $$ 如果栅极电压为 0，如何获�
 
 
                 <time class="article-time--reading">
-                    1 minute read
+                    2 minute read
                 </time>
             </div>
         
@@ -174,7 +174,94 @@ V_{DS}=V_{DD}-I_D(R_D+R_S)~~~(4-4)
 $$</p>
 <h3 id="432图解法">4.3.2图解法</h3>
 <p>已经知道电阻 $R$ 的 $Ⅰ-V$ 曲线是斜率为 $1/R$ 的直线。为了比较自给偏置电阻曲线和跨导曲线，将两条曲线都画在第二象限中，其中电阻曲线的斜率为 $-1/R$。</p>
-<p>本节利用 MPF3821 的跨导特性曲线来说明如何选择合适的自给偏置电阻($R_S$)的阻值。假设 MPF3821 的跨导曲线如图4-13所示。从原点到 $V_{GS(off)}(-4V)$ 与 $I_{DSS}(2.5mA)$ 的交点画一条直线。这条直线的斜率的倒数就是 $R_S$ 的合适取值。</p>
+<p><img src="https://s2.loli.net/2023/10/06/SmR2gtAXWNjcGLs.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog4_13.png"
+	
+	
+>
+$$
+图4-13~~~自给偏置的图解分析
+$$
+本节利用 MPF3821 的跨导特性曲线来说明如何选择合适的自给偏置电阻($R_S$)的阻值。假设 MPF3821 的跨导曲线如图4-13所示。从原点到 $V_{GS(off)}(-4V)$ 与 $I_{DSS}(2.5mA)$ 的交点画一条直线。这条直线的斜率的倒数就是 $R_S$ 的合适取值。
+$$
+R_S=\frac{|V_{GS(off)}|}{I_{DSS}}=\frac{4V}{2.5mA}=1.6k\Omega
+$$
+其中利用了 $V_{GS(off)}$ 的绝对值。这两条曲线的交点就是 Q 点。Q 点表示 $V_{GS}$ 和 $I_D$，本例中 $V_{GS(off)} =-1.5V$， $I_D=0.95mA$。</p>
+<p><code>自给偏置是一种负反馈，能够补偿不同 JFET 之间不同器件特性的影响</code>。例如，假设用一个低跨导的晶体管替换现有晶体管，那么新的漏极电流会减小，使得 $R_S$ 上的压降减小。电压的减小会使 JFET 导通更多，补偿了新晶体管的低跨导的影响。下述两例很好地说明了一系列跨导曲线的影响。</p>
+<h3 id="433分压式偏置">4.3.3分压式偏置</h3>
+<p>虽然自给偏置方法在多数情况下令人满意，但可以看出，工作点取决于跨导曲线。<code>通过在栅极电路上增加分压电路，使得栅极电压为正，可以使偏置更稳定</code>。由于 JFET 一定由要在栅源间是反向偏置的条件下才能工作，因此要使用一个比一般自给偏置中更大的源极电阻。电路如图 4-17 所示。</p>
+<p><img src="https://s2.loli.net/2023/10/06/fUm8D4joE62BKO7.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog4_17.png"
+	
+	
+>
+$$
+图4-17~分压式偏置
+$$
+对 $R_1$ 和 $R_2$ 利用分压定律可求得栅极电压为:
+$$
+V_G=(\frac{R_2}{R_1+R_2})V_{DD}~~~(4-5)
+$$
+记住,如果正在对任何 JFET 电路进行故障检测，那么源电压必须等于或大于栅极电压。$R_D$ 和 $R_S$ 中都有漏极电流流过。由于 $I_D$ 取决于 JFET 的跨导，因此无法仅仅从电路值中来确定 $V_D$ 和 $V_S$ 的精确值,因为 JFET 的制造中存在差异。通常，在 JFET 线性放大器的设计中，$V_{DS}$ 一般在 $V_{DD}$ 的 25%～50% 的范围内。即使不知道晶体管的参数,你也能通过检查 $V_{DS}$ 的值,来确认正确设置了偏置。</p>
+<h3 id="434电流源">4.3.4电流源</h3>
+<p><img src="https://s2.loli.net/2023/10/06/jJk57XluhZC3Wep.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog4-19a.png"
+	
+	
+>
+$$
+a)理想电流源的I-V曲线
+$$
+<img src="https://s2.loli.net/2023/10/06/GBPSiosnVyLgqFa.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog4-19b.png"
+	
+	
+>
+$$
+b)理想电路模型
+$$
+<img src="https://s2.loli.net/2023/10/06/9AI7nFiOHjLCUD3.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog4-19c.png"
+	
+	
+>
+$$
+c)实际电路模型
+$$
+$$
+图4-19~~电流源。电流源符号中的箭头始终指向电源正极
+$$</p>
+<p>在讨论电流源偏置之前，首先复习一下电流源。<code>理想电流源是一种无论连接任何负载，都能提供一个固定电流的器件</code>。理想电流源的 $I-V$ 曲线如图 4-19a 所示，这是一条水平直线。已经知道，$I-V$ 曲线的斜率与电阻值成反比。 $I-V$ 曲线为水平直线，意味着理想电流源的内阻为无穷大。理想电流源的电路模型如图 4-19b 所示。</p>
+<p><code>已经看到 FET 和 BJT 的特性曲线上都有恒流区。该区域中的特性曲线几乎是一条水平直线，表明内阻确实非常高</code>。对于大多数应用，<code>可假定 FET 或者 BJT 是理想电流源</code>。在那些需要考虑内阻的情况下，可以使用1.3节讨论的诺顿模型。实际电流源的诺顿模型如图 4-19c 所示，其中诺顿电阻表示电流源的内阻。</p>
+<h3 id="435-电流源偏置">4.3.5 电流源偏置</h3>
+<p>这种偏置形式在集成电路中广泛使用，但需要一个额外的晶体管。<strong>一个晶体管作为电流源来使 $I_D$ 保持固定不变，它是一种非常稳定的偏置形式</strong>。电流源偏置也能提高增益，后面会看到。</p>
+<p>图4-20给出了电流源偏置的两个例子。在图4-20a中，<strong>$Q_2$是 JFET 恒流源，为 $Q_1$ 提供电流</strong>。电流大小由 $Q_2$ 的 $I_{DSS}$ 和 $R_S$决定。<strong>由于不同的晶体管 $I_{DSS}$ 不同，因此电流大小取决于所选择的特定晶体管</strong>。电流源不能提供大于 $Q_1$ 的 $I_{DSS}$ 的电流，以确保 $Q_1$ 的 $V_{GS}$ 为负。</p>
+<p>对于晶体管间的一-致性，图4-20b中的组态更好。此时  BJT 提供电流。因为基极接地，并且发射结正向偏置，所以发射极电压为 $-0.7V$。这意味着 $R_E$ 两端有恒定电压，也就是 JFET 中有恒定电流。同样，此电流要小于$Q_1$ 的 $I_{DSS}$ 。</p>
 
 </section>
 
@@ -188,6 +275,18 @@ $$</p>
     </section>
 
 
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
     </footer>
 
 
@@ -231,7 +330,7 @@ $$</p>
         
 
         <div class="article-details">
-            <h2 class="article-title">4.2JFET特性</h2>
+            <h2 class="article-title">4.2 JFET特性</h2>
         </div>
     </a>
 </article>
@@ -243,7 +342,7 @@ $$</p>
         
 
         <div class="article-details">
-            <h2 class="article-title">4.1FET的结构</h2>
+            <h2 class="article-title">4.1 FET的结构</h2>
         </div>
     </a>
 </article>
@@ -255,7 +354,7 @@ $$</p>
         
 
         <div class="article-details">
-            <h2 class="article-title">3.7开关型双极型晶体管</h2>
+            <h2 class="article-title">3.7 开关型双极型晶体管</h2>
         </div>
     </a>
 </article>
@@ -267,7 +366,7 @@ $$</p>
         
 
         <div class="article-details">
-            <h2 class="article-title">3.6共基极放大器</h2>
+            <h2 class="article-title">3.6 共基极放大器</h2>
         </div>
     </a>
 </article>
@@ -279,7 +378,7 @@ $$</p>
         
 
         <div class="article-details">
-            <h2 class="article-title">3.5共集电极放大器</h2>
+            <h2 class="article-title">3.5 共集电极放大器</h2>
         </div>
     </a>
 </article>
@@ -297,7 +396,7 @@ $$</p>
     data-app-id="d44db3f9-a0ff-4551-a44d-316afd2e5835"
     data-page-id="f23ca4d546480d577371cd48e07ddf4e"
     data-page-url="https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/4-3jfet%E5%81%8F%E7%BD%AE/"
-    data-page-title="4.3JFET偏置"></div>
+    data-page-title="4.3 JFET偏置"></div>
 <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
 
 <script>
@@ -433,6 +532,9 @@ $$</p>
       <ul>
         <li><a href="#431jfet的自给偏置">4.3.1JFET的自给偏置</a></li>
         <li><a href="#432图解法">4.3.2图解法</a></li>
+        <li><a href="#433分压式偏置">4.3.3分压式偏置</a></li>
+        <li><a href="#434电流源">4.3.4电流源</a></li>
+        <li><a href="#435-电流源偏置">4.3.5 电流源偏置</a></li>
       </ul>
     </li>
   </ul>

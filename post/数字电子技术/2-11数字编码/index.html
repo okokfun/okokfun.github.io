@@ -1,17 +1,23 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content=''><title>2.11数字编码</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='2.11.1格雷码 格雷(Gray)码是无权码,并不是算术编码;也就是没有赋予不同位的特足的权.恰雷俏的重要特征是,从一个码字到下一个接续码字仅有一位发生了变化.这个特征在许多应用程序中是非常重要的,例如对于轴位编码器,在两个相邻顺序数之间,错误敏感度随着位数改变数目的增加而增加.
+◇ 格雷码的一位改变的特征减小了出错概率. 表2.6列出了十进制数 0~15 所对应的 4 位格雷码,表中给出了二进制数以做参照.和二进制数相似,格雷码可以拥有任意的位数.注意两个相邻的格雷码字之间的一位变化.例如,从十进制数 3 到十进制数 4,格雷码从 0010 变为 0110,而二进制编码从 0011 变为 0100 改变了 3 个位.格雷码中唯一的位改变是从右数的第 3 位,其他位保持不变. $$ 表2.6 ~~~4位格雷码 $$
+10进制 2进制 格雷码 0 0000 0000 1 0001 0001 2 0010 0011 3 0011 0010 4 0100 0110 5 0101 0111 6 0110 0101 7 0111 0100 8 1000 1100 9 1001 1101 10 1010 1111 11 1011 1110 12 1100 1010 13 1101 1011 14 1110 1001 15 1111 1000 二进制数到格雷码的转换 二进制数和格雷码之间的转换有时很有用.'><title>2.11数字编码</title>
 
 <link rel='canonical' href='https://okokfun.github.io/post/%E6%95%B0%E5%AD%97%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF/2-11%E6%95%B0%E5%AD%97%E7%BC%96%E7%A0%81/'>
 
 <link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='2.11数字编码'>
-<meta property='og:description' content=''>
+<meta property='og:description' content='2.11.1格雷码 格雷(Gray)码是无权码,并不是算术编码;也就是没有赋予不同位的特足的权.恰雷俏的重要特征是,从一个码字到下一个接续码字仅有一位发生了变化.这个特征在许多应用程序中是非常重要的,例如对于轴位编码器,在两个相邻顺序数之间,错误敏感度随着位数改变数目的增加而增加.
+◇ 格雷码的一位改变的特征减小了出错概率. 表2.6列出了十进制数 0~15 所对应的 4 位格雷码,表中给出了二进制数以做参照.和二进制数相似,格雷码可以拥有任意的位数.注意两个相邻的格雷码字之间的一位变化.例如,从十进制数 3 到十进制数 4,格雷码从 0010 变为 0110,而二进制编码从 0011 变为 0100 改变了 3 个位.格雷码中唯一的位改变是从右数的第 3 位,其他位保持不变. $$ 表2.6 ~~~4位格雷码 $$
+10进制 2进制 格雷码 0 0000 0000 1 0001 0001 2 0010 0011 3 0011 0010 4 0100 0110 5 0101 0111 6 0110 0101 7 0111 0100 8 1000 1100 9 1001 1101 10 1010 1111 11 1011 1110 12 1100 1010 13 1101 1011 14 1110 1001 15 1111 1000 二进制数到格雷码的转换 二进制数和格雷码之间的转换有时很有用.'>
 <meta property='og:url' content='https://okokfun.github.io/post/%E6%95%B0%E5%AD%97%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF/2-11%E6%95%B0%E5%AD%97%E7%BC%96%E7%A0%81/'>
 <meta property='og:site_name' content='My Blog'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Digital' /><meta property='article:published_time' content='2023-07-14T19:03:50&#43;00:00'/><meta property='article:modified_time' content='2023-07-14T19:03:50&#43;00:00'/>
 <meta name="twitter:title" content="2.11数字编码">
-<meta name="twitter:description" content=""><script>
+<meta name="twitter:description" content="2.11.1格雷码 格雷(Gray)码是无权码,并不是算术编码;也就是没有赋予不同位的特足的权.恰雷俏的重要特征是,从一个码字到下一个接续码字仅有一位发生了变化.这个特征在许多应用程序中是非常重要的,例如对于轴位编码器,在两个相邻顺序数之间,错误敏感度随着位数改变数目的增加而增加.
+◇ 格雷码的一位改变的特征减小了出错概率. 表2.6列出了十进制数 0~15 所对应的 4 位格雷码,表中给出了二进制数以做参照.和二进制数相似,格雷码可以拥有任意的位数.注意两个相邻的格雷码字之间的一位变化.例如,从十进制数 3 到十进制数 4,格雷码从 0010 变为 0110,而二进制编码从 0011 变为 0100 改变了 3 个位.格雷码中唯一的位改变是从右数的第 3 位,其他位保持不变. $$ 表2.6 ~~~4位格雷码 $$
+10进制 2进制 格雷码 0 0000 0000 1 0001 0001 2 0010 0011 3 0011 0010 4 0100 0110 5 0101 0111 6 0110 0101 7 0111 0100 8 1000 1100 9 1001 1101 10 1010 1111 11 1011 1110 12 1100 1010 13 1101 1011 14 1110 1001 15 1111 1000 二进制数到格雷码的转换 二进制数和格雷码之间的转换有时很有用."><script>
     (function(){
         if(''){
             if (prompt('请输入文章密码') !== ''){
@@ -25,7 +31,7 @@
 
     </head>
     <body class="
-    article-page 
+    article-page has-toc
 ">
     <script>
         (function() {
@@ -51,128 +57,22 @@
 </script>
 <div class="container main-container flex 
     
-        on-phone--column extended
+        extended
     
 ">
     
-        <aside class="sidebar left-sidebar sticky">
-    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
-        <span class="hamburger-box">
-            <span class="hamburger-inner"></span>
-        </span>
-    </button>
-
-    <header class="site-info">
-        
-            
-            <figure class="site-avatar">
-                
-                    
-                    
-                    
-                        
-                        <img src="/img/avatar_hu71fc3898bde3464d50a00f65e63c7ec2_517570_300x0_resize_box_3.png" width="300"
-                            height="354" class="site-logo" loading="lazy" alt="Avatar">
-                    
-                
-
-                
-            </figure>
-            
-        
-        
-        <h1 class="site-name"><a href="/">My Blog</a></h1>
-        <h2 class="site-description"></h2></header>
-
-    <ol class="menu" id="main-menu">
-        
-        
-        
-
-        <li >
-            <a href='/page/about/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <div id="article-toolbar">
+            <a href="/" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="7" r="4" />
-  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+  <polyline points="15 6 9 12 15 18" />
 </svg>
 
 
 
-                
-                <span>About</span>
+                <span>Back</span>
             </a>
-        </li>
-        
-        
-
-        <li >
-            <a href='/page/archives/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <rect x="3" y="4" width="18" height="4" rx="2" />
-  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
-  <line x1="10" y1="12" x2="14" y2="12" />
-</svg>
-
-
-
-                
-                <span>Archives</span>
-            </a>
-        </li>
-        
-        
-
-        <li >
-            <a href='/page/search/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="10" cy="10" r="7" />
-  <line x1="21" y1="21" x2="15" y2="15" />
-</svg>
-
-
-
-                
-                <span>Search</span>
-            </a>
-        </li>
-        
-
-        
-            <li id="dark-mode-toggle">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="8" cy="12" r="2" />
-  <rect x="2" y="6" width="20" height="12" rx="6" />
-</svg>
-
-
-
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="16" cy="12" r="2" />
-  <rect x="2" y="6" width="20" height="12" rx="6" />
-</svg>
-
-
-
-                <span>Dark Mode</span>
-            </li>
-        
-    </ol>
-</aside>
-
+        </div>
     
 <main class="main full-width">
     <article class="main-article">
@@ -215,7 +115,7 @@
 
 
                 <time class="article-time--reading">
-                    0 minute read
+                    1 minute read
                 </time>
             </div>
         
@@ -225,7 +125,163 @@
 </header>
 
     <section class="article-content">
-    
+    <h3 id="2111格雷码">2.11.1格雷码</h3>
+<p>格雷(Gray)码是无权码,并不是算术编码;也就是没有赋予不同位的特足的权.恰雷俏的重要特征是,从一个码字到下一个接续码字仅有一位发生了变化.这个特征在许多应用程序中是非常重要的,例如对于轴位编码器,在两个相邻顺序数之间,错误敏感度随着位数改变数目的增加而增加.</p>
+<ul>
+<li>◇ 格雷码的一位改变的特征减小了出错概率.</li>
+</ul>
+<p>表2.6列出了十进制数 0~15 所对应的 4 位格雷码,表中给出了二进制数以做参照.和二进制数相似,格雷码可以拥有任意的位数.注意两个相邻的格雷码字之间的一位变化.例如,从十进制数 3 到十进制数 4,格雷码从 0010 变为 0110,而二进制编码从 0011 变为 0100 改变了 3 个位.格雷码中唯一的位改变是从右数的第 3 位,其他位保持不变.
+$$
+表2.6 ~~~4位格雷码
+$$</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">10进制</th>
+<th style="text-align:center">2进制</th>
+<th style="text-align:center">格雷码</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0000</td>
+<td style="text-align:center">0000</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0001</td>
+<td style="text-align:center">0001</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">0010</td>
+<td style="text-align:center">0011</td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:center">0011</td>
+<td style="text-align:center">0010</td>
+</tr>
+<tr>
+<td style="text-align:center">4</td>
+<td style="text-align:center">0100</td>
+<td style="text-align:center">0110</td>
+</tr>
+<tr>
+<td style="text-align:center">5</td>
+<td style="text-align:center">0101</td>
+<td style="text-align:center">0111</td>
+</tr>
+<tr>
+<td style="text-align:center">6</td>
+<td style="text-align:center">0110</td>
+<td style="text-align:center">0101</td>
+</tr>
+<tr>
+<td style="text-align:center">7</td>
+<td style="text-align:center">0111</td>
+<td style="text-align:center">0100</td>
+</tr>
+<tr>
+<td style="text-align:center">8</td>
+<td style="text-align:center">1000</td>
+<td style="text-align:center">1100</td>
+</tr>
+<tr>
+<td style="text-align:center">9</td>
+<td style="text-align:center">1001</td>
+<td style="text-align:center">1101</td>
+</tr>
+<tr>
+<td style="text-align:center">10</td>
+<td style="text-align:center">1010</td>
+<td style="text-align:center">1111</td>
+</tr>
+<tr>
+<td style="text-align:center">11</td>
+<td style="text-align:center">1011</td>
+<td style="text-align:center">1110</td>
+</tr>
+<tr>
+<td style="text-align:center">12</td>
+<td style="text-align:center">1100</td>
+<td style="text-align:center">1010</td>
+</tr>
+<tr>
+<td style="text-align:center">13</td>
+<td style="text-align:center">1101</td>
+<td style="text-align:center">1011</td>
+</tr>
+<tr>
+<td style="text-align:center">14</td>
+<td style="text-align:center">1110</td>
+<td style="text-align:center">1001</td>
+</tr>
+<tr>
+<td style="text-align:center">15</td>
+<td style="text-align:center">1111</td>
+<td style="text-align:center">1000</td>
+</tr>
+</tbody>
+</table>
+<p><strong>二进制数到格雷码的转换</strong> 二进制数和格雷码之间的转换有时很有用.下面的规则解释了怎样把二进制数变换为格雷码.</p>
+<ol>
+<li>格雷码中的最高有效位(最左边)等同于二进制数中相应的最高有效位.</li>
+<li>从左到右,加上每一对相邻的二进制编码位,得到下一个格雷码位.舍去进位.</li>
+</ol>
+<p>例如,二进制数 10110 到格雷码的转换如下:</p>
+<p><img src="https://s2.loli.net/2023/10/08/ZfkwUpHSicGdNKR.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="digtal2.11.1a.png"
+	
+	
+></p>
+<p>格雷码为11101.</p>
+<p><strong>格雷码到二进制数的转换</strong> 为了把格雷码转为二进制数,可以使用相似的方法,但是有一些区别.可以应用下面的规则.</p>
+<ol>
+<li>二进制编码中的最高有效位(最左边)等于格雷码中相应的位.</li>
+<li>将所产生的每个二进制编码位加上下一相邻位置的格雷码位.舍去进位.</li>
+</ol>
+<p>例如,格雷码 11011 到二进制的转换如下:
+<img src="https://s2.loli.net/2023/10/08/19QKSsT3a6LtYu5.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="digtal2.11.1b.png"
+	
+	
+></p>
+<p>二进制数是10010.</p>
+<h3 id="2112典型应用">2.11.2典型应用</h3>
+<p>3 位轴位编码器的示意图如图2.6所示.通常,有三个同心圆环被分成 8 个扇区.扇区越多,位置就能表示得越准确,但是为了解释的方便,仅仅使用了 8 个扇区.每个圆环的每个扇区分为能够反射光束或不能反射光束两种,当圆环随着轴转动时,处于红外线(IR)发射器下部的扇区分别接收红外线发射器所产生的 3 条光束.当扇区反射光束时表示 1,当扇区不反射光束时表示 0.红外线探测器检测是否存在反射光束,然后产生相应的 3 位编码.红外线发射器/探测器处于固定位置,当轴逆时针 360° 旋转时, 8 个扇区在3条光束下移动.每一条光束被扇区的表面反射或吸收,产生表示轴位编码器位置的二进制数或格雷码.</p>
+<p>在图2.6(a)中,这些扇区直接以二进制格式排列,所以探测器输出从 000 到001,再到 010,再到 011,等等.当光束处于反射扇区上部时,输出为 1;当光束处于非反射扇区上部时,输出为 0.如果从一个扇区到另一个扇区的转换瞬间,一条光束稍微先于其他光束被反射或吸收,就会产生一个错误的输出.考虑这 3 条光束从 111 扇区变换到 000 扇区所发生的情况.如果最高位的光束略微超前,那么由于 111 或 000 被 011 瞬间替代,轴位将被错误地显示.在这个应用中,要使得红外发射器/探测器的安装精确对齐,实际上是不可能的,因此在扇区之间瞬间变换时,通常会发生错误.
+<img src="https://s2.loli.net/2023/10/08/CfytvjxrAeaSklK.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="digtal2.11.2.png"
+	
+	
+>
+$$
+(a)二进制码~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~(b)格雷码
+$$
+$$
+图2.6一个简单的例子,解释在轴位编码器中格雷码是如何解决出错问题的.虽然大多数
+\\
+轴位编码器使用10位以上的编码以提高分辨率,但是使用3位就可以解释这种概念
+$$
+格雷码用来消除二进制所固有的这类出错问题.如图2.6(b)所示,格雷码保证了在两个相邻的扇区中,只有一个位会发生改变.这就意味着即使光束没有精确对准,也绝对不会发生转移瞬间中的错误.例如,再一次考虑,当光束位于 111 扇区,准备进入下一个 101 扇区会发生什么情况.无论光束是否对准,在转移瞬间只有两个可能的输出 111 和 101.在其他扇区的转移瞬间中,也会产生相同的结果.</p>
+
 </section>
 
 
@@ -238,9 +294,44 @@
     </section>
 
 
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
     </footer>
 
 
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css"integrity="sha384-RZU/ijkSsFbcmivfdRBQDtwuwVqK7GMOw6IMvKyeWL2K5UAlyp6WonmB8m7Jd0Hn"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js"integrity="sha384-pK1WpvzWVBQiP0/GjnvRxV4mOb0oxFuyRxJlk6vVw146n3egcN5C925NCP7a7BY8"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js"integrity="sha384-vZTG03m&#43;2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ]
+        });})
+</script>
     
 </article>
 
@@ -436,6 +527,37 @@
             >
 
             </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">Table of contents</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#2111格雷码">2.11.1格雷码</a></li>
+        <li><a href="#2112典型应用">2.11.2典型应用</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                </div>
+            </section>
+        </aside>
     
 
         </div>

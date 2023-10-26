@@ -1,17 +1,35 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content=''><title>7.3运算放大器闭环响应</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='为了能够精确地控制增益和带宽，运算放大器通常用于带有负反馈的闭环配置中。本节你将看到反馈是如何影响运算放大器的增益和频率的。
+学完本节后，你应该掌握以下内容:
+理解运算放大器的闭环响应 确定闭环增益 解释负反馈对带宽的影响 解释增益-带宽积 回顾一下第6章讲过负反馈会减小中频增益，前面讨论过的三种结构的闭环增益表达式如下。对同相放大器， $$ A_{cl(NI)}=\frac{R_f}{R_i}&#43;1 $$ 对电压跟随器， $$ A_{cl(VF)}\approx 1 $$ 对反相放大器， $$ A_{cl(I)}\approx -\frac{R_f}{R_i} $$
+7.3.1 负反馈对带宽的影响 我们已经学习了负反馈是如何影响增益的，现在将学习负反馈如何影响放大器的带宽。一个闭环运算放大器的截止频率为 $$ f_{c(cl)}=f_{c(ol)}(1&#43;BA_{ol(mid)})~~~(7-4) $$ 从表达式可以看出，由于因子 $1&#43;BA_{ol(mid)}$，闭环截止频率 $f_{c(cl)}$ 要大于开环截止频率$f_{c(ol)}$。B 是反馈衰减因子，等于 $R_i/(R_i&#43;R_f)$。式(7-4) 的详细推导过程见附录。
+因为 $f_{c(cl)}$ 等于闭环放大器的带宽，所以带宽同样随着相同的倍数增加。 $$ BW_{cl}=BW_{ol}(1&#43;BA_{ol(mid)})~~~(7-5) $$
+$$ 图7-8~~~闭环增益和开环增益的比较 $$ 图7-8用图形方式说明了补偿运算放大器闭环响应的概念。当负反馈减小运算放大器的开环增益时，带宽会增加。在两个增益曲线交叉点上方的增益，闭环增益与开环增益是彼此独立的。对闭环响应，交叉点处的频率是截止频率 $f_{c(cl)}$。注意，超过闭环截止频率后，闭环增益和开环增益具有相同的下降率。
+7.3.2 增益-带宽积 由于增益和带宽的乘积是常量，闭环增益的增加会引起带宽的下降，反之亦然。只要下降率是固定的 一20dB/十倍频程，这就成立。如果 $A_{cl}$ 表示任意闭环配置中的增益， $f_{c(cl)}$ 表示闭环截止频率(等于带宽)，于是 $$ A_{cl}f_{c(cl)}=A_{ol}f_{c(ol)} $$ 增益-带宽积始终等于运算放大器开环增益为 1 时的频率(单位增益带宽)。 $$ A_{cl}f_{c(cl)}=单位-增益带宽~~~(7-6) $$'><title>7.3 运算放大器闭环响应</title>
 
 <link rel='canonical' href='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/7-3%E8%BF%90%E7%AE%97%E6%94%BE%E5%A4%A7%E5%99%A8%E9%97%AD%E7%8E%AF%E5%93%8D%E5%BA%94/'>
 
-<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='7.3运算放大器闭环响应'>
-<meta property='og:description' content=''>
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='7.3 运算放大器闭环响应'>
+<meta property='og:description' content='为了能够精确地控制增益和带宽，运算放大器通常用于带有负反馈的闭环配置中。本节你将看到反馈是如何影响运算放大器的增益和频率的。
+学完本节后，你应该掌握以下内容:
+理解运算放大器的闭环响应 确定闭环增益 解释负反馈对带宽的影响 解释增益-带宽积 回顾一下第6章讲过负反馈会减小中频增益，前面讨论过的三种结构的闭环增益表达式如下。对同相放大器， $$ A_{cl(NI)}=\frac{R_f}{R_i}&#43;1 $$ 对电压跟随器， $$ A_{cl(VF)}\approx 1 $$ 对反相放大器， $$ A_{cl(I)}\approx -\frac{R_f}{R_i} $$
+7.3.1 负反馈对带宽的影响 我们已经学习了负反馈是如何影响增益的，现在将学习负反馈如何影响放大器的带宽。一个闭环运算放大器的截止频率为 $$ f_{c(cl)}=f_{c(ol)}(1&#43;BA_{ol(mid)})~~~(7-4) $$ 从表达式可以看出，由于因子 $1&#43;BA_{ol(mid)}$，闭环截止频率 $f_{c(cl)}$ 要大于开环截止频率$f_{c(ol)}$。B 是反馈衰减因子，等于 $R_i/(R_i&#43;R_f)$。式(7-4) 的详细推导过程见附录。
+因为 $f_{c(cl)}$ 等于闭环放大器的带宽，所以带宽同样随着相同的倍数增加。 $$ BW_{cl}=BW_{ol}(1&#43;BA_{ol(mid)})~~~(7-5) $$
+$$ 图7-8~~~闭环增益和开环增益的比较 $$ 图7-8用图形方式说明了补偿运算放大器闭环响应的概念。当负反馈减小运算放大器的开环增益时，带宽会增加。在两个增益曲线交叉点上方的增益，闭环增益与开环增益是彼此独立的。对闭环响应，交叉点处的频率是截止频率 $f_{c(cl)}$。注意，超过闭环截止频率后，闭环增益和开环增益具有相同的下降率。
+7.3.2 增益-带宽积 由于增益和带宽的乘积是常量，闭环增益的增加会引起带宽的下降，反之亦然。只要下降率是固定的 一20dB/十倍频程，这就成立。如果 $A_{cl}$ 表示任意闭环配置中的增益， $f_{c(cl)}$ 表示闭环截止频率(等于带宽)，于是 $$ A_{cl}f_{c(cl)}=A_{ol}f_{c(ol)} $$ 增益-带宽积始终等于运算放大器开环增益为 1 时的频率(单位增益带宽)。 $$ A_{cl}f_{c(cl)}=单位-增益带宽~~~(7-6) $$'>
 <meta property='og:url' content='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/7-3%E8%BF%90%E7%AE%97%E6%94%BE%E5%A4%A7%E5%99%A8%E9%97%AD%E7%8E%AF%E5%93%8D%E5%BA%94/'>
 <meta property='og:site_name' content='My Blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Analog' /><meta property='article:published_time' content='2023-07-14T18:16:34&#43;00:00'/><meta property='article:modified_time' content='2023-07-14T18:16:34&#43;00:00'/>
-<meta name="twitter:title" content="7.3运算放大器闭环响应">
-<meta name="twitter:description" content=""><script>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Analog' /><meta property='article:published_time' content='2023-07-14T18:16:34&#43;08:00'/><meta property='article:modified_time' content='2023-07-14T18:16:34&#43;08:00'/>
+<meta name="twitter:title" content="7.3 运算放大器闭环响应">
+<meta name="twitter:description" content="为了能够精确地控制增益和带宽，运算放大器通常用于带有负反馈的闭环配置中。本节你将看到反馈是如何影响运算放大器的增益和频率的。
+学完本节后，你应该掌握以下内容:
+理解运算放大器的闭环响应 确定闭环增益 解释负反馈对带宽的影响 解释增益-带宽积 回顾一下第6章讲过负反馈会减小中频增益，前面讨论过的三种结构的闭环增益表达式如下。对同相放大器， $$ A_{cl(NI)}=\frac{R_f}{R_i}&#43;1 $$ 对电压跟随器， $$ A_{cl(VF)}\approx 1 $$ 对反相放大器， $$ A_{cl(I)}\approx -\frac{R_f}{R_i} $$
+7.3.1 负反馈对带宽的影响 我们已经学习了负反馈是如何影响增益的，现在将学习负反馈如何影响放大器的带宽。一个闭环运算放大器的截止频率为 $$ f_{c(cl)}=f_{c(ol)}(1&#43;BA_{ol(mid)})~~~(7-4) $$ 从表达式可以看出，由于因子 $1&#43;BA_{ol(mid)}$，闭环截止频率 $f_{c(cl)}$ 要大于开环截止频率$f_{c(ol)}$。B 是反馈衰减因子，等于 $R_i/(R_i&#43;R_f)$。式(7-4) 的详细推导过程见附录。
+因为 $f_{c(cl)}$ 等于闭环放大器的带宽，所以带宽同样随着相同的倍数增加。 $$ BW_{cl}=BW_{ol}(1&#43;BA_{ol(mid)})~~~(7-5) $$
+$$ 图7-8~~~闭环增益和开环增益的比较 $$ 图7-8用图形方式说明了补偿运算放大器闭环响应的概念。当负反馈减小运算放大器的开环增益时，带宽会增加。在两个增益曲线交叉点上方的增益，闭环增益与开环增益是彼此独立的。对闭环响应，交叉点处的频率是截止频率 $f_{c(cl)}$。注意，超过闭环截止频率后，闭环增益和开环增益具有相同的下降率。
+7.3.2 增益-带宽积 由于增益和带宽的乘积是常量，闭环增益的增加会引起带宽的下降，反之亦然。只要下降率是固定的 一20dB/十倍频程，这就成立。如果 $A_{cl}$ 表示任意闭环配置中的增益， $f_{c(cl)}$ 表示闭环截止频率(等于带宽)，于是 $$ A_{cl}f_{c(cl)}=A_{ol}f_{c(ol)} $$ 增益-带宽积始终等于运算放大器开环增益为 1 时的频率(单位增益带宽)。 $$ A_{cl}f_{c(cl)}=单位-增益带宽~~~(7-6) $$"><script>
     (function(){
         if(''){
             if (prompt('请输入文章密码') !== ''){
@@ -25,7 +43,7 @@
 
     </head>
     <body class="
-    article-page 
+    article-page has-toc
 ">
     <script>
         (function() {
@@ -51,128 +69,22 @@
 </script>
 <div class="container main-container flex 
     
-        on-phone--column extended
+        extended
     
 ">
     
-        <aside class="sidebar left-sidebar sticky">
-    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
-        <span class="hamburger-box">
-            <span class="hamburger-inner"></span>
-        </span>
-    </button>
-
-    <header class="site-info">
-        
-            
-            <figure class="site-avatar">
-                
-                    
-                    
-                    
-                        
-                        <img src="/img/avatar_hu71fc3898bde3464d50a00f65e63c7ec2_517570_300x0_resize_box_3.png" width="300"
-                            height="354" class="site-logo" loading="lazy" alt="Avatar">
-                    
-                
-
-                
-            </figure>
-            
-        
-        
-        <h1 class="site-name"><a href="/">My Blog</a></h1>
-        <h2 class="site-description"></h2></header>
-
-    <ol class="menu" id="main-menu">
-        
-        
-        
-
-        <li >
-            <a href='/page/about/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <div id="article-toolbar">
+            <a href="/" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="7" r="4" />
-  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+  <polyline points="15 6 9 12 15 18" />
 </svg>
 
 
 
-                
-                <span>About</span>
+                <span>Back</span>
             </a>
-        </li>
-        
-        
-
-        <li >
-            <a href='/page/archives/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <rect x="3" y="4" width="18" height="4" rx="2" />
-  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
-  <line x1="10" y1="12" x2="14" y2="12" />
-</svg>
-
-
-
-                
-                <span>Archives</span>
-            </a>
-        </li>
-        
-        
-
-        <li >
-            <a href='/page/search/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="10" cy="10" r="7" />
-  <line x1="21" y1="21" x2="15" y2="15" />
-</svg>
-
-
-
-                
-                <span>Search</span>
-            </a>
-        </li>
-        
-
-        
-            <li id="dark-mode-toggle">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="8" cy="12" r="2" />
-  <rect x="2" y="6" width="20" height="12" rx="6" />
-</svg>
-
-
-
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="16" cy="12" r="2" />
-  <rect x="2" y="6" width="20" height="12" rx="6" />
-</svg>
-
-
-
-                <span>Dark Mode</span>
-            </li>
-        
-    </ol>
-</aside>
-
+        </div>
     
 <main class="main full-width">
     <article class="main-article">
@@ -182,7 +94,7 @@
     
 
     <h2 class="article-title">
-        <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/7-3%E8%BF%90%E7%AE%97%E6%94%BE%E5%A4%A7%E5%99%A8%E9%97%AD%E7%8E%AF%E5%93%8D%E5%BA%94/">7.3运算放大器闭环响应</a>
+        <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/7-3%E8%BF%90%E7%AE%97%E6%94%BE%E5%A4%A7%E5%99%A8%E9%97%AD%E7%8E%AF%E5%93%8D%E5%BA%94/">7.3 运算放大器闭环响应</a>
     </h2>
 
     
@@ -215,7 +127,7 @@
 
 
                 <time class="article-time--reading">
-                    0 minute read
+                    1 minute read
                 </time>
             </div>
         
@@ -225,7 +137,63 @@
 </header>
 
     <section class="article-content">
-    
+    <p>为了能够精确地控制增益和带宽，运算放大器通常用于带有负反馈的闭环配置中。本节你将看到反馈是如何影响运算放大器的增益和频率的。</p>
+<p>学完本节后，你应该掌握以下内容:</p>
+<ul>
+<li>理解运算放大器的闭环响应
+<ul>
+<li>确定闭环增益</li>
+<li>解释负反馈对带宽的影响</li>
+<li>解释增益-带宽积</li>
+</ul>
+</li>
+</ul>
+<p>回顾一下第6章讲过负反馈会减小中频增益，前面讨论过的三种结构的闭环增益表达式如下。对同相放大器，
+$$
+A_{cl(NI)}=\frac{R_f}{R_i}+1
+$$
+对电压跟随器，
+$$
+A_{cl(VF)}\approx 1
+$$
+对反相放大器，
+$$
+A_{cl(I)}\approx -\frac{R_f}{R_i}
+$$</p>
+<h3 id="731-负反馈对带宽的影响">7.3.1 负反馈对带宽的影响</h3>
+<p>我们已经学习了负反馈是如何影响增益的，现在将学习负反馈如何影响放大器的带宽。一个闭环运算放大器的截止频率为
+$$
+f_{c(cl)}=f_{c(ol)}(1+BA_{ol(mid)})~~~(7-4)
+$$
+从表达式可以看出，由于因子 $1+BA_{ol(mid)}$，闭环截止频率 $f_{c(cl)}$ 要大于开环截止频率$f_{c(ol)}$。B 是反馈衰减因子，等于 $R_i/(R_i+R_f)$。式(7-4) 的详细推导过程见附录。</p>
+<p>因为 $f_{c(cl)}$ 等于闭环放大器的带宽，所以带宽同样随着相同的倍数增加。
+$$
+BW_{cl}=BW_{ol}(1+BA_{ol(mid)})~~~(7-5)
+$$</p>
+<p><img src="https://s2.loli.net/2023/10/16/pmDjwWKy9Tsb2A8.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog7_8.png"
+	
+	
+>
+$$
+图7-8~~~闭环增益和开环增益的比较
+$$
+图7-8用图形方式说明了补偿运算放大器闭环响应的概念。当负反馈减小运算放大器的开环增益时，带宽会增加。在两个增益曲线交叉点上方的增益，闭环增益与开环增益是彼此独立的。对闭环响应，交叉点处的频率是截止频率 $f_{c(cl)}$。注意，超过闭环截止频率后，闭环增益和开环增益具有相同的下降率。</p>
+<h3 id="732-增益-带宽积">7.3.2 增益-带宽积</h3>
+<p>由于<code>增益和带宽的乘积是常量</code>，闭环增益的增加会引起带宽的下降，反之亦然。只要下降率是固定的 一20dB/十倍频程，这就成立。如果 $A_{cl}$ 表示任意闭环配置中的增益， $f_{c(cl)}$ 表示闭环截止频率(等于带宽)，于是
+$$
+A_{cl}f_{c(cl)}=A_{ol}f_{c(ol)}
+$$
+增益-带宽积始终等于运算放大器开环增益为 1 时的频率(单位增益带宽)。
+$$
+A_{cl}f_{c(cl)}=单位-增益带宽~~~(7-6)
+$$</p>
+
 </section>
 
 
@@ -238,9 +206,44 @@
     </section>
 
 
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
     </footer>
 
 
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css"integrity="sha384-RZU/ijkSsFbcmivfdRBQDtwuwVqK7GMOw6IMvKyeWL2K5UAlyp6WonmB8m7Jd0Hn"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js"integrity="sha384-pK1WpvzWVBQiP0/GjnvRxV4mOb0oxFuyRxJlk6vVw146n3egcN5C925NCP7a7BY8"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js"integrity="sha384-vZTG03m&#43;2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ]
+        });})
+</script>
     
 </article>
 
@@ -258,7 +261,7 @@
         
 
         <div class="article-details">
-            <h2 class="article-title">7.2运算放大器开环响应</h2>
+            <h2 class="article-title">7.2 运算放大器开环响应</h2>
         </div>
     </a>
 </article>
@@ -270,19 +273,7 @@
         
 
         <div class="article-details">
-            <h2 class="article-title">7.1基本概念</h2>
-        </div>
-    </a>
-</article>
-                
-                    
-<article class="">
-    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/6-7%E6%95%85%E9%9A%9C%E6%A3%80%E6%B5%8B/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">6.7故障检测</h2>
+            <h2 class="article-title">7.1 基本概念</h2>
         </div>
     </a>
 </article>
@@ -294,19 +285,31 @@
         
 
         <div class="article-details">
-            <h2 class="article-title">6.6运放阻抗和噪声</h2>
+            <h2 class="article-title">6.6 运放阻抗和噪声</h2>
         </div>
     </a>
 </article>
                 
                     
 <article class="">
-    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/6-4%E8%B4%9F%E5%8F%8D%E9%A6%88/">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/6-5%E8%B4%9F%E5%8F%8D%E9%A6%88%E8%BF%90%E6%94%BE%E7%BB%84%E6%80%81/">
         
         
 
         <div class="article-details">
-            <h2 class="article-title">6.4负反馈</h2>
+            <h2 class="article-title">6.5 负反馈运放组态</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/6-1%E8%BF%90%E7%AE%97%E6%94%BE%E5%A4%A7%E5%99%A8%E4%BB%8B%E7%BB%8D/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">6.1 运算放大器介绍</h2>
         </div>
     </a>
 </article>
@@ -324,7 +327,7 @@
     data-app-id="d44db3f9-a0ff-4551-a44d-316afd2e5835"
     data-page-id="40aa375aaa20370bcad0828609bd76b2"
     data-page-url="https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/7-3%E8%BF%90%E7%AE%97%E6%94%BE%E5%A4%A7%E5%99%A8%E9%97%AD%E7%8E%AF%E5%93%8D%E5%BA%94/"
-    data-page-title="7.3运算放大器闭环响应"></div>
+    data-page-title="7.3 运算放大器闭环响应"></div>
 <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
 
 <script>
@@ -436,6 +439,37 @@
             >
 
             </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">Table of contents</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#731-负反馈对带宽的影响">7.3.1 负反馈对带宽的影响</a></li>
+        <li><a href="#732-增益-带宽积">7.3.2 增益-带宽积</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                </div>
+            </section>
+        </aside>
     
 
         </div>

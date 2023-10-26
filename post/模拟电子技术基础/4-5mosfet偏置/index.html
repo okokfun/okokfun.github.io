@@ -1,17 +1,32 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content=''><title>4.5MOSFET偏置</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='如同 BJT 和 JFET，偏置电路确定合适的直流工作条件，为交流信号提供一个稳定的工作点。MOSFET 的偏置电路与之前介绍的 BJT 和 JFET 的偏置电路类似。特定的偏置电路取决于是否使用一个或者两个电源，以及 MOSFET 的类型(耗尽型或者增强型)。
+学完本节后，你应该掌握以下内容:
+讨论和分析 MOSFET 偏置电路 解释为什么 D-MOSFET 比其他任何类型的晶体管有更多的偏置选择 解释 0 偏置 讨论 E-MOSFET 的三种偏置方法 4.5.1 D-MOSFET偏置 D-MOSFET 在正或负的 $V_{GS}$ 下都能工作。当 $V_{GS}$ 为负时，器件工作在耗尽模式; 当 $V_{GS}$ 为正时，器件工作在增强模式。D-MOSFET 的优点是在这两种模式下都能工作，也是唯一一种具有此特性的晶体管。
+$$ 图4-31~~~~D-MOSFET的零偏置 $$ 零偏置 最基本的偏置方式是使 $V_{GS} =0V$，这样栅极上的交流信号使得栅源电压在该偏置点附近上下变化。图4-31 给出了这种偏置电路。因为该电路非常简单高效，所以它是最常用的 D-MOSFET 偏置方式。工作点设置在耗尽工作和增强工作之间。由于 $V_{GS} =0V$,因此 $I_D=I_{DSS}$，如图 4-31 所示。漏源电压可表示为: $$ V_{DS}=V_{DD}-I_{DSS}R_D $$ $$ a)~包含自给偏置的分压器 ~b）源极偏置~c)电流源偏置 $$
+$$ 图4-33~~~~D-MOSFET的其他偏置电路 $$ 其他偏置方式 D-MOSFET 能工作在耗尽或增强模式。因为这种多功能性，所以之前学习的 BJT 和 JFET 的任何偏置电路都能用于D-MOSFET。图4-33 给出了三种常见的偏置方法，但实际中可能还有其他偏置方法。
+图4-33a 中的偏置电路使用之前介绍的 JFET 的分压式偏置和自给偏置的组合。栅极电压可通过分压公式计算得到，这对所有 FET 器件都是准确的，因为可以忽略负载效应。栅极电压与 JFET 给出的相同(见式(4-5)): $$ V_G=(\frac{R_2}{R_1&#43;R_2})V_{DD} $$ 组成分压电路的电阻通常非常大(在兆欧级)，因为栅极的高输人电阻。其他电极的电压取决于特定的器件参数。'><title>4.5 MOSFET偏置</title>
 
 <link rel='canonical' href='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/4-5mosfet%E5%81%8F%E7%BD%AE/'>
 
-<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='4.5MOSFET偏置'>
-<meta property='og:description' content=''>
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='4.5 MOSFET偏置'>
+<meta property='og:description' content='如同 BJT 和 JFET，偏置电路确定合适的直流工作条件，为交流信号提供一个稳定的工作点。MOSFET 的偏置电路与之前介绍的 BJT 和 JFET 的偏置电路类似。特定的偏置电路取决于是否使用一个或者两个电源，以及 MOSFET 的类型(耗尽型或者增强型)。
+学完本节后，你应该掌握以下内容:
+讨论和分析 MOSFET 偏置电路 解释为什么 D-MOSFET 比其他任何类型的晶体管有更多的偏置选择 解释 0 偏置 讨论 E-MOSFET 的三种偏置方法 4.5.1 D-MOSFET偏置 D-MOSFET 在正或负的 $V_{GS}$ 下都能工作。当 $V_{GS}$ 为负时，器件工作在耗尽模式; 当 $V_{GS}$ 为正时，器件工作在增强模式。D-MOSFET 的优点是在这两种模式下都能工作，也是唯一一种具有此特性的晶体管。
+$$ 图4-31~~~~D-MOSFET的零偏置 $$ 零偏置 最基本的偏置方式是使 $V_{GS} =0V$，这样栅极上的交流信号使得栅源电压在该偏置点附近上下变化。图4-31 给出了这种偏置电路。因为该电路非常简单高效，所以它是最常用的 D-MOSFET 偏置方式。工作点设置在耗尽工作和增强工作之间。由于 $V_{GS} =0V$,因此 $I_D=I_{DSS}$，如图 4-31 所示。漏源电压可表示为: $$ V_{DS}=V_{DD}-I_{DSS}R_D $$ $$ a)~包含自给偏置的分压器 ~b）源极偏置~c)电流源偏置 $$
+$$ 图4-33~~~~D-MOSFET的其他偏置电路 $$ 其他偏置方式 D-MOSFET 能工作在耗尽或增强模式。因为这种多功能性，所以之前学习的 BJT 和 JFET 的任何偏置电路都能用于D-MOSFET。图4-33 给出了三种常见的偏置方法，但实际中可能还有其他偏置方法。
+图4-33a 中的偏置电路使用之前介绍的 JFET 的分压式偏置和自给偏置的组合。栅极电压可通过分压公式计算得到，这对所有 FET 器件都是准确的，因为可以忽略负载效应。栅极电压与 JFET 给出的相同(见式(4-5)): $$ V_G=(\frac{R_2}{R_1&#43;R_2})V_{DD} $$ 组成分压电路的电阻通常非常大(在兆欧级)，因为栅极的高输人电阻。其他电极的电压取决于特定的器件参数。'>
 <meta property='og:url' content='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/4-5mosfet%E5%81%8F%E7%BD%AE/'>
 <meta property='og:site_name' content='My Blog'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Analog' /><meta property='article:published_time' content='2023-07-14T17:38:02&#43;00:00'/><meta property='article:modified_time' content='2023-07-14T17:38:02&#43;00:00'/>
-<meta name="twitter:title" content="4.5MOSFET偏置">
-<meta name="twitter:description" content=""><script>
+<meta name="twitter:title" content="4.5 MOSFET偏置">
+<meta name="twitter:description" content="如同 BJT 和 JFET，偏置电路确定合适的直流工作条件，为交流信号提供一个稳定的工作点。MOSFET 的偏置电路与之前介绍的 BJT 和 JFET 的偏置电路类似。特定的偏置电路取决于是否使用一个或者两个电源，以及 MOSFET 的类型(耗尽型或者增强型)。
+学完本节后，你应该掌握以下内容:
+讨论和分析 MOSFET 偏置电路 解释为什么 D-MOSFET 比其他任何类型的晶体管有更多的偏置选择 解释 0 偏置 讨论 E-MOSFET 的三种偏置方法 4.5.1 D-MOSFET偏置 D-MOSFET 在正或负的 $V_{GS}$ 下都能工作。当 $V_{GS}$ 为负时，器件工作在耗尽模式; 当 $V_{GS}$ 为正时，器件工作在增强模式。D-MOSFET 的优点是在这两种模式下都能工作，也是唯一一种具有此特性的晶体管。
+$$ 图4-31~~~~D-MOSFET的零偏置 $$ 零偏置 最基本的偏置方式是使 $V_{GS} =0V$，这样栅极上的交流信号使得栅源电压在该偏置点附近上下变化。图4-31 给出了这种偏置电路。因为该电路非常简单高效，所以它是最常用的 D-MOSFET 偏置方式。工作点设置在耗尽工作和增强工作之间。由于 $V_{GS} =0V$,因此 $I_D=I_{DSS}$，如图 4-31 所示。漏源电压可表示为: $$ V_{DS}=V_{DD}-I_{DSS}R_D $$ $$ a)~包含自给偏置的分压器 ~b）源极偏置~c)电流源偏置 $$
+$$ 图4-33~~~~D-MOSFET的其他偏置电路 $$ 其他偏置方式 D-MOSFET 能工作在耗尽或增强模式。因为这种多功能性，所以之前学习的 BJT 和 JFET 的任何偏置电路都能用于D-MOSFET。图4-33 给出了三种常见的偏置方法，但实际中可能还有其他偏置方法。
+图4-33a 中的偏置电路使用之前介绍的 JFET 的分压式偏置和自给偏置的组合。栅极电压可通过分压公式计算得到，这对所有 FET 器件都是准确的，因为可以忽略负载效应。栅极电压与 JFET 给出的相同(见式(4-5)): $$ V_G=(\frac{R_2}{R_1&#43;R_2})V_{DD} $$ 组成分压电路的电阻通常非常大(在兆欧级)，因为栅极的高输人电阻。其他电极的电压取决于特定的器件参数。"><script>
     (function(){
         if(''){
             if (prompt('请输入文章密码') !== ''){
@@ -25,7 +40,7 @@
 
     </head>
     <body class="
-    article-page 
+    article-page has-toc
 ">
     <script>
         (function() {
@@ -51,128 +66,22 @@
 </script>
 <div class="container main-container flex 
     
-        on-phone--column extended
+        extended
     
 ">
     
-        <aside class="sidebar left-sidebar sticky">
-    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
-        <span class="hamburger-box">
-            <span class="hamburger-inner"></span>
-        </span>
-    </button>
-
-    <header class="site-info">
-        
-            
-            <figure class="site-avatar">
-                
-                    
-                    
-                    
-                        
-                        <img src="/img/avatar_hu71fc3898bde3464d50a00f65e63c7ec2_517570_300x0_resize_box_3.png" width="300"
-                            height="354" class="site-logo" loading="lazy" alt="Avatar">
-                    
-                
-
-                
-            </figure>
-            
-        
-        
-        <h1 class="site-name"><a href="/">My Blog</a></h1>
-        <h2 class="site-description"></h2></header>
-
-    <ol class="menu" id="main-menu">
-        
-        
-        
-
-        <li >
-            <a href='/page/about/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <div id="article-toolbar">
+            <a href="/" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="7" r="4" />
-  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+  <polyline points="15 6 9 12 15 18" />
 </svg>
 
 
 
-                
-                <span>About</span>
+                <span>Back</span>
             </a>
-        </li>
-        
-        
-
-        <li >
-            <a href='/page/archives/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <rect x="3" y="4" width="18" height="4" rx="2" />
-  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
-  <line x1="10" y1="12" x2="14" y2="12" />
-</svg>
-
-
-
-                
-                <span>Archives</span>
-            </a>
-        </li>
-        
-        
-
-        <li >
-            <a href='/page/search/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="10" cy="10" r="7" />
-  <line x1="21" y1="21" x2="15" y2="15" />
-</svg>
-
-
-
-                
-                <span>Search</span>
-            </a>
-        </li>
-        
-
-        
-            <li id="dark-mode-toggle">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="8" cy="12" r="2" />
-  <rect x="2" y="6" width="20" height="12" rx="6" />
-</svg>
-
-
-
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="16" cy="12" r="2" />
-  <rect x="2" y="6" width="20" height="12" rx="6" />
-</svg>
-
-
-
-                <span>Dark Mode</span>
-            </li>
-        
-    </ol>
-</aside>
-
+        </div>
     
 <main class="main full-width">
     <article class="main-article">
@@ -182,7 +91,7 @@
     
 
     <h2 class="article-title">
-        <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/4-5mosfet%E5%81%8F%E7%BD%AE/">4.5MOSFET偏置</a>
+        <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/4-5mosfet%E5%81%8F%E7%BD%AE/">4.5 MOSFET偏置</a>
     </h2>
 
     
@@ -215,7 +124,7 @@
 
 
                 <time class="article-time--reading">
-                    0 minute read
+                    1 minute read
                 </time>
             </div>
         
@@ -225,7 +134,96 @@
 </header>
 
     <section class="article-content">
-    
+    <p>如同 BJT 和 JFET，<code>偏置电路确定合适的直流工作条件，为交流信号提供一个稳定的工作点</code>。MOSFET 的偏置电路与之前介绍的 BJT 和 JFET 的偏置电路类似。特定的偏置电路取决于是否使用一个或者两个电源，以及 MOSFET 的类型(耗尽型或者增强型)。</p>
+<p>学完本节后，你应该掌握以下内容:</p>
+<ul>
+<li>讨论和分析 MOSFET 偏置电路
+<ul>
+<li>解释为什么 D-MOSFET 比其他任何类型的晶体管有更多的偏置选择</li>
+<li>解释 0 偏置</li>
+<li>讨论 E-MOSFET 的三种偏置方法</li>
+</ul>
+</li>
+</ul>
+<h3 id="451-d-mosfet偏置">4.5.1 D-MOSFET偏置</h3>
+<p>D-MOSFET 在正或负的 $V_{GS}$ 下都能工作。当 $V_{GS}$ 为负时，器件工作在耗尽模式; 当 $V_{GS}$ 为正时，器件工作在增强模式。D-MOSFET 的优点是在这两种模式下都能工作，也是唯一一种具有此特性的晶体管。</p>
+<p><img src="https://s2.loli.net/2023/10/06/uIBx31sR8FeiYmK.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog4_31.png"
+	
+	
+>
+$$
+图4-31~~~~D-MOSFET的零偏置
+$$
+<strong>零偏置</strong> 最基本的偏置方式是使 $V_{GS} =0V$，这样栅极上的交流信号使得栅源电压在该偏置点附近上下变化。图4-31 给出了这种偏置电路。因为该电路非常简单高效，所以它是最常用的 D-MOSFET 偏置方式。工作点设置在耗尽工作和增强工作之间。由于 $V_{GS} =0V$,因此 $I_D=I_{DSS}$，如图 4-31 所示。漏源电压可表示为:
+$$
+V_{DS}=V_{DD}-I_{DSS}R_D
+$$
+<img src="https://s2.loli.net/2023/10/06/qpyPBvJmDsEUGXR.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog4_33.png"
+	
+	
+>
+$$
+a)~包含自给偏置的分压器 ~b）源极偏置~c)电流源偏置
+$$</p>
+<p>$$
+图4-33~~~~D-MOSFET的其他偏置电路
+$$
+其他偏置方式 D-MOSFET 能工作在耗尽或增强模式。因为这种多功能性，所以之前学习的 BJT 和 JFET 的任何偏置电路都能用于D-MOSFET。图4-33 给出了三种常见的偏置方法，但实际中可能还有其他偏置方法。</p>
+<p>图4-33a 中的偏置电路使用之前介绍的 JFET 的<code>分压式偏置和自给偏置的组合</code>。栅极电压可通过分压公式计算得到，这对所有 FET 器件都是准确的，因为可以忽略负载效应。栅极电压与 JFET 给出的相同(见式(4-5)):
+$$
+V_G=(\frac{R_2}{R_1+R_2})V_{DD}
+$$
+组成分压电路的电阻通常非常大(在兆欧级)，因为栅极的高输人电阻。其他电极的电压取决于特定的器件参数。</p>
+<p>当采用正负电源供电时，通常会采用如图4-33b所示的源极偏置。这与 BJT 的发射极偏置类似。理想状态下，栅极电路为开路，因此栅极电压为地电势。</p>
+<p>电流源偏置是运算放大器普遍采用的偏置方式，图4-33c 以 BJT 作为电流源的偏置方式。此外也可以采用其他电流源，如 FET 等。电流源设置源极和漏极电流的值。通过分析电流源(如例4-8)，根据欧姆定律可以计算漏极电阻上的压降。</p>
+<h3 id="452-e-mosfet偏置">4.5.2 E-MOSFET偏置</h3>
+<p><img src="https://s2.loli.net/2023/10/06/RyYGreQp52hTFMB.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog4_34.png"
+	
+	
+>
+$$
+a）~漏极反馈偏置 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~b）~分压式偏置
+$$</p>
+<p>$$
+图4-34~~~E-MOSFET的偏置方法
+$$</p>
+<p>E-MOSFET 的 $V_{GS}$ 必须大于阈值电压 $V_{GS(th)}$。各种 BJT 偏置电路(除了基极偏置)通过设置合适的值，都能够用于 E-MOSFET。图4-34给出了两种常见的 n 沟道 E-MOSFET 的偏置方法。(D-MOSFET 也可以用这些方法进行偏置。)无论是漏极反馈偏置还是分压式偏置，目的都要使栅极电压和源极电压的差值大于 $V_{GS(th)}$.</p>
+<p>在图 4-34a 的漏极反馈偏置电路中，栅极电流可以忽略，因此 $R_G$ 上没有压降。于是，$V_{GS}=V_{DS}$。</p>
+<p>分压式偏置是对分压原理的直接应用。此外，由于高输人电阻，分压电路相当于没有负载，这样就可以利用式(4-5)准确计算栅极电压。</p>
+<h3 id="453-igbt">4.5.3 IGBT</h3>
+<p><img src="https://s2.loli.net/2023/10/06/KprNXlBSji1bgeh.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog4_36.png"
+	
+	
+>
+$$
+图4-36~~~IGBT电路符号
+$$
+IGBT(绝缘栅双极晶体管)是-种具有 MOSFET 输入特性和 BJT 输出特性的器件. 其电路符号如图 4-36 所示。<code>IGBT 本质上可看做一个电压控制的 BJT</code>。由于它具有绝缘栅极而不是基极，因此没有输入电流，并且不会对驱动电路产生负载效应。IGBT 在某些方面优于 MOSFET，在另一些方面优于BJT。<code>IGBT主要用于高压大电流开关应用中</code>。</p>
+
 </section>
 
 
@@ -238,9 +236,44 @@
     </section>
 
 
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
     </footer>
 
 
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css"integrity="sha384-RZU/ijkSsFbcmivfdRBQDtwuwVqK7GMOw6IMvKyeWL2K5UAlyp6WonmB8m7Jd0Hn"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js"integrity="sha384-pK1WpvzWVBQiP0/GjnvRxV4mOb0oxFuyRxJlk6vVw146n3egcN5C925NCP7a7BY8"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js"integrity="sha384-vZTG03m&#43;2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ]
+        });})
+</script>
     
 </article>
 
@@ -258,7 +291,7 @@
         
 
         <div class="article-details">
-            <h2 class="article-title">4.4MOSFET特性</h2>
+            <h2 class="article-title">4.4 MOSFET 特性</h2>
         </div>
     </a>
 </article>
@@ -270,7 +303,7 @@
         
 
         <div class="article-details">
-            <h2 class="article-title">4.3JFET偏置</h2>
+            <h2 class="article-title">4.3 JFET偏置</h2>
         </div>
     </a>
 </article>
@@ -282,7 +315,7 @@
         
 
         <div class="article-details">
-            <h2 class="article-title">4.2JFET特性</h2>
+            <h2 class="article-title">4.2 JFET特性</h2>
         </div>
     </a>
 </article>
@@ -294,7 +327,7 @@
         
 
         <div class="article-details">
-            <h2 class="article-title">4.1FET的结构</h2>
+            <h2 class="article-title">4.1 FET的结构</h2>
         </div>
     </a>
 </article>
@@ -306,7 +339,7 @@
         
 
         <div class="article-details">
-            <h2 class="article-title">3.7开关型双极型晶体管</h2>
+            <h2 class="article-title">3.7 开关型双极型晶体管</h2>
         </div>
     </a>
 </article>
@@ -324,7 +357,7 @@
     data-app-id="d44db3f9-a0ff-4551-a44d-316afd2e5835"
     data-page-id="846a35c78c5e7501cb71aeca92efe03f"
     data-page-url="https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/4-5mosfet%E5%81%8F%E7%BD%AE/"
-    data-page-title="4.5MOSFET偏置"></div>
+    data-page-title="4.5 MOSFET偏置"></div>
 <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
 
 <script>
@@ -436,6 +469,38 @@
             >
 
             </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">Table of contents</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#451-d-mosfet偏置">4.5.1 D-MOSFET偏置</a></li>
+        <li><a href="#452-e-mosfet偏置">4.5.2 E-MOSFET偏置</a></li>
+        <li><a href="#453-igbt">4.5.3 IGBT</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                </div>
+            </section>
+        </aside>
     
 
         </div>

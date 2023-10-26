@@ -1,17 +1,32 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content=''><title>7.2运算放大器开环响应</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='本节学习开环频率响应和开环相位响应，开环响应的运算放大器没有外部反馈。频率响应表明电压增益是如何随频率而变化的，相位响应表明输人信号和输出信号之间的相移是如何随频率而变化。与晶体管的β参数类似，同一型号的各个器件之间开环增益的值差别很大。
+学完本节后，你应该掌握以下内容:
+理解运算放大器的开环响应 讨论内部电路级联数如何影响整体响应 讨论截止频率和下降率 确定总的相位响应 7.2.1 频率响应 在7.1节中，大于截止频率时，假设运算放大器的下降率是常量，即 一20dB/十倍频程。对大多数运算放大器来说，这是成立的。从$f_c$ 到单位增益，下降率为一20dB/十倍频程的运算放大器称为补偿运算放大器(compensated op-amp)。一个补偿运算放大器有一个 RC 网络，用来确定它的频率特性。因此，补偿运算放大器的下降率与基本 RC 网络相同。
+对一些运算放大器电路，情况就更为复杂了。频率响应可能由内部许多级的电路决定，每级电路都具有自己的截止频率。因此，总的响应受到多个级联电路影响，它是各个级联电路响应的合成。具有多个截止频率的运算放大器称为非补偿运算放大器。
+非补偿运算放大器需要特别注意反馈网络以避免振荡。例如，图7-7a所示的一个三级运算放大器，每级的频率响应如图7-7b所示。我们都知道，dB 增益是相加的，于是运算放大器总的频率响应如图7-7c所示。因为总的下降率是相加的，所以每到一个截止频率总下降率就增加 一20dB/十倍频程(一6dB/八倍频程)。
+7.2.2 相移响应 在多级放大电路中，每级电路对总的相移都会有贡献。正如你看到的一样，每个 RC 滞后网络产生的相移最高可达 一90°。 因为一个运算放大器的每级电路包含一个 RC 滞后网络，所以例如一个三级运算放大器的相移滞后最大可达 一270°。同样地，当频率小于截止频率时，每级电路的相移滞后小于 一45°。当频率等于截止频率时，每级电路的相移滞后等于 一45°。当频率大于截止频率时，每级电路的相移滞后大于 一45°。将运算放大器每级电路的相移滞后加起来就可得到总的相移滞后，一个三级运算放大器的相移滞后如下: $$ φ_{tot}=-arctan(\frac{f}{f_{c1}})-arctan(\frac{f}{f_{c2}})-arctan(\frac{f}{f_{c3}}) $$'><title>7.2 运算放大器开环响应</title>
 
 <link rel='canonical' href='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/7-2%E8%BF%90%E7%AE%97%E6%94%BE%E5%A4%A7%E5%99%A8%E5%BC%80%E7%8E%AF%E5%93%8D%E5%BA%94/'>
 
-<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='7.2运算放大器开环响应'>
-<meta property='og:description' content=''>
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='7.2 运算放大器开环响应'>
+<meta property='og:description' content='本节学习开环频率响应和开环相位响应，开环响应的运算放大器没有外部反馈。频率响应表明电压增益是如何随频率而变化的，相位响应表明输人信号和输出信号之间的相移是如何随频率而变化。与晶体管的β参数类似，同一型号的各个器件之间开环增益的值差别很大。
+学完本节后，你应该掌握以下内容:
+理解运算放大器的开环响应 讨论内部电路级联数如何影响整体响应 讨论截止频率和下降率 确定总的相位响应 7.2.1 频率响应 在7.1节中，大于截止频率时，假设运算放大器的下降率是常量，即 一20dB/十倍频程。对大多数运算放大器来说，这是成立的。从$f_c$ 到单位增益，下降率为一20dB/十倍频程的运算放大器称为补偿运算放大器(compensated op-amp)。一个补偿运算放大器有一个 RC 网络，用来确定它的频率特性。因此，补偿运算放大器的下降率与基本 RC 网络相同。
+对一些运算放大器电路，情况就更为复杂了。频率响应可能由内部许多级的电路决定，每级电路都具有自己的截止频率。因此，总的响应受到多个级联电路影响，它是各个级联电路响应的合成。具有多个截止频率的运算放大器称为非补偿运算放大器。
+非补偿运算放大器需要特别注意反馈网络以避免振荡。例如，图7-7a所示的一个三级运算放大器，每级的频率响应如图7-7b所示。我们都知道，dB 增益是相加的，于是运算放大器总的频率响应如图7-7c所示。因为总的下降率是相加的，所以每到一个截止频率总下降率就增加 一20dB/十倍频程(一6dB/八倍频程)。
+7.2.2 相移响应 在多级放大电路中，每级电路对总的相移都会有贡献。正如你看到的一样，每个 RC 滞后网络产生的相移最高可达 一90°。 因为一个运算放大器的每级电路包含一个 RC 滞后网络，所以例如一个三级运算放大器的相移滞后最大可达 一270°。同样地，当频率小于截止频率时，每级电路的相移滞后小于 一45°。当频率等于截止频率时，每级电路的相移滞后等于 一45°。当频率大于截止频率时，每级电路的相移滞后大于 一45°。将运算放大器每级电路的相移滞后加起来就可得到总的相移滞后，一个三级运算放大器的相移滞后如下: $$ φ_{tot}=-arctan(\frac{f}{f_{c1}})-arctan(\frac{f}{f_{c2}})-arctan(\frac{f}{f_{c3}}) $$'>
 <meta property='og:url' content='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/7-2%E8%BF%90%E7%AE%97%E6%94%BE%E5%A4%A7%E5%99%A8%E5%BC%80%E7%8E%AF%E5%93%8D%E5%BA%94/'>
 <meta property='og:site_name' content='My Blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Analog' /><meta property='article:published_time' content='2023-07-14T18:16:21&#43;00:00'/><meta property='article:modified_time' content='2023-07-14T18:16:21&#43;00:00'/>
-<meta name="twitter:title" content="7.2运算放大器开环响应">
-<meta name="twitter:description" content=""><script>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Analog' /><meta property='article:published_time' content='2023-07-14T18:16:21&#43;08:00'/><meta property='article:modified_time' content='2023-07-14T18:16:21&#43;08:00'/>
+<meta name="twitter:title" content="7.2 运算放大器开环响应">
+<meta name="twitter:description" content="本节学习开环频率响应和开环相位响应，开环响应的运算放大器没有外部反馈。频率响应表明电压增益是如何随频率而变化的，相位响应表明输人信号和输出信号之间的相移是如何随频率而变化。与晶体管的β参数类似，同一型号的各个器件之间开环增益的值差别很大。
+学完本节后，你应该掌握以下内容:
+理解运算放大器的开环响应 讨论内部电路级联数如何影响整体响应 讨论截止频率和下降率 确定总的相位响应 7.2.1 频率响应 在7.1节中，大于截止频率时，假设运算放大器的下降率是常量，即 一20dB/十倍频程。对大多数运算放大器来说，这是成立的。从$f_c$ 到单位增益，下降率为一20dB/十倍频程的运算放大器称为补偿运算放大器(compensated op-amp)。一个补偿运算放大器有一个 RC 网络，用来确定它的频率特性。因此，补偿运算放大器的下降率与基本 RC 网络相同。
+对一些运算放大器电路，情况就更为复杂了。频率响应可能由内部许多级的电路决定，每级电路都具有自己的截止频率。因此，总的响应受到多个级联电路影响，它是各个级联电路响应的合成。具有多个截止频率的运算放大器称为非补偿运算放大器。
+非补偿运算放大器需要特别注意反馈网络以避免振荡。例如，图7-7a所示的一个三级运算放大器，每级的频率响应如图7-7b所示。我们都知道，dB 增益是相加的，于是运算放大器总的频率响应如图7-7c所示。因为总的下降率是相加的，所以每到一个截止频率总下降率就增加 一20dB/十倍频程(一6dB/八倍频程)。
+7.2.2 相移响应 在多级放大电路中，每级电路对总的相移都会有贡献。正如你看到的一样，每个 RC 滞后网络产生的相移最高可达 一90°。 因为一个运算放大器的每级电路包含一个 RC 滞后网络，所以例如一个三级运算放大器的相移滞后最大可达 一270°。同样地，当频率小于截止频率时，每级电路的相移滞后小于 一45°。当频率等于截止频率时，每级电路的相移滞后等于 一45°。当频率大于截止频率时，每级电路的相移滞后大于 一45°。将运算放大器每级电路的相移滞后加起来就可得到总的相移滞后，一个三级运算放大器的相移滞后如下: $$ φ_{tot}=-arctan(\frac{f}{f_{c1}})-arctan(\frac{f}{f_{c2}})-arctan(\frac{f}{f_{c3}}) $$"><script>
     (function(){
         if(''){
             if (prompt('请输入文章密码') !== ''){
@@ -25,7 +40,7 @@
 
     </head>
     <body class="
-    article-page 
+    article-page has-toc
 ">
     <script>
         (function() {
@@ -51,128 +66,22 @@
 </script>
 <div class="container main-container flex 
     
-        on-phone--column extended
+        extended
     
 ">
     
-        <aside class="sidebar left-sidebar sticky">
-    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
-        <span class="hamburger-box">
-            <span class="hamburger-inner"></span>
-        </span>
-    </button>
-
-    <header class="site-info">
-        
-            
-            <figure class="site-avatar">
-                
-                    
-                    
-                    
-                        
-                        <img src="/img/avatar_hu71fc3898bde3464d50a00f65e63c7ec2_517570_300x0_resize_box_3.png" width="300"
-                            height="354" class="site-logo" loading="lazy" alt="Avatar">
-                    
-                
-
-                
-            </figure>
-            
-        
-        
-        <h1 class="site-name"><a href="/">My Blog</a></h1>
-        <h2 class="site-description"></h2></header>
-
-    <ol class="menu" id="main-menu">
-        
-        
-        
-
-        <li >
-            <a href='/page/about/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <div id="article-toolbar">
+            <a href="/" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="7" r="4" />
-  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+  <polyline points="15 6 9 12 15 18" />
 </svg>
 
 
 
-                
-                <span>About</span>
+                <span>Back</span>
             </a>
-        </li>
-        
-        
-
-        <li >
-            <a href='/page/archives/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <rect x="3" y="4" width="18" height="4" rx="2" />
-  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
-  <line x1="10" y1="12" x2="14" y2="12" />
-</svg>
-
-
-
-                
-                <span>Archives</span>
-            </a>
-        </li>
-        
-        
-
-        <li >
-            <a href='/page/search/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="10" cy="10" r="7" />
-  <line x1="21" y1="21" x2="15" y2="15" />
-</svg>
-
-
-
-                
-                <span>Search</span>
-            </a>
-        </li>
-        
-
-        
-            <li id="dark-mode-toggle">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="8" cy="12" r="2" />
-  <rect x="2" y="6" width="20" height="12" rx="6" />
-</svg>
-
-
-
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="16" cy="12" r="2" />
-  <rect x="2" y="6" width="20" height="12" rx="6" />
-</svg>
-
-
-
-                <span>Dark Mode</span>
-            </li>
-        
-    </ol>
-</aside>
-
+        </div>
     
 <main class="main full-width">
     <article class="main-article">
@@ -182,7 +91,7 @@
     
 
     <h2 class="article-title">
-        <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/7-2%E8%BF%90%E7%AE%97%E6%94%BE%E5%A4%A7%E5%99%A8%E5%BC%80%E7%8E%AF%E5%93%8D%E5%BA%94/">7.2运算放大器开环响应</a>
+        <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/7-2%E8%BF%90%E7%AE%97%E6%94%BE%E5%A4%A7%E5%99%A8%E5%BC%80%E7%8E%AF%E5%93%8D%E5%BA%94/">7.2 运算放大器开环响应</a>
     </h2>
 
     
@@ -215,7 +124,7 @@
 
 
                 <time class="article-time--reading">
-                    0 minute read
+                    1 minute read
                 </time>
             </div>
         
@@ -225,7 +134,27 @@
 </header>
 
     <section class="article-content">
-    
+    <p>本节学习开环频率响应和开环相位响应，开环响应的运算放大器没有外部反馈。频率响应表明电压增益是如何随频率而变化的，相位响应表明输人信号和输出信号之间的相移是如何随频率而变化。与晶体管的β参数类似，同一型号的各个器件之间开环增益的值差别很大。</p>
+<p>学完本节后，你应该掌握以下内容:</p>
+<ul>
+<li>理解运算放大器的开环响应
+<ul>
+<li>讨论内部电路级联数如何影响整体响应</li>
+<li>讨论截止频率和下降率</li>
+<li>确定总的相位响应</li>
+</ul>
+</li>
+</ul>
+<h3 id="721-频率响应">7.2.1 频率响应</h3>
+<p>在7.1节中，大于截止频率时，假设运算放大器的下降率是常量，即 一20dB/十倍频程。对大多数运算放大器来说，这是成立的。从$f_c$ 到单位增益，下降率为一20dB/十倍频程的运算放大器称为<code>补偿运算放大器</code>(compensated op-amp)。一个补偿运算放大器有一个 RC 网络，用来确定它的频率特性。因此，补偿运算放大器的下降率与基本 RC 网络相同。</p>
+<p>对一些运算放大器电路，情况就更为复杂了。频率响应可能由内部许多级的电路决定，每级电路都具有自己的截止频率。因此，总的响应受到多个级联电路影响，它是各个级联电路响应的合成。具有多个截止频率的运算放大器称为<code>非补偿运算放大器</code>。</p>
+<p>非补偿运算放大器需要特别注意反馈网络以避免振荡。例如，图7-7a所示的一个三级运算放大器，每级的频率响应如图7-7b所示。我们都知道，dB 增益是相加的，于是运算放大器总的频率响应如图7-7c所示。因为总的下降率是相加的，所以每到一个截止频率总下降率就增加 一20dB/十倍频程(一6dB/八倍频程)。</p>
+<h3 id="722-相移响应">7.2.2 相移响应</h3>
+<p>在多级放大电路中，每级电路对总的相移都会有贡献。正如你看到的一样，每个 RC 滞后网络产生的相移最高可达 一90°。 因为一个运算放大器的每级电路包含一个 RC 滞后网络，所以例如一个三级运算放大器的相移滞后最大可达 一270°。同样地，当频率小于截止频率时，每级电路的相移滞后小于 一45°。当频率等于截止频率时，每级电路的相移滞后等于 一45°。当频率大于截止频率时，每级电路的相移滞后大于 一45°。将运算放大器每级电路的相移滞后加起来就可得到总的相移滞后，一个三级运算放大器的相移滞后如下:
+$$
+φ_{tot}=-arctan(\frac{f}{f_{c1}})-arctan(\frac{f}{f_{c2}})-arctan(\frac{f}{f_{c3}})
+$$</p>
+
 </section>
 
 
@@ -238,9 +167,44 @@
     </section>
 
 
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
     </footer>
 
 
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css"integrity="sha384-RZU/ijkSsFbcmivfdRBQDtwuwVqK7GMOw6IMvKyeWL2K5UAlyp6WonmB8m7Jd0Hn"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js"integrity="sha384-pK1WpvzWVBQiP0/GjnvRxV4mOb0oxFuyRxJlk6vVw146n3egcN5C925NCP7a7BY8"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js"integrity="sha384-vZTG03m&#43;2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ]
+        });})
+</script>
     
 </article>
 
@@ -258,19 +222,7 @@
         
 
         <div class="article-details">
-            <h2 class="article-title">7.1基本概念</h2>
-        </div>
-    </a>
-</article>
-                
-                    
-<article class="">
-    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/6-7%E6%95%85%E9%9A%9C%E6%A3%80%E6%B5%8B/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">6.7故障检测</h2>
+            <h2 class="article-title">7.1 基本概念</h2>
         </div>
     </a>
 </article>
@@ -282,31 +234,43 @@
         
 
         <div class="article-details">
-            <h2 class="article-title">6.6运放阻抗和噪声</h2>
+            <h2 class="article-title">6.6 运放阻抗和噪声</h2>
         </div>
     </a>
 </article>
                 
                     
 <article class="">
-    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/6-4%E8%B4%9F%E5%8F%8D%E9%A6%88/">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/6-5%E8%B4%9F%E5%8F%8D%E9%A6%88%E8%BF%90%E6%94%BE%E7%BB%84%E6%80%81/">
         
         
 
         <div class="article-details">
-            <h2 class="article-title">6.4负反馈</h2>
+            <h2 class="article-title">6.5 负反馈运放组态</h2>
         </div>
     </a>
 </article>
                 
                     
 <article class="">
-    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/6-3%E8%BF%90%E6%94%BE%E6%95%B0%E6%8D%AE%E6%89%8B%E5%86%8C%E4%B8%AD%E7%9A%84%E5%8F%82%E6%95%B0/">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/6-1%E8%BF%90%E7%AE%97%E6%94%BE%E5%A4%A7%E5%99%A8%E4%BB%8B%E7%BB%8D/">
         
         
 
         <div class="article-details">
-            <h2 class="article-title">6.3运放数据手册中的参数</h2>
+            <h2 class="article-title">6.1 运算放大器介绍</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/2-3%E5%8D%8A%E5%AF%BC%E4%BD%93%E4%BA%8C%E6%9E%81%E7%AE%A1%E7%9A%84%E5%81%8F%E7%BD%AE/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">2.3 半导体二极管的偏置</h2>
         </div>
     </a>
 </article>
@@ -324,7 +288,7 @@
     data-app-id="d44db3f9-a0ff-4551-a44d-316afd2e5835"
     data-page-id="91565de73a31fb906512788f4da3c3aa"
     data-page-url="https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/7-2%E8%BF%90%E7%AE%97%E6%94%BE%E5%A4%A7%E5%99%A8%E5%BC%80%E7%8E%AF%E5%93%8D%E5%BA%94/"
-    data-page-title="7.2运算放大器开环响应"></div>
+    data-page-title="7.2 运算放大器开环响应"></div>
 <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
 
 <script>
@@ -436,6 +400,37 @@
             >
 
             </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">Table of contents</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#721-频率响应">7.2.1 频率响应</a></li>
+        <li><a href="#722-相移响应">7.2.2 相移响应</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                </div>
+            </section>
+        </aside>
     
 
         </div>

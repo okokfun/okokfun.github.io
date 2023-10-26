@@ -1,17 +1,44 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content=''><title>5.6B类功率放大器</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='当放大器的偏置使其在输入信号的半个周期内处于线性工作区域，而在另外半个周期内处于截止状态时，该放大器就属于B类放大器。相比于A类放大器，B类放大器的优势是它的效率更高。在给定大小的输入功率下，B类放大器能获得更多的输出功率。一般来说，B类放大器至少需要两个有源器件，它们交替来放大输人波形中正的部分和负的部分。这种方式称为推挽。
+学完本节后，你应该掌握以下内容:
+计算 B 类放大器的交流和直流参数，包括双极型和 FET 型放大器 描述推挽放大器的两种组态 描述交越失真以及如何克服交越失真 解释 AB 类放大器与 B 类放大器的区别 描述如何避免双极型 AB 类放大器中的温度问题 讨论 MOSFET B 类放大器的特性 B 类工作指当 Q 点位于截止区时，导致输出电流只在输入信号的半个周期内变化。在线性放大器中，需要两个器件来完成整个周期工作; 一个放大正半周，而另一个放大负周期。就像你将会看到的，这种工作方式对于功率放大器来说有极大的优点，因为它极大地提高了效率。正是由于这个原因，它们广泛地用于功率放大器。
+5.6.1 点位于截止区 $$ 图5-27~~~共集电极B类放大器 $$ B类放大器偏置在截止区，因此 $I_{CQ}=0，V_{CEQ}=V_{CE(cutoff)}$。这样，当没有信号时, 就没有直流电流或者功率损耗。当某信号驱动B类放大器进入导通后，它运行在线性区域。图5-27利用射极跟随器来说明这个情况。
+5.6.2 推挽工作 可以看到图5-27中的电路只在正半周期导通。为了放大整个周期信号，必须增加第二个 B 类放大器，并使它在负半周期工作。将两个 B 类放大器组合在一起工作称为推挽工作。
+有两种使用推挽放大器来复制完整信号的常见方法。第一种方法使用变压器耦合。第二种使用两个互补对称的晶体管﹔可以是一对匹配的 $npn/pnp$ BJT或者一对匹配的 n 沟道/p沟道 FET。
+$$ 图5-28~~~变压器耦合的推挽放大器。Q_1在正半周导通， \\ Q_2在负半周导通。输出变压器将这两个信号整合起来 $$ 变压器耦合 变压器耦合如图5-28所示。输入端变压器的二次绕组是中间抽头的，中间抽头接地，因此二次侧两端的信号互为反相。这样输入端变压器将输入信号转变成两路反相的输出信号后传输给晶体管。注意,两个晶体管都是 npn 型。因为信号的反相，所以 $Q_1$ 将在正周期部分导通，而 $Q_2$ 将在负周期部分导通。输出变压器在两个方向上都允许电流流过，因此它可以将晶体管的两个输出信号整合起来，即使一个晶体管始终处于截止状态。正电源信号连接到输出变压器的中间抽头。
+$$ a）正半周期~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~b）负半周期 $$
+$$ 图5-29~~~B类推挽工作方式 $$
+互补对称晶体管 图5-29给出了一个最常用的推挽B类功率放大器，它使用两个射极跟随器，以及两个正负电源供电。这是互补放大器，因为一个射极跟随器使用 npn 晶体管，而另一个使用 pnp，分别在输入信号的两个半周期内交替导通。注意，没有直流偏置电压($V_B=0$)。因此，只有信号电压才能驱动晶体管进入导通状态。$Q_1$ 在输入的正半周导通，$Q_2$ 在输入的负半周导通。'><title>5.6 B类功率放大器</title>
 
 <link rel='canonical' href='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/5-6b%E7%B1%BB%E5%8A%9F%E7%8E%87%E6%94%BE%E5%A4%A7%E5%99%A8/'>
 
-<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='5.6B类功率放大器'>
-<meta property='og:description' content=''>
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='5.6 B类功率放大器'>
+<meta property='og:description' content='当放大器的偏置使其在输入信号的半个周期内处于线性工作区域，而在另外半个周期内处于截止状态时，该放大器就属于B类放大器。相比于A类放大器，B类放大器的优势是它的效率更高。在给定大小的输入功率下，B类放大器能获得更多的输出功率。一般来说，B类放大器至少需要两个有源器件，它们交替来放大输人波形中正的部分和负的部分。这种方式称为推挽。
+学完本节后，你应该掌握以下内容:
+计算 B 类放大器的交流和直流参数，包括双极型和 FET 型放大器 描述推挽放大器的两种组态 描述交越失真以及如何克服交越失真 解释 AB 类放大器与 B 类放大器的区别 描述如何避免双极型 AB 类放大器中的温度问题 讨论 MOSFET B 类放大器的特性 B 类工作指当 Q 点位于截止区时，导致输出电流只在输入信号的半个周期内变化。在线性放大器中，需要两个器件来完成整个周期工作; 一个放大正半周，而另一个放大负周期。就像你将会看到的，这种工作方式对于功率放大器来说有极大的优点，因为它极大地提高了效率。正是由于这个原因，它们广泛地用于功率放大器。
+5.6.1 点位于截止区 $$ 图5-27~~~共集电极B类放大器 $$ B类放大器偏置在截止区，因此 $I_{CQ}=0，V_{CEQ}=V_{CE(cutoff)}$。这样，当没有信号时, 就没有直流电流或者功率损耗。当某信号驱动B类放大器进入导通后，它运行在线性区域。图5-27利用射极跟随器来说明这个情况。
+5.6.2 推挽工作 可以看到图5-27中的电路只在正半周期导通。为了放大整个周期信号，必须增加第二个 B 类放大器，并使它在负半周期工作。将两个 B 类放大器组合在一起工作称为推挽工作。
+有两种使用推挽放大器来复制完整信号的常见方法。第一种方法使用变压器耦合。第二种使用两个互补对称的晶体管﹔可以是一对匹配的 $npn/pnp$ BJT或者一对匹配的 n 沟道/p沟道 FET。
+$$ 图5-28~~~变压器耦合的推挽放大器。Q_1在正半周导通， \\ Q_2在负半周导通。输出变压器将这两个信号整合起来 $$ 变压器耦合 变压器耦合如图5-28所示。输入端变压器的二次绕组是中间抽头的，中间抽头接地，因此二次侧两端的信号互为反相。这样输入端变压器将输入信号转变成两路反相的输出信号后传输给晶体管。注意,两个晶体管都是 npn 型。因为信号的反相，所以 $Q_1$ 将在正周期部分导通，而 $Q_2$ 将在负周期部分导通。输出变压器在两个方向上都允许电流流过，因此它可以将晶体管的两个输出信号整合起来，即使一个晶体管始终处于截止状态。正电源信号连接到输出变压器的中间抽头。
+$$ a）正半周期~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~b）负半周期 $$
+$$ 图5-29~~~B类推挽工作方式 $$
+互补对称晶体管 图5-29给出了一个最常用的推挽B类功率放大器，它使用两个射极跟随器，以及两个正负电源供电。这是互补放大器，因为一个射极跟随器使用 npn 晶体管，而另一个使用 pnp，分别在输入信号的两个半周期内交替导通。注意，没有直流偏置电压($V_B=0$)。因此，只有信号电压才能驱动晶体管进入导通状态。$Q_1$ 在输入的正半周导通，$Q_2$ 在输入的负半周导通。'>
 <meta property='og:url' content='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/5-6b%E7%B1%BB%E5%8A%9F%E7%8E%87%E6%94%BE%E5%A4%A7%E5%99%A8/'>
 <meta property='og:site_name' content='My Blog'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Analog' /><meta property='article:published_time' content='2023-07-14T17:39:59&#43;00:00'/><meta property='article:modified_time' content='2023-07-14T17:39:59&#43;00:00'/>
-<meta name="twitter:title" content="5.6B类功率放大器">
-<meta name="twitter:description" content=""><script>
+<meta name="twitter:title" content="5.6 B类功率放大器">
+<meta name="twitter:description" content="当放大器的偏置使其在输入信号的半个周期内处于线性工作区域，而在另外半个周期内处于截止状态时，该放大器就属于B类放大器。相比于A类放大器，B类放大器的优势是它的效率更高。在给定大小的输入功率下，B类放大器能获得更多的输出功率。一般来说，B类放大器至少需要两个有源器件，它们交替来放大输人波形中正的部分和负的部分。这种方式称为推挽。
+学完本节后，你应该掌握以下内容:
+计算 B 类放大器的交流和直流参数，包括双极型和 FET 型放大器 描述推挽放大器的两种组态 描述交越失真以及如何克服交越失真 解释 AB 类放大器与 B 类放大器的区别 描述如何避免双极型 AB 类放大器中的温度问题 讨论 MOSFET B 类放大器的特性 B 类工作指当 Q 点位于截止区时，导致输出电流只在输入信号的半个周期内变化。在线性放大器中，需要两个器件来完成整个周期工作; 一个放大正半周，而另一个放大负周期。就像你将会看到的，这种工作方式对于功率放大器来说有极大的优点，因为它极大地提高了效率。正是由于这个原因，它们广泛地用于功率放大器。
+5.6.1 点位于截止区 $$ 图5-27~~~共集电极B类放大器 $$ B类放大器偏置在截止区，因此 $I_{CQ}=0，V_{CEQ}=V_{CE(cutoff)}$。这样，当没有信号时, 就没有直流电流或者功率损耗。当某信号驱动B类放大器进入导通后，它运行在线性区域。图5-27利用射极跟随器来说明这个情况。
+5.6.2 推挽工作 可以看到图5-27中的电路只在正半周期导通。为了放大整个周期信号，必须增加第二个 B 类放大器，并使它在负半周期工作。将两个 B 类放大器组合在一起工作称为推挽工作。
+有两种使用推挽放大器来复制完整信号的常见方法。第一种方法使用变压器耦合。第二种使用两个互补对称的晶体管﹔可以是一对匹配的 $npn/pnp$ BJT或者一对匹配的 n 沟道/p沟道 FET。
+$$ 图5-28~~~变压器耦合的推挽放大器。Q_1在正半周导通， \\ Q_2在负半周导通。输出变压器将这两个信号整合起来 $$ 变压器耦合 变压器耦合如图5-28所示。输入端变压器的二次绕组是中间抽头的，中间抽头接地，因此二次侧两端的信号互为反相。这样输入端变压器将输入信号转变成两路反相的输出信号后传输给晶体管。注意,两个晶体管都是 npn 型。因为信号的反相，所以 $Q_1$ 将在正周期部分导通，而 $Q_2$ 将在负周期部分导通。输出变压器在两个方向上都允许电流流过，因此它可以将晶体管的两个输出信号整合起来，即使一个晶体管始终处于截止状态。正电源信号连接到输出变压器的中间抽头。
+$$ a）正半周期~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~b）负半周期 $$
+$$ 图5-29~~~B类推挽工作方式 $$
+互补对称晶体管 图5-29给出了一个最常用的推挽B类功率放大器，它使用两个射极跟随器，以及两个正负电源供电。这是互补放大器，因为一个射极跟随器使用 npn 晶体管，而另一个使用 pnp，分别在输入信号的两个半周期内交替导通。注意，没有直流偏置电压($V_B=0$)。因此，只有信号电压才能驱动晶体管进入导通状态。$Q_1$ 在输入的正半周导通，$Q_2$ 在输入的负半周导通。"><script>
     (function(){
         if(''){
             if (prompt('请输入文章密码') !== ''){
@@ -25,7 +52,7 @@
 
     </head>
     <body class="
-    article-page 
+    article-page has-toc
 ">
     <script>
         (function() {
@@ -51,128 +78,22 @@
 </script>
 <div class="container main-container flex 
     
-        on-phone--column extended
+        extended
     
 ">
     
-        <aside class="sidebar left-sidebar sticky">
-    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
-        <span class="hamburger-box">
-            <span class="hamburger-inner"></span>
-        </span>
-    </button>
-
-    <header class="site-info">
-        
-            
-            <figure class="site-avatar">
-                
-                    
-                    
-                    
-                        
-                        <img src="/img/avatar_hu71fc3898bde3464d50a00f65e63c7ec2_517570_300x0_resize_box_3.png" width="300"
-                            height="354" class="site-logo" loading="lazy" alt="Avatar">
-                    
-                
-
-                
-            </figure>
-            
-        
-        
-        <h1 class="site-name"><a href="/">My Blog</a></h1>
-        <h2 class="site-description"></h2></header>
-
-    <ol class="menu" id="main-menu">
-        
-        
-        
-
-        <li >
-            <a href='/page/about/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <div id="article-toolbar">
+            <a href="/" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="7" r="4" />
-  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+  <polyline points="15 6 9 12 15 18" />
 </svg>
 
 
 
-                
-                <span>About</span>
+                <span>Back</span>
             </a>
-        </li>
-        
-        
-
-        <li >
-            <a href='/page/archives/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <rect x="3" y="4" width="18" height="4" rx="2" />
-  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
-  <line x1="10" y1="12" x2="14" y2="12" />
-</svg>
-
-
-
-                
-                <span>Archives</span>
-            </a>
-        </li>
-        
-        
-
-        <li >
-            <a href='/page/search/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="10" cy="10" r="7" />
-  <line x1="21" y1="21" x2="15" y2="15" />
-</svg>
-
-
-
-                
-                <span>Search</span>
-            </a>
-        </li>
-        
-
-        
-            <li id="dark-mode-toggle">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="8" cy="12" r="2" />
-  <rect x="2" y="6" width="20" height="12" rx="6" />
-</svg>
-
-
-
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="16" cy="12" r="2" />
-  <rect x="2" y="6" width="20" height="12" rx="6" />
-</svg>
-
-
-
-                <span>Dark Mode</span>
-            </li>
-        
-    </ol>
-</aside>
-
+        </div>
     
 <main class="main full-width">
     <article class="main-article">
@@ -182,7 +103,7 @@
     
 
     <h2 class="article-title">
-        <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/5-6b%E7%B1%BB%E5%8A%9F%E7%8E%87%E6%94%BE%E5%A4%A7%E5%99%A8/">5.6B类功率放大器</a>
+        <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/5-6b%E7%B1%BB%E5%8A%9F%E7%8E%87%E6%94%BE%E5%A4%A7%E5%99%A8/">5.6 B类功率放大器</a>
     </h2>
 
     
@@ -215,7 +136,7 @@
 
 
                 <time class="article-time--reading">
-                    0 minute read
+                    2 minute read
                 </time>
             </div>
         
@@ -225,7 +146,200 @@
 </header>
 
     <section class="article-content">
-    
+    <p>当放大器的偏置使其在输入信号的半个周期内处于线性工作区域，而在另外半个周期内处于截止状态时，该放大器就属于B类放大器。相比于A类放大器，B类放大器的优势是它的效率更高。在给定大小的输入功率下，B类放大器能获得更多的输出功率。一般来说，B类放大器至少需要两个有源器件，它们交替来放大输人波形中正的部分和负的部分。这种方式称为推挽。</p>
+<p>学完本节后，你应该掌握以下内容:</p>
+<ul>
+<li>计算 B 类放大器的交流和直流参数，包括双极型和 FET 型放大器
+<ul>
+<li>描述推挽放大器的两种组态</li>
+<li>描述交越失真以及如何克服交越失真</li>
+<li>解释 AB 类放大器与 B 类放大器的区别</li>
+<li>描述如何避免双极型 AB 类放大器中的温度问题</li>
+<li>讨论 MOSFET B 类放大器的特性</li>
+</ul>
+</li>
+</ul>
+<p>B 类工作指当 Q 点位于截止区时，导致输出电流只在输入信号的半个周期内变化。在线性放大器中，需要两个器件来完成整个周期工作; 一个放大正半周，而另一个放大负周期。就像你将会看到的，这种工作方式对于功率放大器来说有极大的优点，因为它极大地提高了效率。正是由于这个原因，它们广泛地用于功率放大器。</p>
+<h3 id="561-点位于截止区">5.6.1 点位于截止区</h3>
+<p><img src="https://s2.loli.net/2023/10/11/2eFy6RBKzkluOAo.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog5_27.png"
+	
+	
+>
+$$
+图5-27~~~共集电极B类放大器
+$$
+B类放大器偏置在截止区，因此 $I_{CQ}=0，V_{CEQ}=V_{CE(cutoff)}$。这样，当没有信号时, 就<code>没有直流电流或者功率损耗</code>。当某信号驱动B类放大器进入导通后，它运行在线性区域。图5-27利用射极跟随器来说明这个情况。</p>
+<h3 id="562-推挽工作">5.6.2 推挽工作</h3>
+<p>可以看到图5-27中的电路只在正半周期导通。为了放大整个周期信号，必须增加第二个 B 类放大器，并使它在负半周期工作。将两个 B 类放大器组合在一起工作称为推挽工作。</p>
+<p>有两种使用推挽放大器来复制完整信号的常见方法。第一种方法使用变压器耦合。第二种使用两个<code>互补对称的晶体管</code>﹔可以是一对匹配的 $npn/pnp$ BJT或者一对匹配的 n 沟道/p沟道 FET。</p>
+<p><img src="https://s2.loli.net/2023/10/11/avtzq3U6pAFuHEW.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog5_28.png"
+	
+	
+>
+$$
+图5-28~~~变压器耦合的推挽放大器。Q_1在正半周导通，
+\\
+Q_2在负半周导通。输出变压器将这两个信号整合起来
+$$
+<strong>变压器耦合</strong> 变压器耦合如图5-28所示。输入端变压器的二次绕组是中间抽头的，中间抽头接地，因此二次侧两端的信号互为反相。这样输入端变压器将输入信号转变成两路反相的输出信号后传输给晶体管。注意,两个晶体管都是 npn 型。因为信号的反相，所以 $Q_1$ 将在正周期部分导通，而 $Q_2$ 将在负周期部分导通。输出变压器在两个方向上都允许电流流过，因此它可以将晶体管的两个输出信号整合起来，即使一个晶体管始终处于截止状态。正电源信号连接到输出变压器的中间抽头。</p>
+<p><img src="https://s2.loli.net/2023/10/11/FhCnBquT9b5iWle.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog5_29.png"
+	
+	
+>
+$$
+a）正半周期~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~b）负半周期
+$$</p>
+<p>$$
+图5-29~~~B类推挽工作方式
+$$</p>
+<p><strong>互补对称晶体管</strong> 图5-29给出了一个最常用的推挽B类功率放大器，它使用两个射极跟随器，以及两个正负电源供电。这是互补放大器，因为一个射极跟随器使用 npn 晶体管，而另一个使用 pnp，分别在输入信号的两个半周期内交替导通。注意，没有直流偏置电压($V_B=0$)。因此，只有信号电压才能驱动晶体管进入导通状态。$Q_1$ 在输入的正半周导通，$Q_2$ 在输入的负半周导通。</p>
+<h3 id="563-交越失真">5.6.3 交越失真</h3>
+<p>当基极直流电压为0时，输入信号电压必须大于 $V_{BE}$ 才能使晶体管导通。结果是在输入信号正负交替的一个时间间隔内，两个晶体管都不导通，如图5-30所示。此时在输出波形上产生的失真叫作<code>交越失真</code>。
+<img src="https://s2.loli.net/2023/10/11/8D4M6mrG3FsSRnv.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog5_30.png"
+	
+	
+>
+$$
+图5-30~~~B类放大器的交越失真
+$$</p>
+<h3 id="564-推挽放大器的偏置">5.6.4 推挽放大器的偏置</h3>
+<p><img src="https://s2.loli.net/2023/10/11/RY9HmXvEop4yh8N.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog5_31.png"
+	
+	
+>
+$$
+图5-31~~~对推挽放大器进行偏置来消除交越失真
+$$
+为了克服交越失真，将偏置调整到恰好克服晶体管的 $V_{BE}$ 这样修改后的工作方式称为 AB 类。在 AB 类的工作状态下，即使在没有信号输人的情况下，推挽级被偏置在微导通状态。这可以通过分压器和二极管来完成，如图5-31所示。当二极管 $D_1$ 和 $D_2$ 的特性与晶体管发射结的特性相匹配时，二极管中的电流与晶体管的电流相同，这称为<code>镜像电流</code>。这个镜像电流使放大器工作在 AB 类并消除了交越失真。</p>
+<p>在偏置电路中，$R_1$ 和 $R_2$ 值相等，正负电源电压值也相等。这使得 A 点的电压为 0V, 因此不需要耦合电容。输出端的直流电压也为0。假设两个二极管和两个晶体管相同，$D_1$ 两端的压降等于 $Q_1$ 的 $V_{BE}$，$D_2$ 两端的压降等于 $Q_2$ 的 $V_{BE}$。由于两者匹配，因此二极管电流将等于 $I_{CQ}$。对 $R_1$ 或 $R_2$ 应用欧姆定律可求得二极管电流和 $I_{CQ}$ 为:
+$$
+I_{CQ}=\frac{V_{CC}-0.7V}{R_1}
+$$
+这个小电流满足了 AB 类放大器消除交越失真的工作要求。但如果晶体管的 $V_{BE}$ 与二极管压降不匹配，或二极管与晶体管没有保持热平衡，就会存在潜在的热不稳定性。功率管由于发热会使发射结电压下降，并导致电流增大。如果二极管上升同样的温度，电流仍会平衡。但如果二极管处于较冷的环境中，那么会使 $I_{CQ}$ 增加得更多些。如果不加以控制就会产生更多的热，从而产生<code>热击穿</code>。为了从一开始就保持平衡，应该将二极管与晶体管放在同样的环境中。在更严格的场合下，在晶体管的发射极加一个小电阻就能减少热击穿。</p>
+<p>交越失真同样也存在于如图5-28所示的变压器耦合放大器中。为了消除交越失真，在变压器的二次侧加上 0.7V 的电压，来使所有的晶体管都能够刚刚导通。可以利用图5-32中所示的单个二极管从电源中推导出产生这个压降的偏置电压。
+<img src="https://s2.loli.net/2023/10/11/iT5EK7OlcAwsF4k.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog5_32.png"
+	
+	
+>
+$$
+图5-32~~~在变压器耦合推挽式放大器中消除交越失真。
+\\
+二极管补偿了晶体管的发射结电压并使放大器处于AB类工作方式
+$$</p>
+<h3 id="565-交流工作原理">5.6.5 交流工作原理</h3>
+<p>考虑图5-31中 AB 类放大器的 $Q_1$ 的交流负载线。Q 点在截止区略偏上的位置(在 B 类放大器中，Q 点恰好在截止点)。双电源供电的交流截止电压为 $V_{CC}$，双电源供电的推挽放大器的交流饱和电流为:
+$$
+I_{c(sat)}=\frac{V_{CC}}{R_L}~~~(5-9)
+$$
+<img src="https://s2.loli.net/2023/10/11/egKdZkjA35zBaNb.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog5_33.png"
+	
+	
+>
+$$
+图5-33 ~~~互补对称推挽放大器的负载线。仅仅给出了npn管的负载线
+$$</p>
+<p>npn 晶体管的交流负载线如图5-33所示。可以通过在 $V_{CEQ}$ 和直流饱和电流 $I_{c(sat)}$ 之间画出一条直线来得到直流负载线。直流饱和电流就是当两个晶体管的集电极和发射极之间短路时的电流. 假设两个直流电源短路，电流达到最大值，这意味着直流负载线几乎垂直通过截止区，如图5-33所示。如果沿着这样的直流负载线工作，就像发生热漂移一样，会产生极高的电流而损坏晶体管。</p>
+<p><img src="https://s2.loli.net/2023/10/11/P6RGr9LyCb3u8id.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog5_34.png"
+	
+	
+>
+$$
+a)Q_1的交流负载线~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~<del><del>b）电路
+$$
+$$
+图5-34</del></del>B类放大器的交流负载线及电路
+$$</p>
+<p>图5-34a 给出了图 5-34b 中 B 类放大器 $Q_1$ 的交流负载线。如图5-34所示，所加信号在交流负载线上粗线表示的区域内摆动变化。在交流负载线的最上端，晶体管电压($V_{ce}$)最小，输出电压最大。</p>
+<p>在最大工作状态下，$Q_1$ 和 $Q_2$ 交替在接近截止与接近饱和之间工作。在输入信号的正半周期，$Q_1$ 的发射极从 Q 点(0)到接近 $V_{CC}$，产生一个正峰值电压略小于 $V_{CC}$ 的信号。同样，在输入信号的负半周期， $Q_2$ 的发射极从 Q 点(0)到接近 $-V_{CC}$，产生一个负峰值电压几乎等于 $-V_{CC}$ 的信号。尽管在接近饱和电流时电路可以工作，但这会增加信号的失真。</p>
+<p>式(5-9)给出的交流饱和电流也是输出峰值电流。本质上每个晶体管可以在它的整个负载线上工作。已经知道，在 A 类工作状态下，Q 点位于中点的位置。即使没有信号，晶体管中也有较大的电流。但在 B 类放大器的工作状态下，没有信号时，晶体管只有很小的电流，因此，只损耗很小的功率。所以 B 类放大器的效率大大高于A类放大器从理论上说，B 类放大器的最大效率可以达到 79%。</p>
+<h3 id="566单电源工作">5.6.6单电源工作</h3>
+<p>互补对称推挽放大器可以组成单电源工作方式，如图5-35所示。电路工作原理与前面描述的相同，只是此偏置方式会使得发射极输出电压为 $V_{CC}/2$，而不是双电源时的 0V。因为输出不是偏置在 0V，所以必须在输入和输出采用电容耦合来将偏置电压与信号源和负载电阻相隔离。理想情况下，输出电压可以从 0 变到 $V_{CC}$，但实际上达不到这个理想值。
+<img src="https://s2.loli.net/2023/10/11/Se1rHR8BgXVUWh7.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog5_35.png"
+	
+	
+>
+$$
+图5-35~~~单电源推挽放大器
+$$</p>
+<h3 id="567-mosfet推挽放大器">5.6.7 MOSFET推挽放大器</h3>
+<p>当 MOSFET 刚开始进入商业领域时，不能处理功率器件所需的大电流。近年来，随着 MOSFET 技术的不断提高，出现了高功率的 MOSFET，它们在数字电路和模拟电路的功率放大器的设计中表现出了很多优点。MOSFET 非常可靠，只要不超过明确的额定电压、额定电流，以及额定温度。</p>
+<p>与 BJT 相比较，MOSFET 有很多优点但是同时也有一些缺点。与 BJT 相比，MOSFET 主要的优点是偏置电路更加简单，驱动要求更加简单，并且可以通过并联来增加电路的驱动能力。除此之外，MOSFET 一般不容易出现热不稳定性; 随着 MOSFET 温度升高，电流会减小(恰恰与双极型晶体管相反)。在开关应用中(4.7节已经讨论过)，MOSFET 比 BJT 的转换速度更快。MOSFET 开关广泛用于数字逻辑和高功率开关电路。</p>
+<p>BJT 的优势体现在当晶体管两端压降较重要时，于是，它在某些情况下比 MOSFET 更加有效。另外，双极型晶体管不易发生静电释放，而<code>静电释放</code>(ESD)会损坏 MOSFET。大部分 MOSFET 在运输时会通过金属环将引脚短路在一起，这些引脚需要在短路金属环去除之前焊接到电路中。</p>
+<p>一个使用互补对称 E-MOSFET 和双端电源的简化 B 类型放大器如图5-37a所示. 已经知道一个 E-MOSFET 器件通常是截止的，但当输人超过门限电压时 E-MOSFET 可以导通。对于逻辑器件而言，导通电压的典型值介于 1～2V 之间; 对于标准器件，门限电压会更高一些。当信号超过 $Q_1$ 的正门限电压时，器件导通;同理，当信号低于 $Q_2$ 的负门限电压时，器件导通。因此，n 沟道器件在正周期内导通，p 沟道器件在负周期内导通。
+<img src="https://s2.loli.net/2023/10/11/gwQe56VENctpKrh.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog5_37.png"
+	
+	
+>
+$$
+a) ~B类~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~b）AB类
+$$
+$$
+图5-37 ~~~MOSFET推挽放大器
+$$</p>
+<p>和 BJT 推挽放大器一样，晶体管在刚超过零信号电压时并不导通，这样就会产生交越失真。如果每个晶体管的偏置电压刚好为门限电压，那么 MOSFET 将会工作于 AB 类状态，如图5-37b中电路所示。这个放大器的驱动源为双极型晶体管放大器，其他一些器件用于确保 E-MOSFET 推挽级有合理的线性输出。显然，基于该设计的商用放大器还拥有某些其他特性。</p>
+<p>图5-37b所示的基本 AB 类推挽放大器包含一个共发射极来放大输人信号并将信号耦合到推挽级(由 $Q_2$ 和 $Q_3$ 组成)的栅极。注意，$C_3$ 将 $R_6$ 旁路，这样可以允许相同的交流信号被加到推挽级。电位器 $R_6$ 能够提供合适的直流电压，为 $Q_2$ 和 $Q_3$ 的门限设置提供相应的偏置。可以适当调整 $R_6$ 使得交越失真最小。调整电位器 $R_1$ 使没有输入信号时直流输出电压为零。</p>
+<p>这种类型的放大器可以通过简单地并联另一对 MOSFET 管来提供更大的功率; 但是，这种方法有时也会带来不期望的振荡。为了避免振荡，可以使用栅极电阻将 MOSFET 进行相互隔离。尽管在这个简化的放大器中并不是必需的，但是图5-37中还是给出了 $R_8$ 和 $R_9$ 具有并联 E-MOSFET 的功率放大器能够提供高达 100W 的功率。</p>
+
 </section>
 
 
@@ -238,9 +352,44 @@
     </section>
 
 
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
     </footer>
 
 
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css"integrity="sha384-RZU/ijkSsFbcmivfdRBQDtwuwVqK7GMOw6IMvKyeWL2K5UAlyp6WonmB8m7Jd0Hn"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js"integrity="sha384-pK1WpvzWVBQiP0/GjnvRxV4mOb0oxFuyRxJlk6vVw146n3egcN5C925NCP7a7BY8"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js"integrity="sha384-vZTG03m&#43;2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ]
+        });})
+</script>
     
 </article>
 
@@ -258,7 +407,7 @@
         
 
         <div class="article-details">
-            <h2 class="article-title">5.5A类功率放大器</h2>
+            <h2 class="article-title">5.5 A类功率放大器</h2>
         </div>
     </a>
 </article>
@@ -270,7 +419,7 @@
         
 
         <div class="article-details">
-            <h2 class="article-title">5.4直接耦合放大器</h2>
+            <h2 class="article-title">5.4 直接耦合放大器</h2>
         </div>
     </a>
 </article>
@@ -282,7 +431,7 @@
         
 
         <div class="article-details">
-            <h2 class="article-title">5.3变压器耦合放大器</h2>
+            <h2 class="article-title">5.3 变压器耦合放大器</h2>
         </div>
     </a>
 </article>
@@ -294,7 +443,7 @@
         
 
         <div class="article-details">
-            <h2 class="article-title">5.2RF放大器</h2>
+            <h2 class="article-title">5.2 RF放大器</h2>
         </div>
     </a>
 </article>
@@ -306,7 +455,7 @@
         
 
         <div class="article-details">
-            <h2 class="article-title">5.1电容耦合放大器</h2>
+            <h2 class="article-title">5.1 电容耦合放大器</h2>
         </div>
     </a>
 </article>
@@ -324,7 +473,7 @@
     data-app-id="d44db3f9-a0ff-4551-a44d-316afd2e5835"
     data-page-id="504ee8b74a72c5a846ad7f87c85e1d46"
     data-page-url="https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/5-6b%E7%B1%BB%E5%8A%9F%E7%8E%87%E6%94%BE%E5%A4%A7%E5%99%A8/"
-    data-page-title="5.6B类功率放大器"></div>
+    data-page-title="5.6 B类功率放大器"></div>
 <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
 
 <script>
@@ -436,6 +585,42 @@
             >
 
             </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">Table of contents</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#561-点位于截止区">5.6.1 点位于截止区</a></li>
+        <li><a href="#562-推挽工作">5.6.2 推挽工作</a></li>
+        <li><a href="#563-交越失真">5.6.3 交越失真</a></li>
+        <li><a href="#564-推挽放大器的偏置">5.6.4 推挽放大器的偏置</a></li>
+        <li><a href="#565-交流工作原理">5.6.5 交流工作原理</a></li>
+        <li><a href="#566单电源工作">5.6.6单电源工作</a></li>
+        <li><a href="#567-mosfet推挽放大器">5.6.7 MOSFET推挽放大器</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                </div>
+            </section>
+        </aside>
     
 
         </div>

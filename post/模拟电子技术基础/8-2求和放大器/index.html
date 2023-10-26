@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content=''><title>8.2求和放大器</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='求和运算放大器有两个或两个以上的输入端，输出电压与输人电压的代数总和的负值成正比。'><title>8.2 求和放大器</title>
 
 <link rel='canonical' href='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/8-2%E6%B1%82%E5%92%8C%E6%94%BE%E5%A4%A7%E5%99%A8/'>
 
-<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='8.2求和放大器'>
-<meta property='og:description' content=''>
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='8.2 求和放大器'>
+<meta property='og:description' content='求和运算放大器有两个或两个以上的输入端，输出电压与输人电压的代数总和的负值成正比。'>
 <meta property='og:url' content='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/8-2%E6%B1%82%E5%92%8C%E6%94%BE%E5%A4%A7%E5%99%A8/'>
 <meta property='og:site_name' content='My Blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Analog' /><meta property='article:published_time' content='2023-07-14T18:17:24&#43;00:00'/><meta property='article:modified_time' content='2023-07-14T18:17:24&#43;00:00'/>
-<meta name="twitter:title" content="8.2求和放大器">
-<meta name="twitter:description" content=""><script>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Analog' /><meta property='article:published_time' content='2023-07-14T18:17:24&#43;08:00'/><meta property='article:modified_time' content='2023-07-14T18:17:24&#43;08:00'/>
+<meta name="twitter:title" content="8.2 求和放大器">
+<meta name="twitter:description" content="求和运算放大器有两个或两个以上的输入端，输出电压与输人电压的代数总和的负值成正比。"><script>
     (function(){
         if(''){
             if (prompt('请输入文章密码') !== ''){
@@ -25,7 +25,7 @@
 
     </head>
     <body class="
-    article-page 
+    article-page has-toc
 ">
     <script>
         (function() {
@@ -51,128 +51,22 @@
 </script>
 <div class="container main-container flex 
     
-        on-phone--column extended
+        extended
     
 ">
     
-        <aside class="sidebar left-sidebar sticky">
-    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
-        <span class="hamburger-box">
-            <span class="hamburger-inner"></span>
-        </span>
-    </button>
-
-    <header class="site-info">
-        
-            
-            <figure class="site-avatar">
-                
-                    
-                    
-                    
-                        
-                        <img src="/img/avatar_hu71fc3898bde3464d50a00f65e63c7ec2_517570_300x0_resize_box_3.png" width="300"
-                            height="354" class="site-logo" loading="lazy" alt="Avatar">
-                    
-                
-
-                
-            </figure>
-            
-        
-        
-        <h1 class="site-name"><a href="/">My Blog</a></h1>
-        <h2 class="site-description"></h2></header>
-
-    <ol class="menu" id="main-menu">
-        
-        
-        
-
-        <li >
-            <a href='/page/about/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <div id="article-toolbar">
+            <a href="/" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="7" r="4" />
-  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+  <polyline points="15 6 9 12 15 18" />
 </svg>
 
 
 
-                
-                <span>About</span>
+                <span>Back</span>
             </a>
-        </li>
-        
-        
-
-        <li >
-            <a href='/page/archives/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <rect x="3" y="4" width="18" height="4" rx="2" />
-  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
-  <line x1="10" y1="12" x2="14" y2="12" />
-</svg>
-
-
-
-                
-                <span>Archives</span>
-            </a>
-        </li>
-        
-        
-
-        <li >
-            <a href='/page/search/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="10" cy="10" r="7" />
-  <line x1="21" y1="21" x2="15" y2="15" />
-</svg>
-
-
-
-                
-                <span>Search</span>
-            </a>
-        </li>
-        
-
-        
-            <li id="dark-mode-toggle">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="8" cy="12" r="2" />
-  <rect x="2" y="6" width="20" height="12" rx="6" />
-</svg>
-
-
-
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="16" cy="12" r="2" />
-  <rect x="2" y="6" width="20" height="12" rx="6" />
-</svg>
-
-
-
-                <span>Dark Mode</span>
-            </li>
-        
-    </ol>
-</aside>
-
+        </div>
     
 <main class="main full-width">
     <article class="main-article">
@@ -182,9 +76,13 @@
     
 
     <h2 class="article-title">
-        <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/8-2%E6%B1%82%E5%92%8C%E6%94%BE%E5%A4%A7%E5%99%A8/">8.2求和放大器</a>
+        <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/8-2%E6%B1%82%E5%92%8C%E6%94%BE%E5%A4%A7%E5%99%A8/">8.2 求和放大器</a>
     </h2>
 
+    
+    <h3 class="article-subtitle">
+        求和运算放大器有两个或两个以上的输入端，输出电压与输人电压的代数总和的负值成正比。
+    </h3>
     
 
     
@@ -215,7 +113,7 @@
 
 
                 <time class="article-time--reading">
-                    0 minute read
+                    1 minute read
                 </time>
             </div>
         
@@ -225,7 +123,76 @@
 </header>
 
     <section class="article-content">
-    
+    <p>求和放大器是第6章中讨论的反相运算放大器组态的一种变化形式。求和运算放大器有两个或两个以上的输入端，输出电压与输人电压的代数总和的负值成正比。本节学习求和放大器是如何工作的，并了解均值放大器和比例放大器，它们都是基本求和运算放大器的变化形式。</p>
+<p>学完本节后，你应该掌握以下内容:</p>
+<ul>
+<li>理解多种类型求和放大器的工作原理
+<ul>
+<li>描述单位增益求和放大器的工作原理</li>
+<li>讨论如何获得大于单位增益的任意增益</li>
+<li>描述均值放大器的工作原理</li>
+<li>描述比例加法器的工作原理</li>
+<li>讨论用作数模转换器的比例加法器</li>
+<li>讨论求和放大器在其中起重要作用的模拟系统</li>
+</ul>
+</li>
+</ul>
+<h3 id="821-单位增益求和放大器">8.2.1 单位增益求和放大器</h3>
+<p>一个两输入的<code>求和放大器</code>如图8-18所示，实际上任意数量的输入都是可以的.</p>
+<p><img src="https://s2.loli.net/2023/10/18/Fe1x8KZQ4GpdIWy.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog8_18.png"
+	
+	
+>
+$$
+图8-18~~~两输入反相求和放大器
+$$</p>
+<p>电路的工作原理和输出表达式的推导如下: 电压 $V_{IN1}$和$V_{IN2}$用于输入端，并产生电流$I_1$和$I_2$，如图8-18所示。从无穷大输入阻抗和虚地的概念可知，运算放大器反相端(一)输入电压接近于 0V，因此输入端没有电流。这意味着输人电流 $I_1$ 和 $I_2$ 在这个求和点处相加，形成总电流，这个电流$I_T$流过$R_f(I_T=I_1＋I_2)$。因为$V_{out}=-I_TR_f$，则
+$$
+V_{OUT}=-(I_1+I_2)R_f=-(\frac{V_{IN1}}{R_1}+\frac{V_{IN2}}{R_2})R_f
+$$
+如果三个电阻的电阻值相等($R_1=R_2=R_f=R$)，则</p>
+<p>$$
+V_{OUT}=-(\frac{V_{IN1}}{R}+\frac{V_{IN2}}{R})R=-(V_{IN1}+V_{IN2})
+$$
+从前面的公式可以看出，输出电压的幅值等于两个输入电压幅值的和，但是带有负号。式(8-3)是具有 n 个输入求和放大器的通用表达式，如图8-19所示，其中所有电阻的电阻值相等。
+<img src="https://s2.loli.net/2023/10/18/fcP3CSqNEFKeWI7.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog8_19.png"
+	
+	
+>
+$$
+图8-19~~~具有n个输入的求和放大器
+$$</p>
+<p>$$
+V_{OUT}=-(V_{IN1}+V_{IN2}+&hellip;+V_{INn})~~~(8-3)
+$$</p>
+<h3 id="822-增益大于单位增益的求和放大器">8.2.2 增益大于单位增益的求和放大器</h3>
+<p>当 $R_f$ 大于输人电阻时，放大器的增益为 $一R_f/R$，其中，$R$ 是每个输人电阻的电阻值。输出的一般表达式为
+$$
+V_{OUT}=-\frac{R_f}{R}(V_{IN1}+V_{IN2}+&hellip;+V_{INn})~~~(8-4)
+$$
+从公式可以看出，输出电压的幅值等于所有输入电压的和乘以一个由 $一R_f/R$ 决定的常量。</p>
+<h3 id="823-均值放大器">8.2.3 均值放大器</h3>
+<p>求和放大器可以用来对输入电压产生数学平均。只需要把比率 $R_f/R$ 设置为输入个数的倒数即可，即 $R_f/R=1/n$。</p>
+<p>可以得到若干数字的平均值，首先把这些数相加，然后除以这些数字的总个数。观察式(8-4)，并稍加思考，就可以看出求和运算放大器可以实现求数学均值的功能。下面的例子对此进行了阐述。</p>
+<h3 id="824-比例加法器">8.2.4 比例加法器</h3>
+<p>通过简单地调整输入电阻的电阻值，可以给求和运算放大器的各个输人赋予不同的权重系数。输出电压可以表示为
+$$
+V_{OUT}=-(\frac{R_f}{R_1}V_{IN1}+\frac{R_f}{R_2}V_{IN2}+&hellip;\frac{R_f}{R_n}V_{INn})~~~(8-5)
+$$
+每个输入的权重系数由 $R_f$ 与这个输入的电阻值比率决定。例如，如果一个输入电压的权重为 1，那么 $R=R_f$。或者，如果权重为0.5，那么 $R=2R_f$。$R$的值越小，权重系数越大，反之亦然。</p>
+
 </section>
 
 
@@ -238,9 +205,44 @@
     </section>
 
 
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
     </footer>
 
 
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css"integrity="sha384-RZU/ijkSsFbcmivfdRBQDtwuwVqK7GMOw6IMvKyeWL2K5UAlyp6WonmB8m7Jd0Hn"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js"integrity="sha384-pK1WpvzWVBQiP0/GjnvRxV4mOb0oxFuyRxJlk6vVw146n3egcN5C925NCP7a7BY8"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js"integrity="sha384-vZTG03m&#43;2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ]
+        });})
+</script>
     
 </article>
 
@@ -253,24 +255,12 @@
                 
                     
 <article class="">
-    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/8-1%E6%AF%94%E8%BE%83%E5%99%A8/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">8.1比较器</h2>
-        </div>
-    </a>
-</article>
-                
-                    
-<article class="">
     <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/7-5%E8%BF%90%E7%AE%97%E6%94%BE%E5%A4%A7%E5%99%A8%E7%9A%84%E8%A1%A5%E5%81%BF/">
         
         
 
         <div class="article-details">
-            <h2 class="article-title">7.5运算放大器的补偿</h2>
+            <h2 class="article-title">7.5 运算放大器的补偿</h2>
         </div>
     </a>
 </article>
@@ -282,7 +272,7 @@
         
 
         <div class="article-details">
-            <h2 class="article-title">7.4正反馈和稳定性</h2>
+            <h2 class="article-title">7.4 正反馈和稳定性</h2>
         </div>
     </a>
 </article>
@@ -294,7 +284,7 @@
         
 
         <div class="article-details">
-            <h2 class="article-title">7.3运算放大器闭环响应</h2>
+            <h2 class="article-title">7.3 运算放大器闭环响应</h2>
         </div>
     </a>
 </article>
@@ -306,7 +296,19 @@
         
 
         <div class="article-details">
-            <h2 class="article-title">7.2运算放大器开环响应</h2>
+            <h2 class="article-title">7.2 运算放大器开环响应</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/7-1%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">7.1 基本概念</h2>
         </div>
     </a>
 </article>
@@ -324,7 +326,7 @@
     data-app-id="d44db3f9-a0ff-4551-a44d-316afd2e5835"
     data-page-id="a239ab3cf9c84dfc6a68b2c0b226e1dd"
     data-page-url="https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/8-2%E6%B1%82%E5%92%8C%E6%94%BE%E5%A4%A7%E5%99%A8/"
-    data-page-title="8.2求和放大器"></div>
+    data-page-title="8.2 求和放大器"></div>
 <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
 
 <script>
@@ -436,6 +438,39 @@
             >
 
             </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">Table of contents</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#821-单位增益求和放大器">8.2.1 单位增益求和放大器</a></li>
+        <li><a href="#822-增益大于单位增益的求和放大器">8.2.2 增益大于单位增益的求和放大器</a></li>
+        <li><a href="#823-均值放大器">8.2.3 均值放大器</a></li>
+        <li><a href="#824-比例加法器">8.2.4 比例加法器</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                </div>
+            </section>
+        </aside>
     
 
         </div>

@@ -16,11 +16,11 @@ $$ 图2-26电容输人滤波器中的浪涌电流沿着灰色的路径流动 $$ 
 2.6.2 IC稳压器 当滤波器可以将电源的纹波降低到很小时，最有效的滤波器是将电容输人滤波器和 IC稳压器组合起来运用。通常，IC(集成电路)是在一个小的硅芯片，上构建的功能完整的电路。IC稳压器是一块连接到整流器输出端的IC，即使输入、负载电流或温度发生变化，它也能始终保持输出电压(或电流)的恒定。电容滤波器使得稳压器的输人纹波降低到了一个合适的值。一个大电容和一个IC稳压器的组合价格不贵，但能有助于产生一个很好的小电源。
 最流行的IC稳压器具有三个端一输人端、 输出端和参考端(或调节端)。电容器首先对稳压器的输人进行滤波，使纹波减小到 $&amp;lt;$ 10%,然后稳压器可以将纹波减少到可以忽略的水平。此外，大多数稳压器具有内部参考电压、短路保护和热切断电路。它们可以用在各种正、负极性输出的电压中，并且可以用最少的外部元件设计成可变输出。典型地，IC稳压器可以提供具有很强纹波抑制能力的1至数安培电流的输出。超过5A负载电流的IC稳压器也可用。
 $$ 图2-27三端稳压器 $$ 为了稳定输出电压而设计的三端稳压器只需要连接外部电容器就可以完成对电源的稳压调整，如图2-27所示。滤波是通过在输人电压和地之间的大容量电容器来完成的。有时，为了防止振荡，当滤波电容器与IC稳压器并不是很靠近的时候，再并联-一个较小的输人电容器，这个电容器需要靠近IC稳压器。最后，为了改善暂态响应，将一个输出电容器(典型值为0.1 ~ lμF)并联在其输出端。
-$$ 图2-28 基本的十5.0V电源 $$ 固定三端稳压器的例子有 78XX 和 79XX 系列稳压器，这些系列具有各种输出电压并且能够提供达到1A的负载电流(散热充分)。型号的最后两个数字表示输出电压，因此，7812具有 &#43;12V 的输出。相同稳压器的负输出电压版本记为79XX系列，因此 7912 具有 -12V 的输出。这些稳压电路的输出电压在正常值的 1.'><title>2.6整流滤波器和IC稳压器</title>
+$$ 图2-28 基本的十5.0V电源 $$ 固定三端稳压器的例子有 78XX 和 79XX 系列稳压器，这些系列具有各种输出电压并且能够提供达到1A的负载电流(散热充分)。型号的最后两个数字表示输出电压，因此，7812具有 &#43;12V 的输出。相同稳压器的负输出电压版本记为79XX系列，因此 7912 具有 -12V 的输出。这些稳压电路的输出电压在正常值的 1.'><title>2.6 整流滤波器和IC稳压器</title>
 
 <link rel='canonical' href='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/2-6%E6%95%B4%E6%B5%81%E6%BB%A4%E6%B3%A2%E5%99%A8%E5%92%8Cic%E7%A8%B3%E5%8E%8B%E5%99%A8/'>
 
-<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='2.6整流滤波器和IC稳压器'>
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='2.6 整流滤波器和IC稳压器'>
 <meta property='og:description' content='电源滤波器大大地减小了整流器输出电压的波动，形成了幅度接近恒定的直流电压。滤波的原因是电子电路需要恒定的直流电压源和直流电流源来提供电功率与偏置，使得电路能正常工作。通常使用大电容器来进行滤波，为了改善滤波效果，电容(输入滤波器)后紧跟着稳压器。如今由于集成电路(IC)的发展，有了便宜而有效的稳压器。本节介绍集成稳压器，更详细的内容将会在第11章中介绍。
 学完本节后，你应该掌握以下内容:
 描述整流滤波器和集成稳压器的工作原理 给出IC稳压器的例子，并知道它们是如何连接到整流器的输出端 对一个给定纹波抑制和输人纹波的 IC 稳压器，能计算其输出的纹波 对一个给定的有负载或无负载的电压，计算其负载变动范围 对给定的输人电压变化所引起的输出电压的变化，计算其线性调整率 在大多数电源供电的应用中，标准的 60Hz 交流线性电压源都应转换成幅度接近恒定，值的直流电压。半波整流器的 60Hz 脉动直流输出或全波桥式整流器的 120Hz 脉动输出应该经过滤波来减小较大的电压变化。滤波可以通过一一个电容器、一个电感器或者它们的组合来完成。迄今为止，电容输人滤波器是最便宜并且广泛应用的类型。
@@ -40,7 +40,7 @@ $$ 图2-28 基本的十5.0V电源 $$ 固定三端稳压器的例子有 78XX 和 
 <meta property='og:url' content='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/2-6%E6%95%B4%E6%B5%81%E6%BB%A4%E6%B3%A2%E5%99%A8%E5%92%8Cic%E7%A8%B3%E5%8E%8B%E5%99%A8/'>
 <meta property='og:site_name' content='My Blog'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Analog' /><meta property='article:published_time' content='2023-07-14T15:05:51&#43;00:00'/><meta property='article:modified_time' content='2023-07-14T15:05:51&#43;00:00'/>
-<meta name="twitter:title" content="2.6整流滤波器和IC稳压器">
+<meta name="twitter:title" content="2.6 整流滤波器和IC稳压器">
 <meta name="twitter:description" content="电源滤波器大大地减小了整流器输出电压的波动，形成了幅度接近恒定的直流电压。滤波的原因是电子电路需要恒定的直流电压源和直流电流源来提供电功率与偏置，使得电路能正常工作。通常使用大电容器来进行滤波，为了改善滤波效果，电容(输入滤波器)后紧跟着稳压器。如今由于集成电路(IC)的发展，有了便宜而有效的稳压器。本节介绍集成稳压器，更详细的内容将会在第11章中介绍。
 学完本节后，你应该掌握以下内容:
 描述整流滤波器和集成稳压器的工作原理 给出IC稳压器的例子，并知道它们是如何连接到整流器的输出端 对一个给定纹波抑制和输人纹波的 IC 稳压器，能计算其输出的纹波 对一个给定的有负载或无负载的电压，计算其负载变动范围 对给定的输人电压变化所引起的输出电压的变化，计算其线性调整率 在大多数电源供电的应用中，标准的 60Hz 交流线性电压源都应转换成幅度接近恒定，值的直流电压。半波整流器的 60Hz 脉动直流输出或全波桥式整流器的 120Hz 脉动输出应该经过滤波来减小较大的电压变化。滤波可以通过一一个电容器、一个电感器或者它们的组合来完成。迄今为止，电容输人滤波器是最便宜并且广泛应用的类型。
@@ -121,7 +121,7 @@ $$ 图2-28 基本的十5.0V电源 $$ 固定三端稳压器的例子有 78XX 和 
     
 
     <h2 class="article-title">
-        <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/2-6%E6%95%B4%E6%B5%81%E6%BB%A4%E6%B3%A2%E5%99%A8%E5%92%8Cic%E7%A8%B3%E5%8E%8B%E5%99%A8/">2.6整流滤波器和IC稳压器</a>
+        <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/2-6%E6%95%B4%E6%B5%81%E6%BB%A4%E6%B3%A2%E5%99%A8%E5%92%8Cic%E7%A8%B3%E5%8E%8B%E5%99%A8/">2.6 整流滤波器和IC稳压器</a>
     </h2>
 
     
@@ -327,6 +327,18 @@ $$
     </section>
 
 
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
     </footer>
 
 
@@ -370,55 +382,55 @@ $$
         
 
         <div class="article-details">
-            <h2 class="article-title">2.5整流器</h2>
+            <h2 class="article-title">2.5 整流器</h2>
         </div>
     </a>
 </article>
                 
                     
 <article class="">
-    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/6-5%E8%B4%9F%E5%8F%8D%E9%A6%88%E8%BF%90%E6%94%BE%E7%BB%84%E6%80%81/">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/11-1%E7%A8%B3%E5%8E%8B/">
         
         
 
         <div class="article-details">
-            <h2 class="article-title">6.5负反馈运放组态</h2>
+            <h2 class="article-title">11.1 稳压</h2>
         </div>
     </a>
 </article>
                 
                     
 <article class="">
-    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/2-3%E5%8D%8A%E5%AF%BC%E4%BD%93%E4%BA%8C%E6%9E%81%E7%AE%A1%E7%9A%84%E5%81%8F%E7%BD%AE/">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/10-7555%E5%AE%9A%E6%97%B6%E5%99%A8%E4%BD%9C%E4%B8%BA%E5%8D%95%E7%A8%B3%E6%80%81%E8%A7%A6%E5%8F%91%E5%99%A8/">
         
         
 
         <div class="article-details">
-            <h2 class="article-title">2.3半导体二极管的偏置</h2>
+            <h2 class="article-title">10.7 555定时器作为单稳态触发器</h2>
         </div>
     </a>
 </article>
                 
                     
 <article class="">
-    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/2-2pn%E7%BB%93/">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/10-6555%E5%AE%9A%E6%97%B6%E5%99%A8%E4%BD%9C%E4%B8%BA%E6%8C%AF%E8%8D%A1%E5%99%A8/">
         
         
 
         <div class="article-details">
-            <h2 class="article-title">2.2pn结</h2>
+            <h2 class="article-title">10.6 555定时器作为振荡器</h2>
         </div>
     </a>
 </article>
                 
                     
 <article class="">
-    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/2-1%E5%8D%8A%E5%AF%BC%E4%BD%93%E5%8E%9F%E5%AD%90%E7%BB%93%E6%9E%84/">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/10-5%E5%BC%9B%E8%B1%AB%E6%8C%AF%E8%8D%A1%E5%99%A8%E5%8E%9F%E7%90%86/">
         
         
 
         <div class="article-details">
-            <h2 class="article-title">2.1半导体原子结构</h2>
+            <h2 class="article-title">10.5 弛豫振荡器原理</h2>
         </div>
     </a>
 </article>
@@ -436,7 +448,7 @@ $$
     data-app-id="d44db3f9-a0ff-4551-a44d-316afd2e5835"
     data-page-id="02e29fecca0ad14f18e020d86ffb6bb9"
     data-page-url="https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/2-6%E6%95%B4%E6%B5%81%E6%BB%A4%E6%B3%A2%E5%99%A8%E5%92%8Cic%E7%A8%B3%E5%8E%8B%E5%99%A8/"
-    data-page-title="2.6整流滤波器和IC稳压器"></div>
+    data-page-title="2.6 整流滤波器和IC稳压器"></div>
 <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
 
 <script>

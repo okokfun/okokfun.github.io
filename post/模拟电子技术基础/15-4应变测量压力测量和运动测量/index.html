@@ -1,17 +1,59 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content=''><title>15.4应变测量、压力测量和运动测量</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='本节将讨论三种与力相关的参数(应变、压力和运动)的测量方法。许多应用都需要量这三种参数。此外，其他参数(例如液体的流速)也可以间接通过测量应变、压力或者动而得到。
+学完本节后，你应该掌握以下内容:
+描述应变、压力和运动测量的方法 解释应变计如何工作 讨论应变计电路 解释压力传感器如何工作 讨论压力测量电路 列出几种压力传感器应用 15.4.1 应变计 $$ a)~~~当加上一个力时，发生应变，长度从L变到L&#43;△L $$ $$ b)~~~当平板发生弯曲时，发生应变，上表面扩张，下表面压缩 $$
+$$ 图15-29~~~应变例子 $$
+应变是由于作用在材料，上面的力量产生的材料变形，或者扩张或者压缩。例如，金属杆或金属棒当加上一个合适的力时，它会稍稍变长，如图15-29a 所示。此外，如果金属盘弯曲，那么上表面会有一个膨胀，称为拉伸应变，下表面会有一个压缩，称为压缩应变，如图15-29b所示。
+应变计的原理是: 如果材料的长度增加，它的电阻值增大;如果长度缩短，它的电阻值减小。这可以用下面的式子表示(回顾 DC/AC 电路课程)。 $$ R=\frac{\rho L}{A}~~~(15-3) $$ 这个式子说明:对于一种材料，比如一段线，它的电阻值与电阻率($\rho$)和长度(L)成正比，和横截面积(A)成反比。
+$$ a)典型的应变计结构 \\ b)沿着作用力的方向把应变计放置到被测量物体表面。当表面被拉长时，应变计也被拉伸 $$
+$$ 图15-30~~~一个简单的应变计和它的放置方式 $$
+应变计基本上是一个长而薄的电阻性材料条，它黏合在需要测量应变的物体的表面，比如放在测试的飞机机翼或尾翼上。当一个力作用在物体上引起微微的拉伸时，应变计也按比例拉长，电阻值增大。大多数应变计以类似于图15-30a 所示的形式来实现小区域范围内有足够电阻值的长度。然后如图15-30b所示将它沿着应变线方向放置。
+$$ 图15-31~~~应变系数的说明。欧姆表符号并不表示测量△R的实际方法 $$
+应变计的应变系数 应变计的一个重要特性是应变系数(GF)，GF定义为沿应变轴方向电阻值的相对变化与长度的相对变化之比。对于金属应变计，GF一般约为2。应变系数的概念在图15-31中说明，并可以用式(15-4)表示，其中R为标称电阻，$△R$ 为由应变引起的电阻变化。长度的相对变化($△L/L$)用应变($\epsilon$)来表示，一般表示为百万分率，称为微应变($μ\epsilon$)。 $$ GF=\frac{△R/R}{△L/L}~~~(15-4) $$
+15.4.2 基本的应变计电路 $$ a)恒流电路~~~~~~~~~~~~~~~b)三线电桥电路 $$
+$$ 图15-32~~~基本的应变测量电路 $$
+因为当应变计感应量发生变化时，其电阻值会发生一个微弱变化，所以它通常用于与 RTD 类似的电路中。基本的差别是应变计测量应变，而不是温度。因此，应变计一般用在电桥电路中，或者用在恒流源驱动的电路中，如图15-32所示。它们的应用方式与 RTD 和热敏电阻相同。1B31 是应变计信号调理器的例子。它的数据手册见网站 www.analog.com。
+15.4.3 压力传感器 $$ a)基本的压力计结构~~~~b)当膜片上没有净压力时，应变计电阻为其标称值(侧面图) \\ c)净压力使得膜片扩张，应变计被拉伸，因此电阻增大 $$'><title>15.4 应变测量、压力测量和运动测量</title>
 
 <link rel='canonical' href='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/15-4%E5%BA%94%E5%8F%98%E6%B5%8B%E9%87%8F%E5%8E%8B%E5%8A%9B%E6%B5%8B%E9%87%8F%E5%92%8C%E8%BF%90%E5%8A%A8%E6%B5%8B%E9%87%8F/'>
 
-<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='15.4应变测量、压力测量和运动测量'>
-<meta property='og:description' content=''>
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='15.4 应变测量、压力测量和运动测量'>
+<meta property='og:description' content='本节将讨论三种与力相关的参数(应变、压力和运动)的测量方法。许多应用都需要量这三种参数。此外，其他参数(例如液体的流速)也可以间接通过测量应变、压力或者动而得到。
+学完本节后，你应该掌握以下内容:
+描述应变、压力和运动测量的方法 解释应变计如何工作 讨论应变计电路 解释压力传感器如何工作 讨论压力测量电路 列出几种压力传感器应用 15.4.1 应变计 $$ a)~~~当加上一个力时，发生应变，长度从L变到L&#43;△L $$ $$ b)~~~当平板发生弯曲时，发生应变，上表面扩张，下表面压缩 $$
+$$ 图15-29~~~应变例子 $$
+应变是由于作用在材料，上面的力量产生的材料变形，或者扩张或者压缩。例如，金属杆或金属棒当加上一个合适的力时，它会稍稍变长，如图15-29a 所示。此外，如果金属盘弯曲，那么上表面会有一个膨胀，称为拉伸应变，下表面会有一个压缩，称为压缩应变，如图15-29b所示。
+应变计的原理是: 如果材料的长度增加，它的电阻值增大;如果长度缩短，它的电阻值减小。这可以用下面的式子表示(回顾 DC/AC 电路课程)。 $$ R=\frac{\rho L}{A}~~~(15-3) $$ 这个式子说明:对于一种材料，比如一段线，它的电阻值与电阻率($\rho$)和长度(L)成正比，和横截面积(A)成反比。
+$$ a)典型的应变计结构 \\ b)沿着作用力的方向把应变计放置到被测量物体表面。当表面被拉长时，应变计也被拉伸 $$
+$$ 图15-30~~~一个简单的应变计和它的放置方式 $$
+应变计基本上是一个长而薄的电阻性材料条，它黏合在需要测量应变的物体的表面，比如放在测试的飞机机翼或尾翼上。当一个力作用在物体上引起微微的拉伸时，应变计也按比例拉长，电阻值增大。大多数应变计以类似于图15-30a 所示的形式来实现小区域范围内有足够电阻值的长度。然后如图15-30b所示将它沿着应变线方向放置。
+$$ 图15-31~~~应变系数的说明。欧姆表符号并不表示测量△R的实际方法 $$
+应变计的应变系数 应变计的一个重要特性是应变系数(GF)，GF定义为沿应变轴方向电阻值的相对变化与长度的相对变化之比。对于金属应变计，GF一般约为2。应变系数的概念在图15-31中说明，并可以用式(15-4)表示，其中R为标称电阻，$△R$ 为由应变引起的电阻变化。长度的相对变化($△L/L$)用应变($\epsilon$)来表示，一般表示为百万分率，称为微应变($μ\epsilon$)。 $$ GF=\frac{△R/R}{△L/L}~~~(15-4) $$
+15.4.2 基本的应变计电路 $$ a)恒流电路~~~~~~~~~~~~~~~b)三线电桥电路 $$
+$$ 图15-32~~~基本的应变测量电路 $$
+因为当应变计感应量发生变化时，其电阻值会发生一个微弱变化，所以它通常用于与 RTD 类似的电路中。基本的差别是应变计测量应变，而不是温度。因此，应变计一般用在电桥电路中，或者用在恒流源驱动的电路中，如图15-32所示。它们的应用方式与 RTD 和热敏电阻相同。1B31 是应变计信号调理器的例子。它的数据手册见网站 www.analog.com。
+15.4.3 压力传感器 $$ a)基本的压力计结构~~~~b)当膜片上没有净压力时，应变计电阻为其标称值(侧面图) \\ c)净压力使得膜片扩张，应变计被拉伸，因此电阻增大 $$'>
 <meta property='og:url' content='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/15-4%E5%BA%94%E5%8F%98%E6%B5%8B%E9%87%8F%E5%8E%8B%E5%8A%9B%E6%B5%8B%E9%87%8F%E5%92%8C%E8%BF%90%E5%8A%A8%E6%B5%8B%E9%87%8F/'>
 <meta property='og:site_name' content='My Blog'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Analog' /><meta property='article:published_time' content='2023-07-14T18:30:17&#43;00:00'/><meta property='article:modified_time' content='2023-07-14T18:30:17&#43;00:00'/>
-<meta name="twitter:title" content="15.4应变测量、压力测量和运动测量">
-<meta name="twitter:description" content=""><script>
+<meta name="twitter:title" content="15.4 应变测量、压力测量和运动测量">
+<meta name="twitter:description" content="本节将讨论三种与力相关的参数(应变、压力和运动)的测量方法。许多应用都需要量这三种参数。此外，其他参数(例如液体的流速)也可以间接通过测量应变、压力或者动而得到。
+学完本节后，你应该掌握以下内容:
+描述应变、压力和运动测量的方法 解释应变计如何工作 讨论应变计电路 解释压力传感器如何工作 讨论压力测量电路 列出几种压力传感器应用 15.4.1 应变计 $$ a)~~~当加上一个力时，发生应变，长度从L变到L&#43;△L $$ $$ b)~~~当平板发生弯曲时，发生应变，上表面扩张，下表面压缩 $$
+$$ 图15-29~~~应变例子 $$
+应变是由于作用在材料，上面的力量产生的材料变形，或者扩张或者压缩。例如，金属杆或金属棒当加上一个合适的力时，它会稍稍变长，如图15-29a 所示。此外，如果金属盘弯曲，那么上表面会有一个膨胀，称为拉伸应变，下表面会有一个压缩，称为压缩应变，如图15-29b所示。
+应变计的原理是: 如果材料的长度增加，它的电阻值增大;如果长度缩短，它的电阻值减小。这可以用下面的式子表示(回顾 DC/AC 电路课程)。 $$ R=\frac{\rho L}{A}~~~(15-3) $$ 这个式子说明:对于一种材料，比如一段线，它的电阻值与电阻率($\rho$)和长度(L)成正比，和横截面积(A)成反比。
+$$ a)典型的应变计结构 \\ b)沿着作用力的方向把应变计放置到被测量物体表面。当表面被拉长时，应变计也被拉伸 $$
+$$ 图15-30~~~一个简单的应变计和它的放置方式 $$
+应变计基本上是一个长而薄的电阻性材料条，它黏合在需要测量应变的物体的表面，比如放在测试的飞机机翼或尾翼上。当一个力作用在物体上引起微微的拉伸时，应变计也按比例拉长，电阻值增大。大多数应变计以类似于图15-30a 所示的形式来实现小区域范围内有足够电阻值的长度。然后如图15-30b所示将它沿着应变线方向放置。
+$$ 图15-31~~~应变系数的说明。欧姆表符号并不表示测量△R的实际方法 $$
+应变计的应变系数 应变计的一个重要特性是应变系数(GF)，GF定义为沿应变轴方向电阻值的相对变化与长度的相对变化之比。对于金属应变计，GF一般约为2。应变系数的概念在图15-31中说明，并可以用式(15-4)表示，其中R为标称电阻，$△R$ 为由应变引起的电阻变化。长度的相对变化($△L/L$)用应变($\epsilon$)来表示，一般表示为百万分率，称为微应变($μ\epsilon$)。 $$ GF=\frac{△R/R}{△L/L}~~~(15-4) $$
+15.4.2 基本的应变计电路 $$ a)恒流电路~~~~~~~~~~~~~~~b)三线电桥电路 $$
+$$ 图15-32~~~基本的应变测量电路 $$
+因为当应变计感应量发生变化时，其电阻值会发生一个微弱变化，所以它通常用于与 RTD 类似的电路中。基本的差别是应变计测量应变，而不是温度。因此，应变计一般用在电桥电路中，或者用在恒流源驱动的电路中，如图15-32所示。它们的应用方式与 RTD 和热敏电阻相同。1B31 是应变计信号调理器的例子。它的数据手册见网站 www.analog.com。
+15.4.3 压力传感器 $$ a)基本的压力计结构~~~~b)当膜片上没有净压力时，应变计电阻为其标称值(侧面图) \\ c)净压力使得膜片扩张，应变计被拉伸，因此电阻增大 $$"><script>
     (function(){
         if(''){
             if (prompt('请输入文章密码') !== ''){
@@ -25,7 +67,7 @@
 
     </head>
     <body class="
-    article-page 
+    article-page has-toc
 ">
     <script>
         (function() {
@@ -51,128 +93,22 @@
 </script>
 <div class="container main-container flex 
     
-        on-phone--column extended
+        extended
     
 ">
     
-        <aside class="sidebar left-sidebar sticky">
-    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
-        <span class="hamburger-box">
-            <span class="hamburger-inner"></span>
-        </span>
-    </button>
-
-    <header class="site-info">
-        
-            
-            <figure class="site-avatar">
-                
-                    
-                    
-                    
-                        
-                        <img src="/img/avatar_hu71fc3898bde3464d50a00f65e63c7ec2_517570_300x0_resize_box_3.png" width="300"
-                            height="354" class="site-logo" loading="lazy" alt="Avatar">
-                    
-                
-
-                
-            </figure>
-            
-        
-        
-        <h1 class="site-name"><a href="/">My Blog</a></h1>
-        <h2 class="site-description"></h2></header>
-
-    <ol class="menu" id="main-menu">
-        
-        
-        
-
-        <li >
-            <a href='/page/about/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <div id="article-toolbar">
+            <a href="/" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="7" r="4" />
-  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+  <polyline points="15 6 9 12 15 18" />
 </svg>
 
 
 
-                
-                <span>About</span>
+                <span>Back</span>
             </a>
-        </li>
-        
-        
-
-        <li >
-            <a href='/page/archives/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <rect x="3" y="4" width="18" height="4" rx="2" />
-  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
-  <line x1="10" y1="12" x2="14" y2="12" />
-</svg>
-
-
-
-                
-                <span>Archives</span>
-            </a>
-        </li>
-        
-        
-
-        <li >
-            <a href='/page/search/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="10" cy="10" r="7" />
-  <line x1="21" y1="21" x2="15" y2="15" />
-</svg>
-
-
-
-                
-                <span>Search</span>
-            </a>
-        </li>
-        
-
-        
-            <li id="dark-mode-toggle">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="8" cy="12" r="2" />
-  <rect x="2" y="6" width="20" height="12" rx="6" />
-</svg>
-
-
-
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="16" cy="12" r="2" />
-  <rect x="2" y="6" width="20" height="12" rx="6" />
-</svg>
-
-
-
-                <span>Dark Mode</span>
-            </li>
-        
-    </ol>
-</aside>
-
+        </div>
     
 <main class="main full-width">
     <article class="main-article">
@@ -182,7 +118,7 @@
     
 
     <h2 class="article-title">
-        <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/15-4%E5%BA%94%E5%8F%98%E6%B5%8B%E9%87%8F%E5%8E%8B%E5%8A%9B%E6%B5%8B%E9%87%8F%E5%92%8C%E8%BF%90%E5%8A%A8%E6%B5%8B%E9%87%8F/">15.4应变测量、压力测量和运动测量</a>
+        <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/15-4%E5%BA%94%E5%8F%98%E6%B5%8B%E9%87%8F%E5%8E%8B%E5%8A%9B%E6%B5%8B%E9%87%8F%E5%92%8C%E8%BF%90%E5%8A%A8%E6%B5%8B%E9%87%8F/">15.4 应变测量、压力测量和运动测量</a>
     </h2>
 
     
@@ -215,7 +151,7 @@
 
 
                 <time class="article-time--reading">
-                    0 minute read
+                    1 minute read
                 </time>
             </div>
         
@@ -225,7 +161,234 @@
 </header>
 
     <section class="article-content">
-    
+    <p>本节将讨论三种与力相关的参数(应变、压力和运动)的测量方法。许多应用都需要量这三种参数。此外，其他参数(例如液体的流速)也可以间接通过测量应变、压力或者动而得到。</p>
+<p>学完本节后，你应该掌握以下内容:</p>
+<ul>
+<li>描述应变、压力和运动测量的方法
+<ul>
+<li>解释应变计如何工作</li>
+<li>讨论应变计电路</li>
+<li>解释压力传感器如何工作</li>
+<li>讨论压力测量电路</li>
+<li>列出几种压力传感器应用</li>
+</ul>
+</li>
+</ul>
+<h3 id="1541-应变计">15.4.1 应变计</h3>
+<p><img src="https://s2.loli.net/2023/10/13/AkezsOn9SDmCfvw.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog15-29a.png"
+	
+	
+>
+$$
+a)~~~当加上一个力时，发生应变，长度从L变到L+△L
+$$
+<img src="https://s2.loli.net/2023/10/13/xaTSXLujdVimEAI.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog15-29b.png"
+	
+	
+>
+$$
+b)~~~当平板发生弯曲时，发生应变，上表面扩张，下表面压缩
+$$</p>
+<p>$$
+图15-29~~~应变例子
+$$</p>
+<p>应变是由于作用在材料，上面的力量产生的材料变形，或者扩张或者压缩。例如，金属杆或金属棒当加上一个合适的力时，它会稍稍变长，如图15-29a 所示。此外，如果金属盘弯曲，那么上表面会有一个膨胀，称为<code>拉伸应变</code>，下表面会有一个压缩，称为<code>压缩应变</code>，如图15-29b所示。</p>
+<p>应变计的原理是: 如果材料的长度增加，它的电阻值增大;如果长度缩短，它的电阻值减小。这可以用下面的式子表示(回顾 DC/AC 电路课程)。
+$$
+R=\frac{\rho L}{A}~~~(15-3)
+$$
+这个式子说明:对于一种材料，比如一段线，它的电阻值与电阻率($\rho$)和长度(L)成正比，和横截面积(A)成反比。</p>
+<p><img src="https://s2.loli.net/2023/10/13/FXVZGBf7YSlqzQC.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog15-30.png"
+	
+	
+>
+$$
+a)典型的应变计结构
+\\
+b)沿着作用力的方向把应变计放置到被测量物体表面。当表面被拉长时，应变计也被拉伸
+$$</p>
+<p>$$
+图15-30~~~一个简单的应变计和它的放置方式
+$$</p>
+<p><code>应变计</code>基本上是一个长而薄的电阻性材料条，它黏合在需要测量应变的物体的表面，比如放在测试的飞机机翼或尾翼上。当一个力作用在物体上引起微微的拉伸时，应变计也按比例拉长，电阻值增大。大多数应变计以类似于图15-30a 所示的形式来实现小区域范围内有足够电阻值的长度。然后如图15-30b所示将它沿着应变线方向放置。</p>
+<p><img src="https://s2.loli.net/2023/10/13/zcLG4rt2iUsBfNa.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog15-31.png"
+	
+	
+>
+$$
+图15-31~~~应变系数的说明。欧姆表符号并不表示测量△R的实际方法
+$$</p>
+<p><strong>应变计的应变系数</strong> 应变计的一个重要特性是<code>应变系数</code>(GF)，GF定义为沿应变轴方向电阻值的相对变化与长度的相对变化之比。对于金属应变计，GF一般约为2。应变系数的概念在图15-31中说明，并可以用式(15-4)表示，其中R为标称电阻，$△R$ 为由应变引起的电阻变化。长度的相对变化($△L/L$)用应变($\epsilon$)来表示，一般表示为百万分率，称为微应变($μ\epsilon$)。
+$$
+GF=\frac{△R/R}{△L/L}~~~(15-4)
+$$</p>
+<h3 id="1542-基本的应变计电路">15.4.2 基本的应变计电路</h3>
+<p><img src="https://s2.loli.net/2023/10/13/nWhvSUZ2GyxEtuo.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog15-32.png"
+	
+	
+></p>
+<p>$$
+a)恒流电路~~~~~~~~~~~~~~~b)三线电桥电路
+$$</p>
+<p>$$
+图15-32~~~基本的应变测量电路
+$$</p>
+<p>因为当应变计感应量发生变化时，其电阻值会发生一个微弱变化，所以它通常用于与 RTD 类似的电路中。基本的差别是应变计测量应变，而不是温度。因此，应变计一般用在电桥电路中，或者用在恒流源驱动的电路中，如图15-32所示。它们的应用方式与 RTD 和热敏电阻相同。1B31 是应变计信号调理器的例子。它的数据手册见网站 <a class="link" href="https://www.analog.com"  target="_blank" rel="noopener"
+    >www.analog.com</a>。</p>
+<h3 id="1543-压力传感器">15.4.3 压力传感器</h3>
+<p><img src="https://s2.loli.net/2023/10/13/16MSdLJCEbqAhij.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog15-33.png"
+	
+	
+>
+$$
+a)基本的压力计结构~~~~b)当膜片上没有净压力时，应变计电阻为其标称值(侧面图)
+\\
+c)净压力使得膜片扩张，应变计被拉伸，因此电阻增大
+$$</p>
+<p>$$
+图15-33~~~包含黏合在柔软膜片上的应变计的简化压力传感器
+$$</p>
+<p>压力传感器是其电阻变化与压力变化成正比的器件。一般来讲，压力感应可以使用依附在一个柔软膜片上的应变计来完成，如图15-33a 所示。图15-33b为一个没有承受净压力的膜片。当膜片一边存在一个正的净压力时，如图15-33c所示，会向上推膜片，它的表面也产生扩张。该扩张会使应变计被拉伸，因此电阻值增大。</p>
+<p>一般使用黏合在不锈钢膜片上的箔应变计或者在一个硅膜片中集成半导体应变计(电阻)来制造压力传感器。对于这两种方法，基本原理一样。</p>
+<p><img src="https://s2.loli.net/2023/10/13/I8RwhrpbCOTuFQU.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog15-34.png"
+	
+	
+>
+$$
+a)绝对压力传感器~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~b)标准压力传感器~~~~~~~~~~~~~~~~~~~~~~~~~~~~~c)差分压力传感器
+$$</p>
+<p>$$
+图15-34~~~三种基本类型的压力传感器
+$$
+根据压力测量，压力传感器有三种基本的配置。绝对压力传感器测量相对于真空所加的压力，如图15-34a所示。标准(gage)压力传感器测量相对于周边(环境压力)所加的压力，如图15-34b所示。差分压力传感器测量所加的两个压力的差值，如图15-34c所示。一些传感器电路包括电桥完整电路和运放，并将它们与传感器一起封装在一起，如图15-35所示。</p>
+<p><img src="https://s2.loli.net/2023/10/13/qcpmesKtfMDAz7u.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog15-35.png"
+	
+	
+>
+$$
+图15-35~~~基本的压力传感器电路和符号
+$$</p>
+<h3 id="1544-压力测量电路">15.4.4 压力测量电路</h3>
+<p>因为压力传感器的电阻随着被测量的变化而变化，所以它通常位于电桥电路中，如图15-35a中的基本运放电桥式电路所示。在某些情况中，会把完整电路造到传感器封装中，而在其他有些情况下，电路位于传感器外部。图15-35b~d中的符号有时用来表示具有放大输出的完整压力传感器。图15-35b中的符号表示绝对压力传感器，图15-35c中的符号表示标准压力传感器，图15-35d中的符号表示差分压力传感器。</p>
+<p><img src="https://s2.loli.net/2023/10/13/Crtk9zwWfx5eBi3.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog15-36.png"
+	
+	
+>
+$$
+图15-36~~~流速测量的基本方法
+$$
+<strong>流速测量</strong> 测量液体流过管道 的流速的一种常见方法是差分压力方法。一个限流设备，如文丘里(Venturi)管(或其他类型的限流设备，如限流孔)放在需要监测流速的管道中。文丘里管是一段较窄的管道，如图15-36所示。虽然液体流过较窄通道时的流速增大，但是每分钟流过管道的流量是固定不变的。</p>
+<p>因为液体流过受限区域时流速增大，所以压力也增大。如果在较宽的地方和较窄的地方都对压力进行测量，那么可以确定流速，因为流速与差分压力的平方根成正比，如图15-36所示</p>
+<p><strong>压力传感器应用</strong> 压力传感器用于任何需要测量材料压力的场合中。在医疗应用中，压力传感器用于血压测量;在飞机中，压力传感器用于测量高度压力、舱内压力和水压。在汽车中，压力传感器用于测量燃油流动、油压、制动系统压力、管道压力，以及转向系统压力，还有其他一些应用.</p>
+<h3 id="1545-运动测量电路">15.4.5 运动测量电路</h3>
+<p><strong>位移传感器</strong> 位移用来表示身体或点的位置变化。角度位移指能够用度或弧度来测量的旋转。位移传感器要么是接触式的要么是非接触式的。</p>
+<p><img src="https://s2.loli.net/2023/10/13/a7ZzLI3DV1MdysA.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog15-37.png"
+	
+	
+></p>
+<p>$$
+a) LVDT图~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~b)响应~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~c)标准LVDT
+$$</p>
+<p>$$
+图15-37~~~ LVDT 位移传感器
+$$
+接触式传感器一般用具有耦合器件的感应轴来跟随被测量的位置。线性可变差分变压器( LVDT )就是一种接触式位移传感器，它能够将电感的变化与位移相关联。感应轴连接到专用绕组变压器中的一个移动磁心上。典型的  LVDT  如图15-37所示。变压器的一次绕组接人被测系统中，它位于两个相同的二次绕组之间。一次绕组由交流(一般频率范围为 1~5kHz)激励。 当磁心位于中心时，两个二次绕组上生成的电压相等。当磁心离开中心位置时，其中一个二次绕组上的电压要大于另一个上的电压。对于图15-37所示的解调电路，当磁心通过中心位置时，输出的极性发生改变。该传感器有很好的灵敏度、线性度和可重复性。</p>
+<p>非接触式位移传感器包括光学和电容传感器。可以通过对光电池进行排列来观察通过要测量的编码盘上小孔的光线，或者来对要测量的表面上的边缘进行计数。光学系统速度很快，但包括背景光源等噪声会在光学传感器上产生干扰信号。如果噪声会产生问题，那么在系统中加人迟滯环节非常有用(见8.1节)。</p>
+<p><img src="https://s2.loli.net/2023/10/13/nSxuzjgUVyo8Z1J.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog15-38.png"
+	
+	
+>
+$$
+图15-38~~~光纤近程检测器
+$$
+光纤传感器是用于近距离测量的非常好的近程检测器。反射性传感器使用两个光纤束，一个用于发射光，另一个用于从反射面上接收光，如图15-38所示。光能够在光纤中几乎没有明显衰减地进行传输。当它离开发射光纤后，它在目标上形成一个斑点，它与距离的平方成反比。接收光纤对准斑点，并将反射光收集到光传感器。由接收光纤检测到的光强度取决于光纤的物理尺寸和排列以及到斑点和反射面的距离，但是这种技术能够对接近 1 微英寸的距离作出响应。主要的缺点是动态范围有限。</p>
+<p>电容性传感器可以做成非常灵敏的位移传感器或近程传感器。对电容中其中一个平板进行移动可以来改变电容值。移动的平板可以是任何金属表面，如电容性麦克风的膜片或者要测量的表面。电容能够用来控制谐振电路的频率来将该电容变化转换为有用的电子输出(实验手册中的实验37给出了一个例子)。</p>
+<p><strong>速度传感器</strong> 速度定义为位移的变化速率，它可以通过位移传感器和测量两个位置之间的时间来间接求得。也可以利用特定传感器来直接测量速度，这种传感器的输出与被测速度成正比。这些传感器要么对线速度作出响应，要么对角速度作出响应。线速度传感器在同心线圈中使用一个永久磁铁，形成一个简单的电动机，产生一个与速度成正比的电压。线圈和磁铁中，其中一个固定，另一个相对于固定的元件进行移动。从线圈中取出输出信号。</p>
+<p>有各种各样的传感器来测量角速度。转速计是一类角速度传感器，它能够产生一个直流或交流电压输出。直流转速计基本.上是一个小型的发电机，里面的线圈在一个固定不变的磁场中旋转。当线圈在固定不变的磁场中旋转时，线圈上会产生一个电压。所产生电压的平均值与旋转速度成正比，而极性反映了旋转方向，这是直流转速计的优点。交流转速计可以设计成发电机，能够得到频率与旋转速度成正比的输出。</p>
+<p>另外一种测量角速度的方法是在一个光敏元件上旋转一个遮光器。遮光器会干扰光源到达光电池，使得光电池的输出以与旋转速度成正比的速率变化。</p>
+<p><img src="https://s2.loli.net/2023/10/13/yvironxCB58FjgT.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog15-39.png"
+	
+	
+>
+$$
+图15-39~~~一个基本的加速度传感器。通过可变电阻将运动转换成电压
+$$</p>
+<p>加速度传感器加速 度通常用安装在一个合适容器内的弹簀支撑的震动块来测量，如图15-39 所示。用一个减震器来实现阻尼，它是一个减小振动的机械装置。盒子和震动块之间的相对运动与加速度成正比。第二个传感器(比如电阻性位移传感器或 LVDT )用来将相对运动转换成一个电子量输出。理想情况下，盒子加速时，震动块由于惯性而不会移动;实际情况下，由于通过弹簧有作用力加到它上面，因此它会移动。加速计有一个内在的频率，它的周期小于所测加速度发生改变所需的时间。用来测量振动的加速计使用的频率也应该小于这个内在频率。</p>
+<p>使用 LVDT 基本原理的加速计可以构造成来测量振动。震动块由周围用线圈环绕的磁铁制成。线圈上产生的电压是加速度的函数。</p>
+<p>另一种加速计使用一个与震动块接触的压电晶体。晶体对震动块的加速度产生的作用力作出响应并产生一个输出电压。压电晶体尺寸很小，并有一个非常高的内在频率; 它能够用来测量高频振动。压电晶体的缺点是输出非常小，晶体的阻抗很高，使得它很容易由于噪声而产生问题。</p>
+
 </section>
 
 
@@ -238,9 +401,44 @@
     </section>
 
 
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
     </footer>
 
 
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css"integrity="sha384-RZU/ijkSsFbcmivfdRBQDtwuwVqK7GMOw6IMvKyeWL2K5UAlyp6WonmB8m7Jd0Hn"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js"integrity="sha384-pK1WpvzWVBQiP0/GjnvRxV4mOb0oxFuyRxJlk6vVw146n3egcN5C925NCP7a7BY8"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js"integrity="sha384-vZTG03m&#43;2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ]
+        });})
+</script>
     
 </article>
 
@@ -258,7 +456,7 @@
         
 
         <div class="article-details">
-            <h2 class="article-title">15.3温度测量</h2>
+            <h2 class="article-title">15.3 温度测量</h2>
         </div>
     </a>
 </article>
@@ -270,7 +468,7 @@
         
 
         <div class="article-details">
-            <h2 class="article-title">15.2角度测量</h2>
+            <h2 class="article-title">15.2 角度测量</h2>
         </div>
     </a>
 </article>
@@ -282,7 +480,7 @@
         
 
         <div class="article-details">
-            <h2 class="article-title">15.1RMS-DC转换器</h2>
+            <h2 class="article-title">15.1 RMS-DC转换器</h2>
         </div>
     </a>
 </article>
@@ -294,7 +492,7 @@
         
 
         <div class="article-details">
-            <h2 class="article-title">14.8故障检测</h2>
+            <h2 class="article-title">14.8 故障检测</h2>
         </div>
     </a>
 </article>
@@ -306,7 +504,7 @@
         
 
         <div class="article-details">
-            <h2 class="article-title">14.7V/F和F/V转换器</h2>
+            <h2 class="article-title">14.7 V/F和F/V转换器</h2>
         </div>
     </a>
 </article>
@@ -324,7 +522,7 @@
     data-app-id="d44db3f9-a0ff-4551-a44d-316afd2e5835"
     data-page-id="0ce493ef18631f9343845eaa38df4d8a"
     data-page-url="https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/15-4%E5%BA%94%E5%8F%98%E6%B5%8B%E9%87%8F%E5%8E%8B%E5%8A%9B%E6%B5%8B%E9%87%8F%E5%92%8C%E8%BF%90%E5%8A%A8%E6%B5%8B%E9%87%8F/"
-    data-page-title="15.4应变测量、压力测量和运动测量"></div>
+    data-page-title="15.4 应变测量、压力测量和运动测量"></div>
 <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
 
 <script>
@@ -436,6 +634,40 @@
             >
 
             </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">Table of contents</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#1541-应变计">15.4.1 应变计</a></li>
+        <li><a href="#1542-基本的应变计电路">15.4.2 基本的应变计电路</a></li>
+        <li><a href="#1543-压力传感器">15.4.3 压力传感器</a></li>
+        <li><a href="#1544-压力测量电路">15.4.4 压力测量电路</a></li>
+        <li><a href="#1545-运动测量电路">15.4.5 运动测量电路</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                </div>
+            </section>
+        </aside>
     
 
         </div>

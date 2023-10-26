@@ -1,17 +1,38 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content=''><title>6.2差分放大器</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='运放通常至少包含一个差分放大器级。因为差分放大器(差放)是运放的输人级，所以它是运放内部操作的基础。因此，有必要了解差分放大器。
+学完本节后，你应该掌握以下内容:
+讨论差分放大器及其工作原理 解释单端输入工作原理 解释差分输入工作原理 解释共模工作原理 定义共模抑制比 讨论差分放大器在运放中的使用 $$ a)电路~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~b)框图符号 $$
+$$ 图6-4~~~基本的差分放大器 $$
+基本差分放大器(差放)的电路及其符号如图6-4所示。运放中的差放级提供了高电压增益和共模抑制(本节稍后给出定义)。
+6.2.1 基本工作原理 下列讨论与 图6-5 相关，包括差分放大器工作原理的基本直流分析。
+首先，当两个输人端都接地(0V)时，发射极电压为 $一0.7V$，如图6-5a 所示。假设晶体管 $Q_1$ 和 $Q_2$ 通过制造中的精密过程控制已达到一致匹配，这样当无输入信号时，两者的发射极直流电流也相等。因此， $$ I_{E1}= I_{E2} $$ 因为两个发射极电流在 $R_E$ 处汇合，所以 $$ I_{E1}= I_{E2}= \frac{I_{R_E}}{2} $$ 式中， $$ I_{R_E}= \frac{V_E-V_{EE}}{R_E} $$ 基于$I_C \approx I_E$的近似，可以得到 $$ I_{C1}=I_{C2} \approx \frac{I_{R_E}}{2} $$ 由于两集电极电流和两集电极电阻相等(当输入电压为零时)，有 $$ V_{C1}=V_{C2}=V_{CC}-I_{C1}R_{C2} $$ 此情况如图6-5a所示。
+$$ 图6-5~~~差分放大器的基本工作原理(地为0V)，其中给出了电流和电压的相对变化 $$ 其次，输人端 2 保持接地，向输入端 1 施加正偏置电压，如图6-5b所示。$Q_1$ 基极的正电压使 $I_{C1}$ 增大，并使发射极电压增加到 $$ V_E=V_B-0.7V $$ 这使得 $Q_2$ 的正向偏置($V_{BE}$)减小，因为 $Q_2$ 基极保持在0V(地)，这使得 $I_{C2}$ 减小，如图6-5b所示。整个结果是 $I_{C1}$ 增大使得 $V_{C1}$ 减小，$I_{C2}$ 减小使得 $V_{C2}$ 增大，如图6-5b所示。'><title>6.2 差分放大器</title>
 
 <link rel='canonical' href='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/6-2%E5%B7%AE%E5%88%86%E6%94%BE%E5%A4%A7%E5%99%A8/'>
 
-<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='6.2差分放大器'>
-<meta property='og:description' content=''>
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='6.2 差分放大器'>
+<meta property='og:description' content='运放通常至少包含一个差分放大器级。因为差分放大器(差放)是运放的输人级，所以它是运放内部操作的基础。因此，有必要了解差分放大器。
+学完本节后，你应该掌握以下内容:
+讨论差分放大器及其工作原理 解释单端输入工作原理 解释差分输入工作原理 解释共模工作原理 定义共模抑制比 讨论差分放大器在运放中的使用 $$ a)电路~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~b)框图符号 $$
+$$ 图6-4~~~基本的差分放大器 $$
+基本差分放大器(差放)的电路及其符号如图6-4所示。运放中的差放级提供了高电压增益和共模抑制(本节稍后给出定义)。
+6.2.1 基本工作原理 下列讨论与 图6-5 相关，包括差分放大器工作原理的基本直流分析。
+首先，当两个输人端都接地(0V)时，发射极电压为 $一0.7V$，如图6-5a 所示。假设晶体管 $Q_1$ 和 $Q_2$ 通过制造中的精密过程控制已达到一致匹配，这样当无输入信号时，两者的发射极直流电流也相等。因此， $$ I_{E1}= I_{E2} $$ 因为两个发射极电流在 $R_E$ 处汇合，所以 $$ I_{E1}= I_{E2}= \frac{I_{R_E}}{2} $$ 式中， $$ I_{R_E}= \frac{V_E-V_{EE}}{R_E} $$ 基于$I_C \approx I_E$的近似，可以得到 $$ I_{C1}=I_{C2} \approx \frac{I_{R_E}}{2} $$ 由于两集电极电流和两集电极电阻相等(当输入电压为零时)，有 $$ V_{C1}=V_{C2}=V_{CC}-I_{C1}R_{C2} $$ 此情况如图6-5a所示。
+$$ 图6-5~~~差分放大器的基本工作原理(地为0V)，其中给出了电流和电压的相对变化 $$ 其次，输人端 2 保持接地，向输入端 1 施加正偏置电压，如图6-5b所示。$Q_1$ 基极的正电压使 $I_{C1}$ 增大，并使发射极电压增加到 $$ V_E=V_B-0.7V $$ 这使得 $Q_2$ 的正向偏置($V_{BE}$)减小，因为 $Q_2$ 基极保持在0V(地)，这使得 $I_{C2}$ 减小，如图6-5b所示。整个结果是 $I_{C1}$ 增大使得 $V_{C1}$ 减小，$I_{C2}$ 减小使得 $V_{C2}$ 增大，如图6-5b所示。'>
 <meta property='og:url' content='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/6-2%E5%B7%AE%E5%88%86%E6%94%BE%E5%A4%A7%E5%99%A8/'>
 <meta property='og:site_name' content='My Blog'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Analog' /><meta property='article:published_time' content='2023-07-14T17:40:49&#43;00:00'/><meta property='article:modified_time' content='2023-07-14T17:40:49&#43;00:00'/>
-<meta name="twitter:title" content="6.2差分放大器">
-<meta name="twitter:description" content=""><script>
+<meta name="twitter:title" content="6.2 差分放大器">
+<meta name="twitter:description" content="运放通常至少包含一个差分放大器级。因为差分放大器(差放)是运放的输人级，所以它是运放内部操作的基础。因此，有必要了解差分放大器。
+学完本节后，你应该掌握以下内容:
+讨论差分放大器及其工作原理 解释单端输入工作原理 解释差分输入工作原理 解释共模工作原理 定义共模抑制比 讨论差分放大器在运放中的使用 $$ a)电路~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~b)框图符号 $$
+$$ 图6-4~~~基本的差分放大器 $$
+基本差分放大器(差放)的电路及其符号如图6-4所示。运放中的差放级提供了高电压增益和共模抑制(本节稍后给出定义)。
+6.2.1 基本工作原理 下列讨论与 图6-5 相关，包括差分放大器工作原理的基本直流分析。
+首先，当两个输人端都接地(0V)时，发射极电压为 $一0.7V$，如图6-5a 所示。假设晶体管 $Q_1$ 和 $Q_2$ 通过制造中的精密过程控制已达到一致匹配，这样当无输入信号时，两者的发射极直流电流也相等。因此， $$ I_{E1}= I_{E2} $$ 因为两个发射极电流在 $R_E$ 处汇合，所以 $$ I_{E1}= I_{E2}= \frac{I_{R_E}}{2} $$ 式中， $$ I_{R_E}= \frac{V_E-V_{EE}}{R_E} $$ 基于$I_C \approx I_E$的近似，可以得到 $$ I_{C1}=I_{C2} \approx \frac{I_{R_E}}{2} $$ 由于两集电极电流和两集电极电阻相等(当输入电压为零时)，有 $$ V_{C1}=V_{C2}=V_{CC}-I_{C1}R_{C2} $$ 此情况如图6-5a所示。
+$$ 图6-5~~~差分放大器的基本工作原理(地为0V)，其中给出了电流和电压的相对变化 $$ 其次，输人端 2 保持接地，向输入端 1 施加正偏置电压，如图6-5b所示。$Q_1$ 基极的正电压使 $I_{C1}$ 增大，并使发射极电压增加到 $$ V_E=V_B-0.7V $$ 这使得 $Q_2$ 的正向偏置($V_{BE}$)减小，因为 $Q_2$ 基极保持在0V(地)，这使得 $I_{C2}$ 减小，如图6-5b所示。整个结果是 $I_{C1}$ 增大使得 $V_{C1}$ 减小，$I_{C2}$ 减小使得 $V_{C2}$ 增大，如图6-5b所示。"><script>
     (function(){
         if(''){
             if (prompt('请输入文章密码') !== ''){
@@ -25,7 +46,7 @@
 
     </head>
     <body class="
-    article-page 
+    article-page has-toc
 ">
     <script>
         (function() {
@@ -51,128 +72,22 @@
 </script>
 <div class="container main-container flex 
     
-        on-phone--column extended
+        extended
     
 ">
     
-        <aside class="sidebar left-sidebar sticky">
-    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
-        <span class="hamburger-box">
-            <span class="hamburger-inner"></span>
-        </span>
-    </button>
-
-    <header class="site-info">
-        
-            
-            <figure class="site-avatar">
-                
-                    
-                    
-                    
-                        
-                        <img src="/img/avatar_hu71fc3898bde3464d50a00f65e63c7ec2_517570_300x0_resize_box_3.png" width="300"
-                            height="354" class="site-logo" loading="lazy" alt="Avatar">
-                    
-                
-
-                
-            </figure>
-            
-        
-        
-        <h1 class="site-name"><a href="/">My Blog</a></h1>
-        <h2 class="site-description"></h2></header>
-
-    <ol class="menu" id="main-menu">
-        
-        
-        
-
-        <li >
-            <a href='/page/about/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <div id="article-toolbar">
+            <a href="/" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="7" r="4" />
-  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+  <polyline points="15 6 9 12 15 18" />
 </svg>
 
 
 
-                
-                <span>About</span>
+                <span>Back</span>
             </a>
-        </li>
-        
-        
-
-        <li >
-            <a href='/page/archives/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <rect x="3" y="4" width="18" height="4" rx="2" />
-  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
-  <line x1="10" y1="12" x2="14" y2="12" />
-</svg>
-
-
-
-                
-                <span>Archives</span>
-            </a>
-        </li>
-        
-        
-
-        <li >
-            <a href='/page/search/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="10" cy="10" r="7" />
-  <line x1="21" y1="21" x2="15" y2="15" />
-</svg>
-
-
-
-                
-                <span>Search</span>
-            </a>
-        </li>
-        
-
-        
-            <li id="dark-mode-toggle">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="8" cy="12" r="2" />
-  <rect x="2" y="6" width="20" height="12" rx="6" />
-</svg>
-
-
-
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="16" cy="12" r="2" />
-  <rect x="2" y="6" width="20" height="12" rx="6" />
-</svg>
-
-
-
-                <span>Dark Mode</span>
-            </li>
-        
-    </ol>
-</aside>
-
+        </div>
     
 <main class="main full-width">
     <article class="main-article">
@@ -182,7 +97,7 @@
     
 
     <h2 class="article-title">
-        <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/6-2%E5%B7%AE%E5%88%86%E6%94%BE%E5%A4%A7%E5%99%A8/">6.2差分放大器</a>
+        <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/6-2%E5%B7%AE%E5%88%86%E6%94%BE%E5%A4%A7%E5%99%A8/">6.2 差分放大器</a>
     </h2>
 
     
@@ -215,7 +130,7 @@
 
 
                 <time class="article-time--reading">
-                    0 minute read
+                    2 minute read
                 </time>
             </div>
         
@@ -225,7 +140,191 @@
 </header>
 
     <section class="article-content">
-    
+    <p>运放通常至少包含一个差分放大器级。因为差分放大器(差放)是运放的输人级，所以它是运放内部操作的基础。因此，有必要了解差分放大器。</p>
+<p>学完本节后，你应该掌握以下内容:</p>
+<ul>
+<li>讨论差分放大器及其工作原理
+<ul>
+<li>解释单端输入工作原理</li>
+<li>解释差分输入工作原理</li>
+<li>解释共模工作原理</li>
+<li>定义共模抑制比</li>
+<li>讨论差分放大器在运放中的使用</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://s2.loli.net/2023/10/16/brWi84MhT5DRenE.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog6-4.png"
+	
+	
+>
+$$
+a)电路~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~b)框图符号
+$$</p>
+<p>$$
+图6-4~~~基本的差分放大器
+$$</p>
+<p>基本<code>差分放大器</code>(差放)的电路及其符号如图6-4所示。运放中的差放级提供了高电压增益和共模抑制(本节稍后给出定义)。</p>
+<h3 id="621-基本工作原理">6.2.1 基本工作原理</h3>
+<p>下列讨论与 图6-5 相关，包括差分放大器工作原理的基本直流分析。</p>
+<p>首先，当两个输人端都接地(0V)时，发射极电压为 $一0.7V$，如图6-5a 所示。假设晶体管 $Q_1$ 和 $Q_2$ 通过制造中的精密过程控制已达到一致匹配，这样当无输入信号时，两者的发射极直流电流也相等。因此，
+$$
+I_{E1}= I_{E2}
+$$
+因为两个发射极电流在 $R_E$ 处汇合，所以
+$$
+I_{E1}= I_{E2}= \frac{I_{R_E}}{2}
+$$
+式中，
+$$
+I_{R_E}= \frac{V_E-V_{EE}}{R_E}
+$$
+基于$I_C \approx I_E$的近似，可以得到
+$$
+I_{C1}=I_{C2} \approx \frac{I_{R_E}}{2}
+$$
+由于两集电极电流和两集电极电阻相等(当输入电压为零时)，有
+$$
+V_{C1}=V_{C2}=V_{CC}-I_{C1}R_{C2}
+$$
+此情况如图6-5a所示。</p>
+<p><img src="https://s2.loli.net/2023/10/16/3PNlcdg7pbtyRIk.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog6_5.png"
+	
+	
+>
+$$
+图6-5~~~差分放大器的基本工作原理(地为0V)，其中给出了电流和电压的相对变化
+$$
+其次，输人端 2 保持接地，向输入端 1 施加正偏置电压，如图6-5b所示。$Q_1$ 基极的正电压使 $I_{C1}$ 增大，并使发射极电压增加到
+$$
+V_E=V_B-0.7V
+$$
+这使得 $Q_2$ 的正向偏置($V_{BE}$)减小，因为 $Q_2$ 基极保持在0V(地)，这使得 $I_{C2}$ 减小，如图6-5b所示。整个结果是 $I_{C1}$ 增大使得 $V_{C1}$ 减小，$I_{C2}$ 减小使得 $V_{C2}$ 增大，如图6-5b所示。</p>
+<p>最后，输入端 1 保持接地，向输人端 2 施加正偏置电压，如图6-5c所示。$Q_2$ 基极的正电压使 $Q_2$ 更加导通，$I_{C2}$ 增大。此外，发射极电压增加，这使得 $Q_1$ 的正向偏置减小，因为 $Q_1$ 基极保持在0V，所以使得 $I_{C1}$ 减小。结果是，$I_{C2}$ 增大使得 $V_{C2}$ 减小，$I_{C1}$ 减小使得 $V_{C1}$ 增大，如图6-5c所示。</p>
+<h3 id="622-信号工作模式">6.2.2 信号工作模式</h3>
+<p><img src="https://s2.loli.net/2023/10/16/AwKHOlRhSEru5CT.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog6_6.png"
+	
+	
+>
+$$
+a)~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~b)
+$$</p>
+<p>$$
+图6-6~~~差分放大器的单端输入工作原理
+$$</p>
+<p><strong>单端输入</strong> <code>在单端模式下，一个输入端接地，信号电压只加在另一输入端</code>，如图6-6所示。当信号电压加到输人端 1 时，如图6-6a所示，输出端 1 上会产生一个反相放大的信号电压。此外，$Q_1$ 发射极也会出现一个同相信号电压。因为$Q_1$ 与$Q_2$ 的发射极是公共端﹐所以发射极信号成为$Q_2$ 。的输入，而$Q_2$ 为共基放大器。信号由$Q_2$ 放大，并在输出端 2 上产生同相输出。以上过程如图6-6a所示。</p>
+<p>当信号电压加到输入端 2，输人端 1 接地时，如图6-6b所示，输出端 2 会产生一个反相放大信号电压。在此情况下，$Q_1$ 为共基放大器，输出端 1 会产生同相放大信号。以上过程如图6-6b所示。</p>
+<p><img src="https://s2.loli.net/2023/10/16/fkr9SN6AxaYHuTX.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog6_7a.png"
+	
+	
+>
+$$
+a)差分输入~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~b)V_{in1}单独作用下的输出
+$$
+<img src="https://s2.loli.net/2023/10/16/17tRA5aXeI6HhOS.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog6_7b.png"
+	
+	
+></p>
+<p>$$
+c)V_{in2}单独作用下的输出~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~d)差分输入下的总输出
+$$</p>
+<p>$$
+图6-7~~~差分放大器的差分输入工作原理
+$$
+<strong>差分输入</strong> <code>在差分模式下，两个极性相反(反相)的信号加到两个输人端</code>，如图6-7a所示。<code>这种类型的工作模式也称作 双端输入 模式</code>。如你所见，每个输入都会影响输出。</p>
+<p>图6-7b给出了输人端 1 作为单端输人、独立工作时的输出信号。图6-7c给出了输人端 2 作为单端输人、独立工作时的输出信号。注意，图6-7b与c中输出端 1 的信号极性相同。输出端 2 也是如此。通过将输出端 1 和输出端 2 的两个信号叠加，可得到差分工作模式的总输出，如图6-7d所示。</p>
+<p><strong>共模输入</strong> 差分放大器最重要的工作模式之一为<code>共模输入</code>模式，此时施加到两个输端的信号电压的相位、频率和幅度均相同，如图6-8a所示。同样，通过考虑每个输人信号单独工作的情况，可以理解共模输入的基本工作原理。
+<img src="https://s2.loli.net/2023/10/16/ev7uBWmOQqDPyo3.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog6_8a.png"
+	
+	
+>
+$$
+a)共模输入~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~b)V_{in1}单独作用下的输出
+$$</p>
+<p><img src="https://s2.loli.net/2023/10/16/yxsvD5IdSgepUn3.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog6_8b.png"
+	
+	
+>
+$$
+c)V_{in2}单独作用下的输出~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~d)当加上共模信号
+\\
+时输出抵消。输出信号幅度相等,相位相反，互相抵消，使得两个输出端口均为0V
+$$</p>
+<p>$$
+图6-8~~~差分放大器的共模工作原理
+$$
+图6-8b为只有输入信号 1 时的输出信号，图6-8c为只有输人信号 2 时的输出信号注意，输出端 1 的对应信号极性相反，输出端 2 的信号亦如此。当输入信号加到两个输人端时，输出叠加并互相抵消，使得输出电压为0，如图6-8d所示。</p>
+<p>这称为<code>共模抑制</code>。其重要性体现在不期望的信号同时出现在差分放大器的两个输人端的情况。共模抑制意味着不期望的信号不会出现在输出端，不会导致期望信号的失真。共模信号(噪声)通常由输人线上的辐射能量导致，来源有相邻线、60Hz电力线等。</p>
+<h3 id="623-共模抑制比">6.2.3 共模抑制比</h3>
+<p>有用信号只出现在一个输入端，或者以相反极性出现在两个输人端上。这些有用信号被放大并出现在输出端，如前所述。无用信号(噪声)以相同极性出现在两个输入端上，因差分放大器的作用，这些无用信号基本被抵消，不会出现在输出端。评价放大器抑制共模信号能力的指标，是一个称为<code>共模抑制比</code>(CMRR)的参数。</p>
+<p>理想情况下，差分放大器对期望信号(单端或差分)提供非常高的增益，对共模信号提供О增益。但是，实际差分放大器会有一个值很小的共模增益(通常远小于1)，而其差分电压增益却很高(通常为几千)。<code>差分增益与共模增益的比值越高，差分放大器在共模信号抑制方面表现越好</code>。这意味着衡量差分放大器抑制无用共模信号能力的一个好的度量，是<strong>差分增益 $A_{v(d)}$ 与共模增益 $A_{cm}$ 的比值</strong>。这一比值即为共模抑制比CMRR。</p>
+<p>$$
+CMRR=\frac{A_{v(d)}}{A_{cm}}~~~(6-1)
+$$</p>
+<p>CMRR 越高越好。CMRR 的值非常高意味着差分增益 $A_{v(d)}$ 很高，共模增益 $A_{cm}$ 很低。CMRR 通常以 dB 表示为</p>
+<p>$$
+CMRR&rsquo;=20log(\frac{A_{v(d)}}{A_{cm}})~~~(6-2)
+$$
+例如，CMRR 值为 10 000 意味着期望输入信号(差分)放大倍数是无用噪声(共模)放大倍数的 10 000 倍。因此，如果差分输人信号与共模噪声的幅度相等，那么输出端的差分信号的幅度是噪声幅度的 10 000 倍。从而，噪声或干扰基本被消除。</p>
+<p>例6-2进一步说明了共模抑制的概念，以及差分放大器对一般信号的工作原理。</p>
+<h3 id="624-运放的内部框图">6.2.4 运放的内部框图</h3>
+<p><img src="https://s2.loli.net/2023/10/16/DcHvBtCXPOK5Nmx.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog6_10.png"
+	
+	
+>
+$$
+图6-10~~~运放的基本内部结构
+$$
+一个典型的运放由三类放大电路组成: <code>差分放大器、电压放大器和推挽放大器</code>，如图6-10所示。</p>
+<p>差分放大器是运放的输出级; 它有两个输人端，并能放大两个输人端之间的差值电压。电压放大器通常为 A 类放大器，提供额外的运放增益。有些运放可能有不止一级的电压放大器。输出级使用 B 类推挽放大器。</p>
+
 </section>
 
 
@@ -238,9 +337,44 @@
     </section>
 
 
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
     </footer>
 
 
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css"integrity="sha384-RZU/ijkSsFbcmivfdRBQDtwuwVqK7GMOw6IMvKyeWL2K5UAlyp6WonmB8m7Jd0Hn"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js"integrity="sha384-pK1WpvzWVBQiP0/GjnvRxV4mOb0oxFuyRxJlk6vVw146n3egcN5C925NCP7a7BY8"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js"integrity="sha384-vZTG03m&#43;2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ]
+        });})
+</script>
     
 </article>
 
@@ -253,24 +387,12 @@
                 
                     
 <article class="">
-    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/6-1%E8%BF%90%E7%AE%97%E6%94%BE%E5%A4%A7%E5%99%A8%E4%BB%8B%E7%BB%8D/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">6.1运算放大器介绍</h2>
-        </div>
-    </a>
-</article>
-                
-                    
-<article class="">
     <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/5-8ic%E5%8A%9F%E7%8E%87%E6%94%BE%E5%A4%A7%E5%99%A8/">
         
         
 
         <div class="article-details">
-            <h2 class="article-title">5.8IC功率放大器</h2>
+            <h2 class="article-title">5.8 IC功率放大器</h2>
         </div>
     </a>
 </article>
@@ -282,7 +404,7 @@
         
 
         <div class="article-details">
-            <h2 class="article-title">5.7C类和D类功率放大器</h2>
+            <h2 class="article-title">5.7 C类和D类功率放大器</h2>
         </div>
     </a>
 </article>
@@ -294,7 +416,7 @@
         
 
         <div class="article-details">
-            <h2 class="article-title">5.6B类功率放大器</h2>
+            <h2 class="article-title">5.6 B类功率放大器</h2>
         </div>
     </a>
 </article>
@@ -306,7 +428,19 @@
         
 
         <div class="article-details">
-            <h2 class="article-title">5.5A类功率放大器</h2>
+            <h2 class="article-title">5.5 A类功率放大器</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/5-4%E7%9B%B4%E6%8E%A5%E8%80%A6%E5%90%88%E6%94%BE%E5%A4%A7%E5%99%A8/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">5.4 直接耦合放大器</h2>
         </div>
     </a>
 </article>
@@ -324,7 +458,7 @@
     data-app-id="d44db3f9-a0ff-4551-a44d-316afd2e5835"
     data-page-id="b9d90d88979fc6e19d44ea20cae75dfc"
     data-page-url="https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/6-2%E5%B7%AE%E5%88%86%E6%94%BE%E5%A4%A7%E5%99%A8/"
-    data-page-title="6.2差分放大器"></div>
+    data-page-title="6.2 差分放大器"></div>
 <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
 
 <script>
@@ -436,6 +570,39 @@
             >
 
             </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">Table of contents</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#621-基本工作原理">6.2.1 基本工作原理</a></li>
+        <li><a href="#622-信号工作模式">6.2.2 信号工作模式</a></li>
+        <li><a href="#623-共模抑制比">6.2.3 共模抑制比</a></li>
+        <li><a href="#624-运放的内部框图">6.2.4 运放的内部框图</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                </div>
+            </section>
+        </aside>
     
 
         </div>

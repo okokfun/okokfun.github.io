@@ -1,17 +1,41 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content=''><title>3.3或门</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='◇ 或门可以具有多于两个的输入。 或门(OR gate)具有两个或者更多的输入及一个输出，如图3.18所示的标准逻辑符号给出了具有两个输人的或门。或门可以具有多于一个的任意输入。虽然同时给出了特殊形状和矩形轮廓符号，但是本书使用的是特殊形状符号。
+$$ (a)特殊形状~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~(b)具有OR(≥1)限定符号的矩形轮廓 $$ $$ 图3.18 ~~~或门的标准逻辑符号，图中给出了两个输入的或门(ANSI/IEEE标准91-1984) $$
+3.3.1 或门的运算 ◇ 有一个以上的输入是高电平时，或门的输出就是高电平。 当任意一个输人为高电平时，或门的输出就为高电平。当且仅当所有的输入是低电平时，输出才会是低电平。所以，或门用来判断它的输入是否有一个或者多个高电平,有高电平输入时，输出一个高电平以表明条件满足。图3.18中2输人或门的输入被标以A和B，输出则被标以X，或门的运算可以做如下表述:
+对于一个 2 输入或门来说，如果输入 A 和输入 B 中有一个是高电平，或者两者都为高电平,输出 X 就为高电平; 仅当 A 和 B 都是低电平时，X 为低电平。
+高电平是或门的有效或者肯定输出电位。图3.19给出了2输人或门的所有 4 种可能输人组合的输人和输出结果。
+$$ 图3.19 ~~~2输人或门的所有可能逻辑电位。打开文件F03-19检验或门操作 $$
+3.3.2 或门真值表 表3.5描述了2输入或门的运算。这个真值表可以扩展到任意个数的输入;但是不管有多少输入，当有一个或者多个输入是高电平时，输出就是高电平。 $$ 表3.5~~~2输入或门的真值表 $$
+输入 输入 输出 0 0 0 0 1 1 1 0 1 1 1 1 1=高电平,0=低电平
+3.3.3波形输入的运算 现在观察具有波形输入的或门运算，并请记住它的逻辑运算。再有，分析具有脉冲波形的或门运算的关键是涉及的所有波形的时间关系。例如，在图3.20 中，在时间间隔 $t_1$ 期间，A 和 B 都是高电平 1，所以输出 X 为高电平 1。在时间间隔 $t_2$ 期间,输入A是低电平0，但是输入 B 是高电平 1，所以输出 X 为高电平 1。在时间间隔 $t_3$ 期间,两个输入都是低电平 0,所以输出 X 为低电平 0。在时间间隔 $t_4$ 期间，两个输人都是高电平 1，所以输出 X 为高电平 1。'><title>3.3或门</title>
 
 <link rel='canonical' href='https://okokfun.github.io/post/%E6%95%B0%E5%AD%97%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF/3-3%E6%88%96%E9%97%A8/'>
 
 <link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='3.3或门'>
-<meta property='og:description' content=''>
+<meta property='og:description' content='◇ 或门可以具有多于两个的输入。 或门(OR gate)具有两个或者更多的输入及一个输出，如图3.18所示的标准逻辑符号给出了具有两个输人的或门。或门可以具有多于一个的任意输入。虽然同时给出了特殊形状和矩形轮廓符号，但是本书使用的是特殊形状符号。
+$$ (a)特殊形状~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~(b)具有OR(≥1)限定符号的矩形轮廓 $$ $$ 图3.18 ~~~或门的标准逻辑符号，图中给出了两个输入的或门(ANSI/IEEE标准91-1984) $$
+3.3.1 或门的运算 ◇ 有一个以上的输入是高电平时，或门的输出就是高电平。 当任意一个输人为高电平时，或门的输出就为高电平。当且仅当所有的输入是低电平时，输出才会是低电平。所以，或门用来判断它的输入是否有一个或者多个高电平,有高电平输入时，输出一个高电平以表明条件满足。图3.18中2输人或门的输入被标以A和B，输出则被标以X，或门的运算可以做如下表述:
+对于一个 2 输入或门来说，如果输入 A 和输入 B 中有一个是高电平，或者两者都为高电平,输出 X 就为高电平; 仅当 A 和 B 都是低电平时，X 为低电平。
+高电平是或门的有效或者肯定输出电位。图3.19给出了2输人或门的所有 4 种可能输人组合的输人和输出结果。
+$$ 图3.19 ~~~2输人或门的所有可能逻辑电位。打开文件F03-19检验或门操作 $$
+3.3.2 或门真值表 表3.5描述了2输入或门的运算。这个真值表可以扩展到任意个数的输入;但是不管有多少输入，当有一个或者多个输入是高电平时，输出就是高电平。 $$ 表3.5~~~2输入或门的真值表 $$
+输入 输入 输出 0 0 0 0 1 1 1 0 1 1 1 1 1=高电平,0=低电平
+3.3.3波形输入的运算 现在观察具有波形输入的或门运算，并请记住它的逻辑运算。再有，分析具有脉冲波形的或门运算的关键是涉及的所有波形的时间关系。例如，在图3.20 中，在时间间隔 $t_1$ 期间，A 和 B 都是高电平 1，所以输出 X 为高电平 1。在时间间隔 $t_2$ 期间,输入A是低电平0，但是输入 B 是高电平 1，所以输出 X 为高电平 1。在时间间隔 $t_3$ 期间,两个输入都是低电平 0,所以输出 X 为低电平 0。在时间间隔 $t_4$ 期间，两个输人都是高电平 1，所以输出 X 为高电平 1。'>
 <meta property='og:url' content='https://okokfun.github.io/post/%E6%95%B0%E5%AD%97%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF/3-3%E6%88%96%E9%97%A8/'>
 <meta property='og:site_name' content='My Blog'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Digital' /><meta property='article:published_time' content='2023-07-14T19:04:34&#43;00:00'/><meta property='article:modified_time' content='2023-07-14T19:04:34&#43;00:00'/>
 <meta name="twitter:title" content="3.3或门">
-<meta name="twitter:description" content=""><script>
+<meta name="twitter:description" content="◇ 或门可以具有多于两个的输入。 或门(OR gate)具有两个或者更多的输入及一个输出，如图3.18所示的标准逻辑符号给出了具有两个输人的或门。或门可以具有多于一个的任意输入。虽然同时给出了特殊形状和矩形轮廓符号，但是本书使用的是特殊形状符号。
+$$ (a)特殊形状~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~(b)具有OR(≥1)限定符号的矩形轮廓 $$ $$ 图3.18 ~~~或门的标准逻辑符号，图中给出了两个输入的或门(ANSI/IEEE标准91-1984) $$
+3.3.1 或门的运算 ◇ 有一个以上的输入是高电平时，或门的输出就是高电平。 当任意一个输人为高电平时，或门的输出就为高电平。当且仅当所有的输入是低电平时，输出才会是低电平。所以，或门用来判断它的输入是否有一个或者多个高电平,有高电平输入时，输出一个高电平以表明条件满足。图3.18中2输人或门的输入被标以A和B，输出则被标以X，或门的运算可以做如下表述:
+对于一个 2 输入或门来说，如果输入 A 和输入 B 中有一个是高电平，或者两者都为高电平,输出 X 就为高电平; 仅当 A 和 B 都是低电平时，X 为低电平。
+高电平是或门的有效或者肯定输出电位。图3.19给出了2输人或门的所有 4 种可能输人组合的输人和输出结果。
+$$ 图3.19 ~~~2输人或门的所有可能逻辑电位。打开文件F03-19检验或门操作 $$
+3.3.2 或门真值表 表3.5描述了2输入或门的运算。这个真值表可以扩展到任意个数的输入;但是不管有多少输入，当有一个或者多个输入是高电平时，输出就是高电平。 $$ 表3.5~~~2输入或门的真值表 $$
+输入 输入 输出 0 0 0 0 1 1 1 0 1 1 1 1 1=高电平,0=低电平
+3.3.3波形输入的运算 现在观察具有波形输入的或门运算，并请记住它的逻辑运算。再有，分析具有脉冲波形的或门运算的关键是涉及的所有波形的时间关系。例如，在图3.20 中，在时间间隔 $t_1$ 期间，A 和 B 都是高电平 1，所以输出 X 为高电平 1。在时间间隔 $t_2$ 期间,输入A是低电平0，但是输入 B 是高电平 1，所以输出 X 为高电平 1。在时间间隔 $t_3$ 期间,两个输入都是低电平 0,所以输出 X 为低电平 0。在时间间隔 $t_4$ 期间，两个输人都是高电平 1，所以输出 X 为高电平 1。"><script>
     (function(){
         if(''){
             if (prompt('请输入文章密码') !== ''){
@@ -25,7 +49,7 @@
 
     </head>
     <body class="
-    article-page 
+    article-page has-toc
 ">
     <script>
         (function() {
@@ -51,128 +75,22 @@
 </script>
 <div class="container main-container flex 
     
-        on-phone--column extended
+        extended
     
 ">
     
-        <aside class="sidebar left-sidebar sticky">
-    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
-        <span class="hamburger-box">
-            <span class="hamburger-inner"></span>
-        </span>
-    </button>
-
-    <header class="site-info">
-        
-            
-            <figure class="site-avatar">
-                
-                    
-                    
-                    
-                        
-                        <img src="/img/avatar_hu71fc3898bde3464d50a00f65e63c7ec2_517570_300x0_resize_box_3.png" width="300"
-                            height="354" class="site-logo" loading="lazy" alt="Avatar">
-                    
-                
-
-                
-            </figure>
-            
-        
-        
-        <h1 class="site-name"><a href="/">My Blog</a></h1>
-        <h2 class="site-description"></h2></header>
-
-    <ol class="menu" id="main-menu">
-        
-        
-        
-
-        <li >
-            <a href='/page/about/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <div id="article-toolbar">
+            <a href="/" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="7" r="4" />
-  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+  <polyline points="15 6 9 12 15 18" />
 </svg>
 
 
 
-                
-                <span>About</span>
+                <span>Back</span>
             </a>
-        </li>
-        
-        
-
-        <li >
-            <a href='/page/archives/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <rect x="3" y="4" width="18" height="4" rx="2" />
-  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
-  <line x1="10" y1="12" x2="14" y2="12" />
-</svg>
-
-
-
-                
-                <span>Archives</span>
-            </a>
-        </li>
-        
-        
-
-        <li >
-            <a href='/page/search/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="10" cy="10" r="7" />
-  <line x1="21" y1="21" x2="15" y2="15" />
-</svg>
-
-
-
-                
-                <span>Search</span>
-            </a>
-        </li>
-        
-
-        
-            <li id="dark-mode-toggle">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="8" cy="12" r="2" />
-  <rect x="2" y="6" width="20" height="12" rx="6" />
-</svg>
-
-
-
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="16" cy="12" r="2" />
-  <rect x="2" y="6" width="20" height="12" rx="6" />
-</svg>
-
-
-
-                <span>Dark Mode</span>
-            </li>
-        
-    </ol>
-</aside>
-
+        </div>
     
 <main class="main full-width">
     <article class="main-article">
@@ -215,7 +133,7 @@
 
 
                 <time class="article-time--reading">
-                    0 minute read
+                    1 minute read
                 </time>
             </div>
         
@@ -225,7 +143,189 @@
 </header>
 
     <section class="article-content">
-    
+    <ul>
+<li>◇ 或门可以具有多于两个的输入。</li>
+</ul>
+<p>或门(OR gate)具有两个或者更多的输入及一个输出，如图3.18所示的标准逻辑符号给出了具有两个输人的或门。或门可以具有多于一个的任意输入。虽然同时给出了特殊形状和矩形轮廓符号，但是本书使用的是特殊形状符号。</p>
+<p><img src="https://s2.loli.net/2023/10/08/3JzM5rR2hdKaqjC.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="digtal3.2.png"
+	
+	
+>
+$$
+(a)特殊形状~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~(b)具有OR(≥1)限定符号的矩形轮廓
+$$
+$$
+图3.18 ~~~或门的标准逻辑符号，图中给出了两个输入的或门(ANSI/IEEE标准91-1984)
+$$</p>
+<h3 id="331-或门的运算">3.3.1 或门的运算</h3>
+<ul>
+<li>◇ 有一个以上的输入是高电平时，或门的输出就是高电平。</li>
+</ul>
+<p>当任意一个输人为高电平时，或门的输出就为高电平。当且仅当所有的输入是低电平时，输出才会是低电平。所以，或门用来判断它的输入是否有一个或者多个高电平,有高电平输入时，输出一个高电平以表明条件满足。图3.18中2输人或门的输入被标以A和B，输出则被标以X，或门的运算可以做如下表述:</p>
+<p><strong>对于一个 2 输入或门来说，如果输入 A 和输入 B 中有一个是高电平，或者两者都为高电平,输出 X 就为高电平; 仅当 A 和 B 都是低电平时，X 为低电平。</strong></p>
+<p>高电平是或门的有效或者肯定输出电位。图3.19给出了2输人或门的所有 4 种可能输人组合的输人和输出结果。</p>
+<p><img src="https://s2.loli.net/2023/10/08/RyOVi9haU6PCKYw.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="digtal3.3.1.png"
+	
+	
+>
+$$
+图3.19 ~~~2输人或门的所有可能逻辑电位。打开文件F03-19检验或门操作
+$$</p>
+<h3 id="332-或门真值表">3.3.2 或门真值表</h3>
+<p>表3.5描述了2输入或门的运算。这个真值表可以扩展到任意个数的输入;但是不管有多少输入，当有一个或者多个输入是高电平时，输出就是高电平。
+$$
+表3.5~~~2输入或门的真值表
+$$</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">输入</th>
+<th style="text-align:center">输入</th>
+<th style="text-align:center">输出</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+</tr>
+</tbody>
+</table>
+<p><strong>1=高电平,0=低电平</strong></p>
+<h3 id="333波形输入的运算">3.3.3波形输入的运算</h3>
+<p>现在观察具有波形输入的或门运算，并请记住它的逻辑运算。再有，分析具有脉冲波形的或门运算的关键是涉及的所有波形的时间关系。例如，在图3.20 中，在时间间隔 $t_1$ 期间，A 和 B 都是高电平 1，所以输出 X 为高电平 1。在时间间隔 $t_2$ 期间,输入A是低电平0，但是输入 B 是高电平 1，所以输出 X 为高电平 1。在时间间隔 $t_3$ 期间,两个输入都是低电平 0,所以输出 X 为低电平 0。在时间间隔 $t_4$ 期间，两个输人都是高电平 1，所以输出 X 为高电平 1。</p>
+<p><img src="https://s2.loli.net/2023/10/08/zopZGNKYbcOrkqv.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="digtal3.3.3.png"
+	
+	
+>
+$$
+图3.20~~~或门运算的时序图例子,图中给出了输入和输出之间的时间关系
+$$
+在这个说明中，或门的真值表运算应用到了电平没有改变的时间间隔上。例3.7到例3.9将进一步说明输入有波形的或门运算。</p>
+<h3 id="334-或门的逻辑表达式">3.3.4 或门的逻辑表达式</h3>
+<ul>
+<li>◇ 当两个变量之间由＋分开，那么它们是或的关系。</li>
+</ul>
+<p>2 变量的逻辑或函数表示数学上两个变量的相加，例如 A＋B。符号＋读做“或”。</p>
+<p>布尔代数中的加法涉及的变量是它的值仅为二进制1或0。布尔代数的基本法则如下:
+$$
+0+0=0
+\\
+0+1=1
+\\
+1+0=1
+\\
+1+1=1
+$$
+<strong>布尔加法和或函数相同。</strong></p>
+<p>注意，布尔加法和二进制加法的不同点在于两个 1 相加的情况，在布尔代数中没有进位。</p>
+<p>2 输人或门的运算可以做如下表述: 如果-个输人变量是 A,另一个输人变量是 B,输出变量是 X,那么布尔代数的表达式就是
+$$
+X=A+B
+$$
+图3.24(a)给出了 2 变量的或门逻辑符号，同时标出了输人和输出变量。
+<img src="https://s2.loli.net/2023/10/08/G2QM5SkPaW3ej1c.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="digtal3.3.4.png"
+	
+	
+></p>
+<p>$$
+(a)~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~(b)~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~(c)
+$$</p>
+<p>$$
+图3.24~~~具有2个、3个、4个输入的或门布尔表达式
+$$
+把或表达式扩展到多于两个的输入变量，就需要为每一个附加变量使用一个新字母。例如,3 输人或门的函数可以表示为 X=A+B+C，4 输人或门的表达式可以写成 X=A+B+C+D，以此类推。图3.24中的(b)和(c)分别给出了具有3个和 4 个变量的或门。</p>
+<p>或门的运算可以由布尔表达式确定，把输入变量的所有 1和 0 的可能组合代入输入变量,就可以得到输出 X，如表3.6的 2 输入或门所示。这个运算表明，当一个或两个输入是高电平时,输出 X 为高电平。相同的分析可以扩展到任意多个输入变量数的或门。
+$$
+表3.6
+$$</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">A</th>
+<th style="text-align:center">B</th>
+<th style="text-align:center">A+B=X</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0 + 0 = 0</td>
+</tr>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0 + 1 = 1</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1 + 0 = 1</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1 + 1 = 1</td>
+</tr>
+</tbody>
+</table>
+<h3 id="335应用举例">3.3.5应用举例</h3>
+<p>一个入室盗窃检测和警报系统的部分简化图如图3.25所示。这个系统可以用于一间房屋——具有两扇窗户和一扇门的房间。传感器是磁性开关，它被打开时产生一个高电平输出，关闭时产生一个低电平输出。只要窗户和门是安全的，开关就是关闭的并且或门的三个输入都是低电平。当一扇窗户或者门被打开时,在或门的输入就会产生一个高电平,这样输出就是高电平。然后激活和开启警报电路，以发出人侵警报。</p>
+<p><img src="https://s2.loli.net/2023/10/08/CbOPBpN9UTdLcWZ.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="digtal3.3.5.png"
+	
+	
+>
+$$
+图3.25~~~使用或门的一个简化入室盗窃检测和警报系统
+$$</p>
+
 </section>
 
 
@@ -238,9 +338,44 @@
     </section>
 
 
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
     </footer>
 
 
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css"integrity="sha384-RZU/ijkSsFbcmivfdRBQDtwuwVqK7GMOw6IMvKyeWL2K5UAlyp6WonmB8m7Jd0Hn"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js"integrity="sha384-pK1WpvzWVBQiP0/GjnvRxV4mOb0oxFuyRxJlk6vVw146n3egcN5C925NCP7a7BY8"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js"integrity="sha384-vZTG03m&#43;2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ]
+        });})
+</script>
     
 </article>
 
@@ -436,6 +571,40 @@
             >
 
             </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">Table of contents</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#331-或门的运算">3.3.1 或门的运算</a></li>
+        <li><a href="#332-或门真值表">3.3.2 或门真值表</a></li>
+        <li><a href="#333波形输入的运算">3.3.3波形输入的运算</a></li>
+        <li><a href="#334-或门的逻辑表达式">3.3.4 或门的逻辑表达式</a></li>
+        <li><a href="#335应用举例">3.3.5应用举例</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                </div>
+            </section>
+        </aside>
     
 
         </div>

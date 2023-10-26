@@ -1,17 +1,38 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content=''><title>3.2与门</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='名词“门&amp;quot;用以描述运行基本逻辑运算的电路。与门(AND gate)由两个或者更多的输入和一个输出组成，由图3.8中的标准逻辑符号所表示。输入位于左边，而输出位于每个符号的右边。图中给出具有两个输入的与门;但是，与门可以有大于两个的任意输入。虽然给出了特殊形状符号和矩形轮廓符号，但是本书主要使用图3.8(a)中的特殊形状符号。
+(a)特殊形状_____________________________(b)具有与(&amp;amp;)限定符号的矩形轮廓
+$$ 图3.8~~~与门的标准逻辑符号，给出了两个输入(ANSI/IEEE标准91-1984) $$
+3.2.1与门的运算 ◇ 与门可以具有多于两个的输入。 当且仅当与门所有的输人都是高电平时，才会输出高电平。当任何一个输入为低电平时，输出就是低电平。所以，与门的基本用途即判断若干条件是否同时为真，为真时所有的输入是高电平,并且在输出产生高电平以表示所有的条件都为真。图3.8中的2输入与门的输入被标记为 A 和 B，而输出被标记为 X。与门运算可以表述为
+对于 2 输入与门，当输入 A 和 B 都是高电平时，输出 X 为高电平;当 A 或 B 是低电平，或者 A 和 B 都是低电平时, X 就是低电平。
+图3.9给出了一个 2 输人与门，同时列出了所有 4 种可能的输入组合，以及每个与门相对应的输出。
+$$ 图3.92~~~输入与门的所有可能逻辑电平。打开文件 F03-09检验与门操作 $$
+3.2.2与门真值表 ◇ 对于一个与门来说，输入都是高电平时才会产生高电平输出 $$ 表3.2 ~~~2输入与门的真值表 $$ 输入 输入 输出 A B X 0 0 0 0 1 0 1 0 0 1 1 1 1 = 高电平,0 = 低电平'><title>3.2与门</title>
 
 <link rel='canonical' href='https://okokfun.github.io/post/%E6%95%B0%E5%AD%97%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF/3-2%E4%B8%8E%E9%97%A8/'>
 
 <link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='3.2与门'>
-<meta property='og:description' content=''>
+<meta property='og:description' content='名词“门&amp;quot;用以描述运行基本逻辑运算的电路。与门(AND gate)由两个或者更多的输入和一个输出组成，由图3.8中的标准逻辑符号所表示。输入位于左边，而输出位于每个符号的右边。图中给出具有两个输入的与门;但是，与门可以有大于两个的任意输入。虽然给出了特殊形状符号和矩形轮廓符号，但是本书主要使用图3.8(a)中的特殊形状符号。
+(a)特殊形状_____________________________(b)具有与(&amp;amp;)限定符号的矩形轮廓
+$$ 图3.8~~~与门的标准逻辑符号，给出了两个输入(ANSI/IEEE标准91-1984) $$
+3.2.1与门的运算 ◇ 与门可以具有多于两个的输入。 当且仅当与门所有的输人都是高电平时，才会输出高电平。当任何一个输入为低电平时，输出就是低电平。所以，与门的基本用途即判断若干条件是否同时为真，为真时所有的输入是高电平,并且在输出产生高电平以表示所有的条件都为真。图3.8中的2输入与门的输入被标记为 A 和 B，而输出被标记为 X。与门运算可以表述为
+对于 2 输入与门，当输入 A 和 B 都是高电平时，输出 X 为高电平;当 A 或 B 是低电平，或者 A 和 B 都是低电平时, X 就是低电平。
+图3.9给出了一个 2 输人与门，同时列出了所有 4 种可能的输入组合，以及每个与门相对应的输出。
+$$ 图3.92~~~输入与门的所有可能逻辑电平。打开文件 F03-09检验与门操作 $$
+3.2.2与门真值表 ◇ 对于一个与门来说，输入都是高电平时才会产生高电平输出 $$ 表3.2 ~~~2输入与门的真值表 $$ 输入 输入 输出 A B X 0 0 0 0 1 0 1 0 0 1 1 1 1 = 高电平,0 = 低电平'>
 <meta property='og:url' content='https://okokfun.github.io/post/%E6%95%B0%E5%AD%97%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF/3-2%E4%B8%8E%E9%97%A8/'>
 <meta property='og:site_name' content='My Blog'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Digital' /><meta property='article:published_time' content='2023-07-14T19:04:25&#43;00:00'/><meta property='article:modified_time' content='2023-07-14T19:04:25&#43;00:00'/>
 <meta name="twitter:title" content="3.2与门">
-<meta name="twitter:description" content=""><script>
+<meta name="twitter:description" content="名词“门&amp;quot;用以描述运行基本逻辑运算的电路。与门(AND gate)由两个或者更多的输入和一个输出组成，由图3.8中的标准逻辑符号所表示。输入位于左边，而输出位于每个符号的右边。图中给出具有两个输入的与门;但是，与门可以有大于两个的任意输入。虽然给出了特殊形状符号和矩形轮廓符号，但是本书主要使用图3.8(a)中的特殊形状符号。
+(a)特殊形状_____________________________(b)具有与(&amp;amp;)限定符号的矩形轮廓
+$$ 图3.8~~~与门的标准逻辑符号，给出了两个输入(ANSI/IEEE标准91-1984) $$
+3.2.1与门的运算 ◇ 与门可以具有多于两个的输入。 当且仅当与门所有的输人都是高电平时，才会输出高电平。当任何一个输入为低电平时，输出就是低电平。所以，与门的基本用途即判断若干条件是否同时为真，为真时所有的输入是高电平,并且在输出产生高电平以表示所有的条件都为真。图3.8中的2输入与门的输入被标记为 A 和 B，而输出被标记为 X。与门运算可以表述为
+对于 2 输入与门，当输入 A 和 B 都是高电平时，输出 X 为高电平;当 A 或 B 是低电平，或者 A 和 B 都是低电平时, X 就是低电平。
+图3.9给出了一个 2 输人与门，同时列出了所有 4 种可能的输入组合，以及每个与门相对应的输出。
+$$ 图3.92~~~输入与门的所有可能逻辑电平。打开文件 F03-09检验与门操作 $$
+3.2.2与门真值表 ◇ 对于一个与门来说，输入都是高电平时才会产生高电平输出 $$ 表3.2 ~~~2输入与门的真值表 $$ 输入 输入 输出 A B X 0 0 0 0 1 0 1 0 0 1 1 1 1 = 高电平,0 = 低电平"><script>
     (function(){
         if(''){
             if (prompt('请输入文章密码') !== ''){
@@ -25,7 +46,7 @@
 
     </head>
     <body class="
-    article-page 
+    article-page has-toc
 ">
     <script>
         (function() {
@@ -51,128 +72,22 @@
 </script>
 <div class="container main-container flex 
     
-        on-phone--column extended
+        extended
     
 ">
     
-        <aside class="sidebar left-sidebar sticky">
-    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
-        <span class="hamburger-box">
-            <span class="hamburger-inner"></span>
-        </span>
-    </button>
-
-    <header class="site-info">
-        
-            
-            <figure class="site-avatar">
-                
-                    
-                    
-                    
-                        
-                        <img src="/img/avatar_hu71fc3898bde3464d50a00f65e63c7ec2_517570_300x0_resize_box_3.png" width="300"
-                            height="354" class="site-logo" loading="lazy" alt="Avatar">
-                    
-                
-
-                
-            </figure>
-            
-        
-        
-        <h1 class="site-name"><a href="/">My Blog</a></h1>
-        <h2 class="site-description"></h2></header>
-
-    <ol class="menu" id="main-menu">
-        
-        
-        
-
-        <li >
-            <a href='/page/about/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <div id="article-toolbar">
+            <a href="/" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="7" r="4" />
-  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+  <polyline points="15 6 9 12 15 18" />
 </svg>
 
 
 
-                
-                <span>About</span>
+                <span>Back</span>
             </a>
-        </li>
-        
-        
-
-        <li >
-            <a href='/page/archives/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <rect x="3" y="4" width="18" height="4" rx="2" />
-  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
-  <line x1="10" y1="12" x2="14" y2="12" />
-</svg>
-
-
-
-                
-                <span>Archives</span>
-            </a>
-        </li>
-        
-        
-
-        <li >
-            <a href='/page/search/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="10" cy="10" r="7" />
-  <line x1="21" y1="21" x2="15" y2="15" />
-</svg>
-
-
-
-                
-                <span>Search</span>
-            </a>
-        </li>
-        
-
-        
-            <li id="dark-mode-toggle">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="8" cy="12" r="2" />
-  <rect x="2" y="6" width="20" height="12" rx="6" />
-</svg>
-
-
-
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="16" cy="12" r="2" />
-  <rect x="2" y="6" width="20" height="12" rx="6" />
-</svg>
-
-
-
-                <span>Dark Mode</span>
-            </li>
-        
-    </ol>
-</aside>
-
+        </div>
     
 <main class="main full-width">
     <article class="main-article">
@@ -215,7 +130,7 @@
 
 
                 <time class="article-time--reading">
-                    0 minute read
+                    2 minute read
                 </time>
             </div>
         
@@ -225,7 +140,231 @@
 </header>
 
     <section class="article-content">
-    
+    <p>名词“门&quot;用以描述运行基本逻辑运算的电路。与门(AND gate)由两个或者更多的输入和一个输出组成，由图3.8中的标准逻辑符号所表示。输入位于左边，而输出位于每个符号的右边。图中给出具有两个输入的与门;但是，与门可以有大于两个的任意输入。虽然给出了特殊形状符号和矩形轮廓符号，但是本书主要使用图3.8(a)中的特殊形状符号。</p>
+<p><img src="https://s2.loli.net/2023/10/08/tGFurjQWAyiCfmM.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="digtal3.2.png"
+	
+	
+></p>
+<p>(a)特殊形状_____________________________(b)具有与(&amp;)限定符号的矩形轮廓</p>
+<p>$$
+图3.8~~~与门的标准逻辑符号，给出了两个输入(ANSI/IEEE标准91-1984)
+$$</p>
+<h3 id="321与门的运算">3.2.1与门的运算</h3>
+<ul>
+<li>◇ 与门可以具有多于两个的输入。</li>
+</ul>
+<p>当且仅当与门所有的输人都是高电平时，才会输出高电平。当任何一个输入为低电平时，输出就是低电平。所以，与门的基本用途即判断若干条件是否同时为真，为真时所有的输入是高电平,并且在输出产生高电平以表示所有的条件都为真。图3.8中的2输入与门的输入被标记为 A 和 B，而输出被标记为 X。与门运算可以表述为</p>
+<p><code>对于 2 输入与门，当输入 A 和 B 都是高电平时，输出 X 为高电平;当 A 或 B 是低电平，或者 A 和 B 都是低电平时, X 就是低电平。</code></p>
+<p>图3.9给出了一个 2 输人与门，同时列出了所有 4 种可能的输入组合，以及每个与门相对应的输出。</p>
+<p><img src="https://s2.loli.net/2023/10/08/ZcJsryOYHfiUtmT.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="digtal3.2.1.png"
+	
+	
+>
+$$
+图3.92~~~输入与门的所有可能逻辑电平。打开文件 F03-09检验与门操作
+$$</p>
+<h3 id="322与门真值表">3.2.2与门真值表</h3>
+<ul>
+<li>◇ 对于一个与门来说，输入都是高电平时才会产生高电平输出
+$$
+表3.2 ~~~2输入与门的真值表
+$$</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">输入</th>
+<th style="text-align:center">输入</th>
+<th style="text-align:right">输出</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">A</td>
+<td style="text-align:center">B</td>
+<td style="text-align:right">X</td>
+</tr>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:right">0</td>
+</tr>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:right">0</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:right">0</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:right">1</td>
+</tr>
+</tbody>
+</table>
+<p><strong>1 = 高电平,0 = 低电平</strong></p>
+<p>门的逻辑运算可以用真值表来表示，真值表列出了所有的输入组合及相应的输出，如表3.2的 2 输人与门所示。真值表可以扩展到任意个数的输入。虽然高电平和低电平往往指“物理”意义的输入和输出状态，但是真值表给出的却是 1 和 0;在正逻辑中,高电平就相当于 1，而低电平就相当于 0。对于任意的与门，不管有多少个输入，当且仅当所有的输入为高电平时，输出才是高电平。</p>
+<p>逻辑门输入的所有二进制组合的总数，由下面的公式确定:
+$$
+N=2^n
+$$
+这里 N 是可能输入组合的个数，n是输入变量的个数。说明如下:
+$$
+2输入变量:N =2^2=4种组合
+\\
+3输入变量:N =2^3=8种组合
+\\
+4输入变量:N =2^4=16种组合
+$$
+使用式(3.1)，可以为具有任意多个输入的门确定输人变量组合的个数。</p>
+<h3 id="323波形输入运算">3.2.3波形输入运算</h3>
+<p>在多数应用实例中，门的输入不是固定的电平，而是在逻辑高电平和逻辑低电平之间频繁变化的电压波形。现在来看具有脉冲波形输人的与门运算，要记住与门遵循真值表的运算，而不用考虑输入电平是不变的还是高低来回变化的电平。</p>
+<p>检查一下与门的波形运算，通过观察相互关联的输入以确定任意给定时刻下的输出电平。在图3.10中，在时间间隔 $t_1$ 期间,输入 A 和 B 都是高电平(1)，因而在该期间的输出为高电平(1)。在时间间隔 $t_2$ 期间,输入 A 为低电平(0)而输人 B 为高电平(1)，所以输出是低电平。在时间间隔 $t_3$ 期间,输入又都是高电平(1)，所以输出是高电平(1)。在时间间隔 $t_4$ 期间,输入 A 是高电平(1)而输入 B 是低电平(0)，因此产生一个低电平(0)。最后，在时间间隔 $t_5$ 期间，输人 A 是低电平(0)，输人 B 是低电平(0)，所以输出就是低电平(0)。正如所知，输入和输出的波形图给出了一种时间关系,称为时序图。
+<img src="https://s2.loli.net/2023/10/08/wYP8J5FBvd4f9jk.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="digtal3.2.3.png"
+	
+	
+>
+$$
+图3.10~~~具有时序图的与门举例，图中给出了输入和输出的关系
+$$
+记住，在分析逻辑门的波形运算时，注意输入之间的时间关系及输入和输出之间的时间关系是非常重要的。</p>
+<h3 id="324与门的逻辑表达">3.2.4与门的逻辑表达</h3>
+<p>两个变量的逻辑与函数在数学上可以表示为在两个变量之间放一个点，如$A·B$;或不使用点，仅仅写出两个相邻的字母，如AB。因为方便，通常使用后面的写法。</p>
+<p><strong>布尔乘法</strong>遵循与二进制乘法相同的基本法则，在第2章已经讨论过了，如下所示:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">0 · 0 = 0</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">0 · 1 = 0</td>
+</tr>
+<tr>
+<td style="text-align:center">1 · 0 = 0</td>
+</tr>
+<tr>
+<td style="text-align:center">1 · 1 = 1</td>
+</tr>
+</tbody>
+</table>
+<p><strong>布尔乘法和与函数相同。</strong></p>
+<ul>
+<li>◇ 当变量ABC写在一起时，表示的就是与运算。</li>
+</ul>
+<p>2 输入与门的运算可以表示为如下的等式形式; 如果一个输人变量是 A，另一个是 B，输出变量是 X,那么布尔表达式就是
+$$
+X=AB
+$$
+图3.15(a)给出了2输入变量的与门逻辑符号并标出了输出变量。</p>
+<p>要把与表达式扩展到多于两个输人变量时，只要为每个输入变量使用一个新字母就可以了。例如，3 输入与门的函数可以表示为 X=ABC，其中 A、B、C 是输人变量。4输入与门的表达式为 X=ABCD，以此类推。图3.15中的(b)和(c)分别给出了 3 个和 4 个输入变量的与门。
+<img src="https://s2.loli.net/2023/10/08/P78FftHTKaGelvz.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="digtal3.2.4.png"
+	
+	
+>
+$$
+(a)2输入与门~~~~~~~~~~~~~~~~~~~~~~~(b)3输入与门~~~~~~~~~~~~~~~~~~~~~~~(c)4输入与门
+$$
+$$
+图3.15~~~具有2个3个和4个输入的与门布尔表达
+$$
+可以使用输出的布尔表达式来求得与门运算。例如，输入的每个变量都可以是 1 或 0; 对于 2 输入与门，把公式 X = AB 代入就可以得到输出，如表3.4所示。这个计算表明仅当两个输入都是 1(高电平)时,与门的输出 X 才是 1(高电平)。可以对任意数目的输入变量做相似的分析。
+$$
+表3.4
+$$</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">A</th>
+<th style="text-align:center">B</th>
+<th style="text-align:center">AB=X</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0 · 0=0</td>
+</tr>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0 · 1=0</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1 · 0=0</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1 · 1=1</td>
+</tr>
+</tbody>
+</table>
+<h3 id="325应用举例">3.2.5应用举例</h3>
+<p><strong>与门作为使能/禁止设备</strong> 与门的一种常见应用是使能(也就是允许)信号(脉冲波形)在某个时间从一点传到另一点,并禁止(阻止)在其他时间传送。</p>
+<p>图3.16给出了与门这种特殊用途的一个简单例子,其中与门用来控制信号(波形 A)向数字计数器的传送。这个电路的目的是测量波形 A 的频率。使能脉冲有 1 毫秒( ms)的精确宽度。当使能脉冲是高电平时，波形 A 就会通过与门到达计数器，而当使能脉冲是低电平时不允许(禁止)信号通过。</p>
+<p>在使能脉冲的 1 ms时间间隔内，波形 A 中的脉冲通过与门到达计数器，脉冲在 1 ms 的时间间隔内通过的次数等于波形 A 的频率(单位为kHz)。例如，图3.16 给出了1 ms 中有 6 个脉冲，也就是频率为 6 kHz。如果在使能脉冲的 1 ms 时间间隔内，有 1000 个脉冲通过与门，这样就是 1000 脉冲/ms，或者为 1 MHz 的频率。
+<img src="https://s2.loli.net/2023/10/08/uqkvQtHjAPNxCil.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="digtal3.2.5a.png"
+	
+	
+>
+$$
+图3.16~~~频率计数器运行使能/禁止功能的一个与门
+$$
+计数器记录每秒钟脉冲的个数，并产生一个二进制输出，进入解码和显示电路,显示可以读取的频率。使能脉冲在一定的间隔期间内重复，以产生一个新的计数值，所以如果频率变化,就会显示出新的数值。在两个使能脉冲之间，计数器被置0，因而在每个使能脉冲到来时，计数器从О开始计数。当前的频率计数值保存在一个寄存器中，这样显示值不会受到计数器的影响。</p>
+<p><strong>安全带警报系统</strong> 在图3.17中，与门用在了一个简单的汽车安全带警报系统中，用来检测点火开关是否已开及安全带是否系上。如果点火开关处于打开的状态，与门的输人A上就会产生一个高电平。如果安全带没有系好，与门的输入B上就产生一个高电平。同样，当点火开关打开时，计时器就会启动并且在输入C上产生一个30秒的高电平。所有的这三个条件都存在——也就是如果点火开关处于打开的状态、安全带没有系好和计时器正在计时，这时与门的输出就是高电平，音响警报系统就会被激活以提醒司机。
+<img src="https://s2.loli.net/2023/10/08/zL563gHfAJmQuTX.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="digtal3.2.5b.png"
+	
+	
+>
+$$
+图3.17~~~使用与门的简单安全带警报电路
+$$</p>
+
 </section>
 
 
@@ -238,9 +377,44 @@
     </section>
 
 
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
     </footer>
 
 
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css"integrity="sha384-RZU/ijkSsFbcmivfdRBQDtwuwVqK7GMOw6IMvKyeWL2K5UAlyp6WonmB8m7Jd0Hn"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js"integrity="sha384-pK1WpvzWVBQiP0/GjnvRxV4mOb0oxFuyRxJlk6vVw146n3egcN5C925NCP7a7BY8"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js"integrity="sha384-vZTG03m&#43;2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ]
+        });})
+</script>
     
 </article>
 
@@ -436,6 +610,40 @@
             >
 
             </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">Table of contents</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#321与门的运算">3.2.1与门的运算</a></li>
+        <li><a href="#322与门真值表">3.2.2与门真值表</a></li>
+        <li><a href="#323波形输入运算">3.2.3波形输入运算</a></li>
+        <li><a href="#324与门的逻辑表达">3.2.4与门的逻辑表达</a></li>
+        <li><a href="#325应用举例">3.2.5应用举例</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                </div>
+            </section>
+        </aside>
     
 
         </div>

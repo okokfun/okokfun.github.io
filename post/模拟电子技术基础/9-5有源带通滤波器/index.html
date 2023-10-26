@@ -1,17 +1,32 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content=''><title>9.5有源带通滤波器</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='如前所述，带通滤波器让下限频率和上限频率之间的频率通过，拒绝所有位于通带范围外的频率通过。带通响应可以看作低频响应曲线和高频响应曲线的重叠部分。
+学完本节后，你应该掌握以下内容:
+理解有源带通滤波器 描述由低通和高通滤波器构成的带通滤波器 确定级联带通滤波器的截止频率和中心频率 确定多重反馈带通滤波器的中心频率、带宽和增益 解释状态可变带通滤波器的工作原理 9.5.1 低通和高通滤波器的级联形成带通响应 实现带通滤波器的一种方法是将一个高通滤波器和一个低通滤波器级联，如图9-17a所示，只要截止频率分得足够开。每个滤波器都是二极点 Sallen-Key 巴特沃斯结构，下降率为一40dB/十倍频程，如图9-17b中的复合响应曲线所示。如图9-17b所示，每个滤波器截止频率的选择使得响应曲线充分重叠，而且，高通滤波器的截止频率必须比低通滤波器的截止频率足够低。 $$ 图9-17~~~通过二极点高通滤波器和二极点低通滤波器级联形成的带通滤波器 \\ (与两个级联滤波器的级联次序无关) $$
+带通滤波器的下限频率 $f_{c1}$ 是高通滤波器的截止频率，上限频率是低通滤波器的截止频率 $f_{c2}$ 。理想情况下，如前所述，通带的中心频率 $f_0$ 是 $f_{c1}$ 和 $f_{c2}$ 的几何平均值。下面的公式给出了图9-17中带通滤波器三个频率之间的关系。 $$ f_{c1}=\frac{1}{2\pi \sqrt[]{R_{A1}R_{B1}C_{A1}C_{B1}}} \\ f_{c1}=\frac{1}{2\pi \sqrt[]{R_{A2}R_{B2}C_{A2}C_{B2}}} \\ f_0=\sqrt[]{f_{c1}f_{c2}} $$
+当然，如果在实现每个滤波器时使用等值元件，截止频率的公式可以简化为 $f_c = 1/2\pi RC$.
+9.5.2 多重反馈带通滤波器 另一种类型的滤波器结构是多重反馈带通滤波器，如图9-18所示。通过 $R_2$ 和 $C_1$ 有两条反馈路径，元件 $R_1$ 和 $C_1$ 提供低通响应，$R_2$ 和 $C_2$ 提供高通响应。最大增益 $A_0$ 在中心频率处产生。Q 值小于 10 的滤波器属于这种类型。从 $C_1$ 反馈路径看，$R_1$和 $R_3$ 并联(将$V_{in}$源用短路替代)，中心频率的表达式可以表示为: $$ f_0=\frac{1}{2\pi \sqrt[]{(R_1||R_3)R_2C_1C_2}} $$ $$ 图9-18~~~多重反馈带通滤波器 $$'><title>9.5 有源带通滤波器</title>
 
 <link rel='canonical' href='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/9-5%E6%9C%89%E6%BA%90%E5%B8%A6%E9%80%9A%E6%BB%A4%E6%B3%A2%E5%99%A8/'>
 
-<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='9.5有源带通滤波器'>
-<meta property='og:description' content=''>
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='9.5 有源带通滤波器'>
+<meta property='og:description' content='如前所述，带通滤波器让下限频率和上限频率之间的频率通过，拒绝所有位于通带范围外的频率通过。带通响应可以看作低频响应曲线和高频响应曲线的重叠部分。
+学完本节后，你应该掌握以下内容:
+理解有源带通滤波器 描述由低通和高通滤波器构成的带通滤波器 确定级联带通滤波器的截止频率和中心频率 确定多重反馈带通滤波器的中心频率、带宽和增益 解释状态可变带通滤波器的工作原理 9.5.1 低通和高通滤波器的级联形成带通响应 实现带通滤波器的一种方法是将一个高通滤波器和一个低通滤波器级联，如图9-17a所示，只要截止频率分得足够开。每个滤波器都是二极点 Sallen-Key 巴特沃斯结构，下降率为一40dB/十倍频程，如图9-17b中的复合响应曲线所示。如图9-17b所示，每个滤波器截止频率的选择使得响应曲线充分重叠，而且，高通滤波器的截止频率必须比低通滤波器的截止频率足够低。 $$ 图9-17~~~通过二极点高通滤波器和二极点低通滤波器级联形成的带通滤波器 \\ (与两个级联滤波器的级联次序无关) $$
+带通滤波器的下限频率 $f_{c1}$ 是高通滤波器的截止频率，上限频率是低通滤波器的截止频率 $f_{c2}$ 。理想情况下，如前所述，通带的中心频率 $f_0$ 是 $f_{c1}$ 和 $f_{c2}$ 的几何平均值。下面的公式给出了图9-17中带通滤波器三个频率之间的关系。 $$ f_{c1}=\frac{1}{2\pi \sqrt[]{R_{A1}R_{B1}C_{A1}C_{B1}}} \\ f_{c1}=\frac{1}{2\pi \sqrt[]{R_{A2}R_{B2}C_{A2}C_{B2}}} \\ f_0=\sqrt[]{f_{c1}f_{c2}} $$
+当然，如果在实现每个滤波器时使用等值元件，截止频率的公式可以简化为 $f_c = 1/2\pi RC$.
+9.5.2 多重反馈带通滤波器 另一种类型的滤波器结构是多重反馈带通滤波器，如图9-18所示。通过 $R_2$ 和 $C_1$ 有两条反馈路径，元件 $R_1$ 和 $C_1$ 提供低通响应，$R_2$ 和 $C_2$ 提供高通响应。最大增益 $A_0$ 在中心频率处产生。Q 值小于 10 的滤波器属于这种类型。从 $C_1$ 反馈路径看，$R_1$和 $R_3$ 并联(将$V_{in}$源用短路替代)，中心频率的表达式可以表示为: $$ f_0=\frac{1}{2\pi \sqrt[]{(R_1||R_3)R_2C_1C_2}} $$ $$ 图9-18~~~多重反馈带通滤波器 $$'>
 <meta property='og:url' content='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/9-5%E6%9C%89%E6%BA%90%E5%B8%A6%E9%80%9A%E6%BB%A4%E6%B3%A2%E5%99%A8/'>
 <meta property='og:site_name' content='My Blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Analog' /><meta property='article:published_time' content='2023-07-14T18:19:18&#43;00:00'/><meta property='article:modified_time' content='2023-07-14T18:19:18&#43;00:00'/>
-<meta name="twitter:title" content="9.5有源带通滤波器">
-<meta name="twitter:description" content=""><script>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Analog' /><meta property='article:published_time' content='2023-07-14T18:19:18&#43;08:00'/><meta property='article:modified_time' content='2023-07-14T18:19:18&#43;08:00'/>
+<meta name="twitter:title" content="9.5 有源带通滤波器">
+<meta name="twitter:description" content="如前所述，带通滤波器让下限频率和上限频率之间的频率通过，拒绝所有位于通带范围外的频率通过。带通响应可以看作低频响应曲线和高频响应曲线的重叠部分。
+学完本节后，你应该掌握以下内容:
+理解有源带通滤波器 描述由低通和高通滤波器构成的带通滤波器 确定级联带通滤波器的截止频率和中心频率 确定多重反馈带通滤波器的中心频率、带宽和增益 解释状态可变带通滤波器的工作原理 9.5.1 低通和高通滤波器的级联形成带通响应 实现带通滤波器的一种方法是将一个高通滤波器和一个低通滤波器级联，如图9-17a所示，只要截止频率分得足够开。每个滤波器都是二极点 Sallen-Key 巴特沃斯结构，下降率为一40dB/十倍频程，如图9-17b中的复合响应曲线所示。如图9-17b所示，每个滤波器截止频率的选择使得响应曲线充分重叠，而且，高通滤波器的截止频率必须比低通滤波器的截止频率足够低。 $$ 图9-17~~~通过二极点高通滤波器和二极点低通滤波器级联形成的带通滤波器 \\ (与两个级联滤波器的级联次序无关) $$
+带通滤波器的下限频率 $f_{c1}$ 是高通滤波器的截止频率，上限频率是低通滤波器的截止频率 $f_{c2}$ 。理想情况下，如前所述，通带的中心频率 $f_0$ 是 $f_{c1}$ 和 $f_{c2}$ 的几何平均值。下面的公式给出了图9-17中带通滤波器三个频率之间的关系。 $$ f_{c1}=\frac{1}{2\pi \sqrt[]{R_{A1}R_{B1}C_{A1}C_{B1}}} \\ f_{c1}=\frac{1}{2\pi \sqrt[]{R_{A2}R_{B2}C_{A2}C_{B2}}} \\ f_0=\sqrt[]{f_{c1}f_{c2}} $$
+当然，如果在实现每个滤波器时使用等值元件，截止频率的公式可以简化为 $f_c = 1/2\pi RC$.
+9.5.2 多重反馈带通滤波器 另一种类型的滤波器结构是多重反馈带通滤波器，如图9-18所示。通过 $R_2$ 和 $C_1$ 有两条反馈路径，元件 $R_1$ 和 $C_1$ 提供低通响应，$R_2$ 和 $C_2$ 提供高通响应。最大增益 $A_0$ 在中心频率处产生。Q 值小于 10 的滤波器属于这种类型。从 $C_1$ 反馈路径看，$R_1$和 $R_3$ 并联(将$V_{in}$源用短路替代)，中心频率的表达式可以表示为: $$ f_0=\frac{1}{2\pi \sqrt[]{(R_1||R_3)R_2C_1C_2}} $$ $$ 图9-18~~~多重反馈带通滤波器 $$"><script>
     (function(){
         if(''){
             if (prompt('请输入文章密码') !== ''){
@@ -25,7 +40,7 @@
 
     </head>
     <body class="
-    article-page 
+    article-page has-toc
 ">
     <script>
         (function() {
@@ -51,128 +66,22 @@
 </script>
 <div class="container main-container flex 
     
-        on-phone--column extended
+        extended
     
 ">
     
-        <aside class="sidebar left-sidebar sticky">
-    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
-        <span class="hamburger-box">
-            <span class="hamburger-inner"></span>
-        </span>
-    </button>
-
-    <header class="site-info">
-        
-            
-            <figure class="site-avatar">
-                
-                    
-                    
-                    
-                        
-                        <img src="/img/avatar_hu71fc3898bde3464d50a00f65e63c7ec2_517570_300x0_resize_box_3.png" width="300"
-                            height="354" class="site-logo" loading="lazy" alt="Avatar">
-                    
-                
-
-                
-            </figure>
-            
-        
-        
-        <h1 class="site-name"><a href="/">My Blog</a></h1>
-        <h2 class="site-description"></h2></header>
-
-    <ol class="menu" id="main-menu">
-        
-        
-        
-
-        <li >
-            <a href='/page/about/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <div id="article-toolbar">
+            <a href="/" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="7" r="4" />
-  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+  <polyline points="15 6 9 12 15 18" />
 </svg>
 
 
 
-                
-                <span>About</span>
+                <span>Back</span>
             </a>
-        </li>
-        
-        
-
-        <li >
-            <a href='/page/archives/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <rect x="3" y="4" width="18" height="4" rx="2" />
-  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
-  <line x1="10" y1="12" x2="14" y2="12" />
-</svg>
-
-
-
-                
-                <span>Archives</span>
-            </a>
-        </li>
-        
-        
-
-        <li >
-            <a href='/page/search/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="10" cy="10" r="7" />
-  <line x1="21" y1="21" x2="15" y2="15" />
-</svg>
-
-
-
-                
-                <span>Search</span>
-            </a>
-        </li>
-        
-
-        
-            <li id="dark-mode-toggle">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="8" cy="12" r="2" />
-  <rect x="2" y="6" width="20" height="12" rx="6" />
-</svg>
-
-
-
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="16" cy="12" r="2" />
-  <rect x="2" y="6" width="20" height="12" rx="6" />
-</svg>
-
-
-
-                <span>Dark Mode</span>
-            </li>
-        
-    </ol>
-</aside>
-
+        </div>
     
 <main class="main full-width">
     <article class="main-article">
@@ -182,7 +91,7 @@
     
 
     <h2 class="article-title">
-        <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/9-5%E6%9C%89%E6%BA%90%E5%B8%A6%E9%80%9A%E6%BB%A4%E6%B3%A2%E5%99%A8/">9.5有源带通滤波器</a>
+        <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/9-5%E6%9C%89%E6%BA%90%E5%B8%A6%E9%80%9A%E6%BB%A4%E6%B3%A2%E5%99%A8/">9.5 有源带通滤波器</a>
     </h2>
 
     
@@ -215,7 +124,7 @@
 
 
                 <time class="article-time--reading">
-                    0 minute read
+                    1 minute read
                 </time>
             </div>
         
@@ -225,7 +134,123 @@
 </header>
 
     <section class="article-content">
-    
+    <p>如前所述，带通滤波器让下限频率和上限频率之间的频率通过，拒绝所有位于通带范围外的频率通过。带通响应可以看作低频响应曲线和高频响应曲线的重叠部分。</p>
+<p>学完本节后，你应该掌握以下内容:</p>
+<ul>
+<li>理解有源带通滤波器
+<ul>
+<li>描述由低通和高通滤波器构成的带通滤波器</li>
+<li>确定级联带通滤波器的截止频率和中心频率</li>
+<li>确定多重反馈带通滤波器的中心频率、带宽和增益</li>
+<li>解释状态可变带通滤波器的工作原理</li>
+</ul>
+</li>
+</ul>
+<h3 id="951-低通和高通滤波器的级联形成带通响应">9.5.1 低通和高通滤波器的级联形成带通响应</h3>
+<p>实现带通滤波器的一种方法是将一个高通滤波器和一个低通滤波器级联，如图9-17a所示，只要截止频率分得足够开。每个滤波器都是二极点 Sallen-Key 巴特沃斯结构，下降率为一40dB/十倍频程，如图9-17b中的复合响应曲线所示。如图9-17b所示，每个滤波器截止频率的选择使得响应曲线充分重叠，而且，高通滤波器的截止频率必须比低通滤波器的截止频率足够低。
+<img src="https://s2.loli.net/2023/10/20/dVFDvlisHzKZ3NT.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog9_17.png"
+	
+	
+>
+$$
+图9-17~~~通过二极点高通滤波器和二极点低通滤波器级联形成的带通滤波器
+\\
+(与两个级联滤波器的级联次序无关)
+$$</p>
+<p>带通滤波器的下限频率 $f_{c1}$ 是高通滤波器的截止频率，上限频率是低通滤波器的截止频率 $f_{c2}$ 。理想情况下，如前所述，通带的中心频率 $f_0$ 是 $f_{c1}$ 和 $f_{c2}$ 的几何平均值。下面的公式给出了图9-17中带通滤波器三个频率之间的关系。
+$$
+f_{c1}=\frac{1}{2\pi \sqrt[]{R_{A1}R_{B1}C_{A1}C_{B1}}}
+\\
+f_{c1}=\frac{1}{2\pi \sqrt[]{R_{A2}R_{B2}C_{A2}C_{B2}}}
+\\
+f_0=\sqrt[]{f_{c1}f_{c2}}
+$$</p>
+<p>当然，如果在实现每个滤波器时使用等值元件，截止频率的公式可以简化为 $f_c = 1/2\pi RC$.</p>
+<h3 id="952-多重反馈带通滤波器">9.5.2 多重反馈带通滤波器</h3>
+<p>另一种类型的滤波器结构是多重反馈带通滤波器，如图9-18所示。通过 $R_2$ 和 $C_1$ 有两条反馈路径，元件 $R_1$ 和 $C_1$ 提供低通响应，$R_2$ 和 $C_2$ 提供高通响应。最大增益 $A_0$ 在中心频率处产生。Q 值小于 10 的滤波器属于这种类型。从 $C_1$ 反馈路径看，$R_1$和 $R_3$ 并联(将$V_{in}$源用短路替代)，中心频率的表达式可以表示为:
+$$
+f_0=\frac{1}{2\pi \sqrt[]{(R_1||R_3)R_2C_1C_2}}
+$$
+<img src="https://s2.loli.net/2023/10/20/4Klqxa9TDjB8iIW.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog9_18.png"
+	
+	
+>
+$$
+图9-18~~~多重反馈带通滤波器
+$$</p>
+<p>令 $C_1=C_2=C$，得到(推导见附录):
+$$
+f_0=\frac{1}{2\pi C}\sqrt[]{\frac{R_1+R_3}{R_1R_2R_3}}~~~(9-7)
+$$</p>
+<p>给电容器选择一个方便的值以便于计算，然后根据期望的 $f_0、BW$ 和 $A_0$ 来计算三个电阻的值。你知道，Q 值可以通过 $Q=f_0/BW$ 计算，电阻可以通过如下公式计算得到(没有给出具体的推导过程)。
+$$
+R_1=\frac{Q}{2\pi f_0CA_0}
+\\
+R_2=\frac{Q}{\pi f_0C}
+\\
+R_3=\frac{Q}{2\pi f_0C(2Q^2-A_0)}
+$$</p>
+<p>为了得到增益表达式，从前面两个公式中推出Q。
+$$
+Q=2\pi f_0A_0CR_1
+\\
+Q=\pi f_0CR_2
+$$
+于是,
+$$
+2\pi f_0A_0CR_1=\pi f_0CR_2
+$$
+中心频率处的最大增益为
+$$
+A_0=\frac{R_2}{2R_1}~~~(9-8)
+$$</p>
+<p>为了让公式 $R_3=Q/[2\pi f_0C(2Q^2-A_0)]$ 的分母为正, $A_0&lt;2Q^2$, 这使得增益受到限制.</p>
+<h3 id="953-状态可变带通滤波器">9.5.3 状态可变带通滤波器</h3>
+<p>状态可变或通用有源滤波器广泛用于带通应用。如图9-20所示，它由一个求和放大器和两个运放积分器(作为单极点低通滤波器)通过级联方式构成的二阶滤波器。尽管状态可变结构主要用作带通(BP)滤波器，但它也可用作低通(LP)和高通(HP)输出，中心频率由两个积分器中的 RC 网络决定。当用作带通滤波器时，通常把积分器的截止频率设置为相等，这样就设置了通带的中心频率。
+<img src="https://s2.loli.net/2023/10/20/JsUawx1SIMK7iTP.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog9_20.png"
+	
+	
+>
+$$
+图9-20~~~状态可变的带通滤波器
+$$</p>
+<p><strong>基本工作原理</strong> 当输入端频率低于 $f_c$ 时，输入信号通过求和放大器和积分器，并反馈180°的相位。因此，对所有低于 $f_c$ 的频率，反馈信号和输入信号相互抵消。随着积分器的低通响应下降，反馈信号减小，因此允许输入信号通过带通输出。当频率高于  $f_c$ 时，低通响应逐渐消失，因此阻止输入信号通过积分器。所以，带通输出在 $f_c$ 达到峰值，如图9-21所示。这种类型的滤波器可以得到直至 100 的稳定 Q 值。Q 值由反馈电阻 $R_5$ 和 $R_6$ 决定，公式如下。
+$$
+Q=\frac{1}{3}(\frac{R_5}{R_6}+1)
+$$
+<img src="https://s2.loli.net/2023/10/20/rOc1yKwxvN7ZfkI.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog9_21.png"
+	
+	
+>
+$$
+图9-21~~~状态可变滤波器的通用响应曲线
+$$</p>
+<p>状态可变滤波器不能同时优化低通、高通和带通性能，这是因为: 为了优化低通或高通巴特沃斯响应，DF 必须等于 1.414。因为 Q=1/DF，所以 Q 为 0.707。这样低的 Q 值提供的带通响应非常差(大的 BW 和较差的选择性)。若当作带通滤波器来优化，Q 值必须设置成很大。</p>
+
 </section>
 
 
@@ -238,9 +263,44 @@
     </section>
 
 
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
     </footer>
 
 
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css"integrity="sha384-RZU/ijkSsFbcmivfdRBQDtwuwVqK7GMOw6IMvKyeWL2K5UAlyp6WonmB8m7Jd0Hn"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js"integrity="sha384-pK1WpvzWVBQiP0/GjnvRxV4mOb0oxFuyRxJlk6vVw146n3egcN5C925NCP7a7BY8"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js"integrity="sha384-vZTG03m&#43;2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ]
+        });})
+</script>
     
 </article>
 
@@ -258,7 +318,7 @@
         
 
         <div class="article-details">
-            <h2 class="article-title">9.4有源高通滤波器</h2>
+            <h2 class="article-title">9.4 有源高通滤波器</h2>
         </div>
     </a>
 </article>
@@ -270,7 +330,7 @@
         
 
         <div class="article-details">
-            <h2 class="article-title">9.3有源低通滤波器</h2>
+            <h2 class="article-title">9.3 有源低通滤波器</h2>
         </div>
     </a>
 </article>
@@ -282,31 +342,31 @@
         
 
         <div class="article-details">
-            <h2 class="article-title">9.2滤波器的响应特性</h2>
+            <h2 class="article-title">9.2 滤波器的响应特性</h2>
         </div>
     </a>
 </article>
                 
                     
 <article class="">
-    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/9-1%E5%9F%BA%E6%9C%AC%E6%BB%A4%E6%B3%A2%E5%99%A8%E5%93%8D%E5%BA%94/">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/8-3%E7%A7%AF%E5%88%86%E5%99%A8%E5%92%8C%E5%BE%AE%E5%88%86%E5%99%A8/">
         
         
 
         <div class="article-details">
-            <h2 class="article-title">9.1基本滤波器响应</h2>
+            <h2 class="article-title">8.3 积分器和微分器</h2>
         </div>
     </a>
 </article>
                 
                     
 <article class="">
-    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/8-5%E6%95%85%E9%9A%9C%E6%A3%80%E6%B5%8B/">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/8-2%E6%B1%82%E5%92%8C%E6%94%BE%E5%A4%A7%E5%99%A8/">
         
         
 
         <div class="article-details">
-            <h2 class="article-title">8.5故障检测</h2>
+            <h2 class="article-title">8.2 求和放大器</h2>
         </div>
     </a>
 </article>
@@ -324,7 +384,7 @@
     data-app-id="d44db3f9-a0ff-4551-a44d-316afd2e5835"
     data-page-id="2d5a3703f643ad30e6fe7ec1fe851cd0"
     data-page-url="https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/9-5%E6%9C%89%E6%BA%90%E5%B8%A6%E9%80%9A%E6%BB%A4%E6%B3%A2%E5%99%A8/"
-    data-page-title="9.5有源带通滤波器"></div>
+    data-page-title="9.5 有源带通滤波器"></div>
 <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
 
 <script>
@@ -436,6 +496,38 @@
             >
 
             </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">Table of contents</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#951-低通和高通滤波器的级联形成带通响应">9.5.1 低通和高通滤波器的级联形成带通响应</a></li>
+        <li><a href="#952-多重反馈带通滤波器">9.5.2 多重反馈带通滤波器</a></li>
+        <li><a href="#953-状态可变带通滤波器">9.5.3 状态可变带通滤波器</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                </div>
+            </section>
+        </aside>
     
 
         </div>

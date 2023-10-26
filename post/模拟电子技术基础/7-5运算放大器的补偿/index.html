@@ -1,17 +1,56 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content=''><title>7.5运算放大器的补偿</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='上一节指出，当运算放大器响应的下降率超过 一20dB/十倍频程，并且运算放大器运行在闭环配置中，增益曲线与开环响应相交于更高的下降率时，就会出现不稳定。正如上节讨论的情况中，闭环电压增益被限制在非常高的值。在许多应用中，较低的闭环增益是很有必要或者非常希望的。为了让运算放大器能够运行在较低的闭环增益处，需要进行相位滞后补偿。本节可作为选学内容。
+学完本节后，你应该掌握以下内容:
+解释运算放大器相位补偿 描述相位-滞后补偿 解释补偿电路 应用单电容器补偿 应用前馈补偿 7.5.1 相位滞后补偿 正如你所看到的，不稳定的原因是运算放大器内部滞后网络的额外相移。当这些相移等于或超过 180° 时，放大器就会振荡。要么通过补偿的方法来去除开环下降率大于 一20dB/十倍频程的部分，要么通过补偿将 一20dB/十倍频程下降的线段延伸到更低的增益处。这些概念在图7-15中进行了阐述。 $$ 图7-15~~~用伯德图说明对典型运算放大器开环增益进行相位补偿的效果 $$
+7.5.2 $$ a)电路~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~b) 理想输出电压20dB/十倍频程 $$
+$$ 图7-16~~~基本补偿网络的作用 $$
+对集成电路运算放大器进行补偿有两种基本的方法: 内部的和外部的。两种方法都需要加入 RC 网络。基本补偿操作如下所述: 首先考虑 RC 网络，如图7-16a 所示。补偿电容的电抗 $X_{C_c}$ 在低频处非常大，输出电压几乎等于输人电压。当频率达到其截止频率时，$f_c= 1/[2\pi(R_1 &#43; R_2)C_c]$, 输出电压按 一20dB/十倍频程下降，这个下降率会一直持续到 $X_{C_c}≈0$。在 $X_{C_c}≈0$ 时，输出电压大小由 $R_1$ 和 $R_2$ 决定，如图7-16b所示。这是运算放大器相位补偿中使用的原则。
+$$ 图7-17~~~带补偿的运算放大器 $$
+为了看清补偿网络如何改变运算放大器的开环响应，参照图7-17。此图是一个二级的运算放大器，每一级和紧跟着的滞后网络都用灰色阴影块表示，补偿网络连接到第一级电路的输出端 A 点处。
+把补偿网络截止频率的值设置为小于内部滞后网络的主(最小的)截止频率，这就使得在补偿网络的截止频率处开始以一20dB/十倍频程下降。补偿网络的下降从截止频率开始一直持续到主滞后网络的截止频率处，到该点后，补偿网络的响应呈平稳状态,由主滞后网络的一20dB/十倍频程来接管继续下降，最终的结果是开环响应向左平移，因此压缩了带宽，如图7-18a所示。补偿网络的响应曲线与总开环响应曲线之间的正确关系如图7-18b所示。
+$$ 图7-18~~~~补偿运算放大器频率响应的例子 $$
+7.5.3 补偿范围 $$ a)部分补偿~~~~~~~~~~~~~~~~~~~~~b)全补偿 $$
+$$ 图7-21~~~补偿范围 $$
+较大的补偿电容会使得开环响应从较低的频率就开始下降，因此会将 一20dB/十倍频程的下降延伸到较低的增益值，如图7-21a所示。通过足够大的补偿电容可以使得运算放大器无条件地稳定，如图7-21b所示，这里的 一20dB/十倍频程线段一直延伸到单位增益一般这种内部的补偿是由制造商在生产时就实现的，一个内部的、全补偿的运算放大器可以用于任意值的闭环增益并保持稳定。741就是内部全补偿的一种器件。
+内部全补偿放大器的缺点是牺牲了带宽，因而降低了转换速率。所以，许多集成运算放大器会提供外部补偿。图7-22给出了 LM101A 运算放大器的典型封装图，带有外补偿的引脚，通过这些引脚可以用小电容提供外部补偿。通过提供外部连接，对特定的应用只需要提供正好够用的补偿，从而避免了性能上不必要的损失。'><title>7.5 运算放大器的补偿</title>
 
 <link rel='canonical' href='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/7-5%E8%BF%90%E7%AE%97%E6%94%BE%E5%A4%A7%E5%99%A8%E7%9A%84%E8%A1%A5%E5%81%BF/'>
 
-<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='7.5运算放大器的补偿'>
-<meta property='og:description' content=''>
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='7.5 运算放大器的补偿'>
+<meta property='og:description' content='上一节指出，当运算放大器响应的下降率超过 一20dB/十倍频程，并且运算放大器运行在闭环配置中，增益曲线与开环响应相交于更高的下降率时，就会出现不稳定。正如上节讨论的情况中，闭环电压增益被限制在非常高的值。在许多应用中，较低的闭环增益是很有必要或者非常希望的。为了让运算放大器能够运行在较低的闭环增益处，需要进行相位滞后补偿。本节可作为选学内容。
+学完本节后，你应该掌握以下内容:
+解释运算放大器相位补偿 描述相位-滞后补偿 解释补偿电路 应用单电容器补偿 应用前馈补偿 7.5.1 相位滞后补偿 正如你所看到的，不稳定的原因是运算放大器内部滞后网络的额外相移。当这些相移等于或超过 180° 时，放大器就会振荡。要么通过补偿的方法来去除开环下降率大于 一20dB/十倍频程的部分，要么通过补偿将 一20dB/十倍频程下降的线段延伸到更低的增益处。这些概念在图7-15中进行了阐述。 $$ 图7-15~~~用伯德图说明对典型运算放大器开环增益进行相位补偿的效果 $$
+7.5.2 $$ a)电路~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~b) 理想输出电压20dB/十倍频程 $$
+$$ 图7-16~~~基本补偿网络的作用 $$
+对集成电路运算放大器进行补偿有两种基本的方法: 内部的和外部的。两种方法都需要加入 RC 网络。基本补偿操作如下所述: 首先考虑 RC 网络，如图7-16a 所示。补偿电容的电抗 $X_{C_c}$ 在低频处非常大，输出电压几乎等于输人电压。当频率达到其截止频率时，$f_c= 1/[2\pi(R_1 &#43; R_2)C_c]$, 输出电压按 一20dB/十倍频程下降，这个下降率会一直持续到 $X_{C_c}≈0$。在 $X_{C_c}≈0$ 时，输出电压大小由 $R_1$ 和 $R_2$ 决定，如图7-16b所示。这是运算放大器相位补偿中使用的原则。
+$$ 图7-17~~~带补偿的运算放大器 $$
+为了看清补偿网络如何改变运算放大器的开环响应，参照图7-17。此图是一个二级的运算放大器，每一级和紧跟着的滞后网络都用灰色阴影块表示，补偿网络连接到第一级电路的输出端 A 点处。
+把补偿网络截止频率的值设置为小于内部滞后网络的主(最小的)截止频率，这就使得在补偿网络的截止频率处开始以一20dB/十倍频程下降。补偿网络的下降从截止频率开始一直持续到主滞后网络的截止频率处，到该点后，补偿网络的响应呈平稳状态,由主滞后网络的一20dB/十倍频程来接管继续下降，最终的结果是开环响应向左平移，因此压缩了带宽，如图7-18a所示。补偿网络的响应曲线与总开环响应曲线之间的正确关系如图7-18b所示。
+$$ 图7-18~~~~补偿运算放大器频率响应的例子 $$
+7.5.3 补偿范围 $$ a)部分补偿~~~~~~~~~~~~~~~~~~~~~b)全补偿 $$
+$$ 图7-21~~~补偿范围 $$
+较大的补偿电容会使得开环响应从较低的频率就开始下降，因此会将 一20dB/十倍频程的下降延伸到较低的增益值，如图7-21a所示。通过足够大的补偿电容可以使得运算放大器无条件地稳定，如图7-21b所示，这里的 一20dB/十倍频程线段一直延伸到单位增益一般这种内部的补偿是由制造商在生产时就实现的，一个内部的、全补偿的运算放大器可以用于任意值的闭环增益并保持稳定。741就是内部全补偿的一种器件。
+内部全补偿放大器的缺点是牺牲了带宽，因而降低了转换速率。所以，许多集成运算放大器会提供外部补偿。图7-22给出了 LM101A 运算放大器的典型封装图，带有外补偿的引脚，通过这些引脚可以用小电容提供外部补偿。通过提供外部连接，对特定的应用只需要提供正好够用的补偿，从而避免了性能上不必要的损失。'>
 <meta property='og:url' content='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/7-5%E8%BF%90%E7%AE%97%E6%94%BE%E5%A4%A7%E5%99%A8%E7%9A%84%E8%A1%A5%E5%81%BF/'>
 <meta property='og:site_name' content='My Blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Analog' /><meta property='article:published_time' content='2023-07-14T18:16:59&#43;00:00'/><meta property='article:modified_time' content='2023-07-14T18:16:59&#43;00:00'/>
-<meta name="twitter:title" content="7.5运算放大器的补偿">
-<meta name="twitter:description" content=""><script>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Analog' /><meta property='article:published_time' content='2023-07-14T18:16:59&#43;08:00'/><meta property='article:modified_time' content='2023-07-14T18:16:59&#43;08:00'/>
+<meta name="twitter:title" content="7.5 运算放大器的补偿">
+<meta name="twitter:description" content="上一节指出，当运算放大器响应的下降率超过 一20dB/十倍频程，并且运算放大器运行在闭环配置中，增益曲线与开环响应相交于更高的下降率时，就会出现不稳定。正如上节讨论的情况中，闭环电压增益被限制在非常高的值。在许多应用中，较低的闭环增益是很有必要或者非常希望的。为了让运算放大器能够运行在较低的闭环增益处，需要进行相位滞后补偿。本节可作为选学内容。
+学完本节后，你应该掌握以下内容:
+解释运算放大器相位补偿 描述相位-滞后补偿 解释补偿电路 应用单电容器补偿 应用前馈补偿 7.5.1 相位滞后补偿 正如你所看到的，不稳定的原因是运算放大器内部滞后网络的额外相移。当这些相移等于或超过 180° 时，放大器就会振荡。要么通过补偿的方法来去除开环下降率大于 一20dB/十倍频程的部分，要么通过补偿将 一20dB/十倍频程下降的线段延伸到更低的增益处。这些概念在图7-15中进行了阐述。 $$ 图7-15~~~用伯德图说明对典型运算放大器开环增益进行相位补偿的效果 $$
+7.5.2 $$ a)电路~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~b) 理想输出电压20dB/十倍频程 $$
+$$ 图7-16~~~基本补偿网络的作用 $$
+对集成电路运算放大器进行补偿有两种基本的方法: 内部的和外部的。两种方法都需要加入 RC 网络。基本补偿操作如下所述: 首先考虑 RC 网络，如图7-16a 所示。补偿电容的电抗 $X_{C_c}$ 在低频处非常大，输出电压几乎等于输人电压。当频率达到其截止频率时，$f_c= 1/[2\pi(R_1 &#43; R_2)C_c]$, 输出电压按 一20dB/十倍频程下降，这个下降率会一直持续到 $X_{C_c}≈0$。在 $X_{C_c}≈0$ 时，输出电压大小由 $R_1$ 和 $R_2$ 决定，如图7-16b所示。这是运算放大器相位补偿中使用的原则。
+$$ 图7-17~~~带补偿的运算放大器 $$
+为了看清补偿网络如何改变运算放大器的开环响应，参照图7-17。此图是一个二级的运算放大器，每一级和紧跟着的滞后网络都用灰色阴影块表示，补偿网络连接到第一级电路的输出端 A 点处。
+把补偿网络截止频率的值设置为小于内部滞后网络的主(最小的)截止频率，这就使得在补偿网络的截止频率处开始以一20dB/十倍频程下降。补偿网络的下降从截止频率开始一直持续到主滞后网络的截止频率处，到该点后，补偿网络的响应呈平稳状态,由主滞后网络的一20dB/十倍频程来接管继续下降，最终的结果是开环响应向左平移，因此压缩了带宽，如图7-18a所示。补偿网络的响应曲线与总开环响应曲线之间的正确关系如图7-18b所示。
+$$ 图7-18~~~~补偿运算放大器频率响应的例子 $$
+7.5.3 补偿范围 $$ a)部分补偿~~~~~~~~~~~~~~~~~~~~~b)全补偿 $$
+$$ 图7-21~~~补偿范围 $$
+较大的补偿电容会使得开环响应从较低的频率就开始下降，因此会将 一20dB/十倍频程的下降延伸到较低的增益值，如图7-21a所示。通过足够大的补偿电容可以使得运算放大器无条件地稳定，如图7-21b所示，这里的 一20dB/十倍频程线段一直延伸到单位增益一般这种内部的补偿是由制造商在生产时就实现的，一个内部的、全补偿的运算放大器可以用于任意值的闭环增益并保持稳定。741就是内部全补偿的一种器件。
+内部全补偿放大器的缺点是牺牲了带宽，因而降低了转换速率。所以，许多集成运算放大器会提供外部补偿。图7-22给出了 LM101A 运算放大器的典型封装图，带有外补偿的引脚，通过这些引脚可以用小电容提供外部补偿。通过提供外部连接，对特定的应用只需要提供正好够用的补偿，从而避免了性能上不必要的损失。"><script>
     (function(){
         if(''){
             if (prompt('请输入文章密码') !== ''){
@@ -25,7 +64,7 @@
 
     </head>
     <body class="
-    article-page 
+    article-page has-toc
 ">
     <script>
         (function() {
@@ -51,128 +90,22 @@
 </script>
 <div class="container main-container flex 
     
-        on-phone--column extended
+        extended
     
 ">
     
-        <aside class="sidebar left-sidebar sticky">
-    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
-        <span class="hamburger-box">
-            <span class="hamburger-inner"></span>
-        </span>
-    </button>
-
-    <header class="site-info">
-        
-            
-            <figure class="site-avatar">
-                
-                    
-                    
-                    
-                        
-                        <img src="/img/avatar_hu71fc3898bde3464d50a00f65e63c7ec2_517570_300x0_resize_box_3.png" width="300"
-                            height="354" class="site-logo" loading="lazy" alt="Avatar">
-                    
-                
-
-                
-            </figure>
-            
-        
-        
-        <h1 class="site-name"><a href="/">My Blog</a></h1>
-        <h2 class="site-description"></h2></header>
-
-    <ol class="menu" id="main-menu">
-        
-        
-        
-
-        <li >
-            <a href='/page/about/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <div id="article-toolbar">
+            <a href="/" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="7" r="4" />
-  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+  <polyline points="15 6 9 12 15 18" />
 </svg>
 
 
 
-                
-                <span>About</span>
+                <span>Back</span>
             </a>
-        </li>
-        
-        
-
-        <li >
-            <a href='/page/archives/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <rect x="3" y="4" width="18" height="4" rx="2" />
-  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
-  <line x1="10" y1="12" x2="14" y2="12" />
-</svg>
-
-
-
-                
-                <span>Archives</span>
-            </a>
-        </li>
-        
-        
-
-        <li >
-            <a href='/page/search/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="10" cy="10" r="7" />
-  <line x1="21" y1="21" x2="15" y2="15" />
-</svg>
-
-
-
-                
-                <span>Search</span>
-            </a>
-        </li>
-        
-
-        
-            <li id="dark-mode-toggle">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="8" cy="12" r="2" />
-  <rect x="2" y="6" width="20" height="12" rx="6" />
-</svg>
-
-
-
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="16" cy="12" r="2" />
-  <rect x="2" y="6" width="20" height="12" rx="6" />
-</svg>
-
-
-
-                <span>Dark Mode</span>
-            </li>
-        
-    </ol>
-</aside>
-
+        </div>
     
 <main class="main full-width">
     <article class="main-article">
@@ -182,7 +115,7 @@
     
 
     <h2 class="article-title">
-        <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/7-5%E8%BF%90%E7%AE%97%E6%94%BE%E5%A4%A7%E5%99%A8%E7%9A%84%E8%A1%A5%E5%81%BF/">7.5运算放大器的补偿</a>
+        <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/7-5%E8%BF%90%E7%AE%97%E6%94%BE%E5%A4%A7%E5%99%A8%E7%9A%84%E8%A1%A5%E5%81%BF/">7.5 运算放大器的补偿</a>
     </h2>
 
     
@@ -215,7 +148,7 @@
 
 
                 <time class="article-time--reading">
-                    0 minute read
+                    1 minute read
                 </time>
             </div>
         
@@ -225,7 +158,160 @@
 </header>
 
     <section class="article-content">
-    
+    <p>上一节指出，当运算放大器响应的下降率超过 一20dB/十倍频程，并且运算放大器运行在闭环配置中，增益曲线与开环响应相交于更高的下降率时，就会出现不稳定。正如上节讨论的情况中，闭环电压增益被限制在非常高的值。在许多应用中，较低的闭环增益是很有必要或者非常希望的。为了让运算放大器能够运行在较低的闭环增益处，需要进行相位滞后补偿。本节可作为选学内容。</p>
+<p>学完本节后，你应该掌握以下内容:</p>
+<ul>
+<li>解释运算放大器相位补偿
+<ul>
+<li>描述相位-滞后补偿</li>
+<li>解释补偿电路</li>
+<li>应用单电容器补偿</li>
+<li>应用前馈补偿</li>
+</ul>
+</li>
+</ul>
+<h3 id="751-相位滞后补偿">7.5.1 相位滞后补偿</h3>
+<p>正如你所看到的，不稳定的原因是运算放大器内部滞后网络的额外相移。当这些相移等于或超过 180° 时，放大器就会振荡。要么通过补偿的方法来去除开环下降率大于 一20dB/十倍频程的部分，要么通过补偿将 一20dB/十倍频程下降的线段延伸到更低的增益处。这些概念在图7-15中进行了阐述。
+<img src="https://s2.loli.net/2023/10/16/Hl9YeBKzm1siSoD.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog7_15.png"
+	
+	
+>
+$$
+图7-15~~~用伯德图说明对典型运算放大器开环增益进行相位补偿的效果
+$$</p>
+<h3 id="752">7.5.2</h3>
+<p><img src="https://s2.loli.net/2023/10/17/qsuOCEZrHKg5WvI.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog7_16.png"
+	
+	
+>
+$$
+a)电路~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~b) 理想输出电压20dB/十倍频程
+$$</p>
+<p>$$
+图7-16~~~基本补偿网络的作用
+$$</p>
+<p>对集成电路运算放大器进行补偿有两种基本的方法: 内部的和外部的。两种方法都需要加入 RC 网络。基本补偿操作如下所述: 首先考虑 RC 网络，如图7-16a 所示。补偿电容的电抗 $X_{C_c}$ 在低频处非常大，输出电压几乎等于输人电压。当频率达到其截止频率时，$f_c= 1/[2\pi(R_1 + R_2)C_c]$, 输出电压按 一20dB/十倍频程下降，这个下降率会一直持续到 $X_{C_c}≈0$。在 $X_{C_c}≈0$ 时，输出电压大小由 $R_1$ 和 $R_2$ 决定，如图7-16b所示。这是运算放大器相位补偿中使用的原则。</p>
+<p><img src="https://s2.loli.net/2023/10/17/sSkZcPWEXJviOzA.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog7_17.png"
+	
+	
+>
+$$
+图7-17~~~带补偿的运算放大器
+$$</p>
+<p>为了看清补偿网络如何改变运算放大器的开环响应，参照图7-17。此图是一个二级的运算放大器，每一级和紧跟着的滞后网络都用灰色阴影块表示，补偿网络连接到第一级电路的输出端 A 点处。</p>
+<p>把补偿网络截止频率的值设置为小于内部滞后网络的主(最小的)截止频率，这就使得在补偿网络的截止频率处开始以一20dB/十倍频程下降。补偿网络的下降从截止频率开始一直持续到主滞后网络的截止频率处，到该点后，补偿网络的响应呈平稳状态,由主滞后网络的一20dB/十倍频程来接管继续下降，最终的结果是开环响应向左平移，因此压缩了带宽，如图7-18a所示。补偿网络的响应曲线与总开环响应曲线之间的正确关系如图7-18b所示。</p>
+<p><img src="https://s2.loli.net/2023/10/18/vGqr1YBAojdV97k.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog7_18.png"
+	
+	
+>
+$$
+图7-18~~~~补偿运算放大器频率响应的例子
+$$</p>
+<h3 id="753-补偿范围">7.5.3 补偿范围</h3>
+<p><img src="https://s2.loli.net/2023/10/18/9WLIwOUnvNJTkqP.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog7_21.png"
+	
+	
+>
+$$
+a)部分补偿~~~~~~~~~~~~~~~~~~~~~b)全补偿
+$$</p>
+<p>$$
+图7-21~~~补偿范围
+$$</p>
+<p>较大的补偿电容会使得开环响应从较低的频率就开始下降，因此会将 一20dB/十倍频程的下降延伸到较低的增益值，如图7-21a所示。通过足够大的补偿电容可以使得运算放大器无条件地稳定，如图7-21b所示，这里的 一20dB/十倍频程线段一直延伸到单位增益一般这种内部的补偿是由制造商在生产时就实现的，一个内部的、全补偿的运算放大器可以用于任意值的闭环增益并保持稳定。741就是内部全补偿的一种器件。</p>
+<p>内部全补偿放大器的缺点是牺牲了带宽，因而降低了转换速率。所以，许多集成运算放大器会提供外部补偿。图7-22给出了 LM101A 运算放大器的典型封装图，带有外补偿的引脚，通过这些引脚可以用小电容提供外部补偿。通过提供外部连接，对特定的应用只需要提供正好够用的补偿，从而避免了性能上不必要的损失。</p>
+<p><img src="https://s2.loli.net/2023/10/18/LzpK6tlarqAnZWX.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog7_22.png"
+	
+	
+>
+$$
+图7-22~~~~运算放大器典型的封装布局
+$$</p>
+<h3 id="754-单电容补偿">7.5.4 单电容补偿</h3>
+<p><img src="https://s2.loli.net/2023/10/18/TJ3jYgRScWDduG5.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog7_23.png"
+	
+	
+>
+$$
+图7-23 ~~~~LM101A运算放大器的单个电容补偿例子
+$$</p>
+<p>如图7-23a所示，作为补偿集成运算放大器的一个例子，LM101A在放大器组态中，电容 $C_1$ 连接到引脚 1 和 8。图7-23b针对 $C_1$ 两个不同的值分别给出了各自的开环频率响应曲线。3pF的补偿电容产生的单位增益带宽接近于10MHz。注意，一20dB/十倍频程线段延伸到一个非常低的增益值。当 $C_1$ 扩大10倍，达到30pF时，带宽也减小了10倍。注意，此时一20dB/十倍频程线段延伸到了单位增益处。</p>
+<p>在运算放大器用于闭环组态时，如图7-23c所示，有效的频率范围取决于补偿电容。例如，如图7-23c所示的闭环增益为40dB，当 $C_1$ =30pF时带宽接近10kHz，当 $C_1$ 减小为3pF时带宽增加到接近100kHz。</p>
+<h3 id="755-前馈补偿">7.5.5 前馈补偿</h3>
+<p><img src="https://s2.loli.net/2023/10/18/3UshkBXMzrP6HKg.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog7_24.png"
+	
+	
+>
+$$
+图7-24~~~在高频段旁路掉第一级的前馈补偿
+$$</p>
+<p>相位补偿的另一种方法是前馈补偿。使用这种补偿方法的结果是比前面讨论的补偿方法对带宽的压缩要小。基本的原理是: 在高频段旁路掉运算放大器内部的输入电路，驱动更高频率的第二级，如图7-24所示。</p>
+<p><img src="https://s2.loli.net/2023/10/18/HQDcVlMLv47rNRu.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog7_25.png"
+	
+	
+>
+$$
+a）制造商推荐的配置~~~~~~~~~~~~~~~~~~~~b）响应
+$$</p>
+<p>$$
+图7-25 ~~~LM101A运算放大器的前馈补偿和响应曲线
+$$</p>
+<p>LM101A的前馈补偿如图7-25a所示。前馈电容 $C_1$ 从反相输人端连接到补偿端，$R_f$ 两端需要一个小电容来保证稳定。图7-25b所示的伯德图中给出了前馈补偿响应和前面讨论的标准补偿响应，前馈补偿只能用于反相放大器组态。其他的补偿方法也可以使用，通常制造商会在数据手册中给出建议.</p>
+
 </section>
 
 
@@ -238,9 +324,44 @@
     </section>
 
 
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
     </footer>
 
 
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css"integrity="sha384-RZU/ijkSsFbcmivfdRBQDtwuwVqK7GMOw6IMvKyeWL2K5UAlyp6WonmB8m7Jd0Hn"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js"integrity="sha384-pK1WpvzWVBQiP0/GjnvRxV4mOb0oxFuyRxJlk6vVw146n3egcN5C925NCP7a7BY8"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js"integrity="sha384-vZTG03m&#43;2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ]
+        });})
+</script>
     
 </article>
 
@@ -258,7 +379,7 @@
         
 
         <div class="article-details">
-            <h2 class="article-title">7.4正反馈和稳定性</h2>
+            <h2 class="article-title">7.4 正反馈和稳定性</h2>
         </div>
     </a>
 </article>
@@ -270,7 +391,7 @@
         
 
         <div class="article-details">
-            <h2 class="article-title">7.3运算放大器闭环响应</h2>
+            <h2 class="article-title">7.3 运算放大器闭环响应</h2>
         </div>
     </a>
 </article>
@@ -282,7 +403,7 @@
         
 
         <div class="article-details">
-            <h2 class="article-title">7.2运算放大器开环响应</h2>
+            <h2 class="article-title">7.2 运算放大器开环响应</h2>
         </div>
     </a>
 </article>
@@ -294,19 +415,19 @@
         
 
         <div class="article-details">
-            <h2 class="article-title">7.1基本概念</h2>
+            <h2 class="article-title">7.1 基本概念</h2>
         </div>
     </a>
 </article>
                 
                     
 <article class="">
-    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/6-7%E6%95%85%E9%9A%9C%E6%A3%80%E6%B5%8B/">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/6-6%E8%BF%90%E6%94%BE%E9%98%BB%E6%8A%97%E5%92%8C%E5%99%AA%E5%A3%B0/">
         
         
 
         <div class="article-details">
-            <h2 class="article-title">6.7故障检测</h2>
+            <h2 class="article-title">6.6 运放阻抗和噪声</h2>
         </div>
     </a>
 </article>
@@ -324,7 +445,7 @@
     data-app-id="d44db3f9-a0ff-4551-a44d-316afd2e5835"
     data-page-id="9b3955c03b4e7015feaa09a96cb100bb"
     data-page-url="https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/7-5%E8%BF%90%E7%AE%97%E6%94%BE%E5%A4%A7%E5%99%A8%E7%9A%84%E8%A1%A5%E5%81%BF/"
-    data-page-title="7.5运算放大器的补偿"></div>
+    data-page-title="7.5 运算放大器的补偿"></div>
 <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
 
 <script>
@@ -436,6 +557,40 @@
             >
 
             </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">Table of contents</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#751-相位滞后补偿">7.5.1 相位滞后补偿</a></li>
+        <li><a href="#752">7.5.2</a></li>
+        <li><a href="#753-补偿范围">7.5.3 补偿范围</a></li>
+        <li><a href="#754-单电容补偿">7.5.4 单电容补偿</a></li>
+        <li><a href="#755-前馈补偿">7.5.5 前馈补偿</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                </div>
+            </section>
+        </aside>
     
 
         </div>

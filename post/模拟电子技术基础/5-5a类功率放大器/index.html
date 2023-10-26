@@ -1,17 +1,38 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content=''><title>5.5A类功率放大器</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='当放大器所加的偏置始终使它工作在线性区，即输出信号是输入信号的放大复制时，它就是 A 类放大器。前面章节的讨论和式子都适用于 A 类工作状态。功率放大器是指将功率传送给负载的放大器。这意味着必须考虑到这些元件的散热能力。
+学完本节后，你应该掌握以下内容:
+计算 A 类功率放大器关键的交流和直流参数，并讨论交流负载线的工作 解释为什么对于 A 类放大器来说 Q 点位于中心很重要 确定多级放大器的电压增益和功率增益 确定 A 类放大器的效率 在小信号放大器中，交流信号只在交流负载线的极小范围内移动。当输出信号比较大并且接近交流负载线的上下限时，它就是一个大信号类型的放大器。只在所有时候内以大器都工作在线性区，就认为大信号和小信号放大器都是A类放大器。A 类功率放大器是指提供功率(而不是电压)给负载的大信号放大器。根据经验，如果需要考虑元件的散热问题(&amp;gt;1/4W)，那么这个放大器就可能是一个功率放大器。
+5.5.1 散热 功率晶体管(和其他功率器件)必须驱散内部产生的过量热量。对于双极型功率晶体管，集电极是最关键的部位，所以晶体管外壳始终与集电极相连。所有功率晶体管的外壳都在管子和散热槽之间设计有一个较大的接触面积。晶体管产生的热流过外壳到达散热槽，然后散发到周围的空气中。散热槽的尺寸、鳍板的数量、材料的种类等都会有所不同，尺寸取决于散热要求和晶体管工作环境的最高温度。在大功率(几百瓦)应用场合，还需要冷却扇。
+5.5.2中心Q点 $$ a)~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~b) $$
+$$ 图5-22~~~当Q点位于交流负载线的中心时A类放大器有最大输出 $$ 3.4节曾提到，直流负载线和交流负载线在 Q 点相交。当 Q 点位于交流负载线的中点时，就能得到 A 类信号的最大值。查看图5-22a中给定放大器的负载线图，就能理解这个概念。该图给出了交流负载线，其中 Q 点位于其中心。集电极电流可以从 Q 点值 $I_{CQ}$ 向上最大变化到饱和值 $I_{c(sat)}$，向下最小变化到截止值 0。同样，集电极-发射极电压可以从其 Q 点值 $V_{CEQ}$ 增大到最大截止值 $V_{ce(cutoff)}$，减小到最小饱和值(近似为 0)。这个工作过程如图5-22b所示。集电极电流的峰值等于 $I_{CQ}$，相应的集电极-发射极电压的峰值等于 $V_{CEQ}$。这个信号就是 A 类放大器中可以获得的最大信号。实际上，输出不能完全达到饱和和截止，所以实际最大值要小一些。
+$$ a)~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~b) $$
+$$ 图5-23~~~Q点靠近截止区 $$ 如果 Q 点不在交流负载线的中心，输出信号就会受到限制。图5-23给出了Q点从中心移向截止时负载线的情况。本例中，输出范围受截止的限制。集电极电流只能在向下到接近于 0 和大于 $I_{CQ}$ 向上等量的范围内摆动，集电极-发射极电压只能在向上到截止值和小于 $V_{CEQ}$ 向下等量范围内摆动变化，如图5-23a所示。如果放大器工作范围超过此区域，则就会在截止处被“削顶”，如图5-23b所示。'><title>5.5 A类功率放大器</title>
 
 <link rel='canonical' href='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/5-5a%E7%B1%BB%E5%8A%9F%E7%8E%87%E6%94%BE%E5%A4%A7%E5%99%A8/'>
 
-<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='5.5A类功率放大器'>
-<meta property='og:description' content=''>
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='5.5 A类功率放大器'>
+<meta property='og:description' content='当放大器所加的偏置始终使它工作在线性区，即输出信号是输入信号的放大复制时，它就是 A 类放大器。前面章节的讨论和式子都适用于 A 类工作状态。功率放大器是指将功率传送给负载的放大器。这意味着必须考虑到这些元件的散热能力。
+学完本节后，你应该掌握以下内容:
+计算 A 类功率放大器关键的交流和直流参数，并讨论交流负载线的工作 解释为什么对于 A 类放大器来说 Q 点位于中心很重要 确定多级放大器的电压增益和功率增益 确定 A 类放大器的效率 在小信号放大器中，交流信号只在交流负载线的极小范围内移动。当输出信号比较大并且接近交流负载线的上下限时，它就是一个大信号类型的放大器。只在所有时候内以大器都工作在线性区，就认为大信号和小信号放大器都是A类放大器。A 类功率放大器是指提供功率(而不是电压)给负载的大信号放大器。根据经验，如果需要考虑元件的散热问题(&amp;gt;1/4W)，那么这个放大器就可能是一个功率放大器。
+5.5.1 散热 功率晶体管(和其他功率器件)必须驱散内部产生的过量热量。对于双极型功率晶体管，集电极是最关键的部位，所以晶体管外壳始终与集电极相连。所有功率晶体管的外壳都在管子和散热槽之间设计有一个较大的接触面积。晶体管产生的热流过外壳到达散热槽，然后散发到周围的空气中。散热槽的尺寸、鳍板的数量、材料的种类等都会有所不同，尺寸取决于散热要求和晶体管工作环境的最高温度。在大功率(几百瓦)应用场合，还需要冷却扇。
+5.5.2中心Q点 $$ a)~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~b) $$
+$$ 图5-22~~~当Q点位于交流负载线的中心时A类放大器有最大输出 $$ 3.4节曾提到，直流负载线和交流负载线在 Q 点相交。当 Q 点位于交流负载线的中点时，就能得到 A 类信号的最大值。查看图5-22a中给定放大器的负载线图，就能理解这个概念。该图给出了交流负载线，其中 Q 点位于其中心。集电极电流可以从 Q 点值 $I_{CQ}$ 向上最大变化到饱和值 $I_{c(sat)}$，向下最小变化到截止值 0。同样，集电极-发射极电压可以从其 Q 点值 $V_{CEQ}$ 增大到最大截止值 $V_{ce(cutoff)}$，减小到最小饱和值(近似为 0)。这个工作过程如图5-22b所示。集电极电流的峰值等于 $I_{CQ}$，相应的集电极-发射极电压的峰值等于 $V_{CEQ}$。这个信号就是 A 类放大器中可以获得的最大信号。实际上，输出不能完全达到饱和和截止，所以实际最大值要小一些。
+$$ a)~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~b) $$
+$$ 图5-23~~~Q点靠近截止区 $$ 如果 Q 点不在交流负载线的中心，输出信号就会受到限制。图5-23给出了Q点从中心移向截止时负载线的情况。本例中，输出范围受截止的限制。集电极电流只能在向下到接近于 0 和大于 $I_{CQ}$ 向上等量的范围内摆动，集电极-发射极电压只能在向上到截止值和小于 $V_{CEQ}$ 向下等量范围内摆动变化，如图5-23a所示。如果放大器工作范围超过此区域，则就会在截止处被“削顶”，如图5-23b所示。'>
 <meta property='og:url' content='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/5-5a%E7%B1%BB%E5%8A%9F%E7%8E%87%E6%94%BE%E5%A4%A7%E5%99%A8/'>
 <meta property='og:site_name' content='My Blog'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Analog' /><meta property='article:published_time' content='2023-07-14T17:39:41&#43;00:00'/><meta property='article:modified_time' content='2023-07-14T17:39:41&#43;00:00'/>
-<meta name="twitter:title" content="5.5A类功率放大器">
-<meta name="twitter:description" content=""><script>
+<meta name="twitter:title" content="5.5 A类功率放大器">
+<meta name="twitter:description" content="当放大器所加的偏置始终使它工作在线性区，即输出信号是输入信号的放大复制时，它就是 A 类放大器。前面章节的讨论和式子都适用于 A 类工作状态。功率放大器是指将功率传送给负载的放大器。这意味着必须考虑到这些元件的散热能力。
+学完本节后，你应该掌握以下内容:
+计算 A 类功率放大器关键的交流和直流参数，并讨论交流负载线的工作 解释为什么对于 A 类放大器来说 Q 点位于中心很重要 确定多级放大器的电压增益和功率增益 确定 A 类放大器的效率 在小信号放大器中，交流信号只在交流负载线的极小范围内移动。当输出信号比较大并且接近交流负载线的上下限时，它就是一个大信号类型的放大器。只在所有时候内以大器都工作在线性区，就认为大信号和小信号放大器都是A类放大器。A 类功率放大器是指提供功率(而不是电压)给负载的大信号放大器。根据经验，如果需要考虑元件的散热问题(&amp;gt;1/4W)，那么这个放大器就可能是一个功率放大器。
+5.5.1 散热 功率晶体管(和其他功率器件)必须驱散内部产生的过量热量。对于双极型功率晶体管，集电极是最关键的部位，所以晶体管外壳始终与集电极相连。所有功率晶体管的外壳都在管子和散热槽之间设计有一个较大的接触面积。晶体管产生的热流过外壳到达散热槽，然后散发到周围的空气中。散热槽的尺寸、鳍板的数量、材料的种类等都会有所不同，尺寸取决于散热要求和晶体管工作环境的最高温度。在大功率(几百瓦)应用场合，还需要冷却扇。
+5.5.2中心Q点 $$ a)~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~b) $$
+$$ 图5-22~~~当Q点位于交流负载线的中心时A类放大器有最大输出 $$ 3.4节曾提到，直流负载线和交流负载线在 Q 点相交。当 Q 点位于交流负载线的中点时，就能得到 A 类信号的最大值。查看图5-22a中给定放大器的负载线图，就能理解这个概念。该图给出了交流负载线，其中 Q 点位于其中心。集电极电流可以从 Q 点值 $I_{CQ}$ 向上最大变化到饱和值 $I_{c(sat)}$，向下最小变化到截止值 0。同样，集电极-发射极电压可以从其 Q 点值 $V_{CEQ}$ 增大到最大截止值 $V_{ce(cutoff)}$，减小到最小饱和值(近似为 0)。这个工作过程如图5-22b所示。集电极电流的峰值等于 $I_{CQ}$，相应的集电极-发射极电压的峰值等于 $V_{CEQ}$。这个信号就是 A 类放大器中可以获得的最大信号。实际上，输出不能完全达到饱和和截止，所以实际最大值要小一些。
+$$ a)~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~b) $$
+$$ 图5-23~~~Q点靠近截止区 $$ 如果 Q 点不在交流负载线的中心，输出信号就会受到限制。图5-23给出了Q点从中心移向截止时负载线的情况。本例中，输出范围受截止的限制。集电极电流只能在向下到接近于 0 和大于 $I_{CQ}$ 向上等量的范围内摆动，集电极-发射极电压只能在向上到截止值和小于 $V_{CEQ}$ 向下等量范围内摆动变化，如图5-23a所示。如果放大器工作范围超过此区域，则就会在截止处被“削顶”，如图5-23b所示。"><script>
     (function(){
         if(''){
             if (prompt('请输入文章密码') !== ''){
@@ -25,7 +46,7 @@
 
     </head>
     <body class="
-    article-page 
+    article-page has-toc
 ">
     <script>
         (function() {
@@ -51,128 +72,22 @@
 </script>
 <div class="container main-container flex 
     
-        on-phone--column extended
+        extended
     
 ">
     
-        <aside class="sidebar left-sidebar sticky">
-    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
-        <span class="hamburger-box">
-            <span class="hamburger-inner"></span>
-        </span>
-    </button>
-
-    <header class="site-info">
-        
-            
-            <figure class="site-avatar">
-                
-                    
-                    
-                    
-                        
-                        <img src="/img/avatar_hu71fc3898bde3464d50a00f65e63c7ec2_517570_300x0_resize_box_3.png" width="300"
-                            height="354" class="site-logo" loading="lazy" alt="Avatar">
-                    
-                
-
-                
-            </figure>
-            
-        
-        
-        <h1 class="site-name"><a href="/">My Blog</a></h1>
-        <h2 class="site-description"></h2></header>
-
-    <ol class="menu" id="main-menu">
-        
-        
-        
-
-        <li >
-            <a href='/page/about/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <div id="article-toolbar">
+            <a href="/" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="7" r="4" />
-  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+  <polyline points="15 6 9 12 15 18" />
 </svg>
 
 
 
-                
-                <span>About</span>
+                <span>Back</span>
             </a>
-        </li>
-        
-        
-
-        <li >
-            <a href='/page/archives/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <rect x="3" y="4" width="18" height="4" rx="2" />
-  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
-  <line x1="10" y1="12" x2="14" y2="12" />
-</svg>
-
-
-
-                
-                <span>Archives</span>
-            </a>
-        </li>
-        
-        
-
-        <li >
-            <a href='/page/search/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="10" cy="10" r="7" />
-  <line x1="21" y1="21" x2="15" y2="15" />
-</svg>
-
-
-
-                
-                <span>Search</span>
-            </a>
-        </li>
-        
-
-        
-            <li id="dark-mode-toggle">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="8" cy="12" r="2" />
-  <rect x="2" y="6" width="20" height="12" rx="6" />
-</svg>
-
-
-
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="16" cy="12" r="2" />
-  <rect x="2" y="6" width="20" height="12" rx="6" />
-</svg>
-
-
-
-                <span>Dark Mode</span>
-            </li>
-        
-    </ol>
-</aside>
-
+        </div>
     
 <main class="main full-width">
     <article class="main-article">
@@ -182,7 +97,7 @@
     
 
     <h2 class="article-title">
-        <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/5-5a%E7%B1%BB%E5%8A%9F%E7%8E%87%E6%94%BE%E5%A4%A7%E5%99%A8/">5.5A类功率放大器</a>
+        <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/5-5a%E7%B1%BB%E5%8A%9F%E7%8E%87%E6%94%BE%E5%A4%A7%E5%99%A8/">5.5 A类功率放大器</a>
     </h2>
 
     
@@ -215,7 +130,7 @@
 
 
                 <time class="article-time--reading">
-                    0 minute read
+                    1 minute read
                 </time>
             </div>
         
@@ -225,7 +140,135 @@
 </header>
 
     <section class="article-content">
-    
+    <p>当放大器所加的偏置始终使它工作在线性区，即输出信号是输入信号的放大复制时，它就是 A 类放大器。前面章节的讨论和式子都适用于 A 类工作状态。功率放大器是指将功率传送给负载的放大器。这意味着必须考虑到这些元件的散热能力。</p>
+<p>学完本节后，你应该掌握以下内容:</p>
+<ul>
+<li>计算 A 类功率放大器关键的交流和直流参数，并讨论交流负载线的工作
+<ul>
+<li>解释为什么对于 A 类放大器来说 Q 点位于中心很重要</li>
+<li>确定多级放大器的电压增益和功率增益</li>
+<li>确定 A 类放大器的效率</li>
+</ul>
+</li>
+</ul>
+<p>在小信号放大器中，交流信号只在交流负载线的极小范围内移动。当输出信号比较大并且接近交流负载线的上下限时，它就是一个大信号类型的放大器。只在所有时候内以大器都工作在线性区，就认为大信号和小信号放大器都是A类放大器。A 类功率放大器是指提供功率(而不是电压)给负载的大信号放大器。根据经验，如果需要考虑元件的散热问题(&gt;1/4W)，那么这个放大器就可能是一个功率放大器。</p>
+<h3 id="551-散热">5.5.1 散热</h3>
+<p>功率晶体管(和其他功率器件)必须驱散内部产生的过量热量。对于双极型功率晶体管，集电极是最关键的部位，所以晶体管外壳始终与集电极相连。所有功率晶体管的外壳都在管子和散热槽之间设计有一个较大的接触面积。晶体管产生的热流过外壳到达散热槽，然后散发到周围的空气中。散热槽的尺寸、鳍板的数量、材料的种类等都会有所不同，尺寸取决于散热要求和晶体管工作环境的最高温度。在大功率(几百瓦)应用场合，还需要冷却扇。</p>
+<h3 id="552中心q点">5.5.2中心Q点</h3>
+<p><img src="https://s2.loli.net/2023/10/11/3HMV8pJXnGSU1vy.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog5_22.png"
+	
+	
+>
+$$
+a)~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~b)
+$$</p>
+<p>$$
+图5-22~~~当Q点位于交流负载线的中心时A类放大器有最大输出
+$$
+3.4节曾提到，直流负载线和交流负载线在 Q 点相交。当 Q 点位于交流负载线的中点时，就能得到 A 类信号的最大值。查看图5-22a中给定放大器的负载线图，就能理解这个概念。该图给出了交流负载线，其中 Q 点位于其中心。集电极电流可以从 Q 点值 $I_{CQ}$ 向上最大变化到饱和值 $I_{c(sat)}$，向下最小变化到截止值 0。同样，集电极-发射极电压可以从其 Q 点值 $V_{CEQ}$ 增大到最大截止值 $V_{ce(cutoff)}$，减小到最小饱和值(近似为 0)。这个工作过程如图5-22b所示。集电极电流的峰值等于 $I_{CQ}$，相应的集电极-发射极电压的峰值等于 $V_{CEQ}$。这个信号就是 A 类放大器中可以获得的最大信号。实际上，输出不能完全达到饱和和截止，所以实际最大值要小一些。</p>
+<p><img src="https://s2.loli.net/2023/10/11/jmDOxebY2S4fl68.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog5_23.png"
+	
+	
+>
+$$
+a)~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~b)
+$$</p>
+<p>$$
+图5-23~~~Q点靠近截止区
+$$
+如果 Q 点不在交流负载线的中心，输出信号就会受到限制。图5-23给出了Q点从中心移向截止时负载线的情况。本例中，输出范围受截止的限制。集电极电流只能在向下到接近于 0 和大于 $I_{CQ}$ 向上等量的范围内摆动，集电极-发射极电压只能在向上到截止值和小于 $V_{CEQ}$ 向下等量范围内摆动变化，如图5-23a所示。如果放大器工作范围超过此区域，则就会在截止处被“削顶”，如图5-23b所示。</p>
+<p><img src="https://s2.loli.net/2023/10/11/orMljC43h9wO7TI.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog5_24.png"
+	
+	
+>
+$$
+a)~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~b)
+$$</p>
+<p>$$
+图5-24~~~Q点靠近饱和区
+$$
+图5-24给出了 Q 点从中心移向饱和时负载线的情况。此时输出变化范围受饱和限制。集电极电流只能在向上到接近饱和值与 $I_{CQ}$ 下等量的范围内摆动，而集电极-发射极电压也只能在向下到接近饱和值和 $V_{CEQ}$ 上等量的范围内摆动变化，如图5-24a所示。如果超出该范围，将在饱和处被“削顶”，如图5-24b所示。</p>
+<h3 id="553-功率增益">5.5.3 功率增益</h3>
+<p>功率放大器向负载传输功率。放大器的<code>功率增益</code>是传输到负载的功率与输入功率之比。一般来讲，功率增益为:
+$$
+A_p=\frac{P_L}{P_{in}}~~~(5-5)
+$$
+式中，$A_p=$ 功率增益; $P_L=$ 传输到负载的信号功率; $P_{in}$ 一进入到放大器的信号功率</p>
+<p>根据已知条件，可以通过几个公式来求得功率增益。通常情况下，求功率增益最简单的方法就是根据输人入电阻、负载电阻和电压增益来计算。已经知道功率可以通过电压和电阻来表示:
+$$
+P=\frac{V^2}{R}
+$$
+对于交流功率，电压用有效值表示。传输到负载端的输出功率为
+$$
+P_L=\frac{V^2_L}{R_L}
+$$
+传输到放大器的输入功率为
+$$
+P_{in}=\frac{V^2_{in}}{R_{in}}
+$$
+代入到式(5-5)中，可以得到下面的关系式:
+$$
+A_p=\frac{V^2_L}{V^2_{in}}(\frac{R_{in}}{R_L})
+\\
+A_p=A^2_v(\frac{R_{in}}{R_L})~~~(5-6)
+$$
+式(5-6)表明放大器的功率增益是电压增益的平方乘以输人电阻与输出负载电阻的比值。此式适用于任何放大器。例如，某 CC 放大器的输人电阻为 10kΩ，负载电阻为 100Ω。因为 CC 放大器的电压增益近似为 1，所以功率增益为:
+$$
+A_p=A^2_v(\frac{R_{in}}{R_L})=1^2(\frac{10k\Omega}{100\Omega})=100
+$$
+对于 CC 放大器，$A_p$近似等于输入电阻和输出负载电阻的比值。</p>
+<h3 id="554-直流静态功率">5.5.4 直流静态功率</h3>
+<p>没有信号输入时，晶体管的功耗是 Q 点电流与电压的乘积:
+$$
+P_{DQ} = I_{CQ}V_{CEQ}~~~(5-7)
+$$
+A 类功率放大器能够提供功率给负载的唯一方法是使静态电流至少等于负载电流所要求的峰值电流。信号不会增加晶体管的功耗，相反会引起总功耗减小。式(5-7)给出的静态功率是 A 类放大器必须处理的最大功率。晶体管的额定功率通常应该大于这个值。</p>
+<h3 id="555-输出功率">5.5.5 输出功率</h3>
+<p>一般情况下，输出的信号功率是负载电流有效值与负载电压有效值的乘积。当 Q 点位于交流负载线中点时，可获得最大不失真交流信号。对于 Q 点在中点的 CE 放大器，最大峰值电压是
+$$
+V_{c(max)}=I_{CQ}R_c
+$$
+有效值是$0.707V_{c(max)}$ 。</p>
+<p>最大峰值电流是
+$$
+V_{c(max)}=\frac{V_{CEQ}}{R_c}
+$$
+有效值是$0.707I_{c(max)}$ 。</p>
+<p>为了求得信号的最大输出功率，使用最大电压和最大电流的有效值。A 类放大器的最大输出功率为
+$$
+P_{out(max)}=(0.707I_c)(0.707V_c)
+\\
+P_{out(max)}=0.5I_{CQ}V_{CEQ}~~~(5-8)
+$$</p>
+<h3 id="556效率">5.5.6效率</h3>
+<p>任何放大器的效率都是提供给负载的信号功率与直流电源中获得的功率之比。能够获得的最大信号功率由式(5-8)给出。电源平均电流 $I_{CC}$ 等于 $I_{CQ}$，而电源电压至少是 $2V_{CEQ}$.  因此，直流功率为
+$$
+P_{DC}=I_{CC}V_{CC}=2I_{CQ}V_{CEQ}
+$$
+电容耦合的负载的最大效率是:
+$$
+eff_{max}=\frac{P_{out}}{P_{DC}}=\frac{0.5I_{CQ}V_{CEQ}}{2I_{CQ}V_{CEQ}}=0.25
+$$
+电容耦合 A 类放大器的最大效率不能比 0.25 或 25% 高，而且，在实际中，通常还要小(大约 10%)。虽然可以利用变压器来耦合信号到负载来提高效率，但变压器耦合有许多缺点。这些缺点包括变压器的尺寸、变压器的成本以及潜在的失真问题。总的来说， A 功率放大器的低效率限制了它们在小功率应用中的使用。</p>
+
 </section>
 
 
@@ -238,9 +281,44 @@
     </section>
 
 
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
     </footer>
 
 
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css"integrity="sha384-RZU/ijkSsFbcmivfdRBQDtwuwVqK7GMOw6IMvKyeWL2K5UAlyp6WonmB8m7Jd0Hn"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js"integrity="sha384-pK1WpvzWVBQiP0/GjnvRxV4mOb0oxFuyRxJlk6vVw146n3egcN5C925NCP7a7BY8"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js"integrity="sha384-vZTG03m&#43;2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ]
+        });})
+</script>
     
 </article>
 
@@ -258,7 +336,7 @@
         
 
         <div class="article-details">
-            <h2 class="article-title">5.4直接耦合放大器</h2>
+            <h2 class="article-title">5.4 直接耦合放大器</h2>
         </div>
     </a>
 </article>
@@ -270,7 +348,7 @@
         
 
         <div class="article-details">
-            <h2 class="article-title">5.3变压器耦合放大器</h2>
+            <h2 class="article-title">5.3 变压器耦合放大器</h2>
         </div>
     </a>
 </article>
@@ -282,7 +360,7 @@
         
 
         <div class="article-details">
-            <h2 class="article-title">5.2RF放大器</h2>
+            <h2 class="article-title">5.2 RF放大器</h2>
         </div>
     </a>
 </article>
@@ -294,19 +372,19 @@
         
 
         <div class="article-details">
-            <h2 class="article-title">5.1电容耦合放大器</h2>
+            <h2 class="article-title">5.1 电容耦合放大器</h2>
         </div>
     </a>
 </article>
                 
                     
 <article class="">
-    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/4-8%E7%B3%BB%E7%BB%9F/">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/4-7mosfet%E5%BC%80%E5%85%B3%E7%94%B5%E8%B7%AF/">
         
         
 
         <div class="article-details">
-            <h2 class="article-title">4.8系统</h2>
+            <h2 class="article-title">4.7 MOSFET开关电路</h2>
         </div>
     </a>
 </article>
@@ -324,7 +402,7 @@
     data-app-id="d44db3f9-a0ff-4551-a44d-316afd2e5835"
     data-page-id="235a34ef995f97defbb1847bed429cfb"
     data-page-url="https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/5-5a%E7%B1%BB%E5%8A%9F%E7%8E%87%E6%94%BE%E5%A4%A7%E5%99%A8/"
-    data-page-title="5.5A类功率放大器"></div>
+    data-page-title="5.5 A类功率放大器"></div>
 <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
 
 <script>
@@ -436,6 +514,41 @@
             >
 
             </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">Table of contents</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#551-散热">5.5.1 散热</a></li>
+        <li><a href="#552中心q点">5.5.2中心Q点</a></li>
+        <li><a href="#553-功率增益">5.5.3 功率增益</a></li>
+        <li><a href="#554-直流静态功率">5.5.4 直流静态功率</a></li>
+        <li><a href="#555-输出功率">5.5.5 输出功率</a></li>
+        <li><a href="#556效率">5.5.6效率</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                </div>
+            </section>
+        </aside>
     
 
         </div>

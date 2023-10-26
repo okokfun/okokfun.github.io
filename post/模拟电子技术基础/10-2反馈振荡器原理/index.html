@@ -1,17 +1,29 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content=''><title>10.2反馈振荡器原理</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='反馈振荡器的工作基于正反馈原理，本节将验证这个概念并观察振荡发生的一般条件。反馈振荡器广泛用于产生正弦波。
+学完本节后，你应该掌握以下内容:
+解释反馈振荡器的工作原理 解释正反馈 描述振荡的条件 讨论振荡启动的条件 10.2.1 正反馈 $$ 图10-3~~~正反馈产生振荡 $$ 正反馈的特点是将输出信号的同相部分反馈到输入端，用正弦波振荡器来阐述其基本原理，如图10-3所示。你可以看到，同相反馈电压被放大后产生输出电压，依次又产生反馈电压。也就是说，通过建立循环来维持信号本身，产生连续的正弦波输出，这个现象称为振荡。
+10.2.2 振荡条件 图10-4阐述了维持振荡的两个条件:
+反馈环路上的相移实际上必须为$0°$。 环绕闭环反馈环路(环路增益)的电压增益 $A_{cl}$ 必须等于 1(单位)。环绕闭环反馈环路上的电压增益 $A_{cl}$ 是放大器增益 $A_v$ 和反馈电路衰减 $B$ 的乘积。 $$ 图10-4~~~~振荡条件 $$ $$ A_{cl}=A_vB $$ 如果希望输出正弦波，大于1的环路增益将很快地使得波形的两个峰值处于饱和，产生严重的失真。为了避免这种情况，一旦振荡开始，必须使用一些增益控制以保持增益精确地保持在1。例如，如果反馈网络的衰减是0.01，放大器必须恰好具有100增益来克服衰减同时又不产生严重的失真(0.01×100=1)。大于100的放大器增益将会产生两个波形峰值受限的振荡。 10.2.3 开始条件 到目前为止，你已经看到什么条件可以让振荡器产生连续的正弦波输出现在我们检查当直流电压源闭合时振荡开始的条件。你知道，维持振荡必须满足单位-增益条件，为了启动振荡，环绕正反馈环路上的电压增益必须大于1，使得输出维持在想要的值。然后增益必须下降到1，使得振荡输出保持在希望的电平并能维持振荡。(在下一节会讨论，振荡开始后，有许多方法可以降低增益。)开始和维持振荡的电压增益条件如图10-5阐述。 $$ 图10-5~~~~当振荡在t_0开始时，条件A_{cl}&amp;gt;1产生正弦波输出电压幅度以建立期望的电平。 \\ 然后，A_{cl}减小到1，把输出电压维持在期望的幅度上 $$ 通常会提出这样的问题: 如果振荡器开始时是关闭的，并没有输出电压，反馈信号是如何启动开始建立正反馈过程的? 起初, 在电阻或其它原件中产生的宽带噪声, 或在电源闭合的瞬间，会产生一个小的正反馈电压，反馈电路只允许频率等于所选振荡频率的电压同相地出现在放大器的输入端。初始的反馈电压经过放大，并且不断地加强，从而产生如前所讨论的输出电压。'><title>10.2 反馈振荡器原理&#43;08:00</title>
 
 <link rel='canonical' href='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/10-2%E5%8F%8D%E9%A6%88%E6%8C%AF%E8%8D%A1%E5%99%A8%E5%8E%9F%E7%90%86/'>
 
-<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='10.2反馈振荡器原理'>
-<meta property='og:description' content=''>
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='10.2 反馈振荡器原理&#43;08:00'>
+<meta property='og:description' content='反馈振荡器的工作基于正反馈原理，本节将验证这个概念并观察振荡发生的一般条件。反馈振荡器广泛用于产生正弦波。
+学完本节后，你应该掌握以下内容:
+解释反馈振荡器的工作原理 解释正反馈 描述振荡的条件 讨论振荡启动的条件 10.2.1 正反馈 $$ 图10-3~~~正反馈产生振荡 $$ 正反馈的特点是将输出信号的同相部分反馈到输入端，用正弦波振荡器来阐述其基本原理，如图10-3所示。你可以看到，同相反馈电压被放大后产生输出电压，依次又产生反馈电压。也就是说，通过建立循环来维持信号本身，产生连续的正弦波输出，这个现象称为振荡。
+10.2.2 振荡条件 图10-4阐述了维持振荡的两个条件:
+反馈环路上的相移实际上必须为$0°$。 环绕闭环反馈环路(环路增益)的电压增益 $A_{cl}$ 必须等于 1(单位)。环绕闭环反馈环路上的电压增益 $A_{cl}$ 是放大器增益 $A_v$ 和反馈电路衰减 $B$ 的乘积。 $$ 图10-4~~~~振荡条件 $$ $$ A_{cl}=A_vB $$ 如果希望输出正弦波，大于1的环路增益将很快地使得波形的两个峰值处于饱和，产生严重的失真。为了避免这种情况，一旦振荡开始，必须使用一些增益控制以保持增益精确地保持在1。例如，如果反馈网络的衰减是0.01，放大器必须恰好具有100增益来克服衰减同时又不产生严重的失真(0.01×100=1)。大于100的放大器增益将会产生两个波形峰值受限的振荡。 10.2.3 开始条件 到目前为止，你已经看到什么条件可以让振荡器产生连续的正弦波输出现在我们检查当直流电压源闭合时振荡开始的条件。你知道，维持振荡必须满足单位-增益条件，为了启动振荡，环绕正反馈环路上的电压增益必须大于1，使得输出维持在想要的值。然后增益必须下降到1，使得振荡输出保持在希望的电平并能维持振荡。(在下一节会讨论，振荡开始后，有许多方法可以降低增益。)开始和维持振荡的电压增益条件如图10-5阐述。 $$ 图10-5~~~~当振荡在t_0开始时，条件A_{cl}&amp;gt;1产生正弦波输出电压幅度以建立期望的电平。 \\ 然后，A_{cl}减小到1，把输出电压维持在期望的幅度上 $$ 通常会提出这样的问题: 如果振荡器开始时是关闭的，并没有输出电压，反馈信号是如何启动开始建立正反馈过程的? 起初, 在电阻或其它原件中产生的宽带噪声, 或在电源闭合的瞬间，会产生一个小的正反馈电压，反馈电路只允许频率等于所选振荡频率的电压同相地出现在放大器的输入端。初始的反馈电压经过放大，并且不断地加强，从而产生如前所讨论的输出电压。'>
 <meta property='og:url' content='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/10-2%E5%8F%8D%E9%A6%88%E6%8C%AF%E8%8D%A1%E5%99%A8%E5%8E%9F%E7%90%86/'>
 <meta property='og:site_name' content='My Blog'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Analog' /><meta property='article:published_time' content='2023-07-14T18:20:06&#43;00:00'/><meta property='article:modified_time' content='2023-07-14T18:20:06&#43;00:00'/>
-<meta name="twitter:title" content="10.2反馈振荡器原理">
-<meta name="twitter:description" content=""><script>
+<meta name="twitter:title" content="10.2 反馈振荡器原理&#43;08:00">
+<meta name="twitter:description" content="反馈振荡器的工作基于正反馈原理，本节将验证这个概念并观察振荡发生的一般条件。反馈振荡器广泛用于产生正弦波。
+学完本节后，你应该掌握以下内容:
+解释反馈振荡器的工作原理 解释正反馈 描述振荡的条件 讨论振荡启动的条件 10.2.1 正反馈 $$ 图10-3~~~正反馈产生振荡 $$ 正反馈的特点是将输出信号的同相部分反馈到输入端，用正弦波振荡器来阐述其基本原理，如图10-3所示。你可以看到，同相反馈电压被放大后产生输出电压，依次又产生反馈电压。也就是说，通过建立循环来维持信号本身，产生连续的正弦波输出，这个现象称为振荡。
+10.2.2 振荡条件 图10-4阐述了维持振荡的两个条件:
+反馈环路上的相移实际上必须为$0°$。 环绕闭环反馈环路(环路增益)的电压增益 $A_{cl}$ 必须等于 1(单位)。环绕闭环反馈环路上的电压增益 $A_{cl}$ 是放大器增益 $A_v$ 和反馈电路衰减 $B$ 的乘积。 $$ 图10-4~~~~振荡条件 $$ $$ A_{cl}=A_vB $$ 如果希望输出正弦波，大于1的环路增益将很快地使得波形的两个峰值处于饱和，产生严重的失真。为了避免这种情况，一旦振荡开始，必须使用一些增益控制以保持增益精确地保持在1。例如，如果反馈网络的衰减是0.01，放大器必须恰好具有100增益来克服衰减同时又不产生严重的失真(0.01×100=1)。大于100的放大器增益将会产生两个波形峰值受限的振荡。 10.2.3 开始条件 到目前为止，你已经看到什么条件可以让振荡器产生连续的正弦波输出现在我们检查当直流电压源闭合时振荡开始的条件。你知道，维持振荡必须满足单位-增益条件，为了启动振荡，环绕正反馈环路上的电压增益必须大于1，使得输出维持在想要的值。然后增益必须下降到1，使得振荡输出保持在希望的电平并能维持振荡。(在下一节会讨论，振荡开始后，有许多方法可以降低增益。)开始和维持振荡的电压增益条件如图10-5阐述。 $$ 图10-5~~~~当振荡在t_0开始时，条件A_{cl}&amp;gt;1产生正弦波输出电压幅度以建立期望的电平。 \\ 然后，A_{cl}减小到1，把输出电压维持在期望的幅度上 $$ 通常会提出这样的问题: 如果振荡器开始时是关闭的，并没有输出电压，反馈信号是如何启动开始建立正反馈过程的? 起初, 在电阻或其它原件中产生的宽带噪声, 或在电源闭合的瞬间，会产生一个小的正反馈电压，反馈电路只允许频率等于所选振荡频率的电压同相地出现在放大器的输入端。初始的反馈电压经过放大，并且不断地加强，从而产生如前所讨论的输出电压。"><script>
     (function(){
         if(''){
             if (prompt('请输入文章密码') !== ''){
@@ -25,7 +37,7 @@
 
     </head>
     <body class="
-    article-page 
+    article-page has-toc
 ">
     <script>
         (function() {
@@ -51,128 +63,22 @@
 </script>
 <div class="container main-container flex 
     
-        on-phone--column extended
+        extended
     
 ">
     
-        <aside class="sidebar left-sidebar sticky">
-    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
-        <span class="hamburger-box">
-            <span class="hamburger-inner"></span>
-        </span>
-    </button>
-
-    <header class="site-info">
-        
-            
-            <figure class="site-avatar">
-                
-                    
-                    
-                    
-                        
-                        <img src="/img/avatar_hu71fc3898bde3464d50a00f65e63c7ec2_517570_300x0_resize_box_3.png" width="300"
-                            height="354" class="site-logo" loading="lazy" alt="Avatar">
-                    
-                
-
-                
-            </figure>
-            
-        
-        
-        <h1 class="site-name"><a href="/">My Blog</a></h1>
-        <h2 class="site-description"></h2></header>
-
-    <ol class="menu" id="main-menu">
-        
-        
-        
-
-        <li >
-            <a href='/page/about/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <div id="article-toolbar">
+            <a href="/" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="7" r="4" />
-  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+  <polyline points="15 6 9 12 15 18" />
 </svg>
 
 
 
-                
-                <span>About</span>
+                <span>Back</span>
             </a>
-        </li>
-        
-        
-
-        <li >
-            <a href='/page/archives/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <rect x="3" y="4" width="18" height="4" rx="2" />
-  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
-  <line x1="10" y1="12" x2="14" y2="12" />
-</svg>
-
-
-
-                
-                <span>Archives</span>
-            </a>
-        </li>
-        
-        
-
-        <li >
-            <a href='/page/search/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="10" cy="10" r="7" />
-  <line x1="21" y1="21" x2="15" y2="15" />
-</svg>
-
-
-
-                
-                <span>Search</span>
-            </a>
-        </li>
-        
-
-        
-            <li id="dark-mode-toggle">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="8" cy="12" r="2" />
-  <rect x="2" y="6" width="20" height="12" rx="6" />
-</svg>
-
-
-
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="16" cy="12" r="2" />
-  <rect x="2" y="6" width="20" height="12" rx="6" />
-</svg>
-
-
-
-                <span>Dark Mode</span>
-            </li>
-        
-    </ol>
-</aside>
-
+        </div>
     
 <main class="main full-width">
     <article class="main-article">
@@ -182,7 +88,7 @@
     
 
     <h2 class="article-title">
-        <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/10-2%E5%8F%8D%E9%A6%88%E6%8C%AF%E8%8D%A1%E5%99%A8%E5%8E%9F%E7%90%86/">10.2反馈振荡器原理</a>
+        <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/10-2%E5%8F%8D%E9%A6%88%E6%8C%AF%E8%8D%A1%E5%99%A8%E5%8E%9F%E7%90%86/">10.2 反馈振荡器原理&#43;08:00</a>
     </h2>
 
     
@@ -215,7 +121,7 @@
 
 
                 <time class="article-time--reading">
-                    0 minute read
+                    1 minute read
                 </time>
             </div>
         
@@ -225,7 +131,74 @@
 </header>
 
     <section class="article-content">
-    
+    <p>反馈振荡器的工作基于正反馈原理，本节将验证这个概念并观察振荡发生的一般条件。反馈振荡器广泛用于产生正弦波。</p>
+<p>学完本节后，你应该掌握以下内容:</p>
+<ul>
+<li>解释反馈振荡器的工作原理
+<ul>
+<li>解释正反馈</li>
+<li>描述振荡的条件</li>
+<li>讨论振荡启动的条件</li>
+</ul>
+</li>
+</ul>
+<h3 id="1021-正反馈">10.2.1 正反馈</h3>
+<p><img src="https://s2.loli.net/2023/10/26/lJeIRSVrQNX3dD1.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog10_3.png"
+	
+	
+>
+$$
+图10-3~~~正反馈产生振荡
+$$
+<code>正反馈</code>的特点是将输出信号的同相部分反馈到输入端，用正弦波振荡器来阐述其基本原理，如图10-3所示。你可以看到，同相反馈电压被放大后产生输出电压，依次又产生反馈电压。也就是说，通过建立循环来维持信号本身，产生连续的正弦波输出，这个现象称为振荡。</p>
+<h3 id="1022-振荡条件">10.2.2 振荡条件</h3>
+<p>图10-4阐述了维持振荡的两个条件:</p>
+<ol>
+<li>反馈环路上的相移实际上必须为$0°$。</li>
+<li>环绕闭环反馈环路(环路增益)的电压增益 $A_{cl}$ 必须等于 1(单位)。环绕闭环反馈环路上的电压增益 $A_{cl}$ 是放大器增益 $A_v$ 和反馈电路衰减 $B$ 的乘积。
+<img src="https://s2.loli.net/2023/10/26/SAfPM4lQUhc2Wpu.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog10_4.png"
+	
+	
+>
+$$
+图10-4~~~~振荡条件
+$$
+$$
+A_{cl}=A_vB
+$$
+如果希望输出正弦波，大于1的环路增益将很快地使得波形的两个峰值处于饱和，产生严重的失真。为了避免这种情况，一旦振荡开始，必须使用一些增益控制以保持增益精确地保持在1。例如，如果反馈网络的衰减是0.01，放大器必须恰好具有100增益来克服衰减同时又不产生严重的失真(0.01×100=1)。大于100的放大器增益将会产生两个波形峰值受限的振荡。</li>
+</ol>
+<h3 id="1023-开始条件">10.2.3 开始条件</h3>
+<p>到目前为止，你已经看到什么条件可以让振荡器产生连续的正弦波输出现在我们检查当直流电压源闭合时振荡开始的条件。你知道，维持振荡必须满足单位-增益条件，为了启动振荡，环绕正反馈环路上的电压增益必须大于1，使得输出维持在想要的值。然后增益必须下降到1，使得振荡输出保持在希望的电平并能维持振荡。(在下一节会讨论，振荡开始后，有许多方法可以降低增益。)开始和维持振荡的电压增益条件如图10-5阐述。
+<img src="https://s2.loli.net/2023/10/26/f6K71SZtiGq2LCh.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog10_5.png"
+	
+	
+>
+$$
+图10-5~~~~当振荡在t_0开始时，条件A_{cl}&gt;1产生正弦波输出电压幅度以建立期望的电平。
+\\
+然后，A_{cl}减小到1，把输出电压维持在期望的幅度上
+$$
+通常会提出这样的问题: 如果振荡器开始时是关闭的，并没有输出电压，反馈信号是如何启动开始建立正反馈过程的? 起初, 在电阻或其它原件中产生的宽带噪声, 或在电源闭合的瞬间，会产生一个小的正反馈电压，反馈电路只允许频率等于所选振荡频率的电压同相地出现在放大器的输入端。初始的反馈电压经过放大，并且不断地加强，从而产生如前所讨论的输出电压。</p>
+
 </section>
 
 
@@ -238,9 +211,44 @@
     </section>
 
 
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
     </footer>
 
 
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css"integrity="sha384-RZU/ijkSsFbcmivfdRBQDtwuwVqK7GMOw6IMvKyeWL2K5UAlyp6WonmB8m7Jd0Hn"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js"integrity="sha384-pK1WpvzWVBQiP0/GjnvRxV4mOb0oxFuyRxJlk6vVw146n3egcN5C925NCP7a7BY8"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js"integrity="sha384-vZTG03m&#43;2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ]
+        });})
+</script>
     
 </article>
 
@@ -253,60 +261,60 @@
                 
                     
 <article class="">
-    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/10-1%E6%8C%AF%E8%8D%A1%E5%99%A8/">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/9-1%E5%9F%BA%E6%9C%AC%E6%BB%A4%E6%B3%A2%E5%99%A8%E5%93%8D%E5%BA%94/">
         
         
 
         <div class="article-details">
-            <h2 class="article-title">10.1振荡器</h2>
+            <h2 class="article-title">9.1 基本滤波器响应</h2>
         </div>
     </a>
 </article>
                 
                     
 <article class="">
-    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/9-7%E6%B5%8B%E9%87%8F%E6%BB%A4%E6%B3%A2%E5%99%A8%E5%93%8D%E5%BA%94/">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/8-4%E8%BD%AC%E6%8D%A2%E5%99%A8%E5%92%8C%E5%85%B6%E4%BB%96%E8%BF%90%E7%AE%97%E6%94%BE%E5%A4%A7%E5%99%A8%E7%94%B5%E8%B7%AF/">
         
         
 
         <div class="article-details">
-            <h2 class="article-title">9.7测量滤波器响应</h2>
+            <h2 class="article-title">8.4 转换器和其他运算放大器电路</h2>
         </div>
     </a>
 </article>
                 
                     
 <article class="">
-    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/9-6%E6%9C%89%E6%BA%90%E5%B8%A6%E9%98%BB%E6%BB%A4%E6%B3%A2%E5%99%A8/">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/8-1%E6%AF%94%E8%BE%83%E5%99%A8/">
         
         
 
         <div class="article-details">
-            <h2 class="article-title">9.6有源带阻滤波器</h2>
+            <h2 class="article-title">8.1 比较器</h2>
         </div>
     </a>
 </article>
                 
                     
 <article class="">
-    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/9-5%E6%9C%89%E6%BA%90%E5%B8%A6%E9%80%9A%E6%BB%A4%E6%B3%A2%E5%99%A8/">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/6-7%E6%95%85%E9%9A%9C%E6%A3%80%E6%B5%8B/">
         
         
 
         <div class="article-details">
-            <h2 class="article-title">9.5有源带通滤波器</h2>
+            <h2 class="article-title">6.7 故障检测</h2>
         </div>
     </a>
 </article>
                 
                     
 <article class="">
-    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/9-4%E6%9C%89%E6%BA%90%E9%AB%98%E9%80%9A%E6%BB%A4%E6%B3%A2%E5%99%A8/">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/6-4%E8%B4%9F%E5%8F%8D%E9%A6%88/">
         
         
 
         <div class="article-details">
-            <h2 class="article-title">9.4有源高通滤波器</h2>
+            <h2 class="article-title">6.4 负反馈</h2>
         </div>
     </a>
 </article>
@@ -324,7 +332,7 @@
     data-app-id="d44db3f9-a0ff-4551-a44d-316afd2e5835"
     data-page-id="26c36e9980de85a709a11a4bfbfea812"
     data-page-url="https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/10-2%E5%8F%8D%E9%A6%88%E6%8C%AF%E8%8D%A1%E5%99%A8%E5%8E%9F%E7%90%86/"
-    data-page-title="10.2反馈振荡器原理"></div>
+    data-page-title="10.2 反馈振荡器原理&#43;08:00"></div>
 <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
 
 <script>
@@ -436,6 +444,38 @@
             >
 
             </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">Table of contents</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#1021-正反馈">10.2.1 正反馈</a></li>
+        <li><a href="#1022-振荡条件">10.2.2 振荡条件</a></li>
+        <li><a href="#1023-开始条件">10.2.3 开始条件</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                </div>
+            </section>
+        </aside>
     
 
         </div>

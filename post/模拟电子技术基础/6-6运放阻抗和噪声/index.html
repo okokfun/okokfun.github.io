@@ -1,17 +1,44 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content=''><title>6.6运放阻抗和噪声</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='本节将会介绍负反馈连接如何影响运放的输入与输出阻抗。我们将会对反相放大器和同相放大器都进行讨论。
+学完本节后，你应该掌握以下内容:
+描述三种运放组态的阻抗 求同相放大器的输入和输出阻抗 求电压跟随器的输入和输出阻抗 求反相放大器的输入和输出阻抗 6.6.1 同相放大器的输入阻抗 已经知道: 负反馈使得反馈电压 $V_f$ 几乎等于输入电压 $V_{in}$. 输入电压与反馈电压的差值 $V_{diff}$ 接近于零，在理想情况下可假设它为零。此假设表明运放的输入信号电流也为零。因为输人阻抗为输入电压与输入电流的比值，所以同相放大器的输入阻抗为: $$ Z_{in}=\frac{V_{in}}{I_{in}}\approx \frac{V_{in}}{0} =无穷大(oo) $$ 在很多实际电路中，此假设有利于获得对运放工作原理的基本认识。更准确的分析需要考虑输入信号电流不为零的事实。
+$$ 图6-27~~~同相放大器 $$ 利用图6-27，计算此运放电路的精确输入阻抗。在此分析中，假设两个输人端之间存在一个小的差分电压 $V_{diff}$，如图6-27所示。这意味着你不能假设运放的输入阻抗为无穷大，或者输入电流为零。输入电压可表示为 $$ V_{in}=V_{diff}&#43;V_f $$ 用 $BV_{out}$代替$V_f$，有 $$ V_{in}=V_{diff}&#43;BV_{out} $$ 因为 $V_{out} ≈ V_{ol}V_{diff}$($A_{ol}$为运放的开环增益)，所以 $$ V_{in}=V_{diff}&#43;V_{ol}BV_{diff}=(1&#43;A_{ol}B)V_{diff} $$ 因为 $V_{diff}=I_{in}Z_{in}$, 所以 $$ V_{in}=(1&#43;A_{ol}B)I_{in}Z_{in} $$ 式中，$Z_{in}$是运放的开环输人阻抗(无反馈连接时)。 $$ \frac{V_{in}}{I_{in}}=(1&#43;A_{ol}B)Z_{in} $$
+$V_{in}/I_{in}$为此闭环同相放大器的总输入阻抗。
+$$ Z_{in(NI)}=(1&#43;A_{ol}B)Z_{in}~~~(6-9) $$
+此式表明: 带有负反馈的这个运放电路的输人阻抗远大于运放自身的内部输人阻抗(无反馈)。
+6.6.2 同相放大器的输出阻抗 除输人阻抗之外，负反馈也能改进运放的输出阻抗。无反馈放大器的输出阻抗非常小。加人反馈后，输出阻抗会变得更小。在很多应用中，假设带反馈的输出阻抗为零，这可以非常好地满足精度要求，即 $$ Z_{out(NI)}\approx 0 $$ $$ 图6-28~~~带反馈的同相放大器 $$
+利用图6-28，可以精确分析带反馈的输出阻抗。对输出电路应用基尔霍夫定律，
+$$ V_{out}=V_{ol}V_{diff}-Z_{out}I_{out} $$'><title>6.6 运放阻抗和噪声</title>
 
 <link rel='canonical' href='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/6-6%E8%BF%90%E6%94%BE%E9%98%BB%E6%8A%97%E5%92%8C%E5%99%AA%E5%A3%B0/'>
 
-<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='6.6运放阻抗和噪声'>
-<meta property='og:description' content=''>
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='6.6 运放阻抗和噪声'>
+<meta property='og:description' content='本节将会介绍负反馈连接如何影响运放的输入与输出阻抗。我们将会对反相放大器和同相放大器都进行讨论。
+学完本节后，你应该掌握以下内容:
+描述三种运放组态的阻抗 求同相放大器的输入和输出阻抗 求电压跟随器的输入和输出阻抗 求反相放大器的输入和输出阻抗 6.6.1 同相放大器的输入阻抗 已经知道: 负反馈使得反馈电压 $V_f$ 几乎等于输入电压 $V_{in}$. 输入电压与反馈电压的差值 $V_{diff}$ 接近于零，在理想情况下可假设它为零。此假设表明运放的输入信号电流也为零。因为输人阻抗为输入电压与输入电流的比值，所以同相放大器的输入阻抗为: $$ Z_{in}=\frac{V_{in}}{I_{in}}\approx \frac{V_{in}}{0} =无穷大(oo) $$ 在很多实际电路中，此假设有利于获得对运放工作原理的基本认识。更准确的分析需要考虑输入信号电流不为零的事实。
+$$ 图6-27~~~同相放大器 $$ 利用图6-27，计算此运放电路的精确输入阻抗。在此分析中，假设两个输人端之间存在一个小的差分电压 $V_{diff}$，如图6-27所示。这意味着你不能假设运放的输入阻抗为无穷大，或者输入电流为零。输入电压可表示为 $$ V_{in}=V_{diff}&#43;V_f $$ 用 $BV_{out}$代替$V_f$，有 $$ V_{in}=V_{diff}&#43;BV_{out} $$ 因为 $V_{out} ≈ V_{ol}V_{diff}$($A_{ol}$为运放的开环增益)，所以 $$ V_{in}=V_{diff}&#43;V_{ol}BV_{diff}=(1&#43;A_{ol}B)V_{diff} $$ 因为 $V_{diff}=I_{in}Z_{in}$, 所以 $$ V_{in}=(1&#43;A_{ol}B)I_{in}Z_{in} $$ 式中，$Z_{in}$是运放的开环输人阻抗(无反馈连接时)。 $$ \frac{V_{in}}{I_{in}}=(1&#43;A_{ol}B)Z_{in} $$
+$V_{in}/I_{in}$为此闭环同相放大器的总输入阻抗。
+$$ Z_{in(NI)}=(1&#43;A_{ol}B)Z_{in}~~~(6-9) $$
+此式表明: 带有负反馈的这个运放电路的输人阻抗远大于运放自身的内部输人阻抗(无反馈)。
+6.6.2 同相放大器的输出阻抗 除输人阻抗之外，负反馈也能改进运放的输出阻抗。无反馈放大器的输出阻抗非常小。加人反馈后，输出阻抗会变得更小。在很多应用中，假设带反馈的输出阻抗为零，这可以非常好地满足精度要求，即 $$ Z_{out(NI)}\approx 0 $$ $$ 图6-28~~~带反馈的同相放大器 $$
+利用图6-28，可以精确分析带反馈的输出阻抗。对输出电路应用基尔霍夫定律，
+$$ V_{out}=V_{ol}V_{diff}-Z_{out}I_{out} $$'>
 <meta property='og:url' content='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/6-6%E8%BF%90%E6%94%BE%E9%98%BB%E6%8A%97%E5%92%8C%E5%99%AA%E5%A3%B0/'>
 <meta property='og:site_name' content='My Blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Analog' /><meta property='article:published_time' content='2023-07-14T18:15:40&#43;00:00'/><meta property='article:modified_time' content='2023-07-14T18:15:40&#43;00:00'/>
-<meta name="twitter:title" content="6.6运放阻抗和噪声">
-<meta name="twitter:description" content=""><script>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Analog' /><meta property='article:published_time' content='2023-07-14T18:15:40&#43;08:00'/><meta property='article:modified_time' content='2023-07-14T18:15:40&#43;08:00'/>
+<meta name="twitter:title" content="6.6 运放阻抗和噪声">
+<meta name="twitter:description" content="本节将会介绍负反馈连接如何影响运放的输入与输出阻抗。我们将会对反相放大器和同相放大器都进行讨论。
+学完本节后，你应该掌握以下内容:
+描述三种运放组态的阻抗 求同相放大器的输入和输出阻抗 求电压跟随器的输入和输出阻抗 求反相放大器的输入和输出阻抗 6.6.1 同相放大器的输入阻抗 已经知道: 负反馈使得反馈电压 $V_f$ 几乎等于输入电压 $V_{in}$. 输入电压与反馈电压的差值 $V_{diff}$ 接近于零，在理想情况下可假设它为零。此假设表明运放的输入信号电流也为零。因为输人阻抗为输入电压与输入电流的比值，所以同相放大器的输入阻抗为: $$ Z_{in}=\frac{V_{in}}{I_{in}}\approx \frac{V_{in}}{0} =无穷大(oo) $$ 在很多实际电路中，此假设有利于获得对运放工作原理的基本认识。更准确的分析需要考虑输入信号电流不为零的事实。
+$$ 图6-27~~~同相放大器 $$ 利用图6-27，计算此运放电路的精确输入阻抗。在此分析中，假设两个输人端之间存在一个小的差分电压 $V_{diff}$，如图6-27所示。这意味着你不能假设运放的输入阻抗为无穷大，或者输入电流为零。输入电压可表示为 $$ V_{in}=V_{diff}&#43;V_f $$ 用 $BV_{out}$代替$V_f$，有 $$ V_{in}=V_{diff}&#43;BV_{out} $$ 因为 $V_{out} ≈ V_{ol}V_{diff}$($A_{ol}$为运放的开环增益)，所以 $$ V_{in}=V_{diff}&#43;V_{ol}BV_{diff}=(1&#43;A_{ol}B)V_{diff} $$ 因为 $V_{diff}=I_{in}Z_{in}$, 所以 $$ V_{in}=(1&#43;A_{ol}B)I_{in}Z_{in} $$ 式中，$Z_{in}$是运放的开环输人阻抗(无反馈连接时)。 $$ \frac{V_{in}}{I_{in}}=(1&#43;A_{ol}B)Z_{in} $$
+$V_{in}/I_{in}$为此闭环同相放大器的总输入阻抗。
+$$ Z_{in(NI)}=(1&#43;A_{ol}B)Z_{in}~~~(6-9) $$
+此式表明: 带有负反馈的这个运放电路的输人阻抗远大于运放自身的内部输人阻抗(无反馈)。
+6.6.2 同相放大器的输出阻抗 除输人阻抗之外，负反馈也能改进运放的输出阻抗。无反馈放大器的输出阻抗非常小。加人反馈后，输出阻抗会变得更小。在很多应用中，假设带反馈的输出阻抗为零，这可以非常好地满足精度要求，即 $$ Z_{out(NI)}\approx 0 $$ $$ 图6-28~~~带反馈的同相放大器 $$
+利用图6-28，可以精确分析带反馈的输出阻抗。对输出电路应用基尔霍夫定律，
+$$ V_{out}=V_{ol}V_{diff}-Z_{out}I_{out} $$"><script>
     (function(){
         if(''){
             if (prompt('请输入文章密码') !== ''){
@@ -25,7 +52,7 @@
 
     </head>
     <body class="
-    article-page 
+    article-page has-toc
 ">
     <script>
         (function() {
@@ -51,128 +78,22 @@
 </script>
 <div class="container main-container flex 
     
-        on-phone--column extended
+        extended
     
 ">
     
-        <aside class="sidebar left-sidebar sticky">
-    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
-        <span class="hamburger-box">
-            <span class="hamburger-inner"></span>
-        </span>
-    </button>
-
-    <header class="site-info">
-        
-            
-            <figure class="site-avatar">
-                
-                    
-                    
-                    
-                        
-                        <img src="/img/avatar_hu71fc3898bde3464d50a00f65e63c7ec2_517570_300x0_resize_box_3.png" width="300"
-                            height="354" class="site-logo" loading="lazy" alt="Avatar">
-                    
-                
-
-                
-            </figure>
-            
-        
-        
-        <h1 class="site-name"><a href="/">My Blog</a></h1>
-        <h2 class="site-description"></h2></header>
-
-    <ol class="menu" id="main-menu">
-        
-        
-        
-
-        <li >
-            <a href='/page/about/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <div id="article-toolbar">
+            <a href="/" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="7" r="4" />
-  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+  <polyline points="15 6 9 12 15 18" />
 </svg>
 
 
 
-                
-                <span>About</span>
+                <span>Back</span>
             </a>
-        </li>
-        
-        
-
-        <li >
-            <a href='/page/archives/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <rect x="3" y="4" width="18" height="4" rx="2" />
-  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
-  <line x1="10" y1="12" x2="14" y2="12" />
-</svg>
-
-
-
-                
-                <span>Archives</span>
-            </a>
-        </li>
-        
-        
-
-        <li >
-            <a href='/page/search/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="10" cy="10" r="7" />
-  <line x1="21" y1="21" x2="15" y2="15" />
-</svg>
-
-
-
-                
-                <span>Search</span>
-            </a>
-        </li>
-        
-
-        
-            <li id="dark-mode-toggle">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="8" cy="12" r="2" />
-  <rect x="2" y="6" width="20" height="12" rx="6" />
-</svg>
-
-
-
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="16" cy="12" r="2" />
-  <rect x="2" y="6" width="20" height="12" rx="6" />
-</svg>
-
-
-
-                <span>Dark Mode</span>
-            </li>
-        
-    </ol>
-</aside>
-
+        </div>
     
 <main class="main full-width">
     <article class="main-article">
@@ -182,7 +103,7 @@
     
 
     <h2 class="article-title">
-        <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/6-6%E8%BF%90%E6%94%BE%E9%98%BB%E6%8A%97%E5%92%8C%E5%99%AA%E5%A3%B0/">6.6运放阻抗和噪声</a>
+        <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/6-6%E8%BF%90%E6%94%BE%E9%98%BB%E6%8A%97%E5%92%8C%E5%99%AA%E5%A3%B0/">6.6 运放阻抗和噪声</a>
     </h2>
 
     
@@ -215,7 +136,7 @@
 
 
                 <time class="article-time--reading">
-                    0 minute read
+                    2 minute read
                 </time>
             </div>
         
@@ -225,7 +146,220 @@
 </header>
 
     <section class="article-content">
-    
+    <p>本节将会介绍负反馈连接如何影响运放的输入与输出阻抗。我们将会对反相放大器和同相放大器都进行讨论。</p>
+<p>学完本节后，你应该掌握以下内容:</p>
+<ul>
+<li>描述三种运放组态的阻抗
+<ul>
+<li>求同相放大器的输入和输出阻抗</li>
+<li>求电压跟随器的输入和输出阻抗</li>
+<li>求反相放大器的输入和输出阻抗</li>
+</ul>
+</li>
+</ul>
+<h3 id="661-同相放大器的输入阻抗">6.6.1 同相放大器的输入阻抗</h3>
+<p>已经知道: 负反馈使得反馈电压 $V_f$ 几乎等于输入电压 $V_{in}$.  输入电压与反馈电压的差值 $V_{diff}$ 接近于零，在理想情况下可假设它为零。此假设表明运放的输入信号电流也为零。因为输人阻抗为输入电压与输入电流的比值，所以<code>同相放大器的输入阻抗</code>为:
+$$
+Z_{in}=\frac{V_{in}}{I_{in}}\approx \frac{V_{in}}{0} =无穷大(oo)
+$$
+在很多实际电路中，此假设有利于获得对运放工作原理的基本认识。更准确的分析需要考虑输入信号电流不为零的事实。</p>
+<p><img src="https://s2.loli.net/2023/10/16/2OoaQl9veWRywLH.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog6_27.png"
+	
+	
+>
+$$
+图6-27~~~同相放大器
+$$
+利用图6-27，计算此运放电路的精确输入阻抗。在此分析中，<strong>假设两个输人端之间存在一个小的差分电压 $V_{diff}$</strong>，如图6-27所示。这意味着你不能假设<code>运放的输入阻抗为无穷大，或者输入电流为零</code>。输入电压可表示为
+$$
+V_{in}=V_{diff}+V_f
+$$
+用 $BV_{out}$代替$V_f$，有
+$$
+V_{in}=V_{diff}+BV_{out}
+$$
+因为 $V_{out} ≈ V_{ol}V_{diff}$($A_{ol}$为运放的开环增益)，所以
+$$
+V_{in}=V_{diff}+V_{ol}BV_{diff}=(1+A_{ol}B)V_{diff}
+$$
+因为 $V_{diff}=I_{in}Z_{in}$, 所以
+$$
+V_{in}=(1+A_{ol}B)I_{in}Z_{in}
+$$
+式中，$Z_{in}$是运放的开环输人阻抗(无反馈连接时)。
+$$
+\frac{V_{in}}{I_{in}}=(1+A_{ol}B)Z_{in}
+$$</p>
+<p>$V_{in}/I_{in}$为此<code>闭环同相放大器的总输入阻抗</code>。</p>
+<p>$$
+Z_{in(NI)}=(1+A_{ol}B)Z_{in}~~~(6-9)
+$$</p>
+<p>此式表明: 带有负反馈的这个运放电路的输人阻抗远大于运放自身的内部输人阻抗(无反馈)。</p>
+<h3 id="662-同相放大器的输出阻抗">6.6.2 同相放大器的输出阻抗</h3>
+<p>除输人阻抗之外，负反馈也能改进运放的输出阻抗。<code>无反馈放大器的输出阻抗非常小。加人反馈后，输出阻抗会变得更小</code>。在很多应用中，假设带反馈的输出阻抗为零，这可以非常好地满足精度要求，即
+$$
+Z_{out(NI)}\approx 0
+$$
+<img src="https://s2.loli.net/2023/10/16/Wh2jeUTwH6ElLOZ.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog6_28.png"
+	
+	
+></p>
+<p>$$
+图6-28~~~带反馈的同相放大器
+$$</p>
+<p>利用图6-28，可以精确分析带反馈的输出阻抗。对输出电路应用基尔霍夫定律，</p>
+<p>$$
+V_{out}=V_{ol}V_{diff}-Z_{out}I_{out}
+$$</p>
+<p>差分输人电压为 $V_{in}-V_f$; 因此，假设$V_{ol}V_{diff}&raquo;Z_{out}I_{out}$，输出电压可表示为
+$$
+A_{out}\approx A_{ol}(V_{in}-V_f)
+$$
+用 $BV_{out}$ 代替 $V_f$,
+$$
+V_{out}\approx A_{ol}(V_{in}-BV_{out})
+$$
+请记住，B为负反馈网络的衰减系数。展开，分解，整理后可得:
+$$
+A_{ol}V_{in}\approx V_{out}+A_{ol}BV_{out}=(1+A_{ol}B)V_{out}
+$$
+因为同相放大器的输出阻抗为 $Z_{out(NI)} =V_{out}/I_{out}$,可以用 $I_{out}Z_{out(NI)}$ 代替 $V_{out}$，所以，
+$$
+A_{ol}V_{in}=(1+A_{ol}B)I_{out}Z_{out(NI)}
+$$
+将上式两端同时除以 $I_{out}$，可得
+$$
+\frac{A_{ol}V_{in}}{I_{out}}=(1+A_{ol}B)Z_{out(NI)}
+$$
+上式左端为运放的内部输出阻抗($Z_{out}$)，因为无反馈时，$A_{ol}V_{in}=V_{out}$， 所以，
+$$
+Z_{out}=(1+A_{ol}B)Z_{out(NI)}
+$$
+即
+$$
+Z_{out(NI)}=\frac{Z_{out}}{1+A_{ol}B}~~~(6-10)
+$$
+此式表明，这个<strong>带有负反馈的运放电路的输出阻抗远小于运放自身内部输出阻抗(无反馈),因为除以系数 $1+A_{ol}B$</strong>.</p>
+<h3 id="663-电压跟随器阻抗">6.6.3 电压跟随器阻抗</h3>
+<p>因为电压跟随器是特殊的同相放大器，所以阻抗公式相同，其中B=1。
+$$
+Z_{in_{(VF)}}=(1+A_{ol})Z_{in}~~~(6-11)
+$$</p>
+<p>$$
+Z_{out(VF)}=\frac{Z_{out}}{1+A_{ol}}~~~(6-12)
+$$</p>
+<p>可以看到: 在给定 $A_{ol}$ 与 $Z_{in}$ 的情况下，与带有分压反馈网络的同相放大器相比，电压跟随器的输入阻抗更大。同样，输出阻抗会减小很多，因为对同相放大器而言，B 通常比 1 小很多。</p>
+<h3 id="664-反相放大器的阻抗">6.6.4 反相放大器的阻抗</h3>
+<p><img src="https://s2.loli.net/2023/10/16/nqrkpDX4sAc9Ex1.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog6_30.png"
+	
+	
+>
+$$
+图6-30 ~~~反相放大器
+$$
+利用图6-30，可以计算反相放大器的输入与输出阻抗。输人信号和负反馈都通过电阻加到反相端。</p>
+<p><strong>输入阻抗</strong> 反相放大 器的输人阻抗为
+$$
+Z_{in(I)}\approx R_i~~~(6-13)
+$$
+<img src="https://s2.loli.net/2023/10/16/SHBOyUmq9PclZAF.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog6_31.png"
+	
+	
+>
+$$
+图6-31~~~反相放大器
+$$
+这是因为运放的反相输人端为虚地(0V),输人信号源只看到 $R_i$ 连接到地，如图6-31所示。</p>
+<p><strong>输出阻抗</strong> 与同相放大器类似， 反相放大器的输出阻抗也因负反馈而减小。实际上，其表达式也与同相放大器相同。
+$$
+Z_{out(I)}\approx \frac{Z_{out}}{1+A_{ol}B}~~~(6-14)
+$$
+同相放大器与反相放大器的输出阻抗都非常低;实际上，几乎为零。因为输出阻抗接近于零，所以连接到运放输出端的负载阻抗可以在很大范围内变化，且不会改变输出电压。</p>
+<h3 id="665-噪声">6.6.5 噪声</h3>
+<p>在电子学中，<code>噪声是指电信号中不期望的随机波动</code>。我们将介绍运放噪声规范和如何计算运放的信噪比。虽然来自外部源的干扰也被视为噪声，但运放噪声规范只考虑运放内部产生的噪声。噪声有两种基本形式。<code>在低频时，噪声与频率成反比; 这称为 1/f 噪声或“粉红噪声”。超过临界噪声频率(有时称为 1/f 转角频率)后，噪声在频谱图上为水平线; 这称为“白噪声”</code>。此临界噪声频率为运放性能指标之一越低越好。</p>
+<p>噪声的功率分布以瓦特每赫兹来衡量(W/Hz)。功率与电压平方成正比，因此噪声电压密度可以通过对噪声功率密度求平方根得到，得到的单位为伏特每平方根赫兹( $V/\sqrt[]{Hz}$ )。对运放而言，在特定频率下，单位通常为 $nV/\sqrt[]{Hz}$。但是，即使是极低噪声放大器，低于 10Hz 时，由于粉红噪声的贡献，噪声电压密度也可能达到 $μV/\sqrt[]{Hz}$ 的噪声单位。不同运放的额定白噪声电压密度的值可能在 $1nV/\sqrt[]{Hz} ~ 20nV/\sqrt[]{Hz}$ 之间，甚至更高。双极管运放的电压噪声小于 JFET 运放。制造低噪声 JFET 运放是可能的，但是要以增大输人电容为代价，因此限制了带宽。</p>
+<p><img src="https://s2.loli.net/2023/10/16/LdAPUw3RBT28zYa.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog6_33.png"
+	
+	
+>
+$$
+图6-33~~~电压噪声与频率的函数关系
+$$
+某低噪声运放的电压噪声图如图6-33所示。在 1kHz, 运放的输入电压噪声密度为 $1.1nV/\sqrt[]{Hz}$，这是非常低的值。从图6-33中可以看出，在低频段，噪声密度因 1/f 噪声贡献而增大。</p>
+<h3 id="666-求信噪比">6.6.6 求信噪比</h3>
+<p><img src="https://s2.loli.net/2023/10/16/7rFqZ9kCa2cAfnW.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog6_34.png"
+	
+	
+>
+$$
+图6-34~~~运放
+$$
+为简化运算，我们只求来自运放的噪声分布。参考图6-34 所示电路。假设运放工作在20Hz到20kHz的音频带，超过 1/f 转角频率。假设额定白噪声为 $2.9nV/\sqrt[]{Hz}$, 输人</p>
+<p>第一步是求解 $\sqrt[]{Hz}$ 部分:
+$$
+\sqrt[]{20000-20}=141.4
+$$</p>
+<p>将此值与噪声值 $\frac{2.9nV}{\sqrt[]{Hz}}$ 相乘得到噪声输人:
+$$
+\frac{2.9nV}{\sqrt[]{Hz}}\times 141.4\sqrt[]{Hz}=410nV
+$$
+将噪声输入与闭环电压增益相乘得到噪声输出为
+$$
+410nV\times (-200)=-82\mu V
+$$
+求得输出信号为: $12.5mV \times (-200)=-2.5V$。
+最后得到信噪比(dB)为
+$$
+20log(-2.5V\div (-82\mu V))=89.7dB
+$$
+需要注意的是，上述计算只考虑了运放本身。<code>来自电路电阻的噪声也会叠加到运放噪声。来自电阻的噪声称为热噪声或约翰逊(Johnson)噪声</code>。值较小的电阻可以减小总噪声，但会增大电路电流，降低系统效率一这其中需要权衡。热噪声是白噪声，与阻值、温度和带宽成正比。热噪声为
+$$
+E_{th}=\sqrt[]{4kTRB}
+$$
+式子中,</p>
+<p>$E_{th}=$ 热噪声，单位为$V_{rms}$(电压有效值); k = 值为 $1.38\times 10^{-23}$ 的常量; T=温度，单位为K; R=电阻，单位为Ω; B=带宽，单位为Hz。</p>
+<p>当噪声源不止一个时，总噪声($N_T$)是所有噪声源的几何和，公式为
+$$
+N_T=\sqrt[]{N^2_1+N^2_2+&hellip;+N^2_n}
+$$
+实际运放电路的完整噪声分析非常复杂，这已经超出了本书的讨论范围。</p>
+
 </section>
 
 
@@ -238,9 +372,44 @@
     </section>
 
 
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
     </footer>
 
 
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css"integrity="sha384-RZU/ijkSsFbcmivfdRBQDtwuwVqK7GMOw6IMvKyeWL2K5UAlyp6WonmB8m7Jd0Hn"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js"integrity="sha384-pK1WpvzWVBQiP0/GjnvRxV4mOb0oxFuyRxJlk6vVw146n3egcN5C925NCP7a7BY8"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js"integrity="sha384-vZTG03m&#43;2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ]
+        });})
+</script>
     
 </article>
 
@@ -253,36 +422,12 @@
                 
                     
 <article class="">
-    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/6-4%E8%B4%9F%E5%8F%8D%E9%A6%88/">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/6-5%E8%B4%9F%E5%8F%8D%E9%A6%88%E8%BF%90%E6%94%BE%E7%BB%84%E6%80%81/">
         
         
 
         <div class="article-details">
-            <h2 class="article-title">6.4负反馈</h2>
-        </div>
-    </a>
-</article>
-                
-                    
-<article class="">
-    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/6-3%E8%BF%90%E6%94%BE%E6%95%B0%E6%8D%AE%E6%89%8B%E5%86%8C%E4%B8%AD%E7%9A%84%E5%8F%82%E6%95%B0/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">6.3运放数据手册中的参数</h2>
-        </div>
-    </a>
-</article>
-                
-                    
-<article class="">
-    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/6-2%E5%B7%AE%E5%88%86%E6%94%BE%E5%A4%A7%E5%99%A8/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">6.2差分放大器</h2>
+            <h2 class="article-title">6.5 负反馈运放组态</h2>
         </div>
     </a>
 </article>
@@ -294,19 +439,43 @@
         
 
         <div class="article-details">
-            <h2 class="article-title">6.1运算放大器介绍</h2>
+            <h2 class="article-title">6.1 运算放大器介绍</h2>
         </div>
     </a>
 </article>
                 
                     
 <article class="">
-    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/5-8ic%E5%8A%9F%E7%8E%87%E6%94%BE%E5%A4%A7%E5%99%A8/">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/2-3%E5%8D%8A%E5%AF%BC%E4%BD%93%E4%BA%8C%E6%9E%81%E7%AE%A1%E7%9A%84%E5%81%8F%E7%BD%AE/">
         
         
 
         <div class="article-details">
-            <h2 class="article-title">5.8IC功率放大器</h2>
+            <h2 class="article-title">2.3 半导体二极管的偏置</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/2-2pn%E7%BB%93/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">2.2 pn结</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/2-1%E5%8D%8A%E5%AF%BC%E4%BD%93%E5%8E%9F%E5%AD%90%E7%BB%93%E6%9E%84/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">2.1 半导体原子结构</h2>
         </div>
     </a>
 </article>
@@ -324,7 +493,7 @@
     data-app-id="d44db3f9-a0ff-4551-a44d-316afd2e5835"
     data-page-id="fb7a168bb49b80d0ed032377f609deb8"
     data-page-url="https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/6-6%E8%BF%90%E6%94%BE%E9%98%BB%E6%8A%97%E5%92%8C%E5%99%AA%E5%A3%B0/"
-    data-page-title="6.6运放阻抗和噪声"></div>
+    data-page-title="6.6 运放阻抗和噪声"></div>
 <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
 
 <script>
@@ -436,6 +605,41 @@
             >
 
             </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">Table of contents</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#661-同相放大器的输入阻抗">6.6.1 同相放大器的输入阻抗</a></li>
+        <li><a href="#662-同相放大器的输出阻抗">6.6.2 同相放大器的输出阻抗</a></li>
+        <li><a href="#663-电压跟随器阻抗">6.6.3 电压跟随器阻抗</a></li>
+        <li><a href="#664-反相放大器的阻抗">6.6.4 反相放大器的阻抗</a></li>
+        <li><a href="#665-噪声">6.6.5 噪声</a></li>
+        <li><a href="#666-求信噪比">6.6.6 求信噪比</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                </div>
+            </section>
+        </aside>
     
 
         </div>

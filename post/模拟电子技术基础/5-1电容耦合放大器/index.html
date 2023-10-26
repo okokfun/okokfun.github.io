@@ -1,17 +1,86 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content=''><title>5.1电容耦合放大器</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='前面两章介绍了单级放大器，其主要功能是放大信号电压。你应该已经熟悉了 BJT 与 FET 的偏置和交流参数。
+当必须放大一个非常小的信号(如来自天线的信号)时，Q 点上的变化也会相对较小。用于放大这些信号的放大器称为小信号放大器。它们也可能专门用于高频情况。通常来讲，包含额外的增益级会非常有用，特别是在高频通信系统中，其中感兴趣的频率被限制在一定的带宽范围之内。
+本章将学习各种不同类型的多级放大器，特别强调高频时的一些考虑，包括噪声、布线，以及消除不必要的振荡。然后将重点转向功率传输的重要要求。对于这些应用，需要功率放大器。最后将介绍集成电路(IC)功率放大器。
+5.1电容耦合放大器 两个或多个晶体管可以连接在一起组成一个放大器，该放大器称为多级放大器。1.4节已经介绍了一个简化的放大器模型。现在可以将该简化模型应用到实际放大器电路中来确定它们的整体性能。本节将学习电容耦合放大器，也称为 RC(阻容)耦合放大器。电容耦合是将交流信号传输到后一级最常使用的方法。
+学完本节后，你应该掌握以下内容:
+确定电容耦合多级放大器的交流参数 计算两级电容耦合放大器的总增益、输入电阻和输出电阻 讨论多级放大器中如何减小振荡和噪声问题 两个或多个晶体管可以连接在一起来提高放大器的性能。放大信号的每个晶体管都称为一级。一般来讲，放大器的第一级必须有非常高的输入电阻来避免对信号源产生的负载作用。另外，第一级需要设计成低噪声工作，因为这些微弱信号电压很容易会被噪声所淹没。后续级的目的是在不产生失真的前提下来增加信号的幅度。
+$$ \beta_{DC}=\beta_{ac}=150，对于Q_1和Q_2 \\ 图5-1~~~一个两级CE放大器 $$
+提高放大器增益最简单的方法可以是两级通过电容耦合在一起，如图5-1所示。在本例中，两级都是相同的 CE 放大器，第一级的输出连接到第二级的输入端。由于电容具有隔直流的作用，因此电容耦合会阻止其中一级的直流偏置影响另一级的直流偏置。虽然直流通路为开路，但是耦合电容可以让交流信号顺利地传输到下一级。
+该电路的分析首先需要分析直流工作状态，如3.2节所述。利用分压原理来计算每级的基极电压。
+$$ V_B\approx (\frac{R_2}{R_1&#43;R_2})V_{CC}=(\frac{10K\Omega}{47K\Omega&#43;10K\Omega})10V=1.7V $$
+该估计值会略高于实际值，因为没有考虑分压器的负载。减去发射结二极管两端的0.7V电压后，可得到发射极电压为1.0V，因此计算得到发射极电流为:
+$$ I_E=\frac{V_E}{R_E}=\frac{1.0V}{1.0K\Omega}=1.0mA $$
+发射极电流也约等于集电极电流。
+5.1.1负载效应 $$ a）单级放大器模型~~~~~~~~~~~~~~~~~~~~~~~~~~~~b）图5-1中一级放大器的值 $$
+从1.4节已经知道放大器可以用框图来表示，框图中只包含重要的参数。交流模型仅仅是一个受控电压源与一个电阻串联(戴维南电路)。为了计算放大器的总增益，图5-2中的每个晶体管级都可以用类似的方式建立模型。只需要知道三个参数: 空载时的电压增益($A_{v(NL)}$)、总输入电阻($R_{in(tot)}$)、输出电阻($R_{out}$)。可以看到空载输出电压等于输入电压乘以空载增益。
+首先求一级的空载增益。因为两级相同，所以两级的空载增益也相同。第二级的输入电阻相当于第一级的负载。因此，第一级的负载增益可以通过假设其负载电阻等于第二级的输入电阻 $R_{in(tot)}$ 来计算得到。这会降低第一级的增益，但可以与空载增益计算分开来考虑。该概念的说明会让我们更清楚地认识到基本放大器模型可以简化总增益的计算。
+已经知道 CE 放大器的空载增益是集电极交流电阻和发射极交流电阻的比值，空载增益与 $r&amp;rsquo;_e$ 有关，而这个参数又与 $I_E$ 有关，所以应作近似处理。
+因为要计算空载增益，交流集电极电阻 $R_e$与实际的集电极电阻 $R_C$ 相同，为 4.7kΩ;
+交流发射极电阻约为:
+$$ r&amp;rsquo;_e\approx \frac{25mV}{I_E}=\frac{25mV}{1.0mA}=25\Omega $$
+空载增益 $A_{v(NL)}$ 约为:
+$$ A_{v(NL)}=-\frac{R_C}{R_e}=-\frac{R_C}{r&amp;rsquo;_e}=-\frac{4.7k\Omega}{25\Omega}=-188 $$
+CE放大器的输人电阻在3.4节中已经讨论过，采用分压式偏置和没有扩量程电阻的放大器的输入电阻表达式为:
+$$ R_{in(tot)}=R_1||R_2(\beta_{ac} r&amp;rsquo;_e) $$'><title>5.1 电容耦合放大器</title>
 
 <link rel='canonical' href='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/5-1%E7%94%B5%E5%AE%B9%E8%80%A6%E5%90%88%E6%94%BE%E5%A4%A7%E5%99%A8/'>
 
-<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='5.1电容耦合放大器'>
-<meta property='og:description' content=''>
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='5.1 电容耦合放大器'>
+<meta property='og:description' content='前面两章介绍了单级放大器，其主要功能是放大信号电压。你应该已经熟悉了 BJT 与 FET 的偏置和交流参数。
+当必须放大一个非常小的信号(如来自天线的信号)时，Q 点上的变化也会相对较小。用于放大这些信号的放大器称为小信号放大器。它们也可能专门用于高频情况。通常来讲，包含额外的增益级会非常有用，特别是在高频通信系统中，其中感兴趣的频率被限制在一定的带宽范围之内。
+本章将学习各种不同类型的多级放大器，特别强调高频时的一些考虑，包括噪声、布线，以及消除不必要的振荡。然后将重点转向功率传输的重要要求。对于这些应用，需要功率放大器。最后将介绍集成电路(IC)功率放大器。
+5.1电容耦合放大器 两个或多个晶体管可以连接在一起组成一个放大器，该放大器称为多级放大器。1.4节已经介绍了一个简化的放大器模型。现在可以将该简化模型应用到实际放大器电路中来确定它们的整体性能。本节将学习电容耦合放大器，也称为 RC(阻容)耦合放大器。电容耦合是将交流信号传输到后一级最常使用的方法。
+学完本节后，你应该掌握以下内容:
+确定电容耦合多级放大器的交流参数 计算两级电容耦合放大器的总增益、输入电阻和输出电阻 讨论多级放大器中如何减小振荡和噪声问题 两个或多个晶体管可以连接在一起来提高放大器的性能。放大信号的每个晶体管都称为一级。一般来讲，放大器的第一级必须有非常高的输入电阻来避免对信号源产生的负载作用。另外，第一级需要设计成低噪声工作，因为这些微弱信号电压很容易会被噪声所淹没。后续级的目的是在不产生失真的前提下来增加信号的幅度。
+$$ \beta_{DC}=\beta_{ac}=150，对于Q_1和Q_2 \\ 图5-1~~~一个两级CE放大器 $$
+提高放大器增益最简单的方法可以是两级通过电容耦合在一起，如图5-1所示。在本例中，两级都是相同的 CE 放大器，第一级的输出连接到第二级的输入端。由于电容具有隔直流的作用，因此电容耦合会阻止其中一级的直流偏置影响另一级的直流偏置。虽然直流通路为开路，但是耦合电容可以让交流信号顺利地传输到下一级。
+该电路的分析首先需要分析直流工作状态，如3.2节所述。利用分压原理来计算每级的基极电压。
+$$ V_B\approx (\frac{R_2}{R_1&#43;R_2})V_{CC}=(\frac{10K\Omega}{47K\Omega&#43;10K\Omega})10V=1.7V $$
+该估计值会略高于实际值，因为没有考虑分压器的负载。减去发射结二极管两端的0.7V电压后，可得到发射极电压为1.0V，因此计算得到发射极电流为:
+$$ I_E=\frac{V_E}{R_E}=\frac{1.0V}{1.0K\Omega}=1.0mA $$
+发射极电流也约等于集电极电流。
+5.1.1负载效应 $$ a）单级放大器模型~~~~~~~~~~~~~~~~~~~~~~~~~~~~b）图5-1中一级放大器的值 $$
+从1.4节已经知道放大器可以用框图来表示，框图中只包含重要的参数。交流模型仅仅是一个受控电压源与一个电阻串联(戴维南电路)。为了计算放大器的总增益，图5-2中的每个晶体管级都可以用类似的方式建立模型。只需要知道三个参数: 空载时的电压增益($A_{v(NL)}$)、总输入电阻($R_{in(tot)}$)、输出电阻($R_{out}$)。可以看到空载输出电压等于输入电压乘以空载增益。
+首先求一级的空载增益。因为两级相同，所以两级的空载增益也相同。第二级的输入电阻相当于第一级的负载。因此，第一级的负载增益可以通过假设其负载电阻等于第二级的输入电阻 $R_{in(tot)}$ 来计算得到。这会降低第一级的增益，但可以与空载增益计算分开来考虑。该概念的说明会让我们更清楚地认识到基本放大器模型可以简化总增益的计算。
+已经知道 CE 放大器的空载增益是集电极交流电阻和发射极交流电阻的比值，空载增益与 $r&amp;rsquo;_e$ 有关，而这个参数又与 $I_E$ 有关，所以应作近似处理。
+因为要计算空载增益，交流集电极电阻 $R_e$与实际的集电极电阻 $R_C$ 相同，为 4.7kΩ;
+交流发射极电阻约为:
+$$ r&amp;rsquo;_e\approx \frac{25mV}{I_E}=\frac{25mV}{1.0mA}=25\Omega $$
+空载增益 $A_{v(NL)}$ 约为:
+$$ A_{v(NL)}=-\frac{R_C}{R_e}=-\frac{R_C}{r&amp;rsquo;_e}=-\frac{4.7k\Omega}{25\Omega}=-188 $$
+CE放大器的输人电阻在3.4节中已经讨论过，采用分压式偏置和没有扩量程电阻的放大器的输入电阻表达式为:
+$$ R_{in(tot)}=R_1||R_2(\beta_{ac} r&amp;rsquo;_e) $$'>
 <meta property='og:url' content='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/5-1%E7%94%B5%E5%AE%B9%E8%80%A6%E5%90%88%E6%94%BE%E5%A4%A7%E5%99%A8/'>
 <meta property='og:site_name' content='My Blog'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Analog' /><meta property='article:published_time' content='2023-07-14T17:38:49&#43;00:00'/><meta property='article:modified_time' content='2023-07-14T17:38:49&#43;00:00'/>
-<meta name="twitter:title" content="5.1电容耦合放大器">
-<meta name="twitter:description" content=""><script>
+<meta name="twitter:title" content="5.1 电容耦合放大器">
+<meta name="twitter:description" content="前面两章介绍了单级放大器，其主要功能是放大信号电压。你应该已经熟悉了 BJT 与 FET 的偏置和交流参数。
+当必须放大一个非常小的信号(如来自天线的信号)时，Q 点上的变化也会相对较小。用于放大这些信号的放大器称为小信号放大器。它们也可能专门用于高频情况。通常来讲，包含额外的增益级会非常有用，特别是在高频通信系统中，其中感兴趣的频率被限制在一定的带宽范围之内。
+本章将学习各种不同类型的多级放大器，特别强调高频时的一些考虑，包括噪声、布线，以及消除不必要的振荡。然后将重点转向功率传输的重要要求。对于这些应用，需要功率放大器。最后将介绍集成电路(IC)功率放大器。
+5.1电容耦合放大器 两个或多个晶体管可以连接在一起组成一个放大器，该放大器称为多级放大器。1.4节已经介绍了一个简化的放大器模型。现在可以将该简化模型应用到实际放大器电路中来确定它们的整体性能。本节将学习电容耦合放大器，也称为 RC(阻容)耦合放大器。电容耦合是将交流信号传输到后一级最常使用的方法。
+学完本节后，你应该掌握以下内容:
+确定电容耦合多级放大器的交流参数 计算两级电容耦合放大器的总增益、输入电阻和输出电阻 讨论多级放大器中如何减小振荡和噪声问题 两个或多个晶体管可以连接在一起来提高放大器的性能。放大信号的每个晶体管都称为一级。一般来讲，放大器的第一级必须有非常高的输入电阻来避免对信号源产生的负载作用。另外，第一级需要设计成低噪声工作，因为这些微弱信号电压很容易会被噪声所淹没。后续级的目的是在不产生失真的前提下来增加信号的幅度。
+$$ \beta_{DC}=\beta_{ac}=150，对于Q_1和Q_2 \\ 图5-1~~~一个两级CE放大器 $$
+提高放大器增益最简单的方法可以是两级通过电容耦合在一起，如图5-1所示。在本例中，两级都是相同的 CE 放大器，第一级的输出连接到第二级的输入端。由于电容具有隔直流的作用，因此电容耦合会阻止其中一级的直流偏置影响另一级的直流偏置。虽然直流通路为开路，但是耦合电容可以让交流信号顺利地传输到下一级。
+该电路的分析首先需要分析直流工作状态，如3.2节所述。利用分压原理来计算每级的基极电压。
+$$ V_B\approx (\frac{R_2}{R_1&#43;R_2})V_{CC}=(\frac{10K\Omega}{47K\Omega&#43;10K\Omega})10V=1.7V $$
+该估计值会略高于实际值，因为没有考虑分压器的负载。减去发射结二极管两端的0.7V电压后，可得到发射极电压为1.0V，因此计算得到发射极电流为:
+$$ I_E=\frac{V_E}{R_E}=\frac{1.0V}{1.0K\Omega}=1.0mA $$
+发射极电流也约等于集电极电流。
+5.1.1负载效应 $$ a）单级放大器模型~~~~~~~~~~~~~~~~~~~~~~~~~~~~b）图5-1中一级放大器的值 $$
+从1.4节已经知道放大器可以用框图来表示，框图中只包含重要的参数。交流模型仅仅是一个受控电压源与一个电阻串联(戴维南电路)。为了计算放大器的总增益，图5-2中的每个晶体管级都可以用类似的方式建立模型。只需要知道三个参数: 空载时的电压增益($A_{v(NL)}$)、总输入电阻($R_{in(tot)}$)、输出电阻($R_{out}$)。可以看到空载输出电压等于输入电压乘以空载增益。
+首先求一级的空载增益。因为两级相同，所以两级的空载增益也相同。第二级的输入电阻相当于第一级的负载。因此，第一级的负载增益可以通过假设其负载电阻等于第二级的输入电阻 $R_{in(tot)}$ 来计算得到。这会降低第一级的增益，但可以与空载增益计算分开来考虑。该概念的说明会让我们更清楚地认识到基本放大器模型可以简化总增益的计算。
+已经知道 CE 放大器的空载增益是集电极交流电阻和发射极交流电阻的比值，空载增益与 $r&amp;rsquo;_e$ 有关，而这个参数又与 $I_E$ 有关，所以应作近似处理。
+因为要计算空载增益，交流集电极电阻 $R_e$与实际的集电极电阻 $R_C$ 相同，为 4.7kΩ;
+交流发射极电阻约为:
+$$ r&amp;rsquo;_e\approx \frac{25mV}{I_E}=\frac{25mV}{1.0mA}=25\Omega $$
+空载增益 $A_{v(NL)}$ 约为:
+$$ A_{v(NL)}=-\frac{R_C}{R_e}=-\frac{R_C}{r&amp;rsquo;_e}=-\frac{4.7k\Omega}{25\Omega}=-188 $$
+CE放大器的输人电阻在3.4节中已经讨论过，采用分压式偏置和没有扩量程电阻的放大器的输入电阻表达式为:
+$$ R_{in(tot)}=R_1||R_2(\beta_{ac} r&amp;rsquo;_e) $$"><script>
     (function(){
         if(''){
             if (prompt('请输入文章密码') !== ''){
@@ -25,7 +94,7 @@
 
     </head>
     <body class="
-    article-page 
+    article-page has-toc
 ">
     <script>
         (function() {
@@ -51,128 +120,22 @@
 </script>
 <div class="container main-container flex 
     
-        on-phone--column extended
+        extended
     
 ">
     
-        <aside class="sidebar left-sidebar sticky">
-    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
-        <span class="hamburger-box">
-            <span class="hamburger-inner"></span>
-        </span>
-    </button>
-
-    <header class="site-info">
-        
-            
-            <figure class="site-avatar">
-                
-                    
-                    
-                    
-                        
-                        <img src="/img/avatar_hu71fc3898bde3464d50a00f65e63c7ec2_517570_300x0_resize_box_3.png" width="300"
-                            height="354" class="site-logo" loading="lazy" alt="Avatar">
-                    
-                
-
-                
-            </figure>
-            
-        
-        
-        <h1 class="site-name"><a href="/">My Blog</a></h1>
-        <h2 class="site-description"></h2></header>
-
-    <ol class="menu" id="main-menu">
-        
-        
-        
-
-        <li >
-            <a href='/page/about/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <div id="article-toolbar">
+            <a href="/" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="7" r="4" />
-  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+  <polyline points="15 6 9 12 15 18" />
 </svg>
 
 
 
-                
-                <span>About</span>
+                <span>Back</span>
             </a>
-        </li>
-        
-        
-
-        <li >
-            <a href='/page/archives/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <rect x="3" y="4" width="18" height="4" rx="2" />
-  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
-  <line x1="10" y1="12" x2="14" y2="12" />
-</svg>
-
-
-
-                
-                <span>Archives</span>
-            </a>
-        </li>
-        
-        
-
-        <li >
-            <a href='/page/search/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="10" cy="10" r="7" />
-  <line x1="21" y1="21" x2="15" y2="15" />
-</svg>
-
-
-
-                
-                <span>Search</span>
-            </a>
-        </li>
-        
-
-        
-            <li id="dark-mode-toggle">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="8" cy="12" r="2" />
-  <rect x="2" y="6" width="20" height="12" rx="6" />
-</svg>
-
-
-
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="16" cy="12" r="2" />
-  <rect x="2" y="6" width="20" height="12" rx="6" />
-</svg>
-
-
-
-                <span>Dark Mode</span>
-            </li>
-        
-    </ol>
-</aside>
-
+        </div>
     
 <main class="main full-width">
     <article class="main-article">
@@ -182,7 +145,7 @@
     
 
     <h2 class="article-title">
-        <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/5-1%E7%94%B5%E5%AE%B9%E8%80%A6%E5%90%88%E6%94%BE%E5%A4%A7%E5%99%A8/">5.1电容耦合放大器</a>
+        <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/5-1%E7%94%B5%E5%AE%B9%E8%80%A6%E5%90%88%E6%94%BE%E5%A4%A7%E5%99%A8/">5.1 电容耦合放大器</a>
     </h2>
 
     
@@ -215,7 +178,7 @@
 
 
                 <time class="article-time--reading">
-                    0 minute read
+                    1 minute read
                 </time>
             </div>
         
@@ -225,7 +188,141 @@
 </header>
 
     <section class="article-content">
-    
+    <p>前面两章介绍了单级放大器，其主要功能是放大信号电压。你应该已经熟悉了 BJT 与 FET 的偏置和交流参数。</p>
+<p>当必须放大一个非常小的信号(如来自天线的信号)时，Q 点上的变化也会相对较小。用于放大这些信号的放大器称为小信号放大器。它们也可能专门用于高频情况。<code>通常来讲，包含额外的增益级会非常有用，特别是在高频通信系统中，其中感兴趣的频率被限制在一定的带宽范围之内</code>。</p>
+<p>本章将学习各种不同类型的多级放大器，特别强调高频时的一些考虑，包括噪声、布线，以及消除不必要的振荡。然后将重点转向功率传输的重要要求。对于这些应用，需要功率放大器。最后将介绍集成电路(IC)功率放大器。</p>
+<h2 id="51电容耦合放大器">5.1电容耦合放大器</h2>
+<p><code>两个或多个晶体管可以连接在一起组成一个放大器，该放大器称为多级放大器</code>。1.4节已经介绍了一个简化的放大器模型。现在可以将该简化模型应用到实际放大器电路中来确定它们的整体性能。本节将学习电容耦合放大器，也称为 RC(阻容)耦合放大器。电容耦合是将交流信号传输到后一级最常使用的方法。</p>
+<p>学完本节后，你应该掌握以下内容:</p>
+<ul>
+<li>确定电容耦合多级放大器的交流参数
+<ul>
+<li>计算两级电容耦合放大器的总增益、输入电阻和输出电阻</li>
+<li>讨论多级放大器中如何减小振荡和噪声问题</li>
+</ul>
+</li>
+</ul>
+<p>两个或多个晶体管可以连接在一起来提高放大器的性能。放大信号的每个晶体管都称为一级。<code>一般来讲，放大器的第一级必须有非常高的输入电阻来避免对信号源产生的负载作用。另外，第一级需要设计成低噪声工作，因为这些微弱信号电压很容易会被噪声所淹没。后续级的目的是在不产生失真的前提下来增加信号的幅度</code>。</p>
+<p><img src="https://s2.loli.net/2023/10/09/NmIHW6OwUeTQPo2.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog5-1.png"
+	
+	
+></p>
+<p>$$
+\beta_{DC}=\beta_{ac}=150，对于Q_1和Q_2
+\\
+图5-1~~~一个两级CE放大器
+$$</p>
+<p>提高放大器增益最简单的方法可以是两级通过电容耦合在一起，如图5-1所示。在本例中，两级都是相同的 CE 放大器，第一级的输出连接到第二级的输入端。由于电容具有隔直流的作用，因此电容耦合会阻止其中一级的直流偏置影响另一级的直流偏置。<code>虽然直流通路为开路，但是耦合电容可以让交流信号顺利地传输到下一级</code>。</p>
+<p>该电路的分析首先需要分析直流工作状态，如3.2节所述。利用分压原理来计算每级的基极电压。</p>
+<p>$$
+V_B\approx (\frac{R_2}{R_1+R_2})V_{CC}=(\frac{10K\Omega}{47K\Omega+10K\Omega})10V=1.7V
+$$</p>
+<p>该估计值会略高于实际值，因为没有考虑分压器的负载。<code>减去发射结二极管两端的0.7V电压后，可得到发射极电压为1.0V，因此计算得到发射极电流为</code>:</p>
+<p>$$
+I_E=\frac{V_E}{R_E}=\frac{1.0V}{1.0K\Omega}=1.0mA
+$$</p>
+<p><strong>发射极电流也约等于集电极电流。</strong></p>
+<h3 id="511负载效应">5.1.1负载效应</h3>
+<p><img src="https://s2.loli.net/2023/10/09/YiJtHBQeAwjqhTo.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog5_2.png"
+	
+	
+></p>
+<p>$$
+a）单级放大器模型~~~~~~~~~~~~~~~~~~~~~~~~~~~~b）图5-1中一级放大器的值
+$$</p>
+<p>从1.4节已经知道放大器可以用框图来表示，框图中只包含重要的参数。交流模型仅仅是一个受控电压源与一个电阻串联(戴维南电路)。<code>为了计算放大器的总增益</code>，图5-2中的每个晶体管级都可以用类似的方式建立模型。<strong>只需要知道三个参数: 空载时的电压增益($A_{v(NL)}$)、总输入电阻($R_{in(tot)}$)、输出电阻($R_{out}$)</strong>。可以看到空载输出电压等于输入电压乘以空载增益。</p>
+<p>首先求一级的空载增益。因为两级相同，所以两级的空载增益也相同。第二级的输入电阻相当于第一级的负载。因此，第一级的负载增益可以通过假设其负载电阻等于第二级的输入电阻 $R_{in(tot)}$ 来计算得到。这会降低第一级的增益，但可以与空载增益计算分开来考虑。该概念的说明会让我们更清楚地认识到基本放大器模型可以简化总增益的计算。</p>
+<p>已经知道 CE 放大器的空载增益是集电极交流电阻和发射极交流电阻的比值，空载增益与 $r&rsquo;_e$ 有关，而这个参数又与 $I_E$ 有关，所以应作近似处理。</p>
+<p>因为要计算空载增益，交流集电极电阻 $R_e$与实际的集电极电阻 $R_C$ 相同，为 4.7kΩ;</p>
+<p>交流发射极电阻约为:</p>
+<p>$$
+r&rsquo;_e\approx \frac{25mV}{I_E}=\frac{25mV}{1.0mA}=25\Omega
+$$</p>
+<p>空载增益 $A_{v(NL)}$ 约为:</p>
+<p>$$
+A_{v(NL)}=-\frac{R_C}{R_e}=-\frac{R_C}{r&rsquo;_e}=-\frac{4.7k\Omega}{25\Omega}=-188
+$$</p>
+<p>CE放大器的输人电阻在3.4节中已经讨论过，采用分压式偏置和没有扩量程电阻的放大器的输入电阻表达式为:</p>
+<p>$$
+R_{in(tot)}=R_1||R_2(\beta_{ac} r&rsquo;_e)
+$$</p>
+<p>设 $\beta_{ac}$ 为150，并代人相应的数值，图5-1中的放大器的输入电阻为:</p>
+<p>$$
+R_{in(tot)}\approx 47k\Omega||10k\Omega||[150(25\Omega)]\approx 2.58k\Omega
+$$</p>
+<p>输出电阻是集电极电路往回看的电阻，并且就是集电极电阻:</p>
+<p>$$
+R_{out}=R_C=4.7K\Omega
+$$</p>
+<p>可以将这些数值放进图5-2b所示的模型中。</p>
+<p><img src="https://s2.loli.net/2023/10/09/kFLewUIxAEstSOm.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog5-3.png"
+	
+	
+></p>
+<p>$$
+图5-3~~~完整两级放大器的交流模型
+$$</p>
+<p>组成放大器的两级电路现在连接成图5-3所示。其中，每一级的空载增益都标示在戴维南电源的下面。用该模型来求总增益。总增益是下面三项的乘积:</p>
+<ol>
+<li>第一级的空载增益。</li>
+<li>包含第二级输入电阻的分压器相对于第一级输出电阻的增益。</li>
+<li>第二级的空载增益。</li>
+</ol>
+<p>如果输出端上加有一个负载电阻，那么应该把它作为另一个分压项包括进去(见例5-1)。</p>
+<p>前面计算得到每一级的空载增益为 -188，两级之间的分压器产生了负载效应。它由第二级的 $R_{in(tot)2}$ 和第一级的 $R_{out1}$ 组成。该分压器的增益(衰减)为:</p>
+<p>$$
+A_{v(divider)}=\frac{R_{in(tot)2}}{R_{out1}+R_{in(tot)2}}=\frac{2.58k\Omega}{4.7k\Omega + 2.58k\Omega}=0.35
+$$</p>
+<p>这三个增益的乘积即为总电压增益:</p>
+<p>$$
+A_{v(tot)}=A_{v1}A_{v(divider)}A_{v2}=(-188)\times 0.35 \times (-188)\approx 12400
+$$</p>
+<p>该乘积表明电压增益相当大。例如: 如果将 $100\mu V$ 的输入信号加到第一级，并忽略输入基极电路的衰减影响，可得到第二级的输出电压为 $100\mu V \times 12400=1.24V$。必须记住这样一个概念，即这个结果是近似的，因为增益的大小依赖于 $r&rsquo;_e$ 及所用的晶体管。以减少增益为代价，可以在发射极电路上加上一个扩量程电阻来增加电路的稳定性。这时电路的增益与所用的晶体管无关，是个固定值。</p>
+<p>放大器的增益通常用分贝电压增益来表示。对于刚刚考虑的放大器，每一级的空载分贝电压增益为:</p>
+<p>$$
+A&rsquo;_v=10log|A_v|=20log(188)=45.5dB
+$$</p>
+<p>两级之间的分压器增益(衰减)为:</p>
+<p>$$
+A&rsquo;_{v(divider)}=20log(0.35)=-9.1dB
+$$</p>
+<p>总的分贝电压增益是单个分贝电压增益的总和。</p>
+<p>$A&rsquo;_{v1}~~(a)$</p>
+<p>$A&rsquo;_{v(divider)}~~(b)$</p>
+<p>$A&rsquo;_{v2}~~(c)$</p>
+<p>$$
+A&rsquo;_{v(tot)}=(a)+(b)+(c)=45.5dB-9.1dB+45.5dB=81.9dB
+$$</p>
+<h3 id="512-不期望的振荡和噪声">5.1.2 不期望的振荡和噪声</h3>
+<p>多级放大器需仔细设计以防产生振荡。当大小信号存在于同一个电路中时，由于存在不期望的反馈通路，大信号会对小信号产生不利的影响。这个问题在高频放大器中更为严重，因为反馈通路的电抗会更低，引起更多不期望的反馈。例如，原型机板存在寄生电容，当将它们组成多级放大器时会引起反馈及噪声问题;如果在每一级的 $V_{CC}$ 与地之间用电容连接，就能将各级隔离，这会有助于问题的解决。这一技术可以在商用的印制电路板上经常看到。电容应该尽可能连接到接近每一级的 $V_{CC}$ 的位置，并且接线长度应尽可能短.</p>
+<p>除了振荡外，噪声电压(电子干扰)也是多级放大器中存在的问题。信噪比确定了噪声是否足以干扰信号。当信号较小时，一个小噪声电压造成的影响可能比信号较大时的影响更大。这说明放大器的第一级是最重要的一级，因为此时输入信号很小。对于高阻抗源来说，FET 有更大的优势，但是当信号源阻抗较低时(&lt;1MΩ)，双极型晶体管能提供更好的低噪声性能。</p>
+<p>关于电路中噪声问题已经有很多的研究。噪声问题的解决方法取决于噪声源、噪声进人电路的途径、噪声的类型，以及其他一些细节。许多时候，对噪声问题没有一个解决方法。噪声可能从信号源外部通过电容或电感耦合进入电路，也可能来自电源，或来自电路内部(热噪声)。以下是避免噪声问题的一些建议。</p>
+<ol>
+<li>尽量缩短连线以避免电路出现天线现象(尤其是低电平输入线)，并尽量减少反馈回路。</li>
+<li>在每一级的电源与地之间加上电容，并确认电源经过正确滤波。</li>
+<li>尽可能减少噪声源，将噪声源与电路隔开或屏蔽。对低电平信号使用屏蔽线、双绞线或者屏蔽双绞线。</li>
+<li>所有电路的接地都在同一个点上，并通过独立的地线将大电流的地和小电流的地分开，源自大电流的地电流由于导电通路的 IR 压降会在电路的另一部分产生噪声。</li>
+<li>让放大器的带宽不超过放大所需信号所要求的带宽。</li>
+</ol>
+
 </section>
 
 
@@ -238,9 +335,44 @@
     </section>
 
 
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
     </footer>
 
 
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css"integrity="sha384-RZU/ijkSsFbcmivfdRBQDtwuwVqK7GMOw6IMvKyeWL2K5UAlyp6WonmB8m7Jd0Hn"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js"integrity="sha384-pK1WpvzWVBQiP0/GjnvRxV4mOb0oxFuyRxJlk6vVw146n3egcN5C925NCP7a7BY8"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js"integrity="sha384-vZTG03m&#43;2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ]
+        });})
+</script>
     
 </article>
 
@@ -253,24 +385,12 @@
                 
                     
 <article class="">
-    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/4-8%E7%B3%BB%E7%BB%9F/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">4.8系统</h2>
-        </div>
-    </a>
-</article>
-                
-                    
-<article class="">
     <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/4-7mosfet%E5%BC%80%E5%85%B3%E7%94%B5%E8%B7%AF/">
         
         
 
         <div class="article-details">
-            <h2 class="article-title">4.7MOSFET开关电路</h2>
+            <h2 class="article-title">4.7 MOSFET开关电路</h2>
         </div>
     </a>
 </article>
@@ -282,7 +402,7 @@
         
 
         <div class="article-details">
-            <h2 class="article-title">4.6FET线性放大器</h2>
+            <h2 class="article-title">4.6 FET线性放大器</h2>
         </div>
     </a>
 </article>
@@ -294,7 +414,7 @@
         
 
         <div class="article-details">
-            <h2 class="article-title">4.5MOSFET偏置</h2>
+            <h2 class="article-title">4.5 MOSFET偏置</h2>
         </div>
     </a>
 </article>
@@ -306,7 +426,19 @@
         
 
         <div class="article-details">
-            <h2 class="article-title">4.4MOSFET特性</h2>
+            <h2 class="article-title">4.4 MOSFET 特性</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/4-3jfet%E5%81%8F%E7%BD%AE/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">4.3 JFET偏置</h2>
         </div>
     </a>
 </article>
@@ -324,7 +456,7 @@
     data-app-id="d44db3f9-a0ff-4551-a44d-316afd2e5835"
     data-page-id="0786ec8293a299b6c1bac5139bbbc4bc"
     data-page-url="https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/5-1%E7%94%B5%E5%AE%B9%E8%80%A6%E5%90%88%E6%94%BE%E5%A4%A7%E5%99%A8/"
-    data-page-title="5.1电容耦合放大器"></div>
+    data-page-title="5.1 电容耦合放大器"></div>
 <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
 
 <script>
@@ -436,6 +568,37 @@
             >
 
             </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">Table of contents</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#51电容耦合放大器">5.1电容耦合放大器</a>
+      <ul>
+        <li><a href="#511负载效应">5.1.1负载效应</a></li>
+        <li><a href="#512-不期望的振荡和噪声">5.1.2 不期望的振荡和噪声</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                </div>
+            </section>
+        </aside>
     
 
         </div>

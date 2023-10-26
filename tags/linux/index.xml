@@ -24,23 +24,5 @@ Ada Assembly C C++ D Fortran Go Objective-C OpenCL Modula-2 Pascal Rust 只是�
 quit = q (gdb) q 命令行传参:show args 设置的时机: 启动gdb之后, 在应用程序启动之前</description>
     </item>
     
-    <item>
-      <title>Arch安装</title>
-      <link>https://okokfun.github.io/post/c&#43;&#43;/arch%E5%AE%89%E8%A3%85/</link>
-      <pubDate>Fri, 24 Dec 2021 19:34:05 +0000</pubDate>
-      
-      <guid>https://okokfun.github.io/post/c&#43;&#43;/arch%E5%AE%89%E8%A3%85/</guid>
-      <description>Arch安装 一.准备工作 1.1下载镜像 地址：
-清华：https://mirrors.tuna.tsinghua.edu.cn/archlinux/iso/latest/ 163:https://mirrors.163.com/archlinux/iso/latest/ 中科大：https://mirrors.ustc.edu.cn/archlinux/iso/latest/ 上海交通：https://mirror.sjtu.edu.cn/archlinux/iso/latest/ 北大：https://mirrors.pku.edu.cn/archlinux/iso/latest/ 本文是Arch官方文档的再次梳理版
-https://wiki.archlinux.org/title/Installation_guide_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87) 安装方法有很多种比如脚本，实体机，虚拟机
-本文采用虚拟机+SSH安装+UEFI，SSH方便复制命令
-二.安装 1.键盘布局,默认为us，不需要更改 2.验证引导模式 ls /sys/firmware/efi/efivars 结果无错误切有目录则是UEFI，反之是BIOS引导
-3.连接网络 ip link 用 ping 检查网络连接
-ping archlinux.org 4.更新系统时间 timedatectl set-ntp true 可用 timedatectl status 检查服务状态
-5.建立硬盘分区 cfdisk比fdisk配置简单许多，因此本文采用cfdisk
-cfdisk -l cfdisk UEFI采用GPT分区，一般情况下需要创建
-挂载点 分区 分区类型 建议大小 /mnt/boot 或 /mnt/efi /dev/efi_system_partition（efi 系统分区） EFI 系统分区 至少 260 MiB [SWAP] /dev/swap_partition（交换空间分区） Linux swap (交换空间) 大于 512 MiB /mnt /dev/root_partition（根分区） Linux x86-64 根目录 (/) 剩余空间 文件系统 创建命令 工具 Archiso [1] 内核文档 [2] 说明 Btrfs mkfs.</description>
-    </item>
-    
   </channel>
 </rss>

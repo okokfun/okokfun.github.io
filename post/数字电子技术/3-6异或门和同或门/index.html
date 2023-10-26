@@ -1,17 +1,32 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content=''><title>3.6异或门和同或门</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='3.6.1 异或门 异或门(XOR)的标准符号如图3.42所示。异或门只有两个输入。异或门的运算功能为模-2加法(第2章介绍过)。只有当两个输入处于相反的逻辑电平时，异或门的输出才是高电平。根据输入 A 和输入 B 及输出 X，它的运算可以做如下表述:
+对于异或门来说，如果输入 A 是低电平而输入 B 是高电平，或者输入 A 是高电平而输入 B 是低电平，那么输出 X 就是高电平; 如果 A 和 B 都是高电平或者都是低电平，那么输出 X 为低电平。 $$ (a)特殊形状~~~~~~~~~~~~~~~~~~(b)具有异或门的矩形轮廓 $$ $$ 图3.42~~~~异或门的标准逻辑符号 $$
+◇ 对于异或门来说,相反的两个输入产生高电平输出。 异或门的所有 4 个可能的输入组合及输出结果如图3.43所示。高电平是有效或者是确定电平，只有当两个输入相反时才会输出高电平。异或门的运算总结在表3.11中。 $$ 图3.43~~~异或门的所有输入逻辑电平和相应的输出电平。打开文件F03-43检验异或门操作 $$
+$$ 表3.11~~~异或门的真值表 $$
+输入A 输入B 输出X 0 0 0 0 1 1 1 0 1 1 1 0 3.6.2同或门 同或门(XNOR)的标准符号如图3.45所示。和异或门相似，同或门也只有两个输入。同或门符号输出位置上的小圆圈指示它的输出和异或门的输出是相反的。当两个输人逻辑电平相反时，同或门的输出就是低电平。这个运算可以做如下表述(A 和 B 是输入,X 是输出):
+对于同或门来说，如果输入 A 是低电平而输入 B 是高电平，或者 A 是高电平，B 是低电平，输出 X 就是低电平;如果输入 A 和输入 B 都是高电平或者都是低电平，输出 X 就是高电平。 $$ (a)特殊形状~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~(b)长方形轮廓 $$ $$ 图3.'><title>3.6异或门和同或门</title>
 
 <link rel='canonical' href='https://okokfun.github.io/post/%E6%95%B0%E5%AD%97%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF/3-6%E5%BC%82%E6%88%96%E9%97%A8%E5%92%8C%E5%90%8C%E6%88%96%E9%97%A8/'>
 
 <link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='3.6异或门和同或门'>
-<meta property='og:description' content=''>
+<meta property='og:description' content='3.6.1 异或门 异或门(XOR)的标准符号如图3.42所示。异或门只有两个输入。异或门的运算功能为模-2加法(第2章介绍过)。只有当两个输入处于相反的逻辑电平时，异或门的输出才是高电平。根据输入 A 和输入 B 及输出 X，它的运算可以做如下表述:
+对于异或门来说，如果输入 A 是低电平而输入 B 是高电平，或者输入 A 是高电平而输入 B 是低电平，那么输出 X 就是高电平; 如果 A 和 B 都是高电平或者都是低电平，那么输出 X 为低电平。 $$ (a)特殊形状~~~~~~~~~~~~~~~~~~(b)具有异或门的矩形轮廓 $$ $$ 图3.42~~~~异或门的标准逻辑符号 $$
+◇ 对于异或门来说,相反的两个输入产生高电平输出。 异或门的所有 4 个可能的输入组合及输出结果如图3.43所示。高电平是有效或者是确定电平，只有当两个输入相反时才会输出高电平。异或门的运算总结在表3.11中。 $$ 图3.43~~~异或门的所有输入逻辑电平和相应的输出电平。打开文件F03-43检验异或门操作 $$
+$$ 表3.11~~~异或门的真值表 $$
+输入A 输入B 输出X 0 0 0 0 1 1 1 0 1 1 1 0 3.6.2同或门 同或门(XNOR)的标准符号如图3.45所示。和异或门相似，同或门也只有两个输入。同或门符号输出位置上的小圆圈指示它的输出和异或门的输出是相反的。当两个输人逻辑电平相反时，同或门的输出就是低电平。这个运算可以做如下表述(A 和 B 是输入,X 是输出):
+对于同或门来说，如果输入 A 是低电平而输入 B 是高电平，或者 A 是高电平，B 是低电平，输出 X 就是低电平;如果输入 A 和输入 B 都是高电平或者都是低电平，输出 X 就是高电平。 $$ (a)特殊形状~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~(b)长方形轮廓 $$ $$ 图3.'>
 <meta property='og:url' content='https://okokfun.github.io/post/%E6%95%B0%E5%AD%97%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF/3-6%E5%BC%82%E6%88%96%E9%97%A8%E5%92%8C%E5%90%8C%E6%88%96%E9%97%A8/'>
 <meta property='og:site_name' content='My Blog'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Digital' /><meta property='article:published_time' content='2023-07-14T19:05:01&#43;00:00'/><meta property='article:modified_time' content='2023-07-14T19:05:01&#43;00:00'/>
 <meta name="twitter:title" content="3.6异或门和同或门">
-<meta name="twitter:description" content=""><script>
+<meta name="twitter:description" content="3.6.1 异或门 异或门(XOR)的标准符号如图3.42所示。异或门只有两个输入。异或门的运算功能为模-2加法(第2章介绍过)。只有当两个输入处于相反的逻辑电平时，异或门的输出才是高电平。根据输入 A 和输入 B 及输出 X，它的运算可以做如下表述:
+对于异或门来说，如果输入 A 是低电平而输入 B 是高电平，或者输入 A 是高电平而输入 B 是低电平，那么输出 X 就是高电平; 如果 A 和 B 都是高电平或者都是低电平，那么输出 X 为低电平。 $$ (a)特殊形状~~~~~~~~~~~~~~~~~~(b)具有异或门的矩形轮廓 $$ $$ 图3.42~~~~异或门的标准逻辑符号 $$
+◇ 对于异或门来说,相反的两个输入产生高电平输出。 异或门的所有 4 个可能的输入组合及输出结果如图3.43所示。高电平是有效或者是确定电平，只有当两个输入相反时才会输出高电平。异或门的运算总结在表3.11中。 $$ 图3.43~~~异或门的所有输入逻辑电平和相应的输出电平。打开文件F03-43检验异或门操作 $$
+$$ 表3.11~~~异或门的真值表 $$
+输入A 输入B 输出X 0 0 0 0 1 1 1 0 1 1 1 0 3.6.2同或门 同或门(XNOR)的标准符号如图3.45所示。和异或门相似，同或门也只有两个输入。同或门符号输出位置上的小圆圈指示它的输出和异或门的输出是相反的。当两个输人逻辑电平相反时，同或门的输出就是低电平。这个运算可以做如下表述(A 和 B 是输入,X 是输出):
+对于同或门来说，如果输入 A 是低电平而输入 B 是高电平，或者 A 是高电平，B 是低电平，输出 X 就是低电平;如果输入 A 和输入 B 都是高电平或者都是低电平，输出 X 就是高电平。 $$ (a)特殊形状~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~(b)长方形轮廓 $$ $$ 图3."><script>
     (function(){
         if(''){
             if (prompt('请输入文章密码') !== ''){
@@ -25,7 +40,7 @@
 
     </head>
     <body class="
-    article-page 
+    article-page has-toc
 ">
     <script>
         (function() {
@@ -51,128 +66,22 @@
 </script>
 <div class="container main-container flex 
     
-        on-phone--column extended
+        extended
     
 ">
     
-        <aside class="sidebar left-sidebar sticky">
-    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
-        <span class="hamburger-box">
-            <span class="hamburger-inner"></span>
-        </span>
-    </button>
-
-    <header class="site-info">
-        
-            
-            <figure class="site-avatar">
-                
-                    
-                    
-                    
-                        
-                        <img src="/img/avatar_hu71fc3898bde3464d50a00f65e63c7ec2_517570_300x0_resize_box_3.png" width="300"
-                            height="354" class="site-logo" loading="lazy" alt="Avatar">
-                    
-                
-
-                
-            </figure>
-            
-        
-        
-        <h1 class="site-name"><a href="/">My Blog</a></h1>
-        <h2 class="site-description"></h2></header>
-
-    <ol class="menu" id="main-menu">
-        
-        
-        
-
-        <li >
-            <a href='/page/about/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <div id="article-toolbar">
+            <a href="/" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="7" r="4" />
-  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+  <polyline points="15 6 9 12 15 18" />
 </svg>
 
 
 
-                
-                <span>About</span>
+                <span>Back</span>
             </a>
-        </li>
-        
-        
-
-        <li >
-            <a href='/page/archives/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <rect x="3" y="4" width="18" height="4" rx="2" />
-  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
-  <line x1="10" y1="12" x2="14" y2="12" />
-</svg>
-
-
-
-                
-                <span>Archives</span>
-            </a>
-        </li>
-        
-        
-
-        <li >
-            <a href='/page/search/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="10" cy="10" r="7" />
-  <line x1="21" y1="21" x2="15" y2="15" />
-</svg>
-
-
-
-                
-                <span>Search</span>
-            </a>
-        </li>
-        
-
-        
-            <li id="dark-mode-toggle">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="8" cy="12" r="2" />
-  <rect x="2" y="6" width="20" height="12" rx="6" />
-</svg>
-
-
-
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="16" cy="12" r="2" />
-  <rect x="2" y="6" width="20" height="12" rx="6" />
-</svg>
-
-
-
-                <span>Dark Mode</span>
-            </li>
-        
-    </ol>
-</aside>
-
+        </div>
     
 <main class="main full-width">
     <article class="main-article">
@@ -215,7 +124,7 @@
 
 
                 <time class="article-time--reading">
-                    0 minute read
+                    1 minute read
                 </time>
             </div>
         
@@ -225,7 +134,173 @@
 </header>
 
     <section class="article-content">
-    
+    <h3 id="361-异或门">3.6.1 异或门</h3>
+<p>异或门(XOR)的标准符号如图3.42所示。异或门只有两个输入。异或门的运算功能为模-2加法(第2章介绍过)。只有当两个输入处于相反的逻辑电平时，异或门的输出才是高电平。根据输入 A 和输入 B 及输出 X，它的运算可以做如下表述:</p>
+<p><strong>对于异或门来说，如果输入 A 是低电平而输入 B 是高电平，或者输入 A 是高电平而输入 B 是低电平，那么输出 X 就是高电平; 如果 A 和 B 都是高电平或者都是低电平，那么输出 X 为低电平。</strong>
+<img src="https://s2.loli.net/2023/10/08/VahFx6OudDX8bkq.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="digtal3.6.1a.png"
+	
+	
+>
+$$
+(a)特殊形状~~~~~~~~~~~~~~~~~~(b)具有异或门的矩形轮廓
+$$
+$$
+图3.42~~~~异或门的标准逻辑符号
+$$</p>
+<ul>
+<li>◇ 对于异或门来说,相反的两个输入产生高电平输出。</li>
+</ul>
+<p>异或门的所有 4 个可能的输入组合及输出结果如图3.43所示。高电平是有效或者是确定电平，只有当两个输入相反时才会输出高电平。异或门的运算总结在表3.11中。
+<img src="https://s2.loli.net/2023/10/08/XHON9a8WdEvS7GT.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="digtal3.6.1b.png"
+	
+	
+></p>
+<p>$$
+图3.43~~~异或门的所有输入逻辑电平和相应的输出电平。打开文件F03-43检验异或门操作
+$$</p>
+<p>$$
+表3.11~~~异或门的真值表
+$$</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">输入A</th>
+<th style="text-align:center">输入B</th>
+<th style="text-align:center">输出X</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="362同或门">3.6.2同或门</h3>
+<p>同或门(XNOR)的标准符号如图3.45所示。和异或门相似，同或门也只有两个输入。同或门符号输出位置上的小圆圈指示它的输出和异或门的输出是相反的。当两个输人逻辑电平相反时，同或门的输出就是低电平。这个运算可以做如下表述(A 和 B 是输入,X 是输出):</p>
+<p><strong>对于同或门来说，如果输入 A 是低电平而输入 B 是高电平，或者 A 是高电平，B 是低电平，输出 X 就是低电平;如果输入 A 和输入 B 都是高电平或者都是低电平，输出 X 就是高电平。</strong>
+<img src="https://s2.loli.net/2023/10/08/273OKyvjMiNAfFB.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="digtal3.6.2a.png"
+	
+	
+></p>
+<p>$$
+(a)特殊形状~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~(b)长方形轮廓
+$$
+$$
+图3.45~~~同或门的标准逻辑符号
+$$
+<img src="https://s2.loli.net/2023/10/08/VFybHkauzTQiA1N.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="digtal3.6.2b.png"
+	
+	
+></p>
+<p>$$
+图3.46~~~同或门的所有输入逻辑电平和相应的输出电平。打开文件F03-46检验同或门操作
+$$</p>
+<p>$$
+表3.12~~~同或门的真值表
+$$</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">输入A</th>
+<th style="text-align:center">输入B</th>
+<th style="text-align:center">输出X</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+</tr>
+</tbody>
+</table>
+<h3 id="363波形输入的运算">3.6.3波形输入的运算</h3>
+<p>正如对其他门所做的运算一样，观察异或门和同或门在脉冲波形输人条件下的运算。和以前一样，在脉冲波形输入的每个特定时间段中，对如图3.47所示的异或门应用真值表进行运算。可以看到在时间段 $t_2$ 和 $t_4$ 期间，输入波形 A 和 B 为相反的电平。所以在这两个时间段，输出 X 是高电平。由于在时间段 $t_1$ 和 $t_3$ 期间，两个输入为相同电平，要么都是高电平要么都是低电平，所以这两个时间段的输出 X 是低电平，如时序图所示。</p>
+<p><img src="https://s2.loli.net/2023/10/08/3x9EgCIyJFQNYw8.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="digtal3.6.3.png"
+	
+	
+>
+$$
+图3.47~~~异或门脉冲波形输入的运算
+$$</p>
+<h3 id="364应用举例">3.6.4应用举例</h3>
+<p>异或门可以用做 2 位 模-2加法器。在第 2 章中，二进制加法的基本规则是: 0+0=0, 0+1=1, 1+0=1，以及 1+1=10。观察异或门的真值表,就会发现输出是两个输入的和运算。在这种情况下，两个输人都是 1，输出的和是0，但是我们丢弃了进位 1。在第 6 章中,将会看到异或门怎样组合在一起形成完整的加法电路。表3.13说明了异或门用做模-2加法的运算,将其用在循环冗余校验码(CRC)系统中，以完成第 2 章描述的除法运算。
+$$
+表3.13~~~异或门用做两位加法
+$$
+<img src="https://s2.loli.net/2023/10/08/1olBfwQduCzMevS.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="digtal3.6.4.png"
+	
+	
+></p>
+
 </section>
 
 
@@ -238,9 +313,44 @@
     </section>
 
 
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
     </footer>
 
 
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css"integrity="sha384-RZU/ijkSsFbcmivfdRBQDtwuwVqK7GMOw6IMvKyeWL2K5UAlyp6WonmB8m7Jd0Hn"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js"integrity="sha384-pK1WpvzWVBQiP0/GjnvRxV4mOb0oxFuyRxJlk6vVw146n3egcN5C925NCP7a7BY8"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js"integrity="sha384-vZTG03m&#43;2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ]
+        });})
+</script>
     
 </article>
 
@@ -436,6 +546,39 @@
             >
 
             </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">Table of contents</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#361-异或门">3.6.1 异或门</a></li>
+        <li><a href="#362同或门">3.6.2同或门</a></li>
+        <li><a href="#363波形输入的运算">3.6.3波形输入的运算</a></li>
+        <li><a href="#364应用举例">3.6.4应用举例</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                </div>
+            </section>
+        </aside>
     
 
         </div>

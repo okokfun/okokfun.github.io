@@ -1,17 +1,23 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content=''><title>4.7MOSFET开关电路</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='虽然 BJT 和 JFET 都能用于开关电路，但 MOSFET 是目前大多数开关应用的首选器件。 MOSFET 具有很低的导通电阻，非常高的断开电阻，很快的切换时间，因此它是极好的开关器件。有两种基本类型的 MOSFET 开关电路:模拟和数字。本节将介绍数字和模拟 MOSFET 开关电路。
+学完本节后，你应该掌握以下内容:
+描述如何将 MOSFET 用于模拟和数字开关电路中 解释如何让 MOSFET 像开关一样工作 描述 MOSFET 模拟开关 讨论模拟开关应用 描述开关电容电路 描述 MOSFET 如何在数字开关电路中应用 讨论互补 MOS(CMOS) 逻辑 解释几种 CMOS数字门的工作原理 讨论几种功率 MOSFET 结构 4.7.1 MOSFET 开关工作原理 $$ 图4-52~~~在负载线上的开关工作 $$ 通常将 E-MOSFET 用于开关应用，因为其具有阈值特性，$V_{GS(th)}$。当栅源电压小于阈值时，MOSFET 处于关闭状态。当栅源电压大于阈值时， MOSFET 导通。当 $V_{GS}$ 在 $V_{GS(th)}$ 与 $V_{GS(on)}$ 之间变化时， MOSFET 就以开关方式工作，如图4-52所示。在关闭状态， $V_{GS}$ &amp;lt; $V_{GS(th)}$ ，器件工作在负载线的下端，相当于一个打开的开关(非常高的 $R_{DS}$)。当$V_{GS}$ 足够大于 $V_{GS(th)}$ 时，器件工作在负载线上端的可变电阻区，相当于一个闭合的开关(非常低的 $R_{DS}$）。 $$ a) ~n沟道MOSFET和等效开关~~~~~~~~~~~~~~~~~~~~~~~~~~~~~b) ~p沟道MOSFET和等效开关 $$'><title>4.7 MOSFET开关电路</title>
 
 <link rel='canonical' href='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/4-7mosfet%E5%BC%80%E5%85%B3%E7%94%B5%E8%B7%AF/'>
 
-<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='4.7MOSFET开关电路'>
-<meta property='og:description' content=''>
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='4.7 MOSFET开关电路'>
+<meta property='og:description' content='虽然 BJT 和 JFET 都能用于开关电路，但 MOSFET 是目前大多数开关应用的首选器件。 MOSFET 具有很低的导通电阻，非常高的断开电阻，很快的切换时间，因此它是极好的开关器件。有两种基本类型的 MOSFET 开关电路:模拟和数字。本节将介绍数字和模拟 MOSFET 开关电路。
+学完本节后，你应该掌握以下内容:
+描述如何将 MOSFET 用于模拟和数字开关电路中 解释如何让 MOSFET 像开关一样工作 描述 MOSFET 模拟开关 讨论模拟开关应用 描述开关电容电路 描述 MOSFET 如何在数字开关电路中应用 讨论互补 MOS(CMOS) 逻辑 解释几种 CMOS数字门的工作原理 讨论几种功率 MOSFET 结构 4.7.1 MOSFET 开关工作原理 $$ 图4-52~~~在负载线上的开关工作 $$ 通常将 E-MOSFET 用于开关应用，因为其具有阈值特性，$V_{GS(th)}$。当栅源电压小于阈值时，MOSFET 处于关闭状态。当栅源电压大于阈值时， MOSFET 导通。当 $V_{GS}$ 在 $V_{GS(th)}$ 与 $V_{GS(on)}$ 之间变化时， MOSFET 就以开关方式工作，如图4-52所示。在关闭状态， $V_{GS}$ &amp;lt; $V_{GS(th)}$ ，器件工作在负载线的下端，相当于一个打开的开关(非常高的 $R_{DS}$)。当$V_{GS}$ 足够大于 $V_{GS(th)}$ 时，器件工作在负载线上端的可变电阻区，相当于一个闭合的开关(非常低的 $R_{DS}$）。 $$ a) ~n沟道MOSFET和等效开关~~~~~~~~~~~~~~~~~~~~~~~~~~~~~b) ~p沟道MOSFET和等效开关 $$'>
 <meta property='og:url' content='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/4-7mosfet%E5%BC%80%E5%85%B3%E7%94%B5%E8%B7%AF/'>
 <meta property='og:site_name' content='My Blog'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Analog' /><meta property='article:published_time' content='2023-07-14T17:38:25&#43;00:00'/><meta property='article:modified_time' content='2023-07-14T17:38:25&#43;00:00'/>
-<meta name="twitter:title" content="4.7MOSFET开关电路">
-<meta name="twitter:description" content=""><script>
+<meta name="twitter:title" content="4.7 MOSFET开关电路">
+<meta name="twitter:description" content="虽然 BJT 和 JFET 都能用于开关电路，但 MOSFET 是目前大多数开关应用的首选器件。 MOSFET 具有很低的导通电阻，非常高的断开电阻，很快的切换时间，因此它是极好的开关器件。有两种基本类型的 MOSFET 开关电路:模拟和数字。本节将介绍数字和模拟 MOSFET 开关电路。
+学完本节后，你应该掌握以下内容:
+描述如何将 MOSFET 用于模拟和数字开关电路中 解释如何让 MOSFET 像开关一样工作 描述 MOSFET 模拟开关 讨论模拟开关应用 描述开关电容电路 描述 MOSFET 如何在数字开关电路中应用 讨论互补 MOS(CMOS) 逻辑 解释几种 CMOS数字门的工作原理 讨论几种功率 MOSFET 结构 4.7.1 MOSFET 开关工作原理 $$ 图4-52~~~在负载线上的开关工作 $$ 通常将 E-MOSFET 用于开关应用，因为其具有阈值特性，$V_{GS(th)}$。当栅源电压小于阈值时，MOSFET 处于关闭状态。当栅源电压大于阈值时， MOSFET 导通。当 $V_{GS}$ 在 $V_{GS(th)}$ 与 $V_{GS(on)}$ 之间变化时， MOSFET 就以开关方式工作，如图4-52所示。在关闭状态， $V_{GS}$ &amp;lt; $V_{GS(th)}$ ，器件工作在负载线的下端，相当于一个打开的开关(非常高的 $R_{DS}$)。当$V_{GS}$ 足够大于 $V_{GS(th)}$ 时，器件工作在负载线上端的可变电阻区，相当于一个闭合的开关(非常低的 $R_{DS}$）。 $$ a) ~n沟道MOSFET和等效开关~~~~~~~~~~~~~~~~~~~~~~~~~~~~~b) ~p沟道MOSFET和等效开关 $$"><script>
     (function(){
         if(''){
             if (prompt('请输入文章密码') !== ''){
@@ -25,7 +31,7 @@
 
     </head>
     <body class="
-    article-page 
+    article-page has-toc
 ">
     <script>
         (function() {
@@ -51,128 +57,22 @@
 </script>
 <div class="container main-container flex 
     
-        on-phone--column extended
+        extended
     
 ">
     
-        <aside class="sidebar left-sidebar sticky">
-    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
-        <span class="hamburger-box">
-            <span class="hamburger-inner"></span>
-        </span>
-    </button>
-
-    <header class="site-info">
-        
-            
-            <figure class="site-avatar">
-                
-                    
-                    
-                    
-                        
-                        <img src="/img/avatar_hu71fc3898bde3464d50a00f65e63c7ec2_517570_300x0_resize_box_3.png" width="300"
-                            height="354" class="site-logo" loading="lazy" alt="Avatar">
-                    
-                
-
-                
-            </figure>
-            
-        
-        
-        <h1 class="site-name"><a href="/">My Blog</a></h1>
-        <h2 class="site-description"></h2></header>
-
-    <ol class="menu" id="main-menu">
-        
-        
-        
-
-        <li >
-            <a href='/page/about/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <div id="article-toolbar">
+            <a href="/" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="7" r="4" />
-  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+  <polyline points="15 6 9 12 15 18" />
 </svg>
 
 
 
-                
-                <span>About</span>
+                <span>Back</span>
             </a>
-        </li>
-        
-        
-
-        <li >
-            <a href='/page/archives/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <rect x="3" y="4" width="18" height="4" rx="2" />
-  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
-  <line x1="10" y1="12" x2="14" y2="12" />
-</svg>
-
-
-
-                
-                <span>Archives</span>
-            </a>
-        </li>
-        
-        
-
-        <li >
-            <a href='/page/search/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="10" cy="10" r="7" />
-  <line x1="21" y1="21" x2="15" y2="15" />
-</svg>
-
-
-
-                
-                <span>Search</span>
-            </a>
-        </li>
-        
-
-        
-            <li id="dark-mode-toggle">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="8" cy="12" r="2" />
-  <rect x="2" y="6" width="20" height="12" rx="6" />
-</svg>
-
-
-
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="16" cy="12" r="2" />
-  <rect x="2" y="6" width="20" height="12" rx="6" />
-</svg>
-
-
-
-                <span>Dark Mode</span>
-            </li>
-        
-    </ol>
-</aside>
-
+        </div>
     
 <main class="main full-width">
     <article class="main-article">
@@ -182,7 +82,7 @@
     
 
     <h2 class="article-title">
-        <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/4-7mosfet%E5%BC%80%E5%85%B3%E7%94%B5%E8%B7%AF/">4.7MOSFET开关电路</a>
+        <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/4-7mosfet%E5%BC%80%E5%85%B3%E7%94%B5%E8%B7%AF/">4.7 MOSFET开关电路</a>
     </h2>
 
     
@@ -215,7 +115,7 @@
 
 
                 <time class="article-time--reading">
-                    0 minute read
+                    3 minute read
                 </time>
             </div>
         
@@ -225,7 +125,393 @@
 </header>
 
     <section class="article-content">
-    
+    <p>虽然 BJT 和 JFET 都能用于开关电路，但 MOSFET 是目前大多数开关应用的首选器件。 MOSFET 具有很低的导通电阻，非常高的断开电阻，很快的切换时间，因此它是极好的开关器件。有两种基本类型的 MOSFET 开关电路:模拟和数字。本节将介绍数字和模拟 MOSFET 开关电路。</p>
+<p>学完本节后，你应该掌握以下内容:</p>
+<ul>
+<li>描述如何将 MOSFET 用于模拟和数字开关电路中
+<ul>
+<li>解释如何让 MOSFET 像开关一样工作</li>
+<li>描述 MOSFET 模拟开关</li>
+<li>讨论模拟开关应用</li>
+<li>描述开关电容电路</li>
+<li>描述 MOSFET 如何在数字开关电路中应用</li>
+<li>讨论互补 MOS(CMOS) 逻辑</li>
+<li>解释几种 CMOS数字门的工作原理</li>
+<li>讨论几种功率 MOSFET 结构</li>
+</ul>
+</li>
+</ul>
+<h3 id="471--mosfet-开关工作原理">4.7.1  MOSFET 开关工作原理</h3>
+<p><img src="https://s2.loli.net/2023/10/09/SBnJk6CflsuM5oW.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog4-52.png"
+	
+	
+>
+$$
+图4-52~~~在负载线上的开关工作
+$$
+通常将 E-MOSFET 用于开关应用，因为其具有阈值特性，$V_{GS(th)}$。当栅源电压小于阈值时，MOSFET 处于关闭状态。当栅源电压大于阈值时， MOSFET 导通。当 $V_{GS}$ 在 $V_{GS(th)}$ 与 $V_{GS(on)}$ 之间变化时， MOSFET 就以开关方式工作，如图4-52所示。在关闭状态， $V_{GS}$ &lt; $V_{GS(th)}$ ，器件工作在负载线的下端，相当于一个打开的开关(非常高的 $R_{DS}$)。当$V_{GS}$ 足够大于 $V_{GS(th)}$ 时，器件工作在负载线上端的可变电阻区，相当于一个闭合的开关(非常低的 $R_{DS}$）。
+<img src="https://s2.loli.net/2023/10/09/mnzW2TpFMtJwXvV.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog4-53.png"
+	
+	
+></p>
+<p>$$
+a) ~n沟道MOSFET和等效开关~~~~~~~~~~~~~~~~~~~~~~~~~~~~~b) ~p沟道MOSFET和等效开关
+$$</p>
+<p>$$
+图4-53~~~MOSFET开关
+$$
+理想开关参考图4-53a。当 n 沟道 MOSFET 的栅极电压为 ＋V时，栅极电压相对于源极电压为正，并比源极电压高超过 $V_{GS(th)}$ 的值。此时，MOSFET 导通，漏极与源极之间相当于闭合开关。当栅极电压为零时，栅源电压为零。此时 MOSFET 处于关闭状态，漏极与源极之间的相当于打开的开关。</p>
+<p>参考图4-53b。当 p 沟道MOSFET的栅极电压为 0 时，栅极电压相对于源极电压为负，并且两者绝对差值超过 $V_{GS(th)}$。MOSFET 导通，漏极与源极之间相当于闭合的开关。当栅极电压为 +V 时，栅源电压为零。MOSFET 处于关闭状态，漏极与源极之间相当于打开的开关。</p>
+<h3 id="472模拟开关">4.7.2模拟开关</h3>
+<p>MOSFET 通常用于模拟信号开关。一般来讲，一个加到漏极上的信号可以通过栅极上的电压来接通或断开与源极的相连。主要限制在于源极的信号大小不能导致栅源电压小于 $V_{GS(th)}$ .
+<img src="https://s2.loli.net/2023/10/09/f9R2NXkpqAiGhK1.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog4-54.png"
+	
+	
+>
+$$
+a)~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~b)
+$$
+$$
+图4-54 ~~~n沟道MOSFET模拟开关的工作原理
+$$
+一个基本的 n 沟道 MOSFET 模拟开关如图4-54所示。当由于正 $V_{GS}$ 使得 MOSFET导通时，漏极上的信号连接到源极，当 $V_{GS}$ 为 0 时，漏极上的信号与源极断开，如图4-54所示。</p>
+<p><img src="https://s2.loli.net/2023/10/09/mruVLz7H98ReQnk.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog4-55.png"
+	
+	
+>
+$$
+图4-55~~~信号幅度被V_{GS(th)}限制
+$$
+当模拟开关导通时，如图4-55所示，在信号的负峰值栅源电压有最小值。 $V_G$ 与 $V_{p(out)}$ 的差值是信号为负峰值瞬时时刻的栅源电压，它必须等于或大于 $V_{GS(th)}$ 以保证 MOSFET 处于导通工作。
+$$
+V_{GS}=V_G-V_{p(out)}\geq V_{GS(th)}
+$$</p>
+<h3 id="473模拟开关应用">4.7.3模拟开关应用</h3>
+<p>采样电路模拟开关的应用之一是模数转换。模拟开关用于采样保持电路，来以特定速率对输入信号进行采样。然后每个采样信号值暂时存储在电容中，直到被一个模-数转换器(ADC)转换成数字编码。为了实现这个目标，MOSFET 通过加在栅极上的脉冲在输入信号的一个周期内的短时间内导通。基本工作原理如图4-56所示，为清晰起见，其中只显示了几个采样。
+<img src="https://s2.loli.net/2023/10/09/tJ7C9Ewe6ZI1ysi.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog4-56.png"
+	
+	
+>
+$$
+a）电路行为~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~b）波形图
+$$</p>
+<p>$$
+图4-56~~~模拟开关作为采样电路
+$$
+信号采样以及能从采样的信号中重构的最小速率必须大于信号最大频率的两倍。这最小采样频率称为<code>奈奎斯特频率</code>。
+$$
+f_{sample(min)}&gt;2f_{signal(max)}
+$$
+当栅极脉冲为高电平时，开关闭合，该脉冲期间的一小部分输入波形出现在输出上。当栅极脉冲为0V时，开关断开，输出也为0V。</p>
+<p><img src="https://s2.loli.net/2023/10/09/A9G7tMEIBYduy2V.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog4_57.png"
+	
+	
+>
+$$
+图4-57~~~模拟复用器交替采样两个信号，并在单一输出线上实现交错传输
+$$
+<strong>模拟复用器模</strong> 拟复用器用于需要将两路或多路信号传输到同一目标的应用中。例如，图4-57所示为一双通道模拟采样复用器。两个 MOSFET 交替导通和截止，这样信号采样先后连接到输出。脉冲信号加到开关 A 的栅极，反相脉冲信号加到开关 B 的栅极。一个称为反相器的数字电路用来实现这个目标。当脉冲为高电平时，开关 A 闭合，开关 B 断开。当脉冲为低电平时，开关 B 闭合，开关 A 断开。这称为时分复用，因为脉冲为高电平的时间间隔内，信号 A 出现在输出，脉冲为低电平的时间间隔内，信号 B 出现在输出。也就是说，这两个信号在时间上交错以便在一条线上进行传输。</p>
+<p><strong>开关电容电路</strong> <code>MOSFET 的另一应用是开关电容电路</code>，它通常用于称为模拟信号处理器的集成电路可编程模拟器件中。<code>因为电容在集成电路中比电阻更容易实现，所以它用来模拟电阻</code>。此外，电容在芯片上占据的空间比IC电阻也要少，也不会消耗功率。许多类型的模拟电路利用电阻来确定电压增益和其他特性，通过开关电容模拟电阻，可以实现模拟电路的动态编程。</p>
+<p><img src="https://s2.loli.net/2023/10/09/qs7J59aiVKtwbzd.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog4_58.png"
+	
+	
+>
+$$
+图4-58~~~一种IC放大器
+$$</p>
+<p>例如，在后面会学到的一种IC放大器电路中，需要两个外部电阻，如图4-58所示。这些电阻值确定了放大器的电压增益为 $A_v=R_2/R_1$。</p>
+<p><img src="https://s2.loli.net/2023/10/09/8iawn93UfO7YWt1.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog4_59.png"
+	
+	
+>
+$$
+图4-59~~~开关电容模拟电阻
+$$</p>
+<p>利用机械开关类推(把 MOSFET实际上当成开关)，<code>可以使用开关电容来模拟一个电阻</code>，如图4-59所示。开关 1 和开关 2 以一定频率交替闭合和断开，来对电容进行充电或放电，这一过程取决于电压源的值。对于图4-58中的 $R_1，V_{in}$和 $V_1$ 分别用 $V_A$ 和 $V_B$ 表示。对于 $R_2，V_1$和 $V_{out}$ 分别用 $V_A$ 和 $V_B$ 表示。</p>
+<p>可以看出<code>电容模拟电阻的阻值取决于开关闭合断开的频率和电容容值</code>。
+$$
+R=\frac{1}{fC}
+$$
+<code>通过改变频率，可以改变有效阻值</code>。</p>
+<p><img src="https://s2.loli.net/2023/10/09/ewqFPLySb127xgl.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog4_60.png"
+	
+	
+>
+$$
+图4-60~~~图4-58中IC放大器，其中电阻用开关电容电路代替
+$$</p>
+<p>互补 E-MOSFET 和电容可以代替放大器中的电阻，如图4-60所示。<strong>当 $Q_1$ 导通时， $Q_2$ 截止, 反之亦然。选取合适的 $f_1$ 与 $C_1$ 来得到所需的 $R_1$ 值</strong>。同样，$f_2$ 和 $C_2$ 提供所需的 $R_2$ 值。要编程改变放大器的增益，改变频率就可以。</p>
+<h3 id="474-cmos数字开关应用">4.7.4 CMOS:数字开关应用</h3>
+<p><img src="https://s2.loli.net/2023/10/09/Wmu6J8LiUEQswBo.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog4_61.png"
+	
+	
+>
+$$
+a)~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~b)~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~c)
+$$
+$$
+图4-61 ~~~CMOS反相器原理
+$$
+CMOS 将 n 沟道与 p 沟道 E-MOSFET 以串联方式组合在一起，如图4-61a所示。栅极上的输入电压为 0V 或者 $V_{DD}$。注意， $V_{DD}$ 和地都连接到两个晶体管的源极。为避免混淆，规定 $V_{DD}$ 为正电压，连接到 p 沟道器件的源极。当 $V_{in}=0V$ 时，$Q_1$ 导通，$Q_2$ 截止，如图4-61b所示。由于 $Q_1$ 相当于闭合的开关，因此输出约为 $V_{DD}$。当 $V_{in}=V_{DD}$ 时，$Q_2$ 导通，$Q_1$ 截止，如图4-61c所示。由于 $Q_2$ 相当于闭合的开关，因此输出本质上为接地(0V)。</p>
+<p><code>CMOS的主要优点是它的直流消耗功率非常小</code>。由于两个 MOSFET串联，且其中一个始终处于断开状态，因此在静止状态时，直流电源中基本上没有电流流过。<code>当 MOSFET 开关时，只有在非常短的时间内会有电流，因为只有在这个极短的状态转变的时间间隔内,两个晶体管会同时导通</code>,</p>
+<p><strong>反相器</strong> 注意，图4-61所示的电路实际上会使输入反相，因为当输人为 0V 或者低电平时，输出为 $V_{DD}$ 或者高电平。当输入为 $V_{DD}$ 或者高电平时，输出为 0V 或低电平。因此，该电路在数字电子中称为<code>反相器</code>。
+<img src="https://s2.loli.net/2023/10/09/y71cfNlLVMpK6AB.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog4_62.png"
+	
+	
+>
+$$
+a)
+$$</p>
+<p>$$
+图4-62~~~CMOS 与非门工作原理
+$$</p>
+<p><strong>与非门</strong> 在图4-62a中，在 CMOS 对的基础上增加了两个额外的 MOSFET 和第二个输入，得到一个称为与非门的数字电路。$Q_4$ 与 $Q_1$ 并联，$Q_3$ 与 $Q_2$ 串联。当两个输入 $V_A$ 和 $V_B$ 均为 0 时，$Q_1$ 和 $Q_4$ 导通，而 $Q_2$ 和 $Q_3$  截止，使得 $V_{out}=V_{DD}$。当两个输入均等于 $V_{DD}$ 时，$Q_1$ 和 $Q_4$ 截止，而 $Q_2$ 和 $Q_3$ 导通，使得$V_{out}=0$。可以验证，当两个输入不同，即一端为 $V_{DD}$ 另一端为0时，输出等于 $V_{DD}$。工作状态可总结为如图4-62b中的表，并表述如下:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">$V_A$</th>
+<th style="text-align:center">$V_B$</th>
+<th style="text-align:center">$Q_1$</th>
+<th style="text-align:center">$Q_2$</th>
+<th style="text-align:center">$Q_3$</th>
+<th style="text-align:center">$Q_4$</th>
+<th style="text-align:center">$V_{out}$</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">导通</td>
+<td style="text-align:center">截止</td>
+<td style="text-align:center">截止</td>
+<td style="text-align:center">导通</td>
+<td style="text-align:center">$V_{DD}$</td>
+</tr>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">$V_{DD}$</td>
+<td style="text-align:center">截止</td>
+<td style="text-align:center">截止</td>
+<td style="text-align:center">截止</td>
+<td style="text-align:center">导通</td>
+<td style="text-align:center">$V_{DD}$</td>
+</tr>
+<tr>
+<td style="text-align:center">$V_{DD}$</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">导通</td>
+<td style="text-align:center">截止</td>
+<td style="text-align:center">截止</td>
+<td style="text-align:center">截止</td>
+<td style="text-align:center">$V_{DD}$</td>
+</tr>
+<tr>
+<td style="text-align:center">$V_{DD}$</td>
+<td style="text-align:center">$V_{DD}$</td>
+<td style="text-align:center">截止</td>
+<td style="text-align:center">导通</td>
+<td style="text-align:center">导通</td>
+<td style="text-align:center">截止</td>
+<td style="text-align:center">0</td>
+</tr>
+</tbody>
+</table>
+<p><strong>当 $V_A$ 与 $V_B$ 为高电平时，输出为低电平; 否则，输出为高电平。</strong></p>
+<p><img src="https://s2.loli.net/2023/10/09/eBHEyi9IfJOsDQS.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog4_63.png"
+	
+	
+>
+$$
+图4-63~~~CMOS或非门工作原理
+$$</p>
+<p><strong>或非门</strong> 在图4-63a中，在 CMOS 对的基础上增加了两个额外的 MOSFET 和第二个输入端，得到一个称为或非门的数字电路。$Q_4$ 与 $Q_2$ 并联，$Q_3$ 与 $Q_1$ 串联。当两个输入 $V_A $和 $V_B$均为0时， $Q_1$和 $Q_3$导通，而 $Q_2$和 $Q_4$截止，使得 $V_{out} =V_{DD}$。当两个输入均等于 $V_{DD}$ 时，$Q_1$ 和 $Q_3$ 截止，而 $Q_2$ 和 $Q_4$ 导通，使得 $V_{out}=0 $。可以验证，当输入不同，即一端为 $V_{DD}$ 另一端为 0 时，输出等于 0。工作状态可总结为图4-63b中的表，并表述如下:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">$V_A$</th>
+<th style="text-align:center">$V_B$</th>
+<th style="text-align:center">$Q_1$</th>
+<th style="text-align:center">$Q_2$</th>
+<th style="text-align:center">$Q_3$</th>
+<th style="text-align:center">$Q_4$</th>
+<th style="text-align:center">$V_{out}$</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">导通</td>
+<td style="text-align:center">截止</td>
+<td style="text-align:center">导通</td>
+<td style="text-align:center">截止</td>
+<td style="text-align:center">$V_{DD}$</td>
+</tr>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">$V_{DD}$</td>
+<td style="text-align:center">截止</td>
+<td style="text-align:center">导通</td>
+<td style="text-align:center">导通</td>
+<td style="text-align:center">截止</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:center">$V_{DD}$</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">导通</td>
+<td style="text-align:center">截止</td>
+<td style="text-align:center">导通</td>
+<td style="text-align:center">截止</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:center">$V_{DD}$</td>
+<td style="text-align:center">$V_{DD}$</td>
+<td style="text-align:center">截止</td>
+<td style="text-align:center">导通</td>
+<td style="text-align:center">截止</td>
+<td style="text-align:center">导通</td>
+<td style="text-align:center">0</td>
+</tr>
+</tbody>
+</table>
+<p><strong>当 $V_A$ 或 $V_B$ 或二者均为高电平时，输出为低电平; 否则，输出为高电平</strong>。</p>
+<h3 id="475-功率开关应用中的-mosfet">4.7.5 功率开关应用中的 MOSFET</h3>
+<p>在大多数高功率开关应用中，功率 MOSFET 大量代替了 BJT，其中原因很多。MOSFET 截止更快，不需要驱动电流，导通电阻更低(消耗功率更小)，并且具有正温度系数——变热时电阻增大。这意味着与 BJT(具有负温度系数)相比，MOSFET 更不容易发生热漂移。功率 MOSFET 用于电机控制，直流到交流和直流到直流转换，负载开关，或其他需要高功率和精确数字控制的任何场合。例如，2SK4124的额定漏源电压($V_{DSS}$)为500V，额定连续漏极电流为20A，脉冲漏极电流60A。若安装合适的散热器，则额定功率可以达到170W。</p>
+<h3 id="476-功率-mosfet-结构">4.7.6 功率 MOSFET 结构</h3>
+<p><img src="https://s2.loli.net/2023/10/09/XeVz65uYQFwjJdH.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog4-64.png"
+	
+	
+>
+$$
+图4-64~~~传统E-MOSFET结构横截面。白色区域为沟道
+$$
+传统的增强型 MOSFET 具有薄且长的横向沟道，如图4-64的结构图所示。其中<code>红色箭头</code>表示多数载流子从<code>源极到漏极</code>的移动。这使得漏源电阻相当高，并限制了 E-MOSFET 的低功耗应用。当栅极电压为正时，在源极和漏极之间靠近栅极处形成沟道，如图4-64所示。</p>
+<p><strong>横向扩散 MOSFET(LDMOSFET)</strong> LDMOSFET 具有横向沟道结构，是一种用于功率应用的增强型 MOSFET。与传统 E-MOSFET 相比，器件在漏极和源极间的沟道更短。沟道更短使得电阻更小，因此允许更大的电压和电流。</p>
+<p><img src="https://s2.loli.net/2023/10/09/JS9Ig4NPe1wjfUs.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog4-65.png"
+	
+	
+>
+$$
+图4-65 ~~~LDMOSFET横向沟道结构横截面
+$$
+图4-65给出了 LDMOSFET 的基本结构。当栅极为正时，在轻掺杂的源极和 $n^-$ 区域之间的 p 层内会感应出一个很短的 n 沟道。多数载流子通过 n 区域和感应沟道从源极移动到漏极，如图4-65所示。</p>
+<p><strong>VMOSFET</strong> V形槽MOSFET是另一种用于更高功率的E-MOSFET，它利用垂直沟道结构，实现了漏极与源极之间更短、更宽且电阻更低的沟道。这样的沟道能允许更大的电流，从而允许更大的功耗。频率响应也有所改善。</p>
+<p><img src="https://s2.loli.net/2023/10/09/D8r6HfVaey7NTUj.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog4-66.png"
+	
+	
+>
+$$
+图4-66~~~VMOSFET垂直沟道结构的横截面
+$$
+<strong>VMOSFET</strong> 顶部有两个源极，一个栅极，底部有一个漏极，如图4-66 所示。在漏极($n^+$ 衬底，其中 $n^+$ 意味着比 $n^-$ 更高的掺杂)与源极之间的 V 形槽的两侧垂直感应出沟道。沟道长度由层的厚度决定，而厚度由掺杂浓度和扩散时间决定。</p>
+<p><img src="https://s2.loli.net/2023/10/09/wFTsWLeIHBiA79P.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="analog4-67.png"
+	
+	
+>
+$$
+图4-67~~~TMOSFET垂直沟道结构的横截面
+$$
+<strong>TMOSFET</strong> TMOSFET的垂直沟道结构如图4-67所示。栅极结构被嵌入到二氧化硅层中，源极覆盖了整个表面区域。漏极位于底部。TMOSFET比VMOSFET具有更高的封装密度，同时保持了短垂直沟道的优点。</p>
+
 </section>
 
 
@@ -238,9 +524,44 @@
     </section>
 
 
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
     </footer>
 
 
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css"integrity="sha384-RZU/ijkSsFbcmivfdRBQDtwuwVqK7GMOw6IMvKyeWL2K5UAlyp6WonmB8m7Jd0Hn"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js"integrity="sha384-pK1WpvzWVBQiP0/GjnvRxV4mOb0oxFuyRxJlk6vVw146n3egcN5C925NCP7a7BY8"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js"integrity="sha384-vZTG03m&#43;2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ]
+        });})
+</script>
     
 </article>
 
@@ -258,7 +579,7 @@
         
 
         <div class="article-details">
-            <h2 class="article-title">4.6FET线性放大器</h2>
+            <h2 class="article-title">4.6 FET线性放大器</h2>
         </div>
     </a>
 </article>
@@ -270,7 +591,7 @@
         
 
         <div class="article-details">
-            <h2 class="article-title">4.5MOSFET偏置</h2>
+            <h2 class="article-title">4.5 MOSFET偏置</h2>
         </div>
     </a>
 </article>
@@ -282,7 +603,7 @@
         
 
         <div class="article-details">
-            <h2 class="article-title">4.4MOSFET特性</h2>
+            <h2 class="article-title">4.4 MOSFET 特性</h2>
         </div>
     </a>
 </article>
@@ -294,7 +615,7 @@
         
 
         <div class="article-details">
-            <h2 class="article-title">4.3JFET偏置</h2>
+            <h2 class="article-title">4.3 JFET偏置</h2>
         </div>
     </a>
 </article>
@@ -306,7 +627,7 @@
         
 
         <div class="article-details">
-            <h2 class="article-title">4.2JFET特性</h2>
+            <h2 class="article-title">4.2 JFET特性</h2>
         </div>
     </a>
 </article>
@@ -324,7 +645,7 @@
     data-app-id="d44db3f9-a0ff-4551-a44d-316afd2e5835"
     data-page-id="9e9d67217b043e1a83b1dbb703674443"
     data-page-url="https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/4-7mosfet%E5%BC%80%E5%85%B3%E7%94%B5%E8%B7%AF/"
-    data-page-title="4.7MOSFET开关电路"></div>
+    data-page-title="4.7 MOSFET开关电路"></div>
 <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
 
 <script>
@@ -436,6 +757,41 @@
             >
 
             </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">Table of contents</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#471--mosfet-开关工作原理">4.7.1  MOSFET 开关工作原理</a></li>
+        <li><a href="#472模拟开关">4.7.2模拟开关</a></li>
+        <li><a href="#473模拟开关应用">4.7.3模拟开关应用</a></li>
+        <li><a href="#474-cmos数字开关应用">4.7.4 CMOS:数字开关应用</a></li>
+        <li><a href="#475-功率开关应用中的-mosfet">4.7.5 功率开关应用中的 MOSFET</a></li>
+        <li><a href="#476-功率-mosfet-结构">4.7.6 功率 MOSFET 结构</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                </div>
+            </section>
+        </aside>
     
 
         </div>

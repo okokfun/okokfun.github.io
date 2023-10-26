@@ -51,7 +51,7 @@ void print(){} template &amp;lt;typename T, typename... Types&amp;gt; void print
     <item>
       <title>C&#43;&#43;线程池</title>
       <link>https://okokfun.github.io/post/c&#43;&#43;/c-%E7%BA%BF%E7%A8%8B%E6%B1%A0/</link>
-      <pubDate>Fri, 24 Dec 2021 17:01:29 +0000</pubDate>
+      <pubDate>Fri, 24 Dec 2021 17:01:29 +0800</pubDate>
       
       <guid>https://okokfun.github.io/post/c&#43;&#43;/c-%E7%BA%BF%E7%A8%8B%E6%B1%A0/</guid>
       <description>C++线程池 任务类 #pragma once #include &amp;lt;mutex&amp;gt; #include &amp;lt;queue&amp;gt; // 定义任务结构体 using callback = void (*)(void *); struct Task { Task() { this-&amp;gt;function = nullptr; this-&amp;gt;arg = nullptr; } Task(callback f, void *arg) { this-&amp;gt;function = f; this-&amp;gt;arg = arg; } callback function; void *arg; }; class TaskQueue { public: TaskQueue(); ~TaskQueue(); // 添加任务 void addTask(Task task); void addTask(callback f, void *arg); // 取出一个任务 Task getTask(); // 判断队列任务是否为空 inline bool empty() { return m_taskQ.</description>
