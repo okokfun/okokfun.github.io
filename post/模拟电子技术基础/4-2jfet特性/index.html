@@ -1,32 +1,17 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='本节将介绍 JFET 是如何作为电压控制、恒流器件工作的，也将讨论漏极特性曲线和跨导曲线，以及 JFET 的截止、夹断与 JFET 的输入电阻和电容等内容。
-学完本节后，你应该掌握以下内容:
-描述结型场效应管(JFET)的结构和工作原理 画出 n 沟道或 p 沟道 JFET 的符号 解释 JFET 的漏极特性曲线，包括可变电阻区和恒流区 解释参数 $g_m、I_{DSS} 、I_{GSS} 、C_{iss} 、V_{GS(off)}和 V_P$ 描述 JFET 的跨导曲线并且解释它与漏极特性曲线的关系 4.2.1 JFET 工作原理 $$ a) n沟道~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~b)p沟道 $$
-$$ 图4-2~~~~~两种JFET的基本结构 $$ 图4-2a给出了 n 沟道结型场效应管(JFET)的基本结构。电线连接到 n 沟道的两端，在图4-2中漏极位于上端，源极位于下端。沟道是一个导体: 对 n 沟道 JFET 而言,电子是载流子;对 p 沟道 JFET 而言，空穴是载流子。在没有外加电压的情况下，沟道在两个方向都能导通电流。
-在 n 沟道器件中，将 p 型材料掺杂到 n 沟道中来形成 pn 结，并连接到栅极。图 4-2a 显示的是将 p 型材料掺杂进两个区域，这两个区域一般由制造商在内部进行连接形成单个栅极。(一种专用JFET，也称为双栅 JFET，有独立的电极连接到两个区域。)在结构图中，为了简单起见，两个 p 型区域之间的连接被省略掉，只给出到其中一个区域的连接。图4-2b给出了力沟道 JFET。
-如前所述，JFET 中的沟道是栅极和源极之间的一个窄导电通路。沟道的宽度, 也就是沟道的导电能力，是由栅极电压控制的。当没有栅极电压时，沟道能通过最大的电流。当栅极施加反向偏置时，沟道宽度变窄，导电能力下降。'><title>4.2 JFET特性</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='本节将介绍 JFET 是如何作为电压控制、恒流器件工作的，也将讨论漏极特性曲线和跨导曲线，以及 JFET 的截止、夹断与 JFET 的`输入电阻和电容等内容。'><title>4.2 JFET特性</title>
 
 <link rel='canonical' href='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/4-2jfet%E7%89%B9%E6%80%A7/'>
 
 <link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='4.2 JFET特性'>
-<meta property='og:description' content='本节将介绍 JFET 是如何作为电压控制、恒流器件工作的，也将讨论漏极特性曲线和跨导曲线，以及 JFET 的截止、夹断与 JFET 的输入电阻和电容等内容。
-学完本节后，你应该掌握以下内容:
-描述结型场效应管(JFET)的结构和工作原理 画出 n 沟道或 p 沟道 JFET 的符号 解释 JFET 的漏极特性曲线，包括可变电阻区和恒流区 解释参数 $g_m、I_{DSS} 、I_{GSS} 、C_{iss} 、V_{GS(off)}和 V_P$ 描述 JFET 的跨导曲线并且解释它与漏极特性曲线的关系 4.2.1 JFET 工作原理 $$ a) n沟道~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~b)p沟道 $$
-$$ 图4-2~~~~~两种JFET的基本结构 $$ 图4-2a给出了 n 沟道结型场效应管(JFET)的基本结构。电线连接到 n 沟道的两端，在图4-2中漏极位于上端，源极位于下端。沟道是一个导体: 对 n 沟道 JFET 而言,电子是载流子;对 p 沟道 JFET 而言，空穴是载流子。在没有外加电压的情况下，沟道在两个方向都能导通电流。
-在 n 沟道器件中，将 p 型材料掺杂到 n 沟道中来形成 pn 结，并连接到栅极。图 4-2a 显示的是将 p 型材料掺杂进两个区域，这两个区域一般由制造商在内部进行连接形成单个栅极。(一种专用JFET，也称为双栅 JFET，有独立的电极连接到两个区域。)在结构图中，为了简单起见，两个 p 型区域之间的连接被省略掉，只给出到其中一个区域的连接。图4-2b给出了力沟道 JFET。
-如前所述，JFET 中的沟道是栅极和源极之间的一个窄导电通路。沟道的宽度, 也就是沟道的导电能力，是由栅极电压控制的。当没有栅极电压时，沟道能通过最大的电流。当栅极施加反向偏置时，沟道宽度变窄，导电能力下降。'>
+<meta property='og:description' content='本节将介绍 JFET 是如何作为电压控制、恒流器件工作的，也将讨论漏极特性曲线和跨导曲线，以及 JFET 的截止、夹断与 JFET 的`输入电阻和电容等内容。'>
 <meta property='og:url' content='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/4-2jfet%E7%89%B9%E6%80%A7/'>
 <meta property='og:site_name' content='My Blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Analog' /><meta property='article:published_time' content='2023-07-14T17:37:26&#43;00:00'/><meta property='article:modified_time' content='2023-07-14T17:37:26&#43;00:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Analog' /><meta property='article:published_time' content='2023-07-14T17:37:26&#43;08:00'/><meta property='article:modified_time' content='2023-07-14T17:37:26&#43;08:00'/>
 <meta name="twitter:title" content="4.2 JFET特性">
-<meta name="twitter:description" content="本节将介绍 JFET 是如何作为电压控制、恒流器件工作的，也将讨论漏极特性曲线和跨导曲线，以及 JFET 的截止、夹断与 JFET 的输入电阻和电容等内容。
-学完本节后，你应该掌握以下内容:
-描述结型场效应管(JFET)的结构和工作原理 画出 n 沟道或 p 沟道 JFET 的符号 解释 JFET 的漏极特性曲线，包括可变电阻区和恒流区 解释参数 $g_m、I_{DSS} 、I_{GSS} 、C_{iss} 、V_{GS(off)}和 V_P$ 描述 JFET 的跨导曲线并且解释它与漏极特性曲线的关系 4.2.1 JFET 工作原理 $$ a) n沟道~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~b)p沟道 $$
-$$ 图4-2~~~~~两种JFET的基本结构 $$ 图4-2a给出了 n 沟道结型场效应管(JFET)的基本结构。电线连接到 n 沟道的两端，在图4-2中漏极位于上端，源极位于下端。沟道是一个导体: 对 n 沟道 JFET 而言,电子是载流子;对 p 沟道 JFET 而言，空穴是载流子。在没有外加电压的情况下，沟道在两个方向都能导通电流。
-在 n 沟道器件中，将 p 型材料掺杂到 n 沟道中来形成 pn 结，并连接到栅极。图 4-2a 显示的是将 p 型材料掺杂进两个区域，这两个区域一般由制造商在内部进行连接形成单个栅极。(一种专用JFET，也称为双栅 JFET，有独立的电极连接到两个区域。)在结构图中，为了简单起见，两个 p 型区域之间的连接被省略掉，只给出到其中一个区域的连接。图4-2b给出了力沟道 JFET。
-如前所述，JFET 中的沟道是栅极和源极之间的一个窄导电通路。沟道的宽度, 也就是沟道的导电能力，是由栅极电压控制的。当没有栅极电压时，沟道能通过最大的电流。当栅极施加反向偏置时，沟道宽度变窄，导电能力下降。"><script>
+<meta name="twitter:description" content="本节将介绍 JFET 是如何作为电压控制、恒流器件工作的，也将讨论漏极特性曲线和跨导曲线，以及 JFET 的截止、夹断与 JFET 的`输入电阻和电容等内容。"><script>
     (function(){
         if(''){
             if (prompt('请输入文章密码') !== ''){
@@ -94,6 +79,10 @@ $$ 图4-2~~~~~两种JFET的基本结构 $$ 图4-2a给出了 n 沟道结型场效
         <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/4-2jfet%E7%89%B9%E6%80%A7/">4.2 JFET特性</a>
     </h2>
 
+    
+    <h3 class="article-subtitle">
+        本节将介绍 JFET 是如何作为电压控制、恒流器件工作的，也将讨论漏极特性曲线和跨导曲线，以及 JFET 的截止、夹断与 JFET 的`输入电阻和电容等内容。
+    </h3>
     
 
     

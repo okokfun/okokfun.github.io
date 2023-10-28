@@ -1,26 +1,17 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='利用前几节学习的 JFET 的相关特性，现在我们将会看到如何对 JFET 进行直流偏置。偏置的目的是选择合适的栅源电压来获得期望的漏源电流。由于栅极反向偏置，因此 BJT 的偏置方式并不适用于 JFET。
-学完本节后，你应该掌握以下内容:
-描述 JFET 的三种偏置方法并解释它们的工作原理 利用`跨导曲线来选择自给偏置电阻的合理值`` 解释分压式偏置或电流源偏置如何产生更稳定的 Q 点 4.3.1JFET的自给偏置 FET 的偏置相对简单。接下来以 n 沟道 JFET 为例。记住，p 沟道 JFET 只需要改变极性。对于 n 沟道 JFET，建立反向偏置需要负的 $V_{GS}$。这可以利用如图4-11所示的自给偏置电路来实现。注意，通过电阻 $R_G$ 接地，将栅极偏置在 0V。虽然反向泄漏电流 $I_{GSS}$ 在 $R_G$ 两端产生一个非常小的电压，但在大多数情况下都可忽略它。可以假设 $R_G$ 上面没有电流流过，两端也没有压降。 $R_G$ 的作用是使得栅极电压稳定在 0V，且不影响之后施加的任何交流信号。由于栅极电流可以忽略， $R_G$ 可以非常大(通常取 1.0M$\Omega$ 甚至更大)，从而对低频交流信号会呈现非常高的输入电阻。
-$$ 图4-11~~~ n沟道JFET的自给偏置 $$ 如果栅极电压为 0，如何获取所需的栅源结的反向偏置? 答案是使源极相对于栅极为正，以达到需要的反向偏置。对于图4-11中的 n 沟道 JFET 而言，$I_D$ 在 $R_S$ 两端产生一个压降(极性如图4-11所示)，使得源极相对于栅极为正。因为 $V_G=0V，V_S=I_DR_S$，所以栅源电压为: $$ V_{GS}=V_G-V_S-I_DR_S $$ 因此有: $$ V_{GS}=-I_DR_S $$ 该结果表明栅源电压为负，得到了所需的反向偏置。在本分析过程中，以 n 沟道 JFET 为例来说明。同样 p 沟道 JFET 也需要反向偏置，但所有电压的极性都和 n 沟道 JFET 中的相反。'><title>4.3 JFET偏置</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='偏置的目的是选择合适的栅源电压来获得期望的漏源电流'><title>4.3 JFET偏置</title>
 
 <link rel='canonical' href='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/4-3jfet%E5%81%8F%E7%BD%AE/'>
 
 <link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='4.3 JFET偏置'>
-<meta property='og:description' content='利用前几节学习的 JFET 的相关特性，现在我们将会看到如何对 JFET 进行直流偏置。偏置的目的是选择合适的栅源电压来获得期望的漏源电流。由于栅极反向偏置，因此 BJT 的偏置方式并不适用于 JFET。
-学完本节后，你应该掌握以下内容:
-描述 JFET 的三种偏置方法并解释它们的工作原理 利用`跨导曲线来选择自给偏置电阻的合理值`` 解释分压式偏置或电流源偏置如何产生更稳定的 Q 点 4.3.1JFET的自给偏置 FET 的偏置相对简单。接下来以 n 沟道 JFET 为例。记住，p 沟道 JFET 只需要改变极性。对于 n 沟道 JFET，建立反向偏置需要负的 $V_{GS}$。这可以利用如图4-11所示的自给偏置电路来实现。注意，通过电阻 $R_G$ 接地，将栅极偏置在 0V。虽然反向泄漏电流 $I_{GSS}$ 在 $R_G$ 两端产生一个非常小的电压，但在大多数情况下都可忽略它。可以假设 $R_G$ 上面没有电流流过，两端也没有压降。 $R_G$ 的作用是使得栅极电压稳定在 0V，且不影响之后施加的任何交流信号。由于栅极电流可以忽略， $R_G$ 可以非常大(通常取 1.0M$\Omega$ 甚至更大)，从而对低频交流信号会呈现非常高的输入电阻。
-$$ 图4-11~~~ n沟道JFET的自给偏置 $$ 如果栅极电压为 0，如何获取所需的栅源结的反向偏置? 答案是使源极相对于栅极为正，以达到需要的反向偏置。对于图4-11中的 n 沟道 JFET 而言，$I_D$ 在 $R_S$ 两端产生一个压降(极性如图4-11所示)，使得源极相对于栅极为正。因为 $V_G=0V，V_S=I_DR_S$，所以栅源电压为: $$ V_{GS}=V_G-V_S-I_DR_S $$ 因此有: $$ V_{GS}=-I_DR_S $$ 该结果表明栅源电压为负，得到了所需的反向偏置。在本分析过程中，以 n 沟道 JFET 为例来说明。同样 p 沟道 JFET 也需要反向偏置，但所有电压的极性都和 n 沟道 JFET 中的相反。'>
+<meta property='og:description' content='偏置的目的是选择合适的栅源电压来获得期望的漏源电流'>
 <meta property='og:url' content='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/4-3jfet%E5%81%8F%E7%BD%AE/'>
 <meta property='og:site_name' content='My Blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Analog' /><meta property='article:published_time' content='2023-07-14T17:37:37&#43;00:00'/><meta property='article:modified_time' content='2023-07-14T17:37:37&#43;00:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Analog' /><meta property='article:published_time' content='2023-07-14T17:37:37&#43;08:00'/><meta property='article:modified_time' content='2023-07-14T17:37:37&#43;08:00'/>
 <meta name="twitter:title" content="4.3 JFET偏置">
-<meta name="twitter:description" content="利用前几节学习的 JFET 的相关特性，现在我们将会看到如何对 JFET 进行直流偏置。偏置的目的是选择合适的栅源电压来获得期望的漏源电流。由于栅极反向偏置，因此 BJT 的偏置方式并不适用于 JFET。
-学完本节后，你应该掌握以下内容:
-描述 JFET 的三种偏置方法并解释它们的工作原理 利用`跨导曲线来选择自给偏置电阻的合理值`` 解释分压式偏置或电流源偏置如何产生更稳定的 Q 点 4.3.1JFET的自给偏置 FET 的偏置相对简单。接下来以 n 沟道 JFET 为例。记住，p 沟道 JFET 只需要改变极性。对于 n 沟道 JFET，建立反向偏置需要负的 $V_{GS}$。这可以利用如图4-11所示的自给偏置电路来实现。注意，通过电阻 $R_G$ 接地，将栅极偏置在 0V。虽然反向泄漏电流 $I_{GSS}$ 在 $R_G$ 两端产生一个非常小的电压，但在大多数情况下都可忽略它。可以假设 $R_G$ 上面没有电流流过，两端也没有压降。 $R_G$ 的作用是使得栅极电压稳定在 0V，且不影响之后施加的任何交流信号。由于栅极电流可以忽略， $R_G$ 可以非常大(通常取 1.0M$\Omega$ 甚至更大)，从而对低频交流信号会呈现非常高的输入电阻。
-$$ 图4-11~~~ n沟道JFET的自给偏置 $$ 如果栅极电压为 0，如何获取所需的栅源结的反向偏置? 答案是使源极相对于栅极为正，以达到需要的反向偏置。对于图4-11中的 n 沟道 JFET 而言，$I_D$ 在 $R_S$ 两端产生一个压降(极性如图4-11所示)，使得源极相对于栅极为正。因为 $V_G=0V，V_S=I_DR_S$，所以栅源电压为: $$ V_{GS}=V_G-V_S-I_DR_S $$ 因此有: $$ V_{GS}=-I_DR_S $$ 该结果表明栅源电压为负，得到了所需的反向偏置。在本分析过程中，以 n 沟道 JFET 为例来说明。同样 p 沟道 JFET 也需要反向偏置，但所有电压的极性都和 n 沟道 JFET 中的相反。"><script>
+<meta name="twitter:description" content="偏置的目的是选择合适的栅源电压来获得期望的漏源电流"><script>
     (function(){
         if(''){
             if (prompt('请输入文章密码') !== ''){
@@ -88,6 +79,10 @@ $$ 图4-11~~~ n沟道JFET的自给偏置 $$ 如果栅极电压为 0，如何获�
         <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/4-3jfet%E5%81%8F%E7%BD%AE/">4.3 JFET偏置</a>
     </h2>
 
+    
+    <h3 class="article-subtitle">
+        偏置的目的是选择合适的栅源电压来获得期望的漏源电流
+    </h3>
     
 
     

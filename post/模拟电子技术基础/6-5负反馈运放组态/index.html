@@ -1,59 +1,17 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='本节将讨论三种利用负反馈稳定增益并增强频率响应的运放连接方式。如前所述，运放的极高开环增益会造成不稳定的情况，因为输入端的小噪声信号能被放大到使运放超出线性区工作。也可能发生不希望的振荡。此外，不同运放器件的开环增益参数可能会相差很大。负反馈将输出的一部分以与输入信号反相的方式返回输入端，能有效减小增益。闭环增益通常远小于开环增益，并与它无关。 学完本节后，你应该掌握以下内容:
-分析三种运放电路组态
-认识同相放大器组态
-确定同相放大器的电压增益
-认识电压跟随器
-认识反相放大器组态
-确定反相放大器的电压增益
-6.5.1 闭环电压增益 $A_{cl}$ 闭环电压增益是带有负反馈的运放的电压增益。放大器电路包括运放和一个外部反馈网络，它将输出与反相输人端相连。那么闭环电压增益由反馈网络的元器件值决定，并能由它们精确控制。
-6.5.2 同相放大器 图6-20所示是运放的一种闭环连接，称为同相放大器。输入信号加到同相(＋)输入端。输出的一部分通过反馈网络加到反相(一)输人端。这构成了负反馈。反馈系数B是返回反相输入端的输出电压的比例，它决定了放大器的增益，正如你将要看到的。反馈电压 $V_f$，可以写为
-$$ V_f = BV_{out} $$
-$$ 图6-20~~~同相放大器 $$
-运放输入端之间的差分电压 $V_{diff}$ 如图6-21所示，可表示成 $$ V_{diff} = V_{in} - V_f $$
-$$ 图6-21~~~差分输入V_{in}-V_f $$
-因为负反馈和高开环增益 $A_{ol}$,输入差分电压非常小。所以，有 $$ V_{in} ≈ V_f $$
-代入可得： $$ V_{in} ≈ BV_{out} $$ 重整理得： $$ \frac{V_{out}}{V_{in}} ≈ \frac{1}{B} $$ 反馈系数由分压网络中的 $R_i$ 与 $R_f$ 决定。对反馈网络使用分压定律，可以从输出电压 $V_{out}$ 中计算得到返回到输入端的部分电压。 $$ V_{in} ≈ BV_{out} ≈ (\frac{R_i}{R_i &#43; R_f})V_{out} $$ 重整理得： $$ \frac{V_{out}}{V_{in}} = (\frac{R_i &#43; R_f}{R_i}) $$ 可表示成： $$ A_{cl(NI)} = \frac{R_f}{R_i} &#43; 1~~~(式子6-6) $$'><title>6.5 负反馈运放组态</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='本节将讨论三种利用负反馈稳定增益并增强频率响应的运放连接方式。'><title>6.5 负反馈运放组态</title>
 
 <link rel='canonical' href='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/6-5%E8%B4%9F%E5%8F%8D%E9%A6%88%E8%BF%90%E6%94%BE%E7%BB%84%E6%80%81/'>
 
 <link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='6.5 负反馈运放组态'>
-<meta property='og:description' content='本节将讨论三种利用负反馈稳定增益并增强频率响应的运放连接方式。如前所述，运放的极高开环增益会造成不稳定的情况，因为输入端的小噪声信号能被放大到使运放超出线性区工作。也可能发生不希望的振荡。此外，不同运放器件的开环增益参数可能会相差很大。负反馈将输出的一部分以与输入信号反相的方式返回输入端，能有效减小增益。闭环增益通常远小于开环增益，并与它无关。 学完本节后，你应该掌握以下内容:
-分析三种运放电路组态
-认识同相放大器组态
-确定同相放大器的电压增益
-认识电压跟随器
-认识反相放大器组态
-确定反相放大器的电压增益
-6.5.1 闭环电压增益 $A_{cl}$ 闭环电压增益是带有负反馈的运放的电压增益。放大器电路包括运放和一个外部反馈网络，它将输出与反相输人端相连。那么闭环电压增益由反馈网络的元器件值决定，并能由它们精确控制。
-6.5.2 同相放大器 图6-20所示是运放的一种闭环连接，称为同相放大器。输入信号加到同相(＋)输入端。输出的一部分通过反馈网络加到反相(一)输人端。这构成了负反馈。反馈系数B是返回反相输入端的输出电压的比例，它决定了放大器的增益，正如你将要看到的。反馈电压 $V_f$，可以写为
-$$ V_f = BV_{out} $$
-$$ 图6-20~~~同相放大器 $$
-运放输入端之间的差分电压 $V_{diff}$ 如图6-21所示，可表示成 $$ V_{diff} = V_{in} - V_f $$
-$$ 图6-21~~~差分输入V_{in}-V_f $$
-因为负反馈和高开环增益 $A_{ol}$,输入差分电压非常小。所以，有 $$ V_{in} ≈ V_f $$
-代入可得： $$ V_{in} ≈ BV_{out} $$ 重整理得： $$ \frac{V_{out}}{V_{in}} ≈ \frac{1}{B} $$ 反馈系数由分压网络中的 $R_i$ 与 $R_f$ 决定。对反馈网络使用分压定律，可以从输出电压 $V_{out}$ 中计算得到返回到输入端的部分电压。 $$ V_{in} ≈ BV_{out} ≈ (\frac{R_i}{R_i &#43; R_f})V_{out} $$ 重整理得： $$ \frac{V_{out}}{V_{in}} = (\frac{R_i &#43; R_f}{R_i}) $$ 可表示成： $$ A_{cl(NI)} = \frac{R_f}{R_i} &#43; 1~~~(式子6-6) $$'>
+<meta property='og:description' content='本节将讨论三种利用负反馈稳定增益并增强频率响应的运放连接方式。'>
 <meta property='og:url' content='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/6-5%E8%B4%9F%E5%8F%8D%E9%A6%88%E8%BF%90%E6%94%BE%E7%BB%84%E6%80%81/'>
 <meta property='og:site_name' content='My Blog'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Analog' /><meta property='article:published_time' content='2023-07-14T18:15:27&#43;08:00'/><meta property='article:modified_time' content='2023-07-14T18:15:27&#43;08:00'/>
 <meta name="twitter:title" content="6.5 负反馈运放组态">
-<meta name="twitter:description" content="本节将讨论三种利用负反馈稳定增益并增强频率响应的运放连接方式。如前所述，运放的极高开环增益会造成不稳定的情况，因为输入端的小噪声信号能被放大到使运放超出线性区工作。也可能发生不希望的振荡。此外，不同运放器件的开环增益参数可能会相差很大。负反馈将输出的一部分以与输入信号反相的方式返回输入端，能有效减小增益。闭环增益通常远小于开环增益，并与它无关。 学完本节后，你应该掌握以下内容:
-分析三种运放电路组态
-认识同相放大器组态
-确定同相放大器的电压增益
-认识电压跟随器
-认识反相放大器组态
-确定反相放大器的电压增益
-6.5.1 闭环电压增益 $A_{cl}$ 闭环电压增益是带有负反馈的运放的电压增益。放大器电路包括运放和一个外部反馈网络，它将输出与反相输人端相连。那么闭环电压增益由反馈网络的元器件值决定，并能由它们精确控制。
-6.5.2 同相放大器 图6-20所示是运放的一种闭环连接，称为同相放大器。输入信号加到同相(＋)输入端。输出的一部分通过反馈网络加到反相(一)输人端。这构成了负反馈。反馈系数B是返回反相输入端的输出电压的比例，它决定了放大器的增益，正如你将要看到的。反馈电压 $V_f$，可以写为
-$$ V_f = BV_{out} $$
-$$ 图6-20~~~同相放大器 $$
-运放输入端之间的差分电压 $V_{diff}$ 如图6-21所示，可表示成 $$ V_{diff} = V_{in} - V_f $$
-$$ 图6-21~~~差分输入V_{in}-V_f $$
-因为负反馈和高开环增益 $A_{ol}$,输入差分电压非常小。所以，有 $$ V_{in} ≈ V_f $$
-代入可得： $$ V_{in} ≈ BV_{out} $$ 重整理得： $$ \frac{V_{out}}{V_{in}} ≈ \frac{1}{B} $$ 反馈系数由分压网络中的 $R_i$ 与 $R_f$ 决定。对反馈网络使用分压定律，可以从输出电压 $V_{out}$ 中计算得到返回到输入端的部分电压。 $$ V_{in} ≈ BV_{out} ≈ (\frac{R_i}{R_i &#43; R_f})V_{out} $$ 重整理得： $$ \frac{V_{out}}{V_{in}} = (\frac{R_i &#43; R_f}{R_i}) $$ 可表示成： $$ A_{cl(NI)} = \frac{R_f}{R_i} &#43; 1~~~(式子6-6) $$"><script>
+<meta name="twitter:description" content="本节将讨论三种利用负反馈稳定增益并增强频率响应的运放连接方式。"><script>
     (function(){
         if(''){
             if (prompt('请输入文章密码') !== ''){
@@ -121,6 +79,10 @@ $$ 图6-21~~~差分输入V_{in}-V_f $$
         <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/6-5%E8%B4%9F%E5%8F%8D%E9%A6%88%E8%BF%90%E6%94%BE%E7%BB%84%E6%80%81/">6.5 负反馈运放组态</a>
     </h2>
 
+    
+    <h3 class="article-subtitle">
+        本节将讨论三种利用负反馈稳定增益并增强频率响应的运放连接方式。
+    </h3>
     
 
     
@@ -403,6 +365,42 @@ $$
                 
                     
 <article class="">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/6-4%E8%B4%9F%E5%8F%8D%E9%A6%88/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">6.4 负反馈</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/6-3%E8%BF%90%E6%94%BE%E6%95%B0%E6%8D%AE%E6%89%8B%E5%86%8C%E4%B8%AD%E7%9A%84%E5%8F%82%E6%95%B0/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">6.3 运放数据手册中的参数</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/6-2%E5%B7%AE%E5%88%86%E6%94%BE%E5%A4%A7%E5%99%A8/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">6.2 差分放大器</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
     <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/6-1%E8%BF%90%E7%AE%97%E6%94%BE%E5%A4%A7%E5%99%A8%E4%BB%8B%E7%BB%8D/">
         
         
@@ -415,48 +413,12 @@ $$
                 
                     
 <article class="">
-    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/2-3%E5%8D%8A%E5%AF%BC%E4%BD%93%E4%BA%8C%E6%9E%81%E7%AE%A1%E7%9A%84%E5%81%8F%E7%BD%AE/">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/5-8ic%E5%8A%9F%E7%8E%87%E6%94%BE%E5%A4%A7%E5%99%A8/">
         
         
 
         <div class="article-details">
-            <h2 class="article-title">2.3 半导体二极管的偏置</h2>
-        </div>
-    </a>
-</article>
-                
-                    
-<article class="">
-    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/2-2pn%E7%BB%93/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">2.2 pn结</h2>
-        </div>
-    </a>
-</article>
-                
-                    
-<article class="">
-    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/2-1%E5%8D%8A%E5%AF%BC%E4%BD%93%E5%8E%9F%E5%AD%90%E7%BB%93%E6%9E%84/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">2.1 半导体原子结构</h2>
-        </div>
-    </a>
-</article>
-                
-                    
-<article class="">
-    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/1-4%E6%94%BE%E5%A4%A7%E5%99%A8/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">1.4 放大器</h2>
+            <h2 class="article-title">5.8 IC功率放大器</h2>
         </div>
     </a>
 </article>

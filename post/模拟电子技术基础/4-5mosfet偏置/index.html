@@ -1,32 +1,17 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='如同 BJT 和 JFET，偏置电路确定合适的直流工作条件，为交流信号提供一个稳定的工作点。MOSFET 的偏置电路与之前介绍的 BJT 和 JFET 的偏置电路类似。特定的偏置电路取决于是否使用一个或者两个电源，以及 MOSFET 的类型(耗尽型或者增强型)。
-学完本节后，你应该掌握以下内容:
-讨论和分析 MOSFET 偏置电路 解释为什么 D-MOSFET 比其他任何类型的晶体管有更多的偏置选择 解释 0 偏置 讨论 E-MOSFET 的三种偏置方法 4.5.1 D-MOSFET偏置 D-MOSFET 在正或负的 $V_{GS}$ 下都能工作。当 $V_{GS}$ 为负时，器件工作在耗尽模式; 当 $V_{GS}$ 为正时，器件工作在增强模式。D-MOSFET 的优点是在这两种模式下都能工作，也是唯一一种具有此特性的晶体管。
-$$ 图4-31~~~~D-MOSFET的零偏置 $$ 零偏置 最基本的偏置方式是使 $V_{GS} =0V$，这样栅极上的交流信号使得栅源电压在该偏置点附近上下变化。图4-31 给出了这种偏置电路。因为该电路非常简单高效，所以它是最常用的 D-MOSFET 偏置方式。工作点设置在耗尽工作和增强工作之间。由于 $V_{GS} =0V$,因此 $I_D=I_{DSS}$，如图 4-31 所示。漏源电压可表示为: $$ V_{DS}=V_{DD}-I_{DSS}R_D $$ $$ a)~包含自给偏置的分压器 ~b）源极偏置~c)电流源偏置 $$
-$$ 图4-33~~~~D-MOSFET的其他偏置电路 $$ 其他偏置方式 D-MOSFET 能工作在耗尽或增强模式。因为这种多功能性，所以之前学习的 BJT 和 JFET 的任何偏置电路都能用于D-MOSFET。图4-33 给出了三种常见的偏置方法，但实际中可能还有其他偏置方法。
-图4-33a 中的偏置电路使用之前介绍的 JFET 的分压式偏置和自给偏置的组合。栅极电压可通过分压公式计算得到，这对所有 FET 器件都是准确的，因为可以忽略负载效应。栅极电压与 JFET 给出的相同(见式(4-5)): $$ V_G=(\frac{R_2}{R_1&#43;R_2})V_{DD} $$ 组成分压电路的电阻通常非常大(在兆欧级)，因为栅极的高输人电阻。其他电极的电压取决于特定的器件参数。'><title>4.5 MOSFET偏置</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='偏置电路确定合适的直流工作条件，为交流信号提供一个稳定的工作点。'><title>4.5 MOSFET偏置</title>
 
 <link rel='canonical' href='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/4-5mosfet%E5%81%8F%E7%BD%AE/'>
 
 <link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='4.5 MOSFET偏置'>
-<meta property='og:description' content='如同 BJT 和 JFET，偏置电路确定合适的直流工作条件，为交流信号提供一个稳定的工作点。MOSFET 的偏置电路与之前介绍的 BJT 和 JFET 的偏置电路类似。特定的偏置电路取决于是否使用一个或者两个电源，以及 MOSFET 的类型(耗尽型或者增强型)。
-学完本节后，你应该掌握以下内容:
-讨论和分析 MOSFET 偏置电路 解释为什么 D-MOSFET 比其他任何类型的晶体管有更多的偏置选择 解释 0 偏置 讨论 E-MOSFET 的三种偏置方法 4.5.1 D-MOSFET偏置 D-MOSFET 在正或负的 $V_{GS}$ 下都能工作。当 $V_{GS}$ 为负时，器件工作在耗尽模式; 当 $V_{GS}$ 为正时，器件工作在增强模式。D-MOSFET 的优点是在这两种模式下都能工作，也是唯一一种具有此特性的晶体管。
-$$ 图4-31~~~~D-MOSFET的零偏置 $$ 零偏置 最基本的偏置方式是使 $V_{GS} =0V$，这样栅极上的交流信号使得栅源电压在该偏置点附近上下变化。图4-31 给出了这种偏置电路。因为该电路非常简单高效，所以它是最常用的 D-MOSFET 偏置方式。工作点设置在耗尽工作和增强工作之间。由于 $V_{GS} =0V$,因此 $I_D=I_{DSS}$，如图 4-31 所示。漏源电压可表示为: $$ V_{DS}=V_{DD}-I_{DSS}R_D $$ $$ a)~包含自给偏置的分压器 ~b）源极偏置~c)电流源偏置 $$
-$$ 图4-33~~~~D-MOSFET的其他偏置电路 $$ 其他偏置方式 D-MOSFET 能工作在耗尽或增强模式。因为这种多功能性，所以之前学习的 BJT 和 JFET 的任何偏置电路都能用于D-MOSFET。图4-33 给出了三种常见的偏置方法，但实际中可能还有其他偏置方法。
-图4-33a 中的偏置电路使用之前介绍的 JFET 的分压式偏置和自给偏置的组合。栅极电压可通过分压公式计算得到，这对所有 FET 器件都是准确的，因为可以忽略负载效应。栅极电压与 JFET 给出的相同(见式(4-5)): $$ V_G=(\frac{R_2}{R_1&#43;R_2})V_{DD} $$ 组成分压电路的电阻通常非常大(在兆欧级)，因为栅极的高输人电阻。其他电极的电压取决于特定的器件参数。'>
+<meta property='og:description' content='偏置电路确定合适的直流工作条件，为交流信号提供一个稳定的工作点。'>
 <meta property='og:url' content='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/4-5mosfet%E5%81%8F%E7%BD%AE/'>
 <meta property='og:site_name' content='My Blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Analog' /><meta property='article:published_time' content='2023-07-14T17:38:02&#43;00:00'/><meta property='article:modified_time' content='2023-07-14T17:38:02&#43;00:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Analog' /><meta property='article:published_time' content='2023-07-14T17:38:02&#43;08:00'/><meta property='article:modified_time' content='2023-07-14T17:38:02&#43;08:00'/>
 <meta name="twitter:title" content="4.5 MOSFET偏置">
-<meta name="twitter:description" content="如同 BJT 和 JFET，偏置电路确定合适的直流工作条件，为交流信号提供一个稳定的工作点。MOSFET 的偏置电路与之前介绍的 BJT 和 JFET 的偏置电路类似。特定的偏置电路取决于是否使用一个或者两个电源，以及 MOSFET 的类型(耗尽型或者增强型)。
-学完本节后，你应该掌握以下内容:
-讨论和分析 MOSFET 偏置电路 解释为什么 D-MOSFET 比其他任何类型的晶体管有更多的偏置选择 解释 0 偏置 讨论 E-MOSFET 的三种偏置方法 4.5.1 D-MOSFET偏置 D-MOSFET 在正或负的 $V_{GS}$ 下都能工作。当 $V_{GS}$ 为负时，器件工作在耗尽模式; 当 $V_{GS}$ 为正时，器件工作在增强模式。D-MOSFET 的优点是在这两种模式下都能工作，也是唯一一种具有此特性的晶体管。
-$$ 图4-31~~~~D-MOSFET的零偏置 $$ 零偏置 最基本的偏置方式是使 $V_{GS} =0V$，这样栅极上的交流信号使得栅源电压在该偏置点附近上下变化。图4-31 给出了这种偏置电路。因为该电路非常简单高效，所以它是最常用的 D-MOSFET 偏置方式。工作点设置在耗尽工作和增强工作之间。由于 $V_{GS} =0V$,因此 $I_D=I_{DSS}$，如图 4-31 所示。漏源电压可表示为: $$ V_{DS}=V_{DD}-I_{DSS}R_D $$ $$ a)~包含自给偏置的分压器 ~b）源极偏置~c)电流源偏置 $$
-$$ 图4-33~~~~D-MOSFET的其他偏置电路 $$ 其他偏置方式 D-MOSFET 能工作在耗尽或增强模式。因为这种多功能性，所以之前学习的 BJT 和 JFET 的任何偏置电路都能用于D-MOSFET。图4-33 给出了三种常见的偏置方法，但实际中可能还有其他偏置方法。
-图4-33a 中的偏置电路使用之前介绍的 JFET 的分压式偏置和自给偏置的组合。栅极电压可通过分压公式计算得到，这对所有 FET 器件都是准确的，因为可以忽略负载效应。栅极电压与 JFET 给出的相同(见式(4-5)): $$ V_G=(\frac{R_2}{R_1&#43;R_2})V_{DD} $$ 组成分压电路的电阻通常非常大(在兆欧级)，因为栅极的高输人电阻。其他电极的电压取决于特定的器件参数。"><script>
+<meta name="twitter:description" content="偏置电路确定合适的直流工作条件，为交流信号提供一个稳定的工作点。"><script>
     (function(){
         if(''){
             if (prompt('请输入文章密码') !== ''){
@@ -94,6 +79,10 @@ $$ 图4-33~~~~D-MOSFET的其他偏置电路 $$ 其他偏置方式 D-MOSFET 能�
         <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/4-5mosfet%E5%81%8F%E7%BD%AE/">4.5 MOSFET偏置</a>
     </h2>
 
+    
+    <h3 class="article-subtitle">
+        偏置电路确定合适的直流工作条件，为交流信号提供一个稳定的工作点。
+    </h3>
     
 
     

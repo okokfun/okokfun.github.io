@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='3.7.1逻辑系列 数字逻辑电路的三个系列是 CMOS(互补金属氧化物半导体)、双极型和 BiCMOS(双CMOS)。这三种电路器件实现内部逻辑功能的类型不同。CMOS 是由场效应管(FET)来实现，双极型(也称为TTL，即晶体管-晶体管逻辑)逻辑使用双极型晶体管来实现，而 BiCMOS 是前面两种的组合。这些逻辑器件系列的基本逻辑功能相同，但是工作参数不同，例如开关速度(传输时间)、功率损耗和抗干扰能力。CMOS 与门和双极型或 BiCMOS 与门的逻辑功能相同。对于所有其他功能的逻辑器件也一样。
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='3.7.1 逻辑系列 数字逻辑电路的三个系列是 CMOS(互补金属氧化物半导体)、双极型和 BiCMOS(双CMOS)。这三种电路器件实现内部逻辑功能的类型不同。CMOS 是由场效应管(FET)来实现，双极型(也称为TTL，即晶体管-晶体管逻辑)逻辑使用双极型晶体管来实现，而 BiCMOS 是前面两种的组合。这些逻辑器件系列的基本逻辑功能相同，但是工作参数不同，例如开关速度(传输时间)、功率损耗和抗干扰能力。CMOS 与门和双极型或 BiCMOS 与门的逻辑功能相同。对于所有其他功能的逻辑器件也一样。
 CMOS 在这些逻辑系列中，CMOS占有主导地位，双极型显然要被淘汰，BiCMOS 具有的逻辑功能类型也有限。在 CMOS 系列中，按不同的使用电压、功率损耗、开关速度和一些其他参数分为许多种类。表3.14列出了更多的常用 CMOS 逻辑电路,按各种器件的电路运行和优化的直流工作电压进行区分。 $$ 表3.14 ~~~CMOS逻辑器件的种类 $$
-名称 描述 $V_{CC}$ AC 高级CMOS 5.0 V ACT 具有双极型兼容输入的高级CMOS 5.0 V AHC 高级高速CMOS 5.0 V AHCT 具有双极型兼容输入的高级高速CMO 5.0 V ALVC 高级低电压CMOS 3.3 V AUC 高级超低电压CMOS 1.8 V AUP 高级超低功耗CMOS 3.3 V AVC 高级甚低电压CMOS 2.5 V CD4000 标准CMOS 5.0 V FCT 快速CMOS技术 5.0 V HC 高速CMOS 5.0 V HCT 具有双极型兼容输入的高速CMOS 5.'><title>3.7固定功能逻辑</title>
+名称 描述 $V_{CC}$ AC 高级CMOS 5.0 V ACT 具有双极型兼容输入的高级CMOS 5.0 V AHC 高级高速CMOS 5.0 V AHCT 具有双极型兼容输入的高级高速CMO 5.0 V ALVC 高级低电压CMOS 3.3 V AUC 高级超低电压CMOS 1.8 V AUP 高级超低功耗CMOS 3.3 V AVC 高级甚低电压CMOS 2.5 V CD4000 标准CMOS 5.0 V FCT 快速CMOS技术 5.0 V HC 高速CMOS 5.0 V HCT 具有双极型兼容输入的高速CMOS 5.'><title>3.7 固定功能逻辑</title>
 
 <link rel='canonical' href='https://okokfun.github.io/post/%E6%95%B0%E5%AD%97%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF/3-7%E5%9B%BA%E5%AE%9A%E5%8A%9F%E8%83%BD%E9%80%BB%E8%BE%91/'>
 
-<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='3.7固定功能逻辑'>
-<meta property='og:description' content='3.7.1逻辑系列 数字逻辑电路的三个系列是 CMOS(互补金属氧化物半导体)、双极型和 BiCMOS(双CMOS)。这三种电路器件实现内部逻辑功能的类型不同。CMOS 是由场效应管(FET)来实现，双极型(也称为TTL，即晶体管-晶体管逻辑)逻辑使用双极型晶体管来实现，而 BiCMOS 是前面两种的组合。这些逻辑器件系列的基本逻辑功能相同，但是工作参数不同，例如开关速度(传输时间)、功率损耗和抗干扰能力。CMOS 与门和双极型或 BiCMOS 与门的逻辑功能相同。对于所有其他功能的逻辑器件也一样。
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='3.7 固定功能逻辑'>
+<meta property='og:description' content='3.7.1 逻辑系列 数字逻辑电路的三个系列是 CMOS(互补金属氧化物半导体)、双极型和 BiCMOS(双CMOS)。这三种电路器件实现内部逻辑功能的类型不同。CMOS 是由场效应管(FET)来实现，双极型(也称为TTL，即晶体管-晶体管逻辑)逻辑使用双极型晶体管来实现，而 BiCMOS 是前面两种的组合。这些逻辑器件系列的基本逻辑功能相同，但是工作参数不同，例如开关速度(传输时间)、功率损耗和抗干扰能力。CMOS 与门和双极型或 BiCMOS 与门的逻辑功能相同。对于所有其他功能的逻辑器件也一样。
 CMOS 在这些逻辑系列中，CMOS占有主导地位，双极型显然要被淘汰，BiCMOS 具有的逻辑功能类型也有限。在 CMOS 系列中，按不同的使用电压、功率损耗、开关速度和一些其他参数分为许多种类。表3.14列出了更多的常用 CMOS 逻辑电路,按各种器件的电路运行和优化的直流工作电压进行区分。 $$ 表3.14 ~~~CMOS逻辑器件的种类 $$
 名称 描述 $V_{CC}$ AC 高级CMOS 5.0 V ACT 具有双极型兼容输入的高级CMOS 5.0 V AHC 高级高速CMOS 5.0 V AHCT 具有双极型兼容输入的高级高速CMO 5.0 V ALVC 高级低电压CMOS 3.3 V AUC 高级超低电压CMOS 1.8 V AUP 高级超低功耗CMOS 3.3 V AVC 高级甚低电压CMOS 2.5 V CD4000 标准CMOS 5.0 V FCT 快速CMOS技术 5.0 V HC 高速CMOS 5.0 V HCT 具有双极型兼容输入的高速CMOS 5.'>
 <meta property='og:url' content='https://okokfun.github.io/post/%E6%95%B0%E5%AD%97%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF/3-7%E5%9B%BA%E5%AE%9A%E5%8A%9F%E8%83%BD%E9%80%BB%E8%BE%91/'>
 <meta property='og:site_name' content='My Blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Digital' /><meta property='article:published_time' content='2023-07-14T19:05:11&#43;00:00'/><meta property='article:modified_time' content='2023-07-14T19:05:11&#43;00:00'/>
-<meta name="twitter:title" content="3.7固定功能逻辑">
-<meta name="twitter:description" content="3.7.1逻辑系列 数字逻辑电路的三个系列是 CMOS(互补金属氧化物半导体)、双极型和 BiCMOS(双CMOS)。这三种电路器件实现内部逻辑功能的类型不同。CMOS 是由场效应管(FET)来实现，双极型(也称为TTL，即晶体管-晶体管逻辑)逻辑使用双极型晶体管来实现，而 BiCMOS 是前面两种的组合。这些逻辑器件系列的基本逻辑功能相同，但是工作参数不同，例如开关速度(传输时间)、功率损耗和抗干扰能力。CMOS 与门和双极型或 BiCMOS 与门的逻辑功能相同。对于所有其他功能的逻辑器件也一样。
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Digital' /><meta property='article:published_time' content='2023-07-14T19:05:11&#43;08:00'/><meta property='article:modified_time' content='2023-07-14T19:05:11&#43;08:00'/>
+<meta name="twitter:title" content="3.7 固定功能逻辑">
+<meta name="twitter:description" content="3.7.1 逻辑系列 数字逻辑电路的三个系列是 CMOS(互补金属氧化物半导体)、双极型和 BiCMOS(双CMOS)。这三种电路器件实现内部逻辑功能的类型不同。CMOS 是由场效应管(FET)来实现，双极型(也称为TTL，即晶体管-晶体管逻辑)逻辑使用双极型晶体管来实现，而 BiCMOS 是前面两种的组合。这些逻辑器件系列的基本逻辑功能相同，但是工作参数不同，例如开关速度(传输时间)、功率损耗和抗干扰能力。CMOS 与门和双极型或 BiCMOS 与门的逻辑功能相同。对于所有其他功能的逻辑器件也一样。
 CMOS 在这些逻辑系列中，CMOS占有主导地位，双极型显然要被淘汰，BiCMOS 具有的逻辑功能类型也有限。在 CMOS 系列中，按不同的使用电压、功率损耗、开关速度和一些其他参数分为许多种类。表3.14列出了更多的常用 CMOS 逻辑电路,按各种器件的电路运行和优化的直流工作电压进行区分。 $$ 表3.14 ~~~CMOS逻辑器件的种类 $$
 名称 描述 $V_{CC}$ AC 高级CMOS 5.0 V ACT 具有双极型兼容输入的高级CMOS 5.0 V AHC 高级高速CMOS 5.0 V AHCT 具有双极型兼容输入的高级高速CMO 5.0 V ALVC 高级低电压CMOS 3.3 V AUC 高级超低电压CMOS 1.8 V AUP 高级超低功耗CMOS 3.3 V AVC 高级甚低电压CMOS 2.5 V CD4000 标准CMOS 5.0 V FCT 快速CMOS技术 5.0 V HC 高速CMOS 5.0 V HCT 具有双极型兼容输入的高速CMOS 5."><script>
     (function(){
@@ -82,7 +82,7 @@ CMOS 在这些逻辑系列中，CMOS占有主导地位，双极型显然要被�
     
 
     <h2 class="article-title">
-        <a href="/post/%E6%95%B0%E5%AD%97%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF/3-7%E5%9B%BA%E5%AE%9A%E5%8A%9F%E8%83%BD%E9%80%BB%E8%BE%91/">3.7固定功能逻辑</a>
+        <a href="/post/%E6%95%B0%E5%AD%97%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF/3-7%E5%9B%BA%E5%AE%9A%E5%8A%9F%E8%83%BD%E9%80%BB%E8%BE%91/">3.7 固定功能逻辑</a>
     </h2>
 
     
@@ -125,7 +125,7 @@ CMOS 在这些逻辑系列中，CMOS占有主导地位，双极型显然要被�
 </header>
 
     <section class="article-content">
-    <h3 id="371逻辑系列">3.7.1逻辑系列</h3>
+    <h3 id="371-逻辑系列">3.7.1 逻辑系列</h3>
 <p>数字逻辑电路的三个系列是 CMOS(互补金属氧化物半导体)、双极型和 BiCMOS(双CMOS)。这三种电路器件实现内部逻辑功能的类型不同。CMOS 是由场效应管(FET)来实现，双极型(也称为TTL，即晶体管-晶体管逻辑)逻辑使用双极型晶体管来实现，而 BiCMOS 是前面两种的组合。这些逻辑器件系列的基本逻辑功能相同，但是工作参数不同，例如开关速度(传输时间)、功率损耗和抗干扰能力。CMOS 与门和双极型或 BiCMOS 与门的逻辑功能相同。对于所有其他功能的逻辑器件也一样。</p>
 <p><strong>CMOS</strong> 在这些逻辑系列中，CMOS占有主导地位，双极型显然要被淘汰，BiCMOS 具有的逻辑功能类型也有限。在 CMOS 系列中，按不同的使用电压、功率损耗、开关速度和一些其他参数分为许多种类。表3.14列出了更多的常用 CMOS 逻辑电路,按各种器件的电路运行和优化的直流工作电压进行区分。
 $$
@@ -384,7 +384,7 @@ $$</p>
         
 
         <div class="article-details">
-            <h2 class="article-title">3.6异或门和同或门</h2>
+            <h2 class="article-title">3.6 异或门和同或门</h2>
         </div>
     </a>
 </article>
@@ -396,7 +396,7 @@ $$</p>
         
 
         <div class="article-details">
-            <h2 class="article-title">3.5或非门</h2>
+            <h2 class="article-title">3.5 或非门</h2>
         </div>
     </a>
 </article>
@@ -408,7 +408,7 @@ $$</p>
         
 
         <div class="article-details">
-            <h2 class="article-title">3.4与非门</h2>
+            <h2 class="article-title">3.4 与非门</h2>
         </div>
     </a>
 </article>
@@ -420,7 +420,7 @@ $$</p>
         
 
         <div class="article-details">
-            <h2 class="article-title">3.3或门</h2>
+            <h2 class="article-title">3.3 或门</h2>
         </div>
     </a>
 </article>
@@ -432,7 +432,7 @@ $$</p>
         
 
         <div class="article-details">
-            <h2 class="article-title">3.2与门</h2>
+            <h2 class="article-title">3.2 与门</h2>
         </div>
     </a>
 </article>
@@ -450,7 +450,7 @@ $$</p>
     data-app-id="d44db3f9-a0ff-4551-a44d-316afd2e5835"
     data-page-id="164bb198ec3f490bd6cdabf695e5f656"
     data-page-url="https://okokfun.github.io/post/%E6%95%B0%E5%AD%97%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF/3-7%E5%9B%BA%E5%AE%9A%E5%8A%9F%E8%83%BD%E9%80%BB%E8%BE%91/"
-    data-page-title="3.7固定功能逻辑"></div>
+    data-page-title="3.7 固定功能逻辑"></div>
 <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
 
 <script>
@@ -584,7 +584,7 @@ $$</p>
   <ul>
     <li>
       <ul>
-        <li><a href="#371逻辑系列">3.7.1逻辑系列</a></li>
+        <li><a href="#371-逻辑系列">3.7.1 逻辑系列</a></li>
         <li><a href="#372-逻辑门">3.7.2 逻辑门</a></li>
         <li><a href="#373-工作特性和参数">3.7.3 工作特性和参数</a></li>
       </ul>

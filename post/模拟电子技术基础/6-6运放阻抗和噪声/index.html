@@ -1,44 +1,17 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='本节将会介绍负反馈连接如何影响运放的输入与输出阻抗。我们将会对反相放大器和同相放大器都进行讨论。
-学完本节后，你应该掌握以下内容:
-描述三种运放组态的阻抗 求同相放大器的输入和输出阻抗 求电压跟随器的输入和输出阻抗 求反相放大器的输入和输出阻抗 6.6.1 同相放大器的输入阻抗 已经知道: 负反馈使得反馈电压 $V_f$ 几乎等于输入电压 $V_{in}$. 输入电压与反馈电压的差值 $V_{diff}$ 接近于零，在理想情况下可假设它为零。此假设表明运放的输入信号电流也为零。因为输人阻抗为输入电压与输入电流的比值，所以同相放大器的输入阻抗为: $$ Z_{in}=\frac{V_{in}}{I_{in}}\approx \frac{V_{in}}{0} =无穷大(oo) $$ 在很多实际电路中，此假设有利于获得对运放工作原理的基本认识。更准确的分析需要考虑输入信号电流不为零的事实。
-$$ 图6-27~~~同相放大器 $$ 利用图6-27，计算此运放电路的精确输入阻抗。在此分析中，假设两个输人端之间存在一个小的差分电压 $V_{diff}$，如图6-27所示。这意味着你不能假设运放的输入阻抗为无穷大，或者输入电流为零。输入电压可表示为 $$ V_{in}=V_{diff}&#43;V_f $$ 用 $BV_{out}$代替$V_f$，有 $$ V_{in}=V_{diff}&#43;BV_{out} $$ 因为 $V_{out} ≈ V_{ol}V_{diff}$($A_{ol}$为运放的开环增益)，所以 $$ V_{in}=V_{diff}&#43;V_{ol}BV_{diff}=(1&#43;A_{ol}B)V_{diff} $$ 因为 $V_{diff}=I_{in}Z_{in}$, 所以 $$ V_{in}=(1&#43;A_{ol}B)I_{in}Z_{in} $$ 式中，$Z_{in}$是运放的开环输人阻抗(无反馈连接时)。 $$ \frac{V_{in}}{I_{in}}=(1&#43;A_{ol}B)Z_{in} $$
-$V_{in}/I_{in}$为此闭环同相放大器的总输入阻抗。
-$$ Z_{in(NI)}=(1&#43;A_{ol}B)Z_{in}~~~(6-9) $$
-此式表明: 带有负反馈的这个运放电路的输人阻抗远大于运放自身的内部输人阻抗(无反馈)。
-6.6.2 同相放大器的输出阻抗 除输人阻抗之外，负反馈也能改进运放的输出阻抗。无反馈放大器的输出阻抗非常小。加人反馈后，输出阻抗会变得更小。在很多应用中，假设带反馈的输出阻抗为零，这可以非常好地满足精度要求，即 $$ Z_{out(NI)}\approx 0 $$ $$ 图6-28~~~带反馈的同相放大器 $$
-利用图6-28，可以精确分析带反馈的输出阻抗。对输出电路应用基尔霍夫定律，
-$$ V_{out}=V_{ol}V_{diff}-Z_{out}I_{out} $$'><title>6.6 运放阻抗和噪声</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='本节将会介绍负反馈连接如何影响运放的输入与输出阻抗。我们将会对反相放大器和同相放大器都进行讨论。'><title>6.6 运放阻抗和噪声</title>
 
 <link rel='canonical' href='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/6-6%E8%BF%90%E6%94%BE%E9%98%BB%E6%8A%97%E5%92%8C%E5%99%AA%E5%A3%B0/'>
 
 <link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='6.6 运放阻抗和噪声'>
-<meta property='og:description' content='本节将会介绍负反馈连接如何影响运放的输入与输出阻抗。我们将会对反相放大器和同相放大器都进行讨论。
-学完本节后，你应该掌握以下内容:
-描述三种运放组态的阻抗 求同相放大器的输入和输出阻抗 求电压跟随器的输入和输出阻抗 求反相放大器的输入和输出阻抗 6.6.1 同相放大器的输入阻抗 已经知道: 负反馈使得反馈电压 $V_f$ 几乎等于输入电压 $V_{in}$. 输入电压与反馈电压的差值 $V_{diff}$ 接近于零，在理想情况下可假设它为零。此假设表明运放的输入信号电流也为零。因为输人阻抗为输入电压与输入电流的比值，所以同相放大器的输入阻抗为: $$ Z_{in}=\frac{V_{in}}{I_{in}}\approx \frac{V_{in}}{0} =无穷大(oo) $$ 在很多实际电路中，此假设有利于获得对运放工作原理的基本认识。更准确的分析需要考虑输入信号电流不为零的事实。
-$$ 图6-27~~~同相放大器 $$ 利用图6-27，计算此运放电路的精确输入阻抗。在此分析中，假设两个输人端之间存在一个小的差分电压 $V_{diff}$，如图6-27所示。这意味着你不能假设运放的输入阻抗为无穷大，或者输入电流为零。输入电压可表示为 $$ V_{in}=V_{diff}&#43;V_f $$ 用 $BV_{out}$代替$V_f$，有 $$ V_{in}=V_{diff}&#43;BV_{out} $$ 因为 $V_{out} ≈ V_{ol}V_{diff}$($A_{ol}$为运放的开环增益)，所以 $$ V_{in}=V_{diff}&#43;V_{ol}BV_{diff}=(1&#43;A_{ol}B)V_{diff} $$ 因为 $V_{diff}=I_{in}Z_{in}$, 所以 $$ V_{in}=(1&#43;A_{ol}B)I_{in}Z_{in} $$ 式中，$Z_{in}$是运放的开环输人阻抗(无反馈连接时)。 $$ \frac{V_{in}}{I_{in}}=(1&#43;A_{ol}B)Z_{in} $$
-$V_{in}/I_{in}$为此闭环同相放大器的总输入阻抗。
-$$ Z_{in(NI)}=(1&#43;A_{ol}B)Z_{in}~~~(6-9) $$
-此式表明: 带有负反馈的这个运放电路的输人阻抗远大于运放自身的内部输人阻抗(无反馈)。
-6.6.2 同相放大器的输出阻抗 除输人阻抗之外，负反馈也能改进运放的输出阻抗。无反馈放大器的输出阻抗非常小。加人反馈后，输出阻抗会变得更小。在很多应用中，假设带反馈的输出阻抗为零，这可以非常好地满足精度要求，即 $$ Z_{out(NI)}\approx 0 $$ $$ 图6-28~~~带反馈的同相放大器 $$
-利用图6-28，可以精确分析带反馈的输出阻抗。对输出电路应用基尔霍夫定律，
-$$ V_{out}=V_{ol}V_{diff}-Z_{out}I_{out} $$'>
+<meta property='og:description' content='本节将会介绍负反馈连接如何影响运放的输入与输出阻抗。我们将会对反相放大器和同相放大器都进行讨论。'>
 <meta property='og:url' content='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/6-6%E8%BF%90%E6%94%BE%E9%98%BB%E6%8A%97%E5%92%8C%E5%99%AA%E5%A3%B0/'>
 <meta property='og:site_name' content='My Blog'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Analog' /><meta property='article:published_time' content='2023-07-14T18:15:40&#43;08:00'/><meta property='article:modified_time' content='2023-07-14T18:15:40&#43;08:00'/>
 <meta name="twitter:title" content="6.6 运放阻抗和噪声">
-<meta name="twitter:description" content="本节将会介绍负反馈连接如何影响运放的输入与输出阻抗。我们将会对反相放大器和同相放大器都进行讨论。
-学完本节后，你应该掌握以下内容:
-描述三种运放组态的阻抗 求同相放大器的输入和输出阻抗 求电压跟随器的输入和输出阻抗 求反相放大器的输入和输出阻抗 6.6.1 同相放大器的输入阻抗 已经知道: 负反馈使得反馈电压 $V_f$ 几乎等于输入电压 $V_{in}$. 输入电压与反馈电压的差值 $V_{diff}$ 接近于零，在理想情况下可假设它为零。此假设表明运放的输入信号电流也为零。因为输人阻抗为输入电压与输入电流的比值，所以同相放大器的输入阻抗为: $$ Z_{in}=\frac{V_{in}}{I_{in}}\approx \frac{V_{in}}{0} =无穷大(oo) $$ 在很多实际电路中，此假设有利于获得对运放工作原理的基本认识。更准确的分析需要考虑输入信号电流不为零的事实。
-$$ 图6-27~~~同相放大器 $$ 利用图6-27，计算此运放电路的精确输入阻抗。在此分析中，假设两个输人端之间存在一个小的差分电压 $V_{diff}$，如图6-27所示。这意味着你不能假设运放的输入阻抗为无穷大，或者输入电流为零。输入电压可表示为 $$ V_{in}=V_{diff}&#43;V_f $$ 用 $BV_{out}$代替$V_f$，有 $$ V_{in}=V_{diff}&#43;BV_{out} $$ 因为 $V_{out} ≈ V_{ol}V_{diff}$($A_{ol}$为运放的开环增益)，所以 $$ V_{in}=V_{diff}&#43;V_{ol}BV_{diff}=(1&#43;A_{ol}B)V_{diff} $$ 因为 $V_{diff}=I_{in}Z_{in}$, 所以 $$ V_{in}=(1&#43;A_{ol}B)I_{in}Z_{in} $$ 式中，$Z_{in}$是运放的开环输人阻抗(无反馈连接时)。 $$ \frac{V_{in}}{I_{in}}=(1&#43;A_{ol}B)Z_{in} $$
-$V_{in}/I_{in}$为此闭环同相放大器的总输入阻抗。
-$$ Z_{in(NI)}=(1&#43;A_{ol}B)Z_{in}~~~(6-9) $$
-此式表明: 带有负反馈的这个运放电路的输人阻抗远大于运放自身的内部输人阻抗(无反馈)。
-6.6.2 同相放大器的输出阻抗 除输人阻抗之外，负反馈也能改进运放的输出阻抗。无反馈放大器的输出阻抗非常小。加人反馈后，输出阻抗会变得更小。在很多应用中，假设带反馈的输出阻抗为零，这可以非常好地满足精度要求，即 $$ Z_{out(NI)}\approx 0 $$ $$ 图6-28~~~带反馈的同相放大器 $$
-利用图6-28，可以精确分析带反馈的输出阻抗。对输出电路应用基尔霍夫定律，
-$$ V_{out}=V_{ol}V_{diff}-Z_{out}I_{out} $$"><script>
+<meta name="twitter:description" content="本节将会介绍负反馈连接如何影响运放的输入与输出阻抗。我们将会对反相放大器和同相放大器都进行讨论。"><script>
     (function(){
         if(''){
             if (prompt('请输入文章密码') !== ''){
@@ -106,6 +79,10 @@ $$ V_{out}=V_{ol}V_{diff}-Z_{out}I_{out} $$"><script>
         <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/6-6%E8%BF%90%E6%94%BE%E9%98%BB%E6%8A%97%E5%92%8C%E5%99%AA%E5%A3%B0/">6.6 运放阻抗和噪声</a>
     </h2>
 
+    
+    <h3 class="article-subtitle">
+        本节将会介绍负反馈连接如何影响运放的输入与输出阻抗。我们将会对反相放大器和同相放大器都进行讨论。
+    </h3>
     
 
     
@@ -434,48 +411,48 @@ $$
                 
                     
 <article class="">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/6-4%E8%B4%9F%E5%8F%8D%E9%A6%88/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">6.4 负反馈</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/6-3%E8%BF%90%E6%94%BE%E6%95%B0%E6%8D%AE%E6%89%8B%E5%86%8C%E4%B8%AD%E7%9A%84%E5%8F%82%E6%95%B0/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">6.3 运放数据手册中的参数</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/6-2%E5%B7%AE%E5%88%86%E6%94%BE%E5%A4%A7%E5%99%A8/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">6.2 差分放大器</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
     <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/6-1%E8%BF%90%E7%AE%97%E6%94%BE%E5%A4%A7%E5%99%A8%E4%BB%8B%E7%BB%8D/">
         
         
 
         <div class="article-details">
             <h2 class="article-title">6.1 运算放大器介绍</h2>
-        </div>
-    </a>
-</article>
-                
-                    
-<article class="">
-    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/2-3%E5%8D%8A%E5%AF%BC%E4%BD%93%E4%BA%8C%E6%9E%81%E7%AE%A1%E7%9A%84%E5%81%8F%E7%BD%AE/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">2.3 半导体二极管的偏置</h2>
-        </div>
-    </a>
-</article>
-                
-                    
-<article class="">
-    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/2-2pn%E7%BB%93/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">2.2 pn结</h2>
-        </div>
-    </a>
-</article>
-                
-                    
-<article class="">
-    <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/2-1%E5%8D%8A%E5%AF%BC%E4%BD%93%E5%8E%9F%E5%AD%90%E7%BB%93%E6%9E%84/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">2.1 半导体原子结构</h2>
         </div>
     </a>
 </article>

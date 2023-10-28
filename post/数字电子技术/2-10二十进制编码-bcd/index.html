@@ -4,19 +4,19 @@
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='2.10.1 8421 BCD码 ◇ 在 BCD码中,每个十进制数都由 4 位二进制编码表示. 8421 码是 BCD(二-十进制编码)码的一种类型.二-十进制编码的意思是,每一个十进制数,从 0~9,都由 4 位二进制编码表示.名称 8421 表明了 4 个位的二进制权($2^3,~2^2,~2^1,~2^0$).这种编码的主要优点是,8421 编码数和我们熟悉的十进制数之间很容易转换.只要记住 10 个十进制数的二进制组合,如表2.5所示.8421 码是主要的 BCD 码,所以当我们提及 BCD 码时,总是指 8421 码,除非有特殊的说明.
 $$ 表2.5~~10进制/BCD转换 $$
 10进制 0 1 2 3 4 5 6 7 8 9 BCD 0000 0001 0010 0011 0100 0101 0110 0111 1000 1001 无效码 应当认识到,使用4个位可以表示 16 个数(从0000 到1111),但是在 8421 码中,在这 16 个数中只使用了 10 个数.未使用的编码组合为 1010,1011,1100,1101,1110,1111,它们在 8421 BCD 码中是无效的.
-为了以 BCD 码表示任意十进制数,只要将每个十进制数位用相应的 4 位编码替代就可以了,如例2.'><title>2.10二—十进制编码-BCD</title>
+为了以 BCD 码表示任意十进制数,只要将每个十进制数位用相应的 4 位编码替代就可以了,如例2.'><title>2.10 二—十进制编码-BCD</title>
 
 <link rel='canonical' href='https://okokfun.github.io/post/%E6%95%B0%E5%AD%97%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF/2-10%E4%BA%8C%E5%8D%81%E8%BF%9B%E5%88%B6%E7%BC%96%E7%A0%81-bcd/'>
 
-<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='2.10二—十进制编码-BCD'>
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='2.10 二—十进制编码-BCD'>
 <meta property='og:description' content='2.10.1 8421 BCD码 ◇ 在 BCD码中,每个十进制数都由 4 位二进制编码表示. 8421 码是 BCD(二-十进制编码)码的一种类型.二-十进制编码的意思是,每一个十进制数,从 0~9,都由 4 位二进制编码表示.名称 8421 表明了 4 个位的二进制权($2^3,~2^2,~2^1,~2^0$).这种编码的主要优点是,8421 编码数和我们熟悉的十进制数之间很容易转换.只要记住 10 个十进制数的二进制组合,如表2.5所示.8421 码是主要的 BCD 码,所以当我们提及 BCD 码时,总是指 8421 码,除非有特殊的说明.
 $$ 表2.5~~10进制/BCD转换 $$
 10进制 0 1 2 3 4 5 6 7 8 9 BCD 0000 0001 0010 0011 0100 0101 0110 0111 1000 1001 无效码 应当认识到,使用4个位可以表示 16 个数(从0000 到1111),但是在 8421 码中,在这 16 个数中只使用了 10 个数.未使用的编码组合为 1010,1011,1100,1101,1110,1111,它们在 8421 BCD 码中是无效的.
 为了以 BCD 码表示任意十进制数,只要将每个十进制数位用相应的 4 位编码替代就可以了,如例2.'>
 <meta property='og:url' content='https://okokfun.github.io/post/%E6%95%B0%E5%AD%97%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF/2-10%E4%BA%8C%E5%8D%81%E8%BF%9B%E5%88%B6%E7%BC%96%E7%A0%81-bcd/'>
 <meta property='og:site_name' content='My Blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Digital' /><meta property='article:published_time' content='2023-07-14T19:03:37&#43;00:00'/><meta property='article:modified_time' content='2023-07-14T19:03:37&#43;00:00'/>
-<meta name="twitter:title" content="2.10二—十进制编码-BCD">
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Digital' /><meta property='article:published_time' content='2023-07-14T19:03:37&#43;08:00'/><meta property='article:modified_time' content='2023-07-14T19:03:37&#43;08:00'/>
+<meta name="twitter:title" content="2.10 二—十进制编码-BCD">
 <meta name="twitter:description" content="2.10.1 8421 BCD码 ◇ 在 BCD码中,每个十进制数都由 4 位二进制编码表示. 8421 码是 BCD(二-十进制编码)码的一种类型.二-十进制编码的意思是,每一个十进制数,从 0~9,都由 4 位二进制编码表示.名称 8421 表明了 4 个位的二进制权($2^3,~2^2,~2^1,~2^0$).这种编码的主要优点是,8421 编码数和我们熟悉的十进制数之间很容易转换.只要记住 10 个十进制数的二进制组合,如表2.5所示.8421 码是主要的 BCD 码,所以当我们提及 BCD 码时,总是指 8421 码,除非有特殊的说明.
 $$ 表2.5~~10进制/BCD转换 $$
 10进制 0 1 2 3 4 5 6 7 8 9 BCD 0000 0001 0010 0011 0100 0101 0110 0111 1000 1001 无效码 应当认识到,使用4个位可以表示 16 个数(从0000 到1111),但是在 8421 码中,在这 16 个数中只使用了 10 个数.未使用的编码组合为 1010,1011,1100,1101,1110,1111,它们在 8421 BCD 码中是无效的.
@@ -85,7 +85,7 @@ $$ 表2.5~~10进制/BCD转换 $$
     
 
     <h2 class="article-title">
-        <a href="/post/%E6%95%B0%E5%AD%97%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF/2-10%E4%BA%8C%E5%8D%81%E8%BF%9B%E5%88%B6%E7%BC%96%E7%A0%81-bcd/">2.10二—十进制编码-BCD</a>
+        <a href="/post/%E6%95%B0%E5%AD%97%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF/2-10%E4%BA%8C%E5%8D%81%E8%BF%9B%E5%88%B6%E7%BC%96%E7%A0%81-bcd/">2.10 二—十进制编码-BCD</a>
     </h2>
 
     
@@ -247,7 +247,7 @@ $$</p>
         
 
         <div class="article-details">
-            <h2 class="article-title">2.9八进制数</h2>
+            <h2 class="article-title">2.9 八进制数</h2>
         </div>
     </a>
 </article>
@@ -259,7 +259,7 @@ $$</p>
         
 
         <div class="article-details">
-            <h2 class="article-title">2.8十六进制数</h2>
+            <h2 class="article-title">2.8 十六进制数</h2>
         </div>
     </a>
 </article>
@@ -271,7 +271,7 @@ $$</p>
         
 
         <div class="article-details">
-            <h2 class="article-title">2.7带符号数的算术运算</h2>
+            <h2 class="article-title">2.7 带符号数的算术运算</h2>
         </div>
     </a>
 </article>
@@ -283,7 +283,7 @@ $$</p>
         
 
         <div class="article-details">
-            <h2 class="article-title">2.6带符号数</h2>
+            <h2 class="article-title">2.6 带符号数</h2>
         </div>
     </a>
 </article>
@@ -295,7 +295,7 @@ $$</p>
         
 
         <div class="article-details">
-            <h2 class="article-title">2.5二进制数的反码和补码</h2>
+            <h2 class="article-title">2.5 二进制数的反码和补码</h2>
         </div>
     </a>
 </article>
@@ -313,7 +313,7 @@ $$</p>
     data-app-id="d44db3f9-a0ff-4551-a44d-316afd2e5835"
     data-page-id="8018a6ffddeb683a24c4efe81f417603"
     data-page-url="https://okokfun.github.io/post/%E6%95%B0%E5%AD%97%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF/2-10%E4%BA%8C%E5%8D%81%E8%BF%9B%E5%88%B6%E7%BC%96%E7%A0%81-bcd/"
-    data-page-title="2.10二—十进制编码-BCD"></div>
+    data-page-title="2.10 二—十进制编码-BCD"></div>
 <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
 
 <script>

@@ -1,23 +1,17 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='金属-氧化物半导体场效应管( MOSFET )是另一种重要的场效应管。MOSFET 和 JFET 的区别在于它没有 pn 结结构，而是 MOSFET 的栅极与沟道之间用非常薄的二氧化硅(SiO$_2$)层来相互绝缘。MOSFET 的两种基本类型为: 耗尽型(D)和增强型(E)。这两者中，E-MOSFET 使用更为广泛。由于现在栅极材料用多晶硅取代金属，因此有时也称 MOSFET 为 IGFET(绝缘栅 FET)。
-学完本节后，你应该掌握以下内容:
-解释 MOSFET 的工作原理 描述 MOSFET 在构造上的不同 画出 n 沟道和 p 沟道 D-MOSFET 和 E-MOSFET 的符号 解释 MOSFET 在耗尽模式和增强模式下如何工作 解释 MOSFET 的漏极特性曲线 描述 MOSFET 的跨导曲线，并解释它与漏极特性曲线的关系 讨论 MOSFET 器件的特定处理预防措施 4.4.1 D-MOSFET $$ a）n沟道~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ b) p沟道 $$ $$ 图4-22~~~~~~~~D-MOSFET的基本结构 $$ 耗尽型 MOSFET (D-MOSFET )是 MOSFET 的一种，其基本结构如图4-22所示。漏区和源区扩散到衬底材料中，然后通过靠近绝缘栅的窄沟道相连。图4-22给出了 n 沟道和 p 沟道 D-MOSFET，但是，p 沟道 D-MOSFET 并不广泛使用。这两种类型器件的工作原理相同，除了 p 沟道的电压极性与 n 沟道的相反。为了简单起见，本节只讨论n沟道器件。'><title>4.4 MOSFET 特性</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='金属-氧化物半导体场效应管( MOSFET )是另一种重要的场效应管。MOSFET  和 JFET 的区别在于它没有 pn 结结构，而是 MOSFET 的栅极与沟道之间用非常薄的二氧化硅(SiO2)层来相互绝缘。'><title>4.4 MOSFET 特性</title>
 
 <link rel='canonical' href='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/4-4mosfet%E7%89%B9%E6%80%A7/'>
 
 <link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='4.4 MOSFET 特性'>
-<meta property='og:description' content='金属-氧化物半导体场效应管( MOSFET )是另一种重要的场效应管。MOSFET 和 JFET 的区别在于它没有 pn 结结构，而是 MOSFET 的栅极与沟道之间用非常薄的二氧化硅(SiO$_2$)层来相互绝缘。MOSFET 的两种基本类型为: 耗尽型(D)和增强型(E)。这两者中，E-MOSFET 使用更为广泛。由于现在栅极材料用多晶硅取代金属，因此有时也称 MOSFET 为 IGFET(绝缘栅 FET)。
-学完本节后，你应该掌握以下内容:
-解释 MOSFET 的工作原理 描述 MOSFET 在构造上的不同 画出 n 沟道和 p 沟道 D-MOSFET 和 E-MOSFET 的符号 解释 MOSFET 在耗尽模式和增强模式下如何工作 解释 MOSFET 的漏极特性曲线 描述 MOSFET 的跨导曲线，并解释它与漏极特性曲线的关系 讨论 MOSFET 器件的特定处理预防措施 4.4.1 D-MOSFET $$ a）n沟道~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ b) p沟道 $$ $$ 图4-22~~~~~~~~D-MOSFET的基本结构 $$ 耗尽型 MOSFET (D-MOSFET )是 MOSFET 的一种，其基本结构如图4-22所示。漏区和源区扩散到衬底材料中，然后通过靠近绝缘栅的窄沟道相连。图4-22给出了 n 沟道和 p 沟道 D-MOSFET，但是，p 沟道 D-MOSFET 并不广泛使用。这两种类型器件的工作原理相同，除了 p 沟道的电压极性与 n 沟道的相反。为了简单起见，本节只讨论n沟道器件。'>
+<meta property='og:description' content='金属-氧化物半导体场效应管( MOSFET )是另一种重要的场效应管。MOSFET  和 JFET 的区别在于它没有 pn 结结构，而是 MOSFET 的栅极与沟道之间用非常薄的二氧化硅(SiO2)层来相互绝缘。'>
 <meta property='og:url' content='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/4-4mosfet%E7%89%B9%E6%80%A7/'>
 <meta property='og:site_name' content='My Blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Analog' /><meta property='article:published_time' content='2023-07-14T17:37:50&#43;00:00'/><meta property='article:modified_time' content='2023-07-14T17:37:50&#43;00:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Analog' /><meta property='article:published_time' content='2023-07-14T17:37:50&#43;08:00'/><meta property='article:modified_time' content='2023-07-14T17:37:50&#43;08:00'/>
 <meta name="twitter:title" content="4.4 MOSFET 特性">
-<meta name="twitter:description" content="金属-氧化物半导体场效应管( MOSFET )是另一种重要的场效应管。MOSFET 和 JFET 的区别在于它没有 pn 结结构，而是 MOSFET 的栅极与沟道之间用非常薄的二氧化硅(SiO$_2$)层来相互绝缘。MOSFET 的两种基本类型为: 耗尽型(D)和增强型(E)。这两者中，E-MOSFET 使用更为广泛。由于现在栅极材料用多晶硅取代金属，因此有时也称 MOSFET 为 IGFET(绝缘栅 FET)。
-学完本节后，你应该掌握以下内容:
-解释 MOSFET 的工作原理 描述 MOSFET 在构造上的不同 画出 n 沟道和 p 沟道 D-MOSFET 和 E-MOSFET 的符号 解释 MOSFET 在耗尽模式和增强模式下如何工作 解释 MOSFET 的漏极特性曲线 描述 MOSFET 的跨导曲线，并解释它与漏极特性曲线的关系 讨论 MOSFET 器件的特定处理预防措施 4.4.1 D-MOSFET $$ a）n沟道~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ b) p沟道 $$ $$ 图4-22~~~~~~~~D-MOSFET的基本结构 $$ 耗尽型 MOSFET (D-MOSFET )是 MOSFET 的一种，其基本结构如图4-22所示。漏区和源区扩散到衬底材料中，然后通过靠近绝缘栅的窄沟道相连。图4-22给出了 n 沟道和 p 沟道 D-MOSFET，但是，p 沟道 D-MOSFET 并不广泛使用。这两种类型器件的工作原理相同，除了 p 沟道的电压极性与 n 沟道的相反。为了简单起见，本节只讨论n沟道器件。"><script>
+<meta name="twitter:description" content="金属-氧化物半导体场效应管( MOSFET )是另一种重要的场效应管。MOSFET  和 JFET 的区别在于它没有 pn 结结构，而是 MOSFET 的栅极与沟道之间用非常薄的二氧化硅(SiO2)层来相互绝缘。"><script>
     (function(){
         if(''){
             if (prompt('请输入文章密码') !== ''){
@@ -85,6 +79,10 @@
         <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/4-4mosfet%E7%89%B9%E6%80%A7/">4.4 MOSFET 特性</a>
     </h2>
 
+    
+    <h3 class="article-subtitle">
+        金属-氧化物半导体场效应管( MOSFET )是另一种重要的场效应管。MOSFET  和 JFET 的区别在于它没有 pn 结结构，而是 MOSFET 的栅极与沟道之间用非常薄的二氧化硅(SiO2)层来相互绝缘。
+    </h3>
     
 
     

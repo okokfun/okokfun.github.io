@@ -1,41 +1,17 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='虽然 MOSFET 主要用于开关电路，但 JFET 和MOSFET 都能在类似于之前学习的 BJT 的CE、CC 和CB 放大器的三种电路组态中用作线性放大器。FET 组态有共源(CS)、共漏(CD)和共栅(CG)。CS 与CD 放大器具有高输人阻抗和低噪声的特性，是第一级放大器的最佳选择。共栅放大器的应用不多，因此本书只对其进行简要介绍。
-学完本节后，你应该掌握以下内容:
-描述FET线性放大器的工作原理 描述三种 FET 线性放大器的组态:共源(CS)、共漏(CD)和共栅(CG) 在给定跨导的情况下计算任何 FET 放大器的增益 解释为什么具有电流源偏置的 CD 放大器比单级 CD 放大器更好 4.6.1 FET的跨导: FET的传输特性，即跨导曲线，如图4-9a所示。FET 和 BJT 有本质区别，因为 FET 是电压控制器件。输出的漏极电流由输入的栅极电压控制。跨导为交流参数，定义为:
-$$ g_m=\frac{I_d}{V_{gs}} $$
-考虑到上式是输出电流($I_d$)除以输人电压($V_{gs}$)，因此跨导本质上是 FET 自身的增益。但和 $\beta_{ac}$ 是纯数字不同，跨导有单位，为西门子(电阻的倒数)。许多数据手册会继续沿用旧单位姆欧(mho，将ohm反向拼写)。如图4-37a所示，一个特定 FET 的跨导可以直接测量得到。可以看到跨导是传输曲线的斜率，它不是一个常数，但取决于漏极电流。
-图4-37b给出了 BJT 输入的类似情况。基极电压加在发射结 pn 结上，它会看到一个取决于发射极直流电流的交流电阻。这个小的交流电阻对 BJT 放大器的增益发挥着重要影响，如3.4节所述。
-$g_m$ 的倒数与 BJT 的$r&amp;rsquo;_e$。类似。大多数 FET 的交流模型都将 $g_m$ 作为一个重要参数。但是，要从 BJT 放大器转变到FET 放大器，定义一个表示 FET 交流源电阻的参数还是很有用的.
-$$ r&amp;rsquo;_s=\frac{1}{g_m} $$
-$$ a) n沟道FET传输曲线~~~~~~~~~~~~b) BJT传输曲线 $$'><title>4.6 FET线性放大器</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='FET 组态有共源(CS)、共漏(CD)和共栅(CG)。'><title>4.6 FET线性放大器</title>
 
 <link rel='canonical' href='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/4-6fet%E7%BA%BF%E6%80%A7%E6%94%BE%E5%A4%A7%E5%99%A8/'>
 
 <link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='4.6 FET线性放大器'>
-<meta property='og:description' content='虽然 MOSFET 主要用于开关电路，但 JFET 和MOSFET 都能在类似于之前学习的 BJT 的CE、CC 和CB 放大器的三种电路组态中用作线性放大器。FET 组态有共源(CS)、共漏(CD)和共栅(CG)。CS 与CD 放大器具有高输人阻抗和低噪声的特性，是第一级放大器的最佳选择。共栅放大器的应用不多，因此本书只对其进行简要介绍。
-学完本节后，你应该掌握以下内容:
-描述FET线性放大器的工作原理 描述三种 FET 线性放大器的组态:共源(CS)、共漏(CD)和共栅(CG) 在给定跨导的情况下计算任何 FET 放大器的增益 解释为什么具有电流源偏置的 CD 放大器比单级 CD 放大器更好 4.6.1 FET的跨导: FET的传输特性，即跨导曲线，如图4-9a所示。FET 和 BJT 有本质区别，因为 FET 是电压控制器件。输出的漏极电流由输入的栅极电压控制。跨导为交流参数，定义为:
-$$ g_m=\frac{I_d}{V_{gs}} $$
-考虑到上式是输出电流($I_d$)除以输人电压($V_{gs}$)，因此跨导本质上是 FET 自身的增益。但和 $\beta_{ac}$ 是纯数字不同，跨导有单位，为西门子(电阻的倒数)。许多数据手册会继续沿用旧单位姆欧(mho，将ohm反向拼写)。如图4-37a所示，一个特定 FET 的跨导可以直接测量得到。可以看到跨导是传输曲线的斜率，它不是一个常数，但取决于漏极电流。
-图4-37b给出了 BJT 输入的类似情况。基极电压加在发射结 pn 结上，它会看到一个取决于发射极直流电流的交流电阻。这个小的交流电阻对 BJT 放大器的增益发挥着重要影响，如3.4节所述。
-$g_m$ 的倒数与 BJT 的$r&amp;rsquo;_e$。类似。大多数 FET 的交流模型都将 $g_m$ 作为一个重要参数。但是，要从 BJT 放大器转变到FET 放大器，定义一个表示 FET 交流源电阻的参数还是很有用的.
-$$ r&amp;rsquo;_s=\frac{1}{g_m} $$
-$$ a) n沟道FET传输曲线~~~~~~~~~~~~b) BJT传输曲线 $$'>
+<meta property='og:description' content='FET 组态有共源(CS)、共漏(CD)和共栅(CG)。'>
 <meta property='og:url' content='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/4-6fet%E7%BA%BF%E6%80%A7%E6%94%BE%E5%A4%A7%E5%99%A8/'>
 <meta property='og:site_name' content='My Blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Analog' /><meta property='article:published_time' content='2023-07-14T17:38:15&#43;00:00'/><meta property='article:modified_time' content='2023-07-14T17:38:15&#43;00:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Analog' /><meta property='article:published_time' content='2023-07-14T17:38:15&#43;08:00'/><meta property='article:modified_time' content='2023-07-14T17:38:15&#43;08:00'/>
 <meta name="twitter:title" content="4.6 FET线性放大器">
-<meta name="twitter:description" content="虽然 MOSFET 主要用于开关电路，但 JFET 和MOSFET 都能在类似于之前学习的 BJT 的CE、CC 和CB 放大器的三种电路组态中用作线性放大器。FET 组态有共源(CS)、共漏(CD)和共栅(CG)。CS 与CD 放大器具有高输人阻抗和低噪声的特性，是第一级放大器的最佳选择。共栅放大器的应用不多，因此本书只对其进行简要介绍。
-学完本节后，你应该掌握以下内容:
-描述FET线性放大器的工作原理 描述三种 FET 线性放大器的组态:共源(CS)、共漏(CD)和共栅(CG) 在给定跨导的情况下计算任何 FET 放大器的增益 解释为什么具有电流源偏置的 CD 放大器比单级 CD 放大器更好 4.6.1 FET的跨导: FET的传输特性，即跨导曲线，如图4-9a所示。FET 和 BJT 有本质区别，因为 FET 是电压控制器件。输出的漏极电流由输入的栅极电压控制。跨导为交流参数，定义为:
-$$ g_m=\frac{I_d}{V_{gs}} $$
-考虑到上式是输出电流($I_d$)除以输人电压($V_{gs}$)，因此跨导本质上是 FET 自身的增益。但和 $\beta_{ac}$ 是纯数字不同，跨导有单位，为西门子(电阻的倒数)。许多数据手册会继续沿用旧单位姆欧(mho，将ohm反向拼写)。如图4-37a所示，一个特定 FET 的跨导可以直接测量得到。可以看到跨导是传输曲线的斜率，它不是一个常数，但取决于漏极电流。
-图4-37b给出了 BJT 输入的类似情况。基极电压加在发射结 pn 结上，它会看到一个取决于发射极直流电流的交流电阻。这个小的交流电阻对 BJT 放大器的增益发挥着重要影响，如3.4节所述。
-$g_m$ 的倒数与 BJT 的$r&amp;rsquo;_e$。类似。大多数 FET 的交流模型都将 $g_m$ 作为一个重要参数。但是，要从 BJT 放大器转变到FET 放大器，定义一个表示 FET 交流源电阻的参数还是很有用的.
-$$ r&amp;rsquo;_s=\frac{1}{g_m} $$
-$$ a) n沟道FET传输曲线~~~~~~~~~~~~b) BJT传输曲线 $$"><script>
+<meta name="twitter:description" content="FET 组态有共源(CS)、共漏(CD)和共栅(CG)。"><script>
     (function(){
         if(''){
             if (prompt('请输入文章密码') !== ''){
@@ -104,6 +80,10 @@ $$ a) n沟道FET传输曲线~~~~~~~~~~~~b) BJT传输曲线 $$"><script>
     </h2>
 
     
+    <h3 class="article-subtitle">
+        FET 组态有共源(CS)、共漏(CD)和共栅(CG)。
+    </h3>
+    
 
     
     <footer class="article-time">
@@ -143,7 +123,7 @@ $$ a) n沟道FET传输曲线~~~~~~~~~~~~b) BJT传输曲线 $$"><script>
 </header>
 
     <section class="article-content">
-    <p>虽然 MOSFET 主要用于开关电路，但 JFET 和MOSFET 都能在类似于之前学习的 BJT 的CE、CC 和CB 放大器的三种电路组态中用作线性放大器。FET 组态有共源(CS)、共漏(CD)和共栅(CG)。CS 与CD 放大器具有高输人阻抗和低噪声的特性，是第一级放大器的最佳选择。共栅放大器的应用不多，因此本书只对其进行简要介绍。</p>
+    <p>虽然 MOSFET 主要用于开关电路，但 JFET 和MOSFET 都能在类似于之前学习的 BJT 的CE、CC 和CB 放大器的三种电路组态中用作线性放大器。FET 组态有共源(CS)、共漏(CD)和共栅(CG)。CS 与 CD 放大器具有高输人阻抗和低噪声的特性，是第一级放大器的最佳选择。共栅放大器的应用不多，因此本书只对其进行简要介绍。</p>
 <p>学完本节后，你应该掌握以下内容:</p>
 <ul>
 <li>描述FET线性放大器的工作原理

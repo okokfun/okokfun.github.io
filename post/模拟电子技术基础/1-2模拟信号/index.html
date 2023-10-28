@@ -1,56 +1,17 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='是指任何携带信息的物理量，力、热、声、光、电等。
-1.2.1 模拟信号和数字信号 信号分为：离散信号和连续信号。离散信号可以只有几个值，连续信号可以无限细分下去。 离散和连续指信号的幅度，也可以指时间。
-采样和量化：
-​	采样：将模拟波形在时间域上进行切分，每个切片大小大致等于原来波形的值，会丢失一些信息。
-​	量化：给每个时间片分配一个数字，量化后的数字可以交给计算机或其它素质电路处理 1.2.2 周期信号 重复的波形称为周期性的，此周期信号有变化。
-周期(period, $T$)表示一个周期信号完成一个循环所需要的时间。周期(cycle)是指在波形呈现出另一个完全相同的图案之前波形的完整序列值。可以是在逐次循环的波形上任意两个相应点来测出周期。
-向量：既有大小又有方向的量。
-频率和周期：
-频率：每1s内完成的完整周期的个数，单位Hz
-周期：一个循环所经历的时间，单位s，所以周期的倒数就是频率，频率的倒数是周期
-$$ T = \frac{1}{f} $$
-和 $$ f = \frac{1}{T} $$ 正弦曲线的瞬时值： $$ v(t) = V_Psin(wt &#43; ⌀) $$ $V_p$
-正弦曲线的平均值： $$ V_{avg} = \frac{2V_P}{π} $$ 化简得： $$ V_{avg} = 0.637V_P $$ 电流平均值： $$ I_{avg} = 0.637I_p $$ 正弦曲线的有效值： $$ P = IV $$ 计算与直流电压电流产生相同的热效应时的交流电压、电流，通过积分可以求出等效的热量，称为方均根电压(rms)或者电流。
-方均根电压和峰值电压的关系： $$ V_{rms} = 0.707V_p $$ 方均根电流与有效电流的关系是： $$ I_{rms} = 0.'><title>1.2 模拟信号</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='事实上，很多信号的值在一定范围内是连续变化的，这样的信号就是模拟信号。'><title>1.2 模拟信号</title>
 
 <link rel='canonical' href='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/1-2%E6%A8%A1%E6%8B%9F%E4%BF%A1%E5%8F%B7/'>
 
 <link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='1.2 模拟信号'>
-<meta property='og:description' content='是指任何携带信息的物理量，力、热、声、光、电等。
-1.2.1 模拟信号和数字信号 信号分为：离散信号和连续信号。离散信号可以只有几个值，连续信号可以无限细分下去。 离散和连续指信号的幅度，也可以指时间。
-采样和量化：
-​	采样：将模拟波形在时间域上进行切分，每个切片大小大致等于原来波形的值，会丢失一些信息。
-​	量化：给每个时间片分配一个数字，量化后的数字可以交给计算机或其它素质电路处理 1.2.2 周期信号 重复的波形称为周期性的，此周期信号有变化。
-周期(period, $T$)表示一个周期信号完成一个循环所需要的时间。周期(cycle)是指在波形呈现出另一个完全相同的图案之前波形的完整序列值。可以是在逐次循环的波形上任意两个相应点来测出周期。
-向量：既有大小又有方向的量。
-频率和周期：
-频率：每1s内完成的完整周期的个数，单位Hz
-周期：一个循环所经历的时间，单位s，所以周期的倒数就是频率，频率的倒数是周期
-$$ T = \frac{1}{f} $$
-和 $$ f = \frac{1}{T} $$ 正弦曲线的瞬时值： $$ v(t) = V_Psin(wt &#43; ⌀) $$ $V_p$
-正弦曲线的平均值： $$ V_{avg} = \frac{2V_P}{π} $$ 化简得： $$ V_{avg} = 0.637V_P $$ 电流平均值： $$ I_{avg} = 0.637I_p $$ 正弦曲线的有效值： $$ P = IV $$ 计算与直流电压电流产生相同的热效应时的交流电压、电流，通过积分可以求出等效的热量，称为方均根电压(rms)或者电流。
-方均根电压和峰值电压的关系： $$ V_{rms} = 0.707V_p $$ 方均根电流与有效电流的关系是： $$ I_{rms} = 0.'>
+<meta property='og:description' content='事实上，很多信号的值在一定范围内是连续变化的，这样的信号就是模拟信号。'>
 <meta property='og:url' content='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/1-2%E6%A8%A1%E6%8B%9F%E4%BF%A1%E5%8F%B7/'>
 <meta property='og:site_name' content='My Blog'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Analog' /><meta property='article:published_time' content='2023-07-14T14:57:45&#43;08:00'/><meta property='article:modified_time' content='2023-07-14T14:57:45&#43;08:00'/>
 <meta name="twitter:title" content="1.2 模拟信号">
-<meta name="twitter:description" content="是指任何携带信息的物理量，力、热、声、光、电等。
-1.2.1 模拟信号和数字信号 信号分为：离散信号和连续信号。离散信号可以只有几个值，连续信号可以无限细分下去。 离散和连续指信号的幅度，也可以指时间。
-采样和量化：
-​	采样：将模拟波形在时间域上进行切分，每个切片大小大致等于原来波形的值，会丢失一些信息。
-​	量化：给每个时间片分配一个数字，量化后的数字可以交给计算机或其它素质电路处理 1.2.2 周期信号 重复的波形称为周期性的，此周期信号有变化。
-周期(period, $T$)表示一个周期信号完成一个循环所需要的时间。周期(cycle)是指在波形呈现出另一个完全相同的图案之前波形的完整序列值。可以是在逐次循环的波形上任意两个相应点来测出周期。
-向量：既有大小又有方向的量。
-频率和周期：
-频率：每1s内完成的完整周期的个数，单位Hz
-周期：一个循环所经历的时间，单位s，所以周期的倒数就是频率，频率的倒数是周期
-$$ T = \frac{1}{f} $$
-和 $$ f = \frac{1}{T} $$ 正弦曲线的瞬时值： $$ v(t) = V_Psin(wt &#43; ⌀) $$ $V_p$
-正弦曲线的平均值： $$ V_{avg} = \frac{2V_P}{π} $$ 化简得： $$ V_{avg} = 0.637V_P $$ 电流平均值： $$ I_{avg} = 0.637I_p $$ 正弦曲线的有效值： $$ P = IV $$ 计算与直流电压电流产生相同的热效应时的交流电压、电流，通过积分可以求出等效的热量，称为方均根电压(rms)或者电流。
-方均根电压和峰值电压的关系： $$ V_{rms} = 0.707V_p $$ 方均根电流与有效电流的关系是： $$ I_{rms} = 0."><script>
+<meta name="twitter:description" content="事实上，很多信号的值在一定范围内是连续变化的，这样的信号就是模拟信号。"><script>
     (function(){
         if(''){
             if (prompt('请输入文章密码') !== ''){
@@ -126,6 +87,10 @@ $$ T = \frac{1}{f} $$
         <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/1-2%E6%A8%A1%E6%8B%9F%E4%BF%A1%E5%8F%B7/">1.2 模拟信号</a>
     </h2>
 
+    
+    <h3 class="article-subtitle">
+        事实上，很多信号的值在一定范围内是连续变化的，这样的信号就是模拟信号。
+    </h3>
     
 
     

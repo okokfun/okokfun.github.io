@@ -1,29 +1,17 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='集成电路(IC)是在单个硅片上由许多互联的电路元器件(电阻、二极管、晶体管)组成的具有一定功能的电路。对于模拟电子来说，第6章介绍的运算放大器是最常见的 IC。本节将会介绍为负载提供功率而专门设计的 IC 电路，还会介绍两种专用 IC 音频放大器:美国国家半导体公司的 LM384 和飞思卡尔半导体公司的 MC34119。
-学完本节后，你应该掌握以下内容:
-给出IC功率放大器的主要特性并描述它的应用 描述集成电路功率放大器的主要指标 说明如何将LM384音频功率放大器配置成一个基本的放大器 解释为什么LM384可以用作对讲系统的放大器 最初，小型集成电路功率放大器是为音频应用而设计，它们将扬声器直接连接到输出。随着应用的扩大，设备种类也不断扩大。今天已有许多专门用于功率放大器的 IC 放大器。与小的分立功率放大器相比，它们具有更高的可靠性和更低的价格。
-IC 功率放大器应用广泛，从小型消费类产品到电源、工业电动机控制和稳压设计。大多数都包含A或者AB类功率放大器级和相关的驱动级以及通常会包括一定的电压增益。
-虽然有些 IC 电路能给负载提供 100W 甚至更大功率，但功率 IC 的典型输出功率为几瓦。任何功率放大器的最大输出功率都取决于合适的散热。制造商的数据手册中会提供 IC 功率放大器所要求的散热信息。'><title>5.8 IC功率放大器</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='集成电路(IC)是在单个硅片上由许多互联的电路元器件(电阻、二极管、晶体管)组成的具有一定功能的电路。'><title>5.8 IC功率放大器</title>
 
 <link rel='canonical' href='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/5-8ic%E5%8A%9F%E7%8E%87%E6%94%BE%E5%A4%A7%E5%99%A8/'>
 
 <link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='5.8 IC功率放大器'>
-<meta property='og:description' content='集成电路(IC)是在单个硅片上由许多互联的电路元器件(电阻、二极管、晶体管)组成的具有一定功能的电路。对于模拟电子来说，第6章介绍的运算放大器是最常见的 IC。本节将会介绍为负载提供功率而专门设计的 IC 电路，还会介绍两种专用 IC 音频放大器:美国国家半导体公司的 LM384 和飞思卡尔半导体公司的 MC34119。
-学完本节后，你应该掌握以下内容:
-给出IC功率放大器的主要特性并描述它的应用 描述集成电路功率放大器的主要指标 说明如何将LM384音频功率放大器配置成一个基本的放大器 解释为什么LM384可以用作对讲系统的放大器 最初，小型集成电路功率放大器是为音频应用而设计，它们将扬声器直接连接到输出。随着应用的扩大，设备种类也不断扩大。今天已有许多专门用于功率放大器的 IC 放大器。与小的分立功率放大器相比，它们具有更高的可靠性和更低的价格。
-IC 功率放大器应用广泛，从小型消费类产品到电源、工业电动机控制和稳压设计。大多数都包含A或者AB类功率放大器级和相关的驱动级以及通常会包括一定的电压增益。
-虽然有些 IC 电路能给负载提供 100W 甚至更大功率，但功率 IC 的典型输出功率为几瓦。任何功率放大器的最大输出功率都取决于合适的散热。制造商的数据手册中会提供 IC 功率放大器所要求的散热信息。'>
+<meta property='og:description' content='集成电路(IC)是在单个硅片上由许多互联的电路元器件(电阻、二极管、晶体管)组成的具有一定功能的电路。'>
 <meta property='og:url' content='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/5-8ic%E5%8A%9F%E7%8E%87%E6%94%BE%E5%A4%A7%E5%99%A8/'>
 <meta property='og:site_name' content='My Blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Analog' /><meta property='article:published_time' content='2023-07-14T17:40:23&#43;00:00'/><meta property='article:modified_time' content='2023-07-14T17:40:23&#43;00:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Analog' /><meta property='article:published_time' content='2023-07-14T17:40:23&#43;08:00'/><meta property='article:modified_time' content='2023-07-14T17:40:23&#43;08:00'/>
 <meta name="twitter:title" content="5.8 IC功率放大器">
-<meta name="twitter:description" content="集成电路(IC)是在单个硅片上由许多互联的电路元器件(电阻、二极管、晶体管)组成的具有一定功能的电路。对于模拟电子来说，第6章介绍的运算放大器是最常见的 IC。本节将会介绍为负载提供功率而专门设计的 IC 电路，还会介绍两种专用 IC 音频放大器:美国国家半导体公司的 LM384 和飞思卡尔半导体公司的 MC34119。
-学完本节后，你应该掌握以下内容:
-给出IC功率放大器的主要特性并描述它的应用 描述集成电路功率放大器的主要指标 说明如何将LM384音频功率放大器配置成一个基本的放大器 解释为什么LM384可以用作对讲系统的放大器 最初，小型集成电路功率放大器是为音频应用而设计，它们将扬声器直接连接到输出。随着应用的扩大，设备种类也不断扩大。今天已有许多专门用于功率放大器的 IC 放大器。与小的分立功率放大器相比，它们具有更高的可靠性和更低的价格。
-IC 功率放大器应用广泛，从小型消费类产品到电源、工业电动机控制和稳压设计。大多数都包含A或者AB类功率放大器级和相关的驱动级以及通常会包括一定的电压增益。
-虽然有些 IC 电路能给负载提供 100W 甚至更大功率，但功率 IC 的典型输出功率为几瓦。任何功率放大器的最大输出功率都取决于合适的散热。制造商的数据手册中会提供 IC 功率放大器所要求的散热信息。"><script>
+<meta name="twitter:description" content="集成电路(IC)是在单个硅片上由许多互联的电路元器件(电阻、二极管、晶体管)组成的具有一定功能的电路。"><script>
     (function(){
         if(''){
             if (prompt('请输入文章密码') !== ''){
@@ -287,6 +275,10 @@ IC 功率放大器应用广泛，从小型消费类产品到电源、工业电�
         <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/5-8ic%E5%8A%9F%E7%8E%87%E6%94%BE%E5%A4%A7%E5%99%A8/">5.8 IC功率放大器</a>
     </h2>
 
+    
+    <h3 class="article-subtitle">
+        集成电路(IC)是在单个硅片上由许多互联的电路元器件(电阻、二极管、晶体管)组成的具有一定功能的电路。
+    </h3>
     
 
     

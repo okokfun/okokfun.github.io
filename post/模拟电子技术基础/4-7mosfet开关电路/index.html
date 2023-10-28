@@ -1,23 +1,17 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='虽然 BJT 和 JFET 都能用于开关电路，但 MOSFET 是目前大多数开关应用的首选器件。 MOSFET 具有很低的导通电阻，非常高的断开电阻，很快的切换时间，因此它是极好的开关器件。有两种基本类型的 MOSFET 开关电路:模拟和数字。本节将介绍数字和模拟 MOSFET 开关电路。
-学完本节后，你应该掌握以下内容:
-描述如何将 MOSFET 用于模拟和数字开关电路中 解释如何让 MOSFET 像开关一样工作 描述 MOSFET 模拟开关 讨论模拟开关应用 描述开关电容电路 描述 MOSFET 如何在数字开关电路中应用 讨论互补 MOS(CMOS) 逻辑 解释几种 CMOS数字门的工作原理 讨论几种功率 MOSFET 结构 4.7.1 MOSFET 开关工作原理 $$ 图4-52~~~在负载线上的开关工作 $$ 通常将 E-MOSFET 用于开关应用，因为其具有阈值特性，$V_{GS(th)}$。当栅源电压小于阈值时，MOSFET 处于关闭状态。当栅源电压大于阈值时， MOSFET 导通。当 $V_{GS}$ 在 $V_{GS(th)}$ 与 $V_{GS(on)}$ 之间变化时， MOSFET 就以开关方式工作，如图4-52所示。在关闭状态， $V_{GS}$ &amp;lt; $V_{GS(th)}$ ，器件工作在负载线的下端，相当于一个打开的开关(非常高的 $R_{DS}$)。当$V_{GS}$ 足够大于 $V_{GS(th)}$ 时，器件工作在负载线上端的可变电阻区，相当于一个闭合的开关(非常低的 $R_{DS}$）。 $$ a) ~n沟道MOSFET和等效开关~~~~~~~~~~~~~~~~~~~~~~~~~~~~~b) ~p沟道MOSFET和等效开关 $$'><title>4.7 MOSFET开关电路</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='MOSFET 具有很低的导通电阻，非常高的断开电阻，很快的切换时间，因此它是极好的开关器件。'><title>4.7 MOSFET开关电路</title>
 
 <link rel='canonical' href='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/4-7mosfet%E5%BC%80%E5%85%B3%E7%94%B5%E8%B7%AF/'>
 
 <link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='4.7 MOSFET开关电路'>
-<meta property='og:description' content='虽然 BJT 和 JFET 都能用于开关电路，但 MOSFET 是目前大多数开关应用的首选器件。 MOSFET 具有很低的导通电阻，非常高的断开电阻，很快的切换时间，因此它是极好的开关器件。有两种基本类型的 MOSFET 开关电路:模拟和数字。本节将介绍数字和模拟 MOSFET 开关电路。
-学完本节后，你应该掌握以下内容:
-描述如何将 MOSFET 用于模拟和数字开关电路中 解释如何让 MOSFET 像开关一样工作 描述 MOSFET 模拟开关 讨论模拟开关应用 描述开关电容电路 描述 MOSFET 如何在数字开关电路中应用 讨论互补 MOS(CMOS) 逻辑 解释几种 CMOS数字门的工作原理 讨论几种功率 MOSFET 结构 4.7.1 MOSFET 开关工作原理 $$ 图4-52~~~在负载线上的开关工作 $$ 通常将 E-MOSFET 用于开关应用，因为其具有阈值特性，$V_{GS(th)}$。当栅源电压小于阈值时，MOSFET 处于关闭状态。当栅源电压大于阈值时， MOSFET 导通。当 $V_{GS}$ 在 $V_{GS(th)}$ 与 $V_{GS(on)}$ 之间变化时， MOSFET 就以开关方式工作，如图4-52所示。在关闭状态， $V_{GS}$ &amp;lt; $V_{GS(th)}$ ，器件工作在负载线的下端，相当于一个打开的开关(非常高的 $R_{DS}$)。当$V_{GS}$ 足够大于 $V_{GS(th)}$ 时，器件工作在负载线上端的可变电阻区，相当于一个闭合的开关(非常低的 $R_{DS}$）。 $$ a) ~n沟道MOSFET和等效开关~~~~~~~~~~~~~~~~~~~~~~~~~~~~~b) ~p沟道MOSFET和等效开关 $$'>
+<meta property='og:description' content='MOSFET 具有很低的导通电阻，非常高的断开电阻，很快的切换时间，因此它是极好的开关器件。'>
 <meta property='og:url' content='https://okokfun.github.io/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/4-7mosfet%E5%BC%80%E5%85%B3%E7%94%B5%E8%B7%AF/'>
 <meta property='og:site_name' content='My Blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Analog' /><meta property='article:published_time' content='2023-07-14T17:38:25&#43;00:00'/><meta property='article:modified_time' content='2023-07-14T17:38:25&#43;00:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Analog' /><meta property='article:published_time' content='2023-07-14T17:38:25&#43;08:00'/><meta property='article:modified_time' content='2023-07-14T17:38:25&#43;08:00'/>
 <meta name="twitter:title" content="4.7 MOSFET开关电路">
-<meta name="twitter:description" content="虽然 BJT 和 JFET 都能用于开关电路，但 MOSFET 是目前大多数开关应用的首选器件。 MOSFET 具有很低的导通电阻，非常高的断开电阻，很快的切换时间，因此它是极好的开关器件。有两种基本类型的 MOSFET 开关电路:模拟和数字。本节将介绍数字和模拟 MOSFET 开关电路。
-学完本节后，你应该掌握以下内容:
-描述如何将 MOSFET 用于模拟和数字开关电路中 解释如何让 MOSFET 像开关一样工作 描述 MOSFET 模拟开关 讨论模拟开关应用 描述开关电容电路 描述 MOSFET 如何在数字开关电路中应用 讨论互补 MOS(CMOS) 逻辑 解释几种 CMOS数字门的工作原理 讨论几种功率 MOSFET 结构 4.7.1 MOSFET 开关工作原理 $$ 图4-52~~~在负载线上的开关工作 $$ 通常将 E-MOSFET 用于开关应用，因为其具有阈值特性，$V_{GS(th)}$。当栅源电压小于阈值时，MOSFET 处于关闭状态。当栅源电压大于阈值时， MOSFET 导通。当 $V_{GS}$ 在 $V_{GS(th)}$ 与 $V_{GS(on)}$ 之间变化时， MOSFET 就以开关方式工作，如图4-52所示。在关闭状态， $V_{GS}$ &amp;lt; $V_{GS(th)}$ ，器件工作在负载线的下端，相当于一个打开的开关(非常高的 $R_{DS}$)。当$V_{GS}$ 足够大于 $V_{GS(th)}$ 时，器件工作在负载线上端的可变电阻区，相当于一个闭合的开关(非常低的 $R_{DS}$）。 $$ a) ~n沟道MOSFET和等效开关~~~~~~~~~~~~~~~~~~~~~~~~~~~~~b) ~p沟道MOSFET和等效开关 $$"><script>
+<meta name="twitter:description" content="MOSFET 具有很低的导通电阻，非常高的断开电阻，很快的切换时间，因此它是极好的开关器件。"><script>
     (function(){
         if(''){
             if (prompt('请输入文章密码') !== ''){
@@ -85,6 +79,10 @@
         <a href="/post/%E6%A8%A1%E6%8B%9F%E7%94%B5%E5%AD%90%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/4-7mosfet%E5%BC%80%E5%85%B3%E7%94%B5%E8%B7%AF/">4.7 MOSFET开关电路</a>
     </h2>
 
+    
+    <h3 class="article-subtitle">
+        MOSFET 具有很低的导通电阻，非常高的断开电阻，很快的切换时间，因此它是极好的开关器件。
+    </h3>
     
 
     
