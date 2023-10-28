@@ -2,17 +2,17 @@
 <html lang="zh-CN">
     <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='从前面的讨论知道， PD 控制器能够增加系统的阻尼但不改变稳态响应。PI控制器可以同时改进系统的相对稳定性和稳态误差，但增加了，上升时间。使用 PID 控制器就是为了利用PI控制器和 PD 控制器各自的优点。下面将要简单介绍一-下设计 PID 控制器的步骤: $$ 图11-27 例11-3-2中具有Pl控制器的控制系统的单位阶跃响应曲线 $$ 1.考虑有这么一个 PID 控制器，它由PI控制器串联上一个 PD 控制器组成。那么该 PID 控制器的传递函数可以写为 $$ G_c(s) =K_P&#43; K_DS&#43;\frac{K_I}{S}=(K_{P1}&#43;K_{D1}S)(K_{P2}&#43;\frac{K_{I2}}{S})\(11-58) $$ 将 PD 控制器的比例常数设定为Kp=1，因此我们只需要设计 PID 中的3个参数。令式(11-58)左右两边同类项的系数相等，可以得到: $$ (11-59)K_P = K_{P2}&#43;K_{D1}K_{I2}\\ \ (11-60)K_D=K_{D1}K_{P2}\\ \ (11-61)K_I = K_{I2} $$ 2. 考虑只有 PD 部分有效。选择$K_{D1}$的值使得部分期望的相对稳定性可以实现。在时域中，系统的相对稳定性可以表示为最大超调量;在频域中，相对稳定性可以通过相位裕量来描述。 3. 选择参数 $K_{I2}$ 和 $K_{P2}$ 使得系统的相对稳定性完全满足要求。
-注意，设定$K_{p1}$=1的步骤和例11-2-1和11-2-2中的 PD 控制器设计是一致的。下面的例子将用于说明如何在时域和频域中设计 PID 控制器。'><title>11.4PID控制器的设计</title>
+注意，设定$K_{p1}$=1的步骤和例11-2-1和11-2-2中的 PD 控制器设计是一致的。下面的例子将用于说明如何在时域和频域中设计 PID 控制器。'><title>11.4 PID控制器的设计</title>
 
 <link rel='canonical' href='https://okokfun.github.io/post/%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E7%B3%BB%E7%BB%9F%E7%9B%AE%E5%BD%95/11.4pid%E6%8E%A7%E5%88%B6%E5%99%A8%E7%9A%84%E8%AE%BE%E8%AE%A1/'>
 
-<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='11.4PID控制器的设计'>
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='11.4 PID控制器的设计'>
 <meta property='og:description' content='从前面的讨论知道， PD 控制器能够增加系统的阻尼但不改变稳态响应。PI控制器可以同时改进系统的相对稳定性和稳态误差，但增加了，上升时间。使用 PID 控制器就是为了利用PI控制器和 PD 控制器各自的优点。下面将要简单介绍一-下设计 PID 控制器的步骤: $$ 图11-27 例11-3-2中具有Pl控制器的控制系统的单位阶跃响应曲线 $$ 1.考虑有这么一个 PID 控制器，它由PI控制器串联上一个 PD 控制器组成。那么该 PID 控制器的传递函数可以写为 $$ G_c(s) =K_P&#43; K_DS&#43;\frac{K_I}{S}=(K_{P1}&#43;K_{D1}S)(K_{P2}&#43;\frac{K_{I2}}{S})\(11-58) $$ 将 PD 控制器的比例常数设定为Kp=1，因此我们只需要设计 PID 中的3个参数。令式(11-58)左右两边同类项的系数相等，可以得到: $$ (11-59)K_P = K_{P2}&#43;K_{D1}K_{I2}\\ \ (11-60)K_D=K_{D1}K_{P2}\\ \ (11-61)K_I = K_{I2} $$ 2. 考虑只有 PD 部分有效。选择$K_{D1}$的值使得部分期望的相对稳定性可以实现。在时域中，系统的相对稳定性可以表示为最大超调量;在频域中，相对稳定性可以通过相位裕量来描述。 3. 选择参数 $K_{I2}$ 和 $K_{P2}$ 使得系统的相对稳定性完全满足要求。
 注意，设定$K_{p1}$=1的步骤和例11-2-1和11-2-2中的 PD 控制器设计是一致的。下面的例子将用于说明如何在时域和频域中设计 PID 控制器。'>
 <meta property='og:url' content='https://okokfun.github.io/post/%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E7%B3%BB%E7%BB%9F%E7%9B%AE%E5%BD%95/11.4pid%E6%8E%A7%E5%88%B6%E5%99%A8%E7%9A%84%E8%AE%BE%E8%AE%A1/'>
 <meta property='og:site_name' content='My Blog'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Automatic' /><meta property='article:published_time' content='2023-08-30T18:36:05&#43;08:00'/><meta property='article:modified_time' content='2023-08-30T18:36:05&#43;08:00'/>
-<meta name="twitter:title" content="11.4PID控制器的设计">
+<meta name="twitter:title" content="11.4 PID控制器的设计">
 <meta name="twitter:description" content="从前面的讨论知道， PD 控制器能够增加系统的阻尼但不改变稳态响应。PI控制器可以同时改进系统的相对稳定性和稳态误差，但增加了，上升时间。使用 PID 控制器就是为了利用PI控制器和 PD 控制器各自的优点。下面将要简单介绍一-下设计 PID 控制器的步骤: $$ 图11-27 例11-3-2中具有Pl控制器的控制系统的单位阶跃响应曲线 $$ 1.考虑有这么一个 PID 控制器，它由PI控制器串联上一个 PD 控制器组成。那么该 PID 控制器的传递函数可以写为 $$ G_c(s) =K_P&#43; K_DS&#43;\frac{K_I}{S}=(K_{P1}&#43;K_{D1}S)(K_{P2}&#43;\frac{K_{I2}}{S})\(11-58) $$ 将 PD 控制器的比例常数设定为Kp=1，因此我们只需要设计 PID 中的3个参数。令式(11-58)左右两边同类项的系数相等，可以得到: $$ (11-59)K_P = K_{P2}&#43;K_{D1}K_{I2}\\ \ (11-60)K_D=K_{D1}K_{P2}\\ \ (11-61)K_I = K_{I2} $$ 2. 考虑只有 PD 部分有效。选择$K_{D1}$的值使得部分期望的相对稳定性可以实现。在时域中，系统的相对稳定性可以表示为最大超调量;在频域中，相对稳定性可以通过相位裕量来描述。 3. 选择参数 $K_{I2}$ 和 $K_{P2}$ 使得系统的相对稳定性完全满足要求。
 注意，设定$K_{p1}$=1的步骤和例11-2-1和11-2-2中的 PD 控制器设计是一致的。下面的例子将用于说明如何在时域和频域中设计 PID 控制器。"><script>
     (function(){
@@ -275,7 +275,7 @@
     
 
     <h2 class="article-title">
-        <a href="/post/%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E7%B3%BB%E7%BB%9F%E7%9B%AE%E5%BD%95/11.4pid%E6%8E%A7%E5%88%B6%E5%99%A8%E7%9A%84%E8%AE%BE%E8%AE%A1/">11.4PID控制器的设计</a>
+        <a href="/post/%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E7%B3%BB%E7%BB%9F%E7%9B%AE%E5%BD%95/11.4pid%E6%8E%A7%E5%88%B6%E5%99%A8%E7%9A%84%E8%AE%BE%E8%AE%A1/">11.4 PID控制器的设计</a>
     </h2>
 
     
@@ -415,7 +415,7 @@ $$
         
 
         <div class="article-details">
-            <h2 class="article-title">11.3PI控制器的设计</h2>
+            <h2 class="article-title">11.3 PI控制器的设计</h2>
         </div>
     </a>
 </article>
@@ -427,7 +427,7 @@ $$
         
 
         <div class="article-details">
-            <h2 class="article-title">11.2PD控制器的设计</h2>
+            <h2 class="article-title">11.2 PD控制器的设计</h2>
         </div>
     </a>
 </article>
@@ -439,7 +439,7 @@ $$
         
 
         <div class="article-details">
-            <h2 class="article-title">11.1引言</h2>
+            <h2 class="article-title">11.1 引言</h2>
         </div>
     </a>
 </article>
@@ -451,7 +451,7 @@ $$
         
 
         <div class="article-details">
-            <h2 class="article-title">10.16MATLAB工具和案例研究</h2>
+            <h2 class="article-title">10.16 MATLAB工具和案例研究</h2>
         </div>
     </a>
 </article>
@@ -463,7 +463,7 @@ $$
         
 
         <div class="article-details">
-            <h2 class="article-title">10.15频域中的灵敏度研究</h2>
+            <h2 class="article-title">10.15 频域中的灵敏度研究</h2>
         </div>
     </a>
 </article>
@@ -481,7 +481,7 @@ $$
     data-app-id="d44db3f9-a0ff-4551-a44d-316afd2e5835"
     data-page-id="1784be4e326da98b9391c09c2fcc0a97"
     data-page-url="https://okokfun.github.io/post/%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E7%B3%BB%E7%BB%9F%E7%9B%AE%E5%BD%95/11.4pid%E6%8E%A7%E5%88%B6%E5%99%A8%E7%9A%84%E8%AE%BE%E8%AE%A1/"
-    data-page-title="11.4PID控制器的设计"></div>
+    data-page-title="11.4 PID控制器的设计"></div>
 <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
 
 <script>

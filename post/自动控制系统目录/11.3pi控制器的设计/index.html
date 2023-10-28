@@ -19,11 +19,11 @@ $$ 图11-20~~~G_c(s)=K_p &#43;\frac{K_I}{s}的PI控制器的运算放大器电�
 校正系统的前向通道传递函数为
 $$ G_(s) = G_c(s)G_p(s) = \frac{ω^2_n(K_PS&#43;K_I)}{S^2(S&#43;2ξω_n)}~~~(11-39) $$
 通过以上分析，PI 控制器的作用如下:
-在前向通道传递函数 $s=-K_I/K_p$ 处增加了一个零点。 在前向通道传递函数 $s=0$ 处增加了一个极点，这说明控制系统从I型变为I型。因此，原始系统的稳态误差可以得到改善，即，如果响应的稳态误差为常数，PI 控制会将误差减小到0 (要保证校正系统仍稳定)。 如果参考输入是斜坡函数，前向通道传递函数为式(11-39)的控制系统(系统控制框图见图11-19)会产生零稳态误差。但是，此时系统是三阶的，所以它可能比原始的二阶系统具有更差的 稳定性，甚至如果 $K_p$ 和 $K_I$ 的值选择不当，系统会变得不稳定。'><title>11.3PI控制器的设计</title>
+在前向通道传递函数 $s=-K_I/K_p$ 处增加了一个零点。 在前向通道传递函数 $s=0$ 处增加了一个极点，这说明控制系统从I型变为I型。因此，原始系统的稳态误差可以得到改善，即，如果响应的稳态误差为常数，PI 控制会将误差减小到0 (要保证校正系统仍稳定)。 如果参考输入是斜坡函数，前向通道传递函数为式(11-39)的控制系统(系统控制框图见图11-19)会产生零稳态误差。但是，此时系统是三阶的，所以它可能比原始的二阶系统具有更差的 稳定性，甚至如果 $K_p$ 和 $K_I$ 的值选择不当，系统会变得不稳定。'><title>11.3 PI控制器的设计</title>
 
 <link rel='canonical' href='https://okokfun.github.io/post/%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E7%B3%BB%E7%BB%9F%E7%9B%AE%E5%BD%95/11.3pi%E6%8E%A7%E5%88%B6%E5%99%A8%E7%9A%84%E8%AE%BE%E8%AE%A1/'>
 
-<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='11.3PI控制器的设计'>
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='11.3 PI控制器的设计'>
 <meta property='og:description' content='从11.2节中，我们得知PD控制器可以改进控制系统的阻尼和上升时间，但其代价是更高的带宽和谐振频率，且PD控制不影响稳态误差，除非稳态误差是随时间变化的，而对阶跃输入而言，PD控制下系统的稳态误差通常是不变的。因此，PD控制器在许多情况下不能满足系统的校正要求。 $$ 图11-19具有PI控制器的控制系统控制框图 $$
 PID控制器的积分部分产生一个与控制器输人的时间积分成比例的信号。串联一个PI控制器的二阶系统结构控制框图如图11-19所示。PI控制器的传递函数为
 $$ G_c(S) = K_P&#43;\frac{K_I}{S}~~~(11-34) $$
@@ -46,7 +46,7 @@ $$ G_(s) = G_c(s)G_p(s) = \frac{ω^2_n(K_PS&#43;K_I)}{S^2(S&#43;2ξω_n)}~~~(11-
 <meta property='og:url' content='https://okokfun.github.io/post/%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E7%B3%BB%E7%BB%9F%E7%9B%AE%E5%BD%95/11.3pi%E6%8E%A7%E5%88%B6%E5%99%A8%E7%9A%84%E8%AE%BE%E8%AE%A1/'>
 <meta property='og:site_name' content='My Blog'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Automatic' /><meta property='article:published_time' content='2023-08-30T18:35:47&#43;08:00'/><meta property='article:modified_time' content='2023-08-30T18:35:47&#43;08:00'/>
-<meta name="twitter:title" content="11.3PI控制器的设计">
+<meta name="twitter:title" content="11.3 PI控制器的设计">
 <meta name="twitter:description" content="从11.2节中，我们得知PD控制器可以改进控制系统的阻尼和上升时间，但其代价是更高的带宽和谐振频率，且PD控制不影响稳态误差，除非稳态误差是随时间变化的，而对阶跃输入而言，PD控制下系统的稳态误差通常是不变的。因此，PD控制器在许多情况下不能满足系统的校正要求。 $$ 图11-19具有PI控制器的控制系统控制框图 $$
 PID控制器的积分部分产生一个与控制器输人的时间积分成比例的信号。串联一个PI控制器的二阶系统结构控制框图如图11-19所示。PI控制器的传递函数为
 $$ G_c(S) = K_P&#43;\frac{K_I}{S}~~~(11-34) $$
@@ -130,7 +130,7 @@ $$ G_(s) = G_c(s)G_p(s) = \frac{ω^2_n(K_PS&#43;K_I)}{S^2(S&#43;2ξω_n)}~~~(11-
     
 
     <h2 class="article-title">
-        <a href="/post/%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E7%B3%BB%E7%BB%9F%E7%9B%AE%E5%BD%95/11.3pi%E6%8E%A7%E5%88%B6%E5%99%A8%E7%9A%84%E8%AE%BE%E8%AE%A1/">11.3PI控制器的设计</a>
+        <a href="/post/%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E7%B3%BB%E7%BB%9F%E7%9B%AE%E5%BD%95/11.3pi%E6%8E%A7%E5%88%B6%E5%99%A8%E7%9A%84%E8%AE%BE%E8%AE%A1/">11.3 PI控制器的设计</a>
     </h2>
 
     
@@ -393,7 +393,7 @@ $$</p>
         
 
         <div class="article-details">
-            <h2 class="article-title">11.2PD控制器的设计</h2>
+            <h2 class="article-title">11.2 PD控制器的设计</h2>
         </div>
     </a>
 </article>
@@ -405,7 +405,7 @@ $$</p>
         
 
         <div class="article-details">
-            <h2 class="article-title">11.1引言</h2>
+            <h2 class="article-title">11.1 引言</h2>
         </div>
     </a>
 </article>
@@ -417,7 +417,7 @@ $$</p>
         
 
         <div class="article-details">
-            <h2 class="article-title">10.16MATLAB工具和案例研究</h2>
+            <h2 class="article-title">10.16 MATLAB工具和案例研究</h2>
         </div>
     </a>
 </article>
@@ -429,7 +429,7 @@ $$</p>
         
 
         <div class="article-details">
-            <h2 class="article-title">10.15频域中的灵敏度研究</h2>
+            <h2 class="article-title">10.15 频域中的灵敏度研究</h2>
         </div>
     </a>
 </article>
@@ -441,7 +441,7 @@ $$</p>
         
 
         <div class="article-details">
-            <h2 class="article-title">10.14Nichols图应用于非单位反馈系统</h2>
+            <h2 class="article-title">10.14 Nichols图应用于非单位反馈系统</h2>
         </div>
     </a>
 </article>
@@ -459,7 +459,7 @@ $$</p>
     data-app-id="d44db3f9-a0ff-4551-a44d-316afd2e5835"
     data-page-id="8a2c364b4b6d55d502c5c14a0de97ce3"
     data-page-url="https://okokfun.github.io/post/%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E7%B3%BB%E7%BB%9F%E7%9B%AE%E5%BD%95/11.3pi%E6%8E%A7%E5%88%B6%E5%99%A8%E7%9A%84%E8%AE%BE%E8%AE%A1/"
-    data-page-title="11.3PI控制器的设计"></div>
+    data-page-title="11.3 PI控制器的设计"></div>
 <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
 
 <script>
