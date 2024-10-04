@@ -6,7 +6,261 @@
     <description>Recent content in Posts on My Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 20 Aug 2024 13:01:14 +0800</lastBuildDate><atom:link href="https://okokfun.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 04 Oct 2024 23:32:14 +0800</lastBuildDate><atom:link href="https://okokfun.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>第二节 医学影像设备质量控制的检测参数与仪器</title>
+      <link>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%83%E7%AB%A0-%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E8%B4%A8%E9%87%8F%E6%8E%A7%E5%88%B6/%E7%AC%AC%E4%BA%8C%E8%8A%82%E6%A0%B8%E5%8C%BB%E5%AD%A6%E6%88%90%E5%83%8F%E8%AE%BE%E5%A4%87%E7%9A%84%E7%BB%B4%E4%BF%AE-%E5%89%AF%E6%9C%AC/</link>
+      <pubDate>Fri, 04 Oct 2024 23:32:14 +0800</pubDate>
+      
+      <guid>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%83%E7%AB%A0-%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E8%B4%A8%E9%87%8F%E6%8E%A7%E5%88%B6/%E7%AC%AC%E4%BA%8C%E8%8A%82%E6%A0%B8%E5%8C%BB%E5%AD%A6%E6%88%90%E5%83%8F%E8%AE%BE%E5%A4%87%E7%9A%84%E7%BB%B4%E4%BF%AE-%E5%89%AF%E6%9C%AC/</guid>
+      <description>一、Ⅹ 线机检测参数 二、CR、DR 测定参数 三、DSA 测试参数 四、CT 检测仪器 五、MR 质控检测系统 六、US 检测仪器 七、SPECT、PET 设备检测仪器 八、γ 刀检测参数 </description>
+    </item>
+    
+    <item>
+      <title>第三节 SPECT 设备电路与故障检修</title>
+      <link>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E5%85%AD%E7%AB%A0-%E6%A0%B8%E5%8C%BB%E5%AD%A6%E6%98%BE%E5%83%8F%E5%8E%9F%E7%90%86%E4%B8%8E%E8%AE%BE%E5%A4%87%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%89%E8%8A%82spect%E8%AE%BE%E5%A4%87%E7%94%B5%E8%B7%AF%E4%B8%8E%E6%95%85%E9%9A%9C%E6%A3%80%E4%BF%AE/</link>
+      <pubDate>Fri, 04 Oct 2024 23:30:14 +0800</pubDate>
+      
+      <guid>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E5%85%AD%E7%AB%A0-%E6%A0%B8%E5%8C%BB%E5%AD%A6%E6%98%BE%E5%83%8F%E5%8E%9F%E7%90%86%E4%B8%8E%E8%AE%BE%E5%A4%87%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%89%E8%8A%82spect%E8%AE%BE%E5%A4%87%E7%94%B5%E8%B7%AF%E4%B8%8E%E6%95%85%E9%9A%9C%E6%A3%80%E4%BF%AE/</guid>
+      <description>一、工作过程 二、电路分析 三、故障分析与维修 </description>
+    </item>
+    
+    <item>
+      <title>第一节 医学影像成像质量控制</title>
+      <link>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%83%E7%AB%A0-%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E8%B4%A8%E9%87%8F%E6%8E%A7%E5%88%B6/%E7%AC%AC%E4%B8%80%E8%8A%82%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E6%88%90%E5%83%8F%E8%B4%A8%E9%87%8F%E6%8E%A7%E5%88%B6/</link>
+      <pubDate>Fri, 04 Oct 2024 23:25:14 +0800</pubDate>
+      
+      <guid>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%83%E7%AB%A0-%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E8%B4%A8%E9%87%8F%E6%8E%A7%E5%88%B6/%E7%AC%AC%E4%B8%80%E8%8A%82%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E6%88%90%E5%83%8F%E8%B4%A8%E9%87%8F%E6%8E%A7%E5%88%B6/</guid>
+      <description>一、评价与控制 二、CR 的伪影与质控 三、DR、DSA 质控参数 四、CT 图像处理与质控 五、CT 图像质量评价 六、MR 图像质量控制 七、SPECT 设备的质量控制 </description>
+    </item>
+    
+    <item>
+      <title>第一节 核医学成像设备的保养</title>
+      <link>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E5%85%AD%E7%AB%A0-%E6%A0%B8%E5%8C%BB%E5%AD%A6%E6%98%BE%E5%83%8F%E5%8E%9F%E7%90%86%E4%B8%8E%E8%AE%BE%E5%A4%87%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%80%E8%8A%82%E6%A0%B8%E5%8C%BB%E5%AD%A6%E6%88%90%E5%83%8F%E8%AE%BE%E5%A4%87%E7%9A%84%E4%BF%9D%E5%85%BB/</link>
+      <pubDate>Fri, 04 Oct 2024 23:25:14 +0800</pubDate>
+      
+      <guid>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E5%85%AD%E7%AB%A0-%E6%A0%B8%E5%8C%BB%E5%AD%A6%E6%98%BE%E5%83%8F%E5%8E%9F%E7%90%86%E4%B8%8E%E8%AE%BE%E5%A4%87%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%80%E8%8A%82%E6%A0%B8%E5%8C%BB%E5%AD%A6%E6%88%90%E5%83%8F%E8%AE%BE%E5%A4%87%E7%9A%84%E4%BF%9D%E5%85%BB/</guid>
+      <description>一、保养内容 二、保养时间表 三、使用注意事项 </description>
+    </item>
+    
+    <item>
+      <title>第二节 核医学成像设备的维修</title>
+      <link>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E5%85%AD%E7%AB%A0-%E6%A0%B8%E5%8C%BB%E5%AD%A6%E6%98%BE%E5%83%8F%E5%8E%9F%E7%90%86%E4%B8%8E%E8%AE%BE%E5%A4%87%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%BA%8C%E8%8A%82%E6%A0%B8%E5%8C%BB%E5%AD%A6%E6%88%90%E5%83%8F%E8%AE%BE%E5%A4%87%E7%9A%84%E7%BB%B4%E4%BF%AE/</link>
+      <pubDate>Fri, 04 Oct 2024 23:25:14 +0800</pubDate>
+      
+      <guid>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E5%85%AD%E7%AB%A0-%E6%A0%B8%E5%8C%BB%E5%AD%A6%E6%98%BE%E5%83%8F%E5%8E%9F%E7%90%86%E4%B8%8E%E8%AE%BE%E5%A4%87%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%BA%8C%E8%8A%82%E6%A0%B8%E5%8C%BB%E5%AD%A6%E6%88%90%E5%83%8F%E8%AE%BE%E5%A4%87%E7%9A%84%E7%BB%B4%E4%BF%AE/</guid>
+      <description>一、设备故障 二、设备故障对影像的影响 三、故障检修 </description>
+    </item>
+    
+    <item>
+      <title>第三节 B 超设备单元电路与故障分析</title>
+      <link>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%BA%94%E7%AB%A0-%E5%8C%BB%E7%94%A8%E8%B6%85%E5%A3%B0%E6%88%90%E5%83%8F%E5%8E%9F%E7%90%86%E4%B8%8E%E4%BB%AA%E5%99%A8%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%89%E8%8A%82b%E8%B6%85%E8%AE%BE%E5%A4%87%E5%8D%95%E5%85%83%E7%94%B5%E8%B7%AF%E4%B8%8E%E6%95%85%E9%9A%9C%E5%88%86%E6%9E%90/</link>
+      <pubDate>Fri, 04 Oct 2024 23:23:14 +0800</pubDate>
+      
+      <guid>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%BA%94%E7%AB%A0-%E5%8C%BB%E7%94%A8%E8%B6%85%E5%A3%B0%E6%88%90%E5%83%8F%E5%8E%9F%E7%90%86%E4%B8%8E%E4%BB%AA%E5%99%A8%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%89%E8%8A%82b%E8%B6%85%E8%AE%BE%E5%A4%87%E5%8D%95%E5%85%83%E7%94%B5%E8%B7%AF%E4%B8%8E%E6%95%85%E9%9A%9C%E5%88%86%E6%9E%90/</guid>
+      <description>一、B 超设备电路 二、B 超设备故障检修 </description>
+    </item>
+    
+    <item>
+      <title>第二节 医用超声设备的维修</title>
+      <link>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%BA%94%E7%AB%A0-%E5%8C%BB%E7%94%A8%E8%B6%85%E5%A3%B0%E6%88%90%E5%83%8F%E5%8E%9F%E7%90%86%E4%B8%8E%E4%BB%AA%E5%99%A8%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%BA%8C%E8%8A%82%E5%8C%BB%E7%94%A8%E8%B6%85%E5%A3%B0%E8%AE%BE%E5%A4%87%E7%9A%84%E7%BB%B4%E4%BF%AE/</link>
+      <pubDate>Fri, 04 Oct 2024 23:00:14 +0800</pubDate>
+      
+      <guid>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%BA%94%E7%AB%A0-%E5%8C%BB%E7%94%A8%E8%B6%85%E5%A3%B0%E6%88%90%E5%83%8F%E5%8E%9F%E7%90%86%E4%B8%8E%E4%BB%AA%E5%99%A8%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%BA%8C%E8%8A%82%E5%8C%BB%E7%94%A8%E8%B6%85%E5%A3%B0%E8%AE%BE%E5%A4%87%E7%9A%84%E7%BB%B4%E4%BF%AE/</guid>
+      <description>一、维修方法 二、超声设备维修 三、保养与故障分析 </description>
+    </item>
+    
+    <item>
+      <title>第一节 超声设备安装和调试</title>
+      <link>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%BA%94%E7%AB%A0-%E5%8C%BB%E7%94%A8%E8%B6%85%E5%A3%B0%E6%88%90%E5%83%8F%E5%8E%9F%E7%90%86%E4%B8%8E%E4%BB%AA%E5%99%A8%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%80%E8%8A%82%E8%B6%85%E5%A3%B0%E8%AE%BE%E5%A4%87%E5%AE%89%E8%A3%85%E5%92%8C%E8%B0%83%E8%AF%95/</link>
+      <pubDate>Fri, 04 Oct 2024 22:59:14 +0800</pubDate>
+      
+      <guid>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%BA%94%E7%AB%A0-%E5%8C%BB%E7%94%A8%E8%B6%85%E5%A3%B0%E6%88%90%E5%83%8F%E5%8E%9F%E7%90%86%E4%B8%8E%E4%BB%AA%E5%99%A8%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%80%E8%8A%82%E8%B6%85%E5%A3%B0%E8%AE%BE%E5%A4%87%E5%AE%89%E8%A3%85%E5%92%8C%E8%B0%83%E8%AF%95/</guid>
+      <description>一、设备结构组成 二、安装与拆卸 </description>
+    </item>
+    
+    <item>
+      <title>第三节 MR 设备单元电路与故障检修</title>
+      <link>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E5%9B%9B%E7%AB%A0-mr-%E6%88%90%E5%83%8F%E5%8E%9F%E7%90%86%E4%B8%8E%E8%AE%BE%E5%A4%87%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%89%E8%8A%82mr%E8%AE%BE%E5%A4%87%E5%8D%95%E5%85%83%E7%94%B5%E8%B7%AF%E4%B8%8E%E6%95%85%E9%9A%9C%E6%A3%80%E4%BF%AE/</link>
+      <pubDate>Fri, 04 Oct 2024 22:54:14 +0800</pubDate>
+      
+      <guid>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E5%9B%9B%E7%AB%A0-mr-%E6%88%90%E5%83%8F%E5%8E%9F%E7%90%86%E4%B8%8E%E8%AE%BE%E5%A4%87%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%89%E8%8A%82mr%E8%AE%BE%E5%A4%87%E5%8D%95%E5%85%83%E7%94%B5%E8%B7%AF%E4%B8%8E%E6%95%85%E9%9A%9C%E6%A3%80%E4%BF%AE/</guid>
+      <description>一、线圈 二、梯度磁场电源 三、3.0T磁共振设备电路与故障检修 四、激光相机、PACS 系统在 MR 上的设置与调整 </description>
+    </item>
+    
+    <item>
+      <title>第二节 MR设备整机故障分析</title>
+      <link>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E5%9B%9B%E7%AB%A0-mr-%E6%88%90%E5%83%8F%E5%8E%9F%E7%90%86%E4%B8%8E%E8%AE%BE%E5%A4%87%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%BA%8C%E8%8A%82-mr%E8%AE%BE%E5%A4%87%E6%95%B4%E6%9C%BA%E6%95%85%E9%9A%9C%E5%88%86%E6%9E%90/</link>
+      <pubDate>Fri, 04 Oct 2024 22:53:14 +0800</pubDate>
+      
+      <guid>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E5%9B%9B%E7%AB%A0-mr-%E6%88%90%E5%83%8F%E5%8E%9F%E7%90%86%E4%B8%8E%E8%AE%BE%E5%A4%87%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%BA%8C%E8%8A%82-mr%E8%AE%BE%E5%A4%87%E6%95%B4%E6%9C%BA%E6%95%85%E9%9A%9C%E5%88%86%E6%9E%90/</guid>
+      <description>一、主计算机系统 二、射频子系统 三、梯度子系统 </description>
+    </item>
+    
+    <item>
+      <title>第一节 MR 图像伪影与故障</title>
+      <link>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E5%9B%9B%E7%AB%A0-mr-%E6%88%90%E5%83%8F%E5%8E%9F%E7%90%86%E4%B8%8E%E8%AE%BE%E5%A4%87%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%80%E8%8A%82-mr%E5%9B%BE%E5%83%8F%E4%BC%AA%E5%BD%B1%E4%B8%8E%E6%95%85%E9%9A%9C/</link>
+      <pubDate>Fri, 04 Oct 2024 22:48:14 +0800</pubDate>
+      
+      <guid>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E5%9B%9B%E7%AB%A0-mr-%E6%88%90%E5%83%8F%E5%8E%9F%E7%90%86%E4%B8%8E%E8%AE%BE%E5%A4%87%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%80%E8%8A%82-mr%E5%9B%BE%E5%83%8F%E4%BC%AA%E5%BD%B1%E4%B8%8E%E6%95%85%E9%9A%9C/</guid>
+      <description>一、硬件 二、射频脉冲 三、外磁场与梯度磁场 </description>
+    </item>
+    
+    <item>
+      <title>第五节 CT 设备维修实例</title>
+      <link>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%89%E7%AB%A0-ct-%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%BA%94%E8%8A%82-ct%E8%AE%BE%E5%A4%87%E7%BB%B4%E4%BF%AE%E5%AE%9E%E4%BE%8B/</link>
+      <pubDate>Fri, 04 Oct 2024 22:38:14 +0800</pubDate>
+      
+      <guid>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%89%E7%AB%A0-ct-%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%BA%94%E8%8A%82-ct%E8%AE%BE%E5%A4%87%E7%BB%B4%E4%BF%AE%E5%AE%9E%E4%BE%8B/</guid>
+      <description>一、ELSCINT 2000 CT 设备故障检修 二、CT 球管质量不佳现象分析与检修 三、多排螺旋 CT 设备电路故障分析与检修 四、VCT 组成与电路框图分析 </description>
+    </item>
+    
+    <item>
+      <title>第三节 CT 设备电路分析</title>
+      <link>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%89%E7%AB%A0-ct-%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%89%E8%8A%82ct%E8%AE%BE%E5%A4%87%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/</link>
+      <pubDate>Fri, 04 Oct 2024 22:34:14 +0800</pubDate>
+      
+      <guid>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%89%E7%AB%A0-ct-%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%89%E8%8A%82ct%E8%AE%BE%E5%A4%87%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/</guid>
+      <description>一、CT 设备单元电路 二、单排螺旋 CT 设备电路分析 </description>
+    </item>
+    
+    <item>
+      <title>第二节 CT 球管故障判断及原因分析</title>
+      <link>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%89%E7%AB%A0-ct-%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%BA%8C%E8%8A%82ct%E7%90%83%E7%AE%A1%E6%95%85%E9%9A%9C%E5%88%A4%E6%96%AD%E5%8F%8A%E5%8E%9F%E5%9B%A0%E5%88%86%E6%9E%90/</link>
+      <pubDate>Fri, 04 Oct 2024 22:33:14 +0800</pubDate>
+      
+      <guid>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%89%E7%AB%A0-ct-%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%BA%8C%E8%8A%82ct%E7%90%83%E7%AE%A1%E6%95%85%E9%9A%9C%E5%88%A4%E6%96%AD%E5%8F%8A%E5%8E%9F%E5%9B%A0%E5%88%86%E6%9E%90/</guid>
+      <description>一、灯丝断路 二、管芯真空度下降或管芯玻壳破损 三、旋转阳极不转 四、CT球管过热或油循环停止 五、管套内高压打火 六、CT球管漏油 </description>
+    </item>
+    
+    <item>
+      <title>第一节 CT 设备故障分类与检测</title>
+      <link>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%89%E7%AB%A0-ct-%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%80%E8%8A%82-%E6%95%B0%E5%AD%97%E5%8C%96-x-%E7%BA%BF%E6%9C%BA%E7%9A%84%E6%95%85%E9%9A%9C%E4%B8%8E%E7%BB%B4%E4%BF%AE/</link>
+      <pubDate>Fri, 04 Oct 2024 22:24:14 +0800</pubDate>
+      
+      <guid>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%89%E7%AB%A0-ct-%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%80%E8%8A%82-%E6%95%B0%E5%AD%97%E5%8C%96-x-%E7%BA%BF%E6%9C%BA%E7%9A%84%E6%95%85%E9%9A%9C%E4%B8%8E%E7%BB%B4%E4%BF%AE/</guid>
+      <description>一、故障分类 二、性能检测 </description>
+    </item>
+    
+    <item>
+      <title>第四节 常见的故障与维修</title>
+      <link>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%89%E7%AB%A0-ct-%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E5%9B%9B%E8%8A%82%E5%B8%B8%E8%A7%81%E7%9A%84%E6%95%85%E9%9A%9C%E4%B8%8E%E7%BB%B4%E4%BF%AE/</link>
+      <pubDate>Fri, 04 Oct 2024 22:24:14 +0800</pubDate>
+      
+      <guid>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%89%E7%AB%A0-ct-%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E5%9B%9B%E8%8A%82%E5%B8%B8%E8%A7%81%E7%9A%84%E6%95%85%E9%9A%9C%E4%B8%8E%E7%BB%B4%E4%BF%AE/</guid>
+      <description>一、用软件维修 二、计算机故障检修 三、计算机外围设备故障的维修 四、阵列处理器、图像显示系统故障的维修 五、数据采集系统故障的维修 六、扫描架、床机械运动系统故障的维修 七、滑环故障的维修 八、Ⅹ 线系统故障的维修 九、散热系统故障的维修 十、相机故障的维修 十一、配电箱、操作台故障的维修 </description>
+    </item>
+    
+    <item>
+      <title>第三节 数字乳腺 X 线机安装与调试</title>
+      <link>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E6%95%B0%E5%AD%97-x-%E7%BA%BF%E8%AE%BE%E5%A4%87%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%89%E8%8A%82-%E6%95%B0%E5%AD%97%E4%B9%B3%E8%85%BAx%E7%BA%BF%E6%9C%BA%E5%AE%89%E8%A3%85%E4%B8%8E%E8%B0%83%E8%AF%95/</link>
+      <pubDate>Fri, 04 Oct 2024 22:20:14 +0800</pubDate>
+      
+      <guid>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E6%95%B0%E5%AD%97-x-%E7%BA%BF%E8%AE%BE%E5%A4%87%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%89%E8%8A%82-%E6%95%B0%E5%AD%97%E4%B9%B3%E8%85%BAx%E7%BA%BF%E6%9C%BA%E5%AE%89%E8%A3%85%E4%B8%8E%E8%B0%83%E8%AF%95/</guid>
+      <description>一、维修方法 二、PLAMED 系列乳腺 X 线机故障维修和设备维护 </description>
+    </item>
+    
+    <item>
+      <title>第二节 医用数字胃肠 Ⅹ 线机维修</title>
+      <link>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E6%95%B0%E5%AD%97-x-%E7%BA%BF%E8%AE%BE%E5%A4%87%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%BA%8C%E8%8A%82%E5%8C%BB%E7%94%A8%E6%95%B0%E5%AD%97%E8%83%83%E8%82%A0%E7%BA%BF%E6%9C%BA%E7%BB%B4%E4%BF%AE/</link>
+      <pubDate>Fri, 04 Oct 2024 22:18:14 +0800</pubDate>
+      
+      <guid>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E6%95%B0%E5%AD%97-x-%E7%BA%BF%E8%AE%BE%E5%A4%87%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%BA%8C%E8%8A%82%E5%8C%BB%E7%94%A8%E6%95%B0%E5%AD%97%E8%83%83%E8%82%A0%E7%BA%BF%E6%9C%BA%E7%BB%B4%E4%BF%AE/</guid>
+      <description>一、维修方法 二、NAX 系列数字胃肠 X 线机故障维修和设备维护 三、HX150ET-A 高频发生器维修和维护 四、TH-600 数字系统维修和维护 </description>
+    </item>
+    
+    <item>
+      <title>第一节 数字化 X 线机的故障与维修</title>
+      <link>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E6%95%B0%E5%AD%97-x-%E7%BA%BF%E8%AE%BE%E5%A4%87%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%80%E8%8A%82-%E6%95%B0%E5%AD%97%E5%8C%96-x-%E7%BA%BF%E6%9C%BA%E7%9A%84%E6%95%85%E9%9A%9C%E4%B8%8E%E7%BB%B4%E4%BF%AE/</link>
+      <pubDate>Fri, 04 Oct 2024 22:09:14 +0800</pubDate>
+      
+      <guid>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E6%95%B0%E5%AD%97-x-%E7%BA%BF%E8%AE%BE%E5%A4%87%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%80%E8%8A%82-%E6%95%B0%E5%AD%97%E5%8C%96-x-%E7%BA%BF%E6%9C%BA%E7%9A%84%E6%95%85%E9%9A%9C%E4%B8%8E%E7%BB%B4%E4%BF%AE/</guid>
+      <description>一、维修方法 二、故障产生的原因及故障特征 三、数字化 X 线机的故障分析和维修 </description>
+    </item>
+    
+    <item>
+      <title>第八节 X 线机整机故障分析</title>
+      <link>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%80%E7%AB%A0-%E6%A8%A1%E6%8B%9F-x-%E7%BA%BF%E8%AE%BE%E5%A4%87%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E5%85%AB%E8%8A%82-x%E7%BA%BF%E6%9C%BA%E6%95%B4%E6%9C%BA%E6%95%85%E9%9A%9C%E5%88%86%E6%9E%90/</link>
+      <pubDate>Fri, 04 Oct 2024 22:05:14 +0800</pubDate>
+      
+      <guid>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%80%E7%AB%A0-%E6%A8%A1%E6%8B%9F-x-%E7%BA%BF%E8%AE%BE%E5%A4%87%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E5%85%AB%E8%8A%82-x%E7%BA%BF%E6%9C%BA%E6%95%B4%E6%9C%BA%E6%95%85%E9%9A%9C%E5%88%86%E6%9E%90/</guid>
+      <description>一、故障分类与检测方法 二、工频Ⅹ线机单元电路 三、工频Ⅹ线机故障综合分析与检修 四、变频X线机电路组成与故障维修 </description>
+    </item>
+    
+    <item>
+      <title>第七节 Ⅹ 线机的维护与检修</title>
+      <link>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%80%E7%AB%A0-%E6%A8%A1%E6%8B%9F-x-%E7%BA%BF%E8%AE%BE%E5%A4%87%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%83%E8%8A%82%E7%BA%BF%E6%9C%BA%E7%9A%84%E7%BB%B4%E6%8A%A4%E4%B8%8E%E6%A3%80%E4%BF%AE/</link>
+      <pubDate>Fri, 04 Oct 2024 22:03:14 +0800</pubDate>
+      
+      <guid>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%80%E7%AB%A0-%E6%A8%A1%E6%8B%9F-x-%E7%BA%BF%E8%AE%BE%E5%A4%87%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%83%E8%8A%82%E7%BA%BF%E6%9C%BA%E7%9A%84%E7%BB%B4%E6%8A%A4%E4%B8%8E%E6%A3%80%E4%BF%AE/</guid>
+      <description>一、维护 二、定期检查 三、检修 四、电路故障的判断及检查程序 </description>
+    </item>
+    
+    <item>
+      <title>第六节主要参量测试与调整</title>
+      <link>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%80%E7%AB%A0-%E6%A8%A1%E6%8B%9F-x-%E7%BA%BF%E8%AE%BE%E5%A4%87%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E5%85%AD%E8%8A%82%E4%B8%BB%E8%A6%81%E5%8F%82%E9%87%8F%E6%B5%8B%E8%AF%95%E4%B8%8E%E8%B0%83%E6%95%B4/</link>
+      <pubDate>Fri, 04 Oct 2024 22:03:14 +0800</pubDate>
+      
+      <guid>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%80%E7%AB%A0-%E6%A8%A1%E6%8B%9F-x-%E7%BA%BF%E8%AE%BE%E5%A4%87%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E5%85%AD%E8%8A%82%E4%B8%BB%E8%A6%81%E5%8F%82%E9%87%8F%E6%B5%8B%E8%AF%95%E4%B8%8E%E8%B0%83%E6%95%B4/</guid>
+      <description>一、曝光时间 二、管电流 三、管电压 四、Ⅹ线电视系统 </description>
+    </item>
+    
+    <item>
+      <title>第四节Ⅹ线电视系统</title>
+      <link>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%80%E7%AB%A0-%E6%A8%A1%E6%8B%9F-x-%E7%BA%BF%E8%AE%BE%E5%A4%87%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E5%9B%9B%E8%8A%82%E7%BA%BF%E7%94%B5%E8%A7%86%E7%B3%BB%E7%BB%9F/</link>
+      <pubDate>Fri, 04 Oct 2024 21:57:14 +0800</pubDate>
+      
+      <guid>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%80%E7%AB%A0-%E6%A8%A1%E6%8B%9F-x-%E7%BA%BF%E8%AE%BE%E5%A4%87%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E5%9B%9B%E8%8A%82%E7%BA%BF%E7%94%B5%E8%A7%86%E7%B3%BB%E7%BB%9F/</guid>
+      <description>一、检修条件与注意事项 二、检查故障的基本手段 三、判断故障的基本方法 四、X线电视系统常见故障的检查程序 五、元件的更换 </description>
+    </item>
+    
+    <item>
+      <title>第三节 单元电路原理与故障</title>
+      <link>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%80%E7%AB%A0-%E6%A8%A1%E6%8B%9F-x-%E7%BA%BF%E8%AE%BE%E5%A4%87%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%89%E8%8A%82%E5%8D%95%E5%85%83%E7%94%B5%E8%B7%AF%E5%8E%9F%E7%90%86%E4%B8%8E%E6%95%85%E9%9A%9C/</link>
+      <pubDate>Fri, 04 Oct 2024 21:49:14 +0800</pubDate>
+      
+      <guid>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%80%E7%AB%A0-%E6%A8%A1%E6%8B%9F-x-%E7%BA%BF%E8%AE%BE%E5%A4%87%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%89%E8%8A%82%E5%8D%95%E5%85%83%E7%94%B5%E8%B7%AF%E5%8E%9F%E7%90%86%E4%B8%8E%E6%95%85%E9%9A%9C/</guid>
+      <description>一、透视装置与诊视床的工作原理与常见故障 二、适时摄影装置的工作原理与常见故障 三、电源电路的工作原理与常见故障 四、X线管灯丝加热电路的工作原理与常见故障 五、X线管安全保护电路的工作原理与常见故障 </description>
+    </item>
+    
+    <item>
+      <title>第二节低压部分</title>
+      <link>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%80%E7%AB%A0-%E6%A8%A1%E6%8B%9F-x-%E7%BA%BF%E8%AE%BE%E5%A4%87%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%BA%8C%E8%8A%82%E4%BD%8E%E5%8E%8B%E9%83%A8%E5%88%86/</link>
+      <pubDate>Fri, 04 Oct 2024 21:37:14 +0800</pubDate>
+      
+      <guid>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%80%E7%AB%A0-%E6%A8%A1%E6%8B%9F-x-%E7%BA%BF%E8%AE%BE%E5%A4%87%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%BA%8C%E8%8A%82%E4%BD%8E%E5%8E%8B%E9%83%A8%E5%88%86/</guid>
+      <description>一、谐振式磁饱和稳压器的工作原理与常见故障 二、空间电荷抵偿变压器的工作原理与常见故障 三、继电器与接触器的工作原理与常见故障 四、各种开关的工作原理与常见故障 五、限时器的工作原理与常见故障 六、延时器的工作原理与常见故障 七、低压电路元件故障及检修 八、稳压器常见故障 九、电源频率变化的影响 十、继电器的常见故障及检修 十一、机械式和电动机式限时器的故障及检修 十二、电子管的故障 十三、电子管限时器的故障及检修 十四、RC电路的故障 十五、灵敏继电器和稳压电容的故障 十六、晶体管的故障 十七、故障检查举例 十八、旋转阳极启动装置的故障及检修 十九、活动滤线器的故障检修 二十、胃肠摄影装置的故障及检修 </description>
+    </item>
+    
+    <item>
+      <title>第一节高压部分</title>
+      <link>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%80%E7%AB%A0-%E6%A8%A1%E6%8B%9F-x-%E7%BA%BF%E8%AE%BE%E5%A4%87%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%80%E8%8A%82-%E9%AB%98%E5%8E%8B%E9%83%A8%E5%88%86/</link>
+      <pubDate>Fri, 04 Oct 2024 20:54:14 +0800</pubDate>
+      
+      <guid>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%80%E7%AB%A0-%E6%A8%A1%E6%8B%9F-x-%E7%BA%BF%E8%AE%BE%E5%A4%87%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%80%E8%8A%82-%E9%AB%98%E5%8E%8B%E9%83%A8%E5%88%86/</guid>
+      <description>一、高压变压器的原理与常见故障 二、灯丝变压器的原理与常见故障 三、高压整流元件的工作原理与常见故障 四、高压电缆的工作原理与常见故障 五、高压交换闸的工作原理与常见故障 六、高压电路元件故障及维修 七、高压变压器初级电路的常见故障 八、高压变压器次级及管电流测量电路工作原理与常见故故障 </description>
+    </item>
+    
+    <item>
+      <title>第五节Ⅹ线机的通电试验</title>
+      <link>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%80%E7%AB%A0-%E6%A8%A1%E6%8B%9F-x-%E7%BA%BF%E8%AE%BE%E5%A4%87%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%BA%94%E8%8A%82%E7%BA%BF%E6%9C%BA%E7%9A%84%E9%80%9A%E7%94%B5%E8%AF%95%E9%AA%8C/</link>
+      <pubDate>Fri, 04 Oct 2024 20:54:14 +0800</pubDate>
+      
+      <guid>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%80%E7%AB%A0-%E6%A8%A1%E6%8B%9F-x-%E7%BA%BF%E8%AE%BE%E5%A4%87%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%BA%94%E8%8A%82%E7%BA%BF%E6%9C%BA%E7%9A%84%E9%80%9A%E7%94%B5%E8%AF%95%E9%AA%8C/</guid>
+      <description>一、注意事项 二、电源电路 三、控制电路 四、高压电路 </description>
+    </item>
+    
+    <item>
+      <title>绪论 医学影像设备技术的发展</title>
+      <link>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%BB%AA%E8%AE%BA/</link>
+      <pubDate>Fri, 04 Oct 2024 19:17:14 +0800</pubDate>
+      
+      <guid>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%BB%AA%E8%AE%BA/</guid>
+      <description>一、Ⅹ线机的发展 迄今,　X 线管(X-ray tube)经历了四次重大发展: ①由早期的充气管到真空管的发展,提高了 X 射线机(以下简称 X 线机)的可控性(1913年); ②从固定阳极发展到旋转阳极,　提高了 X 线管的输出功率和图像质量(1929年); ③高速旋转阳极和复合材料阳极靶面的开发应用,进一步提高了 X 线管的输出功率和连续使用能力(20世纪60年代);　④整管旋转、阳极盘直接油冷却、电子束定位方式,　使 X 线管连续使用能力提高到一个更高水平(2003年)。
+X 线机的高压部分早期使用感应线圈供电, 采用裸高压线、裸 X 线管方式, 1910年发展为工频升压真空管高压整流方式。1928年制成高压电缆,X 线机发展到具备防电击、防辐射功能。到20世纪六七十年代,自动控制、程序控制技术应用到 X 线机中,大型 X 线机变得十分复杂, 但总体上仍属于电工元器件产品。1982年, 采用逆变方式的 X 线高压发生装置实用化, 逆变频率不断提高, 加之计算机技术的应用, X 线高压发生系统进入完全电子产品时代, 并进行了由繁到简、脱胎换骨的进化。
+1951年, 出现了影像增强器(image intensifier, I.1),此前荧光屏式透视一直是在暗室中进行的, L.I的诞生, 使电视技术被引入 X 线领域,X 线电视系统(X-ray television, X-TV)使医生从暗室检查和辐射现场中解脱出来,使 X 线机发生了一次划时代的革命,是 X 线机发展史上的一个里程碑。1961年,隔室操作多功能检查床出现, 并于20世纪70年代后得到广泛应用, 胃肠透视检查进入遥控时代。由于 I.I 的使用, X-TV 透视已成为基本的检查手段。20世纪60—90年代, 动态器官检查的影像记录手段是心血管专用机的主要记录方式。21 世纪初,随着平板探测器(flat panel detector, FPD)广泛应用于采集动态和静态图像, X-TV 在 X 线领域的应用也将成为历史。</description>
+    </item>
+    
     <item>
       <title>第1章 血压计</title>
       <link>https://okokfun.github.io/post/%E5%B8%B8%E7%94%A8%E5%8C%BB%E7%96%97%E5%99%A8%E6%A2%B0%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E4%BF%AE/%E7%AC%AC%E4%B8%80%E7%AB%A0_%E8%A1%80%E5%8E%8B%E8%AE%A1/</link>
