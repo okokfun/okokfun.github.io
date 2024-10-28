@@ -252,6 +252,8 @@ string str2 = &ldquo;<code>ababc</code>&ldquo;字符串</p>
 	
 	loading="lazy"
 	
+		alt="图片失效"
+	
 	
 ></p>
 <p>如果匹配到不相等元素，则通过next数组(P)决定next数组移动的位置，例如上图next数组(P)下标为2的元素与T字符串不相等，则看一下P数组下标2的next数组的值为0，则把next数组下标为0的位置移动到不匹配的地方</p>
@@ -260,6 +262,8 @@ string str2 = &ldquo;<code>ababc</code>&ldquo;字符串</p>
 	
 	
 	loading="lazy"
+	
+		alt="图片失效"
 	
 	
 ></p>
@@ -381,15 +385,13 @@ string str2 = &ldquo;<code>ababc</code>&ldquo;字符串</p>
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">     * @param circles: The value of 6 points on n rings
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">     * @return: Whether there are two same circles
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">     */</span>
-</span></span><span style="display:flex;"><span>    Node find_node(Node head)
-</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>    Node find_node(Node head) {
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// write your code here
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        Node ptr1 <span style="color:#f92672">=</span> head;
 </span></span><span style="display:flex;"><span>        Node ptr2 <span style="color:#f92672">=</span> head;
 </span></span><span style="display:flex;"><span>        Node ptr3 <span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>;
 </span></span><span style="display:flex;"><span>        Node ptr4 <span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>;
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> (p1 <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">&amp;&amp;</span> p2 <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nullptr</span>)
-</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> (p1 <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">&amp;&amp;</span> p2 <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nullptr</span>) {
 </span></span><span style="display:flex;"><span>            ptr1 <span style="color:#f92672">=</span> p1.next;
 </span></span><span style="display:flex;"><span>            ptr2 <span style="color:#f92672">=</span> p2.next.next;
 </span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (ptr1 <span style="color:#f92672">==</span> ptr2) <span style="color:#75715e">// 结点相遇
@@ -397,10 +399,8 @@ string str2 = &ldquo;<code>ababc</code>&ldquo;字符串</p>
 </span></span><span style="display:flex;"><span>            	ptr4 <span style="color:#f92672">=</span> ptr1;
 </span></span><span style="display:flex;"><span>            	<span style="color:#66d9ef">break</span>;
 </span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (ptr3 <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">!=</span> ptr4 <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nullptr</span>)
-</span></span><span style="display:flex;"><span>        {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">while</span>(ptr3 <span style="color:#f92672">!=</span> ptr4)
-</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (ptr3 <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">!=</span> ptr4 <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nullptr</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">while</span>(ptr3 <span style="color:#f92672">!=</span> ptr4) {
 </span></span><span style="display:flex;"><span>                ptr3 <span style="color:#f92672">=</span> ptr3.next;
 </span></span><span style="display:flex;"><span>                ptr4 <span style="color:#f92672">=</span> ptr4.next;
 </span></span><span style="display:flex;"><span>            }
@@ -426,13 +426,11 @@ string str2 = &ldquo;<code>ababc</code>&ldquo;字符串</p>
 \4. 当low &gt; high 时，则表示区间已经失效，如果还未找到，则表示数组中不包含K的值，返回-1。</p>
 </blockquote>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">template</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">T</span><span style="color:#f92672">&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> binary_search(vector<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> <span style="color:#f92672">&amp;</span>A, T K)
-</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> binary_search(vector<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> <span style="color:#f92672">&amp;</span>A, T K) {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> low <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> high <span style="color:#f92672">=</span> A.size() <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>;
 </span></span><span style="display:flex;"><span>    
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span>( low <span style="color:#f92672">&lt;</span> high )
-</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span>( low <span style="color:#f92672">&lt;</span> high ) {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> mid <span style="color:#f92672">=</span> (low <span style="color:#f92672">+</span> high)<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span>( A[mid]  <span style="color:#f92672">&lt;</span> K )
@@ -611,6 +609,8 @@ string str2 = &ldquo;<code>ababc</code>&ldquo;字符串</p>
 	
 	loading="lazy"
 	
+		alt="图片失效"
+	
 	
 ></p>
 <p>填充这些表格最后就是背包问题的解法。</p>
@@ -623,6 +623,8 @@ string str2 = &ldquo;<code>ababc</code>&ldquo;字符串</p>
 	
 	loading="lazy"
 	
+		alt="图片失效"
+	
 	
 ></p>
 <blockquote>
@@ -634,6 +636,8 @@ string str2 = &ldquo;<code>ababc</code>&ldquo;字符串</p>
 	
 	loading="lazy"
 	
+		alt="图片失效"
+	
 	
 ></p>
 <blockquote>
@@ -644,6 +648,8 @@ string str2 = &ldquo;<code>ababc</code>&ldquo;字符串</p>
 	
 	
 	loading="lazy"
+	
+		alt="图片失效"
 	
 	
 ></p>
