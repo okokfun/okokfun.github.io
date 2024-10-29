@@ -6,11 +6,11 @@
     <description>Recent content in DataBase on My Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 05 Jan 2022 20:21:29 +0000</lastBuildDate><atom:link href="https://okokfun.github.io/tags/database/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 05 Jan 2022 20:21:29 +0800</lastBuildDate><atom:link href="https://okokfun.github.io/tags/database/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>MySQL数据库API库</title>
       <link>https://okokfun.github.io/post/mysql%E6%95%B0%E6%8D%AE%E5%BA%93api%E5%BA%93/</link>
-      <pubDate>Wed, 05 Jan 2022 20:21:29 +0000</pubDate>
+      <pubDate>Wed, 05 Jan 2022 20:21:29 +0800</pubDate>
       
       <guid>https://okokfun.github.io/post/mysql%E6%95%B0%E6%8D%AE%E5%BA%93api%E5%BA%93/</guid>
       <description>MySQL数据库API库 访问MySQL服务器，这需要使用mysqlclient库，MySQL的大多数客户端API（除Java和.NET）都是通过这个库来和MySQL服务器通讯的，而这个库正是使用C语言编写的。

@@ -6,10 +6,10 @@
         <description>Recent content on My Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-CN</language>
-        <lastBuildDate>Tue, 11 Jul 2023 13:55:45 +0000</lastBuildDate><atom:link href="https://okokfun.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 11 Jul 2023 13:55:45 +0800</lastBuildDate><atom:link href="https://okokfun.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>适用于Keil的插件合集</title>
         <link>https://okokfun.github.io/post/keil%E6%8F%92%E4%BB%B6%E5%90%88%E9%9B%86/</link>
-        <pubDate>Tue, 11 Jul 2023 13:55:45 +0000</pubDate>
+        <pubDate>Tue, 11 Jul 2023 13:55:45 +0800</pubDate>
         
         <guid>https://okokfun.github.io/post/keil%E6%8F%92%E4%BB%B6%E5%90%88%E9%9B%86/</guid>
         <description>&lt;!-- raw HTML omitted --&gt;
@@ -53,7 +53,7 @@
         <item>
         <title>本人使用的hexo插件列表</title>
         <link>https://okokfun.github.io/post/%E6%9C%AC%E4%BA%BA%E4%BD%BF%E7%94%A8%E7%9A%84hexo%E6%8F%92%E4%BB%B6%E5%88%97%E8%A1%A8/</link>
-        <pubDate>Fri, 28 Jan 2022 14:14:03 +0000</pubDate>
+        <pubDate>Fri, 28 Jan 2022 14:14:03 +0800</pubDate>
         
         <guid>https://okokfun.github.io/post/%E6%9C%AC%E4%BA%BA%E4%BD%BF%E7%94%A8%E7%9A%84hexo%E6%8F%92%E4%BB%B6%E5%88%97%E8%A1%A8/</guid>
         <description>&lt;!-- raw HTML omitted --&gt;
@@ -96,7 +96,7 @@
         <item>
         <title>Me</title>
         <link>https://okokfun.github.io/post/me/</link>
-        <pubDate>Mon, 24 Jan 2022 13:37:38 +0000</pubDate>
+        <pubDate>Mon, 24 Jan 2022 13:37:38 +0800</pubDate>
         
         <guid>https://okokfun.github.io/post/me/</guid>
         <description>&lt;!-- raw HTML omitted --&gt;
@@ -106,7 +106,7 @@
         <item>
         <title>Oracle数据库介绍</title>
         <link>https://okokfun.github.io/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BB%8B%E7%BB%8D/</link>
-        <pubDate>Sun, 09 Jan 2022 16:51:29 +0000</pubDate>
+        <pubDate>Sun, 09 Jan 2022 16:51:29 +0800</pubDate>
         
         <guid>https://okokfun.github.io/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BB%8B%E7%BB%8D/</guid>
         <description>&lt;!-- raw HTML omitted --&gt;
@@ -2730,7 +2730,7 @@
         <item>
         <title>nginx安装</title>
         <link>https://okokfun.github.io/post/nginx%E5%AE%89%E8%A3%85/</link>
-        <pubDate>Sat, 08 Jan 2022 16:07:29 +0000</pubDate>
+        <pubDate>Sat, 08 Jan 2022 16:07:29 +0800</pubDate>
         
         <guid>https://okokfun.github.io/post/nginx%E5%AE%89%E8%A3%85/</guid>
         <description>&lt;!-- raw HTML omitted --&gt;
@@ -3703,7 +3703,7 @@
         <item>
         <title>MySQL数据库API库</title>
         <link>https://okokfun.github.io/post/mysql%E6%95%B0%E6%8D%AE%E5%BA%93api%E5%BA%93/</link>
-        <pubDate>Wed, 05 Jan 2022 20:21:29 +0000</pubDate>
+        <pubDate>Wed, 05 Jan 2022 20:21:29 +0800</pubDate>
         
         <guid>https://okokfun.github.io/post/mysql%E6%95%B0%E6%8D%AE%E5%BA%93api%E5%BA%93/</guid>
         <description>&lt;!-- raw HTML omitted --&gt;
@@ -6367,7 +6367,7 @@ ceil(小数)&lt;/p&gt;
         <item>
         <title>算法</title>
         <link>https://okokfun.github.io/post/%E7%AE%97%E6%B3%95/</link>
-        <pubDate>Sat, 01 Jan 2022 19:32:29 +0000</pubDate>
+        <pubDate>Sat, 01 Jan 2022 19:32:29 +0800</pubDate>
         
         <guid>https://okokfun.github.io/post/%E7%AE%97%E6%B3%95/</guid>
         <description>&lt;!-- raw HTML omitted --&gt;
@@ -7017,7 +7017,7 @@ string str2 = &amp;ldquo;&lt;code&gt;ababc&lt;/code&gt;&amp;ldquo;字符串&lt;/
         <item>
         <title>从Portainer点击端口号进入容器服务方法</title>
         <link>https://okokfun.github.io/post/nas/%E4%BB%8Eportainer%E7%82%B9%E5%87%BB%E7%AB%AF%E5%8F%A3%E5%8F%B7%E8%BF%9B%E5%85%A5%E5%AE%B9%E5%99%A8%E6%9C%8D%E5%8A%A1%E6%96%B9%E6%B3%95/</link>
-        <pubDate>Sun, 26 Dec 2021 13:43:29 +0000</pubDate>
+        <pubDate>Sun, 26 Dec 2021 13:43:29 +0800</pubDate>
         
         <guid>https://okokfun.github.io/post/nas/%E4%BB%8Eportainer%E7%82%B9%E5%87%BB%E7%AB%AF%E5%8F%A3%E5%8F%B7%E8%BF%9B%E5%85%A5%E5%AE%B9%E5%99%A8%E6%9C%8D%E5%8A%A1%E6%96%B9%E6%B3%95/</guid>
         <description>&lt;p&gt;&lt;img src=&#34;https://s2.loli.net/2023/08/29/Q369otqEnRsLywA.png&#34;
@@ -7057,7 +7057,7 @@ string str2 = &amp;ldquo;&lt;code&gt;ababc&lt;/code&gt;&amp;ldquo;字符串&lt;/
         <item>
         <title>OpenMediaVault中docker与工具portainer</title>
         <link>https://okokfun.github.io/post/nas/openmediavault%E4%B8%AD%E5%AE%89%E8%A3%85docker%E4%B8%8Egui%E5%B7%A5%E5%85%B7portainer/</link>
-        <pubDate>Sun, 26 Dec 2021 13:42:29 +0000</pubDate>
+        <pubDate>Sun, 26 Dec 2021 13:42:29 +0800</pubDate>
         
         <guid>https://okokfun.github.io/post/nas/openmediavault%E4%B8%AD%E5%AE%89%E8%A3%85docker%E4%B8%8Egui%E5%B7%A5%E5%85%B7portainer/</guid>
         <description>&lt;!-- raw HTML omitted --&gt;
@@ -7099,7 +7099,7 @@ string str2 = &amp;ldquo;&lt;code&gt;ababc&lt;/code&gt;&amp;ldquo;字符串&lt;/
         <item>
         <title>OpenMediaVault软件源修改</title>
         <link>https://okokfun.github.io/post/nas/openmediavault%E8%BD%AF%E4%BB%B6%E6%BA%90%E4%BF%AE%E6%94%B9/</link>
-        <pubDate>Sun, 26 Dec 2021 13:42:29 +0000</pubDate>
+        <pubDate>Sun, 26 Dec 2021 13:42:29 +0800</pubDate>
         
         <guid>https://okokfun.github.io/post/nas/openmediavault%E8%BD%AF%E4%BB%B6%E6%BA%90%E4%BF%AE%E6%94%B9/</guid>
         <description>&lt;!-- raw HTML omitted --&gt;
@@ -7160,74 +7160,6 @@ string str2 = &amp;ldquo;&lt;code&gt;ababc&lt;/code&gt;&amp;ldquo;字符串&lt;/
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;deb http://linux.teamviewer.com/deb stable main
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;五-刷新软件源&#34;&gt;&lt;strong&gt;五. 刷新软件源&lt;/strong&gt;&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt update
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
-        </item>
-        <item>
-        <title>OpenMediaVault安装与初步设置</title>
-        <link>https://okokfun.github.io/post/nas/openmediavault%E5%AE%89%E8%A3%85%E4%B8%8E%E5%88%9D%E6%AD%A5%E8%AE%BE%E7%BD%AE/</link>
-        <pubDate>Sun, 26 Dec 2021 13:39:29 +0000</pubDate>
-        
-        <guid>https://okokfun.github.io/post/nas/openmediavault%E5%AE%89%E8%A3%85%E4%B8%8E%E5%88%9D%E6%AD%A5%E8%AE%BE%E7%BD%AE/</guid>
-        <description>&lt;!-- raw HTML omitted --&gt;
-&lt;p&gt;OpenMediaVault（omv）是开源的nas系统，本博客尽量采用开源的代码和软件&lt;/p&gt;
-&lt;h3 id=&#34;1-镜像下载&#34;&gt;&lt;strong&gt;1. 镜像下载&lt;/strong&gt;&lt;/h3&gt;
-&lt;p&gt;下载地址&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;https://sourceforge.net/projects/openmediavault/files/latest/download
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;2-刻录或虚拟机安装&#34;&gt;&lt;strong&gt;2. 刻录或虚拟机安装&lt;/strong&gt;&lt;/h3&gt;
-&lt;p&gt;可以用etcher软件刻录镜像&lt;/p&gt;
-&lt;h3 id=&#34;安装-omv-extras-启用-omv-5-社区插件支持&#34;&gt;&lt;strong&gt;安装 omv-extras 启用 OMV 5 社区插件支持&lt;/strong&gt;&lt;/h3&gt;
-&lt;h3 id=&#34;3-安装依赖的工具&#34;&gt;&lt;strong&gt;3. 安装依赖的工具&lt;/strong&gt;&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt --yes --no-install-recommends install dirmngr gnupg
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;4-下载最新的omv-extras-安装包&#34;&gt;&lt;strong&gt;4. 下载最新的omv-extras 安装包&lt;/strong&gt;&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;地址：https://mirrors.tuna.tsinghua.edu.cn/OpenMediaVault/openmediavault-plugin-developers/pool/main/o/openmediavault-omvextrasorg/openmediavault-omvextrasorg_5.6.2_all.deb
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;下载命令：sudo wget https://mirrors.tuna.tsinghua.edu.cn/OpenMediaVault/openmediavault-plugin-developers/pool/main/o/openmediavault-omvextrasorg/openmediavault-omvextrasorg_5.6.2_all.deb
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;5-安装&#34;&gt;&lt;strong&gt;5. 安装&lt;/strong&gt;&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo dpkg -i openmediavault-omvextrasorg_5.6.2_all.deb
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;6-安装完开启docker扩展源&#34;&gt;&lt;strong&gt;6. 安装完开启docker扩展源&lt;/strong&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&#34;https://s2.loli.net/2023/08/29/5cVE3CSzNkXrGPl.png&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;OpenMediaVault2021-05-05 214136.png&#34;
-	
-	
-&gt;
-&lt;img src=&#34;https://s2.loli.net/2023/08/29/kupmlQGaeMfVdrC.png&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;软件源2021-05-05 214306.png&#34;
-	
-	
-&gt;&lt;/p&gt;
-&lt;h3 id=&#34;7-docker修改镜像源并在omv-中的安装和使用&#34;&gt;&lt;strong&gt;7. Docker修改镜像源并在OMV 中的安装和使用&lt;/strong&gt;&lt;/h3&gt;
-&lt;p&gt;Docker 设置国内镜像服务器&lt;/p&gt;
-&lt;h4 id=&#34;第一步-创建-docker-配置文件目录&#34;&gt;&lt;strong&gt;第一步 创建 docker 配置文件目录&lt;/strong&gt;&lt;/h4&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo mkdir /etc/docker
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;第二步-创建-daemonjson-配置文件&#34;&gt;&lt;strong&gt;第二步 创建 daemon.json 配置文件&lt;/strong&gt;&lt;/h4&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo touch /etc/docker/daemon.json
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;第三步-编辑配置文件&#34;&gt;&lt;strong&gt;第三步 编辑配置文件&lt;/strong&gt;&lt;/h4&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo nano /etc/docker/daemon.json
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h5 id=&#34;在编辑器中粘贴以下内容&#34;&gt;在编辑器中粘贴以下内容:&lt;/h5&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;registry-mirrors&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;https://hub-mirror.c.163.com&amp;#34;&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;https://mirror.baidubce.com&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;第四步-重启-docker-服务&#34;&gt;&lt;strong&gt;第四步 重启 docker 服务&lt;/strong&gt;&lt;/h4&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo systemctl daemon-reload 
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo systemctl restart docker
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;检查设置是否生效&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo docker info
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;如果生效返回的信息类似下面这样&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Registry Mirrors:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; https://hub-mirror.c.163.com/
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
         </item>
         <item>
@@ -7460,6 +7392,74 @@ environment:
       - MYSQL_USER=nextcloud
       - MYSQL_HOST=mariadb&lt;/code&gt;&lt;/pre&gt;
 </description>
+        </item>
+        <item>
+        <title>OpenMediaVault安装与初步设置</title>
+        <link>https://okokfun.github.io/post/nas/openmediavault%E5%AE%89%E8%A3%85%E4%B8%8E%E5%88%9D%E6%AD%A5%E8%AE%BE%E7%BD%AE/</link>
+        <pubDate>Sun, 26 Dec 2021 13:39:29 +0800</pubDate>
+        
+        <guid>https://okokfun.github.io/post/nas/openmediavault%E5%AE%89%E8%A3%85%E4%B8%8E%E5%88%9D%E6%AD%A5%E8%AE%BE%E7%BD%AE/</guid>
+        <description>&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;OpenMediaVault（omv）是开源的nas系统，本博客尽量采用开源的代码和软件&lt;/p&gt;
+&lt;h3 id=&#34;1-镜像下载&#34;&gt;&lt;strong&gt;1. 镜像下载&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;下载地址&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;https://sourceforge.net/projects/openmediavault/files/latest/download
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;2-刻录或虚拟机安装&#34;&gt;&lt;strong&gt;2. 刻录或虚拟机安装&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;可以用etcher软件刻录镜像&lt;/p&gt;
+&lt;h3 id=&#34;安装-omv-extras-启用-omv-5-社区插件支持&#34;&gt;&lt;strong&gt;安装 omv-extras 启用 OMV 5 社区插件支持&lt;/strong&gt;&lt;/h3&gt;
+&lt;h3 id=&#34;3-安装依赖的工具&#34;&gt;&lt;strong&gt;3. 安装依赖的工具&lt;/strong&gt;&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt --yes --no-install-recommends install dirmngr gnupg
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;4-下载最新的omv-extras-安装包&#34;&gt;&lt;strong&gt;4. 下载最新的omv-extras 安装包&lt;/strong&gt;&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;地址：https://mirrors.tuna.tsinghua.edu.cn/OpenMediaVault/openmediavault-plugin-developers/pool/main/o/openmediavault-omvextrasorg/openmediavault-omvextrasorg_5.6.2_all.deb
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;下载命令：sudo wget https://mirrors.tuna.tsinghua.edu.cn/OpenMediaVault/openmediavault-plugin-developers/pool/main/o/openmediavault-omvextrasorg/openmediavault-omvextrasorg_5.6.2_all.deb
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;5-安装&#34;&gt;&lt;strong&gt;5. 安装&lt;/strong&gt;&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo dpkg -i openmediavault-omvextrasorg_5.6.2_all.deb
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;6-安装完开启docker扩展源&#34;&gt;&lt;strong&gt;6. 安装完开启docker扩展源&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://s2.loli.net/2023/08/29/5cVE3CSzNkXrGPl.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;OpenMediaVault2021-05-05 214136.png&#34;
+	
+	
+&gt;
+&lt;img src=&#34;https://s2.loli.net/2023/08/29/kupmlQGaeMfVdrC.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;软件源2021-05-05 214306.png&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;7-docker修改镜像源并在omv-中的安装和使用&#34;&gt;&lt;strong&gt;7. Docker修改镜像源并在OMV 中的安装和使用&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;Docker 设置国内镜像服务器&lt;/p&gt;
+&lt;h4 id=&#34;第一步-创建-docker-配置文件目录&#34;&gt;&lt;strong&gt;第一步 创建 docker 配置文件目录&lt;/strong&gt;&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo mkdir /etc/docker
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;第二步-创建-daemonjson-配置文件&#34;&gt;&lt;strong&gt;第二步 创建 daemon.json 配置文件&lt;/strong&gt;&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo touch /etc/docker/daemon.json
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;第三步-编辑配置文件&#34;&gt;&lt;strong&gt;第三步 编辑配置文件&lt;/strong&gt;&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo nano /etc/docker/daemon.json
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h5 id=&#34;在编辑器中粘贴以下内容&#34;&gt;在编辑器中粘贴以下内容:&lt;/h5&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;registry-mirrors&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;https://hub-mirror.c.163.com&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;https://mirror.baidubce.com&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;第四步-重启-docker-服务&#34;&gt;&lt;strong&gt;第四步 重启 docker 服务&lt;/strong&gt;&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo systemctl daemon-reload 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo systemctl restart docker
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;检查设置是否生效&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo docker info
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;如果生效返回的信息类似下面这样&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Registry Mirrors:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; https://hub-mirror.c.163.com/
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
         </item>
         <item>
         <title>OpenLib-c&#43;&#43;</title>
