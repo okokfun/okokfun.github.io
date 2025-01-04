@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='A Tutorial Guide to Applications and Solutions'><title>Analog Circuit Design</title>
+
+<link rel='canonical' href='https://okokfun.github.io/post/analog-circuit-design/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='Analog Circuit Design'>
+<meta property='og:description' content='A Tutorial Guide to Applications and Solutions'>
+<meta property='og:url' content='https://okokfun.github.io/post/analog-circuit-design/'>
+<meta property='og:site_name' content='My Blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Analog' /><meta property='article:published_time' content='2024-12-19T21:33:29&#43;08:00'/><meta property='article:modified_time' content='2024-12-19T21:33:29&#43;08:00'/>
+<meta name="twitter:title" content="Analog Circuit Design">
+<meta name="twitter:description" content="A Tutorial Guide to Applications and Solutions"><script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+    </head>
+    <body class="
+    article-page has-toc
+">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex 
+    
+        extended
+    
+">
+    
+        <div id="article-toolbar">
+            <a href="/" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+                <span>Back</span>
+            </a>
+        </div>
+    
+<main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/analog/" >
+                Analog
+            </a>
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="/post/analog-circuit-design/">Analog Circuit Design</a>
+    </h2>
+
+    
+    <h3 class="article-subtitle">
+        A Tutorial Guide to Applications and Solutions
+    </h3>
+    
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Dec 19, 2024</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    6 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+</div>
+</header>
+
+    <section class="article-content">
+    <p>$$模拟电路设计$$</p>
+<p>$$应用程序和解决方案教程指南$$</p>
+<p>　　本书根据凌力尔特公司的原始应用笔记编写而成。</p>
+<p>　　为了本书的目的，这些应用笔记已被重新命名为章节。 然而，全文中存在大量对不同应用笔记的交叉引用，并非所有这些都已纳入本书中。 作为参考，已包含此转换表； 它显示了本书的章节编号和原始应用笔记编号。</p>
+<p>　　这本书跨越了模拟技术的三十年，代表了许多人的辛勤工作——太多了，无法一一列举。 大部分功劳要归功于 Linear 的敬业工程师/作者，他们的作品充满了这些页面。 吉姆·威廉姆斯和鲍勃·多布金慷慨地付出了时间和支持。 如果我不感谢我们的专业出版团队 Susan Cooper 和 Gary Alexander 所做的贡献，那就是我的失职，他们投入了额外的时间来准备应用说明的出版。 最后，要感谢我们的出版商乔纳森·辛普森 (Jonathan Simpson)，他们帮助铺平了从想法到书籍的道路；感谢娜奥米·罗伯逊 (Naomi Robertson) 和波琳·威尔金森 (Pauline Ωilkinson)，他们使本书的制作顺利进行。</p>
+<h2 id="介绍">介绍</h2>
+<p>　　这看起来是一种奇怪且不太可能开始发布应用程序的方式，但这是一个有效的问题。 因此，制作本书的决定的各个组成部分值得回顾。</p>
+<p>　　制作模拟应用材料需要大量的、长期的努力。 有价值材料的开发成本非常高，需要花费大量的工程时间和金钱。 此外，这些相同的资源可以用于产品开发，其贡献在公司金库中更容易衡量。</p>
+<p>　　尽管存在这些担忧，但仍必须致力于协调一致的应用工作。 具体来说，模拟电路设计的性质是如此多样化，设备如此复杂，用户要求如此苛刻，以至于设计人员需要（或至少欢迎）帮助。 最终，模拟 IC 的使用取决于用户解决所面临问题的能力。 任何增强这种能力的事情，无论是在特定情况还是一般情况下，显然都会使所有相关人员受益。</p>
+<p>　　这是一个非常简单但有力的论点，并且是任何对应用程序承诺的基础。 其他好处包括偶尔出现的新产品概念以及在“现实世界”条件下测试产品的方法，但基本理由如上所述。</p>
+<p>　　传统上，应用程序工作涉及审查成功使用特定产品的注意事项。 此外，有时还会提供基本电路建议或概念。 尽管这种方法很有用且必要，但可以进行一些扩展。 本书中选择包含的应用程序以详细的、面向系统的电路为中心，（希望）与用户的实际设计类似。 教程内容广泛，体现在频繁的文本离题和大量使用图形的形式。 强调对权衡、选项和技术的讨论，而不是对电路操作的简要描述。 许多应用笔记都包含详细检查相关或相关主题的附加部分。 理想情况下，这种处理提供了足够的背景知识，允许读者修改所提出的电路以解决其特定问题。</p>
+<p>　　关于电路示例的一些评论是适当的。 它们的范围从相对简单到相当复杂和复杂。 重点是高性能，以符合当代产品的功能和用户的需求。 该电路的主要功能是充当催化剂——一旦读者开始思考，材料就完成了它的使命。</p>
+<p>　　我们在制定和记录这些电路方面花费了大量的精力，但它们不一定达到尽可能高的程度。 所有电路均经过试验板测试并在原型级别进行了台架测试。 文中引用的规格和性能水平代表从面包板原型中得出的测量和推断数据。 产生的材料量不允许进行正式的最坏情况审查或生产公差分析。</p>
+<p>　　本卷中的内容虽然很丰富，但仅代表可用材料的一部分。 由此产生的风选过程充满了泪水和脾气。 所提出的主题是涉及许多不同考虑因素的选择过程的幸存者。 其中包括读者兴趣、出版适宜性、时间和空间限制以及持久的教程价值。 此外，应用笔记的使用寿命至少需要 10 年。 这通常会阻碍狭隘的努力。 主题广泛，教程和设计重点（理想情况下）反映了读者的长期兴趣。 虽然所提出的电路利用现有产品，但它们在概念上必须适用于后代设备。 在这方面，值得注意的是，所提供的一些材料在首次出版多年后仍然需求量很大。</p>
+<p>　　该材料应代表解决当前问题的相对完整且跨学科的方法。 解决问题通常是读者压倒性的动机。 为此目的选择和整合工具和方法是当务之急。 因此，示例和随附文本尽可能完整且实用。 这可能需要我们在没有直接利害关系的领域做出努力，例如第 22 章中介绍的软件或为第 6 章和第 7 章开发的磁学。</p>
+<p>　　质量，特别是良好的质量，显然是任何出版物所需要的。 高质量的应用笔记需要细心的电路设计、彻底的实验室技术以及完整的描述。 文本和图形应经过精心组织和呈现，视觉上令人愉悦且易于阅读。 艺术品和印刷应以干净的文本外观和易于阅读的图形的形式保持这种谨慎。</p>
+<p>　　应用笔记也应该是高效的。 有效的书面注释可以让读者以易于理解的形式快速获取所需的信息。 应该有足够的深度来满足学术严谨性，但读者不应该需要学术深海潜水器来探究事物的真相。 最重要的是，目的是清晰、快速地传达有用的信息。</p>
+<p>　　最后，风格应该始终展现。 很简单，该出版物应该读起来令人愉快。 风格提供心理润滑，帮助头脑平稳运转。 显然，风格只能有助于出版的严肃目的，而不应该被滥用； 作者已尽力保持适当的平衡。</p>
+<p>　　本书的许多作者值得所有即将到来的掌声； 指定的编辑对哲学方向、内容选择、错误、遗漏和其他错误承担全部责任。</p>
+<h2 id="前言">前言</h2>
+<p>　　模拟和数字之间的根本区别是“信息”。对于数字信息，输出总是相同的：代表信息的一组1和0。该信息与电源电压或用于产生该信息的电路无关。对于模拟，输出的信息是基本的电气值&ndash;电压、电流、电荷&ndash;并且总是与一些真实世界的参数有关。对于模拟，用于得出答案的方法是那些答案的质量的内在因素。温度、噪声、延迟和时间稳定性等误差都会影响模拟输出，并且都是产生输出的电路的函数。正是这种模拟输出很难推导出来，需要经验和电路设计人才。</p>
+<p>　　随着集成电路(IC)如此普遍，再加上大多数系统中的专用集成电路(ASIC)，越来越难找到好的模拟实例来教授工程师模拟设计。工程学校提供设备端子特性的基础知识和一些电路连接信息，但这不足以设计成品电路或应用现代 IC 设计技术。如果没有原始设计者的帮助，当今系统中的模拟电路往往很难破译。设计复杂模拟系统的能力依赖于工程师从以前的经验中学习的能力。</p>
+<p>　　学习模拟设计的最佳途径之一是使用模拟集成电路供应商提供的应用笔记和信息。 这些应用笔记包括电路、测试结果以及在这些模拟电路设计中做出的一些选择的基本推理。 它们为新设计提供了良好的起点。</p>
+<p>　　由于应用程序旨在解决问题，因此应用笔记与 Spice 上的电路仿真功能相结合，为工程师提供了关键的学习途径。 大多数应用笔记中的模拟信息都是永恒的，二十年后仍然像今天一样有效。 我希望任何阅读本书的人都能通过良好的模拟设计的科学和艺术得到帮助。</p>
+<h2 id="第-1-部分">第 1 部分</h2>
+<p>电源管理</p>
+<h3 id="第1节">第1节</h3>
+<p>电源管理教程</p>
+<p><strong>（1）陶瓷输入电容会导致过压瞬变</strong></p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>在输入滤波方面，陶瓷电容器是一个很好的选择。它们提供高涟漪电流额定值和低ESR和ESL。此外，陶瓷电容器对过电压不太敏感，可以在不降低工作电压的情况下使用。但是，设计人员必须注意输入电压突然施加时可能产生的过压情况。在施加输入电压阶跃后，具有陶瓷电容的典型输入滤波器电路可产生两倍于输入电压的电压瞬变。本笔记介绍如何有效地将陶瓷电容用于输入滤波器，以及如何避免输入电压瞬变引起的潜在问题。</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>（2）最大限度地减少线性稳压器输出中的开关稳压器残留</strong></p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>线性稳压器通常用于对开关稳压器输出进行后调节。 优点包括提高稳定性、精度、瞬态响应和降低输出阻抗。 理想情况下，这些性能提升将伴随着开关稳压器产生的纹波和尖峰的显着减少。 在实践中，所有线性稳压器都会遇到纹波和尖峰的一些困难，特别是当频率升高时。 本出版物解释了线性稳压器动态限制的原因，并介绍了用于改善纹波和尖峰抑制的板级技术。 提出了基于硬件的纹波/尖峰模拟器，可以在各种条件下进行快速面包板测试。 三个附录回顾了铁氧体磁珠、基于电感器的滤波器以及宽带、亚毫伏信号的探测实践。</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>（3）笔记本电脑和掌上电脑系统的电源调节</strong></p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>笔记本电脑和掌上电脑系统需要由电池产生多种电压。 有竞争力的解决方案需要小尺寸、高效率和轻重量。 本出版物包括用于高效 5V 和 3.3V 开关和线性稳压器、背光显示驱动器和电池充电器的电路。 所有电路都是专门针对上述要求而定制的。</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>（4） 用于电压调节器的两线虚拟遥感</strong></p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>电线和连接器具有电阻。 这个简单且不可避免的事实表明，电源的远程负载电压将低于电源的输出电压。 缓解这种情况的经典方法是利用“4 线”遥感来消除线路压降效应。 电源的高阻抗检测输入由单独的负载参考检测线供电。 该方案效果很好，但需要专用的检测线，这在许多应用中是一个显着的缺点。 一种利用载波调制技术的新方法消除了检测线，同时保持负载调节。</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<h4 id="1陶瓷输入电容会导致过压瞬变">（1）陶瓷输入电容会导致过压瞬变</h4>
+<p>　　便携式设备设计的最新趋势是使用陶瓷电容器来过滤 DC/DC 转换器输入。 通常选择陶瓷电容器是因为它们尺寸小、等效串联电阻 (ESR) 低且 RMS 电流能力高。 此外，最近，由于钽电容器的短缺，设计人员一直在寻找陶瓷电容器。</p>
+<p>　　遗憾的是，使用陶瓷电容器进行输入滤波可能会带来问题。对陶瓷电容器施加电压阶跃会产生大电流浪涌，将能量储存在电源线的电感中。当储存的能量从这些电感转移到陶瓷电容器中时，会产生很大的电压尖峰。这些电压尖峰很容易达到输入电压阶跃幅度的两倍。</p>
+<p><strong>插入墙上适配器的风险自负</strong></p>
+<hr>
+<p>　　输入电压瞬态问题与上电顺序有关。 如果将壁式适配器插入交流电源插座并首先通电，则将壁式适配器输出插入便携式设备可能会导致输入电压瞬变，从而损坏设备内部的 DC/DC 转换器。</p>
+<p><strong>构建测试电路</strong></p>
+<hr>
+<p>　　为了说明这个问题，将笔记本电脑应用中使用的典型 24V 壁式适配器连接到典型笔记本电脑 DC/DC 转换器的输入。使用的 DC/DC 转换器是一个从 24V 输入产生 3.3V 的同步降压转换器。</p>
+<p>　　测试装置的框图如图 1.1 所示。 电感器 $L_{OUT}$ 代表某些壁式适配器中的引线电感和输出 EMI 滤波电感器的集总等效电感。 墙上适配器中的输出电容通常约为 1000 μF； 出于我们的目的，我们可以假设它具有低 ESR——在 10mΩ 至 30mΩ 范围内。 墙壁适配器和 DC/DC 转换器接口的等效电路实际上是一个串联谐振回路，主要元件是 $L_{OUT}$、$C_{IN}$ 和集总 ESR（集总ESR必须包括 $C_{IN}$ 的 ESR、引线电阻和 $L_{OUT}$ 电阻）。</p>
+<p>　　输入电容器 $C_{IN}$ 必须是低 ESR 器件，能够承载输入纹波电流。 在典型的笔记本电脑应用中，该电容器的范围为 10 μF 至 100 μF。 确切的电容器值取决于许多因素，但主要要求是它必须能够处理 DC/DC 转换器产生的输入纹波电流。 输入纹波电流通常在1A至2A范围内。 因此，所需的电容器可以是 1 个 10 μF 至 22 μF 陶瓷电容器、2 至 3 个 22 μF 钽电容器或 1 至 2 个 22 μF OS-CON 电容器。</p>
+<p><strong>打开开关</strong></p>
+<hr>
+<p>　　当图 1.1 中的开关 SW1 打开时，混乱就开始了。 由于壁式适配器已插入，因此其低阻抗输出电容器上有 24V 电压。 另一方面，输入电容器$C_{IN}$处于0V电位。 从 t =0s 开始发生的事情是非常基本的。 施加的输入电压将导致电流流过 $L_{OUT}$。$C_{IN}$ 将开始充电，$C_{IN}$ 两端的电压将逐渐上升至 24V 输入电压。 一旦 $C_{IN}$ 两端的电压达到墙上适配器的输出电压，$L_{OUT}$ 中存储的能量将使 $C_{IN}$ 两端的电压进一步升高到 24V 以上。  $C_{IN}$ 两端的电压最终将达到峰值，然后回落至 24V。  $C_{IN}$ 两端的电压可能会在 24V 值附近振荡一段时间。 实际波形取决于电路元件。</p>
+<p>　　如果您打算运行此电路仿真，请记住，现实生活中的电路元件在瞬态条件下很少呈线性。 例如，电容器的电容量可能会发生变化（Y5V陶瓷电容器在额定输入电压下会损失初始电容量的80%）。 此外，输入电容器的 ESR 将取决于波形的上升时间。 由于磁性材料的饱和，EMI 抑制电感器的电感也可能在瞬态期间下降。</p>
+<p><strong>测试便携式应用程序</strong></p>
+<hr>
+<p>　　图 1.2 显示了笔记本电脑应用中使用的输入电压瞬变以及 $C_{IN}$ 和 $L_{OUT}$ 的典型值。 图 1.2 显示了 $C_{IN}$ 值为 10 μF 和 22 μF、$L_{OUT}$ 值为 1 μH 和 10 μH 时的输入电压瞬态。</p>
+<p>　　顶部波形显示了最坏情况瞬态，使用 10 μF 电容器和 1 μH 电感器。 使用 24V 直流输入时，$C_{IN}$ 两端的电压峰值为 57.2V。  DC/DC 转换器可能无法承受反复暴露于 57.2V 的电压。</p>
+<p>　　10 μF 和 10 μH（迹线 R2）的波形看起来好一些。 峰值仍在 50V 左右。 波形 R2 峰值之后的平坦部分表明图 1.1 中 DC/DC 转换器内部的同步 MOSFET M1 正在雪崩并承受能量冲击。 走线 R3 和 R4 的峰值电压约为 41V，分别针对具有 1 μH 和 10 μH 电感器的 22 μF 电容器。</p>
+<p><strong>不同输入元件的输入电压瞬变</strong></p>
+<hr>
+<p>　　不同类型的输入电容会产生不同的瞬态电压波形，如图1.3所示。  22 μF 电容器和 1 μH 电感器的参考波形如顶部迹线 (R1) 所示； 峰值电压为 40.8V。</p>
+<p>　　图 1.3 中的波形 R2 显示了在输入端添加瞬态电压抑制器时会发生什么情况。 输入电压瞬变被钳位但未被消除。 将电压瞬变的击穿电压设置得足够低以保护 DC/DC 转换器并远离输入源的工作直流电平 (24V) 是非常困难的。 所使用的瞬态电压抑制器 P6KE30A 太接近于在 24V 时开始导通。</p>
+<p>　　不幸的是，使用具有较高额定电压的瞬态电压抑制器将无法提供足够低的钳位电压。</p>
+<p>　　波形 R3 和 R4 分别采用 22 μF、35V AVX TPS 型钽电容器和 22 μF、30V Sanyo OS-CON 电容器。 通过这两个电容器，瞬态已达到可管理的水平。 然而，这些电容器比陶瓷电容器大，并且需要多个电容器才能满足输入纹波电流要求。</p>
+<p><strong>优化输入电容器</strong></p>
+<hr>
+<p>图 1.3 中的波形显示了输入瞬态如何随所用输入电容器类型的变化而变化。</p>
+<p>　　优化输入电容器需要清楚地了解瞬态期间发生的情况。 正如普通谐振 RLC 电路一样，图 1.1 中的电路可能具有欠阻尼、临界阻尼或过阻尼瞬态响应。</p>
+<p>　　由于目标是最小化输入滤波器电路的尺寸，因此所得电路通常是欠阻尼谐振回路。 然而，实际上需要临界阻尼电路。 临界阻尼电路将很好地上升到输入电压，而不会出现电压过冲或振铃。</p>
+<p>　　为了保持输入滤波器设计较小，最好使用陶瓷电容器，因为它们具有高纹波电流额定值和低 ESR。 要开始设计，必须首先确定输入电容器的最小值。 在本例中，已确定 22 μF、35V 陶瓷电容器就足够了。 该电容器产生的输入瞬态如图 1.4 顶部迹线所示。 显然，如果使用额定电压为 30V 的组件就会出现问题。</p>
+<p>　　为了获得最佳瞬态特性，必须对输入电路进行阻尼。 波形 R2 显示了添加另一个 22 μF 陶瓷电容器与串联 0.5 Ω 电阻器时会发生什么情况。 输入电压瞬变现已很好地稳定在 30V。</p>
+<p>　　临界阻尼也可以通过添加一个已经具有高 ESR（大约 0.5 Ω）的电容器来实现。 波形 R3 显示了在输入端添加 AVX 的 22 μF、35V TPS 型钽电容器时的瞬态响应。</p>
+<p>　　波形R4显示了使用 30V 瞬态电压抑制器时的输入电压瞬态，以进行比较。</p>
+<p>　　最后，获得如图 1.4 底部迹线 (Ch1) 所示的理想波形。 事实证明，这是最便宜的解决方案。 该电路使用 Sanyo 的 47 μF、35V 铝电解电容器 (35CV47AXA)。 该电容器具有适当的电容和 ESR 值，可为 22 μF 陶瓷电容器以及 1 μH 输入电感提供临界阻尼。  35CV47AXA 的 ESR 值为 0.44Ω，RMS 额定电流为 230mA。 显然，在没有 22 μF 陶瓷电容器的情况下，该电容器不能单独用于具有 1A 至 2AofRMS 纹波电流的应用中。 另一个好处是该电容器非常小，尺寸仅为 6.3 毫米 x 6 毫米。</p>
+<p><strong>总结</strong></p>
+<p>输入电压瞬变是一个不容忽视的设计问题。 防止输入电压瞬变的设计解决方案非常简单且有效。 如果正确应用该解决方案，则可以最大限度地减少输入电容器，并在不牺牲性能的情况下最大限度地减少成本和尺寸。</p>
+<h4 id="2-最大限度地减少线性稳压器输出中的开关稳压器残留">(2) 最大限度地减少线性稳压器输出中的开关稳压器残留</h4>
+<p>　　消除那些该死的尖刺</p>
+<h5 id="介绍-1">介绍</h5>
+<p>　　线性稳压器通常用于对开关稳压器输出进行后调节。 优点包括提高稳定性、精度、瞬态响应和降低输出阻抗。 理想情况下，这些性能提升将伴随着开关稳压器产生的纹波和尖峰的显着减少。 在实践中，所有线性稳压器都会遇到纹波和尖峰的一些困难，特别是当频率上升时。 当调节器 VIN 至 VOUT 差分电压较小时，这种效应会被放大； 不幸的是，因为如此小的差异对于维持效率是有利的。 图 2.1 显示了概念性线性稳压器以及由开关稳压器输出驱动的相关组件。</p>
+<p>　　输入滤波电容器的目的是在纹波和尖峰到达稳压器之前对其进行平滑处理。 输出电容器在较高频率下保持低输出阻抗，改善负载瞬态响应并为某些稳压器提供频率补偿。 辅助目的包括降噪和最小化出现在调节器输出处的残留输入衍生伪影。 值得关注的是最后一类——源自输入的残留工件。 这些高频分量即使幅度很小，也会在对噪声敏感的视频、通信和其他类型的电路中引起问题。 已使用大量电容器和阿司匹林来试图消除这些不期望的信号及其所产生的影响。 尽管它们很顽固，有时似乎对任何治疗都免疫，但了解它们的起源和性质是遏制它们的关键。</p>
+<h5 id="开关调节器交流输出内容">开关调节器交流输出内容</h5>
+<p>　　图 2.2 详细介绍了开关调节器动态 (AC) 输出内容。 它由开关稳压器时钟频率（通常为 100kHz 至 3MHz）的相对低频纹波以及与电源开关转换时间相关的非常高频的“尖峰”组成。 开关稳压器的脉冲能量传输会产生纹波。 滤波电容器可以平滑输出，但并不完全平滑。 这些尖峰通常具有接近 100MHz 的谐波含量，是由开关调节器内的高能量、快速开关功率元件产生的。 滤波电容器旨在减少这些尖峰，但实际上并不能完全消除它们。 降低稳压器的重复率和转换时间可以大大减少纹波和尖峰幅度，但磁性元件尺寸会增加，效率会下降。 同样的快速时钟和快速开关允许较小的磁性元件尺寸和高效率，从而导致线性稳压器出现高频纹波和尖峰。</p>
+<h5 id="纹波和尖峰抑制">纹波和尖峰抑制</h5>
+<p>　　与宽带尖峰相比，稳压器更能抑制纹波。 图 2.3 显示了 LT1763 低压差线性稳压器的抑制性能。  100kHz 时有 40db 衰减，1MHz 时衰减至约 25db。 更多的宽带尖峰直接通过调节器。 用于吸收尖峰的输出滤波电容器也具有高频性能限制。 由于高频寄生效应，稳压器和滤波电容器的响应不完美，表明图 2.1 过于简单化。 图 2.4 重申了图 2.1，并包括寄生项以及一些新组件。</p>
+<p>　　该图考虑了调节路径，重点关注高频寄生效应。 识别这些寄生项非常重要，因为它们允许纹波和尖峰传播到标称调节输出中。 此外，了解寄生元件可以制定测量策略，从而有助于减少高频输出内容。 该调节器包括高频寄生路径（主要是电容性路径），穿过其传输晶体管并进入其参考和调节放大器。 这些项与有限的调节器增益带宽相结合，以限制高频抑制。 输入和输出滤波电容器包括寄生电感和电阻，随着频率的升高，其有效性会降低。 杂散布局电容提供了额外的不需要的馈通路径。 由接地路径电阻和电感引起的接地电位差会增加额外的误差，并使测量变得复杂。 一些通常与线性稳压器无关的新组件也出现了。 这些添加物包括稳压器输入和输出线路中的铁氧体磁珠或电感器。 这些组件有自己的高频寄生路径，但可以显着改善整体调节器的高频抑制，并将在下文中讨论。</p>
+<h5 id="纹波尖峰模拟器">纹波/尖峰模拟器</h5>
+<p>　　要了解该问题，需要观察调节器在各种条件下对纹波和尖峰的响应。 希望能够独立地改变纹波和尖峰参数，包括频率、谐波含量、幅度、持续时间和直流电平。 这是一种非常通用的功能，允许对各种电路变化进行实时优化和灵敏度分析。 尽管在实际的开关稳压器驱动条件下观察线性稳压器的性能是无可替代的，但硬件模拟器可以减少出现意外的可能性。 图 2.5 提供了此功能。 它通过独立可设置的直流、纹波和尖峰参数来模拟开关稳压器的输出。</p>
+<p>　　市售的函数发生器与两个并行信号路径结合形成电路。 直流和纹波在相对较慢的路径上传输，而宽带尖峰信息通过快速路径处理。 两条路径在线性稳压器输入处组合。 函数发生器的可设置斜坡输出（迹线 A，图 2.6）为由功率放大器 A1 和相关组件组成的直流/纹波路径供电。  A1 接收斜坡输入和直流偏置信息并驱动被测稳压器。  L1 和 1W 电阻器允许 A1 以纹波频率驱动稳压器而不会不稳定。 宽带尖峰路径源自函数发生器的脉冲“同步”输出（迹线 B）。 该输出的边沿被微分（迹线 C）并馈送到双极比较器 C1-C2。 比较器输出（迹线 D 和 E）是与斜坡拐点同步的尖峰。 尖峰宽度由通过 1k 电位器和 A2 施加到 C1 和 C2 的互补直流阈值电位来控制。 二极管门控和并联逻辑反相器为尖峰幅度控制提供迹线 F。 跟随器 Q1 将尖峰与 A1 的直流/纹波路径相加，形成线性稳压器的输入（迹线 G）。</p>
+<h5 id="线性稳压器高频抑制评估优化">线性稳压器高频抑制评估/优化</h5>
+<p>　　上述电路有利于线性调节器高频抑制的评估和优化。 以下照片显示了一组典型条件的结果，但直流偏置、纹波和尖峰特性可能会有所不同，以适应所需的测试参数。 图 2.7 显示了图 2.5 的 LT17633V 稳压器对 3.3V DC 输入的响应，其中包含迹线 A 的纹波/尖峰内容，$C_{IN}$ = 1μF 且 $C_{OUT}$ = 10μF。 稳压器输出（迹线 B）显示纹波衰减了 20 倍。输出尖峰的减少幅度较小，并且谐波含量仍然很高。 稳压器在尖峰上升时间不提供抑制。 电容器必须完成这项工作。 不幸的是，电容器受到完全过滤宽带尖峰固有的高频损耗项的限制； 迹线 B 的剩余尖峰显示上升时间没有减少。 在这些上升时间增加电容器值没有任何好处。 图 2.8（与图 2.7 相同的迹线分配）采用 $C_{OUT}$ = 33μF，显示纹波减少了 5 倍，但尖峰幅度衰减很小。</p>
+<p>　　图 2.9 是图 2.8 迹线 B 的时间和幅度扩展，可以对尖峰特性进行高分辨率研究，从而可以进行以下评估和优化。 图 2.10 显示了当铁氧体磁珠紧接在 $C_{IN}$ 之前时的戏剧性结果。尖峰幅度下降约 5 倍。 磁珠在高频时会出现损耗，严重限制尖峰通过。直流和低频以不衰减的方式传递至调节器。 在 $C_{OUT}$ 之前在稳压器输出处放置第二个铁氧体磁珠会产生图 2.11 的迹线。 该磁珠的高频损耗特性进一步将尖峰幅度降低至 1mV 以下，而不会在稳压器的输出路径中引入直流电阻。</p>
+<p>　　图 2.12 是上图的更高增益版本，测量 900μV 尖峰幅度 - 比没有铁氧体磁珠的情况低几乎 20 倍。 通过验证指示结果没有被共模组件或接地环路破坏来完成测量。 这是通过将测量点附近的示波器输入接地来完成的。 理想情况下，不应出现任何信号。 图 2.13 显示了这一点，这表明图 2.12 的显示是真实的。</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>附录 A 关于铁氧体磁珠</p>
+<p>　　铁氧体磁珠封闭导体提供了非常理想的特性，即随着频率的升高而增加阻抗。 这种效应非常适合直流和低频信号承载导体的高频噪声过滤。 该磁珠在线性稳压器的通带内基本上是无损的。 在较高频率下，磁珠的铁氧体材料与导体的磁场相互作用，产生损耗特性。 不同的铁氧体材料和几何形状会导致不同的损耗因数与频率和功率水平的关系。 图 A1 的图显示了这一点。 阻抗从 DC 时的 0.01Ω 升至 100MHz 时的 50Ω。 随着直流电流以及恒定磁场偏置的增加，铁氧体提供损耗的效果变得越来越差。 请注意，磁珠可以沿着导体串联“堆叠”，从而按比例增加其损耗贡献。 有多种珠子材料和物理配置可供选择，以满足标准和定制产品的要求。</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>附录B 作为高频滤波器的电感器</p>
+<p>　　有时可以使用电感器代替磁珠进行高频滤波。 通常，2μH 至 10μH 的值是合适的。 优点包括广泛的可用性和较低频率（例如 100kHz）下更好的有效性。 图 B1 显示了由于铜损、寄生并联电容以及对杂散开关稳压器辐射的潜在敏感性而导致稳压器路径中直流电阻增加的缺点。 直流时出现铜损，降低效率； 寄生并联电容会导致不必要的高频馈通。 电感器的电路板位置可能会允许杂散磁场影响其绕组，从而有效地将其变成变压器次级。 由此产生的观察到的尖峰和纹波相关伪影会伪装成传导组件，从而降低性能。 图 B2 显示了一种由 PC 板走线构建的基于电感的滤波器。 这种以螺旋或蛇形图案形成的加长迹线在高频下看起来具有感应性。 它们在某些情况下可能非常有效，尽管单位面积的损耗比铁氧体磁珠少得多。</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>附录C 亚毫伏宽带信号完整性探测技术</p>
+<p>　　要获得可靠的宽带亚毫伏测量，需要在测量之前注意关键问题。 专为低噪声而设计的电路板布局至关重要。 考虑配电、接地线和平面中的电流和相互作用。 检查元件选择和放置的影响。 规划辐射管理和负载返回电流的处置。 如果电路完好，电路板布局正确并且使用了适当的元件，那么也只有这样，才可以进行有意义的测量。</p>
+<p>　　如果信号连接引入失真，那么即使是最精心准备的面包板也无法完成其使命。 与电路的连接对于准确的信息提取至关重要。 低电平、宽带测量需要小心路由信号以测试仪器。 需要考虑的问题包括连接到面包板的测试设备（包括电源）之间的接地环路以及由于测试引线或走线长度过长而导致的噪声拾取。 尽量减少与电路板的连接数量并保持引线较短。 进出面包板的宽带信号必须在同轴环境中路由，并注意同轴屏蔽连接到接地系统的位置。 严格维护的同轴环境对于可靠的测量尤其重要，在此进行处理。</p>
+<p>　　图 C1 显示了在连续同轴信号路径中测量的典型开关稳压器尖峰的可信演示。 尖刺的主体轮廓相当明确，并且在其被收容后也存在干扰。 图 C2 描述了使用 3 英寸接地引线将同轴屏蔽层连接到电路板接地平面的同一事件。 出现明显的信号失真和振铃。 照片是在 0.01V/格灵敏度下拍摄的。 更灵敏的测量需要相应更多的关注。</p>
+<p>　　图C3详细说明了允许文本测量的宽带40分贝增益前置放大器的使用。图2.12‘S 200μV/分频测量。注意从调节器到前置放大器再到示波器的纯同轴路径，包括交流耦合电容。同轴耦合电容器的屏蔽直接连接到稳压器板的接地平面，电容器中心导体连接到稳压输出。没有非同轴测量连接。图C4重复文本图2.12，显示了900μV输出尖峰的清晰详细再现。在图C5中，测量现场故意引入了两英寸的接地铅，违反了同轴制度。其结果是完全破坏了波形呈现。作为验证测量完整性的最终测试，在信号路径输入(例如，同轴耦合电容器的中心导体)在测量点附近接地的情况下重复图C4的S测量非常有用，如图2.13所示。理想情况下，不应该出现任何信号。实际上，一些主要由共模效应引起的小残留是允许的。</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<h4 id="３-笔记本电脑和掌上电脑系统的电源调节">(３) 笔记本电脑和掌上电脑系统的电源调节</h4>
+<h5 id="介绍-2">介绍</h5>
+<p>　　笔记本电脑和掌上电脑系统需要从单个电池产生多种稳压电压。 小尺寸、轻重量和高效率是该领域具有竞争力的解决方案的必备条件。 效率的小幅提高可延长电池寿命，使最终产品在不增加重量的情况下更加实用。 此外，高效率最大限度地减少了功率调节组件所需的散热器，进一步减轻了系统的重量和尺寸。</p>
+<p>　　电池系统包括镍镉电池、镍氢电池、铅酸电池、可充电锂电池以及一次性碱性电池。 为各种电池供电的能力使最终产品更具吸引力，因为电源可以互换，从而提高了整体系统的多功能性。</p>
+<p>　　主充电电池可以是四个二次电池中的任何一个，具有使用碱性电池进行操作的备用或紧急能力。 不可充电碱性电池具有更高的能量密度，使系统能够长时间运行而无需更换电池。</p>
+<p>　　此处所示的系统提供高效率和低部件数量的功率调节。 为了最大限度地提高可制造性并最大限度地降低成本，我们在复杂性和效率之间进行了权衡。 所有电源均在较宽的输入电压范围内运行，从而使电池配置的选择具有极大的灵活性。</p>
+<h5 id="用于高效率-5v-和-33v-降压稳压器的-lt1432-驱动器">用于高效率 5V 和 3.3V 降压稳压器的 LT1432 驱动器</h5>
+<p>　　LT1432 是一款控制芯片，设计用于与 LT1170 或 LT1270 系列开关稳压器配合使用，以形成效率非常高（图 3.1）的 5V 或 3.3V 降压（降压）开关稳压器。 这些稳压器具有低损耗饱和 NPN 开关，通常配置为接地的负极端子（发射极）。  LT1432 允许开关按照降压转换器的要求浮动，但仍提供完全开关饱和以实现最高效率。</p>
+<p>　　LT1432 中还融入了许多其他功能，以增强电池供电应用中的操作。 精确的电流限制仅使用 60mV 检测电压，允许折返，并使用“免费”PC 板走线材料作为检测电阻。 逻辑控制关断模式仅消耗 15μA 电池电流，可实现极长的关断时间。 开关 IC 由稳压器输出供电，以提高效率并允许输入电压低至 6.5V。</p>
+<p>　　LT1432 具有可选的突发模式操作，可在极轻负载电流（0mA 至 100mA）下实现高效率。 在正常开关模式下，待机功耗约为 60mW，限制了轻负载时的效率。 在突发模式下，待机损耗降低至大约 15mW。 在此模式下，输出纹波为 $150mV_{P-P}$，但这通常完全符合数字逻辑电源的要求。 突发模式操作通常用于“睡眠”条件，其中 IC 内存芯片保持供电以保留数据，但系统的其余部分断电。 该模式下的负载电流通常在 5mA–100mA 范围内。 操作模式受逻辑控制。</p>
+<p>　　LT1432 采用 8 引脚表面贴装和 DIP 封装。  LT1170 和 LT1270 系列采用 5 引脚 TO-220 封装的表面贴装版本。</p>
+<h5 id="电路说明">电路说明</h5>
+<p>　　图 3.2 所示的电路是一个基本的 5V 正降压转换器，可在 6.5V 至 25V 的输入电压下工作。 电源开关位于 LT1271 上的 $V_{SW}$ 引脚和 GND 引脚之间。 其电流和占空比由 $V_C$ 引脚相对于 GND 引脚的电压控制。 当开关电流从零增加到满量程时，该电压范围为 1V 至 2V。  LT1432 具有内部基准电压源和误差放大器，可维持正确的输出电压。 放大器输出通过内部集电极开路 NPN 进行电平转换，以驱动开关的 $V_C$ 引脚。 无法使用到切换器反馈引脚的普通电阻分压器反馈，因为反馈引脚以 GND 引脚为参考，而 GND 引脚正在切换许多伏特。 反馈引脚 (FB) 只需用一个电容器旁路即可。 这迫使开关 $V_C$ 引脚摆动至高电平，并具有约 200μA 的供电能力。 然后，LT1432 $V_C$ 引脚吸收该电流以控制环路。  C4 形成主要环路极点，并添加 R1 的环路零。  C5 形成一个较高频率的环路极点，以控制 $V_C$ 引脚上的开关纹波。</p>
+<p>　　切换器的浮动 5V 电源由 D2 和 C3 产生，它们在开关“关闭”期间检测输出电压的峰值。 这是一种非常有效的切换器供电方式，因为功耗不会随着稳压器输入电压的增加而增加。 然而，该电路不是自启动的，因此必须采用某种手段来启动调节器。 这是通过 LT1432 中的内部电流路径执行的，该路径允许电流在启动期间从输入电源流至 $V^+$ 引脚。</p>
+<p>　　在 5V 和 3.3V 稳压器中，D1、L1 和 C2 充当降压转换器的传统钳位二极管和输出滤波器。 应仔细选择这些组件，以保持高效率和可接受的输出纹波。</p>
+<p>　　电流限制由 R2 执行。 检测电压仅为 60mV，可保持高效率。 这还降低了检测电阻器的值，​​足以利用印刷电路板迹线作为检测电阻器。 检测电压具有正温度系数，以与铜的温度系数相匹配。</p>
+<p>　　基本调节器具有三种不同的工作模式，由模式引脚驱动定义。 当模式引脚接地时，会发生正常操作。 低静态电流突发模式操作可以通过浮动模式引脚来启动。 在此模式下，输入电源电流通常为 1.3mA，输出纹波电压为 $100mV_{P-P}$。 将模式引脚拉至 2.5V 以上会迫使整个稳压器进入微功耗关断状态，此时电流消耗通常小于 20μA。</p>
+<p>　　使用有源（同步）开关代替续流二极管有什么好处？ 这是一种流行的做法，但计算和实际试验板表明，效率最多只能提高几个百分点。 这可以用以下简化公式来表示：</p>
+<p>$$
+Diode \quad loss =
+V_f(V_{IN}-V_{OUT})(I_{OUT})/V_{IN}
+$$</p>
+<p>$$
+FETswitch \quad loss = (V_{IN}-V_{OUT})(R_{SW})(I_{OUT})^2/V_{IN}
+$$
+　　效率的变化为：
+$$
+(Diode \quad loss-FET\quad loss)(Efficiency)^2(V_{OUT})(I_{OUT})
+$$</p>
+<p>　　这等于：
+$$
+(V_{IN}-V_{OUT})(V_f-R_{FET} \times I_{OUT})(E)^2/(V_{IN})(V_{OUT})
+$$
+　　如果$V_f$（二极管正向电压）=0.45V，$V_{IN}$=10V，$V_{OUT}$=5V，$R_{FET}$=0.1Ω，$I_{OUT}$=1A，效率=90%，则效率的提升仅为：
+$$
+(10V - 5V)(0.45V - 0.1 Ω \times 1A)
+$$</p>
+<p>$$
+(0.9)2/(10V)(5V)=2.8\%
+$$</p>
+<p>　　这不考虑 FET 栅极驱动损耗，可以轻松将该数字降低到 2% 以下。 同步开关配置所增加的成本、尺寸和复杂性只有在最极端的情况下才值得考虑。</p>
+<p>　　突发模式效率受到 LT1432 和开关 IC 中的静态电流消耗的限制。 典型的突发模式零负载输入功率为 17mW。  12V、1.2AHr 电池组的电池寿命约为一个月。 增加负载功率会成比例地减少放电时间。 完全关断电流仅为 15μA 左右，远低于典型电池的自放电率。</p>
+<h5 id="bicmos-开关稳压器系列提供最高的降压效率">BICMOS 开关稳压器系列提供最高的降压效率</h5>
+<p>　　LTC1148 系列单路和双路降压型开关稳压器控制器具有自动突发模式操作功能，可在低输出电流下保持高效率。 该系列的所有成员都使用恒定的关闭时间、电流模式架构。 这可实现出色的线路和负载瞬态响应、恒定的电感纹波电流以及良好控制的启动和短路电流。  LTC1147/LTC1143 驱动单个外部 P 沟道 MOSFET，而 LTC1148/LTC1142 和 LTC1149 以高达 250kHz 的开关频率驱动同步外部功率 MOSFET。</p>
+<p>　　表 3.1 概述了该系列适用于常见笔记本电脑 DC 至 DC 转换器要求的情况。  LTC1147 采用 8 引脚 SOIC 封装，仅驱动单个功率 MOSFET，使其具有最小的 PC 板占板面积，但效率略有下降。  LTC1148HV/LTC1142HV 在 4V 至 18V（最大值 20Vabs）的输入电压下提供同步开关能力，并具有 200μA 的低静态电流。  LTC1149 将同步开关操作扩展至高达 48V（最大值 60V　abs）的输入电压，但静态电流略有下降。</p>
+<p>　　所有器件类型的额定电流水平由外部检测电阻根据公式 $I_{OUT}=100mV/R_{SENSE}$ 设置。 最大峰值电感电流和突发模式电流也与$R_{SENSE}$相关。 峰值电流限制为 150mV/$R_{SENSE}$，而当输出电流降至约 15mV/$R_{SENSE}$ 以下时，突发模式操作会自动开始。 在此模式下，外部 MOSFET 被延迟以减少开关损耗，并且控制器在 200μA 电源电流（LTC1149 为 600μA）下休眠，同时输出电容器支持负载。 当输出电容器放电 50mV 时，控制器会短暂重新打​​开或“突发”，为电容器充电。 完全关断将电源电流降至仅 10μA（LTC1149 为 150μA）。</p>
+<p>　　图 3.4 所示的第一个应用以 1.5A 输出电流将 5V 转换为 3.3V。 通过选择 LTC11473.3，可实现最小电路板空间解决方案，但峰值效率略有下降（本应用中驱动同步 MOSFET 的 LTC1148-3.3 将使高电流效率增加约 2.5%）。 图 3.5 显示了突发模式操作如何在低输出电流下保持高工作效率。</p>
+<h2 id="第-2-部分">第 2 部分</h2>
+<p>数据转换、信号调理和高频</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/analog/">Analog</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css"integrity="sha384-RZU/ijkSsFbcmivfdRBQDtwuwVqK7GMOw6IMvKyeWL2K5UAlyp6WonmB8m7Jd0Hn"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js"integrity="sha384-pK1WpvzWVBQiP0/GjnvRxV4mOb0oxFuyRxJlk6vVw146n3egcN5C925NCP7a7BY8"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js"integrity="sha384-vZTG03m&#43;2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ]
+        });})
+</script>
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">Related contents</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="">
+    <a href="/post/%E6%A0%87%E7%AD%BE/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title"></h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+     
+    
+        
+    <div id="cusdis_thread"
+    data-host="https://cusdis.com"
+    data-app-id="d44db3f9-a0ff-4551-a44d-316afd2e5835"
+    data-page-id="caf236e67433814a549847ed94a1bc74"
+    data-page-url="https://okokfun.github.io/post/analog-circuit-design/"
+    data-page-title="Analog Circuit Design"></div>
+<script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
+
+<script>
+    function setCusdisTheme(theme) {
+        let cusdis = document.querySelector('#cusdis_thread iframe');
+        if (cusdis) {
+            window.CUSDIS.setTheme(theme)
+        }
+    }
+
+    window.addEventListener('onColorSchemeChange', (e) => {
+        setCusdisTheme(e.detail)
+    })
+</script>
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2025 My Blog
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.5.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+
+            </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">Table of contents</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#介绍">介绍</a></li>
+    <li><a href="#前言">前言</a></li>
+    <li><a href="#第-1-部分">第 1 部分</a>
+      <ul>
+        <li><a href="#第1节">第1节</a></li>
+      </ul>
+    </li>
+    <li><a href="#第-2-部分">第 2 部分</a></li>
+  </ul>
+</nav>
+                </div>
+            </section>
+        </aside>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

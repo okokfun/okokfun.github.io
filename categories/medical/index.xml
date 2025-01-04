@@ -6,275 +6,112 @@
     <description>Recent content in Medical on My Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 04 Oct 2024 23:32:14 +0800</lastBuildDate><atom:link href="https://okokfun.github.io/categories/medical/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 04 Jan 2025 23:38:14 +0800</lastBuildDate><atom:link href="https://okokfun.github.io/categories/medical/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>第二节 医学影像设备质量控制的检测参数与仪器</title>
-      <link>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%83%E7%AB%A0-%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E8%B4%A8%E9%87%8F%E6%8E%A7%E5%88%B6/%E7%AC%AC%E4%BA%8C%E8%8A%82%E6%A0%B8%E5%8C%BB%E5%AD%A6%E6%88%90%E5%83%8F%E8%AE%BE%E5%A4%87%E7%9A%84%E7%BB%B4%E4%BF%AE-%E5%89%AF%E6%9C%AC/</link>
-      <pubDate>Fri, 04 Oct 2024 23:32:14 +0800</pubDate>
+      <title>第10章 CT 机</title>
+      <link>https://okokfun.github.io/post/%E5%B8%B8%E7%94%A8%E5%8C%BB%E7%96%97%E5%99%A8%E6%A2%B0%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E4%BF%AE/%E7%AC%AC%E5%8D%81%E7%AB%A0_ct%E6%9C%BA/</link>
+      <pubDate>Sat, 04 Jan 2025 23:38:14 +0800</pubDate>
       
-      <guid>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%83%E7%AB%A0-%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E8%B4%A8%E9%87%8F%E6%8E%A7%E5%88%B6/%E7%AC%AC%E4%BA%8C%E8%8A%82%E6%A0%B8%E5%8C%BB%E5%AD%A6%E6%88%90%E5%83%8F%E8%AE%BE%E5%A4%87%E7%9A%84%E7%BB%B4%E4%BF%AE-%E5%89%AF%E6%9C%AC/</guid>
-      <description>一、Ⅹ 线机检测参数 二、CR、DR 测定参数 三、DSA 测试参数 四、CT 检测仪器 五、MR 质控检测系统 六、US 检测仪器 七、SPECT、PET 设备检测仪器 八、γ 刀检测参数 </description>
+      <guid>https://okokfun.github.io/post/%E5%B8%B8%E7%94%A8%E5%8C%BB%E7%96%97%E5%99%A8%E6%A2%B0%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E4%BF%AE/%E7%AC%AC%E5%8D%81%E7%AB%A0_ct%E6%9C%BA/</guid>
+      <description>第一节 CT 机的发展 我们通常所指的 CT 是 X 射线CT ,全称为 X 射线电子计算机断层摄影，简称为CT ,是一种放射学成像方法，它可提供人体横断切面的图像，还可以把这些横断切面图像加起来作三维图像重建。尽管 CT 的基本原理几十年来已广泛使用，但直到1973年第一台计算机断层 X 射线扫描机才应用于医学临床的检查。从那时起，CT 扫描机已经经过五代的发展和进步，所以，CT 机的发展通常以“代”(generation)来划分。CT 机的分代主要以 X 射线球管和探测器的关系、结构、探测器的数目、排列方式和两者的运动方式来划分。实际上按“代”的划分并不能完全反映 CT 机性能的优劣，因为 X 射线球管系统、探测器的性能和计算机的运算速度等硬件更为重要。
+一、CT 机的分代 (一)第一代 CT 机 X 射线为单射束，有单个或数个探测器，运动方式是平移加旋转，扫描时间长达数分钟，临床检查只限于头颅扫描。
+(二)第二代 CT 机 X 射线为多射束，探测器从数个至几十个，运动方式还是平移加旋转，扫描时间缩短到 18s 左右。开始扩大到全身的扫描应用，但临床运动伪影很明显。
+(三)第三代 CT 机 X 射线为扇形束。探测器也相应呈扇形排列，其数目多达几百个。运动方式为旋转方式。扫描时间一般为 2~5s,最快可达 1s。临床应用功能也明显增加。在近两年所生产的滑环式 CT 机是第三代机型的一个突破。
+(四)第四代 CT 机与第三代 CT 机基本相同。只是在探测器的排列上为圆周状，固定在扫描架四周，达到每半度一个探测器，为闪烁式晶体探测器，还有用一千多个探测器的，主要是为了提高图像质量。其运动方式为 X 射线球管旋转。扫描时间也在 2s,重建512×512图像的时间在45s。
+(五)第五代 CT 机超高速机型 CT 机(ultra fast CT ,UFCT ),与以前的 CT 机已有根本的区别。</description>
     </item>
     
     <item>
-      <title>第三节 SPECT 设备电路与故障检修</title>
-      <link>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E5%85%AD%E7%AB%A0-%E6%A0%B8%E5%8C%BB%E5%AD%A6%E6%98%BE%E5%83%8F%E5%8E%9F%E7%90%86%E4%B8%8E%E8%AE%BE%E5%A4%87%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%89%E8%8A%82spect%E8%AE%BE%E5%A4%87%E7%94%B5%E8%B7%AF%E4%B8%8E%E6%95%85%E9%9A%9C%E6%A3%80%E4%BF%AE/</link>
-      <pubDate>Fri, 04 Oct 2024 23:30:14 +0800</pubDate>
+      <title>第9章 自动洗片机</title>
+      <link>https://okokfun.github.io/post/%E5%B8%B8%E7%94%A8%E5%8C%BB%E7%96%97%E5%99%A8%E6%A2%B0%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E4%BF%AE/%E7%AC%AC%E4%B9%9D%E7%AB%A0_%E8%87%AA%E5%8A%A8%E6%B4%97%E7%89%87%E6%9C%BA/</link>
+      <pubDate>Sat, 04 Jan 2025 23:37:14 +0800</pubDate>
       
-      <guid>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E5%85%AD%E7%AB%A0-%E6%A0%B8%E5%8C%BB%E5%AD%A6%E6%98%BE%E5%83%8F%E5%8E%9F%E7%90%86%E4%B8%8E%E8%AE%BE%E5%A4%87%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%89%E8%8A%82spect%E8%AE%BE%E5%A4%87%E7%94%B5%E8%B7%AF%E4%B8%8E%E6%95%85%E9%9A%9C%E6%A3%80%E4%BF%AE/</guid>
-      <description>一、工作过程 二、电路分析 三、故障分析与维修 </description>
+      <guid>https://okokfun.github.io/post/%E5%B8%B8%E7%94%A8%E5%8C%BB%E7%96%97%E5%99%A8%E6%A2%B0%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E4%BF%AE/%E7%AC%AC%E4%B9%9D%E7%AB%A0_%E8%87%AA%E5%8A%A8%E6%B4%97%E7%89%87%E6%9C%BA/</guid>
+      <description>第一节自动洗片机类型结构及工作原理 一、自动洗片机的类型 自动洗片机是医学影像不可缺少的设备之一。目前，使用的自动洗片机品种多、型号多，大体上分三种类型，即浅槽式、深槽式、喷淋式，这三种类型基本上是按照胶片传动的方式分类的，在形式上有台式和落地式两种。在浅槽式洗片机中，胶片在显影、定影和水洗的过程中，胶片移动时向下的弯曲度不是很大，有些机器基本上是使胶片平移，这样卡片的机会比较少；在深槽式洗片机中，胶片在显影、定影和水洗的过程中，都使胶片移动时向下的弯曲度较大，显影、定影和水洗这三个槽做得很深，这样，不仅可以缩小体积，而且更重要的是使胶片在每一个冲洗的步骤当中，都能达到充分作用，同时，也使洗片的速度得到提高，但有时有卡片现象；在喷淋式洗片机中，基本上是以台式为主，其体积小，胶片在整个的冲洗过程中是平移向前移动的，特点是不容易卡片，但显、定影药液是不循环的，显、定影冲洗方式是将药液喷淋到胶片上，所用完的药液即成为废液，在深槽和浅槽式洗片机中，它们的显影液和定影液是循环的，直到药液老化为止。另外，还有以洗片大小和速度来区分各种机型。近几年来国外有生产干式洗片机，还有与激光照相机连在一起的洗片机，经过激光照相机拍照完的图像胶片直接送入洗片机，最后，出来的胶片即是干的图像胶片。国内目前生产的洗片机还是以深槽式机器居多。选择洗片机是根据医院规模和洗片量来决定选用的机器档次。
+二、自动洗片机的基本结构 自动洗片机基本结构主要包括显影槽、定影槽、水洗槽、烘干部分、加热部分、循环部分、补液部分、胶片传动部分、系统控制部分等。由于洗片机所用的显影液和定影液都是强酸强碱溶液，腐蚀性很大，因此，机器所用的材料要求是非常高的，显影液、定影液和水洗槽都必须用耐强酸强碱的材料，一般用特殊的工程塑料制成；在胶片传动部分所用的金属如</description>
     </item>
     
     <item>
-      <title>第一节 医学影像成像质量控制</title>
-      <link>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%83%E7%AB%A0-%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E8%B4%A8%E9%87%8F%E6%8E%A7%E5%88%B6/%E7%AC%AC%E4%B8%80%E8%8A%82%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E6%88%90%E5%83%8F%E8%B4%A8%E9%87%8F%E6%8E%A7%E5%88%B6/</link>
-      <pubDate>Fri, 04 Oct 2024 23:25:14 +0800</pubDate>
+      <title>第8章 B 型超声波诊断装置</title>
+      <link>https://okokfun.github.io/post/%E5%B8%B8%E7%94%A8%E5%8C%BB%E7%96%97%E5%99%A8%E6%A2%B0%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E4%BF%AE/%E7%AC%AC%E5%85%AB%E7%AB%A0_b%E5%9E%8B%E8%B6%85%E5%A3%B0%E6%B3%A2%E8%AF%8A%E6%96%AD%E8%A3%85%E7%BD%AE/</link>
+      <pubDate>Sat, 04 Jan 2025 23:36:14 +0800</pubDate>
       
-      <guid>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%83%E7%AB%A0-%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E8%B4%A8%E9%87%8F%E6%8E%A7%E5%88%B6/%E7%AC%AC%E4%B8%80%E8%8A%82%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E6%88%90%E5%83%8F%E8%B4%A8%E9%87%8F%E6%8E%A7%E5%88%B6/</guid>
-      <description>一、评价与控制 二、CR 的伪影与质控 三、DR、DSA 质控参数 四、CT 图像处理与质控 五、CT 图像质量评价 六、MR 图像质量控制 七、SPECT 设备的质量控制 </description>
+      <guid>https://okokfun.github.io/post/%E5%B8%B8%E7%94%A8%E5%8C%BB%E7%96%97%E5%99%A8%E6%A2%B0%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E4%BF%AE/%E7%AC%AC%E5%85%AB%E7%AB%A0_b%E5%9E%8B%E8%B6%85%E5%A3%B0%E6%B3%A2%E8%AF%8A%E6%96%AD%E8%A3%85%E7%BD%AE/</guid>
+      <description>第一节概述 B 型超声波诊断装置(B超)已成为医院普遍使用的医疗设备,而且发展很快,尤其是在功能和控制方面,各品牌各机型都有各自的特点。近几年来,各生产厂家所生产的B超集成化程度越来越高,采用了大规模或超大规模集成电路,超声系统只有两块电路板,包括所应有的基本计算和一些特殊功能,使操作更为简便;目前,国内又引进一种非常小的彩色 B 超 180 型,是目前最小的彩色超声。
+在黑白 B 超探头配备方面,便携式机型配备标准线阵探头,只能做腹部检查;在高档机型中,配备心腹两用探头、高频探头、专用探头和穿刺架等,很适合临床做心脏、腹部以及各种脏器的检查,并可在 B 超引导下进行各种特殊治疗,如通过 B 超定位做各种穿刺、碎石等治疗,临床应用比较广。
+在彩色 B 超探头配备方面,都配备了宽频带、高频及变频探头、专用探头。为了适应心脏的检查,设有 M 型超声系统和多谱勒功能,在心脏检查中可在 B 型超声和 M 型超声之间切换使用,以便观察诊断病变程度,多谱勒功能的应用更有利于临床诊断;对心脏功能的计算由过去冻结后测量计算的方法,改为适时的测量的计算,使彩色 B 超对心脏疾病的检查具有重要的诊断依据和作用。除此之外,高频探头的配备,还可以做表浅血管血流的测定和计算。由于 B 超它采用了数字电路、模拟电路和微处理器等集成化较高的集成电路,维修起来较为复杂,需要有一定的数字电路知识,这样对电路原理的理解要快一些,在维修中少走弯路。在这里我们还是先以日本 ALOKA SSD-210XII 型 B 超机型为例介绍其电路原理与维修。
+第二节 B 超的类型与结构及电路原理 一、B 超的类型与结构 B超可分为两大类型:即黑白 B 超和彩色 B 超。在黑白 B 超中有小型</description>
     </item>
     
     <item>
-      <title>第一节 核医学成像设备的保养</title>
-      <link>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E5%85%AD%E7%AB%A0-%E6%A0%B8%E5%8C%BB%E5%AD%A6%E6%98%BE%E5%83%8F%E5%8E%9F%E7%90%86%E4%B8%8E%E8%AE%BE%E5%A4%87%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%80%E8%8A%82%E6%A0%B8%E5%8C%BB%E5%AD%A6%E6%88%90%E5%83%8F%E8%AE%BE%E5%A4%87%E7%9A%84%E4%BF%9D%E5%85%BB/</link>
-      <pubDate>Fri, 04 Oct 2024 23:25:14 +0800</pubDate>
+      <title>第5章 高频电刀</title>
+      <link>https://okokfun.github.io/post/%E5%B8%B8%E7%94%A8%E5%8C%BB%E7%96%97%E5%99%A8%E6%A2%B0%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E4%BF%AE/%E7%AC%AC%E4%BA%94%E7%AB%A0_%E9%AB%98%E9%A2%91%E7%94%B5%E5%88%80/</link>
+      <pubDate>Sat, 04 Jan 2025 23:30:14 +0800</pubDate>
       
-      <guid>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E5%85%AD%E7%AB%A0-%E6%A0%B8%E5%8C%BB%E5%AD%A6%E6%98%BE%E5%83%8F%E5%8E%9F%E7%90%86%E4%B8%8E%E8%AE%BE%E5%A4%87%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%80%E8%8A%82%E6%A0%B8%E5%8C%BB%E5%AD%A6%E6%88%90%E5%83%8F%E8%AE%BE%E5%A4%87%E7%9A%84%E4%BF%9D%E5%85%BB/</guid>
-      <description>一、保养内容 二、保养时间表 三、使用注意事项 </description>
+      <guid>https://okokfun.github.io/post/%E5%B8%B8%E7%94%A8%E5%8C%BB%E7%96%97%E5%99%A8%E6%A2%B0%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E4%BF%AE/%E7%AC%AC%E4%BA%94%E7%AB%A0_%E9%AB%98%E9%A2%91%E7%94%B5%E5%88%80/</guid>
+      <description>第一节概述 高频电刀可用于外科的各种手术, 是利用高频电流在组织中所产生的热效应来切开皮肤及组织, 能使肌肉收缩, 被切断的毛细血管, 其表面可立即封闭, 减少病人出血。由于有效电极面积小, 电流密度很大, 因此, 可在较短时间内, 在局部产生足够的热量, 使电极下的组织分裂出一个不出血的、深度在几毫米的裂口(即电切), 或使血管凝固到一定深度, 代替线结扎(即电凝)。高频电刀的使用大大缩短了手术时间, 同时还有杀菌作用。因此, 是现代化医院外科手术必不可少的常用设备之一。
+在我国早期生产的高频电刀有两种类型：一种是电子管式高频电刀；另一种是火花间隙放电式高频电刀。在目前来说, 电子管式的高频电刀早已被淘汰；而火花间隙放电式高频电刀虽然已经落后, 但许多医院还在使用, 因为这种高频电刀有耐用、故障少、输出功率大、维修方便等优点, 很受广大外科医生们的欢迎；但也有缺点：比如安全保护性差, 电路结构简单, 体积比较大, 其阴极板采用的是镀银铜板, 比较硬, 使阴极板与病人皮肤接触的面积要受部位和胖瘦的限制或病人状况的影响(阴极板与病人皮肤接触面积的大小与机器通过人体的电流有直接的关系), 如果接触面积太小, 电流过大, 容易烧伤病人皮肤。为此, 使用这种阴极板时要特别注意, 有条件时可将原来的镀银硬的阴极板改为粘贴式软的阴极板, 以保证阴极板与病人皮肤的接触面积, 避免烧伤病人皮肤的现象出现。
+由于医疗卫生事业的飞速发展, 许多医院都先后引进了国外生产的晶体管式高频电刀, 而且品种很多；国内也有许多厂家在生产晶体管式高频电刀, 有一些机型目前已经做的质量很好。虽然, 火花间隙放电式高频电刀已经落后, 但根据我国实际情况, 这些机器还不能完全被晶体管式高频电刀机型所取代, 还需要一定时间, 尤其是医疗条件不太好的地区, 从临床外科医生实际使用来说, 还是认为火花间隙放电式高频电刀好用, 功率大。但是, 随着科技的进步, 晶体管和集成电路式高频电刀是必然的发展趋势。
+我国早期生产的 KW65-3 型电子管式高频电刀, 采用的是单管哈特莱</description>
     </item>
     
     <item>
-      <title>第二节 核医学成像设备的维修</title>
-      <link>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E5%85%AD%E7%AB%A0-%E6%A0%B8%E5%8C%BB%E5%AD%A6%E6%98%BE%E5%83%8F%E5%8E%9F%E7%90%86%E4%B8%8E%E8%AE%BE%E5%A4%87%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%BA%8C%E8%8A%82%E6%A0%B8%E5%8C%BB%E5%AD%A6%E6%88%90%E5%83%8F%E8%AE%BE%E5%A4%87%E7%9A%84%E7%BB%B4%E4%BF%AE/</link>
-      <pubDate>Fri, 04 Oct 2024 23:25:14 +0800</pubDate>
+      <title>第6章 心电图机</title>
+      <link>https://okokfun.github.io/post/%E5%B8%B8%E7%94%A8%E5%8C%BB%E7%96%97%E5%99%A8%E6%A2%B0%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E4%BF%AE/%E7%AC%AC%E5%85%AD%E7%AB%A0_%E5%BF%83%E7%94%B5%E5%9B%BE%E6%9C%BA/</link>
+      <pubDate>Sat, 04 Jan 2025 23:30:14 +0800</pubDate>
       
-      <guid>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E5%85%AD%E7%AB%A0-%E6%A0%B8%E5%8C%BB%E5%AD%A6%E6%98%BE%E5%83%8F%E5%8E%9F%E7%90%86%E4%B8%8E%E8%AE%BE%E5%A4%87%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%BA%8C%E8%8A%82%E6%A0%B8%E5%8C%BB%E5%AD%A6%E6%88%90%E5%83%8F%E8%AE%BE%E5%A4%87%E7%9A%84%E7%BB%B4%E4%BF%AE/</guid>
-      <description>一、设备故障 二、设备故障对影像的影响 三、故障检修 </description>
+      <guid>https://okokfun.github.io/post/%E5%B8%B8%E7%94%A8%E5%8C%BB%E7%96%97%E5%99%A8%E6%A2%B0%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E4%BF%AE/%E7%AC%AC%E5%85%AD%E7%AB%A0_%E5%BF%83%E7%94%B5%E5%9B%BE%E6%9C%BA/</guid>
+      <description>第一节心电图基础 一、心电的产生 心电图机能将微弱的生物电信号记录下来，这是由心脏的生理特征及心肌的生物电所决定的。在正常情况下，静止的极化细胞表面带有正电荷，而细胞内则带有负电荷，是数量相等但极性相反的电荷在细胞膜的两面。由于它们表面的各点电位相等，所以不会有电流流动，称为“静止状态”。当细胞兴奋除极的时候，细胞在静止状态极性发生逆转，细胞内外的电位差降低，使该细胞带有负电位，而邻近的静止或称为极化的细胞，仍带有一定电位的正电荷，因而在邻近的细胞间出现电位差，并由此产生了电流。电流的方向是静止细胞这一端为正性，已激动的细胞一端为负性，这样，在邻近的细胞间出现了极性相反的电荷对，在临床心电图学中称之为“电偶”。
+(一)心肌的生理特征 1.自律性 人体的心肌本身，有不依外界刺激而发生有节律的激动和收缩的能力，具有自主兴奋的特性。其中，以心窦房结最强，房室结次之，房室束及浦顷野氏纤维最弱。在正常情况下，窦房结产生激动的频率最高，每分钟为60~80次；房室结较低，每分钟为40~60次；房室束以下部位更低，约为25~40次。因此，窦房结以外任何部位产生激动都受到窦房结的抑制。心脏自律性的异常改变，是发生心律失常的主要因素。
+2.兴奋性(应激性) 当心脏受刺激后的明显表现为机械性收缩和电生理的变化，无论强度大小，心肌的收缩反映都是最大的。心肌具有兴奋期与乏兴奋期(不应期)交替出现的特点，其变化是：
+(1)绝对乏兴奋期(绝对不应期) 即对任何强度的刺激均不起反应，相当于心肌收缩开始到收缩完毕这段时间。</description>
     </item>
     
     <item>
-      <title>第三节 B 超设备单元电路与故障分析</title>
-      <link>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%BA%94%E7%AB%A0-%E5%8C%BB%E7%94%A8%E8%B6%85%E5%A3%B0%E6%88%90%E5%83%8F%E5%8E%9F%E7%90%86%E4%B8%8E%E4%BB%AA%E5%99%A8%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%89%E8%8A%82b%E8%B6%85%E8%AE%BE%E5%A4%87%E5%8D%95%E5%85%83%E7%94%B5%E8%B7%AF%E4%B8%8E%E6%95%85%E9%9A%9C%E5%88%86%E6%9E%90/</link>
-      <pubDate>Fri, 04 Oct 2024 23:23:14 +0800</pubDate>
+      <title>第7章 医用X线机</title>
+      <link>https://okokfun.github.io/post/%E5%B8%B8%E7%94%A8%E5%8C%BB%E7%96%97%E5%99%A8%E6%A2%B0%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E4%BF%AE/%E7%AC%AC%E4%B8%83%E7%AB%A0_%E5%8C%BB%E7%94%A8x%E7%BA%BF%E6%9C%BA/</link>
+      <pubDate>Sat, 04 Jan 2025 23:30:14 +0800</pubDate>
       
-      <guid>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%BA%94%E7%AB%A0-%E5%8C%BB%E7%94%A8%E8%B6%85%E5%A3%B0%E6%88%90%E5%83%8F%E5%8E%9F%E7%90%86%E4%B8%8E%E4%BB%AA%E5%99%A8%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%89%E8%8A%82b%E8%B6%85%E8%AE%BE%E5%A4%87%E5%8D%95%E5%85%83%E7%94%B5%E8%B7%AF%E4%B8%8E%E6%95%85%E9%9A%9C%E5%88%86%E6%9E%90/</guid>
-      <description>一、B 超设备电路 二、B 超设备故障检修 </description>
+      <guid>https://okokfun.github.io/post/%E5%B8%B8%E7%94%A8%E5%8C%BB%E7%96%97%E5%99%A8%E6%A2%B0%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E4%BF%AE/%E7%AC%AC%E4%B8%83%E7%AB%A0_%E5%8C%BB%E7%94%A8x%E7%BA%BF%E6%9C%BA/</guid>
+      <description>第一节 X 射线机的基本工作原理 一、X 射线发生原理及基本认识 (一)X 射线产生的条件 X 射线是在高度真空的 X 射线管中产生的。更确切地说,是高速电子与阳极靶面相互作用的结果。高速电子与靶面物质的相互作用是很复杂的。一般说来,高速电子在失去其全部动能而变成自由电子之前要穿过很多原子间隙,经过很多次碰撞,发生多种作用的物理过程。从能量转换角度来看,高速电子能量损失分碰撞损失和辐射损失两种情况,碰撞损失将全部变为热能,使阳极温度迅速上升,99%左右的高速电子动能都在碰撞损失中转换为热能,辐射损失是高速电子与靶原子内层电子或原子核相互作用的结果,以辐射 X 射线光子的形式而损失能量,这部分能量大约占高速电子总动能的百分之零点几。可见,在 X 射线管中的 X 射线能的转换效率是很低的。
+(二)Ⅹ射线的结构 从 X 射线的结构分析看,有连续X射线、标识 X 射线。X 射线的量和质还有物理方面的量和质。X 射线贯穿物质的本领叫做 X 射线的质(或使度),它只决定于每个光子能量的大小,而与光子的数目无关,所以,X 的线的质用波长或频率来表示。诊断方面的量和质是根据X射线量和质的物理概念,在医用诊断方面有习惯的度量标准。通常以 X 射线管的管电流与X 射线照射时间乘积,来表示X射线的量,单位:mAs;以 X 射线管的值管电压来表示X射线的质。
+(三)Ⅹ射线的本质和特性 1.X 射线的本质 从 X 射线的本质和特性看,X射线是一种不可见光,具有光的一切性。光是一种电磁波,且有波、粒二象性。这是光的本质,也是X射线的本质。在电磁波谱中,X 射线是介于紫外线和 γ 射线之间的电磁波,同时段有波动性和微粒性。前者的特征是具有波长和频率; 后者的特征是具有能量,</description>
     </item>
     
     <item>
-      <title>第二节 医用超声设备的维修</title>
-      <link>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%BA%94%E7%AB%A0-%E5%8C%BB%E7%94%A8%E8%B6%85%E5%A3%B0%E6%88%90%E5%83%8F%E5%8E%9F%E7%90%86%E4%B8%8E%E4%BB%AA%E5%99%A8%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%BA%8C%E8%8A%82%E5%8C%BB%E7%94%A8%E8%B6%85%E5%A3%B0%E8%AE%BE%E5%A4%87%E7%9A%84%E7%BB%B4%E4%BF%AE/</link>
-      <pubDate>Fri, 04 Oct 2024 23:00:14 +0800</pubDate>
+      <title>第4章 超声雾化器</title>
+      <link>https://okokfun.github.io/post/%E5%B8%B8%E7%94%A8%E5%8C%BB%E7%96%97%E5%99%A8%E6%A2%B0%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E4%BF%AE/%E7%AC%AC%E5%9B%9B%E7%AB%A0_%E8%B6%85%E5%A3%B0%E9%9B%BE%E5%8C%96%E5%99%A8/</link>
+      <pubDate>Sat, 04 Jan 2025 23:26:14 +0800</pubDate>
       
-      <guid>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%BA%94%E7%AB%A0-%E5%8C%BB%E7%94%A8%E8%B6%85%E5%A3%B0%E6%88%90%E5%83%8F%E5%8E%9F%E7%90%86%E4%B8%8E%E4%BB%AA%E5%99%A8%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%BA%8C%E8%8A%82%E5%8C%BB%E7%94%A8%E8%B6%85%E5%A3%B0%E8%AE%BE%E5%A4%87%E7%9A%84%E7%BB%B4%E4%BF%AE/</guid>
-      <description>一、维修方法 二、超声设备维修 三、保养与故障分析 </description>
+      <guid>https://okokfun.github.io/post/%E5%B8%B8%E7%94%A8%E5%8C%BB%E7%96%97%E5%99%A8%E6%A2%B0%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E4%BF%AE/%E7%AC%AC%E5%9B%9B%E7%AB%A0_%E8%B6%85%E5%A3%B0%E9%9B%BE%E5%8C%96%E5%99%A8/</guid>
+      <description>第一节概述 目前，用于医疗上的超声雾化器，是一种改变给药途径最先进的雾化治疗仪器，它能在常温下把水溶性药物经过超声振荡形成微小的雾粒，供给患者作药物气溶胶吸入治疗。临床上广泛应用于内科、外科、耳鼻喉科、儿科等疾病，对呼吸系统疾病和烧伤创面有更显著的疗效。所以，超声雾化器在医院中被广泛应用。目前，国内进口一种压缩雾化吸入机(压缩雾化泵)，是利用压缩空气将药物喷淋形成雾状后喷出，所用压缩空气是由无油空气压缩机供给的，口含喷嘴上面设有活瓣，病人可以正常呼吸，下部有雾量调节旋钮，可以控制雾量大小；治疗用药物速度快，药物可以很快被雾化后吸入，大大缩短了吸入时间。这种压缩雾化吸入机结构简单，临床应用效果好，是未来发展的方向。
+目前，在医院中应用比较普遍的超声雾化器主要有两种类型:一种是晶体管式超声雾化器，一种是电子管式超声雾化器。从结构上划分有单机式和双机式，双机式结构是将两台超声雾化器合在一起，可同时供两个人治疗使用，目的是为了在医院门诊病人比较多的情况下使用。就这两种机型分述如下。
+第二节晶体管超声雾化器结构与原理 一、晶体管超声雾化器结构 晶体管超声雾化器结构比较简单，它是由雾化器外壳、底座、电源变压器、风扇电动机、电路板、晶片、储药罐、塑料螺纹管、口含管等组成。其外壳多数是用塑料制成，在雾化出口设有风量调节，面板有定时器、电源开关、雾量调节旋钮以及电源和输出指示等。
+二、晶体管超声雾化器电路原理 其电路工作频率在　1.7MHz，当电源输入经变压通过桥式整流和滤波供</description>
     </item>
     
     <item>
-      <title>第一节 超声设备安装和调试</title>
-      <link>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%BA%94%E7%AB%A0-%E5%8C%BB%E7%94%A8%E8%B6%85%E5%A3%B0%E6%88%90%E5%83%8F%E5%8E%9F%E7%90%86%E4%B8%8E%E4%BB%AA%E5%99%A8%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%80%E8%8A%82%E8%B6%85%E5%A3%B0%E8%AE%BE%E5%A4%87%E5%AE%89%E8%A3%85%E5%92%8C%E8%B0%83%E8%AF%95/</link>
-      <pubDate>Fri, 04 Oct 2024 22:59:14 +0800</pubDate>
+      <title>第3章 医用离心机</title>
+      <link>https://okokfun.github.io/post/%E5%B8%B8%E7%94%A8%E5%8C%BB%E7%96%97%E5%99%A8%E6%A2%B0%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E4%BF%AE/%E7%AC%AC%E4%B8%89%E7%AB%A0_%E5%8C%BB%E7%94%A8%E7%A6%BB%E5%BF%83%E6%9C%BA/</link>
+      <pubDate>Sat, 04 Jan 2025 23:25:14 +0800</pubDate>
       
-      <guid>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%BA%94%E7%AB%A0-%E5%8C%BB%E7%94%A8%E8%B6%85%E5%A3%B0%E6%88%90%E5%83%8F%E5%8E%9F%E7%90%86%E4%B8%8E%E4%BB%AA%E5%99%A8%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%80%E8%8A%82%E8%B6%85%E5%A3%B0%E8%AE%BE%E5%A4%87%E5%AE%89%E8%A3%85%E5%92%8C%E8%B0%83%E8%AF%95/</guid>
-      <description>一、设备结构组成 二、安装与拆卸 </description>
+      <guid>https://okokfun.github.io/post/%E5%B8%B8%E7%94%A8%E5%8C%BB%E7%96%97%E5%99%A8%E6%A2%B0%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E4%BF%AE/%E7%AC%AC%E4%B8%89%E7%AB%A0_%E5%8C%BB%E7%94%A8%E7%A6%BB%E5%BF%83%E6%9C%BA/</guid>
+      <description>第一节概述 离心机是利用离心力对混合溶液或血液进行快速分离及沉淀的一种专用设备，应用范围比较广，可用于医药、食品、工业、科研等方面。
+医用离心机按用途划分： 有临床检验使用的台式离心机、落地式离心机; 做放免使用的低速大容量冷冻离心机;做各种培养使用的高速冷冻离心机等。
+医用离心机按结构划分大致可分为两大类型: ①普通离心机和②冷冻离心机。在普通离心机中可分为: 小型台式、中型落地式、大型落地式: 在冷冻离心机中可分为: 低速冷冻式、高速冷冻式; 台式和落地式。由于用途不同其各种型号也不同，主要区别是在电路控制、温度控制、容量限制、离心速度、显示方式以及应用功能的不同等方面上，但是大致归纳为上述两大类型。
+医用离心机的主要电路是转速调节器、转速显示部分和一些连锁控制系统，对于冷冻离心机来说还有一套制冷系统。离心电机一般采用串励式单相电动机，根据容量的大小设计电动机的功率。目前大多数生产厂家在转速调节器上都使用无级调速，用晶闸管来实现控制。离心机所用电动机转速范围一般为 1000~4000r/min。医院检验科常用的离心机是 3000~4000r/min，有些用途是在 10000r/min 以上，特殊用途的高速离心机在 18000~100000r/min。一般情况下，转速在 10000r/min 以上的离心机都必须装有冷冻装置，以控制离心室的温度在一定范围内; 适用于放免使用的离心机转速在 3000~4000r/min 的离心机也同样需要有冷冻装置，主要是临床检验要求。下面对离心机的两大类型分别介绍如下。
+第二节普通离心机 一、普通离心机组成结构 普通电动离心机的结构一般是由转盘、底座、电动机、转速调节器、转速显示器等部分组成。普通台式离心机底座金属板比较厚，底板下面装有橡胶支点，主要是使机器工作时稳定，减少振动和噪声;离心电动机用橡胶或弹簧</description>
     </item>
     
     <item>
-      <title>第三节 MR 设备单元电路与故障检修</title>
-      <link>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E5%9B%9B%E7%AB%A0-mr-%E6%88%90%E5%83%8F%E5%8E%9F%E7%90%86%E4%B8%8E%E8%AE%BE%E5%A4%87%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%89%E8%8A%82mr%E8%AE%BE%E5%A4%87%E5%8D%95%E5%85%83%E7%94%B5%E8%B7%AF%E4%B8%8E%E6%95%85%E9%9A%9C%E6%A3%80%E4%BF%AE/</link>
-      <pubDate>Fri, 04 Oct 2024 22:54:14 +0800</pubDate>
+      <title>第2章 电动吸引器</title>
+      <link>https://okokfun.github.io/post/%E5%B8%B8%E7%94%A8%E5%8C%BB%E7%96%97%E5%99%A8%E6%A2%B0%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E4%BF%AE/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E7%94%B5%E5%8A%A8%E5%90%B8%E5%BC%95%E5%99%A8/</link>
+      <pubDate>Sat, 04 Jan 2025 23:04:14 +0800</pubDate>
       
-      <guid>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E5%9B%9B%E7%AB%A0-mr-%E6%88%90%E5%83%8F%E5%8E%9F%E7%90%86%E4%B8%8E%E8%AE%BE%E5%A4%87%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%89%E8%8A%82mr%E8%AE%BE%E5%A4%87%E5%8D%95%E5%85%83%E7%94%B5%E8%B7%AF%E4%B8%8E%E6%95%85%E9%9A%9C%E6%A3%80%E4%BF%AE/</guid>
-      <description>一、线圈 二、梯度磁场电源 三、3.0T磁共振设备电路与故障检修 四、激光相机、PACS 系统在 MR 上的设置与调整 </description>
-    </item>
-    
-    <item>
-      <title>第二节 MR设备整机故障分析</title>
-      <link>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E5%9B%9B%E7%AB%A0-mr-%E6%88%90%E5%83%8F%E5%8E%9F%E7%90%86%E4%B8%8E%E8%AE%BE%E5%A4%87%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%BA%8C%E8%8A%82-mr%E8%AE%BE%E5%A4%87%E6%95%B4%E6%9C%BA%E6%95%85%E9%9A%9C%E5%88%86%E6%9E%90/</link>
-      <pubDate>Fri, 04 Oct 2024 22:53:14 +0800</pubDate>
-      
-      <guid>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E5%9B%9B%E7%AB%A0-mr-%E6%88%90%E5%83%8F%E5%8E%9F%E7%90%86%E4%B8%8E%E8%AE%BE%E5%A4%87%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%BA%8C%E8%8A%82-mr%E8%AE%BE%E5%A4%87%E6%95%B4%E6%9C%BA%E6%95%85%E9%9A%9C%E5%88%86%E6%9E%90/</guid>
-      <description>一、主计算机系统 二、射频子系统 三、梯度子系统 </description>
-    </item>
-    
-    <item>
-      <title>第一节 MR 图像伪影与故障</title>
-      <link>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E5%9B%9B%E7%AB%A0-mr-%E6%88%90%E5%83%8F%E5%8E%9F%E7%90%86%E4%B8%8E%E8%AE%BE%E5%A4%87%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%80%E8%8A%82-mr%E5%9B%BE%E5%83%8F%E4%BC%AA%E5%BD%B1%E4%B8%8E%E6%95%85%E9%9A%9C/</link>
-      <pubDate>Fri, 04 Oct 2024 22:48:14 +0800</pubDate>
-      
-      <guid>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E5%9B%9B%E7%AB%A0-mr-%E6%88%90%E5%83%8F%E5%8E%9F%E7%90%86%E4%B8%8E%E8%AE%BE%E5%A4%87%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%80%E8%8A%82-mr%E5%9B%BE%E5%83%8F%E4%BC%AA%E5%BD%B1%E4%B8%8E%E6%95%85%E9%9A%9C/</guid>
-      <description>一、硬件 二、射频脉冲 三、外磁场与梯度磁场 </description>
-    </item>
-    
-    <item>
-      <title>第五节 CT 设备维修实例</title>
-      <link>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%89%E7%AB%A0-ct-%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%BA%94%E8%8A%82-ct%E8%AE%BE%E5%A4%87%E7%BB%B4%E4%BF%AE%E5%AE%9E%E4%BE%8B/</link>
-      <pubDate>Fri, 04 Oct 2024 22:38:14 +0800</pubDate>
-      
-      <guid>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%89%E7%AB%A0-ct-%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%BA%94%E8%8A%82-ct%E8%AE%BE%E5%A4%87%E7%BB%B4%E4%BF%AE%E5%AE%9E%E4%BE%8B/</guid>
-      <description>一、ELSCINT 2000 CT 设备故障检修 二、CT 球管质量不佳现象分析与检修 三、多排螺旋 CT 设备电路故障分析与检修 四、VCT 组成与电路框图分析 </description>
-    </item>
-    
-    <item>
-      <title>第三节 CT 设备电路分析</title>
-      <link>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%89%E7%AB%A0-ct-%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%89%E8%8A%82ct%E8%AE%BE%E5%A4%87%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/</link>
-      <pubDate>Fri, 04 Oct 2024 22:34:14 +0800</pubDate>
-      
-      <guid>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%89%E7%AB%A0-ct-%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%89%E8%8A%82ct%E8%AE%BE%E5%A4%87%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/</guid>
-      <description>一、CT 设备单元电路 二、单排螺旋 CT 设备电路分析 </description>
-    </item>
-    
-    <item>
-      <title>第二节 CT 球管故障判断及原因分析</title>
-      <link>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%89%E7%AB%A0-ct-%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%BA%8C%E8%8A%82ct%E7%90%83%E7%AE%A1%E6%95%85%E9%9A%9C%E5%88%A4%E6%96%AD%E5%8F%8A%E5%8E%9F%E5%9B%A0%E5%88%86%E6%9E%90/</link>
-      <pubDate>Fri, 04 Oct 2024 22:33:14 +0800</pubDate>
-      
-      <guid>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%89%E7%AB%A0-ct-%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%BA%8C%E8%8A%82ct%E7%90%83%E7%AE%A1%E6%95%85%E9%9A%9C%E5%88%A4%E6%96%AD%E5%8F%8A%E5%8E%9F%E5%9B%A0%E5%88%86%E6%9E%90/</guid>
-      <description>一、灯丝断路 二、管芯真空度下降或管芯玻壳破损 三、旋转阳极不转 四、CT球管过热或油循环停止 五、管套内高压打火 六、CT球管漏油 </description>
-    </item>
-    
-    <item>
-      <title>第一节 CT 设备故障分类与检测</title>
-      <link>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%89%E7%AB%A0-ct-%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%80%E8%8A%82-%E6%95%B0%E5%AD%97%E5%8C%96-x-%E7%BA%BF%E6%9C%BA%E7%9A%84%E6%95%85%E9%9A%9C%E4%B8%8E%E7%BB%B4%E4%BF%AE/</link>
-      <pubDate>Fri, 04 Oct 2024 22:24:14 +0800</pubDate>
-      
-      <guid>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%89%E7%AB%A0-ct-%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%80%E8%8A%82-%E6%95%B0%E5%AD%97%E5%8C%96-x-%E7%BA%BF%E6%9C%BA%E7%9A%84%E6%95%85%E9%9A%9C%E4%B8%8E%E7%BB%B4%E4%BF%AE/</guid>
-      <description>一、故障分类 二、性能检测 </description>
-    </item>
-    
-    <item>
-      <title>第四节 常见的故障与维修</title>
-      <link>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%89%E7%AB%A0-ct-%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E5%9B%9B%E8%8A%82%E5%B8%B8%E8%A7%81%E7%9A%84%E6%95%85%E9%9A%9C%E4%B8%8E%E7%BB%B4%E4%BF%AE/</link>
-      <pubDate>Fri, 04 Oct 2024 22:24:14 +0800</pubDate>
-      
-      <guid>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%89%E7%AB%A0-ct-%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E5%9B%9B%E8%8A%82%E5%B8%B8%E8%A7%81%E7%9A%84%E6%95%85%E9%9A%9C%E4%B8%8E%E7%BB%B4%E4%BF%AE/</guid>
-      <description>一、用软件维修 二、计算机故障检修 三、计算机外围设备故障的维修 四、阵列处理器、图像显示系统故障的维修 五、数据采集系统故障的维修 六、扫描架、床机械运动系统故障的维修 七、滑环故障的维修 八、Ⅹ 线系统故障的维修 九、散热系统故障的维修 十、相机故障的维修 十一、配电箱、操作台故障的维修 </description>
-    </item>
-    
-    <item>
-      <title>第三节 数字乳腺 X 线机安装与调试</title>
-      <link>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E6%95%B0%E5%AD%97-x-%E7%BA%BF%E8%AE%BE%E5%A4%87%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%89%E8%8A%82-%E6%95%B0%E5%AD%97%E4%B9%B3%E8%85%BAx%E7%BA%BF%E6%9C%BA%E5%AE%89%E8%A3%85%E4%B8%8E%E8%B0%83%E8%AF%95/</link>
-      <pubDate>Fri, 04 Oct 2024 22:20:14 +0800</pubDate>
-      
-      <guid>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E6%95%B0%E5%AD%97-x-%E7%BA%BF%E8%AE%BE%E5%A4%87%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%89%E8%8A%82-%E6%95%B0%E5%AD%97%E4%B9%B3%E8%85%BAx%E7%BA%BF%E6%9C%BA%E5%AE%89%E8%A3%85%E4%B8%8E%E8%B0%83%E8%AF%95/</guid>
-      <description>一、维修方法 二、PLAMED 系列乳腺 X 线机故障维修和设备维护 </description>
-    </item>
-    
-    <item>
-      <title>第二节 医用数字胃肠 Ⅹ 线机维修</title>
-      <link>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E6%95%B0%E5%AD%97-x-%E7%BA%BF%E8%AE%BE%E5%A4%87%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%BA%8C%E8%8A%82%E5%8C%BB%E7%94%A8%E6%95%B0%E5%AD%97%E8%83%83%E8%82%A0%E7%BA%BF%E6%9C%BA%E7%BB%B4%E4%BF%AE/</link>
-      <pubDate>Fri, 04 Oct 2024 22:18:14 +0800</pubDate>
-      
-      <guid>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E6%95%B0%E5%AD%97-x-%E7%BA%BF%E8%AE%BE%E5%A4%87%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%BA%8C%E8%8A%82%E5%8C%BB%E7%94%A8%E6%95%B0%E5%AD%97%E8%83%83%E8%82%A0%E7%BA%BF%E6%9C%BA%E7%BB%B4%E4%BF%AE/</guid>
-      <description>一、维修方法 二、NAX 系列数字胃肠 X 线机故障维修和设备维护 三、HX150ET-A 高频发生器维修和维护 四、TH-600 数字系统维修和维护 </description>
-    </item>
-    
-    <item>
-      <title>第一节 数字化 X 线机的故障与维修</title>
-      <link>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E6%95%B0%E5%AD%97-x-%E7%BA%BF%E8%AE%BE%E5%A4%87%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%80%E8%8A%82-%E6%95%B0%E5%AD%97%E5%8C%96-x-%E7%BA%BF%E6%9C%BA%E7%9A%84%E6%95%85%E9%9A%9C%E4%B8%8E%E7%BB%B4%E4%BF%AE/</link>
-      <pubDate>Fri, 04 Oct 2024 22:09:14 +0800</pubDate>
-      
-      <guid>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E6%95%B0%E5%AD%97-x-%E7%BA%BF%E8%AE%BE%E5%A4%87%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%80%E8%8A%82-%E6%95%B0%E5%AD%97%E5%8C%96-x-%E7%BA%BF%E6%9C%BA%E7%9A%84%E6%95%85%E9%9A%9C%E4%B8%8E%E7%BB%B4%E4%BF%AE/</guid>
-      <description>一、维修方法 二、故障产生的原因及故障特征 三、数字化 X 线机的故障分析和维修 </description>
-    </item>
-    
-    <item>
-      <title>第八节 X 线机整机故障分析</title>
-      <link>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%80%E7%AB%A0-%E6%A8%A1%E6%8B%9F-x-%E7%BA%BF%E8%AE%BE%E5%A4%87%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E5%85%AB%E8%8A%82-x%E7%BA%BF%E6%9C%BA%E6%95%B4%E6%9C%BA%E6%95%85%E9%9A%9C%E5%88%86%E6%9E%90/</link>
-      <pubDate>Fri, 04 Oct 2024 22:05:14 +0800</pubDate>
-      
-      <guid>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%80%E7%AB%A0-%E6%A8%A1%E6%8B%9F-x-%E7%BA%BF%E8%AE%BE%E5%A4%87%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E5%85%AB%E8%8A%82-x%E7%BA%BF%E6%9C%BA%E6%95%B4%E6%9C%BA%E6%95%85%E9%9A%9C%E5%88%86%E6%9E%90/</guid>
-      <description>一、故障分类与检测方法 二、工频Ⅹ线机单元电路 三、工频Ⅹ线机故障综合分析与检修 四、变频X线机电路组成与故障维修 </description>
-    </item>
-    
-    <item>
-      <title>第七节 Ⅹ 线机的维护与检修</title>
-      <link>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%80%E7%AB%A0-%E6%A8%A1%E6%8B%9F-x-%E7%BA%BF%E8%AE%BE%E5%A4%87%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%83%E8%8A%82%E7%BA%BF%E6%9C%BA%E7%9A%84%E7%BB%B4%E6%8A%A4%E4%B8%8E%E6%A3%80%E4%BF%AE/</link>
-      <pubDate>Fri, 04 Oct 2024 22:03:14 +0800</pubDate>
-      
-      <guid>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%80%E7%AB%A0-%E6%A8%A1%E6%8B%9F-x-%E7%BA%BF%E8%AE%BE%E5%A4%87%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%83%E8%8A%82%E7%BA%BF%E6%9C%BA%E7%9A%84%E7%BB%B4%E6%8A%A4%E4%B8%8E%E6%A3%80%E4%BF%AE/</guid>
-      <description>一、维护 二、定期检查 三、检修 四、电路故障的判断及检查程序 </description>
-    </item>
-    
-    <item>
-      <title>第六节主要参量测试与调整</title>
-      <link>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%80%E7%AB%A0-%E6%A8%A1%E6%8B%9F-x-%E7%BA%BF%E8%AE%BE%E5%A4%87%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E5%85%AD%E8%8A%82%E4%B8%BB%E8%A6%81%E5%8F%82%E9%87%8F%E6%B5%8B%E8%AF%95%E4%B8%8E%E8%B0%83%E6%95%B4/</link>
-      <pubDate>Fri, 04 Oct 2024 22:03:14 +0800</pubDate>
-      
-      <guid>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%80%E7%AB%A0-%E6%A8%A1%E6%8B%9F-x-%E7%BA%BF%E8%AE%BE%E5%A4%87%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E5%85%AD%E8%8A%82%E4%B8%BB%E8%A6%81%E5%8F%82%E9%87%8F%E6%B5%8B%E8%AF%95%E4%B8%8E%E8%B0%83%E6%95%B4/</guid>
-      <description>一、曝光时间 二、管电流 三、管电压 四、Ⅹ线电视系统 </description>
-    </item>
-    
-    <item>
-      <title>第四节Ⅹ线电视系统</title>
-      <link>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%80%E7%AB%A0-%E6%A8%A1%E6%8B%9F-x-%E7%BA%BF%E8%AE%BE%E5%A4%87%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E5%9B%9B%E8%8A%82%E7%BA%BF%E7%94%B5%E8%A7%86%E7%B3%BB%E7%BB%9F/</link>
-      <pubDate>Fri, 04 Oct 2024 21:57:14 +0800</pubDate>
-      
-      <guid>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%80%E7%AB%A0-%E6%A8%A1%E6%8B%9F-x-%E7%BA%BF%E8%AE%BE%E5%A4%87%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E5%9B%9B%E8%8A%82%E7%BA%BF%E7%94%B5%E8%A7%86%E7%B3%BB%E7%BB%9F/</guid>
-      <description>一、检修条件与注意事项 二、检查故障的基本手段 三、判断故障的基本方法 四、X线电视系统常见故障的检查程序 五、元件的更换 </description>
-    </item>
-    
-    <item>
-      <title>第三节 单元电路原理与故障</title>
-      <link>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%80%E7%AB%A0-%E6%A8%A1%E6%8B%9F-x-%E7%BA%BF%E8%AE%BE%E5%A4%87%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%89%E8%8A%82%E5%8D%95%E5%85%83%E7%94%B5%E8%B7%AF%E5%8E%9F%E7%90%86%E4%B8%8E%E6%95%85%E9%9A%9C/</link>
-      <pubDate>Fri, 04 Oct 2024 21:49:14 +0800</pubDate>
-      
-      <guid>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%80%E7%AB%A0-%E6%A8%A1%E6%8B%9F-x-%E7%BA%BF%E8%AE%BE%E5%A4%87%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%89%E8%8A%82%E5%8D%95%E5%85%83%E7%94%B5%E8%B7%AF%E5%8E%9F%E7%90%86%E4%B8%8E%E6%95%85%E9%9A%9C/</guid>
-      <description>一、透视装置与诊视床的工作原理与常见故障 二、适时摄影装置的工作原理与常见故障 三、电源电路的工作原理与常见故障 四、X线管灯丝加热电路的工作原理与常见故障 五、X线管安全保护电路的工作原理与常见故障 </description>
-    </item>
-    
-    <item>
-      <title>第二节低压部分</title>
-      <link>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%80%E7%AB%A0-%E6%A8%A1%E6%8B%9F-x-%E7%BA%BF%E8%AE%BE%E5%A4%87%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%BA%8C%E8%8A%82%E4%BD%8E%E5%8E%8B%E9%83%A8%E5%88%86/</link>
-      <pubDate>Fri, 04 Oct 2024 21:37:14 +0800</pubDate>
-      
-      <guid>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%80%E7%AB%A0-%E6%A8%A1%E6%8B%9F-x-%E7%BA%BF%E8%AE%BE%E5%A4%87%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%BA%8C%E8%8A%82%E4%BD%8E%E5%8E%8B%E9%83%A8%E5%88%86/</guid>
-      <description>一、谐振式磁饱和稳压器的工作原理与常见故障 二、空间电荷抵偿变压器的工作原理与常见故障 三、继电器与接触器的工作原理与常见故障 四、各种开关的工作原理与常见故障 五、限时器的工作原理与常见故障 六、延时器的工作原理与常见故障 七、低压电路元件故障及检修 八、稳压器常见故障 九、电源频率变化的影响 十、继电器的常见故障及检修 十一、机械式和电动机式限时器的故障及检修 十二、电子管的故障 十三、电子管限时器的故障及检修 十四、RC电路的故障 十五、灵敏继电器和稳压电容的故障 十六、晶体管的故障 十七、故障检查举例 十八、旋转阳极启动装置的故障及检修 十九、活动滤线器的故障检修 二十、胃肠摄影装置的故障及检修 </description>
-    </item>
-    
-    <item>
-      <title>第一节高压部分</title>
-      <link>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%80%E7%AB%A0-%E6%A8%A1%E6%8B%9F-x-%E7%BA%BF%E8%AE%BE%E5%A4%87%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%80%E8%8A%82-%E9%AB%98%E5%8E%8B%E9%83%A8%E5%88%86/</link>
-      <pubDate>Fri, 04 Oct 2024 20:54:14 +0800</pubDate>
-      
-      <guid>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%80%E7%AB%A0-%E6%A8%A1%E6%8B%9F-x-%E7%BA%BF%E8%AE%BE%E5%A4%87%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%80%E8%8A%82-%E9%AB%98%E5%8E%8B%E9%83%A8%E5%88%86/</guid>
-      <description>一、高压变压器的原理与常见故障 (一)高压变压器的工作原理 变压器是变换交流电压、电流和阻抗的器件，当初级线圈中通有交流电流时，铁芯（或磁芯)中便产生交流磁通，使次级线圈中感应出电压（或电流）。
-变压器由铁芯（或磁芯）和线圈组成，线圈有两个或两个以上的绕组，其中接电源的绕组叫初级线圈，其余的绕组叫次级线圈。
-(二)高压变压器的常见故障 高压变压器是高压电路中最主要的部件，工作电压很高，常见故障有下列几种：
-1. 对地高压击穿或两线圈之间高压击穿
-故障现象：高压变压器一般分两个线圈，由于一个线圈始端直接接地，另一个线圈始端经毫安表之后才接地，所以故障现象有所不同。
-(1) 经毫安表后接地线圈的末端（称高压端）对地高压击穿时，全波整流电路内，毫安表指针冲至满刻度；自整流 X 线机内，毫安表指针在零附近颤动，毫安表很容易因大电流通过而烧毁；同时电压表和管电压表指针下降，机器过载声很大，保险丝熔断，无 X 线产生或 X 线甚微。
-(2) 直接接地线圈的末端对地高压击穿时，故障现象同上，但毫安表无指示或指示甚微。
-2. 高压变压器次级线圈局部短路
-故障现象：高压线圈局部短路后，透视时荧光屏亮后慢慢暗下来，X 线穿透力不足，毫安表指示比正常稍低或无异常，高压初级电流增大，机器过载 “嗡嗡” 声大，短路严重时，保险丝熔断，无 X 线产生。
-3. 高压变压器次级线圈断路
-故障现象：高压变压器次级线圈断路后，工作时高压通过断线头放电，可有 “吱吱” 响声，荧光屏荧光闪动，毫安表指示不稳；若断口距离较大，则无 X 线产生，毫安表无指示。
-二、灯丝变压器的原理与常见故障 (一)灯丝变压器的工作原理 X 线机中的灯丝变压器，分为 X 线管灯丝变压器和高压真空整流管灯丝变压器两种。其工作原理与结构相同，只是容量和体积有所区别，它们都是降压变压器，一般功率为 100W 左右。灯丝变压器的次级绕组与 X 线管的阴极相连， 当 X 线管工作时， 灯丝变压器次级绕组的电位与阴极干伏高压等电位， 这就要求灯丝变压器初、次级间具有良好的绝缘， 绝缘程度不能低于高压变压器最高输出电压的一半。
-(二)灯丝变压器的常见故障， X 线管灯丝变压器的次级线圈与高压连线， 使用中常出现高压击穿等故障。
-1. 灯丝变压器次级线圈对地或对初级线圈击穿
-故障现象：击穿时， 高压初级电流增大， 主电路电流增大， 电源电压表、管电压表指针下降， 机器过载“嗡嗡”声很大， 保险丝熔断， 毫安表指针冲至满刻度。
-2. 灯丝变压器次级线圈引出线接触不良或断路
-故障现象：①接触不良时， 可见 X 线管灯丝亮度不够， 灯丝电压低于正常值， 严重接触不良可致断路， 灯丝不亮；②如 X 线管灯丝变压器次级公用线断路， 则 X 线管大、小焦点同时点亮。</description>
-    </item>
-    
-    <item>
-      <title>第五节Ⅹ线机的通电试验</title>
-      <link>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%80%E7%AB%A0-%E6%A8%A1%E6%8B%9F-x-%E7%BA%BF%E8%AE%BE%E5%A4%87%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%BA%94%E8%8A%82%E7%BA%BF%E6%9C%BA%E7%9A%84%E9%80%9A%E7%94%B5%E8%AF%95%E9%AA%8C/</link>
-      <pubDate>Fri, 04 Oct 2024 20:54:14 +0800</pubDate>
-      
-      <guid>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%B8%80%E7%AB%A0-%E6%A8%A1%E6%8B%9F-x-%E7%BA%BF%E8%AE%BE%E5%A4%87%E7%BB%B4%E6%8A%A4/%E7%AC%AC%E4%BA%94%E8%8A%82%E7%BA%BF%E6%9C%BA%E7%9A%84%E9%80%9A%E7%94%B5%E8%AF%95%E9%AA%8C/</guid>
-      <description>一、注意事项 二、电源电路 三、控制电路 四、高压电路 </description>
-    </item>
-    
-    <item>
-      <title>绪论 医学影像设备技术的发展</title>
-      <link>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%BB%AA%E8%AE%BA/</link>
-      <pubDate>Fri, 04 Oct 2024 19:17:14 +0800</pubDate>
-      
-      <guid>https://okokfun.github.io/post/%E5%8C%BB%E5%AD%A6%E5%BD%B1%E5%83%8F%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4/%E7%BB%AA%E8%AE%BA/</guid>
-      <description>一、Ⅹ线机的发展 迄今,　X 线管(X-ray tube)经历了四次重大发展: ①由早期的充气管到真空管的发展,提高了 X 射线机(以下简称 X 线机)的可控性(1913年); ②从固定阳极发展到旋转阳极,　提高了 X 线管的输出功率和图像质量(1929年); ③高速旋转阳极和复合材料阳极靶面的开发应用, 进一步提高了 X 线管的输出功率和连续使用能力(20 世纪60年代);　④整管旋转、阳极盘直接油冷却、电子束定位方式,　使 X 线管连续使用能力提高到一个更高水平(2003年)。
-X 线机的高压部分早期使用感应线圈供电, 采用裸高压线、裸 X 线管方式, 1910年发展为工频升压真空管高压整流方式。1928年制成高压电缆, X 线机发展到具备防电击、防辐射功能。到20 世纪六七十年代, 自动控制、程序控制技术应用到 X 线机中, 大型 X 线机变得十分复杂, 但总体上仍属于电工元器件产品。1982年, 采用逆变方式的 X 线高压发生装置实用化, 逆变频率不断提高, 加之计算机技术的应用, X 线高压发生系统进入完全电子产品时代, 并进行了由繁到简、脱胎换骨的进化。
-1951年, 出现了影像增强器(image intensifier, I.1), 此前荧光屏式透视一直是在暗室中进行的, I.I的诞生, 使电视技术被引入 X 线领域, X 线电视系统(X-ray television, X-TV)使医生从暗室检查和辐射现场中解脱出来, 使 X 线机发生了一次划时代的革命, 是 X 线机发展史上的一个里程碑。1961年, 隔室操作多功能检查床出现, 并于20 世纪70年代后得到广泛应用, 胃肠透视检查进入遥控时代。由于 I.</description>
+      <guid>https://okokfun.github.io/post/%E5%B8%B8%E7%94%A8%E5%8C%BB%E7%96%97%E5%99%A8%E6%A2%B0%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%B4%E4%BF%AE/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E7%94%B5%E5%8A%A8%E5%90%B8%E5%BC%95%E5%99%A8/</guid>
+      <description>第一节概述 目前, 电动吸引器在一些中小医院和没有安装集中供氧、集中吸引系统的医院还在使用。这是不可缺少的常用医疗器械。电动吸引器多用于手术、急救和病房抽吸血、水、脓、痰等。
+电动吸引器按用途划分有三种: 即普通型电动吸引器、人工流产型电动吸引器、洗胃型电动吸引器。普通型电动吸引器是专门做抽吸血、水、脓、痰等治疗使用的, 不能做其他治疗使用。人工流产型电动吸引器是专门做人工流产(即吸宫)的吸引器, 这种吸引器与其他类型的电动吸引器相比有两点区别:一是有两只 5000mL 的储气瓶, 还有两只 500mL 储液瓶; 二是具有负压自动控制部分, 保持设定的负压值范围。洗胃型电动吸引器是专门做洗胃用的吸引器, 这种吸引器的结构是将真空泵的正压和负压都利用起来, 既有正压指示表还有负压指示表, 并有旋钮开关专门控制正压和负压的切换, 还有分别限制正压和负压压力的调节阀。目前, 已有新型的洗胃机投入临床使用, 这类机器都设有正压和负压手动和自动控制功能, 不易堵塞, 很适合临床急诊使用。电动吸引器是医院设备中经常使用的机器, 也是发生故障较频繁的设备。造成故障的原因, 有的是机器本身由于长时间使用, 属于正常磨损, 但有的则是因为使用或维护保养不当所造成。
+用于医疗使用的电动吸引器按结构大体划分为两种: 一种是滑片式, 即真空泵是含油的, 机械噪声较大, 真空泵中贮油室无油或油液面过低, 或提油环不转动, 则不能润滑真空泵, 容易将真空泵烧坏: 另一种是膜片式, 即真空泵是无油的, 其运行噪声小, 平时不需要更多的维护, 但是使用一段时间后, 电动机容易出问题, 如起动电容烧坏或因过热造成润滑不好而不能转动等。在膜式电动吸引器中还有电磁式结构的负压吸引器, 这种吸引器也是利用膜片来控制真空泵进气和排气, 以达到负压吸引的目地。滑片式电动吸引器其真空泵如果密封不严, 润滑油容易泄漏, 使内部连接用的橡胶管容易老化、变质, 造成漏气, 需要经常检查更换, 才能保证真空值, 对于膜片式吸引器要好一些。</description>
     </item>
     
     <item>

@@ -6,22 +6,31 @@
     <description>Recent content in Categories on My Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 26 Dec 2021 13:41:29 +0800</lastBuildDate><atom:link href="https://okokfun.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 04 Jan 2025 23:38:14 +0800</lastBuildDate><atom:link href="https://okokfun.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>nas</title>
-      <link>https://okokfun.github.io/categories/nas/</link>
-      <pubDate>Sun, 26 Dec 2021 13:41:29 +0800</pubDate>
+      <title>Medical</title>
+      <link>https://okokfun.github.io/categories/medical/</link>
+      <pubDate>Sat, 04 Jan 2025 23:38:14 +0800</pubDate>
       
-      <guid>https://okokfun.github.io/categories/nas/</guid>
+      <guid>https://okokfun.github.io/categories/medical/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Linux</title>
-      <link>https://okokfun.github.io/categories/linux/</link>
-      <pubDate>Sun, 26 Dec 2021 13:23:02 +0800</pubDate>
+      <title>Analog</title>
+      <link>https://okokfun.github.io/categories/analog/</link>
+      <pubDate>Thu, 19 Dec 2024 21:33:29 +0800</pubDate>
       
-      <guid>https://okokfun.github.io/categories/linux/</guid>
+      <guid>https://okokfun.github.io/categories/analog/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>nas</title>
+      <link>https://okokfun.github.io/categories/nas/</link>
+      <pubDate>Sun, 26 Dec 2021 13:43:29 +0800</pubDate>
+      
+      <guid>https://okokfun.github.io/categories/nas/</guid>
       <description></description>
     </item>
     

@@ -19,7 +19,7 @@
 字典(map) 字典有什么特点呢?
 字典的主要特点是一一对应的关系. 比如保存一个人的信息, 在合适的情况下取出这些信息. 使用数组的方式: [18, &amp;ldquo;Coderwhy&amp;rdquo;, 1.88]. 可以通过下标值取出信息. 使用字典的方式: {&amp;ldquo;age&amp;rdquo; : 18, &amp;ldquo;name&amp;rdquo; : &amp;ldquo;Coderwhy&amp;rdquo;, &amp;ldquo;height&amp;rdquo;: 1.88}. 可以通过key取出value 字典(map)的详细解释
 kmp算法 kmp算法也就是字符串匹配算法。
-比如： 在string str = &amp;ldquo;abcababcba&amp;quot;中匹配 string str2 = &amp;ldquo;ababc&amp;ldquo;字符串
+比如： 在string str = &amp;ldquo;abc ababcba&amp;quot;中匹配 string str2 = &amp;ldquo;ababc&amp;ldquo;字符串
 最长公共前后缀：要匹配的字符串生成的数组
 从一个字符开始到整个字符串，默认每行的公共前后缀最大值为全部字母数，然后判断是否符合其数字，如果不符合减一，一直判断到0结束。一行元素为1的数字为0，最后一行不统计
 0	a
@@ -28,8 +28,7 @@ kmp算法 kmp算法也就是字符串匹配算法。
 2	a	b	a	b
 0	a	b	a	b	c
 得出的公共前后缀为
-0 0 1 2 0 然后整体向后移动一位，原最后一位被覆盖，下标为0的位置设为-1,最后的公共前后缀为
--1 0 0 1 2 kmp匹配过程</description>
+0 0 1 2 0 然后整体向后移动一位，原最后一位被覆盖，下标为0的位置设为-1,最后的公共前后缀为</description>
     </item>
     
   </channel>
